@@ -1,0 +1,13 @@
+/* Diagrams of the lectures: ![text](/diagrams/x.svg){.diagram}, made by
+   tools/make-diagrams.py. The SVGs have dark text on a transparent background;
+   in dark mode they are inverted (the hue turned back, so the colours stay). */
+.vp-doc img.diagram {
+  display: block;
+  width: 100%;
+  max-width: 920px;
+  height: auto;
+  margin: 20px auto;
+}
+.dark .vp-doc img.diagram {
+  filter: invert(0.88) hue-rotate(180deg);
+}

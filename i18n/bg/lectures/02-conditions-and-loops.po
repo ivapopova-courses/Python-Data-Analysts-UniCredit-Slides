@@ -1,0 +1,1379 @@
+# Translation of site/lectures/02-conditions-and-loops.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/lectures/02-conditions-and-loops.md\n"
+
+#. front matter: title
+#: site/lectures/02-conditions-and-loops.md:2 site/lectures/02-conditions-and-loops.md:5
+msgid "2. Conditional statements and loops"
+msgstr ""
+
+#. html
+#: site/lectures/02-conditions-and-loops.md:8
+msgid "<span>Session 2</span><span>practice: <code>02-conditions-and-loops/</code> in the homework repository</span>"
+msgstr ""
+
+#. html
+#: site/lectures/02-conditions-and-loops.md:9
+msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:12
+msgid "**Today you will learn to:**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:14
+msgid "say what is \"true\" and \"false\" in Python, and compare values without surprises;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:15
+msgid "combine conditions with `and`, `or`, `not`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:16
+msgid "write decisions with `if` / `elif` / `else` - the Python `CASE WHEN`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:17
+msgid "choose a value with a conditional expression, and a branch with `match`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:18
+msgid "repeat work with `while` and `for`, and stop or skip with `break` and `continue`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:19
+msgid "loop over the rows of a file, the way a DATA step reads a data set;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:20
+msgid "build a small report and a repayment schedule with loops."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:22
+msgid "From SQL to Python - the same question, two ways:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:56
+msgid "By the end of today you will be able to read every line of this example. In session 15 pandas does the same in two lines - but it does exactly this inside."
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:59
+msgid "1. True and False"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:61
+msgid "The type `bool`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:63
+msgid "A **Boolean** value (after the mathematician [George Boole](https://en.wikipedia.org/wiki/George_Boole)) is one of two values: `True` or `False`. They are values, like `0` and `1` - not names of variables. Note the capital letters."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:73
+msgid "Booleans are the result of comparisons (section 2) and the input of every decision (sections 4 - 8) and of every `while` loop (section 11)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:76
+msgid "What is true and what is false"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:78
+msgid "`if` and `while` accept **any value**, not only `True` and `False`. Python decides by the rules you met in session 1 (*truthy* and *falsy*):"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:81
+msgid "Type"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:81 site/lectures/02-conditions-and-loops.md:253 site/lectures/02-conditions-and-loops.md:254 site/lectures/02-conditions-and-loops.md:254 site/lectures/02-conditions-and-loops.md:255 site/lectures/02-conditions-and-loops.md:256 site/lectures/02-conditions-and-loops.md:256
+msgid "False"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:81 site/lectures/02-conditions-and-loops.md:253 site/lectures/02-conditions-and-loops.md:253 site/lectures/02-conditions-and-loops.md:254 site/lectures/02-conditions-and-loops.md:255 site/lectures/02-conditions-and-loops.md:255 site/lectures/02-conditions-and-loops.md:256
+msgid "True"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:83
+msgid "numbers"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:83
+msgid "every other number, also `-1` and `0.00001`"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:84
+msgid "strings"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:84
+msgid "`\"\"` (empty)"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:84
+msgid "every non-empty string, also `\" \"`, `\"0\"`, `\"False\"`"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:85
+msgid "collections (lists, tuples, sets, dictionaries)"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:85
+msgid "empty"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:85
+msgid "not empty"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:86
+msgid "always"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:88
+msgid "`bool()` shows the decision:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:96
+msgid "This is useful with data from files. In `clients.csv`, retail clients have an **empty** industry code - and an empty string is false:"
+msgstr ""
+
+#. box title
+#: site/lectures/02-conditions-and-loops.md:108
+msgid "`0` is false, `None` is false - but they are not the same"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:109
+msgid "`if days_past_due:` is false both for `0` (a loan that is not late) and for `None` (the value is missing). When \"missing\" and \"zero\" mean different things - and in risk data they usually do - test for `None` explicitly: `if days_past_due is None:`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:114
+msgid "2. Comparisons"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:116
+msgid "The operators"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:118
+msgid "The result of a comparison is always `True` or `False`:"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:120
+msgid "Operator"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:120
+msgid "Meaning"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:120 site/lectures/02-conditions-and-loops.md:660
+msgid "SQL"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:120 site/lectures/02-conditions-and-loops.md:660 site/lectures/02-conditions-and-loops.md:864
+msgid "SAS"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:122
+msgid "less than"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:123
+msgid "less than or equal"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:124
+msgid "greater than"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:125
+msgid "greater than or equal"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:126
+msgid "equal"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:127
+msgid "not equal"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:128
+msgid "the same object (identity)"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:128
+msgid "`IS NULL` (only for `None`)"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:129
+msgid "is a member of"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:142
+msgid "`is` compares **objects**, not values (session 1, animation \"Names and objects\"). Use it only with `None`: `x is None`, `x is not None`."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:145
+msgid "Different types"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:147
+msgid "Python does not compare \"apples with oranges\". `<`, `>`, `<=`, `>=` between a number and a string are an error:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:154
+msgid "`==` does not give an error - it is simply `False`. This is a real trap with data from files, where every value is a string:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:163
+msgid "Numbers of different types compare as you expect: `1 == 1.0` is `True`, and `True == 1` is `True` too."
+msgstr ""
+
+#. box title
+#: site/lectures/02-conditions-and-loops.md:166
+msgid "Best practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:167
+msgid "Make sure you compare values of the **same type**. Convert the data first - `int()`, `float()`, `str()` (session 1) - and then compare."
+msgstr ""
+
+#. box title
+#: site/lectures/02-conditions-and-loops.md:177
+msgid "Python 2 was different"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:178
+msgid "Python 2 could compare values of different types: `\"2\" >= 2` was `True`, `99999 >= \"2\"` was `False` - without any error, and without any sense. If you meet old code that does this, it is a bug in Python 3."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:183
+msgid "Strings are compared letter by letter"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:185
+msgid "Strings are compared **lexicographically**, like words in a dictionary: the first characters first; if they are equal, the second ones, and so on. Each character is compared by its number (its *code point*) in the Unicode table, and [`ord()`](https://docs.python.org/3/library/functions.html#ord) shows that number:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:197
+msgid "`\"9\" < \"1000\"` is `False`, because only the first characters decide: `\"9\"` (57) is not less than `\"1\"` (49). Numbers stored as text sort wrongly - convert them first."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:200
+msgid "Dates in the ISO format `YYYY-MM-DD` (the format of the sample data) are an exception that works: the year comes first, then the month, then the day, all with a fixed number of digits. In the Bulgarian format `DD.MM.YYYY` they do not:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:209
+msgid "Real dates (`datetime`) come in session 7."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:211
+msgid "Chained comparisons"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:213
+msgid "Comparisons can be chained, like `BETWEEN` in SQL (session 1):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:222
+msgid "Floats"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:224
+msgid "Two floats that \"should\" be equal may not be (session 1, section 14). Compare them with a tolerance:"
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:235
+msgid "3. Logical operators"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:239
+msgid "Logical operators combine simple conditions into bigger ones - \"the loan is more than 90 days late **or** the client is in default\":"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:242
+msgid "Operation"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:242
+msgid "Result"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:244
+msgid "if `x` is false, then `y`, else `x`"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:245
+msgid "if `x` is false, then `x`, else `y`"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:246
+msgid "if `x` is false, then `True`, else `False`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:248
+msgid "The truth table ([Truth table](https://en.wikipedia.org/wiki/Truth_table)) - which operand is the result is in brackets:"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:253 site/lectures/02-conditions-and-loops.md:255
+msgid "True (`y`)"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:253 site/lectures/02-conditions-and-loops.md:254
+msgid "True (`x`)"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:254 site/lectures/02-conditions-and-loops.md:256
+msgid "False (`y`)"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:255 site/lectures/02-conditions-and-loops.md:256
+msgid "False (`x`)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:268
+msgid "Python stops as soon as it knows"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:270
+msgid "`and` and `or` evaluate the right side **only if needed** (*short-circuit evaluation*). When `x` is false, `x and y` is false whatever `y` is - so `y` is not even calculated. This protects you from errors:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:282
+msgid "`and` and `or` return one of their operands"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:284
+msgid "`and` and `or` do not always return `True` or `False`: they return **one of the two values**. `not` always returns a `bool`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:298
+msgid "`x or default` is a short way to give a default value - like `COALESCE(x, default)` in SQL. But be careful: it replaces **every** falsy value, also `0`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:307
+msgid "Order: `not`, then `and`, then `or`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:309
+msgid "Like `*` before `+`: `not` is applied first, then `and`, then `or` (the full table is in session 1, section 11). Use brackets when you mix `and` and `or`:"
+msgstr ""
+
+#. box title
+#: site/lectures/02-conditions-and-loops.md:319
+msgid "SQL `NULL` and SAS missing values"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:320
+msgid "In SQL, `NULL AND TRUE` is `NULL` (unknown), and a `WHERE` drops the row. In SAS, a missing value in a condition counts as false. In Python, `None` is simply falsy: `None and True` is `None`, and `if None:` does not run its block."
+msgstr ""
+
+#. box title
+#: site/lectures/02-conditions-and-loops.md:325 site/lectures/02-conditions-and-loops.md:520 site/lectures/02-conditions-and-loops.md:955 site/lectures/02-conditions-and-loops.md:1059 site/lectures/02-conditions-and-loops.md:1236 site/lectures/02-conditions-and-loops.md:1326 site/lectures/02-conditions-and-loops.md:1389
+msgid "Animation"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:326
+msgid "**How an expression is evaluated** (session 1): [5. Chained comparisons](../animations/expressionEvaluation.html#5){target=\"_blank\"}, [6. `and` / `or`](../animations/expressionEvaluation.html#6){target=\"_blank\"}"
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:331
+msgid "4. The `if` statement"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:333
+msgid "Control flow"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:335
+msgid "Normally a program runs one statement after the other, from top to bottom. The **control flow statements** change that: they run a block only when a **condition** is true (`if`), or run it again and again (`while`, `for`)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:339 site/lectures/02-conditions-and-loops.md:445 site/lectures/02-conditions-and-loops.md:877 site/lectures/02-conditions-and-loops.md:975
+msgid "Syntax"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:346
+msgid "After `if` comes the condition, then a colon `:`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:347
+msgid "The **block** is the lines indented under it (4 spaces). It runs only if the condition is true (truthy). There are no braces and no `end` - the indentation says where the block ends (session 1, section 8)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:350
+msgid "The condition can be any expression: Python takes its truth value (section 1)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:361
+msgid "The same in SAS and SQL:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:374
+msgid "The indentation decides"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:383
+msgid "`print(\"1\")` and `print(\"2\")` form the block: they run **only if the condition is true**. `print(\"3\")` is not in the block - it always runs."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:386
+msgid "`pass`: a block that does nothing"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:388
+msgid "Python does not allow an empty block. When you need one - for now, or on purpose - write `pass`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:399
+msgid "`pass` works in every block: `if`, `for`, `while`, functions (session 4)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:410
+msgid "Exactly one of the two blocks runs: block 1 when the condition is true, block 2 when it is false."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:431
+msgid "On the portfolio:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:458
+msgid "`elif` means \"else if\". There can be as many `elif` parts as you need, and the `else` at the end is optional. Python tests the conditions **from top to bottom** and runs **only the first block** whose condition is true; the rest are skipped. This is exactly how `CASE WHEN` works in SQL."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:463
+msgid "![The flow of if / elif / else: the conditions are tested in order, the first true one runs its block, and the program continues after the whole statement](/diagrams/if-elif-else.svg){.diagram}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:479
+msgid "`CASE WHEN` in Python"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:481
+msgid "The buckets of days past due:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:517
+msgid "The second condition does not need `days_past_due > 0 and ...`: if we got there, the first one was already false."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:521
+msgid "**Loops step by step:** [2. Decisions in a loop](../animations/loopTrace.html#2){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:524
+msgid "The order matters"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:526
+msgid "Because the first true condition wins, the order of the conditions is part of the logic. Find the bug:"
+msgstr ""
+
+#. box title
+#: site/lectures/02-conditions-and-loops.md:542 site/lectures/02-conditions-and-loops.md:916
+msgid "Answer"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:543
+msgid "120 is more than 0, so the first block runs and Python never tests `> 90`: the loan is only \"late\". Put the **strictest** condition first: `> 90`, then `> 0`."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:547
+msgid "No gaps between the ranges"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:549
+msgid "The rating scale of the sample data gives a grade for each band of the probability of default (PD). A first try, with both ends of each band:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:567
+msgid "0.00055 falls into the **gap** between two bands, and the loan gets \"not rated\". With decimal numbers there is always something between two values you write. The safe way: test only the **upper** bound, in order - every value lands in exactly one band:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:589
+msgid "Nested `if` or `and`?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:591
+msgid "An `if` can be inside another `if`. Often `and` says the same in a flatter way - \"Flat is better than nested\" (the Zen of Python):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:608
+msgid "Example: the IFRS 9 stage"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:610
+msgid "The rule of the sample data: stage 3 when the loan is more than 90 days past due **or** the client is in default (rating 10); stage 2 when it is more than 30 days past due **or** the rating is 7 or worse; otherwise stage 1."
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:628
+msgid "7. Conditional expressions"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:632
+msgid "When an `if` - `else` only chooses between two values, a **conditional expression** (in other languages: the *ternary operator*) says it in one line:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:639
+msgid "Python evaluates the condition; if it is true, the result is `x`, otherwise `y`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:650
+msgid "The same as:"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:660 site/lectures/02-conditions-and-loops.md:864
+msgid "Python"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:665
+msgid "Conditional expressions can be nested, but two of them in one line are already hard to read - use `if` / `elif` / `else` instead."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:668
+msgid "Statement or expression?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:670
+msgid "An **expression** gives a **value**: `2 + 3`, `rate * 2`, `\"late\" if dpd > 0 else \"current\"`, a function call. You can print it, or give it a name."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:672
+msgid "A **statement** **does** something: `x = 5`, `if`, `for`, `while`, `import`. It has no value."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:675
+msgid "Expressions are parts of statements: in `x = 5 + 3`, `5 + 3` is an expression and the whole line is a statement. That is why a conditional **expression** can stand on the right of `=`, but an `if` **statement** cannot:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:686
+msgid "One value, many cases"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:688
+msgid "`match` (since Python 3.10) compares one value with a list of **patterns**, given in `case` blocks, and runs the first one that fits. It is like `SELECT` / `WHEN` in a SAS DATA step, or `switch` in C and Java:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:714
+msgid "`|` means \"or\": the case fits any of the values."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:715
+msgid "`case _:` fits everything - the default, like `otherwise` and `ELSE`. Write it last."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:716
+msgid "Only one case runs; there is no \"fall through\" to the next case as in C."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:718
+msgid "Conditions in a case: guards"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:720
+msgid "After a pattern, `if` adds a condition (a *guard*). `case dpd if dpd > 90:` means \"take the value, call it `dpd`, and fit only if `dpd > 90`\":"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:739
+msgid "For ranges of numbers, `if` / `elif` is usually clearer. `match` is best for **fixed values**: codes, products, menu choices."
+msgstr ""
+
+#. box title
+#: site/lectures/02-conditions-and-loops.md:742
+msgid "A name in a case catches everything"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:743
+msgid "In a `case`, a plain name is not compared - it **captures** the value. This case fits every segment:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:757
+msgid "With a `case _:` after it, Python even refuses to run the code: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Write the values themselves (`case \"retail\":`), or dotted names (`case Segment.RETAIL:`, session 11)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:762
+msgid "Before Python 3.10: `if` - `elif` chains"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:764
+msgid "Older code (and older courses) write the same with `if` / `elif`. A typical program menu (this one needs `input()`, so try it in VS Code):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:784
+msgid "The same with `match`:"
+msgstr ""
+
+#. box title
+#: site/lectures/02-conditions-and-loops.md:798
+msgid "Advanced: patterns with several values"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:799
+msgid "A pattern can also take a tuple apart (tuples: session 3). Each name in the pattern gets its part of the value:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:814
+msgid "More: [match statements](https://docs.python.org/3/tutorial/controlflow.html#match-statements) in the tutorial, and the [pattern matching tutorial (PEP 636)](https://peps.python.org/pep-0636/)."
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:818
+msgid "9. Operator precedence"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:820
+msgid "The order in which the parts of an expression are calculated decides the result. Wrong assumptions about it lead to bugs:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:828
+msgid "The short version of the table (the full one in session 1, section 11, and in the [Python reference](https://docs.python.org/3/reference/expressions.html#operator-precedence)): arithmetic, then comparisons (`<`, `==`, `in`, `is`, ...), then `not`, then `and`, then `or`, and the conditional expression `... if ... else ...` last of all."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:833
+msgid "**Use brackets for clarity.** Even when you know the rules, brackets make the expression easier to read for others."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:835
+msgid "**Avoid complicated expressions.** If an expression grows too long, split it: give the parts names."
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:850
+msgid "10. Loops"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:852
+msgid "A **loop** runs a block of code **many times**. Each run of the block is an **iteration**. Python has two loops:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:855
+msgid "`while` repeats **while a condition is true** - when you do not know in advance how many times (section 11);"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:857
+msgid "`for` repeats **for each item** of a sequence - the rows of a file, the items of a list, the numbers of a `range` (section 12)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:860
+msgid "You already use loops in SAS: the **DATA step is a loop** - it runs once for each row of the input data set, without you writing it. In Python you write the loop yourself (and in pandas, again, you do not - session 14)."
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:866
+msgid "the implicit loop of the DATA step over `SET`"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:867
+msgid "`for i in range(1, 13):` - note the **13**"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:870
+msgid "`while True:` ... `if balance <= 0: break` (section 13)"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:873
+msgid "`total + amount;` (the sum statement, with `RETAIN`)"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:873
+msgid "`total += amount`, with `total = 0` before the loop"
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:875
+msgid "11. The `while` loop"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:884
+msgid "The block runs again and again **while the condition is true**. Before each iteration Python tests the condition; when it is false, the loop ends and the program continues after the block."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:888
+msgid "Inside the block, something must change the condition - otherwise the loop never ends. (Or a `break` stops it, section 13.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:891
+msgid "![The flow of a loop: the condition is tested before each iteration; break leaves the loop, continue goes back to the test](/diagrams/loop-flow.svg){.diagram}"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:900
+msgid "This is just a simple example. For a fixed number of iterations, a `for` loop with `range` is better (section 12)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:903
+msgid "An endless loop - find the problem"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:905
+msgid "This loop never ends (do not run it here - in VS Code, `Ctrl+C` in the terminal stops a running program):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:917
+msgid "`i = 1` sets `i` to 1 in every iteration, and `1 >= 1` is always true. It should be `i -= 1` (`i = i - 1`)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:921
+msgid "When `while` is the right loop"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:923
+msgid "Use `while` when you **do not know in advance** how many iterations are needed. How many months does it take to repay 20 000 EUR at 6% a year, with 450 EUR a month?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:942
+msgid "The SAS way is the same loop:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:956
+msgid "**Loops step by step:** [3. `while`: repay a loan](../animations/loopTrace.html#3){target=\"_blank\"}"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:959
+msgid "Another typical case is checking what a user types - the program asks again until the answer is right. With `input()`, so try it in VS Code:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:970
+msgid "The `input()` line is written twice - section 13 shows a cleaner way with `while True` and `break`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:973
+msgid "12. The `for` loop"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:982
+msgid "`for` takes the items of a sequence **one by one**; in each iteration the name points to the next item, and the block runs. The loop ends after the last item. You do not count, and the loop cannot run forever."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:991
+msgid "What `for` can loop over"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:993
+msgid "Anything that gives items one by one - an *iterable*: a string (the characters), a list, a tuple (session 3), a `range` of numbers, the lines of a file, a dictionary (session 6)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1011
+msgid "`range`: a sequence of numbers"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1013
+msgid "`range(stop)`, `range(start, stop)` and `range(start, stop, step)` give whole numbers from `start` (0 if not given) up to **`stop - 1`** - the stop itself is **not** included. Session 3 has the details."
+msgstr ""
+
+#. box title
+#: site/lectures/02-conditions-and-loops.md:1025
+msgid "SAS counts to the end, `range` stops before it"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1026
+msgid "`do month = 1 to 12;` runs 12 times, for 1 ... 12. In Python, `range(1, 12)` stops at 11: write `range(1, 13)`. `range(12)` also runs 12 times, but for 0 ... 11."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1030
+msgid "Accumulators: sum, count, maximum"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1032
+msgid "A loop often **accumulates** a result: a variable gets a start value **before** the loop and changes in each iteration. In SAS this is the sum statement or `RETAIN`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1043
+msgid "A sum, a count and a maximum in one loop:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1060
+msgid "**Loops step by step:** [1. `for` with an accumulator](../animations/loopTrace.html#1){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1063
+msgid "Several names: unpacking"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1065
+msgid "When the items are pairs (or longer groups), the `for` can give each part its own name. The pairs here are tuples (session 3):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1081
+msgid "A dictionary (session 6) gives its keys and values the same way, with `.items()`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1089
+msgid "The position of the item: `enumerate`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1091
+msgid "Sometimes you need the **index** (the position) of each item, not only the item. The C-style way loops over the indexes with `range(len(...))`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1100
+msgid "The Python way is [`enumerate(iterable, start=0)`](https://docs.python.org/3/library/functions.html#enumerate): it gives the index and the item together."
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1109
+msgid "Nested loops"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1111
+msgid "A loop can be inside another loop. The inner loop runs completely in **each** iteration of the outer one:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1121
+msgid "A table of rows of numbers (a *list of lists*, session 5) is read the same way:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1135
+msgid "On the portfolio - the monthly payment for several amounts and terms, a grid like `PROC TABULATE` would print:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1156
+msgid "The rows of a file"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1158
+msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in session 9):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1172
+msgid "`split(\",\")` gives the fields as strings. The names on the left of `=` take them in order (as in \"several names at once\", session 1) - then convert the ones you need:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1198
+msgid "(For simplicity the example adds EUR and USD amounts together - a real report converts them first.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1203
+msgid "Leave the loop now"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1205
+msgid "`break` stops the **innermost** `for` or `while` loop at once; the program continues after the loop. It is almost always inside an `if`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1216
+msgid "When the break condition is true, block 2 is skipped and the loop ends."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1225
+msgid "Finding something - stop as soon as it is found:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1237
+msgid "**Loops step by step:** [4. `break`: stop at the first](../animations/loopTrace.html#4){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1240
+msgid "`break` in nested loops"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1242
+msgid "`break` leaves only the loop it is in - the outer loop goes on:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1261
+msgid "`do until`: a loop that runs at least once"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1263
+msgid "Python has no `do ... while` loop (C, Java) and no `do until` (SAS) - \"there should be one obvious way to do it\". They are useful when the block must run **at least once** and the test comes at the end. The Python way is `while True` with a `break`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1274
+msgid "The name check of section 11, without writing `input()` twice:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1284
+msgid "The same in SAS:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1306
+msgid "`else` on a loop"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1308
+msgid "A `for` or `while` loop can have an `else` block. It runs when the loop ends **normally** - and not when a `break` stopped it. It is the clean way to say \"not found\":"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1323
+msgid "Read the `else` of a loop as \"no break\". It is not used often - a comment helps the reader."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1327
+msgid "**Loops step by step:** [6. `for` - `else` (advanced)](../animations/loopTrace.html#6){target=\"_blank\"}"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1332
+msgid "`continue` stops the **current iteration** and goes to the next one: the rest of the block is skipped, and the loop goes on (for `while`: with the test of the condition). It is almost always inside an `if`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1344
+msgid "Print the numbers 1 to 5, but skip 3:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1353
+msgid "Print a word without the vowels:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1364
+msgid "In data work, `continue` skips the records you do not want - like a `WHERE`, or a `DELETE` / `RETURN` in a DATA step. Count only the USD loans, and skip empty lines:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1385
+msgid "`continue` keeps the main code at the left, without one more level of indentation. An `if` with the opposite condition does the same - choose the one that reads better."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1390
+msgid "**Loops step by step:** [5. `continue`: skip a record](../animations/loopTrace.html#5){target=\"_blank\"}"
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:1393
+msgid "15. Putting it together"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1395
+msgid "A repayment schedule"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1397
+msgid "An annuity loan (session 1): the same payment every month. Each month, the interest is calculated on the balance, and the rest of the payment repays the principal."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1433
+msgid "(The last balance can show `-0.00`: a float rounding error of a fraction of a cent, session 1, section 14.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/02-conditions-and-loops.md:1436
+msgid "Find the rate: higher or lower?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1438
+msgid "The classic \"guess the number\" game - \"too high\", \"too low\", until it is right - is also a real method for finding a number that you cannot calculate directly. Which yearly rate gives a payment of exactly 400 EUR on 20 000 EUR for 5 years? The payment grows with the rate, so: try the middle of the interval, and keep the half where the answer must be (*bisection*):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1465
+msgid "Each try halves the interval, so after 22 tries it is smaller than 0.00001%. The same idea finds the effective interest rate (the APR) of a loan with fees, or the internal rate of return (IRR) of a cash flow."
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:1469
+msgid "16. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1471
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1479
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1479
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1479
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1481
+msgid "Predict the result of 14 comparisons and logical expressions, then check"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1482
+msgid "The days-past-due bucket and the sign of a change, with `if` / `elif` / `else`"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1483
+msgid "The IFRS 9 stage with `and` / `or`; leap years"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1484
+msgid "Product groups and a currency converter with `match`"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1485
+msgid "Loop over `loans.csv`: counts, sums, the largest loan, the first stage 3 loan"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1486
+msgid "Months to repay a loan with `while`; a text bar chart with `for`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1488
+msgid "In `task1-predict-logic.py`, replace each `\"?\"` with your prediction **before** you run the file."
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:1491
+msgid "Summary"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1493
+msgid "Topic"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1493
+msgid "Remember"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1495
+msgid "Truth"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1495
+msgid "`0`, `0.0`, `\"\"`, `None`, empty collections are false; everything else is true"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1496
+msgid "Comparisons"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1496
+msgid "`< <= > >= == !=`, `in`, `is None`; never compare a `str` with a number - `\"3\" == 3` is `False`; strings compare letter by letter"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1497
+msgid "Logic"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1497
+msgid "`and`, `or`, `not`; Python stops as soon as it knows; `x or default` replaces also `0`"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1498
+msgid "`if` / `elif` / `else`: the first true condition wins - like `CASE WHEN`; test only one bound of each range"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1499
+msgid "Expressions"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1499
+msgid "`a if condition else b`; statements do, expressions give a value"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1500
+msgid "one value against fixed cases; `\\|` for \"or\", `case _:` for the rest; guards with `if`"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1501
+msgid "while a condition is true; something in the block must change it"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1502
+msgid "each item of a sequence: a string, a list, `range`, the lines of a file; `range(1, 13)` is 1 ... 12"
+msgstr ""
+
+#. table cell
+#: site/lectures/02-conditions-and-loops.md:1503
+msgid "leave the loop / go to the next iteration; `while True` + `break` = `do until`; loop `else` = \"no break\""
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:1505
+msgid "Homework"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1507
+msgid "`02-conditions-and-loops/homework.py` (in the homework repository): a **report of days past due** from `loans.csv` - the number of loans and the outstanding amount in each bucket, the shares, and the largest late loan. Every check must print `OK`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1511
+msgid "The practice tasks you did not finish in class."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1512
+msgid "Optional: a **loan calculator** in the terminal - `calculator.py` asks for the amount, the yearly rate and the years with `input()`, asks **again** while a value is not valid (the amount must be more than 0, the rate between 0 and 50, the years between 1 and 30), and prints the repayment schedule of section 15. Add a menu with `match`: 1 - the schedule, 2 - only the total interest, 3 - quit; repeat until the user chooses 3."
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1518
+msgid "Optional: change the bisection example of section 15 so that it also prints each guess and \"too high\" / \"too low\", and stops after at most 30 tries."
+msgstr ""
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:1521
+msgid "Read more"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1523
+msgid "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` on loops, `pass`, `match`)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1525
+msgid "Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations), [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons), [Truth value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing), [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1529
+msgid "`match`: [PEP 636 - the pattern matching tutorial](https://peps.python.org/pep-0636/)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1530
+msgid "Real Python: [Conditional statements](https://realpython.com/python-conditional-statements/), [`for` loops](https://realpython.com/python-for-loop/), [`while` loops](https://realpython.com/python-while-loop/)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1534
+msgid "**Next session:** lists, tuples and sets - indexing from 0, slices, the methods of `list`, tuples as records, and `UNION` / `INTERSECT` / `EXCEPT` with sets."
+msgstr ""

@@ -1,0 +1,1319 @@
+# Translation of site/lectures/04-functions.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/lectures/04-functions.md\n"
+
+#. front matter: title
+#: site/lectures/04-functions.md:2 site/lectures/04-functions.md:5
+msgid "4. Functions"
+msgstr ""
+
+#. html
+#: site/lectures/04-functions.md:8
+msgid "<span>Session 4</span><span>practice: <code>04-functions/</code> in the homework repository</span>"
+msgstr ""
+
+#. html
+#: site/lectures/04-functions.md:9
+msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:12
+msgid "**Today you will learn to:**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:14
+msgid "define your own functions with `def`, and call them;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:15
+msgid "pass values to a function: by position, by name, with default values, and in any number with `*args` and `**kwargs`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:17
+msgid "return one or several results with `return` - and see why `print` is not `return`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:18
+msgid "understand where a name is visible (scope), and why a function should get its data through parameters;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:20
+msgid "document a function with a docstring and type hints;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:21
+msgid "pass functions as values, write short ones with `lambda`, and sort by a key;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:22
+msgid "replace a SAS macro with a Python function, and build a small library of functions for the loan portfolio."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:25
+msgid "From SAS to Python - the same reusable piece of logic, two ways:"
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:48
+msgid "1. What is a function?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:50
+msgid "A **function** is a **named block of code** that does one task. You define it once, and **call** it - run it - as many times as you need, with different values. A good picture is a recipe in a cookbook: written once, cooked many times, with different amounts."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:55
+msgid "You already call functions every day: `print()`, `len()`, `round()`, `sum()`, `sorted()`, `int()`. Today you write your own."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:58
+msgid "Functions help to:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:60
+msgid "**split a big task into small ones** - each function does one thing and has a name that says what;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:62
+msgid "**not repeat yourself** - the same calculation in one place: a fix there fixes it everywhere (the \"DRY\" rule: *don't repeat yourself*);"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:64
+msgid "**test** - a function with inputs and a result is easy to check (that is how the tasks of this course check your work)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:67
+msgid "A program made of functions looks like this:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:86
+msgid "Functions and SAS macros"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:88
+msgid "SAS macro"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:88
+msgid "SAS `PROC FCMP` function"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:88
+msgid "Python function"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:90
+msgid "Defined with"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:91
+msgid "What it does"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:91
+msgid "**writes SAS code** (text) that SAS then runs"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:91
+msgid "calculates a value"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:91
+msgid "runs code, **returns a value**"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:92 site/lectures/04-functions.md:1382
+msgid "Parameters"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:92
+msgid "text: `&param`"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:92
+msgid "values"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:92
+msgid "any objects: numbers, lists, tables, other functions"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:93
+msgid "Variables inside"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:93
+msgid "local"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:93
+msgid "local by default (section 6)"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:94
+msgid "Used for"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:94
+msgid "repeating steps, generating code"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:94
+msgid "calculations in a DATA step"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:94
+msgid "everything"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:96
+msgid "A macro is a text generator: `%interest(651927.30, 5.44)` is replaced by the text `(651927.30 * 5.44 / 100)`. A Python function is not text - it runs, and gives back a value. You do not need `&`, `%str()` or quoting rules: a parameter is just a name for the value."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:101
+msgid "SQL has user-defined functions too (`CREATE FUNCTION`), but in analysis work they are rare. In Python, functions are everywhere."
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:104
+msgid "2. Defining a function"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:106
+msgid "Syntax"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:115
+msgid "`def` - the keyword that starts the definition."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:116
+msgid "`function_name` - a valid name (session 1): `snake_case`, a verb that says what the function does - `calculate_interest`, `read_loans`, `is_late`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:118
+msgid "`parameters` - optional: the names that will get the input values. The **brackets are required**, even when there are no parameters."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:120
+msgid "`\"\"\"docstring\"\"\"` - optional: a text that documents the function (section 8)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:121
+msgid "`block` - the **body** of the function, indented. At least one statement."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:122
+msgid "`return expression` - optional: the result of the function (section 5)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:124
+msgid "The simplest definition:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:131
+msgid "`pass` (session 2) is a body that does nothing - for a function you will write later. A full definition:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:151
+msgid "A definition does not run the body"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:159
+msgid "Nothing is printed: `def` only **creates** the function and gives it a name. The body runs when the function is **called**."
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:162
+msgid "3. Calling a function"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:168
+msgid "The brackets are required - even when there are no arguments:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:180
+msgid "A function must be **defined before** it is called. Python runs a file from top to bottom; at the call, the name must already exist:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:190
+msgid "That is why a script puts its functions at the top and the main code at the bottom (section 12). (Inside a function body, you can call a function that is defined lower in the file - the body runs only later, when all `def`s are done.)"
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:194
+msgid "4. Parameters and arguments"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:196
+msgid "Why parameters"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:198
+msgid "A function that always works with the same values is not very useful:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:208
+msgid "It is better to give it the values at each call - `add(20, 22)`, `add(123, 321)`. That is what **parameters** are for:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:211
+msgid "A **parameter** is a name in the definition: `def add(x, y):`. Inside the function it is a local variable."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:213
+msgid "An **argument** is the value given in the call: `add(20, 22)`. At the call, each parameter is bound to its argument."
+msgstr ""
+
+#. box title
+#: site/lectures/04-functions.md:225 site/lectures/04-functions.md:353 site/lectures/04-functions.md:708 site/lectures/04-functions.md:725 site/lectures/04-functions.md:847 site/lectures/04-functions.md:1288
+msgid "Animation"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:226
+msgid "**Function calls step by step:** [1. A call and a return](../animations/functionCalls.html#1){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:229
+msgid "Positional arguments"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:231
+msgid "By default, arguments are given **by position**: the first argument to the first parameter, the second to the second, and so on. The number must match, or it is a `TypeError`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:245
+msgid "Default values"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:247
+msgid "A parameter can have a **default value**, used when the call gives no argument for it:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:258
+msgid "On the portfolio - the most common term and the usual LGD as defaults:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:271
+msgid "Parameters with defaults must come **after** the ones without - otherwise Python cannot know which argument is which:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:279
+msgid "The right way:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:289
+msgid "Keyword arguments"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:291
+msgid "In the call, you can name the parameter: `name=value`. Then the order does not matter - and the call says what each value means:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:302
+msgid "Keyword arguments must come **after** the positional ones:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:311
+msgid "Keyword arguments make calls with several numbers readable - compare:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:322
+msgid "You know this from SAS macros with keyword parameters: `%report(data=loans, limit=90)`, and from `print(..., sep=\";\", end=\"\")`."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:325
+msgid "A trap: a list as a default value"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:327
+msgid "The default value is created **once**, when the `def` runs - not at every call. If it is a list, all calls share **the same list**:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:339
+msgid "The rule: never use a mutable value (a list, a dict, a set) as a default. Use `None`, and create the list inside:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:354
+msgid "**Function calls step by step:** [6. A list as a default value (advanced)](../animations/functionCalls.html#6){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:357
+msgid "Any number of positional arguments: `*args`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:359
+msgid "A parameter with a star `*` collects **all the extra positional arguments** into a **tuple**. By custom it is called `*args`, but the name can be any:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:372
+msgid "`print()`, `max()` and `min()` work like this: `max(3, 8, 5)` takes any number of values. Your own:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:387
+msgid "`*args` comes **after** the normal parameters. A parameter written after `*args` can only be given **by name** (a *keyword-only* parameter):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:419
+msgid "Any number of keyword arguments: `**kwargs`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:421
+msgid "Two stars `**` collect **all the extra keyword arguments** into a **dictionary** (dictionaries: session 6 - here, pairs of a name and a value):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:441
+msgid "A typical use is a function with many optional settings:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:452
+msgid "The order of the parameters in a definition, when you use all kinds:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:458
+msgid "Unpacking in a call: `*` and `**`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:460
+msgid "The stars work the other way round in a **call**: `*` unpacks a list or a tuple into positional arguments, `**` unpacks a dictionary into keyword arguments:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:480
+msgid "A record from a file, straight into a function:"
+msgstr ""
+
+#. box title
+#: site/lectures/04-functions.md:490
+msgid "Advanced: keyword-only `*` and positional-only `/`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:491
+msgid "A bare `*` in a definition means \"everything after this must be given by name\". It makes calls readable and safe - nobody can mix up two numbers by position:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:503
+msgid "`sorted(items, key=..., reverse=True)` is defined this way: `key` and `reverse` are keyword-only. A `/` means \"everything before this must be given by position\" - you see it in the help of many built-in functions, like `len(obj, /)`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:508
+msgid "5. Return values"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:512
+msgid "`return` ends the function and gives a value back to the caller. The call itself is then an **expression** with that value: you can print it, give it a name, use it in a calculation, or pass it to another function."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:525
+msgid "`return` **ends** the function - code after it never runs:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:535
+msgid "Without `return`: `None`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:537
+msgid "A function without `return` (or with a bare `return`) returns `None`. In Python every function returns something:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:552
+msgid "`print` is not `return`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:554
+msgid "The most common mistake with functions: `print` **shows** a value on the screen, but the caller gets nothing. `return` **gives** the value to the caller - and shows nothing."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:571
+msgid "Rule: a function that **calculates** returns its result. Printing is the job of the code that called it - or of a separate function that only prints. That way the same function can be used in a report, in a file, in a test."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:575
+msgid "Several values: a tuple"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:577
+msgid "`return a, b` returns a **tuple** (session 3) - and the caller can unpack it:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:599
+msgid "Return early"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:601
+msgid "A function can have several `return` statements - the first one that runs ends the function. Returning early for the special cases keeps the main logic flat:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:619
+msgid "No `elif` is needed: after a `return`, the rest does not run."
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:621
+msgid "6. Scope: where a name is visible"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:623
+msgid "Namespaces and scopes"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:625
+msgid "A **namespace** keeps the names and the objects they are bound to (inside, it is a dictionary). It exists while the program runs: the global namespace is created when a file is loaded; the local namespace of a function is created **at each call**, and deleted when the call ends."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:629
+msgid "A **scope** is the part of the code where a namespace is directly visible. Python decides scopes from the text of the code, before it runs."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:632
+msgid "In simple words: the scope of a name is the part of the program where you can use it."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:634
+msgid "Local names"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:636
+msgid "Names created **inside a function** - its parameters, and every name assigned in its body - are **local**: they exist only during the call, and only inside the function."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:648
+msgid "Global names"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:650
+msgid "A name defined **outside any function**, at the top level of a file, is **global** to the file: every function of the file can read it."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:663
+msgid "See the namespaces: `locals()` and `globals()`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:676
+msgid "(`globals()` shows many more names - the built-in ones of the module, like `__name__`.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:679
+msgid "An assignment makes a local name"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:681
+msgid "When a name is **assigned** inside a function, it is local - even if a global name with the same name exists. They are two different variables:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:695
+msgid "The same for parameters - a parameter is a local name. A new value for it does not change the variable of the caller:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:709
+msgid "**Function calls step by step:** [2. Local and global](../animations/functionCalls.html#2){target=\"_blank\"}"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:712
+msgid "And a trap: if a function **assigns** a name anywhere in its body, the name is local in the **whole** body - also on the lines before the assignment:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:726
+msgid "**Function calls step by step:** [3. `UnboundLocalError`](../animations/functionCalls.html#3){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:729
+msgid "Nested functions"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:731
+msgid "A function can be defined inside another one. Each has its own local names:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:747
+msgid "`global` and `nonlocal`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:749
+msgid "`global name` says: \"in this function, `name` means the **global** name\" - an assignment changes the global variable:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:767
+msgid "`nonlocal name` means the name of the **nearest enclosing function** (not the global one):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:785
+msgid "Use them rarely. A function that changes global variables is hard to understand and to test: you cannot see from the call what it changes. Prefer: **values in through the parameters, results out through `return`**."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:800
+msgid "How Python finds a name: LEGB"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:802
+msgid "When a name is used, Python looks for it in four places, **in this order**, and takes the first one it finds:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:805
+msgid "**L**ocal - the function that runs now;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:806
+msgid "**E**nclosing - the functions around it, from the nearest one out;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:807
+msgid "**G**lobal - the top level of the file (module);"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:808
+msgid "**B**uilt-in - the names of Python itself: `print`, `len`, `sum`, ..."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:810
+msgid "If the name is nowhere, it is a `NameError`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:812
+msgid "![Four nested boxes: Built-in around Global around Enclosing around Local, with example names; Python looks for a name from the inside out](/diagrams/scope-legb.svg){.diagram}"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:814
+msgid "This is also why you should not use built-in names for your variables: `sum = 0` **hides** the built-in `sum()` in that scope (a common habit from other languages):"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:825
+msgid "SAS"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:825
+msgid "Python"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:827
+msgid "`%local x;` - a macro variable only in this macro"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:827
+msgid "an assignment in a function (the default)"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:828
+msgid "a name at the top level of the file; `global x` to assign it in a function"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:829
+msgid "`%let` outside macros"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:829
+msgid "a global variable - use it for constants only"
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:831
+msgid "7. Arguments are references"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:833
+msgid "A parameter is bound to **the same object** as the argument - Python does not copy it (session 3: names and references). For numbers and strings it makes no difference, because they cannot change. A **list** passed to a function **can** be changed by the function - and the caller sees the change:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:848
+msgid "**Function calls step by step:** [5. A list passed to a function](../animations/functionCalls.html#5){target=\"_blank\"}"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:851
+msgid "Sometimes that is what you want (a function that fills a list). Usually it is a surprise. The safe default: do not change the arguments - build and **return a new list**:"
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:868
+msgid "8. Docstrings and type hints"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:870
+msgid "Docstrings"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:872
+msgid "A **docstring** is a string right after the `def` line, in triple quotes. It says what the function does, what it takes and what it returns - for the people who will use it (you, in three months). Tools show it: `help()`, and VS Code when you hover over the name."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:891
+msgid "The conventions ([PEP 257](https://peps.python.org/pep-0257/)): the first line is a short sentence that says what the function does; then an empty line and the details."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:894
+msgid "Type hints"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:896
+msgid "**Type hints** document the types of the parameters and of the result:"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:920
+msgid "Hint"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:920
+msgid "Means"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:922
+msgid "one value of this type"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:923
+msgid "a list of floats"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:924
+msgid "a tuple of a string and a float"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:925
+msgid "a string or `None` (since Python 3.10)"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:926
+msgid "the function returns nothing"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:928
+msgid "Python does **not check** type hints when the code runs - they are documentation:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:937
+msgid "But editors and tools do check them: **Pylance** in VS Code underlines a call with a wrong type before you run anything, and [mypy](https://mypy-lang.org/) checks a whole project. In data work, hints are most useful on the functions that other people call."
+msgstr ""
+
+#. box title
+#: site/lectures/04-functions.md:942
+msgid "Newer Python versions"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:943
+msgid "Python 3.12 added the `type` statement for type aliases: `type Amount = float`. Python 3.14 (the Python of this site) evaluates annotations only when they are needed, so a hint can name a class that is defined later in the file. Neither is needed in this course - the hints above work in 3.12 and 3.13."
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:949
+msgid "9. Functions are values"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:951
+msgid "First-class functions"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:953
+msgid "In Python a function is an **object**, like a number or a list. So a function can be:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:955
+msgid "bound to another name, or stored in a list or a dictionary;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:956
+msgid "passed as an argument to another function;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:957
+msgid "returned as a value from another function."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:969
+msgid "A function as an argument"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:986
+msgid "A function that takes or returns a function is a **higher-order function**. You already know some: `sorted`, `min` and `max` take a function as `key` (section 10). A report that can use any rounding rule:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:1005
+msgid "A function that returns a function"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1021
+msgid "The inner function **remembers** `n` from the call that made it, even after that call has ended. Such a function is called a **closure**."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:1024
+msgid "Functions in a dictionary"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1038
+msgid "A dictionary of functions replaces a long `if` / `elif` chain: the key chooses the function (a *dispatch table*)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:1041
+msgid "Pure functions"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1043
+msgid "Ideas from **functional programming** that make code easier to trust:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1045
+msgid "A **pure function** always returns the same result for the same arguments, and does nothing else: it does not print, does not change its arguments or global variables, does not write files. `expected_loss(pd, lgd, ead)` is pure."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1048
+msgid "Anything else a function does is a **side effect**: printing, writing a file, changing a list it got. A program needs side effects - but keep them in a few clear places."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1051
+msgid "**Immutable** data (tuples, strings) cannot be changed by mistake."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1053
+msgid "Pure functions are easy to test (call, compare the result), easy to reuse, and safe to run again on new data - exactly what a monthly report needs."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:1058
+msgid "Small functions without a name"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1060
+msgid "A **lambda expression** creates a small function without a name, in one line:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1066
+msgid "It can have any number of parameters, but only **one expression** - its value is the result. No `return`, no statements."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1092
+msgid "Do not give a lambda a name in real code (`double = lambda ...`) - that is what `def` is for, and `def` gives the function a real name in error messages ([PEP 8](https://peps.python.org/pep-0008/#programming-recommendations)). A lambda is for a function you need **once, right here** - most often as the `key` of a sort."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:1097
+msgid "Sorting by a key"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1099
+msgid "`sorted()` and `list.sort()` take a `key`: a function that is called for each item, and the items are sorted by its result. This is `ORDER BY` with any expression:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1123
+msgid "`key` also works with `min` and `max` - the loan with the largest outstanding amount, not only the amount:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1132
+msgid "A list of dictionaries (session 6), sorted by one key:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1146
+msgid "A named function works as a key too - `key=len`, `key=str.lower`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1154
+msgid "Sorting is covered in depth in session 5. Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:1157
+msgid "11. Decorators"
+msgstr ""
+
+#. box title
+#: site/lectures/04-functions.md:1159
+msgid "Advanced"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1160
+msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in session 11, `@pytest.fixture`, `@app.get` in web frameworks). This section explains the `@` you will see."
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:1165
+msgid "The idea"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1167
+msgid "A **decorator** is a function that takes a function and returns a new, \"decorated\" function: it adds something **before and after** the original, without changing its code. `decorated = decorator(original)`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:1186
+msgid "The `@` syntax"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1188
+msgid "`@decorator` above a `def` is a short way to write `name = decorator(name)`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:1205
+msgid "Arguments and the return value"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1207
+msgid "The wrapper must pass the arguments on, and return the result of the original. `*args, **kwargs` (section 4) take any arguments; `functools.wraps` keeps the name and the docstring of the original. A useful decorator - how long each step of a report takes:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1237
+msgid "Read more: [Primer on Python decorators](https://realpython.com/primer-on-python-decorators/) (Real Python)."
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:1240
+msgid "12. From macros to functions: a small library"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:1242
+msgid "One task, many small functions"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1244
+msgid "The portfolio rules of sessions 1 and 2, as functions. Each one does one thing, has a docstring, and returns its result:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1285
+msgid "A function can call other functions - each call gets its own local names, and returns to the line that called it:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1289
+msgid "**Function calls step by step:** [4. A function calls a function](../animations/functionCalls.html#4){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/04-functions.md:1292
+msgid "A script made of functions"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1294
+msgid "The structure of a script that you can run again every month: the imports and the constants at the top, then the functions, and the main code at the bottom."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1346
+msgid "Compare it with the first example of session 2: the same result, but now each part has a name, can be tested alone, and can be reused - `read_loans` in the next report, `dpd_bucket` in a check of the data."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1350
+msgid "In a file that is run as a script, the main code is often put under `if __name__ == \"__main__\":` - so that the functions can be imported by another file without running the report. Modules and `import` of your own files are the topic of session 10."
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:1355
+msgid "13. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1357
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1365
+msgid "In these tasks you write **functions**; the checks call them with many different values."
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1368
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1368
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1368
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1370
+msgid "Small functions: interest, repaid share, is late, monthly rate"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1371
+msgid "Default values and keyword arguments: payment, Bulgarian number format"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1372
+msgid "`*args`, several return values: total, min / max / average, months and days"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1373
+msgid "The rules of the portfolio as functions: bucket, stage, grade, product group"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1374
+msgid "Predict the values: local and global names, a list passed to a function"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1375
+msgid "Sort and find with `key` and `lambda`; remove duplicates, keep the order"
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:1377
+msgid "Summary"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1379
+msgid "Topic"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1379
+msgid "Remember"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1381
+msgid "Define, call"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1381
+msgid "`def name(params):` + an indented body; `name(args)` runs it - the brackets are required"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1382
+msgid "positional; defaults after the others; `name=value` in the call; `*args` a tuple, `**kwargs` a dictionary"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1383
+msgid "Defaults"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1383
+msgid "never a list or a dict as a default - use `None`"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1384
+msgid "ends the function and gives a value; no `return` -> `None`; `return a, b` gives a tuple"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1385
+msgid "`print` shows, `return` gives - calculating functions return"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1386
+msgid "Scope"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1386
+msgid "names assigned in a function are local; LEGB: local, enclosing, global, built-in; avoid `global`"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1387
+msgid "References"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1387
+msgid "a list passed to a function can be changed by it - return a new list instead"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1388
+msgid "Documentation"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1388
+msgid "a docstring in triple quotes; type hints `x: float -> float` are not checked at run time"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1389
+msgid "Functions as values"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1389
+msgid "pass them, store them, return them; `lambda x: ...` for a short `key`"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1390
+msgid "Sorting"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1390
+msgid "`sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` any expression"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1391
+msgid "SAS macros"
+msgstr ""
+
+#. table cell
+#: site/lectures/04-functions.md:1391
+msgid "a macro writes code; a function runs and returns a value"
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:1393
+msgid "Homework"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1395
+msgid "`04-functions/homework.py` (in the homework repository): **a library of portfolio functions** - read the loans and the rating scale from the files, find the PD of a rating, the expected loss of a loan, and the totals by stage. Every check must print `OK`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1399
+msgid "The practice tasks you did not finish in class."
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1400
+msgid "Optional: a **loan calculator** made of functions - the same program as the optional homework of session 2, but organised like this: `get_user_data()` reads and checks the input (amount > 0, rate 0 - 50, years 1 - 30; ask again while a value is wrong) and returns a tuple; `calc_payment(amount, rate, years)` returns the payment; `print_schedule(amount, rate, years)` prints the schedule. Write a separate function for each check: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, each returning `True` or `False`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/04-functions.md:1408
+msgid "Read more"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1410
+msgid "Python tutorial: [Defining functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions), [More on defining functions](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions) (defaults, keyword arguments, `*args`, `**kwargs`, `lambda`, docstrings, annotations)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1413
+msgid "[Scopes and namespaces](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces) in the tutorial; [Namespaces and scope in Python](https://realpython.com/python-namespaces-scope/) (Real Python)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1416
+msgid "[Defining your own Python function](https://realpython.com/defining-your-own-python-function/) (Real Python)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1418
+msgid "Type hints: [typing - the basics](https://docs.python.org/3/library/typing.html), [the mypy cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1420
+msgid "Videos: [Python tutorial for beginners 8: functions](https://www.youtube.com/watch?v=9Os0o3wzS_I) (Corey Schafer), [Python lambda functions](https://www.youtube.com/watch?v=j6FCewxjrBM) (Visually Explained)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/04-functions.md:1424
+msgid "**Next session:** lists, advanced - list comprehensions, sorting with `key`, `zip`, `enumerate`, `map` and `filter`, and a table as a list of rows."
+msgstr ""

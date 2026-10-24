@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Function calls step by step</title>
+<!--
+    Step-by-step animation: a call creates a frame (the local names), return gives a
+    value and deletes the frame; local and global names; UnboundLocalError; calls in
+    calls; a list passed to a function; a list as a default value.
+    Engine and look: anim.js, anim.css. Deep link: functionCalls.html#3 (scenario 3),
+    #3.2 (its step 2); Bulgarian: ?lang=bg (bg/functionCalls.html redirects there).
+-->
+<link rel="stylesheet" href="anim.css">
+<style>
+.stage { display: grid; grid-template-columns: minmax(0, 40fr) minmax(0, 60fr); gap: 1rem; }
+.left { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: .7rem; min-height: 0; }
+
+.mem { display: flex; flex-direction: column; }
+.mem-head { display: grid; grid-template-columns: minmax(0, 1fr) 4rem 15rem 3rem; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+.mem-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 4rem 15rem 3rem; flex: 1; min-height: 0; }
+.frames, .objects { display: flex; flex-direction: column; gap: .8rem; position: relative; z-index: 1; }
+.objects { grid-column: 3; }
+
+.frame { border: 2px solid var(--line); border-radius: .6rem; background: var(--panel); padding: .4rem .6rem .55rem; transition: opacity .4s; }
+.frame.call { border-color: var(--read); }
+.frame.new { animation: pop .45s ease-out; }
+.frame.gone { opacity: .35; border-style: dashed; }
+.frame-title { font-family: var(--mono); font-size: .85rem; font-weight: 700; color: var(--muted); margin-bottom: .35rem; }
+.frame.call .frame-title { color: var(--read); }
+.row { display: flex; align-items: center; gap: .5rem; margin-top: .3rem; }
+.namechip {
+    padding: .3rem .65rem;
+    border: 2px solid var(--name-border); border-radius: .45rem;
+    background: var(--name-bg); color: var(--name-ink);
+    font-family: var(--mono); font-size: 1.05rem; font-weight: 700;
+    transition: box-shadow .25s;
+}
+.value { padding: .25rem .6rem; border: 2px solid var(--obj-border); border-radius: .45rem; background: var(--obj-bg); font-family: var(--mono); font-size: 1.05rem; font-weight: 700; transition: box-shadow .25s; }
+.value.ref { color: var(--ref); }
+.value.unbound { border-style: dashed; color: var(--muted); background: none; font-weight: 400; }
+.row.ret .namechip { background: var(--write-bg); border-color: var(--write); color: var(--ink); }
+
+.obj { position: relative; padding: 1.1rem .7rem .45rem; border: 2px solid var(--obj-border); border-radius: .6rem; background: var(--obj-bg); transition: box-shadow .25s; }
+.obj .type { position: absolute; top: .2rem; left: .6rem; font-size: .66rem; font-weight: 700; letter-spacing: .04em; color: var(--muted); }
+.obj .val { font-family: var(--mono); font-size: 1rem; font-weight: 700; }
+.obj .defaults { font-size: .75rem; color: var(--muted); margin-top: .2rem; }
+.obj .defaults span { color: var(--ref); font-weight: 700; }
+.cells { display: flex; gap: .3rem; flex-wrap: wrap; }
+.cell { min-width: 2.2rem; padding: .25rem .45rem; border: 1.5px solid var(--obj-border); border-radius: .3rem; background: var(--panel); font-family: var(--mono); font-size: 1rem; font-weight: 700; text-align: center; }
+.cell.chg { box-shadow: 0 0 0 2px var(--write); background: var(--write-bg); }
+
+.hl-new { animation: pop .45s ease-out; box-shadow: 0 0 0 3px var(--name-border); }
+.hl-read { box-shadow: 0 0 0 3px var(--read), 0 0 0 6px var(--read-bg); }
+.hl-write { box-shadow: 0 0 0 3px var(--write), 0 0 0 6px var(--write-bg); }
+.hl-err { box-shadow: 0 0 0 3px var(--err), 0 0 0 6px var(--err-bg); animation: shake .35s; }
+.arrows { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 2; }
+.arrows path { fill: none; stroke: var(--ref); stroke-width: 2.2; }
+</style>
+</head>
+<body>
+<div class="app">
+    <header class="top">
+        <h1 id="title"></h1>
+        <nav class="tabs" id="tabs" role="tablist"></nav>
+        <a class="btn lang-btn" id="langBtn" href="#">BG</a>
+        <button class="btn icon-btn" id="themeBtn"></button>
+    </header>
+    <main class="stage">
+        <div class="left">
+            <section class="panel code-panel"><div class="panel-title" id="tCode"></div><ol class="code" id="code"></ol></section>
+            <section class="panel"><div class="panel-title" id="tOut"></div><div class="console" id="console"></div></section>
+        </div>
+        <section class="panel mem">
+            <div class="mem-head"><span id="tFrames"></span><span></span><span id="tObjects"></span><span></span></div>
+            <div class="mem-grid" id="grid">
+                <div class="frames" id="frames"></div>
+                <div class="objects" id="objects"></div>
+                <svg class="arrows" id="arrows"><defs><marker id="ah-ref" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill: var(--ref)"/></marker></defs><g id="paths"></g></svg>
+            </div>
+        </section>
+    </main>
+    <footer class="bottom">
+        <div class="explain" id="explain"></div>
+        <div class="controls">
+            <button class="btn icon-btn" id="firstBtn"></button>
+            <button class="btn" id="prevBtn"></button>
+            <span class="counter" id="counter"></span>
+            <button class="btn" id="playBtn"></button>
+            <button class="btn primary" id="nextBtn"></button>
+        </div>
+    </footer>
+</div>
+<script src="anim.js"></script>
+<script>
+'use strict'
+const { tr, esc, highlightPy } = Anim
+
+// ---------- the steps: helpers that change a copy of the state ----------
+// frames: [{ id, title, vars: [{ name, v } | { name, ref } | { name, unbound }], ret }]
+// objects: [{ key, type, repr, defaults } | { key, type, cells }]
+const topFrame = s => s.frames[s.frames.length - 1]
+const frameOf = (s, id) => s.frames.find(f => f.id === id)
+function setVar(s, frameId, name, value) {
+    const f = frameOf(s, frameId)
+    const v = f.vars.find(v => v.name === name)
+    const entry = typeof value === 'object' ? { name, ...value } : { name, v: String(value) }
+    if (v) { Object.keys(v).forEach(k => delete v[k]); Object.assign(v, entry); s.hl[`${frameId}.${name}`] = 'write' }
+    else { f.vars.push(entry); s.hl[`${frameId}.${name}`] = 'new' }
+}
+function readVar(s, frameId, ...names) { for (const n of names) s.hl[`${frameId}.${n}`] = s.hl[`${frameId}.${n}`] || 'read' }
+function errVar(s, frameId, name) { s.hl[`${frameId}.${name}`] = 'err' }
+function call(s, id, title) { s.frames.push({ id, title, vars: [], ret: null }); s.newFrame = id }
+function ret(s, value) { topFrame(s).ret = String(value) }
+function endCall(s) { topFrame(s).gone = true }
+function clean(s) { s.frames = s.frames.filter(f => !f.gone) }
+function fn(s, key, signature, defaults) { s.objects.push({ key, type: 'function', repr: signature, defaults }); s.hlO[key] = 'new' }
+function list(s, key, cells) { s.objects.push({ key, type: 'list', cells: cells.map(String) }); s.hlO[key] = 'new' }
+function change(s, key, cells, changed) { const o = s.objects.find(o => o.key === key); o.cells = cells.map(String); o.changed = changed; s.hlO[key] = 'write' }
+function out(s, text, err = false) { s.out.push({ text, err }) }
+
+const T = (en, bg) => [en, bg]
+const G = 'g'
+
+const SCENARIOS = [
+{
+    tab: T('A call and a return', 'Извикване и return'),
+    code: ['def interest(amount, rate):', '    result = amount * rate / 100', '    return result', '',
+           'x = interest(1000, 5)', 'print(x)'],
+    steps: [
+        { line: 1, do: s => { fn(s, 'f', 'interest(amount, rate)'); setVar(s, G, 'interest', { ref: 'f' }) },
+          text: T('`def` creates a **function object** and binds the name `interest` to it. The body does **not** run yet.',
+                  '`def` създава **обект функция** и свързва името `interest` с него. Тялото **още не** се изпълнява.') },
+        { line: 5, do: s => { readVar(s, G, 'interest'); call(s, 'c1', 'interest(1000, 5)'); setVar(s, 'c1', 'amount', 1000); setVar(s, 'c1', 'rate', 5) },
+          text: T('The right side of `=` first: the **call**. It creates a new **frame** - a namespace for this call - and binds the **parameters** to the **arguments**.',
+                  'Първо дясната страна на `=`: **извикването**. То създава нова **рамка** (frame) - пространство от имена за това извикване - и свързва **параметрите** с **аргументите**.') },
+        { line: 2, do: s => { readVar(s, 'c1', 'amount', 'rate'); setVar(s, 'c1', 'result', '50.0') },
+          text: T('The body runs. `result` is created **in the frame of the call**: it is a **local** name.',
+                  'Тялото се изпълнява. `result` се създава **в рамката на извикването**: това е **локално** име.') },
+        { line: 3, do: s => { readVar(s, 'c1', 'result'); ret(s, '50.0') },
+          text: T('`return` ends the function and gives back the value 50.0.', '`return` прекратява функцията и връща стойността 50.0.') },
+        { line: 5, do: s => { endCall(s); setVar(s, G, 'x', '50.0') },
+          text: T('Back at the call: the value goes to `x`. The frame is **deleted** - `amount`, `rate` and `result` exist no more.',
+                  'Обратно при извикването: стойността отива в `x`. Рамката се **изтрива** - `amount`, `rate` и `result` вече не съществуват.') },
+        { line: 6, do: s => { clean(s); readVar(s, G, 'x'); out(s, '50.0') },
+          text: T('Only the global names are left.', 'Остават само глобалните имена.') },
+    ],
+},
+{
+    tab: T('Local and global', 'Локални и глобални'),
+    code: ['rate = 5', 'def show():', '    rate = 8', '    print("inside", rate)', '', 'show()', 'print("outside", rate)'],
+    steps: [
+        { line: 1, do: s => setVar(s, G, 'rate', 5), text: T('A **global** name `rate`.', '**Глобално** име `rate`.') },
+        { line: 2, do: s => { fn(s, 'f', 'show()'); setVar(s, G, 'show', { ref: 'f' }) }, text: T('The function is defined.', 'Функцията е дефинирана.') },
+        { line: 6, do: s => { readVar(s, G, 'show'); call(s, 'c1', 'show()') }, text: T('The call: a new, empty frame.', 'Извикването: нова, празна рамка.') },
+        { line: 3, do: s => setVar(s, 'c1', 'rate', 8),
+          text: T('An assignment inside a function creates a **local** name - a **new** `rate`, in the frame. The global `rate` is not touched.',
+                  'Присвояване във функция създава **локално** име - **ново** `rate`, в рамката. Глобалното `rate` не се пипа.') },
+        { line: 4, do: s => { readVar(s, 'c1', 'rate'); out(s, 'inside 8') },
+          text: T('Python looks for `rate` in the **local** frame first - and finds 8 (L in LEGB).', 'Python търси `rate` първо в **локалната** рамка - и намира 8 (L в LEGB).') },
+        { line: 6, do: s => endCall(s), text: T('The call ends; the local `rate` is gone with its frame.', 'Извикването свършва; локалното `rate` изчезва с рамката си.') },
+        { line: 7, do: s => { clean(s); readVar(s, G, 'rate'); out(s, 'outside 5') },
+          text: T('Outside, `rate` is still 5: two variables with the same name, in two scopes.', 'Отвън `rate` е все още 5: две променливи с едно име, в два обхвата.') },
+    ],
+},
+{
+    tab: T('`UnboundLocalError`', '`UnboundLocalError`'),
+    code: ['total = 0', 'def add(amount):', '    total = total + amount', '    return total', '', 'add(100)'],
+    steps: [
+        { line: 1, do: s => setVar(s, G, 'total', 0), text: T('A global `total`.', 'Глобално `total`.') },
+        { line: 2, do: s => { fn(s, 'f', 'add(amount)'); setVar(s, G, 'add', { ref: 'f' }) }, text: T('The function is defined.', 'Функцията е дефинирана.') },
+        { line: 6, do: s => { readVar(s, G, 'add'); call(s, 'c1', 'add(100)'); setVar(s, 'c1', 'amount', 100); setVar(s, 'c1', 'total', { unbound: true }) },
+          text: T('Before running the body, Python knows it has `total = ...`: so `total` is **local** in the **whole** body - but it has no value yet.',
+                  'Преди да изпълни тялото, Python знае, че в него има `total = ...`: затова `total` е **локално** в **цялото** тяло - но още няма стойност.') },
+        { line: 3, do: s => { errVar(s, 'c1', 'total'); out(s, "UnboundLocalError: cannot access local variable 'total'", true) },
+          text: T('The right side reads the **local** `total` - which has no value: `UnboundLocalError`. The global `total` is not used. The fix: pass the value in as a parameter, and return the result.',
+                  'Дясната страна чете **локалното** `total` - което няма стойност: `UnboundLocalError`. Глобалното `total` не се използва. Решението: подайте стойността като параметър и върнете резултата.') },
+    ],
+},
+{
+    tab: T('A function calls a function', 'Функция вика функция'),
+    code: ['def monthly(rate):', '    return rate / 12', '', 'def payment(amount, rate):', '    r = monthly(rate)',
+           '    return amount * r / 100', '', 'print(payment(1200, 6))'],
+    steps: [
+        { line: 1, do: s => { fn(s, 'm', 'monthly(rate)'); setVar(s, G, 'monthly', { ref: 'm' }) }, text: T('Two definitions ...', 'Две дефиниции ...') },
+        { line: 4, do: s => { fn(s, 'p', 'payment(amount, rate)'); setVar(s, G, 'payment', { ref: 'p' }) }, text: T('... and nothing has run yet.', '... и още нищо не се е изпълнило.') },
+        { line: 8, do: s => { readVar(s, G, 'payment'); call(s, 'c1', 'payment(1200, 6)'); setVar(s, 'c1', 'amount', 1200); setVar(s, 'c1', 'rate', 6) },
+          text: T('The call of `payment`: a frame with `amount` and `rate`.', 'Извикването на `payment`: рамка с `amount` и `rate`.') },
+        { line: 5, do: s => { readVar(s, 'c1', 'rate'); call(s, 'c2', 'monthly(6)'); setVar(s, 'c2', 'rate', 6) },
+          text: T('`payment` calls `monthly`: a **second frame** on top. It has its own `rate` - two `rate` names now, one in each frame. `payment` waits.',
+                  '`payment` вика `monthly`: **втора рамка** отгоре. Тя има свое `rate` - сега има две имена `rate`, по едно във всяка рамка. `payment` чака.') },
+        { line: 2, do: s => { readVar(s, 'c2', 'rate'); ret(s, '0.5') }, text: T('`monthly` returns 0.5 ...', '`monthly` връща 0.5 ...') },
+        { line: 5, do: s => { endCall(s); setVar(s, 'c1', 'r', '0.5') },
+          text: T('... its frame is deleted, and `payment` goes on **from the line that called it**: `r = 0.5`.',
+                  '... рамката ѝ се изтрива и `payment` продължава **от реда, който я извика**: `r = 0.5`.') },
+        { line: 6, do: s => { clean(s); readVar(s, 'c1', 'amount', 'r'); ret(s, '6.0') }, text: T('`payment` returns 6.0.', '`payment` връща 6.0.') },
+        { line: 8, do: s => { endCall(s); out(s, '6.0') },
+          text: T('The calls form a **stack**: the last one called is the first one to finish. A traceback shows this stack when there is an error.',
+                  'Извикванията образуват **стек**: последното извикано свършва първо. При грешка traceback-ът показва точно този стек.') },
+    ],
+},
+{
+    tab: T('A list passed to a function', 'Списък, подаден на функция'),
+    code: ['def add_fee(amounts):', '    amounts.append(10)', '', 'fees = [5, 7]', 'add_fee(fees)', 'print(fees)'],
+    steps: [
+        { line: 1, do: s => { fn(s, 'f', 'add_fee(amounts)'); setVar(s, G, 'add_fee', { ref: 'f' }) }, text: T('The function is defined.', 'Функцията е дефинирана.') },
+        { line: 4, do: s => { list(s, 'l', [5, 7]); setVar(s, G, 'fees', { ref: 'l' }) }, text: T('A list, and the global name `fees`.', 'Списък и глобалното име `fees`.') },
+        { line: 5, do: s => { readVar(s, G, 'fees'); call(s, 'c1', 'add_fee(fees)'); setVar(s, 'c1', 'amounts', { ref: 'l' }) },
+          text: T('The parameter `amounts` is bound to the **same list object** as `fees` - Python does not copy the argument.',
+                  'Параметърът `amounts` се свързва със **същия обект списък** като `fees` - Python не копира аргумента.') },
+        { line: 2, do: s => { readVar(s, 'c1', 'amounts'); change(s, 'l', [5, 7, 10], [2]) },
+          text: T('`append` changes that list object.', '`append` променя този обект списък.') },
+        { line: 5, do: s => endCall(s), text: T('The call ends, the frame and `amounts` are gone - but the change of the list stays.', 'Извикването свършва, рамката и `amounts` изчезват - но промяната на списъка остава.') },
+        { line: 6, do: s => { clean(s); readVar(s, G, 'fees'); out(s, '[5, 7, 10]') },
+          text: T('The caller sees `[5, 7, 10]`. Safer: do not change an argument - build and return a new list.',
+                  'Извикващият вижда `[5, 7, 10]`. По-сигурно: не променяйте аргумента - създайте и върнете нов списък.') },
+    ],
+},
+{
+    tab: T('A list as a default value', 'Списък като стойност по подразбиране'),
+    advanced: true,
+    code: ['def add_loan(loan_id, loans=[]):', '    loans.append(loan_id)', '    return loans', '',
+           'a = add_loan("L1")', 'b = add_loan("L2")', 'print(b)'],
+    steps: [
+        { line: 1, do: s => { list(s, 'd', []); fn(s, 'f', 'add_loan(loan_id, loans)', 'd'); setVar(s, G, 'add_loan', { ref: 'f' }) },
+          text: T('`def` runs **once**. The default value `[]` is created **now**, and kept inside the function object.',
+                  '`def` се изпълнява **веднъж**. Стойността по подразбиране `[]` се създава **сега** и се пази в обекта функция.') },
+        { line: 5, do: s => { readVar(s, G, 'add_loan'); call(s, 'c1', 'add_loan("L1")'); setVar(s, 'c1', 'loan_id', "'L1'"); setVar(s, 'c1', 'loans', { ref: 'd' }) },
+          text: T('The first call: `loans` gets the default - **that one list**.', 'Първото извикване: `loans` получава стойността по подразбиране - **онзи един списък**.') },
+        { line: 2, do: s => { readVar(s, 'c1', 'loans'); change(s, 'd', ["'L1'"], [0]) }, text: T('`append` changes it.', '`append` го променя.') },
+        { line: 5, do: s => { endCall(s); setVar(s, G, 'a', { ref: 'd' }) }, text: T('`a` gets the list.', '`a` получава списъка.') },
+        { line: 6, do: s => { clean(s); readVar(s, G, 'add_loan'); call(s, 'c2', 'add_loan("L2")'); setVar(s, 'c2', 'loan_id', "'L2'"); setVar(s, 'c2', 'loans', { ref: 'd' }) },
+          text: T('The second call: the default is **not** created again - `loans` is the same list, which already has `L1`.',
+                  'Второто извикване: стойността по подразбиране **не** се създава отново - `loans` е същият списък, който вече има `L1`.') },
+        { line: 2, do: s => { readVar(s, 'c2', 'loans'); change(s, 'd', ["'L1'", "'L2'"], [1]) }, text: T('`append` adds `L2` to it.', '`append` добавя `L2` към него.') },
+        { line: 6, do: s => { endCall(s); setVar(s, G, 'b', { ref: 'd' }) }, text: T('`b` - and `a` - point to the same list.', '`b` - и `a` - сочат към същия списък.') },
+        { line: 7, do: s => { clean(s); readVar(s, G, 'b'); out(s, "['L1', 'L2']") },
+          text: T('The fix: `loans=None`, and `if loans is None: loans = []` inside - a new list at each call.',
+                  'Решението: `loans=None` и вътре `if loans is None: loans = []` - нов списък при всяко извикване.') },
+    ],
+},
+]
+
+// ---------- the states of a scenario ----------
+function build(sc) {
+    let s = { frames: [{ id: G, title: 'global', vars: [], ret: null }], objects: [], out: [] }
+    const states = [{ ...s, hl: {}, hlO: {}, line: 0,
+        text: T('Press **Next** (or the Right arrow) to run the code step by step.',
+                'Натиснете **Напред** (или стрелка надясно), за да изпълните кода стъпка по стъпка.') }]
+    for (const st of sc.steps) {
+        s = structuredClone({ frames: s.frames, objects: s.objects, out: s.out })
+        for (const o of s.objects) delete o.changed
+        Object.assign(s, { hl: {}, hlO: {}, newFrame: null })
+        st.do(s)
+        s.line = st.line
+        s.text = st.text
+        states.push(s)
+    }
+    return states
+}
+
+// ---------- drawing ----------
+const $ = id => document.getElementById(id)
+$('tCode').textContent = tr(['Code', 'Код'])
+$('tOut').textContent = tr(['Output', 'Изход'])
+$('tFrames').textContent = tr(['Frames: the names of each call', 'Рамки: имената на всяко извикване'])
+$('tObjects').textContent = tr(['Objects', 'Обекти'])
+
+function valueHtml(f, v) {
+    if (v.ref) return `<span class="value ref" data-to="${v.ref}">&#8226;</span>`
+    if (v.unbound) return `<span class="value unbound">${esc(tr(['no value yet', 'още няма стойност']))}</span>`
+    return `<span class="value">${esc(v.v)}</span>`
+}
+
+function render(sc, s, prev) {
+    $('code').innerHTML = sc.code.map((l, i) =>
+        `<li class="${i + 1 === s.line ? 'active' : ''}"><span class="ln">${i + 1}</span><span>${highlightPy(l)}</span></li>`).join('')
+    const before = prev ? prev.out.length : s.out.length
+    $('console').innerHTML = s.out.length
+        ? s.out.map((o, i) => `<div class="cline${o.err ? ' err' : ''}${i >= before ? ' new' : ''}">${esc(o.text)}</div>`).join('')
+        : `<span class="empty">-</span>`
+    document.body.classList.toggle('static', !prev)
+    $('frames').innerHTML = s.frames.map(f =>
+        `<div class="frame${f.id === G ? '' : ' call'}${f.gone ? ' gone' : ''}${prev && s.newFrame === f.id ? ' new' : ''}">` +
+        `<div class="frame-title">${f.id === G ? esc(tr(['global', 'global'])) : esc(f.title)}</div>` +
+        f.vars.map(v => {
+            const hl = s.hl[`${f.id}.${v.name}`]
+            return `<div class="row"><span class="namechip${hl ? ' hl-' + hl : ''}">${esc(v.name)}</span>${valueHtml(f, v)}</div>`
+        }).join('') +
+        (f.ret !== null ? `<div class="row ret"><span class="namechip">return</span><span class="value">${esc(f.ret)}</span></div>` : '') +
+        `</div>`).join('')
+    $('objects').innerHTML = s.objects.map(o => {
+        const hl = s.hlO[o.key]
+        const body = o.cells
+            ? `<div class="cells">${o.cells.length ? o.cells.map((c, i) => `<div class="cell${(o.changed || []).includes(i) ? ' chg' : ''}">${esc(c)}</div>`).join('') : '<span class="empty">[ ]</span>'}</div>`
+            : `<span class="val">${esc(o.repr)}</span>` +
+              (o.defaults ? `<div class="defaults" data-from="${o.key}" data-to="${o.defaults}">${esc(tr(['default of loans:', 'по подразбиране за loans:']))} <span>&#8226;</span></div>` : '')
+        return `<div class="obj${hl ? ' hl-' + hl : ''}" data-key="${o.key}"><span class="type">${esc(o.type)}</span>${body}</div>`
+    }).join('')
+    drawArrows()
+}
+
+function drawArrows() {
+    const grid = $('grid').getBoundingClientRect()
+    const paths = []
+    for (const el of document.querySelectorAll('.frame:not(.gone) .value.ref')) {
+        const a = el.getBoundingClientRect()
+        const b = document.querySelector(`.obj[data-key="${el.dataset.to}"]`).getBoundingClientRect()
+        const x1 = a.right - grid.left
+        const y1 = a.top + a.height / 2 - grid.top
+        const x2 = b.left - grid.left - 4
+        const y2 = b.top + Math.min(b.height / 2, 22) - grid.top
+        const dx = Math.max(30, (x2 - x1) / 2)
+        paths.push(`<path marker-end="url(#ah-ref)" d="M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}"/>`)
+    }
+    for (const el of document.querySelectorAll('.defaults')) {
+        const a = el.querySelector('span').getBoundingClientRect()
+        const b = document.querySelector(`.obj[data-key="${el.dataset.to}"]`).getBoundingClientRect()
+        const x1 = a.right - grid.left + 2
+        const y1 = a.top + a.height / 2 - grid.top
+        const x2 = b.right - grid.left + 4
+        const y2 = b.top + b.height / 2 - grid.top
+        const out = Math.max(x1, x2) + 40
+        paths.push(`<path marker-end="url(#ah-ref)" d="M${x1},${y1} C${out},${y1} ${out},${y2} ${x2},${y2}"/>`)
+    }
+    $('paths').innerHTML = paths.join('')
+}
+
+Anim.start({
+    title: ['Function calls step by step', 'Извикване на функции стъпка по стъпка'],
+    subtitle: ['Frames, local names, return', 'Рамки, локални имена, return'],
+    scenarios: SCENARIOS,
+    build,
+    render,
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+# Translation of site/under-the-hood.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: Claude Opus 5.5 (machine translation - to review)\n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/under-the-hood.md\n"
+
+#. front matter: title
+#: site/under-the-hood.md:2 site/under-the-hood.md:5
+msgid "Animations"
+msgstr "Анимации"
+
+#. paragraph
+#: site/under-the-hood.md:7
+msgid "Step-by-step animations that show what Python does **under the hood**: what a variable really is, and in which order an expression is calculated."
+msgstr "Анимации стъпка по стъпка, които показват какво прави Python **\"под капака\"**: какво всъщност е една променлива и в какъв ред се изчислява един израз."
+
+#. paragraph
+#: site/under-the-hood.md:10
+msgid "Each animation has several **scenarios** (tabs at the top). A link below opens one scenario in a new tab."
+msgstr "Всяка анимация има няколко **сценария** (табовете най-горе). Връзка отдолу отваря един сценарий в нов таб."
+
+#. paragraph
+#: site/under-the-hood.md:13
+msgid "**Next step:** Right arrow or `Space`. **Back:** Left arrow. **Start:** `Home`. **Auto-play:** `P`."
+msgstr "**Следваща стъпка:** стрелка надясно или `Space`. **Назад:** стрелка наляво. **Към началото:** `Home`. **Автоматично:** `P`."
+
+#. paragraph
+#: site/under-the-hood.md:15
+msgid "`file.html#3` opens scenario 3, `file.html#3.5` opens scenario 3 at step 5."
+msgstr "`file.html#3` отваря сценарий 3, `file.html#3.5` отваря сценарий 3 на стъпка 5."
+
+#. paragraph
+#: site/under-the-hood.md:16
+msgid "Scenarios marked **advanced** go deeper."
+msgstr "Сценариите, отбелязани с **за напреднали**, навлизат по-надълбоко."
+
+#. box title
+#: site/under-the-hood.md:18
+msgid "English and Bulgarian"
+msgstr "На английски и на български"
+
+#. paragraph
+#: site/under-the-hood.md:19
+msgid "Every animation is in English and in Bulgarian. The **EN / BG** button at the top of an animation switches the language and keeps the current step."
+msgstr "Всяка анимация е на английски и на български. Бутонът **EN / BG** най-горе в анимацията сменя езика и запазва текущата стъпка."
+
+#. heading 2
+#: site/under-the-hood.md:23
+msgid "Session 1 - Introduction, syntax, data types and variables"
+msgstr "Занятие 1 - Въведение, синтаксис, типове данни и променливи"
+
+#. paragraph
+#: site/under-the-hood.md:25
+msgid "**[Names and objects](animations/namesAndObjects.html){target=\"_blank\"}** - a variable is a name bound to an object; assignment, a new value, two names for one object, `x = x + 1`, dynamic typing, `is` and `==`. [1. A name and an object](animations/namesAndObjects.html#1){target=\"_blank\"}, [2. A new value](animations/namesAndObjects.html#2){target=\"_blank\"}, [3. Two names, one object](animations/namesAndObjects.html#3){target=\"_blank\"}, [4. `x = x + 1`](animations/namesAndObjects.html#4){target=\"_blank\"}, [5. Types belong to objects](animations/namesAndObjects.html#5){target=\"_blank\"}, [6. Several names at once](animations/namesAndObjects.html#6){target=\"_blank\"}, [7. `is` and `==` (advanced)](animations/namesAndObjects.html#7){target=\"_blank\"}"
+msgstr "**[Имена и обекти](animations/namesAndObjects.html){target=\"_blank\"}** - променливата е име, свързано с обект; присвояване, нова стойност, две имена за един обект, `x = x + 1`, динамично типизиране, `is` и `==`. [1. Име и обект](animations/namesAndObjects.html#1){target=\"_blank\"}, [2. Нова стойност](animations/namesAndObjects.html#2){target=\"_blank\"}, [3. Две имена, един обект](animations/namesAndObjects.html#3){target=\"_blank\"}, [4. `x = x + 1`](animations/namesAndObjects.html#4){target=\"_blank\"}, [5. Типът е на обекта](animations/namesAndObjects.html#5){target=\"_blank\"}, [6. Няколко имена наведнъж](animations/namesAndObjects.html#6){target=\"_blank\"}, [7. `is` и `==` (за напреднали)](animations/namesAndObjects.html#7){target=\"_blank\"}"
+
+#. paragraph
+#: site/under-the-hood.md:36
+msgid "**[How an expression is evaluated](animations/expressionEvaluation.html){target=\"_blank\"}** - the order of operations, step by step, with the table of priorities. [1. Precedence](animations/expressionEvaluation.html#1){target=\"_blank\"}, [2. Brackets](animations/expressionEvaluation.html#2){target=\"_blank\"}, [3. `**` and minus](animations/expressionEvaluation.html#3){target=\"_blank\"}, [4. `//` and `%`](animations/expressionEvaluation.html#4){target=\"_blank\"}, [5. Chained comparisons](animations/expressionEvaluation.html#5){target=\"_blank\"}, [6. `and` / `or`](animations/expressionEvaluation.html#6){target=\"_blank\"}, [7. Mixed types](animations/expressionEvaluation.html#7){target=\"_blank\"}"
+msgstr "**[Как се изчислява израз](animations/expressionEvaluation.html){target=\"_blank\"}** - редът на операциите, стъпка по стъпка, с таблицата на приоритетите. [1. Приоритет](animations/expressionEvaluation.html#1){target=\"_blank\"}, [2. Скоби](animations/expressionEvaluation.html#2){target=\"_blank\"}, [3. `**` и минус](animations/expressionEvaluation.html#3){target=\"_blank\"}, [4. `//` и `%`](animations/expressionEvaluation.html#4){target=\"_blank\"}, [5. Верига от сравнения](animations/expressionEvaluation.html#5){target=\"_blank\"}, [6. `and` / `or`](animations/expressionEvaluation.html#6){target=\"_blank\"}, [7. Смесени типове](animations/expressionEvaluation.html#7){target=\"_blank\"}"
+
+#. heading 2
+#: site/under-the-hood.md:46
+msgid "Session 2 - Conditional statements and loops"
+msgstr ""
+
+#. paragraph
+#: site/under-the-hood.md:48
+msgid "**[Loops step by step](animations/loopTrace.html){target=\"_blank\"}** - the variables, the test and the output of `if` / `elif` / `else`, `for`, `while`, `break` and `continue`, one line at a time. [1. `for` with an accumulator](animations/loopTrace.html#1){target=\"_blank\"}, [2. Decisions in a loop](animations/loopTrace.html#2){target=\"_blank\"}, [3. `while`: repay a loan](animations/loopTrace.html#3){target=\"_blank\"}, [4. `break`: stop at the first](animations/loopTrace.html#4){target=\"_blank\"}, [5. `continue`: skip a record](animations/loopTrace.html#5){target=\"_blank\"}, [6. `for` - `else` (advanced)](animations/loopTrace.html#6){target=\"_blank\"}"
+msgstr ""
+
+#. heading 2
+#: site/under-the-hood.md:58
+msgid "Session 3 - Lists (basics), tuples and sets"
+msgstr ""
+
+#. paragraph
+#: site/under-the-hood.md:60
+msgid "**[Lists and references](animations/listsAndReferences.html){target=\"_blank\"}** - a list changes in place; two names for one list; copies; `sort()` and `sorted()`; tuples that cannot change. [1. A list changes in place](animations/listsAndReferences.html#1){target=\"_blank\"}, [2. Two names, one list](animations/listsAndReferences.html#2){target=\"_blank\"}, [3. A copy](animations/listsAndReferences.html#3){target=\"_blank\"}, [4. `sort()` and `sorted()`](animations/listsAndReferences.html#4){target=\"_blank\"}, [5. A tuple cannot change](animations/listsAndReferences.html#5){target=\"_blank\"}, [6. A list inside a tuple (advanced)](animations/listsAndReferences.html#6){target=\"_blank\"}"
+msgstr ""
+
+#. heading 2
+#: site/under-the-hood.md:70
+msgid "Session 4 - Functions"
+msgstr ""
+
+#. paragraph
+#: site/under-the-hood.md:72
+msgid "**[Function calls step by step](animations/functionCalls.html){target=\"_blank\"}** - each call gets a frame with its local names; `return`; local and global names; calls in calls; a list passed to a function. [1. A call and a return](animations/functionCalls.html#1){target=\"_blank\"}, [2. Local and global](animations/functionCalls.html#2){target=\"_blank\"}, [3. `UnboundLocalError`](animations/functionCalls.html#3){target=\"_blank\"}, [4. A function calls a function](animations/functionCalls.html#4){target=\"_blank\"}, [5. A list passed to a function](animations/functionCalls.html#5){target=\"_blank\"}, [6. A list as a default value (advanced)](animations/functionCalls.html#6){target=\"_blank\"}"
+msgstr ""

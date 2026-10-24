@@ -1,0 +1,151 @@
+client_id,segment,region,industry,rating,client_since
+C0001,retail,Pleven,,3,2007-04-21
+C0002,sme,Ruse,M,5,2014-06-08
+C0003,sme,Pleven,L,2,2021-11-05
+C0004,sme,Burgas,G,4,2005-01-21
+C0005,sme,Burgas,A,7,2023-04-11
+C0006,sme,Burgas,I,7,2009-09-19
+C0007,retail,Varna,,1,2023-01-22
+C0008,retail,Stara Zagora,,10,2016-07-09
+C0009,sme,Ruse,H,5,2011-06-15
+C0010,retail,Stara Zagora,,4,2020-10-15
+C0011,sme,Varna,I,4,2015-05-06
+C0012,retail,Burgas,,8,2024-12-25
+C0013,retail,Ruse,,4,2023-01-01
+C0014,sme,Ruse,L,5,2013-12-06
+C0015,corporate,Burgas,M,5,2016-08-14
+C0016,sme,Ruse,G,7,2022-03-06
+C0017,retail,Stara Zagora,,8,2007-04-21
+C0018,sme,Burgas,L,6,2008-03-12
+C0019,retail,Stara Zagora,,5,2020-09-19
+C0020,retail,Burgas,,9,2021-01-10
+C0021,corporate,Ruse,J,7,2020-01-09
+C0022,corporate,Ruse,M,5,2020-08-30
+C0023,retail,Varna,,6,2023-08-29
+C0024,retail,Sofia,,4,2008-05-12
+C0025,sme,Ruse,L,3,2013-01-27
+C0026,corporate,Varna,L,4,2015-06-20
+C0027,retail,Ruse,,6,2019-11-22
+C0028,corporate,Pleven,H,2,2012-02-08
+C0029,retail,Stara Zagora,,6,2022-08-11
+C0030,corporate,Varna,L,3,2009-02-08
+C0031,corporate,Sofia,H,6,2025-04-05
+C0032,retail,Sofia,,3,2009-05-14
+C0033,sme,Sofia,C,3,2005-01-02
+C0034,retail,Ruse,,6,2023-10-05
+C0035,retail,Ruse,,5,2006-01-01
+C0036,sme,Varna,I,4,2008-06-21
+C0037,retail,Pleven,,4,2016-01-14
+C0038,sme,Plovdiv,M,3,2010-01-01
+C0039,retail,Stara Zagora,,7,2016-04-27
+C0040,retail,Burgas,,7,2019-12-30
+C0041,retail,Ruse,,7,2011-11-12
+C0042,retail,Burgas,,7,2023-02-15
+C0043,retail,Sofia,,6,2013-09-25
+C0044,sme,Sofia,I,3,2019-07-01
+C0045,retail,Ruse,,5,2015-09-05
+C0046,retail,Varna,,5,2015-02-05
+C0047,retail,Ruse,,8,2018-11-16
+C0048,sme,Plovdiv,M,8,2009-08-23
+C0049,retail,Stara Zagora,,4,2020-12-11
+C0050,retail,Burgas,,7,2005-10-07
+C0051,retail,Ruse,,5,2023-10-26
+C0052,retail,Pleven,,5,2021-12-05
+C0053,sme,Sofia,F,2,2019-06-26
+C0054,retail,Pleven,,5,2024-10-18
+C0055,retail,Pleven,,6,2009-03-04
+C0056,retail,Burgas,,5,2016-12-15
+C0057,retail,Varna,,6,2008-12-02
+C0058,retail,Burgas,,6,2022-07-02
+C0059,sme,Ruse,L,5,2014-12-22
+C0060,retail,Pleven,,6,2016-10-08
+C0061,sme,Plovdiv,A,6,2007-02-02
+C0062,sme,Stara Zagora,I,2,2014-02-25
+C0063,retail,Plovdiv,,7,2005-08-11
+C0064,retail,Plovdiv,,2,2012-11-21
+C0065,retail,Sofia,,3,2018-12-04
+C0066,sme,Ruse,G,4,2017-10-13
+C0067,retail,Sofia,,5,2022-07-13
+C0068,retail,Burgas,,7,2008-11-04
+C0069,retail,Pleven,,6,2009-02-28
+C0070,sme,Sofia,M,6,2012-01-13
+C0071,retail,Varna,,6,2008-08-15
+C0072,retail,Sofia,,4,2005-04-24
+C0073,retail,Burgas,,7,2005-05-07
+C0074,retail,Plovdiv,,3,2005-07-08
+C0075,retail,Pleven,,7,2012-11-09
+C0076,retail,Burgas,,6,2018-08-15
+C0077,sme,Burgas,I,5,2018-08-19
+C0078,retail,Burgas,,5,2014-07-23
+C0079,corporate,Pleven,M,7,2020-04-14
+C0080,corporate,Varna,J,3,2011-07-20
+C0081,corporate,Burgas,A,3,2011-04-25
+C0082,sme,Varna,C,7,2011-08-30
+C0083,sme,Ruse,I,3,2009-06-06
+C0084,retail,Stara Zagora,,8,2007-07-12
+C0085,retail,Ruse,,5,2012-12-10
+C0086,retail,Stara Zagora,,5,2011-10-12
+C0087,retail,Burgas,,4,2013-06-17
+C0088,retail,Burgas,,4,2019-11-11
+C0089,retail,Stara Zagora,,7,2021-02-01
+C0090,corporate,Stara Zagora,M,7,2013-11-26
+C0091,sme,Sofia,H,5,2017-02-20
+C0092,retail,Varna,,4,2012-01-23
+C0093,retail,Plovdiv,,4,2017-05-28
+C0094,retail,Pleven,,4,2023-06-24
+C0095,retail,Pleven,,5,2021-09-01
+C0096,retail,Stara Zagora,,7,2023-11-09
+C0097,retail,Plovdiv,,7,2020-03-26
+C0098,retail,Plovdiv,,5,2021-09-18
+C0099,corporate,Pleven,G,1,2017-08-06
+C0100,sme,Varna,G,8,2013-05-28
+C0101,retail,Burgas,,4,2025-02-13
+C0102,sme,Ruse,H,3,2009-03-20
+C0103,retail,Sofia,,3,2012-12-13
+C0104,sme,Pleven,M,6,2020-10-02
+C0105,retail,Varna,,6,2013-05-12
+C0106,retail,Varna,,5,2008-02-05
+C0107,sme,Ruse,G,8,2024-01-23
+C0108,sme,Ruse,H,7,2017-11-04
+C0109,retail,Ruse,,3,2023-03-20
+C0110,sme,Plovdiv,M,6,2007-05-10
+C0111,retail,Varna,,5,2011-12-18
+C0112,retail,Ruse,,3,2019-11-09
+C0113,sme,Ruse,H,6,2013-01-05
+C0114,retail,Burgas,,6,2009-03-26
+C0115,corporate,Stara Zagora,L,3,2014-06-25
+C0116,retail,Pleven,,3,2025-03-27
+C0117,sme,Stara Zagora,M,7,2005-08-30
+C0118,retail,Ruse,,4,2008-03-31
+C0119,retail,Stara Zagora,,7,2019-06-07
+C0120,sme,Pleven,I,4,2006-06-06
+C0121,retail,Ruse,,5,2010-07-26
+C0122,retail,Varna,,6,2015-11-14
+C0123,retail,Varna,,5,2018-11-03
+C0124,retail,Sofia,,4,2012-10-20
+C0125,retail,Plovdiv,,3,2023-08-03
+C0126,retail,Pleven,,5,2015-03-25
+C0127,corporate,Sofia,L,5,2022-06-14
+C0128,retail,Pleven,,6,2019-11-07
+C0129,retail,Varna,,4,2012-03-28
+C0130,corporate,Stara Zagora,L,7,2014-01-15
+C0131,retail,Pleven,,6,2020-06-16
+C0132,corporate,Pleven,I,7,2014-03-11
+C0133,sme,Burgas,F,4,2014-09-04
+C0134,retail,Pleven,,4,2007-08-24
+C0135,retail,Plovdiv,,6,2017-03-24
+C0136,sme,Plovdiv,I,3,2008-03-21
+C0137,retail,Burgas,,6,2019-03-16
+C0138,retail,Sofia,,6,2017-05-01
+C0139,sme,Stara Zagora,L,4,2025-05-18
+C0140,sme,Stara Zagora,M,4,2016-08-03
+C0141,retail,Burgas,,4,2021-04-01
+C0142,retail,Varna,,6,2017-07-15
+C0143,sme,Ruse,J,7,2023-09-07
+C0144,sme,Burgas,L,7,2012-08-07
+C0145,retail,Stara Zagora,,5,2024-02-09
+C0146,corporate,Varna,A,3,2022-06-28
+C0147,retail,Stara Zagora,,4,2013-04-15
+C0148,retail,Stara Zagora,,5,2009-03-18
+C0149,retail,Varna,,6,2009-12-03
+C0150,corporate,Plovdiv,F,5,2020-10-28

@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 330" width="920" height="330" role="img">
+<title>Set operations and their SQL names</title>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b616b"/></marker></defs>
+<text x="460" y="26" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">a = {1, 2, 3}     b = {3, 4}</text>
+<defs><clipPath id="in-b-0"><circle cx="145" cy="110" r="48"/></clipPath><mask id="out-b-0"><rect x="15" y="40" width="227" height="150" fill="white"/><circle cx="145" cy="110" r="48" fill="black"/></mask><mask id="out-a-0"><rect x="15" y="40" width="227" height="150" fill="white"/><circle cx="93" cy="110" r="48" fill="black"/></mask></defs>
+<g opacity="0.45">
+<circle cx="93" cy="110" r="48" fill="#3b6fc4"/>
+<circle cx="145" cy="110" r="48" fill="#3b6fc4"/>
+</g>
+<circle cx="93" cy="110" r="48" fill="none" stroke="#3b6fc4" stroke-width="2"/>
+<text x="63" y="116" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="17" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">a</text>
+<circle cx="145" cy="110" r="48" fill="none" stroke="#3b6fc4" stroke-width="2"/>
+<text x="175" y="116" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="17" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">b</text>
+<text x="119" y="188" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">union</text>
+<text x="119" y="207" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#5b616b" text-anchor="middle" xml:space="preserve">in a or in b</text>
+<text x="119" y="236" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">a | b</text>
+<text x="119" y="258" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#5b616b" text-anchor="middle" xml:space="preserve">a.union(b)</text>
+<text x="119" y="282" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">SQL: UNION</text>
+<text x="119" y="310" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">-&gt; {1, 2, 3, 4}</text>
+<defs><clipPath id="in-b-1"><circle cx="372" cy="110" r="48"/></clipPath><mask id="out-b-1"><rect x="242" y="40" width="227" height="150" fill="white"/><circle cx="372" cy="110" r="48" fill="black"/></mask><mask id="out-a-1"><rect x="242" y="40" width="227" height="150" fill="white"/><circle cx="320" cy="110" r="48" fill="black"/></mask></defs>
+<g opacity="0.45">
+<circle cx="320" cy="110" r="48" fill="#3b6fc4" clip-path="url(#in-b-1)"/>
+</g>
+<circle cx="320" cy="110" r="48" fill="none" stroke="#3b6fc4" stroke-width="2"/>
+<text x="290" y="116" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="17" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">a</text>
+<circle cx="372" cy="110" r="48" fill="none" stroke="#3b6fc4" stroke-width="2"/>
+<text x="402" y="116" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="17" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">b</text>
+<text x="346" y="188" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">intersection</text>
+<text x="346" y="207" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#5b616b" text-anchor="middle" xml:space="preserve">in both</text>
+<text x="346" y="236" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">a &amp; b</text>
+<text x="346" y="258" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#5b616b" text-anchor="middle" xml:space="preserve">a.intersection(b)</text>
+<text x="346" y="282" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">SQL: INTERSECT</text>
+<text x="346" y="310" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">-&gt; {3}</text>
+<defs><clipPath id="in-b-2"><circle cx="599" cy="110" r="48"/></clipPath><mask id="out-b-2"><rect x="469" y="40" width="227" height="150" fill="white"/><circle cx="599" cy="110" r="48" fill="black"/></mask><mask id="out-a-2"><rect x="469" y="40" width="227" height="150" fill="white"/><circle cx="547" cy="110" r="48" fill="black"/></mask></defs>
+<g opacity="0.45">
+<circle cx="547" cy="110" r="48" fill="#3b6fc4" mask="url(#out-b-2)"/>
+</g>
+<circle cx="547" cy="110" r="48" fill="none" stroke="#3b6fc4" stroke-width="2"/>
+<text x="517" y="116" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="17" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">a</text>
+<circle cx="599" cy="110" r="48" fill="none" stroke="#3b6fc4" stroke-width="2"/>
+<text x="629" y="116" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="17" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">b</text>
+<text x="573" y="188" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">difference</text>
+<text x="573" y="207" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#5b616b" text-anchor="middle" xml:space="preserve">in a, not in b</text>
+<text x="573" y="236" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">a - b</text>
+<text x="573" y="258" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#5b616b" text-anchor="middle" xml:space="preserve">a.difference(b)</text>
+<text x="573" y="282" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">SQL: EXCEPT / MINUS</text>
+<text x="573" y="310" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">-&gt; {1, 2}</text>
+<defs><clipPath id="in-b-3"><circle cx="826" cy="110" r="48"/></clipPath><mask id="out-b-3"><rect x="696" y="40" width="227" height="150" fill="white"/><circle cx="826" cy="110" r="48" fill="black"/></mask><mask id="out-a-3"><rect x="696" y="40" width="227" height="150" fill="white"/><circle cx="774" cy="110" r="48" fill="black"/></mask></defs>
+<g opacity="0.45">
+<circle cx="774" cy="110" r="48" fill="#3b6fc4" mask="url(#out-b-3)"/>
+<circle cx="826" cy="110" r="48" fill="#3b6fc4" mask="url(#out-a-3)"/>
+</g>
+<circle cx="774" cy="110" r="48" fill="none" stroke="#3b6fc4" stroke-width="2"/>
+<text x="744" y="116" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="17" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">a</text>
+<circle cx="826" cy="110" r="48" fill="none" stroke="#3b6fc4" stroke-width="2"/>
+<text x="856" y="116" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="17" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">b</text>
+<text x="800" y="188" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">symmetric difference</text>
+<text x="800" y="207" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#5b616b" text-anchor="middle" xml:space="preserve">in one of them only</text>
+<text x="800" y="236" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">a ^ b</text>
+<text x="800" y="258" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#5b616b" text-anchor="middle" xml:space="preserve">a.symmetric_difference(b)</text>
+<text x="800" y="282" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">SQL: (no keyword)</text>
+<text x="800" y="310" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">-&gt; {1, 2, 4}</text>
+</svg>

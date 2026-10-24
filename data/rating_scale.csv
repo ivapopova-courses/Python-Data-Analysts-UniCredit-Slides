@@ -1,0 +1,11 @@
+rating,grade,pd_min,pd_max,description
+1,AAA,0.0,0.0005,minimal risk
+2,AA,0.0005,0.001,very low risk
+3,A,0.001,0.0025,low risk
+4,BBB,0.0025,0.006,moderate risk
+5,BB,0.006,0.015,acceptable risk
+6,B,0.015,0.04,elevated risk
+7,CCC,0.04,0.1,high risk
+8,CC,0.1,0.25,very high risk
+9,C,0.25,0.9999,near default
+10,D,1.0,1.0,default
