@@ -1,0 +1,232 @@
+# How to use these pages
+
+## Run the examples
+
+Most code examples have a bar under them:
+
+- **Run** executes the code in your browser and shows what it prints. Like in a
+  Jupyter notebook, the value of the last line is shown too.
+- **Edit** turns the example into an editor. Change the code and press **Run**
+  again (or `Ctrl+Enter`).
+- **Reset** brings back the original code.
+
+Try it:
+
+```python run
+course = "Python for Data Analysts"
+print("Welcome to", course)
+len(course)
+```
+
+The first **Run** on a page loads Python into the browser and takes a few
+seconds; after that it is fast. Examples that use pandas or NumPy load them the
+first time too.
+
+Every example runs on its own: a variable from one example does not exist in the
+next one. The sample data files are available in every example, in the folder
+`data/`:
+
+```python run
+import pandas as pd
+
+loans = pd.read_csv("data/loans.csv")
+loans.head()
+```
+
+::: info The sample data is made up
+All clients, loans and values in it are invented; only the shape is typical of
+the data of a bank. What is in each file: [Sample data](./sample-data).
+:::
+
+## Set up Python on your computer {#setup}
+
+The tasks and the final project run on your own computer. You need:
+
+| Program | Version | What for |
+|---|---|---|
+| [Python](https://www.python.org/downloads/) | 3.12 or 3.13, 64-bit | the language |
+| [Visual Studio Code](https://code.visualstudio.com/) | latest | the editor, with the extensions **Python** and **Jupyter** (Microsoft) |
+| [Git](https://git-scm.com/downloads) | latest | versions of your code; the tasks come with it |
+| [GitHub](https://github.com/signup) account | free | your own copy of the tasks |
+
+On Windows, tick **Add python.exe to PATH** on the first screen of the Python
+installer. Check the tools in a terminal (in VS Code: **Terminal > New Terminal**):
+
+```bash
+py --version     # Python 3.12.x or 3.13.x  (macOS / Linux: python3 --version)
+git --version    # git version 2.x.x
+```
+
+The libraries (pandas, NumPy, ...) are installed into a *virtual environment* in
+the Homework folder - see step 8 below.
+
+## Practice and homework in VS Code {#practice-and-homework}
+
+The practice tasks and the homework are in the **Homework repository**:
+https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework
+
+Each lecture has a folder there (`01-intro-syntax-types/`, ...) with two kinds of
+tasks:
+
+- **Practice tasks** (`practice/task1-....py`, ...): short exercises, one topic
+  each, in the order of the lecture. We start them in class. Finish the rest at
+  home if you can - later tasks and the final project reuse them.
+- **Homework** (`homework.py`): one larger task that puts the topics of the
+  lecture together. Do it before the next session - we go through it together at
+  the start.
+
+### Set it up once
+
+You do this only once, at the start of the course. It takes about 20 minutes.
+
+**The idea.** A *repository* (or *repo*) is a project folder whose history Git
+keeps. In this course you work with three copies of the Homework repository:
+
+```text
+  course repository on GitHub             your own repository on GitHub
+  (name in Git: upstream)                 (name in Git: origin)
+             |                                        ^
+             |  git pull upstream main                |  git push
+             |  (new tasks)                           |  (your solutions)
+             v                                        |
+             +------->  the folder on your computer --+
+                        (here you write the code)
+```
+
+- **`upstream`** is the course repository. Only the trainer can change it. You
+  only **pull** from it - this is how you get the new tasks.
+- **`origin`** is your own repository. You **push** your solutions to it, so they
+  are saved online and you can open them from any computer.
+
+#### 1. Check the tools
+
+See [Set up Python on your computer](#setup) above.
+
+#### 2. Tell Git who you are
+
+Git writes your name and email into every commit (every saved version):
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+Use the same email as in your GitHub account.
+
+#### 3. Create your own repository on GitHub
+
+1. Sign in to https://github.com.
+2. Click **+** (top right), then **New repository**.
+3. **Repository name**: for example `python-course-homework`.
+4. Choose **Private** (only you can see it).
+5. Leave everything else as it is: **no** README, **no** `.gitignore`, **no**
+   licence. The repository must be **empty** - otherwise step 5 fails.
+6. Click **Create repository** and copy the web address GitHub shows, like
+   `https://github.com/your-user/python-course-homework.git`.
+
+#### 4. Download the course repository and connect your own
+
+In VS Code, open the folder where you keep the course (**File > Open Folder**),
+then open a terminal (**Terminal > New Terminal**) and type the commands one at a
+time:
+
+```bash
+git clone https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework.git
+cd Python-Data-Analysts-UniCredit-Homework
+git remote rename origin upstream
+git remote add origin https://github.com/your-user/python-course-homework.git
+```
+
+In the last command, paste **your** address from step 3.
+
+#### 5. Send everything to your repository (the first push)
+
+```bash
+git push -u origin main
+```
+
+The first time, GitHub asks you to sign in: choose to sign in with the browser
+and allow the access.
+
+#### 6. Check the result
+
+```bash
+git remote -v
+```
+
+`origin` must show **your** address, `upstream` the course address.
+
+#### 7. Open the folder in VS Code
+
+**File > Open Folder** and choose `Python-Data-Analysts-UniCredit-Homework` (the
+folder itself, not the folder above it). Always open this folder when you work on
+the tasks: then the terminal starts in the right place.
+
+#### 8. Create the virtual environment
+
+In the terminal of VS Code, in the Homework folder:
+
+```bash
+py -m venv .venv                      # macOS / Linux: python3 -m venv .venv
+.venv\Scripts\activate                # macOS / Linux: source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+The prompt now starts with `(.venv)`. In VS Code, choose the interpreter once:
+`Ctrl+Shift+P` > **Python: Select Interpreter** > the one in `.venv`. Git ignores
+the `.venv` folder.
+
+### Work on a task
+
+Open the terminal (`` Ctrl+` ``) in the repository root and run a task:
+
+```bash
+python 01-intro-syntax-types/practice/task1-first-values.py
+```
+
+Every task checks your code, prints `OK` or `FAIL` for each check and ends with a
+line like `5 of 7 checks passed`.
+
+Save your work in your own repository:
+
+```bash
+git add .
+git commit -m "Session 1 practice"
+git push
+```
+
+### Get the new tasks
+
+Before each session, commit your work, then:
+
+```bash
+git pull upstream main
+```
+
+The new lecture folders appear next to your work. Existing files are not changed,
+so there are no conflicts.
+
+## Code from the lessons
+
+The code written during the lessons is in the **Labs repository**:
+https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Labs
+
+Clone it once, and after each lesson run `git pull` in it to get the new code. Do
+not write your own code there - use the Homework repository for that.
+
+```bash
+git clone https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Labs.git
+cd Python-Data-Analysts-UniCredit-Labs
+git pull          # after each lesson
+```
+
+## Find things
+
+- The search box (top left, or `Ctrl+K`) searches all lectures.
+- The list on the right side of a lecture ("In this lecture") jumps to a section.
+- The moon / sun switch at the top changes between dark and light mode.
+- The **EN / BG** button next to it opens the same page in English or in Bulgarian.
+- The navigation on the left and the "In this lecture" column on the right can
+  be made narrower or wider: drag their inner edge. Double-click the edge to go
+  back to the default width.

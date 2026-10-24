@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 480" width="920" height="480" role="img">
+<title>The flow of a loop, with continue and break</title>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b616b"/></marker></defs>
+<path d="M320,8 L320,38" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<polygon points="320,40.0 445.0,72 320,104.0 195.0,72" fill="#fdebd3" stroke="#c97a1c" stroke-width="2"/>
+<text x="320" y="77" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">while condition:</text>
+<path d="M320,104 L320,128" fill="none" stroke="#4f8a45" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="330" y="122" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" fill="#4f8a45" text-anchor="start" xml:space="preserve">True</text>
+<rect x="230" y="130" width="180" height="46" rx="10" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="320.0" y="156" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">block 1</text>
+<path d="M320,176 L320,204" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<polygon points="320,206.0 450.0,236 320,266.0 190.0,236" fill="#ece4f8" stroke="#7b48c4" stroke-width="2"/>
+<text x="320" y="241" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">if continue_condition:</text>
+<path d="M320,266 L320,300" fill="none" stroke="#c4302b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="330" y="290" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" fill="#c4302b" text-anchor="start" xml:space="preserve">False</text>
+<polygon points="320,302.0 450.0,332 320,362.0 190.0,332" fill="#f9dedb" stroke="#c4302b" stroke-width="2"/>
+<text x="320" y="337" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">if break_condition:</text>
+<path d="M320,362 L320,396" fill="none" stroke="#c4302b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="330" y="386" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" fill="#c4302b" text-anchor="start" xml:space="preserve">False</text>
+<rect x="230" y="398" width="180" height="46" rx="10" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="320.0" y="424" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">block 2</text>
+<path d="M190,236 L110,236 L110,72 L193,72" fill="none" stroke="#7b48c4" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="116" y="258" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#7b48c4" text-anchor="start" xml:space="preserve">continue:</text>
+<text x="116" y="276" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#7b48c4" text-anchor="start" xml:space="preserve">the next</text>
+<text x="116" y="294" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#7b48c4" text-anchor="start" xml:space="preserve">iteration</text>
+<text x="150" y="228" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" fill="#7b48c4" text-anchor="middle" xml:space="preserve">True</text>
+<path d="M230,421 L50,421 L50,22 L320,22 L320,38" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="60" y="466" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">the end of the block: test again</text>
+<path d="M445,72 L720,72 L720,396" fill="none" stroke="#c4302b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="470" y="64" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" fill="#c4302b" text-anchor="start" xml:space="preserve">False</text>
+<path d="M450,332 L640,332 L640,396" fill="none" stroke="#c4302b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="462" y="324" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="700" fill="#c4302b" text-anchor="start" xml:space="preserve">True</text>
+<text x="462" y="352" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#c4302b" text-anchor="start" xml:space="preserve">break: leave the loop now</text>
+<rect x="580" y="398" width="320" height="52" rx="10" fill="#e3edfb" stroke="#3b6fc4" stroke-width="2"/>
+<text x="740" y="430" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">the code after the loop</text>
+<text x="470" y="150" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">for item in sequence: the same flow -</text>
+<text x="470" y="169" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">the test is "is there a next item?"</text>
+<text x="470" y="220" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">The else of a loop runs when the test</text>
+<text x="470" y="239" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">is False - never after a break.</text>
+</svg>

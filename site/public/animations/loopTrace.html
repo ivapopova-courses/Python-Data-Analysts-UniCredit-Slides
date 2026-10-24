@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Loops step by step</title>
+<!--
+    Step-by-step animation: if / elif / else, for, while, break, continue, for-else.
+    Engine and look: anim.js, anim.css. Deep link: loopTrace.html#3 (scenario 3),
+    #3.2 (its step 2); Bulgarian: ?lang=bg (bg/loopTrace.html redirects there).
+-->
+<link rel="stylesheet" href="anim.css">
+<style>
+.stage { display: grid; grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); gap: 1rem; }
+.col { display: grid; grid-template-rows: auto auto minmax(0, 1fr); gap: .7rem; min-height: 0; }
+.right { grid-template-rows: auto minmax(0, 1fr); }
+
+.test { font-family: var(--mono); font-size: 1.1rem; min-height: 2.6rem; display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
+.test .src { padding: .1rem .5rem; border-radius: .3rem; background: var(--read-bg); }
+.test .res { padding: .1rem .55rem; border-radius: .3rem; font-weight: 700; animation: pop .45s ease-out; }
+.test .res.t { background: #d6efd2; color: #1f5c19; }
+.test .res.f { background: var(--err-bg); color: var(--err); }
+.test .note { font-family: var(--sans); font-size: .85rem; color: var(--muted); }
+.static .test .res { animation: none; }
+:root[data-theme="dark"] .test .res.t { background: #24421f; color: #a6e39c; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .test .res.t { background: #24421f; color: #a6e39c; } }
+
+.iter { font-size: .8rem; font-weight: 700; color: var(--ref); letter-spacing: .04em; }
+
+.vars { width: 100%; border-collapse: separate; border-spacing: 0 .45rem; }
+.vars td { padding: .45rem .8rem; font-family: var(--mono); font-size: 1.15rem; }
+.vars td.name { width: 40%; font-weight: 700; color: var(--name-ink); background: var(--name-bg); border: 2px solid var(--name-border); border-radius: .5rem 0 0 .5rem; }
+.vars td.val { background: var(--obj-bg); border: 2px solid var(--obj-border); border-left: none; border-radius: 0 .5rem .5rem 0; font-weight: 700; transition: box-shadow .25s; }
+.vars tr.write td.val { box-shadow: 0 0 0 3px var(--write), 0 0 0 7px var(--write-bg); }
+.vars tr.read td.val { box-shadow: 0 0 0 3px var(--read), 0 0 0 7px var(--read-bg); }
+.vars tr.new td { animation: pop .45s ease-out; }
+.vars td.old { font-size: .8rem; color: var(--muted); text-decoration: line-through; background: none; border: none; width: 1%; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="app">
+    <header class="top">
+        <h1 id="title"></h1>
+        <nav class="tabs" id="tabs" role="tablist"></nav>
+        <a class="btn lang-btn" id="langBtn" href="#">BG</a>
+        <button class="btn icon-btn" id="themeBtn"></button>
+    </header>
+    <main class="stage">
+        <div class="col">
+            <section class="panel code-panel"><div class="panel-title"><span id="tCode"></span><span class="iter" id="iter"></span></div><ol class="code" id="code"></ol></section>
+            <section class="panel"><div class="panel-title" id="tTest"></div><div class="test" id="test"></div></section>
+        </div>
+        <div class="col right">
+            <section class="panel"><div class="panel-title" id="tVars"></div><table class="vars" id="vars"></table></section>
+            <section class="panel"><div class="panel-title" id="tOut"></div><div class="console" id="console"></div></section>
+        </div>
+    </main>
+    <footer class="bottom">
+        <div class="explain" id="explain"></div>
+        <div class="controls">
+            <button class="btn icon-btn" id="firstBtn"></button>
+            <button class="btn" id="prevBtn"></button>
+            <span class="counter" id="counter"></span>
+            <button class="btn" id="playBtn"></button>
+            <button class="btn primary" id="nextBtn"></button>
+        </div>
+    </footer>
+</div>
+<script src="anim.js"></script>
+<script>
+'use strict'
+const { tr, esc, highlightPy } = Anim
+
+// ---------- the steps: helpers that change a copy of the state ----------
+function set(s, name, value) {
+    const v = s.vars.find(v => v.name === name)
+    if (v) { v.old = v.value; v.value = value; s.hl[name] = 'write' } else { s.vars.push({ name, value }); s.hl[name] = 'new' }
+}
+function read(s, ...names) { for (const n of names) s.hl[n] = s.hl[n] || 'read' }
+function test(s, src, result, note = '') { s.test = { src, result, note } }
+function info(s, note) { s.test = { src: '', result: null, note } }
+function out(s, text) { s.out.push(text) }
+function iter(s, n) { s.iter = n }
+
+const T = (en, bg) => [en, bg]
+const NEXT = (v) => T(`next item: ${v}`, `следващ елемент: ${v}`)
+const NO_MORE = T('no more items: the loop ends', 'няма повече елементи: цикълът свършва')
+
+const SCENARIOS = [
+{
+    tab: T('`for` with an accumulator', '`for` с натрупване'),
+    code: ['total = 0', 'for amount in [1200, 800, 500]:', '    total += amount', 'print(total)'],
+    steps: [
+        { line: 1, do: s => set(s, 'total', '0'),
+          text: T('An **accumulator** gets its start value **before** the loop - like `RETAIN total 0;` in SAS.',
+                  '**Натрупващата променлива** получава началната си стойност **преди** цикъла - като `RETAIN total 0;` в SAS.') },
+        { line: 2, do: s => { iter(s, 1); info(s, NEXT('1200')); set(s, 'amount', '1200') },
+          text: T('`for` takes the **first item** of the list and binds the name `amount` to it.',
+                  '`for` взима **първия елемент** на списъка и свързва името `amount` с него.') },
+        { line: 3, do: s => { read(s, 'amount'); set(s, 'total', '1200') },
+          text: T('The block runs for this item: `total = 0 + 1200`.', 'Блокът се изпълнява за този елемент: `total = 0 + 1200`.') },
+        { line: 2, do: s => { iter(s, 2); info(s, NEXT('800')); set(s, 'amount', '800') },
+          text: T('The end of the block: back to the `for` line. `amount` moves to the **next item**, 800.',
+                  'Краят на блока: обратно на реда с `for`. `amount` се премества към **следващия елемент**, 800.') },
+        { line: 3, do: s => { read(s, 'amount'); set(s, 'total', '2000') },
+          text: T('`total = 1200 + 800`. The name `total` lives **between** the iterations - that is why it was set before the loop.',
+                  '`total = 1200 + 800`. Името `total` живее **между** итерациите - затова е зададено преди цикъла.') },
+        { line: 2, do: s => { iter(s, 3); info(s, NEXT('500')); set(s, 'amount', '500') },
+          text: T('The third and last item.', 'Третият и последен елемент.') },
+        { line: 3, do: s => { read(s, 'amount'); set(s, 'total', '2500') },
+          text: T('`total = 2000 + 500`.', '`total = 2000 + 500`.') },
+        { line: 2, do: s => { iter(s, 0); info(s, NO_MORE) },
+          text: T('No items are left, so the loop **ends**. A `for` loop cannot run forever: it ends with the last item.',
+                  'Не са останали елементи и цикълът **свършва**. Цикълът `for` не може да се върти безкрайно: свършва с последния елемент.') },
+        { line: 4, do: s => { read(s, 'total'); out(s, '2500') },
+          text: T('The program continues after the block. `amount` keeps its last value, 500.',
+                  'Програмата продължава след блока. `amount` запазва последната си стойност, 500.') },
+    ],
+},
+{
+    tab: T('Decisions in a loop', 'Решения в цикъл'),
+    code: ['for dpd in [0, 45, 120]:', '    if dpd == 0:', '        print(dpd, "current")', '    elif dpd <= 90:',
+           '        print(dpd, "late")', '    else:', '        print(dpd, "non-performing")', 'print("done")'],
+    steps: [
+        { line: 1, do: s => { iter(s, 1); info(s, NEXT('0')); set(s, 'dpd', '0') },
+          text: T('The first item: `dpd` is 0.', 'Първият елемент: `dpd` е 0.') },
+        { line: 2, do: s => { read(s, 'dpd'); test(s, '0 == 0', true) },
+          text: T('The first condition is **true** ...', 'Първото условие е **вярно** ...') },
+        { line: 3, do: s => { read(s, 'dpd'); out(s, '0 current') },
+          text: T('... so its block runs. The `elif` and the `else` are **skipped**: only one block of an `if` statement runs.',
+                  '... и неговият блок се изпълнява. `elif` и `else` се **прескачат**: от една `if` конструкция се изпълнява само един блок.') },
+        { line: 1, do: s => { iter(s, 2); info(s, NEXT('45')); set(s, 'dpd', '45') },
+          text: T('The next item: 45.', 'Следващият елемент: 45.') },
+        { line: 2, do: s => { read(s, 'dpd'); test(s, '45 == 0', false) },
+          text: T('The first condition is false: Python goes to the `elif`.', 'Първото условие не е вярно: Python отива на `elif`.') },
+        { line: 4, do: s => { read(s, 'dpd'); test(s, '45 <= 90', true) },
+          text: T('The `elif` is true. (We know `dpd` is not 0 here - the first test said so.)',
+                  '`elif` е вярно. (Тук знаем, че `dpd` не е 0 - първата проверка го каза.)') },
+        { line: 5, do: s => { read(s, 'dpd'); out(s, '45 late') },
+          text: T('Its block runs, and the `else` is skipped.', 'Неговият блок се изпълнява, а `else` се прескача.') },
+        { line: 1, do: s => { iter(s, 3); info(s, NEXT('120')); set(s, 'dpd', '120') },
+          text: T('The last item: 120.', 'Последният елемент: 120.') },
+        { line: 2, do: s => { read(s, 'dpd'); test(s, '120 == 0', false) },
+          text: T('False ...', 'Не е вярно ...') },
+        { line: 4, do: s => { read(s, 'dpd'); test(s, '120 <= 90', false) },
+          text: T('... and false again ...', '... и пак не е вярно ...') },
+        { line: 6, do: s => { info(s, T('no condition was true', 'нито едно условие не е вярно')) },
+          text: T('... so the `else` block runs - like `ELSE` in `CASE WHEN`.', '... затова се изпълнява блокът на `else` - като `ELSE` в `CASE WHEN`.') },
+        { line: 7, do: s => { read(s, 'dpd'); out(s, '120 non-performing') },
+          text: T('`120 non-performing`.', '`120 non-performing`.') },
+        { line: 1, do: s => { iter(s, 0); info(s, NO_MORE) },
+          text: T('No items are left: the loop ends.', 'Няма повече елементи: цикълът свършва.') },
+        { line: 8, do: s => out(s, 'done'),
+          text: T('The line after the loop runs once.', 'Редът след цикъла се изпълнява веднъж.') },
+    ],
+},
+{
+    tab: T('`while`: repay a loan', '`while`: изплащане на кредит'),
+    code: ['balance = 1000', 'months = 0', 'while balance > 0:', '    balance -= 400', '    months += 1', 'print(months, balance)'],
+    steps: [
+        { line: 1, do: s => set(s, 'balance', '1000'), text: T('The loan: 1000 EUR.', 'Кредитът: 1000 EUR.') },
+        { line: 2, do: s => set(s, 'months', '0'), text: T('A counter of months, 0 before the loop.', 'Брояч на месеците, 0 преди цикъла.') },
+        { line: 3, do: s => { iter(s, 1); read(s, 'balance'); test(s, '1000 > 0', true) },
+          text: T('`while` tests the condition **before** each iteration. True: the block runs.',
+                  '`while` проверява условието **преди** всяка итерация. Вярно е: блокът се изпълнява.') },
+        { line: 4, do: s => { read(s, 'balance'); set(s, 'balance', '600') }, text: T('A payment of 400.', 'Плащане от 400.') },
+        { line: 5, do: s => { read(s, 'months'); set(s, 'months', '1') }, text: T('One month more.', 'Още един месец.') },
+        { line: 3, do: s => { iter(s, 2); read(s, 'balance'); test(s, '600 > 0', true) },
+          text: T('Back to the `while` line: the condition is tested **again**, with the new balance.',
+                  'Обратно на реда с `while`: условието се проверява **отново**, с новия остатък.') },
+        { line: 4, do: s => { read(s, 'balance'); set(s, 'balance', '200') }, text: T('600 - 400 = 200.', '600 - 400 = 200.') },
+        { line: 5, do: s => { read(s, 'months'); set(s, 'months', '2') }, text: T('2 months.', '2 месеца.') },
+        { line: 3, do: s => { iter(s, 3); read(s, 'balance'); test(s, '200 > 0', true) },
+          text: T('Still true.', 'Все още е вярно.') },
+        { line: 4, do: s => { read(s, 'balance'); set(s, 'balance', '-200') },
+          text: T('200 - 400 = -200: the last payment was more than needed.', '200 - 400 = -200: последното плащане е повече от нужното.') },
+        { line: 5, do: s => { read(s, 'months'); set(s, 'months', '3') }, text: T('3 months.', '3 месеца.') },
+        { line: 3, do: s => { iter(s, 0); read(s, 'balance'); test(s, '-200 > 0', false, T('the loop ends', 'цикълът свършва')) },
+          text: T('Now the condition is **false**: the loop ends. Something in the block must change the condition - here `balance -= 400` - or the loop never ends.',
+                  'Сега условието **не е вярно**: цикълът свършва. Нещо в блока трябва да променя условието - тук `balance -= 400` - иначе цикълът никога не свършва.') },
+        { line: 6, do: s => { read(s, 'months', 'balance'); out(s, '3 -200') },
+          text: T('Nobody had to know the number of months in advance - that is the job of `while`.',
+                  'Никой не трябваше да знае броя на месеците предварително - това е работата на `while`.') },
+    ],
+},
+{
+    tab: T('`break`: stop at the first', '`break`: спри при първия'),
+    code: ['for dpd in [0, 35, 120, 10]:', '    if dpd > 90:', '        print("found", dpd)', '        break',
+           '    print("ok", dpd)', 'print("end")'],
+    steps: [
+        { line: 1, do: s => { iter(s, 1); info(s, NEXT('0')); set(s, 'dpd', '0') }, text: T('The first loan: 0 days.', 'Първият кредит: 0 дни.') },
+        { line: 2, do: s => { read(s, 'dpd'); test(s, '0 > 90', false) }, text: T('Not more than 90.', 'Не е повече от 90.') },
+        { line: 5, do: s => { read(s, 'dpd'); out(s, 'ok 0') }, text: T('The rest of the block runs.', 'Останалата част от блока се изпълнява.') },
+        { line: 1, do: s => { iter(s, 2); info(s, NEXT('35')); set(s, 'dpd', '35') }, text: T('The next loan: 35 days.', 'Следващият кредит: 35 дни.') },
+        { line: 2, do: s => { read(s, 'dpd'); test(s, '35 > 90', false) }, text: T('Not more than 90.', 'Не е повече от 90.') },
+        { line: 5, do: s => { read(s, 'dpd'); out(s, 'ok 35') }, text: T('`ok 35`.', '`ok 35`.') },
+        { line: 1, do: s => { iter(s, 3); info(s, NEXT('120')); set(s, 'dpd', '120') }, text: T('The next loan: 120 days.', 'Следващият кредит: 120 дни.') },
+        { line: 2, do: s => { read(s, 'dpd'); test(s, '120 > 90', true) }, text: T('Found one!', 'Намерен!') },
+        { line: 3, do: s => { read(s, 'dpd'); out(s, 'found 120') }, text: T('`found 120`.', '`found 120`.') },
+        { line: 4, do: s => { iter(s, 0); info(s, T('break: the loop ends now', 'break: цикълът свършва веднага')) },
+          text: T('`break` leaves the loop **at once**: line 5 is skipped, and the last item, 10, is never read. Like `LEAVE` in a SAS `DO` loop.',
+                  '`break` излиза от цикъла **веднага**: ред 5 се прескача, а последният елемент, 10, изобщо не се чете. Като `LEAVE` в `DO` цикъл в SAS.') },
+        { line: 6, do: s => out(s, 'end'), text: T('The program continues after the loop.', 'Програмата продължава след цикъла.') },
+    ],
+},
+{
+    tab: T('`continue`: skip a record', '`continue`: пропусни запис'),
+    code: ['count = 0', 'for currency in ["EUR", "USD", "EUR"]:', '    if currency != "EUR":', '        continue',
+           '    count += 1', 'print(count)'],
+    steps: [
+        { line: 1, do: s => set(s, 'count', '0'), text: T('We count the EUR loans.', 'Броим кредитите в EUR.') },
+        { line: 2, do: s => { iter(s, 1); info(s, NEXT('"EUR"')); set(s, 'currency', "'EUR'") }, text: T('The first loan: EUR.', 'Първият кредит: EUR.') },
+        { line: 3, do: s => { read(s, 'currency'); test(s, '"EUR" != "EUR"', false) }, text: T('It is EUR: no `continue`.', 'В EUR е: няма `continue`.') },
+        { line: 5, do: s => { read(s, 'count'); set(s, 'count', '1') }, text: T('Counted: 1.', 'Преброен: 1.') },
+        { line: 2, do: s => { iter(s, 2); info(s, NEXT('"USD"')); set(s, 'currency', "'USD'") }, text: T('The next loan: USD.', 'Следващият кредит: USD.') },
+        { line: 3, do: s => { read(s, 'currency'); test(s, '"USD" != "EUR"', true) }, text: T('Not EUR ...', 'Не е в EUR ...') },
+        { line: 4, do: s => info(s, T('continue: the next iteration', 'continue: следващата итерация')),
+          text: T('... so `continue` **skips the rest of the block** - `count += 1` does not run - and goes back to the `for` line. Like a `WHERE` that drops the record.',
+                  '... затова `continue` **прескача останалата част от блока** - `count += 1` не се изпълнява - и се връща на реда с `for`. Като `WHERE`, което изпуска записа.') },
+        { line: 2, do: s => { iter(s, 3); info(s, NEXT('"EUR"')); set(s, 'currency', "'EUR'") }, text: T('The loop goes on with the next item.', 'Цикълът продължава със следващия елемент.') },
+        { line: 3, do: s => { read(s, 'currency'); test(s, '"EUR" != "EUR"', false) }, text: T('EUR again.', 'Пак EUR.') },
+        { line: 5, do: s => { read(s, 'count'); set(s, 'count', '2') }, text: T('Counted: 2.', 'Преброен: 2.') },
+        { line: 2, do: s => { iter(s, 0); info(s, NO_MORE) }, text: T('No more items.', 'Няма повече елементи.') },
+        { line: 6, do: s => { read(s, 'count'); out(s, '2') }, text: T('2 loans in EUR.', '2 кредита в EUR.') },
+    ],
+},
+{
+    tab: T('`for` - `else`', '`for` - `else`'),
+    advanced: true,
+    code: ['for dpd in [0, 35, 10]:', '    if dpd > 90:', '        print("found", dpd)', '        break', 'else:',
+           '    print("none over 90")'],
+    steps: [
+        { line: 1, do: s => { iter(s, 1); info(s, NEXT('0')); set(s, 'dpd', '0') }, text: T('We look for a loan more than 90 days past due.', 'Търсим кредит с над 90 дни просрочие.') },
+        { line: 2, do: s => { read(s, 'dpd'); test(s, '0 > 90', false) }, text: T('No.', 'Не.') },
+        { line: 1, do: s => { iter(s, 2); info(s, NEXT('35')); set(s, 'dpd', '35') }, text: T('The next one.', 'Следващият.') },
+        { line: 2, do: s => { read(s, 'dpd'); test(s, '35 > 90', false) }, text: T('No.', 'Не.') },
+        { line: 1, do: s => { iter(s, 3); info(s, NEXT('10')); set(s, 'dpd', '10') }, text: T('The last one.', 'Последният.') },
+        { line: 2, do: s => { read(s, 'dpd'); test(s, '10 > 90', false) }, text: T('No - the `break` never ran.', 'Не - `break` така и не се изпълни.') },
+        { line: 1, do: s => { iter(s, 0); info(s, T('no more items, and no break', 'няма повече елементи и няма break')) },
+          text: T('The loop ended **normally**, with its last item ...', 'Цикълът свърши **нормално**, с последния си елемент ...') },
+        { line: 6, do: s => out(s, 'none over 90'),
+          text: T('... so its `else` block runs. Read the `else` of a loop as "no break": after a `break` it is skipped.',
+                  '... затова се изпълнява неговият блок `else`. Четете `else` на цикъла като "нямаше break": след `break` се прескача.') },
+    ],
+},
+]
+
+// ---------- the states of a scenario ----------
+function build(sc) {
+    let s = { vars: [], out: [], iter: 0 }
+    const states = [{ ...s, hl: {}, test: null, line: 0,
+        text: T('Press **Next** (or the Right arrow) to run the code step by step.',
+                'Натиснете **Напред** (или стрелка надясно), за да изпълните кода стъпка по стъпка.') }]
+    for (const st of sc.steps) {
+        s = structuredClone({ vars: s.vars, out: s.out, iter: s.iter })
+        for (const v of s.vars) delete v.old
+        Object.assign(s, { hl: {}, test: null })
+        st.do(s)
+        s.line = st.line
+        s.text = st.text
+        states.push(s)
+    }
+    return states
+}
+
+// ---------- drawing ----------
+const $ = id => document.getElementById(id)
+$('tCode').textContent = tr(['Code', 'Код'])
+$('tTest').textContent = tr(['The test', 'Проверката'])
+$('tVars').textContent = tr(['Variables', 'Променливи'])
+$('tOut').textContent = tr(['Output', 'Изход'])
+
+function render(sc, s, prev) {
+    document.body.classList.toggle('static', !prev)
+    $('code').innerHTML = sc.code.map((l, i) =>
+        `<li class="${i + 1 === s.line ? 'active' : ''}"><span class="ln">${i + 1}</span><span>${highlightPy(l)}</span></li>`).join('')
+    $('iter').textContent = s.iter ? tr([`iteration ${s.iter}`, `итерация ${s.iter}`]) : ''
+    const t = s.test
+    $('test').innerHTML = !t ? '<span class="empty">-</span>'
+        : (t.src ? `<span class="src">${esc(t.src)}</span> -&gt; <span class="res ${t.result ? 't' : 'f'}">${t.result ? 'True' : 'False'}</span>` : '')
+          + (t.note ? `<span class="note">${esc(tr(t.note))}</span>` : '')
+    $('vars').innerHTML = s.vars.length ? s.vars.map(v =>
+        `<tr class="${s.hl[v.name] || ''}"><td class="name">${esc(v.name)}</td><td class="val">${esc(v.value)}</td>` +
+        `<td class="old">${v.old !== undefined ? esc(v.old) : ''}</td></tr>`).join('')
+        : '<tr><td class="empty">-</td></tr>'
+    const before = prev ? prev.out.length : s.out.length
+    $('console').innerHTML = s.out.length
+        ? s.out.map((o, i) => `<div class="cline${i >= before ? ' new' : ''}">${esc(o)}</div>`).join('')
+        : '<span class="empty">-</span>'
+}
+
+Anim.start({
+    title: ['Loops step by step', 'Цикли стъпка по стъпка'],
+    subtitle: ['if, for, while, break, continue', 'if, for, while, break, continue'],
+    scenarios: SCENARIOS,
+    build,
+    render,
+})
+</script>
+</body>
+</html>

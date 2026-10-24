@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img">
+<title>Virtual environments: one per project</title>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b616b"/></marker></defs>
+<rect x="300" y="12" width="320" height="92" rx="10" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="460.0" y="38" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">The system Python</text>
+<text x="460.0" y="62" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">python.org, Python 3.12</text>
+<text x="460.0" y="83" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#5b616b" text-anchor="middle" xml:space="preserve">only the standard library</text>
+<rect x="40" y="150" width="400" height="236" rx="10" fill="#f3f1ec" stroke="#8c8578" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="54" y="176" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">Homework/</text>
+<rect x="56" y="192" width="200" height="180" rx="10" fill="#e3edfb" stroke="#3b6fc4" stroke-width="2"/>
+<text x="70" y="218" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">.venv/</text>
+<text x="70" y="242" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">python.exe</text>
+<text x="70" y="263" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">pandas 2.3</text>
+<text x="70" y="284" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">numpy 2.3</text>
+<text x="70" y="305" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">jupyterlab 4.4</text>
+<text x="70" y="326" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">its own python and packages</text>
+<rect x="280" y="192" width="146" height="130" rx="10" fill="#fdebd3" stroke="#c97a1c" stroke-width="2"/>
+<text x="294" y="218" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">requirements.txt</text>
+<text x="294" y="242" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">pandas&gt;=2.2</text>
+<text x="294" y="263" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">numpy&gt;=2.0</text>
+<text x="294" y="284" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">...</text>
+<text x="353" y="342" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">pip install -r</text>
+<path d="M310,324 L260,290" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="480" y="150" width="400" height="236" rx="10" fill="#f3f1ec" stroke="#8c8578" stroke-width="2" stroke-dasharray="6 4"/>
+<text x="494" y="176" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">old-report/</text>
+<rect x="496" y="192" width="200" height="180" rx="10" fill="#e3edfb" stroke="#3b6fc4" stroke-width="2"/>
+<text x="510" y="218" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">.venv/</text>
+<text x="510" y="242" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">python.exe</text>
+<text x="510" y="263" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">pandas 2.2</text>
+<text x="510" y="284" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">numpy 1.26</text>
+<text x="510" y="305" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">openpyxl 3.1</text>
+<text x="510" y="326" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">its own python and packages</text>
+<rect x="720" y="192" width="146" height="130" rx="10" fill="#fdebd3" stroke="#c97a1c" stroke-width="2"/>
+<text x="734" y="218" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">requirements.txt</text>
+<text x="734" y="242" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">pandas==2.2.3</text>
+<text x="734" y="263" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">numpy==1.26.4</text>
+<text x="734" y="284" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">...</text>
+<text x="793" y="342" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">pip install -r</text>
+<path d="M750,324 L700,290" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<path d="M330,104 L150,190" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<path d="M590,104 L590,190" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="228" y="136" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="end" xml:space="preserve">py -m venv .venv</text>
+<text x="600" y="136" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">py -m venv .venv</text>
+</svg>

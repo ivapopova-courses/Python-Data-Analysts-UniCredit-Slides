@@ -1,0 +1,1434 @@
+# Translation of site/lectures/03-lists-tuples-sets.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/lectures/03-lists-tuples-sets.md\n"
+
+#. front matter: title
+#: site/lectures/03-lists-tuples-sets.md:2 site/lectures/03-lists-tuples-sets.md:5
+msgid "3. Lists (basics), tuples and sets"
+msgstr ""
+
+#. html
+#: site/lectures/03-lists-tuples-sets.md:8
+msgid "<span>Session 3</span><span>practice: <code>03-lists-tuples-sets/</code> in the homework repository</span>"
+msgstr ""
+
+#. html
+#: site/lectures/03-lists-tuples-sets.md:9
+msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:12
+msgid "**Today you will learn to:**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:14
+msgid "keep many values in one **list**, and read them by index (from 0!) and by slices;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:15
+msgid "use the operations that all sequences share: `+`, `*`, `in`, `len`, `min`, `max`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:16
+msgid "change a list with its methods, and sort it;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:17
+msgid "understand why two names can show the same list - and how to make a copy;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:18
+msgid "use **tuples** as records that cannot change, and unpack them;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:19
+msgid "use `range` for sequences of numbers;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:20
+msgid "find unique values with **sets**, and compare groups with `UNION`, `INTERSECT` and `EXCEPT` - the Python way."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:23
+msgid "From SQL to Python - the same question, two ways. Which clients have no loans?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:49
+msgid "1. Sequences"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:51
+msgid "What is a sequence?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:53
+msgid "Session 2 used `for` on strings, lists and ranges. They are all **sequences**: containers that keep an **ordered** collection of values. The main sequence types:"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:56
+msgid "Type"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:56 site/lectures/03-lists-tuples-sets.md:87
+msgid "Example"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:56
+msgid "Can it change?"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:58
+msgid "yes"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:59 site/lectures/03-lists-tuples-sets.md:60 site/lectures/03-lists-tuples-sets.md:61 site/lectures/03-lists-tuples-sets.md:758
+msgid "no"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:73
+msgid "Every item of a sequence has a number - its position, or **index**. The index **starts from 0**."
+msgstr ""
+
+#. box title
+#: site/lectures/03-lists-tuples-sets.md:76
+msgid "Python counts from 0, SAS from 1"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:77
+msgid "The first character of a string: `SUBSTR(loan_id, 1, 1)` in SAS and SQL, but `loan_id[0]` in Python. The first element of a SAS array is `arr{1}`; of a Python list it is `items[0]`. This is the most common mistake in the first weeks - count with care."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:83
+msgid "What all sequences can do"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:85
+msgid "All sequences support the same **common operations** - you learn them once:"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:87 site/lectures/03-lists-tuples-sets.md:1003
+msgid "Operation"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:87 site/lectures/03-lists-tuples-sets.md:1003
+msgid "Result"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:89
+msgid "length"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:89
+msgid "the number of items"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:90
+msgid "indexing"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:90
+msgid "the first, the last item"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:91
+msgid "slicing"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:91
+msgid "a part of the sequence"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:92
+msgid "concatenation"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:92
+msgid "the two joined (not for `range`)"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:93
+msgid "repetition"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:93
+msgid "three times (not for `range`)"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:94
+msgid "membership"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:95
+msgid "minimum, maximum"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:95
+msgid "the smallest, the largest item"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:96
+msgid "counting"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:96
+msgid "how many times `x` is in `s`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:97
+msgid "searching"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:97
+msgid "the index of the first `x`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:99
+msgid "Each type also has its **own** methods: lists can be sorted and changed, strings can be made upper case. Reference: [Common sequence operations](https://docs.python.org/3/library/stdtypes.html#common-sequence-operations)."
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:103
+msgid "2. Lists"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:105
+msgid "What is a list?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:107
+msgid "A **list** is a **mutable** (changeable) sequence of values:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:109
+msgid "you can add, remove and change items: a list can grow and shrink;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:110
+msgid "the items can be of any type, and of different types in one list;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:111
+msgid "the same value can be in a list many times."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:113
+msgid "Lists are the general-purpose container of Python. A list is close to a column of a table, or to a SAS array - but it can grow, and it lives in memory."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:116
+msgid "Create a list"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:118
+msgid "A list is written in **square brackets**, with the items separated by **commas**:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:134
+msgid "Read an item"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:147
+msgid "An index that does not exist is an error:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:154
+msgid "Change an item"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:168
+msgid "`del` removes an item by its index:"
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:176
+msgid "3. Indexes and slices"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:178
+msgid "Indexes from the start and from the end"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:180
+msgid "The first item has the index **0**; each next one is 1 more."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:181
+msgid "The last item has the index **-1**; counting back, each one is 1 less."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:182
+msgid "Only whole numbers are valid indexes."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:184
+msgid "![A list of six loans with the indexes 0 to 5 above the items and -6 to -1 below them; the slice loans[1:4] is highlighted](/diagrams/list-indexing.svg){.diagram}"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:192
+msgid "Negative indexes are handy for \"the last ones\": the last month of a list of monthly values is `values[-1]`, whatever the length of the list."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:195
+msgid "Slices: `[start:stop:step]`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:197
+msgid "A **slice** takes a part of a sequence:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:203
+msgid "`start` - the index of the first item taken (included); empty = from the start;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:204
+msgid "`stop` - the index where the slice **stops** (this item is **not** included); empty = to the end;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:206
+msgid "`step` - take every n-th item; empty = 1. A negative step goes backwards."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:215
+msgid "The rule \"the stop is not included\" is the same as in `range` (session 2). It has a nice side: `a[:3]` is the first 3 items, `a[3:]` the rest, and `a[2:5]` has 5 - 2 = 3 items."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:231
+msgid "A slice never gives an `IndexError` - out of range, it simply takes what there is:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:239
+msgid "Slices of strings: `SUBSTR`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:241
+msgid "A string is a sequence of characters, so the same indexes and slices work - this is the Python `SUBSTR`:"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:244
+msgid "SAS / SQL"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:244 site/lectures/03-lists-tuples-sets.md:818
+msgid "Python"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:263
+msgid "Strings cannot be changed: `loan_id[0] = \"X\"` is an error. String methods (session 7) make **new** strings."
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:266
+msgid "4. More common operations"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:268
+msgid "Concatenation `+` and repetition `*`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:270
+msgid "`+` joins two sequences of the **same type** into a new one; `*` repeats a sequence. The multiplier must be a whole number."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:287
+msgid "Only strings, lists and tuples can be joined and repeated. A `range` cannot (but you can make a list of it first: `list(range(3)) * 2`)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:290
+msgid "`+` makes a **new** list. Joining lists of rows one under the other is `UNION ALL` in SQL, or `SET a b;` in a DATA step:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:300
+msgid "Membership: `in`, `not in`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:302
+msgid "`x in sequence` is `True` when `x` is one of the items - like `IN (...)` in SQL and SAS:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:320
+msgid "For strings, `in` looks for a part of the string: `\"USD\" in \"EUR,USD\"` is `True`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:336
+msgid "`min` and `max` work on strings too (alphabetically, session 2). `sum` only on numbers. `index` gives a `ValueError` when the value is not in the list - test with `in` first."
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:340
+msgid "5. Create lists from other values"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:342
+msgid "`list()`: a list from any sequence"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:344
+msgid "`list()` makes a new list from the items of any sequence (any *iterable*):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:360
+msgid "From text: `split`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:362
+msgid "`split()` (session 1) cuts a string into a list of strings:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:373
+msgid "Collect values in a loop: `append`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:375
+msgid "Start with an empty list and **append** a value in each iteration. It is the Python `OUTPUT` statement: the DATA step writes a row to the output data set, `append` adds an item to the list."
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:401
+msgid "6. The methods of a list"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:403
+msgid "Add, remove, reverse, sort"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:405 site/lectures/03-lists-tuples-sets.md:1003 site/lectures/03-lists-tuples-sets.md:1065
+msgid "Method"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:405
+msgid "What it does"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:407
+msgid "adds `x` at the end"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:408
+msgid "adds all items of `other` at the end"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:409
+msgid "inserts `x` before the index `i`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:410
+msgid "removes the last item and returns it"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:411
+msgid "removes the item at index `i` and returns it"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:412
+msgid "removes the first item equal to `x` (`ValueError` if there is none)"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:413
+msgid "removes all items"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:414
+msgid "the index of the first `x`; how many `x`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:415
+msgid "reverses the list in place"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:416
+msgid "sorts the list in place; `sort(reverse=True)`: from the largest"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:417
+msgid "a new list with the same items (section 7)"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:418
+msgid "removes an item, a slice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:451
+msgid "More: [More on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) in the tutorial."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:454
+msgid "`append` or `extend`?"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:466
+msgid "The methods change the list - and return `None`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:468
+msgid "`append`, `sort`, `reverse` and the others change the list **in place**. They return `None`, not the list. A classic bug:"
+msgstr ""
+
+#. box title
+#: site/lectures/03-lists-tuples-sets.md:477
+msgid "Answer"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:478
+msgid "`numbers.sort()` sorts the list and returns `None`, and `numbers = ...` binds the name to that `None` - the sorted list is lost. Write only `numbers.sort()`, or use `sorted()` (next)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:483
+msgid "`sort()` or `sorted()`?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:485
+msgid "`lst.sort()` sorts **this** list. Only lists have it."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:486
+msgid "`sorted(x)` returns a **new**, sorted list, and does not change `x`. It works on any sequence: a tuple, a string, a set, a range."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:498
+msgid "Sorting compares the items with `<` (session 2): strings alphabetically - capital letters before small ones - and a mix of numbers and strings is an error:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:506
+msgid "`PROC SORT` and `ORDER BY` can sort by a column, or by several. In Python that is `sorted(..., key=...)`: sessions 4 and 5."
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:509
+msgid "7. A list is mutable: names and references"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:511
+msgid "Two names, one list"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:513
+msgid "Session 1 showed that a variable is a **name** bound to an **object**. With numbers and strings this hardly matters, because they cannot change. A list **can** change - and then it matters a lot:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:527
+msgid "`new_list = original` does not copy anything. Both names point to **the same list object** in memory, so a change through one name is seen through the other. `is` (and `id()`) shows it."
+msgstr ""
+
+#. box title
+#: site/lectures/03-lists-tuples-sets.md:531 site/lectures/03-lists-tuples-sets.md:643
+msgid "Animation"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:532
+msgid "**Lists and references:** [1. A list changes in place](../animations/listsAndReferences.html#1){target=\"_blank\"}, [2. Two names, one list](../animations/listsAndReferences.html#2){target=\"_blank\"}, [3. A copy](../animations/listsAndReferences.html#3){target=\"_blank\"}, [4. `sort()` and `sorted()`](../animations/listsAndReferences.html#4){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:539
+msgid "Make a copy"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:541
+msgid "When you need an independent list, make a **copy**. Three ways give the same:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:555
+msgid "These are **shallow** copies: the new list has the same items. When the items are lists themselves (a table as a list of rows), the rows are still shared - session 5 explains shallow and deep copies."
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:559
+msgid "8. Tuples"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:561
+msgid "What is a tuple?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:563
+msgid "A **tuple** is an **immutable** sequence: once created, it cannot change - no item can be added, removed or replaced."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:566
+msgid "Good for fixed data: a record (one row of a table), a date, a pair of coordinates."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:567
+msgid "A tuple uses a little less memory than a list, and is a little faster."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:568
+msgid "Tuples can do everything a sequence can (section 1), but have only two methods: `count` and `index`."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:571
+msgid "Create a tuple"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:573
+msgid "A tuple is written in **round brackets**, with the items separated by **commas**:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:592
+msgid "It is the **comma** that makes a tuple, not the brackets. That is why `x, y = 1, 2` (session 1) works: the right side is a tuple."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:595
+msgid "Read the items"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:607
+msgid "A tuple cannot change"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:614
+msgid "To \"change\" a tuple, you make a new one (the name moves to it, like with numbers):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:622
+msgid "A list inside a tuple can change"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:624
+msgid "A tuple cannot change **which objects** it holds. If one of them is a list, the list itself can still change:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:644
+msgid "**Lists and references:** [5. A tuple cannot change](../animations/listsAndReferences.html#5){target=\"_blank\"}, [6. A list inside a tuple (advanced)](../animations/listsAndReferences.html#6){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:649
+msgid "Unpacking"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:651
+msgid "A tuple (or a list) can be **unpacked** into several names at once - the number of names must be the number of items:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:667
+msgid "A name with a star `*` takes \"the rest\", as a list:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:678
+msgid "`_` is the usual name for a value you do not need: `loan_id, _, product = ...`."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:680
+msgid "Tuples as records"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:682
+msgid "A list of tuples is a small **table**: each tuple is a row, each position a column. `for` with unpacking (session 2) reads it row by row:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:702
+msgid "A common use of a list of tuples - coordinates, or a value with its label - and separating it into two lists again:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:717
+msgid "The other way round - a **tuple of lists** - is a fixed structure of groups that can change inside:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:730
+msgid "Tuples are also used for **several return values of a function** (session 4) and as **keys of a dictionary** (session 6), where a list is not allowed."
+msgstr ""
+
+#. box title
+#: site/lectures/03-lists-tuples-sets.md:733
+msgid "Advanced: named tuples"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:734
+msgid "In a plain tuple, `loan[2]` does not say what the third column is. A **named tuple** gives the positions names - a lightweight record:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:749
+msgid "Classes and data classes (sessions 11 - 12) go further: records that can also check their data and have their own methods."
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:753
+msgid "9. Lists or tuples?"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:755
+msgid "List"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:755
+msgid "Tuple"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:757
+msgid "Brackets"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:758
+msgid "Can change"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:758
+msgid "yes: add, remove, sort"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:759
+msgid "Use for"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:759
+msgid "a collection that grows: the loans of a report, the values of a column"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:759
+msgid "a fixed record: one row, a date, a pair"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:760
+msgid "Memory, speed"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:760
+msgid "a little more, a little slower"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:760
+msgid "a little less, a little faster"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:771
+msgid "Rule of thumb: a **list** for many values of the **same kind** (all loan ids), a **tuple** for a few values of **different kinds** that belong together (one loan)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:774
+msgid "Convert between them"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:776
+msgid "`list()` and `tuple()` convert in both directions:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:792
+msgid "Syntax"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:794
+msgid "`range` gives an **immutable sequence of whole numbers**:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:802
+msgid "`stop` is the only required argument. The numbers end at **`stop - 1`**."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:803
+msgid "`start` is 0 when left out; `step` is 1 when left out."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:804
+msgid "All three must be whole numbers. `step` can be negative, but not 0 (`ValueError`)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:805
+msgid "If the arguments give no numbers, the range is empty."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:807
+msgid "Reference: [Ranges](https://docs.python.org/3/library/stdtypes.html#ranges)."
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:818
+msgid "SAS `DO` loop"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:824
+msgid "A range does not keep its numbers"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:826
+msgid "**Immutable**: a range cannot change."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:827
+msgid "**Small in memory**: a range keeps only `start`, `stop` and `step`, and calculates each number when it is needed. A range of a billion numbers is as small as a range of ten."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:830
+msgid "Used mostly in `for` loops, to repeat something a given number of times."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:839
+msgid "When you print a range, you see only the \"formula\". To see the numbers, make a list or a tuple of it - or loop over it:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:850
+msgid "A range is a real sequence: `len`, indexes, slices and `in` work, and fast:"
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:858
+msgid "11. Sets"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:860
+msgid "What is a set?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:862
+msgid "A **set** is an **unordered** collection of **unique** values - the sets of mathematics."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:865
+msgid "No duplicates: each value is in a set **once**."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:866
+msgid "No order: a set has no first and no last item, and no indexes."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:867
+msgid "The items must be **immutable** (*hashable*): numbers, strings, tuples - not lists."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:868
+msgid "The set itself is mutable: you can add and remove items."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:870
+msgid "Sets are used to test membership, to remove duplicates, and to compare groups: union, intersection, difference (section 12)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:873
+msgid "Create a set"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:875
+msgid "A set is written in **curly brackets**:"
+msgstr ""
+
+#. box title
+#: site/lectures/03-lists-tuples-sets.md:890
+msgid "`{}` is not an empty set"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:891
+msgid "`{}` is an empty **dictionary** (session 6). An empty set is `set()`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:898
+msgid "Unique values: `SELECT DISTINCT`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:900
+msgid "`set()` makes a set from any sequence - the duplicates disappear:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:913
+msgid "On the data - the distinct products and regions:"
+msgstr ""
+
+#. box title
+#: site/lectures/03-lists-tuples-sets.md:924
+msgid "The order of a set is not kept"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:925
+msgid "A set does not remember the order in which values came. Print the same set of strings in two runs of a program, and the order can be different. When the order matters - in a report, in a test - use `sorted(the_set)`. (To remove duplicates **and** keep the first order: `list(dict.fromkeys(items))`, session 6.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:931
+msgid "Add and remove"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:947
+msgid "`pop()` removes and returns some item (which one is not defined), `clear()` empties the set. `len`, `in`, `min`, `max`, `sum` and `for` work as with lists."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:950
+msgid "Sets and dictionaries"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:952
+msgid "Both are **unordered** collections; both are **mutable**; both use **curly brackets**."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:954
+msgid "A dictionary is a collection of `key: value` **pairs**; a set is a collection of **values** only - like the keys of a dictionary without the values."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:957
+msgid "Dictionaries are the topic of session 6."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:959
+msgid "Sets are fast for `in`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:961
+msgid "A set is a **hash table** inside: Python calculates from the value where it must be, and looks only there. A list is searched item by item, from the start. For `in` on a large collection, a set is much faster; for going through all items, and for access by index, a list is better."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:984
+msgid "So when you check many values against a long list of allowed codes - a nomenclature - put the codes into a set first."
+msgstr ""
+
+#. box title
+#: site/lectures/03-lists-tuples-sets.md:987
+msgid "Advanced: `frozenset`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:988
+msgid "A `frozenset` is an immutable set. Because it cannot change, it can be an item of a set, or a key of a dictionary:"
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:997
+msgid "12. Set operations: `UNION`, `INTERSECT`, `EXCEPT`"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:999
+msgid "The four operations"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1001
+msgid "![Four Venn diagrams of two sets a and b: union, intersection, difference and symmetric difference, with the Python operator, the method and the SQL keyword of each](/diagrams/set-operations.svg){.diagram}"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1003 site/lectures/03-lists-tuples-sets.md:1065
+msgid "Operator"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1003
+msgid "SQL"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1005
+msgid "union"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1005
+msgid "in `a` or in `b`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1006
+msgid "intersection"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1006
+msgid "in both"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1007
+msgid "difference"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1007
+msgid "in `a`, not in `b`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1007
+msgid "`EXCEPT` (Oracle: `MINUS`)"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1008
+msgid "symmetric difference"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1008
+msgid "in one of them, not in both"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1010
+msgid "Each operation returns a **new** set."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1022
+msgid "The methods accept any sequence, the operators only sets:"
+msgstr ""
+
+#. box title
+#: site/lectures/03-lists-tuples-sets.md:1030
+msgid "`UNION` or `UNION ALL`?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1031
+msgid "SQL `UNION` removes duplicates - that is a set union, `a | b`. `UNION ALL` keeps every row - that is joining two lists, `list_a + list_b` (section 4)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:1035
+msgid "Example: the clients of two months"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1037
+msgid "The client ids with a loan at the end of August and at the end of September:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:1050
+msgid "Example: what is missing from a credit file"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1061
+msgid "`\", \".join(...)` makes one string of the items, with `\", \"` between them (session 7)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:1063
+msgid "Subsets and checks of the data"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1065
+msgid "Test"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1067
+msgid "every item of `a` is in `b`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1068
+msgid "`b` has every item of `a`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1069
+msgid "no common items"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1071
+msgid "These are quick checks of the data, like the checks you write in SQL before a join:"
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:1096
+msgid "13. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1098
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1106
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1106
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1106
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1108
+msgid "Predict 14 indexes, slices and operations, then check"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1109
+msgid "Parts of ids and dates; quarters of a year of monthly values"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1110
+msgid "A watch list: add, insert, remove, sort, count"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1111
+msgid "Records as tuples: unpack, read, sum; a list of tuples"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1112
+msgid "The clients of two months: new, closed, stayed; a credit file"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1113
+msgid "From `loans.csv` and `clients.csv`: distinct values, lists, set checks"
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:1115
+msgid "Summary"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1117
+msgid "Topic"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1117
+msgid "Remember"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1119
+msgid "Sequences"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1119
+msgid "`list`, `tuple`, `range`, `str`: ordered; `len`, `in`, `+`, `*`, `min`, `max`, `count`, `index`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1120
+msgid "Indexes"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1120
+msgid "from **0**; `-1` is the last; a wrong index is an `IndexError`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1121
+msgid "Slices"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1121
+msgid "`s[start:stop:step]`, the stop is not included; `s[:3]` the first 3, `s[-3:]` the last 3, `s[::-1]` reversed, `s[:]` a copy"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1122
+msgid "Lists"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1122
+msgid "`[...]`, mutable; `append`, `extend`, `insert`, `pop`, `remove`, `sort`; the methods return `None`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1123
+msgid "Sorting"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1123
+msgid "`lst.sort()` changes the list; `sorted(x)` returns a new list"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1124
+msgid "References"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1124
+msgid "`b = a` is the same list with two names; a copy: `a[:]`, `a.copy()`, `list(a)`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1125
+msgid "Tuples"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1125
+msgid "`(...)`, immutable, the comma makes it: `(99,)`; unpacking `a, b, *rest = t`; records"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1126
+msgid "`range(start, stop, step)`, stop not included; small in memory"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1127
+msgid "Sets"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1127
+msgid "`{...}` / `set()`, unique, unordered; `add`, `discard`; fast `in`; print with `sorted()`"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1128
+msgid "Set operations"
+msgstr ""
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1128
+msgid "`\\|` `UNION`, `&` `INTERSECT`, `-` `EXCEPT`, `^` symmetric difference; `<=` subset"
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:1130
+msgid "Homework"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1132
+msgid "`03-lists-tuples-sets/homework.py` (in the homework repository): a **portfolio snapshot** from `loans.csv` - the loans as a list of tuples, the five largest exposures, the distinct products, and the clients that have loans in both currencies. Every check must print `OK`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1136
+msgid "The practice tasks you did not finish in class."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1137
+msgid "Optional: `names.py` asks how many names the user will enter, reads them with `input()` in a loop into a list, and prints them sorted, without duplicates, and how many were duplicates."
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1140
+msgid "Optional: a word is a *palindrome* if it reads the same forwards and backwards, ignoring case (`\"Racecar\"`). Check it with a slice, for words typed by the user."
+msgstr ""
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:1143
+msgid "Read more"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1145
+msgid "Python tutorial: [Data structures](https://docs.python.org/3/tutorial/datastructures.html) (lists, `del`, tuples and sequences, sets)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1147
+msgid "Reference: [Sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range), [Set types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset), [`copy`](https://docs.python.org/3/library/copy.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1150
+msgid "Real Python: [Lists and tuples](https://realpython.com/python-lists-tuples/), [Sets](https://realpython.com/python-sets/)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1153
+msgid "**Next session:** functions - your own `def`, parameters and return values, and why a function is the Python version of a SAS macro."
+msgstr ""

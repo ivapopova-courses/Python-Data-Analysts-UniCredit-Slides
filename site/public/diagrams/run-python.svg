@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" width="920" height="340" role="img">
+<title>From your code to the result</title>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b616b"/></marker></defs>
+<text x="20" y="24" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#5b616b" text-anchor="start" xml:space="preserve">Your code</text>
+<rect x="20" y="40" width="230" height="76" rx="10" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="34" y="66" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">A script</text>
+<text x="34" y="90" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">python hello.py</text>
+<rect x="20" y="135" width="230" height="76" rx="10" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="34" y="161" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">The REPL</text>
+<text x="34" y="185" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">&gt;&gt;&gt; 2 + 3</text>
+<rect x="20" y="230" width="230" height="76" rx="10" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="34" y="256" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">A notebook cell</text>
+<text x="34" y="280" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">Shift+Enter</text>
+<path d="M252,78 L302,120" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<path d="M252,173 L302,170" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<path d="M252,268 L302,220" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="306" y="14" width="350" height="312" rx="10" fill="#e3edfb" stroke="#3b6fc4" stroke-width="2"/>
+<text x="481" y="42" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">The Python interpreter (CPython)</text>
+<rect x="326" y="62" width="310" height="64" rx="10" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="342" y="88" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">1. Check the syntax</text>
+<text x="342" y="111" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">a SyntaxError stops here</text>
+<path d="M481,126 L481,148" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="326" y="150" width="310" height="64" rx="10" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="342" y="176" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">2. Compile to bytecode</text>
+<text x="342" y="199" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">__pycache__/*.pyc</text>
+<path d="M481,214 L481,236" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="326" y="238" width="310" height="64" rx="10" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="342" y="264" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">3. Run the bytecode</text>
+<text x="342" y="287" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">in the Python virtual machine</text>
+<path d="M658,170 L704,170" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="708" y="70" width="196" height="200" rx="10" fill="#fdebd3" stroke="#c97a1c" stroke-width="2"/>
+<text x="722" y="96" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">The result</text>
+<text x="722" y="120" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">printed text</text>
+<text x="722" y="141" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">files, databases</text>
+<text x="722" y="162" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">tables, charts</text>
+<text x="722" y="183" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#c4302b" text-anchor="start" xml:space="preserve">or an error: a traceback</text>
+</svg>

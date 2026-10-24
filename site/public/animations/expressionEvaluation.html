@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How an expression is evaluated</title>
+<!--
+    Step-by-step animation: how Python evaluates an expression - precedence,
+    brackets, left to right, comparisons, and / or, mixed types.
+    Engine and look: anim.js, anim.css. Deep link: expressionEvaluation.html#3 (scenario 3),
+    #3.2 (its step 2); Bulgarian: ?lang=bg (bg/expressionEvaluation.html redirects there).
+-->
+<link rel="stylesheet" href="anim.css">
+<style>
+.stage { display: grid; grid-template-columns: minmax(0, 60fr) minmax(0, 40fr); gap: 1rem; }
+.left { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: .7rem; min-height: 0; }
+.history { display: flex; flex-direction: column; gap: .35rem; overflow: auto; font-family: var(--mono); }
+.hline { font-size: 1.05rem; color: var(--muted); padding: .15rem .5rem; white-space: pre; }
+.hline.sep { margin-top: .6rem; padding-top: .7rem; border-top: 1px dashed var(--line); }
+.hline.current { font-size: 1.6rem; font-weight: 600; color: var(--ink); padding: .5rem; border-radius: .4rem; background: var(--paper); }
+.hline.current.new { animation: pop .4s ease-out; }
+.hline .now { padding: .05rem .3rem; border-radius: .3rem; background: var(--read-bg); box-shadow: 0 0 0 2px var(--read); }
+.hline .res { padding: .05rem .3rem; border-radius: .3rem; background: var(--write-bg); box-shadow: 0 0 0 2px var(--write); font-weight: 700; }
+.hline .res.err { background: var(--err-bg); box-shadow: 0 0 0 2px var(--err); color: var(--err); }
+.hline:not(.current) .now, .hline:not(.current) .res { background: none; box-shadow: none; padding: 0; }
+.hline .hl-k { color: var(--ref); }
+.hline .hl-s { color: #3f8a3a; }
+.hline .hl-n { color: #b0600a; }
+.hline .hl-b { color: var(--read); }
+:root[data-theme="dark"] .hline .hl-s { color: #a5d986; }
+:root[data-theme="dark"] .hline .hl-n { color: #f7b267; }
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .hline .hl-s { color: #a5d986; }
+    :root:not([data-theme="light"]) .hline .hl-n { color: #f7b267; }
+}
+
+.prec { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.prec td { padding: .38rem .5rem; border-bottom: 1px solid var(--line); vertical-align: top; transition: background .25s; }
+.prec td:first-child { width: 2rem; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.prec td:nth-child(2) { font-family: var(--mono); font-weight: 700; white-space: nowrap; }
+.prec tr.active td { background: var(--read-bg); }
+.prec tr.active td:nth-child(2) { color: var(--read); }
+.prec-note { margin-top: .6rem; font-size: .78rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="app">
+    <header class="top">
+        <h1 id="title"></h1>
+        <nav class="tabs" id="tabs" role="tablist"></nav>
+        <a class="btn lang-btn" id="langBtn" href="#">BG</a>
+        <button class="btn icon-btn" id="themeBtn"></button>
+    </header>
+    <main class="stage">
+        <div class="left">
+            <section class="panel code-panel"><div class="panel-title" id="tCode"></div><ol class="code" id="code"></ol></section>
+            <section class="panel"><div class="panel-title" id="tExpr"></div><div class="history" id="history"></div></section>
+        </div>
+        <section class="panel">
+            <div class="panel-title" id="tPrec"></div>
+            <table class="prec" id="prec"></table>
+            <div class="prec-note" id="precNote"></div>
+        </section>
+    </main>
+    <footer class="bottom">
+        <div class="explain" id="explain"></div>
+        <div class="controls">
+            <button class="btn icon-btn" id="firstBtn"></button>
+            <button class="btn" id="prevBtn"></button>
+            <span class="counter" id="counter"></span>
+            <button class="btn" id="playBtn"></button>
+            <button class="btn primary" id="nextBtn"></button>
+        </div>
+    </footer>
+</div>
+<script src="anim.js"></script>
+<script>
+'use strict'
+const { tr, esc, highlightPy } = Anim
+
+// The order of operations, highest priority first
+const RULES = [
+    ['name', 'x', ['a name gives the value of its object', 'името дава стойността на своя обект']],
+    ['paren', '( )', ['brackets', 'скоби']],
+    ['call', 'f(x)', ['function calls: int(), str(), round()', 'извикване на функция: int(), str(), round()']],
+    ['pow', '**', ['power - from right to left', 'степенуване - отдясно наляво']],
+    ['neg', '-x', ['minus', 'минус']],
+    ['mul', '*  /  //  %', ['multiply, divide - from left to right', 'умножение, деление - отляво надясно']],
+    ['add', '+  -', ['add, subtract - from left to right', 'събиране, изваждане - отляво надясно']],
+    ['cmp', '== != < <= > >=', ['comparisons - can be chained', 'сравнения - могат да се свързват във верига']],
+    ['not', 'not', ['not', 'отрицание']],
+    ['and', 'and', ['and', 'и']],
+    ['or', 'or', ['or', 'или']],
+]
+
+// e: the expression; [[...]] is the part evaluated now, {{...}} the value it gave.
+// r: the row of the table that decides; sep: a new expression starts; err: an error.
+const SCENARIOS = [
+{
+    tab: ['Precedence', 'Приоритет'],
+    code: [],
+    steps: [
+        { e: '1000 + 2000 * 0.05',
+          t: ['Which operator first? Not simply from left to right, but by **priority**: `*` is above `+` in the table.',
+              'Кой оператор е първи? Не просто отляво надясно, а по **приоритет**: `*` е над `+` в таблицата.'] },
+        { e: '1000 + [[2000 * 0.05]]', r: 'mul',
+          t: ['So first `2000 * 0.05`.', 'Затова първо `2000 * 0.05`.'] },
+        { e: '1000 + {{100.0}}', r: 'mul',
+          t: ['An int times a float gives a float: 100.0.', 'int по float дава float: 100.0.'] },
+        { e: '[[1000 + 100.0]]', r: 'add',
+          t: ['Then the `+`.', 'След това `+`.'] },
+        { e: '{{1100.0}}', r: 'add',
+          t: ['The result is 1100.0 - a float, because one of the operands is a float.',
+              'Резултатът е 1100.0 - float, защото един от операндите е float.'] },
+    ],
+},
+{
+    tab: ['Brackets', 'Скоби'],
+    code: [],
+    steps: [
+        { e: '(1000 + 2000) * 0.05',
+          t: ['Brackets change the order: what is inside them comes first.',
+              'Скобите променят реда: първо е това, което е в тях.'] },
+        { e: '[[(1000 + 2000)]] * 0.05', r: 'paren',
+          t: ['`1000 + 2000` first, although `+` has a lower priority than `*`.',
+              'Първо `1000 + 2000`, въпреки че `+` е с по-нисък приоритет от `*`.'] },
+        { e: '{{3000}} * 0.05', r: 'paren',
+          t: ['Two ints give an int: 3000.', 'Два int дават int: 3000.'] },
+        { e: '[[3000 * 0.05]]', r: 'mul', t: ['Now the `*`.', 'Сега `*`.'] },
+        { e: '{{150.0}}', r: 'mul',
+          t: ['150.0. When you are not sure about the priority, add brackets - they also make the code easier to read.',
+              '150.0. Когато не сте сигурни в приоритета, сложете скоби - така и кодът се чете по-лесно.'] },
+    ],
+},
+{
+    tab: ['`**` and minus', '`**` и минус'],
+    code: [],
+    steps: [
+        { e: '-2 ** 2',
+          t: ['Is it (-2) squared, or minus (2 squared)?', '(-2) на квадрат ли е, или минус (2 на квадрат)?'] },
+        { e: '-[[2 ** 2]]', r: 'pow',
+          t: ['`**` is above the minus, so `2 ** 2` comes first.', '`**` е над минуса, затова първо е `2 ** 2`.'] },
+        { e: '-{{4}}', r: 'pow', t: ['4.', '4.'] },
+        { e: '{{-4}}', r: 'neg',
+          t: ['Then the minus: -4. To square a negative number, write `(-2) ** 2`.',
+              'След това минусът: -4. За да повдигнете отрицателно число на квадрат, пишете `(-2) ** 2`.'] },
+        { e: '2 ** 3 ** 2', sep: true,
+          t: ['Two `**` in a row.', 'Два `**` един след друг.'] },
+        { e: '2 ** [[3 ** 2]]', r: 'pow',
+          t: ['`**` is the one operator that goes from **right to left**: `3 ** 2` first.',
+              '`**` е единственият оператор, който върви **отдясно наляво**: първо `3 ** 2`.'] },
+        { e: '2 ** {{9}}', r: 'pow', t: ['9.', '9.'] },
+        { e: '[[2 ** 9]]', r: 'pow', t: ['Then 2 to the power of 9 ...', 'След това 2 на степен 9 ...'] },
+        { e: '{{512}}', r: 'pow',
+          t: ['... 512 (from left to right it would be 64).', '... 512 (отляво надясно би било 64).'] },
+    ],
+},
+{
+    tab: ['`//` and `%`', '`//` и `%`'],
+    code: ['days_past_due = 125'],
+    steps: [
+        { e: 'days_past_due // 30 * 30 + days_past_due % 30',
+          t: ['125 days past due: how many months of 30 days, and how many days more? And back to days.',
+              '125 дни просрочие: колко месеца по 30 дни и колко дни отгоре? И обратно към дни.'] },
+        { e: '[[days_past_due]] // 30 * 30 + [[days_past_due]] % 30', r: 'name',
+          t: ['First the names: Python gives each name the value of its object.',
+              'Първо имената: Python заменя всяко име със стойността на неговия обект.'] },
+        { e: '{{125}} // 30 * 30 + {{125}} % 30', r: 'name', t: ['125.', '125.'] },
+        { e: '[[125 // 30]] * 30 + 125 % 30', r: 'mul',
+          t: ['`//`, `*` and `%` have the same priority, so they go from left to right: `//` first. It gives the whole part.',
+              '`//`, `*` и `%` са с еднакъв приоритет, затова вървят отляво надясно: първо `//`. Дава цялата част.'] },
+        { e: '{{4}} * 30 + 125 % 30', r: 'mul', t: ['4 whole months.', '4 цели месеца.'] },
+        { e: '[[4 * 30]] + 125 % 30', r: 'mul', t: ['Then `*` ...', 'След това `*` ...'] },
+        { e: '{{120}} + 125 % 30', r: 'mul', t: ['... 120 days.', '... 120 дни.'] },
+        { e: '120 + [[125 % 30]]', r: 'mul',
+          t: ['`%` is above `+`, so it comes before the `+`. `%` gives the remainder.',
+              '`%` е над `+`, затова е преди `+`. `%` дава остатъка.'] },
+        { e: '120 + {{5}}', r: 'mul', t: ['5 days more.', '5 дни отгоре.'] },
+        { e: '[[120 + 5]]', r: 'add', t: ['Last the `+`.', 'Накрая `+`.'] },
+        { e: '{{125}}', r: 'add',
+          t: ['Back to 125: 4 months and 5 days. `//` and `%` always work in pairs like this.',
+              'Обратно 125: 4 месеца и 5 дни. `//` и `%` винаги работят в двойка така.'] },
+    ],
+},
+{
+    tab: ['Chained comparisons', 'Верига от сравнения'],
+    code: ['dpd = 45'],
+    steps: [
+        { e: '30 < dpd <= 90',
+          t: ['Is the loan 31 to 90 days past due? Like `BETWEEN` in SQL.',
+              'Кредитът между 31 и 90 дни просрочие ли е? Като `BETWEEN` в SQL.'] },
+        { e: '30 < [[dpd]] <= 90', r: 'name', t: ['The name first.', 'Първо името.'] },
+        { e: '30 < {{45}} <= 90', r: 'name', t: ['45.', '45.'] },
+        { e: '[[30 < 45]] and 45 <= 90', r: 'cmp',
+          t: ['A chain `a < b <= c` means `a < b and b <= c`. The first comparison ...',
+              'Веригата `a < b <= c` означава `a < b and b <= c`. Първото сравнение ...'] },
+        { e: '{{True}} and 45 <= 90', r: 'cmp', t: ['... is True.', '... е True.'] },
+        { e: 'True and [[45 <= 90]]', r: 'cmp', t: ['The second comparison ...', 'Второто сравнение ...'] },
+        { e: 'True and {{True}}', r: 'cmp', t: ['... is True too.', '... също е True.'] },
+        { e: '[[True and True]]', r: 'and', t: ['`and` is True only when both sides are True.', '`and` е True само когато и двете страни са True.'] },
+        { e: '{{True}}', r: 'and', t: ['So 45 is between 30 and 90.', 'Значи 45 е между 30 и 90.'] },
+    ],
+},
+{
+    tab: ['`and` / `or`', '`and` / `or`'],
+    code: ['dpd = 45', 'rating = 10'],
+    steps: [
+        { e: 'dpd > 90 or rating == 10 and dpd > 0',
+          t: ['A condition with `or` and `and` together.', 'Условие с `or` и `and` заедно.'] },
+        { e: '[[dpd]] > 90 or [[rating]] == 10 and [[dpd]] > 0', r: 'name', t: ['The names.', 'Имената.'] },
+        { e: '{{45}} > 90 or {{10}} == 10 and {{45}} > 0', r: 'name', t: ['Their values.', 'Техните стойности.'] },
+        { e: '[[45 > 90]] or 10 == 10 and 45 > 0', r: 'cmp',
+          t: ['Comparisons are above `not`, `and` and `or`, so they come first.',
+              'Сравненията са над `not`, `and` и `or`, затова са първи.'] },
+        { e: '{{False}} or 10 == 10 and 45 > 0', r: 'cmp', t: ['False.', 'False.'] },
+        { e: 'False or [[10 == 10]] and 45 > 0', r: 'cmp', t: ['`==` compares - it is not `=`.', '`==` сравнява - не е `=`.'] },
+        { e: 'False or {{True}} and 45 > 0', r: 'cmp', t: ['True.', 'True.'] },
+        { e: 'False or True and [[45 > 0]]', r: 'cmp', t: ['The last comparison.', 'Последното сравнение.'] },
+        { e: 'False or True and {{True}}', r: 'cmp', t: ['True.', 'True.'] },
+        { e: 'False or [[True and True]]', r: 'and',
+          t: ['`and` is above `or` - like `*` above `+`.', '`and` е над `or` - както `*` над `+`.'] },
+        { e: 'False or {{True}}', r: 'and', t: ['True.', 'True.'] },
+        { e: '[[False or True]]', r: 'or', t: ['`or` is True when at least one side is True.', '`or` е True, когато поне едната страна е True.'] },
+        { e: '{{True}}', r: 'or',
+          t: ['True. With brackets it is clearer: `dpd > 90 or (rating == 10 and dpd > 0)`. How `and` / `or` skip what they do not need: session 2.',
+              'True. Със скоби е по-ясно: `dpd > 90 or (rating == 10 and dpd > 0)`. Как `and` / `or` пропускат ненужното: занятие 2.'] },
+    ],
+},
+{
+    tab: ['Mixed types', 'Смесени типове'],
+    code: ['amount = 1000'],
+    steps: [
+        { e: '"EUR " + str(amount * 1.5)',
+          t: ['A text built from a string and a number.', 'Текст от string и число.'] },
+        { e: '"EUR " + str([[amount]] * 1.5)', r: 'name', t: ['The name.', 'Името.'] },
+        { e: '"EUR " + str({{1000}} * 1.5)', r: 'name', t: ['1000.', '1000.'] },
+        { e: '"EUR " + str([[1000 * 1.5]])', r: 'call',
+          t: ['A function needs its argument first: what is inside the brackets of `str( )`.',
+              'Функцията първо има нужда от аргумента си: това, което е в скобите на `str( )`.'] },
+        { e: '"EUR " + str({{1500.0}})', r: 'call', t: ['1500.0 - a float.', '1500.0 - float.'] },
+        { e: '"EUR " + [[str(1500.0)]]', r: 'call', t: ['Now the call: `str()` turns the float into text.', 'Сега извикването: `str()` превръща float в текст.'] },
+        { e: '"EUR " + {{"1500.0"}}', r: 'call', t: ['A string.', 'Низ (string).'] },
+        { e: '[["EUR " + "1500.0"]]', r: 'add', t: ['`+` with two strings joins them.', '`+` с два низа ги съединява.'] },
+        { e: '{{"EUR 1500.0"}}', r: 'add', t: ['The result.', 'Резултатът.'] },
+        { e: '"EUR " + amount', sep: true,
+          t: ['And without `str()`?', 'А без `str()`?'] },
+        { e: '"EUR " + [[amount]]', r: 'name', t: ['The name gives 1000, an int.', 'Името дава 1000, int.'] },
+        { e: '[["EUR " + 1000]]', r: 'add', t: ['A string plus an int ...', 'String плюс int ...'] },
+        { e: '{{TypeError}}', r: 'add', err: true,
+          t: ['... is an error: `TypeError: can only concatenate str (not "int") to str`. Python does not convert by itself - use `str()` or an f-string.',
+              '... е грешка: `TypeError: can only concatenate str (not "int") to str`. Python не преобразува сам - ползвайте `str()` или f-string.'] },
+    ],
+},
+]
+
+function build(sc) {
+    const states = [{ i: -1, text: ['Press **Next** (or the Right arrow) to evaluate the expression step by step.',
+                                   'Натиснете **Напред** (или стрелка надясно), за да изчислите израза стъпка по стъпка.'] }]
+    sc.steps.forEach((st, i) => states.push({ i, text: st.t }))
+    return states
+}
+
+const $ = id => document.getElementById(id)
+$('tCode').textContent = tr(['Values', 'Стойности'])
+$('tExpr').textContent = tr(['The expression, step by step', 'Изразът, стъпка по стъпка'])
+$('tPrec').textContent = tr(['Order of operations', 'Ред на операциите'])
+$('precNote').textContent = tr(['Higher in the table = earlier. The same row: from left to right (except **).',
+                                'По-високо в таблицата = по-рано. На един ред: отляво надясно (освен **).'])
+
+function drawExpr(e, err) {
+    let html = ''
+    const re = /\[\[(.*?)\]\]|\{\{(.*?)\}\}/g
+    let last = 0
+    let m
+    while ((m = re.exec(e))) {
+        html += highlightPy(e.slice(last, m.index))
+        if (m[1] !== undefined) html += `<span class="now">${highlightPy(m[1])}</span>`
+        else html += `<span class="res${err ? ' err' : ''}">${highlightPy(m[2])}</span>`
+        last = re.lastIndex
+    }
+    return html + highlightPy(e.slice(last))
+}
+
+function render(sc, s, prev) {
+    $('code').innerHTML = sc.code.length
+        ? sc.code.map((l, i) => `<li><span class="ln">${i + 1}</span><span>${highlightPy(l)}</span></li>`).join('')
+        : `<li><span class="ln"></span><span class="hl-c"># ${esc(tr(['only numbers here', 'тук само числа']))}</span></li>`
+    const lines = []
+    for (let i = 0; i <= s.i; i++) {
+        const st = sc.steps[i]
+        const cls = ['hline', st.sep ? 'sep' : '', i === s.i ? 'current' : '', i === s.i && prev ? 'new' : ''].join(' ')
+        lines.push(`<div class="${cls}">${drawExpr(st.e, st.err)}</div>`)
+    }
+    $('history').innerHTML = lines.join('') || `<span class="empty">-</span>`
+    $('history').scrollTop = 1e6
+    const rule = s.i >= 0 ? sc.steps[s.i].r : null
+    $('prec').innerHTML = RULES.map(([id, op, text], i) =>
+        `<tr class="${id === rule ? 'active' : ''}"><td>${i + 1}</td><td>${esc(op)}</td><td>${esc(tr(text))}</td></tr>`).join('')
+}
+
+Anim.start({
+    title: ['How an expression is evaluated', 'Как се изчислява израз'],
+    subtitle: ['Precedence, brackets, comparisons, types', 'Приоритет, скоби, сравнения, типове'],
+    scenarios: SCENARIOS,
+    build,
+    render,
+    playMs: 2200,
+})
+</script>
+</body>
+</html>

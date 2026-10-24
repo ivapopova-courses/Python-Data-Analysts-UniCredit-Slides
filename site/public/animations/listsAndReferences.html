@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lists and references</title>
+<!--
+    Step-by-step animation: a list is a mutable object; two names can point to one
+    list; copies; sort() and sorted(); tuples cannot change; a list inside a tuple.
+    Engine and look: anim.js, anim.css. Deep link: listsAndReferences.html#3
+    (scenario 3), #3.2 (its step 2); Bulgarian: ?lang=bg
+    (bg/listsAndReferences.html redirects there).
+-->
+<link rel="stylesheet" href="anim.css">
+<style>
+.stage { display: grid; grid-template-columns: minmax(0, 40fr) minmax(0, 60fr); gap: 1rem; }
+.left { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: .7rem; min-height: 0; }
+
+.mem { display: flex; flex-direction: column; }
+.mem-head { display: grid; grid-template-columns: 9rem 1fr 22rem 4rem; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+.mem-grid { position: relative; display: grid; grid-template-columns: 9rem 1fr 22rem 4rem; flex: 1; min-height: 0; }
+.names, .objects { display: flex; flex-direction: column; gap: 1.1rem; position: relative; z-index: 1; }
+.objects { grid-column: 3; }
+.namechip {
+    align-self: flex-start;
+    padding: .45rem .8rem;
+    border: 2px solid var(--name-border); border-radius: .5rem;
+    background: var(--name-bg); color: var(--name-ink);
+    font-family: var(--mono); font-size: 1.15rem; font-weight: 700;
+    transition: box-shadow .25s;
+}
+.obj {
+    position: relative; align-self: flex-start;
+    padding: 1.1rem .7rem .45rem;
+    border: 2px solid var(--obj-border); border-radius: .6rem;
+    background: var(--obj-bg);
+    transition: box-shadow .25s, opacity .4s;
+}
+.obj .type { position: absolute; top: .2rem; left: .6rem; font-size: .66rem; font-weight: 700; letter-spacing: .04em; color: var(--muted); }
+.obj .oid { position: absolute; top: .2rem; right: .6rem; font-family: var(--mono); font-size: .66rem; color: var(--muted); }
+.obj .val { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; padding: 0 .3rem; }
+.cells { display: flex; gap: .3rem; }
+.cell { min-width: 2.6rem; padding: .3rem .5rem; border: 1.5px solid var(--obj-border); border-radius: .3rem; background: var(--panel); font-family: var(--mono); font-size: 1.1rem; font-weight: 700; text-align: center; }
+.cell small { display: block; font-size: .6rem; font-weight: 400; color: var(--muted); }
+.cell.ref { color: var(--ref); }
+.cell.chg { box-shadow: 0 0 0 2px var(--write); background: var(--write-bg); }
+.obj.tuple .cell { border-style: dashed; }
+.obj.gone { background: var(--gone-bg); border-color: var(--gone-border); border-style: dashed; opacity: .55; }
+.obj.gone::after { content: attr(data-gc); position: absolute; right: .5rem; bottom: -1.1rem; font-size: .66rem; font-weight: 700; color: var(--err); }
+.hl-new { animation: pop .45s ease-out; box-shadow: 0 0 0 3px var(--name-border); }
+.obj.hl-new { box-shadow: 0 0 0 3px var(--obj-border); }
+.hl-read { box-shadow: 0 0 0 3px var(--read), 0 0 0 7px var(--read-bg); }
+.hl-write { box-shadow: 0 0 0 3px var(--write), 0 0 0 7px var(--write-bg); }
+.hl-err { box-shadow: 0 0 0 3px var(--err), 0 0 0 7px var(--err-bg); animation: shake .35s; }
+.arrows { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.arrows path { fill: none; stroke: var(--ref); stroke-width: 2.4; }
+.arrows path.write { stroke: var(--write); stroke-width: 3; }
+.arrows path.read { stroke: var(--read); stroke-width: 3; }
+.arrows path.draw { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw .7s ease-out forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+</style>
+</head>
+<body>
+<div class="app">
+    <header class="top">
+        <h1 id="title"></h1>
+        <nav class="tabs" id="tabs" role="tablist"></nav>
+        <a class="btn lang-btn" id="langBtn" href="#">BG</a>
+        <button class="btn icon-btn" id="themeBtn"></button>
+    </header>
+    <main class="stage">
+        <div class="left">
+            <section class="panel code-panel"><div class="panel-title" id="tCode"></div><ol class="code" id="code"></ol></section>
+            <section class="panel"><div class="panel-title" id="tOut"></div><div class="console" id="console"></div></section>
+        </div>
+        <section class="panel mem">
+            <div class="mem-head"><span id="tNames"></span><span></span><span id="tObjects"></span><span></span></div>
+            <div class="mem-grid" id="grid">
+                <div class="names" id="names"></div>
+                <div class="objects" id="objects"></div>
+                <svg class="arrows" id="arrows"><defs><marker id="ah-ref" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill: var(--ref)"/></marker><marker id="ah-write" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill: var(--write)"/></marker><marker id="ah-read" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill: var(--read)"/></marker></defs><g id="paths"></g></svg>
+            </div>
+        </section>
+    </main>
+    <footer class="bottom">
+        <div class="explain" id="explain"></div>
+        <div class="controls">
+            <button class="btn icon-btn" id="firstBtn"></button>
+            <button class="btn" id="prevBtn"></button>
+            <span class="counter" id="counter"></span>
+            <button class="btn" id="playBtn"></button>
+            <button class="btn primary" id="nextBtn"></button>
+        </div>
+    </footer>
+</div>
+<script src="anim.js"></script>
+<script>
+'use strict'
+const { tr, esc, highlightPy } = Anim
+
+// ---------- the steps: helpers that change a copy of the state ----------
+// an object: { key, type, id, cells: [{ v } | { ref }] } for list / tuple, or { key, type, id, repr }
+let nextId = 0
+function obj(s, key, type, cells) {
+    const o = { key, type, id: 4400 + 16 * nextId++, gone: false }
+    if (Array.isArray(cells)) o.cells = cells.map(c => (typeof c === 'object' ? c : { v: String(c) }))
+    else o.repr = cells
+    s.objects.push(o)
+    s.hlO[key] = 'new'
+}
+const find = (s, key) => s.objects.find(o => o.key === key)
+function bind(s, name, key) {
+    const n = s.names.find(n => n.name === name)
+    if (n) { n.key = key; s.hlN[name] = 'write' } else { s.names.push({ name, key }); s.hlN[name] = 'new' }
+    s.hlO[key] = s.hlO[key] || 'write'
+    s.arrow[name] = 'write'
+}
+function read(s, ...names) {
+    for (const name of names) {
+        const n = s.names.find(n => n.name === name)
+        s.hlN[name] = 'read'
+        s.hlO[n.key] = s.hlO[n.key] || 'read'
+        s.arrow[name] = 'read'
+    }
+}
+function change(s, key, cells, changed = []) {
+    const o = find(s, key)
+    o.cells = cells.map(c => (typeof c === 'object' ? c : { v: String(c) }))
+    o.changed = changed
+    s.hlO[key] = 'write'
+}
+function err(s, key) { s.hlO[key] = 'err' }
+function gone(s, key) { find(s, key).gone = true }
+function clean(s) { s.objects = s.objects.filter(o => !o.gone) }
+function out(s, text, isErr = false) { s.out.push({ text, err: isErr }) }
+
+const T = (en, bg) => [en, bg]
+
+const SCENARIOS = [
+{
+    tab: T('A list changes in place', 'Списъкът се променя на място'),
+    code: ['stages = [1, 2]', 'print(id(stages))', 'stages.append(3)', 'stages[0] = 9', 'print(stages, id(stages))'],
+    steps: [
+        { line: 1, do: s => { obj(s, 'l', 'list', [1, 2]); bind(s, 'stages', 'l') },
+          text: T('A **list object** with two items, and the name `stages` bound to it.',
+                  '**Обект списък** с два елемента и името `stages`, свързано с него.') },
+        { line: 2, do: s => { read(s, 'stages'); out(s, '4400') },
+          text: T('`id()` gives the identity of the object: 4400 here.', '`id()` дава идентичността на обекта: тук 4400.') },
+        { line: 3, do: s => { read(s, 'stages'); change(s, 'l', [1, 2, 3], [2]) },
+          text: T('`append` adds an item to **the same object**. No new object is made, and the name does not move.',
+                  '`append` добавя елемент към **същия обект**. Не се създава нов обект и името не се премества.') },
+        { line: 4, do: s => { read(s, 'stages'); change(s, 'l', [9, 2, 3], [0]) },
+          text: T('`stages[0] = 9` changes one item - again in place. A list is **mutable**.',
+                  '`stages[0] = 9` променя един елемент - отново на място. Списъкът е **mutable** (променим).') },
+        { line: 5, do: s => { read(s, 'stages'); out(s, '[9, 2, 3] 4400') },
+          text: T('The same id: it is still the same list. Numbers and strings never change like this - a new value is always a new object (session 1).',
+                  'Същото id: това е все още същият списък. Числата и низовете никога не се променят така - нова стойност винаги е нов обект (занятие 1).') },
+    ],
+},
+{
+    tab: T('Two names, one list', 'Две имена, един списък'),
+    code: ['a = [1, 2]', 'b = a', 'b.append(3)', 'print(a)', 'print(a is b)'],
+    steps: [
+        { line: 1, do: s => { obj(s, 'l', 'list', [1, 2]); bind(s, 'a', 'l') },
+          text: T('A list and the name `a`.', 'Списък и името `a`.') },
+        { line: 2, do: s => { read(s, 'a'); bind(s, 'b', 'l') },
+          text: T('`b = a` does **not** copy the list. It binds `b` to the **same object**.',
+                  '`b = a` **не** копира списъка. Свързва `b` със **същия обект**.') },
+        { line: 3, do: s => { read(s, 'b'); change(s, 'l', [1, 2, 3], [2]) },
+          text: T('`b.append(3)` changes the object that `b` points to ...', '`b.append(3)` променя обекта, към който сочи `b` ...') },
+        { line: 4, do: s => { read(s, 'a'); out(s, '[1, 2, 3]') },
+          text: T('... and `a` points to the same object - so `a` "changed" too. This surprises everybody once.',
+                  '... а `a` сочи към същия обект - затова и `a` се "промени". Това изненадва всеки поне веднъж.') },
+        { line: 5, do: s => { read(s, 'a', 'b'); out(s, 'True') },
+          text: T('`a is b`: one object, two names.', '`a is b`: един обект, две имена.') },
+    ],
+},
+{
+    tab: T('A copy', 'Копие'),
+    code: ['a = [1, 2]', 'b = a.copy()', 'b.append(3)', 'print(a, b)', 'print(a is b)'],
+    steps: [
+        { line: 1, do: s => { obj(s, 'l', 'list', [1, 2]); bind(s, 'a', 'l') },
+          text: T('A list and the name `a`.', 'Списък и името `a`.') },
+        { line: 2, do: s => { read(s, 'a'); obj(s, 'c', 'list', [1, 2]); bind(s, 'b', 'c') },
+          text: T('`a.copy()` makes a **new list object** with the same items. (`a[:]` and `list(a)` do the same.)',
+                  '`a.copy()` създава **нов обект списък** със същите елементи. (`a[:]` и `list(a)` правят същото.)') },
+        { line: 3, do: s => { read(s, 'b'); change(s, 'c', [1, 2, 3], [2]) },
+          text: T('Now `b.append(3)` changes only the copy.', 'Сега `b.append(3)` променя само копието.') },
+        { line: 4, do: s => { read(s, 'a', 'b'); out(s, '[1, 2] [1, 2, 3]') },
+          text: T('`a` is not changed.', '`a` не е променен.') },
+        { line: 5, do: s => { read(s, 'a', 'b'); out(s, 'False') },
+          text: T('Two different objects. Make a copy when a list must stay as it is - for example the input data of a report.',
+                  'Два различни обекта. Правете копие, когато един списък трябва да остане непроменен - например входните данни на отчет.') },
+    ],
+},
+{
+    tab: T('`sort()` and `sorted()`', '`sort()` и `sorted()`'),
+    code: ['x = [3, 1, 2]', 'y = sorted(x)', 'x.sort()', 'z = x.sort()', 'print(x, y, z)'],
+    steps: [
+        { line: 1, do: s => { obj(s, 'l', 'list', [3, 1, 2]); bind(s, 'x', 'l') },
+          text: T('An unsorted list.', 'Несортиран списък.') },
+        { line: 2, do: s => { read(s, 'x'); obj(s, 's', 'list', [1, 2, 3]); bind(s, 'y', 's') },
+          text: T('`sorted(x)` makes a **new**, sorted list. `x` is not touched.',
+                  '`sorted(x)` създава **нов**, сортиран списък. `x` не се пипа.') },
+        { line: 3, do: s => { read(s, 'x'); change(s, 'l', [1, 2, 3], [0, 1, 2]) },
+          text: T('`x.sort()` sorts the list **in place**: the same object, in a new order.',
+                  '`x.sort()` сортира списъка **на място**: същият обект, в нов ред.') },
+        { line: 4, do: s => { read(s, 'x'); obj(s, 'n', 'NoneType', 'None'); bind(s, 'z', 'n') },
+          text: T('`sort()` changes the list and returns `None` - so `z` is `None`. Never write `x = x.sort()`: it loses the list.',
+                  '`sort()` променя списъка и връща `None` - затова `z` е `None`. Никога не пишете `x = x.sort()`: така губите списъка.') },
+        { line: 5, do: s => { read(s, 'x', 'y', 'z'); out(s, '[1, 2, 3] [1, 2, 3] None') },
+          text: T('`x` and `y` look the same, but they are two objects.', '`x` и `y` изглеждат еднакво, но са два обекта.') },
+    ],
+},
+{
+    tab: T('A tuple cannot change', 'Кортежът не може да се променя'),
+    code: ['t = (1, 2)', 't[0] = 9', 't = t + (3,)', 'print(t)'],
+    steps: [
+        { line: 1, do: s => { obj(s, 't1', 'tuple', [1, 2]); bind(s, 't', 't1') },
+          text: T('A **tuple** object. Its items are fixed for ever.', 'Обект **кортеж** (tuple). Елементите му са фиксирани завинаги.') },
+        { line: 2, do: s => { read(s, 't'); err(s, 't1'); out(s, "TypeError: 'tuple' object does not support item assignment", true) },
+          text: T('Changing an item is an **error**: a tuple is **immutable**.', 'Промяната на елемент е **грешка**: кортежът е **immutable** (непроменим).') },
+        { line: 3, do: s => { read(s, 't'); obj(s, 't2', 'tuple', [1, 2, 3]); bind(s, 't', 't2'); gone(s, 't1') },
+          text: T('`t + (3,)` makes a **new** tuple, and the name `t` moves to it - like `x = x + 1` with numbers.',
+                  '`t + (3,)` създава **нов** кортеж и името `t` се премества към него - като `x = x + 1` при числата.') },
+        { line: 4, do: s => { clean(s); read(s, 't'); out(s, '(1, 2, 3)') },
+          text: T('The old tuple had no name left, so the garbage collector removed it.', 'Старият кортеж остана без име и garbage collector-ът го изтри.') },
+    ],
+},
+{
+    tab: T('A list inside a tuple', 'Списък в кортеж'),
+    advanced: true,
+    code: ['loan = ("L01", [100, 200])', 'loan[1].append(300)', 'print(loan)', 'loan[1] = [0]'],
+    steps: [
+        { line: 1, do: s => { obj(s, 't', 'tuple', ['"L01"', { ref: 'l' }]); obj(s, 'l', 'list', [100, 200]); bind(s, 'loan', 't') },
+          text: T('A tuple with two items: a string and a **list**. The tuple holds a **reference** to the list - an arrow, like a name.',
+                  'Кортеж с два елемента: низ и **списък**. Кортежът държи **референция** към списъка - стрелка, като име.') },
+        { line: 2, do: s => { read(s, 'loan'); s.hlO.l = 'read'; change(s, 'l', [100, 200, 300], [2]) },
+          text: T('`loan[1]` follows the arrow to the list, and `append` changes **the list**. The tuple did not change: it still points to the same list.',
+                  '`loan[1]` следва стрелката до списъка, а `append` променя **списъка**. Кортежът не се е променил: все още сочи към същия списък.') },
+        { line: 3, do: s => { read(s, 'loan'); out(s, "('L01', [100, 200, 300])") },
+          text: T('So the content of a tuple can change - through a mutable item.', 'Така съдържанието на кортеж може да се промени - чрез променлив елемент.') },
+        { line: 4, do: s => { read(s, 'loan'); err(s, 't'); out(s, "TypeError: 'tuple' object does not support item assignment", true) },
+          text: T('But the tuple itself cannot point to **another** object: `loan[1] = [0]` is an error.',
+                  'Но самият кортеж не може да сочи към **друг** обект: `loan[1] = [0]` е грешка.') },
+    ],
+},
+]
+
+// ---------- the states of a scenario ----------
+function build(sc) {
+    nextId = 0
+    let s = { names: [], objects: [], out: [] }
+    const states = [{ ...s, hlN: {}, hlO: {}, arrow: {}, line: 0,
+        text: T('Press **Next** (or the Right arrow) to run the code step by step.',
+                'Натиснете **Напред** (или стрелка надясно), за да изпълните кода стъпка по стъпка.') }]
+    for (const st of sc.steps) {
+        s = structuredClone({ names: s.names, objects: s.objects, out: s.out })
+        for (const o of s.objects) delete o.changed
+        Object.assign(s, { hlN: {}, hlO: {}, arrow: {} })
+        st.do(s)
+        s.line = st.line
+        s.text = st.text
+        states.push(s)
+    }
+    return states
+}
+
+// ---------- drawing ----------
+const $ = id => document.getElementById(id)
+$('tCode').textContent = tr(['Code', 'Код'])
+$('tOut').textContent = tr(['Output', 'Изход'])
+$('tNames').textContent = tr(['Names', 'Имена'])
+$('tObjects').textContent = tr(['Objects in memory', 'Обекти в паметта'])
+const GC = tr(['garbage collector', 'garbage collector'])
+
+function objHtml(o, hl) {
+    const head = `<span class="type">${esc(o.type)}</span><span class="oid">id ${o.id}</span>`
+    const body = o.cells
+        ? `<div class="cells">${o.cells.map((c, i) => c.ref
+            ? `<div class="cell ref" data-from="${o.key}-${i}" data-to="${c.ref}">&#8226;<small>${i}</small></div>`
+            : `<div class="cell${(o.changed || []).includes(i) ? ' chg' : ''}">${esc(c.v)}<small>${i}</small></div>`).join('')}</div>`
+        : `<span class="val">${esc(o.repr)}</span>`
+    return `<div class="obj ${o.type}${o.gone ? ' gone' : ''}${hl ? ' hl-' + hl : ''}" data-key="${o.key}" data-gc="${esc(GC)}">${head}${body}</div>`
+}
+
+function render(sc, s, prev) {
+    $('code').innerHTML = sc.code.map((l, i) =>
+        `<li class="${i + 1 === s.line ? 'active' : ''}"><span class="ln">${i + 1}</span><span>${highlightPy(l)}</span></li>`).join('')
+    const before = prev ? prev.out.length : s.out.length
+    $('console').innerHTML = s.out.length
+        ? s.out.map((o, i) => `<div class="cline${o.err ? ' err' : ''}${i >= before ? ' new' : ''}">${esc(o.text)}</div>`).join('')
+        : `<span class="empty">-</span>`
+    document.body.classList.toggle('static', !prev)
+    $('names').innerHTML = s.names.map(n =>
+        `<div class="namechip${s.hlN[n.name] ? ' hl-' + s.hlN[n.name] : ''}" data-name="${esc(n.name)}">${esc(n.name)}</div>`).join('')
+    $('objects').innerHTML = s.objects.map(o => objHtml(o, s.hlO[o.key])).join('')
+    drawArrows(s, prev)
+}
+
+function drawArrows(s, prev) {
+    const grid = $('grid').getBoundingClientRect()
+    const paths = []
+    for (const n of s.names) {
+        const a = document.querySelector(`.namechip[data-name="${CSS.escape(n.name)}"]`).getBoundingClientRect()
+        const b = document.querySelector(`.obj[data-key="${n.key}"]`).getBoundingClientRect()
+        const x1 = a.right - grid.left + 2
+        const y1 = a.top + a.height / 2 - grid.top
+        const x2 = b.left - grid.left - 4
+        const y2 = b.top + b.height / 2 - grid.top
+        const dx = (x2 - x1) / 2
+        const changed = prev && (!prev.names.find(p => p.name === n.name) || prev.names.find(p => p.name === n.name).key !== n.key)
+        const cls = [s.arrow[n.name] || '', changed ? 'draw' : ''].join(' ')
+        paths.push(`<path class="${cls}" marker-end="url(#ah-${s.arrow[n.name] || 'ref'})" d="M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}"/>`)
+    }
+    // references from the cells of a tuple / list to other objects: out to the right and back
+    for (const cell of document.querySelectorAll('.cell.ref')) {
+        const a = cell.getBoundingClientRect()
+        const b = document.querySelector(`.obj[data-key="${cell.dataset.to}"]`).getBoundingClientRect()
+        const x1 = a.right - grid.left
+        const y1 = a.top + a.height / 2 - grid.top
+        const x2 = b.right - grid.left + 4
+        const y2 = b.top + b.height / 2 - grid.top
+        const out = Math.max(x1, x2) + 50
+        paths.push(`<path marker-end="url(#ah-ref)" d="M${x1},${y1} C${out},${y1} ${out},${y2} ${x2},${y2}"/>`)
+    }
+    $('paths').innerHTML = paths.join('')
+}
+
+Anim.start({
+    title: ['Lists and references', 'Списъци и референции'],
+    subtitle: ['Mutable lists, copies, immutable tuples', 'Променливи списъци, копия, непроменими кортежи'],
+    scenarios: SCENARIOS,
+    build,
+    render,
+})
+</script>
+</body>
+</html>

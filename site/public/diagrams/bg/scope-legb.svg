@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img">
+<title>Къде Python търси едно име: L, E, G, B</title>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b616b"/></marker></defs>
+<rect x="15" y="15" width="600" height="370" rx="10" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="32" y="42" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">B - Built-in: имената на Python</text>
+<text x="32" y="64" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">print, len, sum, range, round, ...</text>
+<rect x="35" y="80" width="560" height="290" rx="10" fill="#e3edfb" stroke="#3b6fc4" stroke-width="2"/>
+<text x="52" y="106" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">G - Global: имената на файла (модула)</text>
+<text x="52" y="128" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">REPORT_DATE = "2026-09-30"</text>
+<rect x="55" y="145" width="520" height="210" rx="10" fill="#fdebd3" stroke="#c97a1c" stroke-width="2"/>
+<text x="72" y="171" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">E - Enclosing: обхващащата функция</text>
+<text x="72" y="193" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">def report(loans):</text>
+<text x="72" y="212" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">    currency = "EUR"</text>
+<rect x="75" y="228" width="480" height="112" rx="10" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="92" y="254" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="15" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">L - Local: функцията, която се изпълнява</text>
+<text x="92" y="276" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">    def line(amount):</text>
+<text x="92" y="295" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">        text = f"{amount:,.2f} {currency}"</text>
+<text x="92" y="314" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">        return text</text>
+<path d="M560,300 L600,300 L600,40" fill="none" stroke="#c4302b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="640" y="60" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">Python търси отвътре навън:</text>
+<text x="640" y="86" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">L -&gt; E -&gt; G -&gt; B</text>
+<text x="640" y="108" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">използва първото намерено име;</text>
+<text x="640" y="130" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#c4302b" text-anchor="start" xml:space="preserve">не е намерено никъде: NameError</text>
+<text x="640" y="200" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">Присвояване във функция</text>
+<text x="640" y="220" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">създава ЛОКАЛНО име - освен ако</text>
+<text x="640" y="240" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">global / nonlocal не казва друго.</text>
+</svg>

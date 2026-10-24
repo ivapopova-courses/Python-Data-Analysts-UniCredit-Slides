@@ -1,0 +1,194 @@
+# Translation of site/sample-data.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: Claude Opus 5.5 (machine translation - to review)\n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/sample-data.md\n"
+
+#. heading 1
+#: site/sample-data.md:1
+msgid "Sample data"
+msgstr "Примерни данни"
+
+#. paragraph
+#: site/sample-data.md:3
+msgid "The examples on these pages and the tasks in the Homework repository use the same small, **made-up** loan portfolio. Nothing in it comes from a real bank: the clients, the loans and all values are invented. Only the shape is typical: a table of clients, a table of loans that points to the clients, and a nomenclature (the rating scale)."
+msgstr "Примерите на тези страници и задачите в Homework repository използват един и същ малък, **измислен** кредитен портфейл. Нищо в него не идва от истинска банка: клиентите, кредитите и всички стойности са измислени. Типична е само формата: таблица с клиенти, таблица с кредити, която сочи към клиентите, и номенклатура (рейтинговата скала)."
+
+#. table cell
+#: site/sample-data.md:9
+msgid "File"
+msgstr "Файл"
+
+#. table cell
+#: site/sample-data.md:9
+msgid "Rows"
+msgstr "Редове"
+
+#. table cell
+#: site/sample-data.md:9
+msgid "What it is"
+msgstr "Какво е"
+
+#. table cell
+#: site/sample-data.md:11
+msgid "one row per client"
+msgstr "по един ред за всеки клиент"
+
+#. table cell
+#: site/sample-data.md:12
+msgid "one row per loan; `client_id` points to `clients.csv`"
+msgstr "по един ред за всеки кредит; `client_id` сочи към `clients.csv`"
+
+#. table cell
+#: site/sample-data.md:13
+msgid "the rating scale: one row per rating grade, with its PD band"
+msgstr "рейтинговата скала: по един ред за всеки рейтингов клас, с неговия PD интервал"
+
+#. paragraph
+#: site/sample-data.md:15
+msgid "The same files are in the `data/` folder of the Homework repository. On these pages they are in `data/` of every runnable example."
+msgstr "Същите файлове са в папката `data/` на Homework repository. На тези страници те са в `data/` на всеки пример, който може да се пусне."
+
+#. heading 2
+#: site/sample-data.md:18
+msgid "clients.csv"
+msgstr "clients.csv"
+
+#. table cell
+#: site/sample-data.md:20 site/sample-data.md:38 site/sample-data.md:63
+msgid "Column"
+msgstr "Колона"
+
+#. table cell
+#: site/sample-data.md:20 site/sample-data.md:38 site/sample-data.md:63
+msgid "Example"
+msgstr "Пример"
+
+#. table cell
+#: site/sample-data.md:20 site/sample-data.md:38 site/sample-data.md:63
+msgid "Meaning"
+msgstr "Значение"
+
+#. table cell
+#: site/sample-data.md:22
+msgid "the id of the client"
+msgstr "идентификаторът на клиента"
+
+#. table cell
+#: site/sample-data.md:23
+msgid "`retail`, `sme` or `corporate`"
+msgstr "`retail`, `sme` или `corporate`"
+
+#. table cell
+#: site/sample-data.md:24
+msgid "the region of the client"
+msgstr "регионът на клиента"
+
+#. table cell
+#: site/sample-data.md:25
+msgid "an industry code (a letter, like the sections of NACE); empty for retail clients"
+msgstr "код на икономическата дейност (буква, като секциите на NACE / КИД); празен за клиентите на дребно"
+
+#. table cell
+#: site/sample-data.md:26
+msgid "the internal rating, 1 (best) to 10 (default) - see `rating_scale.csv`"
+msgstr "вътрешният рейтинг, от 1 (най-добър) до 10 (неизпълнение) - вижте `rating_scale.csv`"
+
+#. table cell
+#: site/sample-data.md:27
+msgid "the start of the relationship (ISO date)"
+msgstr "началото на отношенията с клиента (дата във формат ISO)"
+
+#. heading 2
+#: site/sample-data.md:36
+msgid "loans.csv"
+msgstr "loans.csv"
+
+#. table cell
+#: site/sample-data.md:40
+msgid "the id of the loan"
+msgstr "идентификаторът на кредита"
+
+#. table cell
+#: site/sample-data.md:41
+msgid "the client (see `clients.csv`)"
+msgstr "клиентът (вижте `clients.csv`)"
+
+#. table cell
+#: site/sample-data.md:43
+msgid "`EUR` or `USD`"
+msgstr "`EUR` или `USD`"
+
+#. table cell
+#: site/sample-data.md:44
+msgid "ISO dates"
+msgstr "дати във формат ISO"
+
+#. table cell
+#: site/sample-data.md:45
+msgid "the original amount"
+msgstr "първоначалната сума"
+
+#. table cell
+#: site/sample-data.md:46
+msgid "the amount still to be paid on the report date (30.09.2026)"
+msgstr "сумата, която остава за плащане към отчетната дата (30.09.2026)"
+
+#. table cell
+#: site/sample-data.md:47
+msgid "in percent per year"
+msgstr "в проценти годишно"
+
+#. table cell
+#: site/sample-data.md:48
+msgid "days the payments are late"
+msgstr "дни, с които плащанията закъсняват"
+
+#. table cell
+#: site/sample-data.md:49
+msgid "1, 2 or 3 - stage 3 means more than 90 days past due or rating 10"
+msgstr "1, 2 или 3 - stage 3 означава повече от 90 дни просрочие или рейтинг 10"
+
+#. heading 2
+#: site/sample-data.md:58
+msgid "rating_scale.csv"
+msgstr "rating_scale.csv"
+
+#. paragraph
+#: site/sample-data.md:60
+msgid "A nomenclature: one row per rating, with its grade and the band of the probability of default (PD)."
+msgstr "Номенклатура: по един ред за всеки рейтинг, с неговия клас и интервала на вероятността от неизпълнение (PD)."
+
+#. table cell
+#: site/sample-data.md:65
+msgid "1 to 10"
+msgstr "от 1 до 10"
+
+#. table cell
+#: site/sample-data.md:66
+msgid "the letter grade"
+msgstr "буквеният клас"
+
+#. table cell
+#: site/sample-data.md:67
+msgid "the PD band of the grade (0.0025 = 0.25%)"
+msgstr "PD интервалът на класа (0.0025 = 0.25%)"
+
+#. box title
+#: site/sample-data.md:78
+msgid "Without pandas"
+msgstr "Без pandas"
+
+#. paragraph
+#: site/sample-data.md:79
+msgid "The first lectures read the files with the standard library (`open`, `csv`), and pandas comes in session 14. Both ways read the same files."
+msgstr "Първите лекции четат файловете със стандартната библиотека (`open`, `csv`), а pandas идва в занятие 14. И двата начина четат едни и същи файлове."

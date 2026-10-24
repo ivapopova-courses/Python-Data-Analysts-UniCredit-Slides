@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Names and objects</title>
+<!--
+    Step-by-step animation: Python variables are names bound to objects.
+    Engine and look: anim.js, anim.css. Deep link: namesAndObjects.html#3 (scenario 3),
+    #3.2 (its step 2); Bulgarian: ?lang=bg (bg/namesAndObjects.html redirects there).
+-->
+<link rel="stylesheet" href="anim.css">
+<style>
+.stage { display: grid; grid-template-columns: minmax(0, 40fr) minmax(0, 60fr); gap: 1rem; }
+.left { display: grid; grid-template-rows: auto auto minmax(0, 1fr); gap: .7rem; min-height: 0; }
+.evalbox { font-family: var(--mono); font-size: 1.1rem; min-height: 2.6rem; display: flex; align-items: center; }
+.evalbox .res { margin-left: .6rem; padding: .1rem .5rem; border-radius: .3rem; background: var(--write-bg); font-weight: 700; }
+.evalbox .src { padding: .1rem .5rem; border-radius: .3rem; background: var(--read-bg); }
+
+.mem { display: flex; flex-direction: column; }
+.mem-head { display: grid; grid-template-columns: 12rem 1fr 17rem; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+.mem-head span:last-child { text-align: left; }
+.mem-grid { position: relative; display: grid; grid-template-columns: 12rem 1fr 17rem; flex: 1; min-height: 0; }
+.names, .objects { display: flex; flex-direction: column; gap: .8rem; position: relative; z-index: 1; }
+.objects { grid-column: 3; }
+.namechip {
+    align-self: flex-start;
+    padding: .45rem .8rem;
+    border: 2px solid var(--name-border); border-radius: .5rem;
+    background: var(--name-bg); color: var(--name-ink);
+    font-family: var(--mono); font-size: 1.15rem; font-weight: 700;
+    transition: box-shadow .25s;
+}
+.obj {
+    position: relative;
+    padding: .55rem .8rem .45rem;
+    border: 2px solid var(--obj-border); border-radius: .6rem;
+    background: var(--obj-bg);
+    transition: box-shadow .25s, opacity .4s;
+}
+.obj .val { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; }
+.obj .type { position: absolute; top: .2rem; right: .5rem; font-size: .66rem; font-weight: 700; letter-spacing: .04em; color: var(--muted); }
+.obj .oid { display: block; margin-top: .1rem; font-family: var(--mono); font-size: .66rem; color: var(--muted); }
+.obj.gone { background: var(--gone-bg); border-color: var(--gone-border); border-style: dashed; opacity: .55; }
+.obj.gone::after { content: attr(data-gc); position: absolute; right: .5rem; bottom: .3rem; font-size: .66rem; font-weight: 700; color: var(--err); }
+.hl-new { animation: pop .45s ease-out; box-shadow: 0 0 0 3px var(--name-border); }
+.obj.hl-new { box-shadow: 0 0 0 3px var(--obj-border); }
+.hl-read { box-shadow: 0 0 0 3px var(--read), 0 0 0 7px var(--read-bg); }
+.hl-write { box-shadow: 0 0 0 3px var(--write), 0 0 0 7px var(--write-bg); }
+.arrows { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.arrows path { fill: none; stroke: var(--ref); stroke-width: 2.4; }
+.arrows path.write { stroke: var(--write); stroke-width: 3; }
+.arrows path.read { stroke: var(--read); stroke-width: 3; }
+.arrows path.draw { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw .7s ease-out forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+</style>
+</head>
+<body>
+<div class="app">
+    <header class="top">
+        <h1 id="title"></h1>
+        <nav class="tabs" id="tabs" role="tablist"></nav>
+        <a class="btn lang-btn" id="langBtn" href="#">BG</a>
+        <button class="btn icon-btn" id="themeBtn"></button>
+    </header>
+    <main class="stage">
+        <div class="left">
+            <section class="panel code-panel"><div class="panel-title" id="tCode"></div><ol class="code" id="code"></ol></section>
+            <section class="panel"><div class="panel-title" id="tEval"></div><div class="evalbox" id="eval"></div></section>
+            <section class="panel"><div class="panel-title" id="tOut"></div><div class="console" id="console"></div></section>
+        </div>
+        <section class="panel mem">
+            <div class="mem-head"><span id="tNames"></span><span></span><span id="tObjects"></span></div>
+            <div class="mem-grid" id="grid">
+                <div class="names" id="names"></div>
+                <div class="objects" id="objects"></div>
+                <svg class="arrows" id="arrows"><defs><marker id="ah-ref" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill: var(--ref)"/></marker><marker id="ah-write" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill: var(--write)"/></marker><marker id="ah-read" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill: var(--read)"/></marker></defs><g id="paths"></g></svg>
+            </div>
+        </section>
+    </main>
+    <footer class="bottom">
+        <div class="explain" id="explain"></div>
+        <div class="controls">
+            <button class="btn icon-btn" id="firstBtn"></button>
+            <button class="btn" id="prevBtn"></button>
+            <span class="counter" id="counter"></span>
+            <button class="btn" id="playBtn"></button>
+            <button class="btn primary" id="nextBtn"></button>
+        </div>
+    </footer>
+</div>
+<script src="anim.js"></script>
+<script>
+'use strict'
+const { tr, esc, highlightPy } = Anim
+
+// ---------- the steps: helpers that change a copy of the state ----------
+let nextId = 0
+function obj(s, key, type, repr) {
+    s.objects.push({ key, type, repr, id: 4400 + 8 * nextId++, gone: false })
+    s.hlO[key] = 'new'
+}
+function bind(s, name, key) {
+    const n = s.names.find(n => n.name === name)
+    if (n) { n.key = key; s.hlN[name] = 'write' } else { s.names.push({ name, key }); s.hlN[name] = 'new' }
+    s.hlO[key] = s.hlO[key] || 'write'
+    s.arrow[name] = 'write'
+}
+function read(s, ...names) {
+    for (const name of names) {
+        const n = s.names.find(n => n.name === name)
+        s.hlN[name] = 'read'
+        s.hlO[n.key] = 'read'
+        s.arrow[name] = 'read'
+    }
+}
+function gone(s, key) { s.objects.find(o => o.key === key).gone = true }
+function clean(s) { s.objects = s.objects.filter(o => !o.gone) }
+function out(s, text, err = false) { s.out.push({ text, err }) }
+function ev(s, src, res = '') { s.ev = { src, res } }
+
+const SCENARIOS = [
+{
+    tab: ['A name and an object', 'Име и обект'],
+    code: ['outstanding = 1044231.30', 'rate = 8.83', 'print(outstanding * rate / 100)'],
+    steps: [
+        { line: 1, do: s => obj(s, 'f1', 'float', '1044231.3'),
+          text: ['Python first evaluates the right side of `=`. It creates a **float object** with the value 1044231.3. An object knows its **type** and its **value**.',
+                 'Python първо изчислява дясната страна на `=`. Създава **обект от тип float** със стойност 1044231.3. Обектът знае своя **тип** и своята **стойност**.'] },
+        { line: 1, do: s => bind(s, 'outstanding', 'f1'),
+          text: ['Then `=` **binds** the name `outstanding` to the object. The name is not the object: it is a label that points to it.',
+                 'След това `=` **свързва** името `outstanding` с обекта. Името не е обектът: то е етикет, който сочи към него.'] },
+        { line: 2, do: s => { obj(s, 'f2', 'float', '8.83'); bind(s, 'rate', 'f2') },
+          text: ['The same for `rate`: a new float object, and the name `rate` bound to it.',
+                 'Същото за `rate`: нов обект от тип float и името `rate`, свързано с него.'] },
+        { line: 3, do: s => { read(s, 'outstanding', 'rate'); ev(s, 'outstanding * rate / 100', '92205.62379000001'); obj(s, 'f3', 'float', '92205.62379000001') },
+          text: ['To calculate, Python follows the names to their objects and reads the values. The result is a **new object** - without a name.',
+                 'За да изчисли, Python следва имената до техните обекти и чете стойностите. Резултатът е **нов обект** - без име.'] },
+        { line: 3, do: s => { out(s, '92205.62379000001'); gone(s, 'f3') },
+          text: ['`print()` shows the value. Nothing points to the result any more, so the **garbage collector** deletes it.',
+                 '`print()` показва стойността. Нищо вече не сочи към резултата и **garbage collector**-ът го изтрива.'] },
+        { line: 0, do: s => clean(s),
+          text: ['Only the objects with a name stay. A name is the way your code reaches an object.',
+                 'Остават само обектите с име. Името е начинът, по който кодът ви стига до един обект.'] },
+    ],
+},
+{
+    tab: ['A new value', 'Нова стойност'],
+    code: ['stage = 1', 'stage = 2', 'print(stage)'],
+    steps: [
+        { line: 1, do: s => { obj(s, 'i1', 'int', '1'); bind(s, 'stage', 'i1') },
+          text: ['`stage = 1`: an int object 1, and the name `stage` bound to it.',
+                 '`stage = 1`: обект 1 от тип int и името `stage`, свързано с него.'] },
+        { line: 2, do: s => obj(s, 'i2', 'int', '2'),
+          text: ['`stage = 2` does **not** change the object 1. Python first makes the object 2 ...',
+                 '`stage = 2` **не** променя обекта 1. Python първо създава обекта 2 ...'] },
+        { line: 2, do: s => { bind(s, 'stage', 'i2'); gone(s, 'i1') },
+          text: ['... and moves the name `stage` to it. Numbers and strings are **immutable**: an object never changes - a name only moves to another object.',
+                 '... и премества името `stage` към него. Числата и низовете са **immutable** (непроменими): обектът никога не се променя - само името се премества към друг обект.'] },
+        { line: 2, do: s => clean(s),
+          text: ['The object 1 has no name now. The garbage collector frees its memory - you never do this yourself.',
+                 'Обектът 1 вече няма име. Garbage collector-ът освобождава паметта му - вие никога не правите това сами.'] },
+        { line: 3, do: s => { read(s, 'stage'); out(s, '2') },
+          text: ['`print(stage)` follows the name to its object now: 2.',
+                 '`print(stage)` следва името до обекта, към който сочи сега: 2.'] },
+    ],
+},
+{
+    tab: ['Two names, one object', 'Две имена, един обект'],
+    code: ['x = 5', 'y = x', 'print(x, y)', 'x = 3', 'print(x, y)'],
+    steps: [
+        { line: 1, do: s => { obj(s, 'a', 'int', '5'); bind(s, 'x', 'a') },
+          text: ['`x = 5`: the object 5 and the name `x`.', '`x = 5`: обектът 5 и името `x`.'] },
+        { line: 2, do: s => { read(s, 'x'); bind(s, 'y', 'a') },
+          text: ['`y = x` does not copy the value. It binds `y` to the **same object** as `x`: now two names point to one object.',
+                 '`y = x` не копира стойността. Свързва `y` със **същия обект** като `x`: сега две имена сочат към един обект.'] },
+        { line: 3, do: s => { read(s, 'x', 'y'); out(s, '5 5') },
+          text: ['Both names give 5.', 'И двете имена дават 5.'] },
+        { line: 4, do: s => { obj(s, 'b', 'int', '3'); bind(s, 'x', 'b') },
+          text: ['`x = 3` moves only the name `x`, to a new object. `y` still points to 5.',
+                 '`x = 3` премества само името `x`, към нов обект. `y` все още сочи към 5.'] },
+        { line: 5, do: s => { read(s, 'x', 'y'); out(s, '3 5') },
+          text: ['So a new value for `x` never changes `y`. (With lists, which can change, this matters more - session 3.)',
+                 'Затова нова стойност за `x` никога не променя `y`. (При lists, които могат да се променят, това е по-важно - занятие 3.)'] },
+    ],
+},
+{
+    tab: ['`x = x + 1`', '`x = x + 1`'],
+    code: ['count = 10', 'count = count + 1', 'count += 5', 'print(count)'],
+    steps: [
+        { line: 1, do: s => { obj(s, 'a', 'int', '10'); bind(s, 'count', 'a') },
+          text: ['`count = 10`: the object 10 and the name `count`.', '`count = 10`: обектът 10 и името `count`.'] },
+        { line: 2, do: s => { read(s, 'count'); ev(s, 'count + 1  ->  10 + 1') },
+          text: ['The right side first: Python reads `count` - the value 10.',
+                 'Първо дясната страна: Python чете `count` - стойността 10.'] },
+        { line: 2, do: s => { ev(s, '10 + 1', '11'); obj(s, 'b', 'int', '11') },
+          text: ['It calculates 10 + 1 and creates the object 11.', 'Изчислява 10 + 1 и създава обекта 11.'] },
+        { line: 2, do: s => { bind(s, 'count', 'b'); gone(s, 'a') },
+          text: ['Only now `=` moves the name `count` to the new object. In mathematics `x = x + 1` is impossible; in Python it means: read the old value, calculate, bind the name again.',
+                 'Едва сега `=` премества името `count` към новия обект. В математиката `x = x + 1` е невъзможно; в Python означава: прочети старата стойност, изчисли, свържи името отново.'] },
+        { line: 3, do: s => { clean(s); read(s, 'count'); ev(s, 'count = count + 5', '16'); obj(s, 'c', 'int', '16') },
+          text: ['`count += 5` is the short form of `count = count + 5`: the same steps.',
+                 '`count += 5` е кратката форма на `count = count + 5`: същите стъпки.'] },
+        { line: 3, do: s => { bind(s, 'count', 'c'); gone(s, 'b') },
+          text: ['The name moves to 16; the object 11 is not needed any more.',
+                 'Името се премества към 16; обектът 11 вече не е нужен.'] },
+        { line: 4, do: s => { clean(s); read(s, 'count'); out(s, '16') },
+          text: ['`print(count)` shows 16.', '`print(count)` показва 16.'] },
+    ],
+},
+{
+    tab: ['Types belong to objects', 'Типът е на обекта'],
+    code: ['value = 42', 'print(type(value))', 'value = "42"', 'print(type(value))', 'value = None', 'print(type(value))'],
+    steps: [
+        { line: 1, do: s => { obj(s, 'a', 'int', '42'); bind(s, 'value', 'a') },
+          text: ['`value = 42`: an object of type int.', '`value = 42`: обект от тип int.'] },
+        { line: 2, do: s => { read(s, 'value'); out(s, "<class 'int'>") },
+          text: ['`type()` asks the **object** for its type. The name itself has no type.',
+                 '`type()` пита **обекта** за неговия тип. Самото име няма тип.'] },
+        { line: 3, do: s => { obj(s, 'b', 'str', "'42'"); bind(s, 'value', 'b'); gone(s, 'a') },
+          text: ['`value = "42"`: a new object, of type str, and the name moves to it.',
+                 '`value = "42"`: нов обект, от тип str, и името се премества към него.'] },
+        { line: 4, do: s => { clean(s); read(s, 'value'); out(s, "<class 'str'>") },
+          text: ['The same name, another type - because the name points to another object. This is **dynamic typing**.',
+                 'Същото име, друг тип - защото името сочи към друг обект. Това е **динамичното типизиране** (dynamic typing).'] },
+        { line: 5, do: s => { obj(s, 'c', 'NoneType', 'None'); bind(s, 'value', 'c'); gone(s, 'b') },
+          text: ['`None` is an object too, of type NoneType.', '`None` също е обект, от тип NoneType.'] },
+        { line: 6, do: s => { clean(s); read(s, 'value'); out(s, "<class 'NoneType'>") },
+          text: ['Possible, but confusing: in real code keep one type per name.',
+                 'Възможно е, но обърква: в истински код дръжте един тип за едно име.'] },
+    ],
+},
+{
+    tab: ['Several names at once', 'Няколко имена наведнъж'],
+    code: ['loan_id, stage = "L000001", 1', 'a, b = 10, 20', 'a, b = b, a', 'print(a, b)'],
+    steps: [
+        { line: 1, do: s => { obj(s, 'l', 'str', "'L000001'"); obj(s, 's', 'int', '1') },
+          text: ['The right side is evaluated first: two objects.', 'Първо се изчислява дясната страна: два обекта.'] },
+        { line: 1, do: s => { bind(s, 'loan_id', 'l'); bind(s, 'stage', 's') },
+          text: ['Then the names on the left are bound, in order: the first name to the first value.',
+                 'След това имената отляво се свързват по ред: първото име с първата стойност.'] },
+        { line: 2, do: s => { obj(s, 'x', 'int', '10'); obj(s, 'y', 'int', '20'); bind(s, 'a', 'x'); bind(s, 'b', 'y') },
+          text: ['`a, b = 10, 20`: the same for `a` and `b`.', '`a, b = 10, 20`: същото за `a` и `b`.'] },
+        { line: 3, do: s => { read(s, 'b', 'a'); ev(s, 'b, a', '20, 10') },
+          text: ['The swap. The right side `b, a` is evaluated **first**: it takes the objects 20 and 10.',
+                 'Размяната. Дясната страна `b, a` се изчислява **първа**: взима обектите 20 и 10.'] },
+        { line: 3, do: s => { bind(s, 'a', 'y'); bind(s, 'b', 'x') },
+          text: ['Then the names are bound again: `a` to 20, `b` to 10. No helper variable is needed.',
+                 'След това имената се свързват отново: `a` с 20, `b` с 10. Не е нужна помощна променлива.'] },
+        { line: 4, do: s => { read(s, 'a', 'b'); out(s, '20 10') },
+          text: ['`print(a, b)` shows 20 10.', '`print(a, b)` показва 20 10.'] },
+    ],
+},
+{
+    tab: ['`is` and `==`', '`is` и `==`'],
+    advanced: true,
+    code: ['a = 1000', 'b = a', 'c = int("1000")', 'print(a == c, a is c)', 'print(a is b, id(a) == id(b))'],
+    steps: [
+        { line: 1, do: s => { obj(s, 'x', 'int', '1000'); bind(s, 'a', 'x') },
+          text: ['`a = 1000`. Each object has an **identity**, shown here as "id". `id(a)` gives it; in CPython it is the memory address.',
+                 '`a = 1000`. Всеки обект има **идентичност**, тук показана като "id". `id(a)` я връща; в CPython това е адресът в паметта.'] },
+        { line: 2, do: s => { read(s, 'a'); bind(s, 'b', 'x') },
+          text: ['`b = a`: the same object, with the same id.', '`b = a`: същият обект, със същото id.'] },
+        { line: 3, do: s => { ev(s, 'int("1000")', '1000'); obj(s, 'y', 'int', '1000'); bind(s, 'c', 'y') },
+          text: ['`int("1000")` makes a **new** object with the same value - another id.',
+                 '`int("1000")` създава **нов** обект със същата стойност - друго id.'] },
+        { line: 4, do: s => { read(s, 'a', 'c'); out(s, 'True False') },
+          text: ['`==` compares the **values**: equal. `is` compares the **objects**: `a` and `c` are two different objects.',
+                 '`==` сравнява **стойностите**: равни са. `is` сравнява **обектите**: `a` и `c` са два различни обекта.'] },
+        { line: 5, do: s => { read(s, 'a', 'b'); out(s, 'True True') },
+          text: ['`a is b` is True: one object. Compare values with `==`; use `is` only for `None`: `x is None`.',
+                 '`a is b` е True: един обект. Сравнявайте стойности с `==`; `is` ползвайте само за `None`: `x is None`.'] },
+    ],
+},
+]
+
+// ---------- the states of a scenario ----------
+function build(sc) {
+    nextId = 0
+    let s = { names: [], objects: [], out: [], ev: null, line: 0 }
+    const states = [{ ...s, hlN: {}, hlO: {}, arrow: {}, done: 0,
+        text: ['Press **Next** (or the Right arrow) to run the code step by step.',
+               'Натиснете **Напред** (или стрелка надясно), за да изпълните кода стъпка по стъпка.'] }]
+    for (const st of sc.steps) {
+        s = structuredClone({ names: s.names, objects: s.objects, out: s.out })
+        Object.assign(s, { hlN: {}, hlO: {}, arrow: {}, ev: null })
+        st.do(s)
+        s.line = st.line
+        s.text = st.text
+        states.push(s)
+    }
+    return states
+}
+
+// ---------- drawing ----------
+const $ = id => document.getElementById(id)
+$('tCode').textContent = tr(['Code', 'Код'])
+$('tEval').textContent = tr(['Calculating', 'Изчисляване'])
+$('tOut').textContent = tr(['Output', 'Изход'])
+$('tNames').textContent = tr(['Names', 'Имена'])
+$('tObjects').textContent = tr(['Objects in memory', 'Обекти в паметта'])
+const GC = tr(['garbage collector', 'garbage collector'])
+
+function render(sc, s, prev) {
+    $('code').innerHTML = sc.code.map((l, i) =>
+        `<li class="${i + 1 === s.line ? 'active' : ''}"><span class="ln">${i + 1}</span><span>${highlightPy(l)}</span></li>`).join('')
+    $('eval').innerHTML = s.ev
+        ? `<span class="src">${esc(s.ev.src)}</span>` + (s.ev.res ? ` &nbsp;-&gt;<span class="res">${esc(s.ev.res)}</span>` : '')
+        : `<span class="empty">-</span>`
+    const before = prev ? prev.out.length : s.out.length
+    $('console').innerHTML = s.out.length
+        ? s.out.map((o, i) => `<div class="cline${o.err ? ' err' : ''}${i >= before ? ' new' : ''}">${esc(o.text)}</div>`).join('')
+        : `<span class="empty">-</span>`
+    document.body.classList.toggle('static', !prev)
+    $('names').innerHTML = s.names.map(n =>
+        `<div class="namechip${s.hlN[n.name] ? ' hl-' + s.hlN[n.name] : ''}" data-name="${esc(n.name)}">${esc(n.name)}</div>`).join('')
+    $('objects').innerHTML = s.objects.map(o =>
+        `<div class="obj${o.gone ? ' gone' : ''}${s.hlO[o.key] ? ' hl-' + s.hlO[o.key] : ''}" data-key="${o.key}" data-gc="${esc(GC)}">` +
+        `<span class="type">${esc(o.type)}</span><span class="val">${esc(o.repr)}</span><span class="oid">id ${o.id}</span></div>`).join('')
+    drawArrows(s, prev)
+}
+
+function drawArrows(s, prev) {
+    const grid = $('grid').getBoundingClientRect()
+    const paths = []
+    for (const n of s.names) {
+        const a = document.querySelector(`.namechip[data-name="${CSS.escape(n.name)}"]`).getBoundingClientRect()
+        const b = document.querySelector(`.obj[data-key="${n.key}"]`).getBoundingClientRect()
+        const x1 = a.right - grid.left + 2
+        const y1 = a.top + a.height / 2 - grid.top
+        const x2 = b.left - grid.left - 4
+        const y2 = b.top + b.height / 2 - grid.top
+        const dx = (x2 - x1) / 2
+        const changed = prev && (!prev.names.find(p => p.name === n.name) || prev.names.find(p => p.name === n.name).key !== n.key)
+        const cls = [s.arrow[n.name] || '', changed ? 'draw' : ''].join(' ')
+        paths.push(`<path class="${cls}" marker-end="url(#ah-${s.arrow[n.name] || 'ref'})" d="M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}"/>`)
+    }
+    $('paths').innerHTML = paths.join('')
+}
+
+Anim.start({
+    title: ['Names and objects', 'Имена и обекти'],
+    subtitle: ['What a variable is in Python', 'Какво е променлива в Python'],
+    scenarios: SCENARIOS,
+    build,
+    render,
+})
+</script>
+</body>
+</html>
