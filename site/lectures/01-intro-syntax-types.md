@@ -495,6 +495,23 @@ Microsoft:
   **Python Environments**;
 - **Jupyter** - notebooks inside VS Code.
 
+Later lectures work with data files. These extensions help you look at them
+without leaving VS Code:
+
+- **Data Wrangler** (Microsoft) - a DataFrame or a CSV file as a table you can
+  sort and filter, with statistics per column; it writes the pandas code for the
+  cleaning steps you click (lectures 14 - 16);
+- **Rainbow CSV** (mechatroner) - each column of a CSV file in its own colour, and
+  SQL-like queries on the file;
+- **SQLite Viewer** (Florian Klampfer) - the tables of a SQLite database
+  (lecture 13);
+- **Spreadsheet Viewer** (MESCIUS) - `.xlsx` files inside VS Code.
+
+You do not have to search for them one by one: the Homework folder lists them all
+in `.vscode/extensions.json`, and VS Code offers to install them when you open the
+folder. How, and how to use the same list in your own projects:
+[VS Code extensions](/how-to#vscode-extensions).
+
 A colour theme: `Ctrl+K Ctrl+T`
 ([Themes](https://code.visualstudio.com/docs/configure/themes)).
 

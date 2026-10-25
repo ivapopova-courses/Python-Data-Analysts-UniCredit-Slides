@@ -45,7 +45,7 @@ The tasks and the final project run on your own computer. You need:
 | Program | Version | What for |
 |---|---|---|
 | [Python](https://www.python.org/downloads/windows/) | 3.12 or 3.13, 64-bit | the language |
-| [Visual Studio Code](https://code.visualstudio.com/) | latest | the editor, with the extensions **Python** and **Jupyter** (Microsoft) |
+| [Visual Studio Code](https://code.visualstudio.com/) | latest | the editor, with the extensions below |
 | [Git](https://git-scm.com/downloads) | latest | versions of your code; the tasks come with it |
 | [GitHub](https://github.com/signup) account | free | your own copy of the tasks |
 
@@ -68,6 +68,48 @@ git --version         # git version 2.x.x
 
 The libraries (pandas, NumPy, ...) are installed into a *virtual environment* in
 the Homework folder - see step 8 below.
+
+### VS Code extensions {#vscode-extensions}
+
+| Extension | By | What for | Needed |
+|---|---|---|---|
+| **Python** | Microsoft | run and debug Python; it installs **Pylance**, **Python Debugger** and **Python Environments** too | required |
+| **Jupyter** | Microsoft | notebooks inside VS Code | required |
+| **Data Wrangler** | Microsoft | see a DataFrame or a CSV file as a table: sort, filter, statistics per column; it writes the pandas code for the cleaning steps you click | lectures 14 - 16 |
+| **Rainbow CSV** | mechatroner | each column of a CSV file in its own colour; SQL-like queries on a CSV file | from lecture 9 |
+| **SQLite Viewer** | Florian Klampfer | open a SQLite `.db` file and look at its tables | lecture 13 |
+| **Spreadsheet Viewer** | MESCIUS | open `.xlsx` files in VS Code (its old name is *Excel Viewer*) | lectures 9, 14, 16 |
+
+**Install them all at once.** The Homework repository has this list in the file
+`.vscode/extensions.json`. When you open the Homework folder in VS Code (step 7
+below), VS Code asks *Do you want to install the recommended extensions...?* -
+click **Install**. Missed the question? Open the **Extensions** view
+(`Ctrl+Shift+X`), type `@recommended` in the search box and click the cloud icon
+(**Install Workspace Recommended Extensions**).
+
+To get the same list in another project, create the file `.vscode/extensions.json`
+in its folder with this content:
+
+```json
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-toolsai.jupyter",
+    "ms-toolsai.datawrangler",
+    "mechatroner.rainbow-csv",
+    "qwtel.sqlite-viewer",
+    "GrapeCity.gc-excelviewer"
+  ]
+}
+```
+
+One at a time: search for the name in the **Extensions** view and click
+**Install**.
+
+::: info On a company laptop
+Some companies block the extension Marketplace or allow only approved extensions.
+If **Install** does not work, ask your IT for the extensions in the table.
+:::
 
 ## Practice and homework in VS Code {#practice-and-homework}
 
@@ -170,6 +212,10 @@ git remote -v
 **File > Open Folder** and choose `Python-Data-Analysts-UniCredit-Homework` (the
 folder itself, not the folder above it). Always open this folder when you work on
 the tasks: then the terminal starts in the right place.
+
+The first time, VS Code asks if you trust the authors of the folder (click **Yes**)
+and offers to install the recommended extensions (click **Install** - see
+[VS Code extensions](#vscode-extensions)).
 
 #### 8. Create the virtual environment
 
