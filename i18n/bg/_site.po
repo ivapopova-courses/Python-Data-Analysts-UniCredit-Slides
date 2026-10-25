@@ -76,74 +76,74 @@ msgstr "1. Въведение, синтаксис, типове"
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "2. Conditions and loops"
-msgstr ""
+msgstr "2. Условни конструкции и цикли"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "3. Lists, tuples, sets"
-msgstr ""
+msgstr "3. Lists, tuples, sets"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "4. Functions"
-msgstr ""
+msgstr "4. Функции"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "5. Lists (advanced)"
-msgstr ""
+msgstr "5. Lists (за напреднали)"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "6. Dictionaries"
-msgstr ""
+msgstr "6. Dictionaries"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "7. Text processing"
-msgstr ""
+msgstr "7. Обработка на текст"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "8. Regular expressions"
-msgstr ""
+msgstr "8. Регулярни изрази"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "9. Errors and files"
-msgstr ""
+msgstr "9. Грешки и файлове"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "10. Modules and Git"
-msgstr ""
+msgstr "10. Модули и Git"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "11. OOP: classes and objects"
-msgstr ""
+msgstr "11. ООП: класове и обекти"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "12. OOP: nomenclatures"
-msgstr ""
+msgstr "12. ООП: номенклатури"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "13. Databases"
-msgstr ""
+msgstr "13. Бази данни"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "14. NumPy and pandas"
-msgstr ""
+msgstr "14. NumPy и pandas"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "15. pandas: select, group, join"
-msgstr ""
+msgstr "15. pandas: селекция, групиране, join"
 
 #. side menu
 #: site/.vitepress/config.mjs
 msgid "16. pandas: reports, project"
-msgstr ""
+msgstr "16. pandas: отчети, проект"
