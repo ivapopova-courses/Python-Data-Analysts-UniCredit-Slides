@@ -6,8 +6,8 @@ import { releasedUpTo } from './released.mjs'
 
 const footerMessage = 'Python for Data Analysts'
 
-// all lectures in `npm run dev` and TRAINER=1 builds, only the released ones in
-// `npm run build` (the public site) - see released.mjs
+// all lectures are listed in the side menu; in `npm run build` (the public site)
+// only the released ones are links, the others plain text - see released.mjs
 const showAll = process.env.TRAINER === '1' || process.argv.includes('dev')
 const lectureNo = link => Number(link.match(/(?:^|\/)lectures\/(\d\d)-/)?.[1] || 0)
 const isReleased = link => showAll || lectureNo(link) <= releasedUpTo
@@ -29,7 +29,7 @@ const lectures = [
   { text: '14. NumPy and pandas', link: '/lectures/14-numpy-pandas-intro' },
   { text: '15. pandas: select, group, join', link: '/lectures/15-pandas-select-aggregate-join' },
   { text: '16. pandas: reports, project', link: '/lectures/16-pandas-reports-project' }
-].filter(it => isReleased(it.link))
+].map(it => (isReleased(it.link) ? it : { text: it.text })) // no link: grey text (theme/sidebar.css)
 
 const course = defineCourse({
   title: 'Python for Data Analysts',
@@ -42,7 +42,7 @@ const course = defineCourse({
   asideMinWidth: 1152,
   nav: [
     { text: 'Agenda', link: '/agenda' },
-    { text: 'Lectures', link: lectures.at(-1).link },
+    { text: 'Lectures', link: lectures.filter(it => it.link).at(-1).link },
     { text: 'Project', link: '/project' }
   ],
   sidebar: [

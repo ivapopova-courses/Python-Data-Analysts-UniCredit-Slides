@@ -7,6 +7,7 @@ import { setupScrollHash } from './scrollHash.js'
 import { setupOsTabs } from './osTabs.js'
 import './codeFold.css'
 import './diagram.css'
+import './sidebar.css'
 
 // The course-kit theme, plus the runnable Python blocks (PyRunCode.vue, Pyodide),
 // folding of long code blocks (codeFold.js), the same Windows / Linux tab in all
