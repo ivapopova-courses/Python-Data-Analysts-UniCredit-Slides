@@ -614,6 +614,56 @@ result - a number, a table, a chart - appears right under it. Text cells explain
 work. It is the closest thing in Python to an Enterprise Guide project or a SQL
 worksheet: ideal for exploring data and showing results.
 
+![A notebook in JupyterLab: a Markdown cell with a heading, a code cell with a table as its output, and a code cell with a bar chart](/images/jupyterlab-notebook.png){.screenshot}
+
+In the picture (JupyterLab in the browser):
+
+- **left** - the file browser: the notebook is a normal file, next to the `data` folder;
+- **"Portfolio check"** - a Markdown cell: a heading and a line of text;
+- **`[1]`** - a code cell and its output, a table; the blue bar marks the selected cell;
+- **`[2]`** - a code cell whose output is a chart;
+- **top right** - the kernel, `Python 3 (ipykernel)`, the Python that runs the code;
+  `Idle` in the status bar means that it waits for work.
+
+### What is Jupyter?
+
+[Project Jupyter](https://jupyter.org/) is the free, open-source project behind
+notebooks. The name comes from three languages: **Ju**lia, **Pyt**hon and **R** -
+a notebook can run other languages too, but we use only Python.
+
+The notebook is the **file**; several programs can open the same `.ipynb`:
+
+| Program | Where it runs |
+|---|---|
+| [JupyterLab](https://jupyterlab.readthedocs.io/en/stable/) | in the browser, started from your computer (`jupyter lab`) |
+| [VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks) | inside the editor - what we use in this course |
+| cloud data platforms (for example Google Colab, Databricks) | on a server, opened in the browser |
+
+An `.ipynb` file is text (JSON) that holds the code, the text **and the last
+outputs**. So a notebook keeps its tables and charts when you close it, and GitHub
+shows it as a page, with the results, without running it.
+
+### What notebooks are used for
+
+- **Exploring new data** - load a file, look at it, filter, count, step by step:
+  like running SQL queries one after another in a worksheet.
+- **Ad-hoc analysis** - a question from management, answered with a table and a
+  chart, with the explanation next to them.
+- **Reports and model documentation** - the code, the result and the comment in
+  one file: a colleague can run it again and get the same numbers.
+- **Trying an idea** - test the logic of a calculation on a few rows before it goes
+  into a script.
+- **Learning** - try one line, see the result at once.
+
+Notebooks are not the right tool for a job that runs every month without a person,
+or for code that many reports share - for that you write a script or a module
+(see "Script or notebook?" at the end of this section, and lecture 10).
+
+::: tip Try it without installing
+[jupyter.org/try](https://jupyter.org/try) opens JupyterLab in the browser, with
+nothing to install. Use it only with made-up data, never with the bank's data.
+:::
+
 ### Cells
 
 | Cell type | What it holds |
@@ -1840,7 +1890,9 @@ you run the file - the point is to think first.
   [Tips and tricks](https://code.visualstudio.com/docs/editing/getting-started/tips-and-tricks),
   [VS Code - setup and basics (video)](https://www.youtube.com/watch?v=SYRwSyjD8oI),
   [the default terminal: cmd instead of PowerShell](https://code.visualstudio.com/docs/terminal/profiles)
-- Jupyter: [JupyterLab documentation](https://jupyterlab.readthedocs.io/en/stable/)
+- Jupyter: [Project Jupyter](https://jupyter.org/),
+  [Jupyter documentation](https://docs.jupyter.org/en/latest/),
+  [JupyterLab documentation](https://jupyterlab.readthedocs.io/en/stable/)
 - Formatting: [f-strings in the tutorial](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals),
   [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)
 - Numbers: [Floating point arithmetic](https://docs.python.org/3/tutorial/floatingpoint.html),
