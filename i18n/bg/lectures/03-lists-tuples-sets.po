@@ -471,7 +471,7 @@ msgstr "`split()` (занятие 1) нарязва string на list от string
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:373
 msgid "Collect values in a loop: `append`"
-msgstr "Събиране на стойности в loop: `append`"
+msgstr "Събиране на стойности в цикъл: `append`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:375
@@ -911,7 +911,7 @@ msgstr "Reference: [Ranges](https://docs.python.org/3/library/stdtypes.html#rang
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:820
 msgid "SAS `DO` loop"
-msgstr "SAS loop `DO`"
+msgstr "SAS цикъл `DO`"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:826
@@ -931,12 +931,12 @@ msgstr "**Малък в паметта**: range пази само `start`, `stop
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:832
 msgid "Used mostly in `for` loops, to repeat something a given number of times."
-msgstr "Използва се най-вече във `for` loops, за да повторите нещо определен брой пъти."
+msgstr "Използва се най-вече в цикли `for`, за да повторите нещо определен брой пъти."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:841
 msgid "When you print a range, you see only the \"formula\". To see the numbers, make a list or a tuple of it - or loop over it:"
-msgstr "Когато отпечатате range, виждате само \"формулата\". За да видите числата, направете list или tuple от него - или го обходете с loop:"
+msgstr "Когато отпечатате range, виждате само \"формулата\". За да видите числата, направете list или tuple от него - или го обходете с цикъл:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:852
@@ -1406,7 +1406,7 @@ msgstr "Задачите за упражнение, които не сте до�
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1139
 msgid "Optional: `names.py` asks how many names the user will enter, reads them with `input()` in a loop into a list, and prints them sorted, without duplicates, and how many were duplicates."
-msgstr "По желание: `names.py` пита колко имена ще въведе потребителят, чете ги с `input()` в loop в list и ги отпечатва сортирани, без повторения, и колко са били повторенията."
+msgstr "По желание: `names.py` пита колко имена ще въведе потребителят, чете ги с `input()` в цикъл в list и ги отпечатва сортирани, без повторения, и колко са били повторенията."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1142

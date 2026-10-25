@@ -16,7 +16,7 @@ msgstr ""
 #. front matter: title
 #: site/lectures/02-conditions-and-loops.md:2 site/lectures/02-conditions-and-loops.md:5
 msgid "2. Conditional statements and loops"
-msgstr "2. Условни конструкции и loops"
+msgstr "2. Условни конструкции и цикли"
 
 #. html
 #: site/lectures/02-conditions-and-loops.md:8
@@ -61,12 +61,12 @@ msgstr "повтаряте работа с `while` и `for` и спирате и
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:19
 msgid "loop over the rows of a file, the way a DATA step reads a data set;"
-msgstr "обхождате с loop редовете на файл, както DATA step чете набор от данни;"
+msgstr "обхождате с цикъл редовете на файл, както DATA step чете набор от данни;"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:20
 msgid "build a small report and a repayment schedule with loops."
-msgstr "съставяте малък отчет и погасителен план с loops."
+msgstr "съставяте малък отчет и погасителен план с цикли."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:22
@@ -96,7 +96,7 @@ msgstr "**Булевата** стойност (на името на матема
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:73
 msgid "Booleans are the result of comparisons (section 2) and the input of every decision (sections 4 - 8) and of every `while` loop (section 11)."
-msgstr "Булевите стойности са резултатът от сравненията (раздел 2) и входът на всяко решение (раздели 4 - 8) и на всеки `while` loop (раздел 11)."
+msgstr "Булевите стойности са резултатът от сравненията (раздел 2) и входът на всяко решение (раздели 4 - 8) и на всеки цикъл `while` (раздел 11)."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:76
@@ -576,7 +576,7 @@ msgstr "Второто условие няма нужда от `days_past_due > 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:521
 msgid "**Loops step by step:** [2. Decisions in a loop](../animations/loopTrace.html#2){target=\"_blank\"}"
-msgstr "**Loops стъпка по стъпка:** [2. Решения в loop](../animations/loopTrace.html#2){target=\"_blank\"}"
+msgstr "**Циклите стъпка по стъпка:** [2. Решения в цикъл](../animations/loopTrace.html#2){target=\"_blank\"}"
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:524
@@ -796,12 +796,12 @@ msgstr "**Избягвайте сложни изрази.** Ако един из
 #. heading 2
 #: site/lectures/02-conditions-and-loops.md:850
 msgid "10. Loops"
-msgstr "10. Loops"
+msgstr "10. Цикли"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:852
 msgid "A **loop** runs a block of code **many times**. Each run of the block is an **iteration**. Python has two loops:"
-msgstr "**Loop-ът** изпълнява блок от код **много пъти**. Всяко изпълнение на блока е **итерация**. Python има два loops:"
+msgstr "**Цикълът** (loop) изпълнява блок от код **много пъти**. Всяко изпълнение на блока е **итерация**. Python има два цикъла:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:855
@@ -816,12 +816,12 @@ msgstr "`for` повтаря **за всеки елемент** на поред�
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:860
 msgid "You already use loops in SAS: the **DATA step is a loop** - it runs once for each row of the input data set, without you writing it. In Python you write the loop yourself (and in pandas, again, you do not - session 14)."
-msgstr "В SAS вече използвате loops: **DATA step-ът е loop** - той се изпълнява веднъж за всеки ред на входния набор от данни, без да го пишете. В Python пишете loop-а сами (а в pandas - пак не, занятие 14)."
+msgstr "В SAS вече използвате цикли: **DATA step-ът е цикъл** - той се изпълнява веднъж за всеки ред на входния набор от данни, без да го пишете. В Python пишете цикъла сами (а в pandas - пак не, занятие 14)."
 
 #. table cell
 #: site/lectures/02-conditions-and-loops.md:866
 msgid "the implicit loop of the DATA step over `SET`"
-msgstr "неявният loop на DATA step по `SET`"
+msgstr "неявният цикъл на DATA step по `SET`"
 
 #. table cell
 #: site/lectures/02-conditions-and-loops.md:867
@@ -841,42 +841,42 @@ msgstr "`total + amount;` (sum statement, с `RETAIN`)"
 #. table cell
 #: site/lectures/02-conditions-and-loops.md:873
 msgid "`total += amount`, with `total = 0` before the loop"
-msgstr "`total += amount`, с `total = 0` преди loop-а"
+msgstr "`total += amount`, с `total = 0` преди цикъла"
 
 #. heading 2
 #: site/lectures/02-conditions-and-loops.md:875
 msgid "11. The `while` loop"
-msgstr "11. Loop-ът `while`"
+msgstr "11. Цикълът `while`"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:884
 msgid "The block runs again and again **while the condition is true**. Before each iteration Python tests the condition; when it is false, the loop ends and the program continues after the block."
-msgstr "Блокът се изпълнява отново и отново, **докато условието е вярно**. Преди всяка итерация Python проверява условието; когато е невярно, loop-ът свършва и програмата продължава след блока."
+msgstr "Блокът се изпълнява отново и отново, **докато условието е вярно**. Преди всяка итерация Python проверява условието; когато е невярно, цикълът свършва и програмата продължава след блока."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:888
 msgid "Inside the block, something must change the condition - otherwise the loop never ends. (Or a `break` stops it, section 13.)"
-msgstr "Вътре в блока нещо трябва да променя условието - иначе loop-ът никога не свършва. (Или `break` го спира, раздел 13.)"
+msgstr "Вътре в блока нещо трябва да променя условието - иначе цикълът никога не свършва. (Или `break` го спира, раздел 13.)"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:891
 msgid "![The flow of a loop: the condition is tested before each iteration; break leaves the loop, continue goes back to the test](/diagrams/loop-flow.svg){.diagram}"
-msgstr "![Потокът на loop: условието се проверява преди всяка итерация; break излиза от loop-а, continue се връща към проверката](/diagrams/loop-flow.svg){.diagram}"
+msgstr "![Потокът на цикъл: условието се проверява преди всяка итерация; break излиза от цикъла, continue се връща към проверката](/diagrams/loop-flow.svg){.diagram}"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:900
 msgid "This is just a simple example. For a fixed number of iterations, a `for` loop with `range` is better (section 12)."
-msgstr "Това е само прост пример. За фиксиран брой итерации `for` loop с `range` е по-добър (раздел 12)."
+msgstr "Това е само прост пример. За фиксиран брой итерации цикъл `for` с `range` е по-добър (раздел 12)."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:903
 msgid "An endless loop - find the problem"
-msgstr "Безкраен loop - намерете проблема"
+msgstr "Безкраен цикъл - намерете проблема"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:905
 msgid "This loop never ends (do not run it here - in VS Code, `Ctrl+C` in the terminal stops a running program):"
-msgstr "Този loop никога не свършва (не го пускайте тук - във VS Code `Ctrl+C` в терминала спира работеща програма):"
+msgstr "Този цикъл никога не свършва (не го пускайте тук - във VS Code `Ctrl+C` в терминала спира работеща програма):"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:917
@@ -886,7 +886,7 @@ msgstr "`i = 1` задава на `i` стойност 1 във всяка ит�
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:921
 msgid "When `while` is the right loop"
-msgstr "Кога `while` е правилният loop"
+msgstr "Кога `while` е правилният цикъл"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:923
@@ -896,12 +896,12 @@ msgstr "Използвайте `while`, когато **не знаете пре�
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:942
 msgid "The SAS way is the same loop:"
-msgstr "Начинът в SAS е същият loop:"
+msgstr "Начинът в SAS е същият цикъл:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:956
 msgid "**Loops step by step:** [3. `while`: repay a loan](../animations/loopTrace.html#3){target=\"_blank\"}"
-msgstr "**Loops стъпка по стъпка:** [3. `while`: погасяване на кредит](../animations/loopTrace.html#3){target=\"_blank\"}"
+msgstr "**Циклите стъпка по стъпка:** [3. `while`: погасяване на кредит](../animations/loopTrace.html#3){target=\"_blank\"}"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:959
@@ -916,12 +916,12 @@ msgstr "Редът с `input()` е написан два пъти - раздел
 #. heading 2
 #: site/lectures/02-conditions-and-loops.md:973
 msgid "12. The `for` loop"
-msgstr "12. Loop-ът `for`"
+msgstr "12. Цикълът `for`"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:982
 msgid "`for` takes the items of a sequence **one by one**; in each iteration the name points to the next item, and the block runs. The loop ends after the last item. You do not count, and the loop cannot run forever."
-msgstr "`for` взема елементите на поредица **един по един**; във всяка итерация името сочи следващия елемент и блокът се изпълнява. Loop-ът свършва след последния елемент. Не броите, и loop-ът не може да продължи вечно."
+msgstr "`for` взема елементите на поредица **един по един**; във всяка итерация името сочи следващия елемент и блокът се изпълнява. Цикълът свършва след последния елемент. Не броите, и цикълът не може да продължи вечно."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:991
@@ -961,17 +961,17 @@ msgstr "Акумулатори: сума, брой, максимум"
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1032
 msgid "A loop often **accumulates** a result: a variable gets a start value **before** the loop and changes in each iteration. In SAS this is the sum statement or `RETAIN`."
-msgstr "Loop-ът често **натрупва** резултат: променлива получава начална стойност **преди** loop-а и се променя във всяка итерация. В SAS това е sum statement или `RETAIN`."
+msgstr "Цикълът често **натрупва** резултат: променлива получава начална стойност **преди** цикъла и се променя във всяка итерация. В SAS това е sum statement или `RETAIN`."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1043
 msgid "A sum, a count and a maximum in one loop:"
-msgstr "Сума, брой и максимум в един loop:"
+msgstr "Сума, брой и максимум в един цикъл:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1060
 msgid "**Loops step by step:** [1. `for` with an accumulator](../animations/loopTrace.html#1){target=\"_blank\"}"
-msgstr "**Loops стъпка по стъпка:** [1. `for` с акумулатор](../animations/loopTrace.html#1){target=\"_blank\"}"
+msgstr "**Циклите стъпка по стъпка:** [1. `for` с акумулатор](../animations/loopTrace.html#1){target=\"_blank\"}"
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1063
@@ -1006,12 +1006,12 @@ msgstr "Начинът на Python е [`enumerate(iterable, start=0)`](https://d
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1109
 msgid "Nested loops"
-msgstr "Вложени loops"
+msgstr "Вложени цикли"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1111
 msgid "A loop can be inside another loop. The inner loop runs completely in **each** iteration of the outer one:"
-msgstr "Един loop може да е вътре в друг loop. Вътрешният loop се изпълнява изцяло във **всяка** итерация на външния:"
+msgstr "Един цикъл може да е вътре в друг цикъл. Вътрешният цикъл се изпълнява изцяло във **всяка** итерация на външния:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1121
@@ -1046,17 +1046,17 @@ msgstr "(За простота примерът събира суми в EUR и 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1203
 msgid "Leave the loop now"
-msgstr "Излезте от loop-а веднага"
+msgstr "Излезте от цикъла веднага"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1205
 msgid "`break` stops the **innermost** `for` or `while` loop at once; the program continues after the loop. It is almost always inside an `if`:"
-msgstr "`break` спира **най-вътрешния** `for` или `while` loop веднага; програмата продължава след loop-а. Почти винаги е вътре в `if`:"
+msgstr "`break` спира **най-вътрешния** цикъл `for` или `while` веднага; програмата продължава след цикъла. Почти винаги е вътре в `if`:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1216
 msgid "When the break condition is true, block 2 is skipped and the loop ends."
-msgstr "Когато условието за break е вярно, блок 2 се прескача и loop-ът свършва."
+msgstr "Когато условието за break е вярно, блок 2 се прескача и цикълът свършва."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1225
@@ -1066,27 +1066,27 @@ msgstr "Търсене - спрете веднага щом намерите:"
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1237
 msgid "**Loops step by step:** [4. `break`: stop at the first](../animations/loopTrace.html#4){target=\"_blank\"}"
-msgstr "**Loops стъпка по стъпка:** [4. `break`: спрете при първия](../animations/loopTrace.html#4){target=\"_blank\"}"
+msgstr "**Циклите стъпка по стъпка:** [4. `break`: спрете при първия](../animations/loopTrace.html#4){target=\"_blank\"}"
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1240
 msgid "`break` in nested loops"
-msgstr "`break` във вложени loops"
+msgstr "`break` във вложени цикли"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1242
 msgid "`break` leaves only the loop it is in - the outer loop goes on:"
-msgstr "`break` излиза само от loop-а, в който е - външният loop продължава:"
+msgstr "`break` излиза само от цикъла, в който е - външният цикъл продължава:"
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1261
 msgid "`do until`: a loop that runs at least once"
-msgstr "`do until`: loop, който се изпълнява поне веднъж"
+msgstr "`do until`: цикъл, който се изпълнява поне веднъж"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1263
 msgid "Python has no `do ... while` loop (C, Java) and no `do until` (SAS) - \"there should be one obvious way to do it\". They are useful when the block must run **at least once** and the test comes at the end. The Python way is `while True` with a `break`:"
-msgstr "Python няма loop `do ... while` (C, Java) и няма `do until` (SAS) - \"there should be one obvious way to do it\". Те са полезни, когато блокът трябва да се изпълни **поне веднъж** и проверката е накрая. Начинът на Python е `while True` с `break`:"
+msgstr "Python няма цикъл `do ... while` (C, Java) и няма `do until` (SAS) - \"there should be one obvious way to do it\". Те са полезни, когато блокът трябва да се изпълни **поне веднъж** и проверката е накрая. Начинът на Python е `while True` с `break`:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1274
@@ -1101,27 +1101,27 @@ msgstr "Същото в SAS:"
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1306
 msgid "`else` on a loop"
-msgstr "`else` на loop"
+msgstr "`else` на цикъл"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1308
 msgid "A `for` or `while` loop can have an `else` block. It runs when the loop ends **normally** - and not when a `break` stopped it. It is the clean way to say \"not found\":"
-msgstr "Loop `for` или `while` може да има блок `else`. Той се изпълнява, когато loop-ът свърши **нормално** - а не когато `break` го е спрял. Това е чистият начин да кажете \"не е намерено\":"
+msgstr "Цикъл `for` или `while` може да има блок `else`. Той се изпълнява, когато цикълът свърши **нормално** - а не когато `break` го е спрял. Това е чистият начин да кажете \"не е намерено\":"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1323
 msgid "Read the `else` of a loop as \"no break\". It is not used often - a comment helps the reader."
-msgstr "Четете `else` на loop като \"no break\" (без break). Не се използва често - коментар помага на читателя."
+msgstr "Четете `else` на цикъл като \"no break\" (без break). Не се използва често - коментар помага на читателя."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1327
 msgid "**Loops step by step:** [6. `for` - `else` (advanced)](../animations/loopTrace.html#6){target=\"_blank\"}"
-msgstr "**Loops стъпка по стъпка:** [6. `for` - `else` (за напреднали)](../animations/loopTrace.html#6){target=\"_blank\"}"
+msgstr "**Циклите стъпка по стъпка:** [6. `for` - `else` (за напреднали)](../animations/loopTrace.html#6){target=\"_blank\"}"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1332
 msgid "`continue` stops the **current iteration** and goes to the next one: the rest of the block is skipped, and the loop goes on (for `while`: with the test of the condition). It is almost always inside an `if`:"
-msgstr "`continue` спира **текущата итерация** и минава към следващата: останалата част от блока се прескача, а loop-ът продължава (при `while`: с проверката на условието). Почти винаги е вътре в `if`:"
+msgstr "`continue` спира **текущата итерация** и минава към следващата: останалата част от блока се прескача, а цикълът продължава (при `while`: с проверката на условието). Почти винаги е вътре в `if`:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1344
@@ -1146,7 +1146,7 @@ msgstr "`continue` държи основния код вляво, без още 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1390
 msgid "**Loops step by step:** [5. `continue`: skip a record](../animations/loopTrace.html#5){target=\"_blank\"}"
-msgstr "**Loops стъпка по стъпка:** [5. `continue`: прескачане на запис](../animations/loopTrace.html#5){target=\"_blank\"}"
+msgstr "**Циклите стъпка по стъпка:** [5. `continue`: прескачане на запис](../animations/loopTrace.html#5){target=\"_blank\"}"
 
 #. heading 2
 #: site/lectures/02-conditions-and-loops.md:1393
@@ -1231,7 +1231,7 @@ msgstr "Продуктови групи и валутен конвертор с 
 #. table cell
 #: site/lectures/02-conditions-and-loops.md:1485
 msgid "Loop over `loans.csv`: counts, sums, the largest loan, the first stage 3 loan"
-msgstr "Loop по `loans.csv`: бройки, суми, най-големият кредит, първият кредит в етап 3"
+msgstr "Цикъл по `loans.csv`: бройки, суми, най-големият кредит, първият кредит в етап 3"
 
 #. table cell
 #: site/lectures/02-conditions-and-loops.md:1486
@@ -1321,7 +1321,7 @@ msgstr "всеки елемент на поредица: string, list, `range`, 
 #. table cell
 #: site/lectures/02-conditions-and-loops.md:1503
 msgid "leave the loop / go to the next iteration; `while True` + `break` = `do until`; loop `else` = \"no break\""
-msgstr "излиза от loop-а / минава към следващата итерация; `while True` + `break` = `do until`; `else` на loop = \"no break\""
+msgstr "излиза от цикъла / минава към следващата итерация; `while True` + `break` = `do until`; `else` на цикъл = \"no break\""
 
 #. heading 2
 #: site/lectures/02-conditions-and-loops.md:1505
@@ -1356,7 +1356,7 @@ msgstr "Още за четене"
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1523
 msgid "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` on loops, `pass`, `match`)"
-msgstr "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` на loops, `pass`, `match`)"
+msgstr "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` на цикли, `pass`, `match`)"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1525

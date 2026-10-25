@@ -131,7 +131,7 @@ msgstr "Тема"
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:58
 msgid "The language: types, variables, operators, conditions and loops"
-msgstr "Езикът: типове, променливи, оператори, условия и loops"
+msgstr "Езикът: типове, променливи, оператори, условия и цикли"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:59
@@ -401,7 +401,7 @@ msgstr "DATA step"
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:127
 msgid "a loop over rows (sessions 2 - 6), or pandas (sessions 14 - 16)"
-msgstr "loop по редовете (занятия 2 - 6) или pandas (занятия 14 - 16)"
+msgstr "цикъл по редовете (занятия 2 - 6) или pandas (занятия 14 - 16)"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:132
@@ -1666,7 +1666,7 @@ msgstr "Отстъпът създава блоковете"
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:726
 msgid "SAS has `do; ... end;`, SQL has `BEGIN ... END`. In Python a **block** - the lines that belong to an `if`, a loop or a function - is the lines **indented** under a line that ends with `:`. The indentation is not decoration: it **is** the syntax."
-msgstr "SAS има `do; ... end;`, SQL има `BEGIN ... END`. В Python **блокът** - редовете, които принадлежат на `if`, на loop или на функция - е редовете, **отместени навътре** (indented) под ред, който завършва с `:`. Отстъпът не е украса: той **е** синтаксисът."
+msgstr "SAS има `do; ... end;`, SQL има `BEGIN ... END`. В Python **блокът** - редовете, които принадлежат на `if`, на цикъл или на функция - е редовете, **отместени навътре** (indented) под ред, който завършва с `:`. Отстъпът не е украса: той **е** синтаксисът."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:730
@@ -1676,7 +1676,7 @@ msgstr "Една и съща задача - сумата и произведен
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:755
 msgid "(Loops are the topic of session 2.) More side-by-side examples of languages: [rosettacode.org](https://rosettacode.org/wiki/Category:Programming_Tasks)."
-msgstr "(Loops са темата на занятие 2.) Още примери на различни езици един до друг: [rosettacode.org](https://rosettacode.org/wiki/Category:Programming_Tasks)."
+msgstr "(Циклите са темата на занятие 2.) Още примери на различни езици един до друг: [rosettacode.org](https://rosettacode.org/wiki/Category:Programming_Tasks)."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:758
@@ -3041,7 +3041,7 @@ msgstr "Видеа за по-късно: [NumPy for beginners (SciPy 2018)](http
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1853
 msgid "**Next session:** conditional statements and loops - `if` / `elif` / `else`, the Python `CASE WHEN`, and `for` / `while` loops over the rows of a file."
-msgstr "**Следващото занятие:** условни конструкции и loops - `if` / `elif` / `else`, `CASE WHEN` на Python и loops `for` / `while` по редовете на файл."
+msgstr "**Следващото занятие:** условни конструкции и цикли - `if` / `elif` / `else`, `CASE WHEN` на Python и цикли `for` / `while` по редовете на файл."
 
 #~ msgid "Since 2019 a new version comes out **every October** (3.12 in 2023, 3.13 in 2024, 3.14 in 2025), and each version gets security fixes for 5 years. In this course you use **3.12 or 3.13**."
 #~ msgstr "От 2019 г. нова версия излиза **всеки октомври** (3.12 през 2023, 3.13 през 2024, 3.14 през 2025) и всяка версия получава поправки за сигурност в продължение на 5 години. В този курс използвате **3.12 или 3.13**."

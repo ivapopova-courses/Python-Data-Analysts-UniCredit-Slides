@@ -21,7 +21,7 @@ msgstr "Финален проект"
 #. paragraph
 #: site/project.md:3
 msgid "In the last two sessions (15 and 16) you build one complete process, of the kind you now do in SAS or SQL: **the monthly portfolio report**. It runs for any month end of the history, from the raw data to one Excel file, and it can be run again next month without changes."
-msgstr ""
+msgstr "В последните две занятия (15 и 16) изграждате един цялостен процес, от вида, който сега правите в SAS или SQL: **месечния отчет за портфейла**. Той се пуска за всеки край на месеца от историята, от суровите данни до един Excel файл, и може да се пусне отново следващия месец без промени."
 
 #. paragraph
 #: site/project.md:8
@@ -55,370 +55,368 @@ msgstr "**Кодът се пази в Git**, като скрипт, който �
 
 #. paragraph
 #: site/project.md:16
-#, fuzzy
-#| msgid "Each lecture adds a part that the project reuses: functions (4), dictionaries as lookup tables (6), text cleaning and regular expressions (7, 8), reading files and handling bad records (9), modules and Git (10), classes (11, 12), databases (13) and pandas (14 - 16)."
 msgid "Each lecture adds a part that the project reuses: functions (4), dictionaries as lookup tables (6), text cleaning and regular expressions (7, 8), reading files and handling bad records (9), modules and Git (10), classes (11, 12), databases (13) and pandas (14 - 16). The homework of session 16 is the first part of the project."
-msgstr "Всяка лекция добавя част, която проектът използва: функции (4), dictionaries като таблици за търсене (6), почистване на текст и регулярни изрази (7, 8), четене на файлове и обработка на лоши записи (9), модули и Git (10), класове (11, 12), бази данни (13) и pandas (14 - 16)."
+msgstr "Всяка лекция добавя част, която проектът използва: функции (4), dictionaries като таблици за търсене (6), почистване на текст и регулярни изрази (7, 8), четене на файлове и обработка на лоши записи (9), модули и Git (10), класове (11, 12), бази данни (13) и pandas (14 - 16). Домашното от занятие 16 е първата част от проекта."
 
 #. heading 2
 #: site/project.md:22
 msgid "The task"
-msgstr ""
+msgstr "Задачата"
 
 #. paragraph
 #: site/project.md:24
 msgid "Write `report.py`. Run as"
-msgstr ""
+msgstr "Напишете `report.py`. Пуснат като"
 
 #. paragraph
 #: site/project.md:30
 msgid "it writes `out/portfolio_report_2026-09-30.xlsx` and `out/portfolio_2026-09-30.png`, and prints a short summary with the checks. With `2026-08-31` (or any month end from 2025-10-31 to 2026-09-30) it makes the report of that month."
-msgstr ""
+msgstr "той записва `out/portfolio_report_2026-09-30.xlsx` и `out/portfolio_2026-09-30.png` и отпечатва кратко обобщение с проверките. С `2026-08-31` (или всеки край на месеца от 2025-10-31 до 2026-09-30) прави отчета за този месец."
 
 #. heading 2
 #: site/project.md:34
 msgid "The data"
-msgstr ""
+msgstr "Данните"
 
 #. paragraph
 #: site/project.md:36
 msgid "All in `data/` of the homework repository ([the sample data](./sample-data)):"
-msgstr ""
+msgstr "Всичко е в `data/` на homework repository ([примерните данни](./sample-data)):"
 
 #. table cell
 #: site/project.md:38
 msgid "Source"
-msgstr ""
+msgstr "Източник"
 
 #. table cell
 #: site/project.md:38
 msgid "What you take from it"
-msgstr ""
+msgstr "Какво вземате от него"
 
 #. table cell
 #: site/project.md:40
 msgid "`portfolio.db` (SQLite)"
-msgstr ""
+msgstr "`portfolio.db` (SQLite)"
 
 #. table cell
 #: site/project.md:40
 msgid "the tables `clients`, `loans` (the client of each loan, product, currency, dates), `rating_scale`, `ratings_history` - with SQL and parameters (session 13)"
-msgstr ""
+msgstr "таблиците `clients`, `loans` (клиентът на всеки кредит, продукт, валута, дати), `rating_scale`, `ratings_history` - със SQL и параметри (занятие 13)"
 
 #. table cell
 #: site/project.md:41
 msgid "the outstanding and the days past due of each loan at each month end"
-msgstr ""
+msgstr "непогасената сума и дните просрочие на всеки кредит към всеки край на месеца"
 
 #. table cell
 #: site/project.md:42
 msgid "the names, EIKs, IBANs and cities of the clients (messy text - sessions 7, 8)"
-msgstr ""
+msgstr "имената, ЕИК, IBAN и градовете на клиентите (разхвърлян текст - занятия 7, 8)"
 
 #. table cell
 #: site/project.md:43
 msgid "the EUR exchange rates of each working day, one sheet per month (sessions 9, 14)"
-msgstr ""
+msgstr "курсовете на еврото за всеки работен ден, по един лист на месец (занятия 9, 14)"
 
 #. table cell
 #: site/project.md:44
 msgid "the region codes and names (cp1251 - session 7)"
-msgstr ""
+msgstr "кодовете и имената на регионите (cp1251 - занятие 7)"
 
 #. heading 2
 #: site/project.md:46
 msgid "The steps"
-msgstr ""
+msgstr "Стъпките"
 
 #. heading 3
 #: site/project.md:48
 msgid "1. Load"
-msgstr ""
+msgstr "1. Зареждане"
 
 #. paragraph
 #: site/project.md:50
 msgid "From the database: the clients, the loans, the rating scale, and the ratings of the report date **and** of the previous month end - the date as a **parameter** of the query, never pasted into the SQL text."
-msgstr ""
+msgstr "От базата данни: клиентите, кредитите, рейтинговата скала и рейтингите към датата на отчета **и** към предишния край на месеца - датата като **параметър** на заявката, никога вмъкната в текста на SQL."
 
 #. paragraph
 #: site/project.md:53
 msgid "From `balances_monthly.csv`: the rows of the report date (and all months up to it, for the trend)."
-msgstr ""
+msgstr "От `balances_monthly.csv`: редовете за датата на отчета (и всички месеци до нея, за тренда)."
 
 #. paragraph
 #: site/project.md:55
 msgid "From `fx_rates.xlsx`: the EUR / USD rate of the last working day on or before the report date (all sheets; `n/a` if the month is not in the file)."
-msgstr ""
+msgstr "От `fx_rates.xlsx`: курсът EUR / USD от последния работен ден на или преди датата на отчета (всички листа; `n/a`, ако месецът го няма във файла)."
 
 #. paragraph
 #: site/project.md:57
 msgid "From `client_register.csv`: the register, for the data quality checks."
-msgstr ""
+msgstr "От `client_register.csv`: регистърът, за проверките на качеството на данните."
 
 #. heading 3
 #: site/project.md:59
 msgid "2. Validate"
-msgstr ""
+msgstr "2. Валидиране"
 
 #. paragraph
 #: site/project.md:61
 msgid "Use your module `homework_nomenclature.py` of session 12 (copy it next to `report.py`). At least:"
-msgstr ""
+msgstr "Използвайте своя модул `homework_nomenclature.py` от занятие 12 (копирайте го до `report.py`). Най-малко:"
 
 #. paragraph
 #: site/project.md:64
 msgid "**codes**: product, segment, region and rating - every value must be in its nomenclature;"
-msgstr ""
+msgstr "**кодове**: продукт, сегмент, регион и рейтинг - всяка стойност трябва да е в своята номенклатура;"
 
 #. paragraph
 #: site/project.md:66
 msgid "**values out of range**: outstanding below 0 or above the amount, days past due below 0, an interest rate outside 0 - 30, a maturity date before the start date;"
-msgstr ""
+msgstr "**стойности извън диапазона**: непогасена сума под 0 или над сумата на кредита, дни просрочие под 0, лихвен процент извън 0 - 30, дата на падеж преди началната дата;"
 
 #. paragraph
 #: site/project.md:68
 msgid "**missing values**: a loan without a client or a client without a rating at the report date;"
-msgstr ""
+msgstr "**липсващи стойности**: кредит без клиент или клиент без рейтинг към датата на отчета;"
 
 #. paragraph
 #: site/project.md:70
 msgid "**the register** (sessions 7, 8): ids that are not in the clients table after cleaning, EIKs and IBANs with a wrong shape."
-msgstr ""
+msgstr "**регистърът** (занятия 7, 8): номера, които ги няма в таблицата с клиенти след почистването, ЕИК и IBAN с грешна форма."
 
 #. paragraph
 #: site/project.md:73
 msgid "Every failed check is one row of a **rejects** table: the dataset, the id, the column, the value, the reason. A row that fails is reported, never dropped silently. The report says how many rows were rejected; the loans that pass go on."
-msgstr ""
+msgstr "Всяка неуспешна проверка е един ред в таблица на **отхвърлените** (rejects): наборът от данни, номерът, колоната, стойността, причината. Ред, който не минава, се отчита, никога не се изпуска мълчаливо. Отчетът казва колко реда са отхвърлени; кредитите, които минават, продължават нататък."
 
 #. paragraph
 #: site/project.md:77
 msgid "The sample data is mostly clean, so most checks find nothing. Test each check: make a copy of a table, break it on purpose (a product `leasing`, a negative balance, a client id `C9999`) and see that the row appears in the rejects."
-msgstr ""
+msgstr "Примерните данни са предимно чисти, така че повечето проверки не намират нищо. Тествайте всяка проверка: направете копие на таблица, развалете я нарочно (продукт `leasing`, отрицателен остатък, номер на клиент `C9999`) и вижте, че редът се появява сред отхвърлените."
 
 #. heading 3
 #: site/project.md:81
 msgid "3. Transform"
-msgstr ""
+msgstr "3. Трансформиране"
 
 #. paragraph
 #: site/project.md:83
 msgid "One DataFrame with a row per loan at the report date: the loan, its balance and days past due, the client's segment and region, the rating and grade, the PD (the middle of the band), the EL (PD x LGD x outstanding, LGD 0.45 - a parameter), the DPD bucket (`current`, `1-30`, `31-90`, `90+`), and the age of the loan in months."
-msgstr ""
+msgstr "Един DataFrame с ред за всеки кредит към датата на отчета: кредитът, остатъкът и дните просрочие, сегментът и регионът на клиента, рейтингът и класът, PD (средата на интервала), EL (PD x LGD x непогасена сума, LGD 0.45 - параметър), групата по DPD (`current`, `1-30`, `31-90`, `90+`) и възрастта на кредита в месеци."
 
 #. heading 3
 #: site/project.md:88
 msgid "4. Aggregate"
-msgstr ""
+msgstr "4. Агрегиране"
 
 #. paragraph
 #: site/project.md:90
 msgid "The tables of the report:"
-msgstr ""
+msgstr "Таблиците на отчета:"
 
 #. table cell
 #: site/project.md:92
 msgid "Sheet"
-msgstr ""
+msgstr "Лист"
 
 #. table cell
 #: site/project.md:92
 msgid "Content"
-msgstr ""
+msgstr "Съдържание"
 
 #. table cell
 #: site/project.md:94
 msgid "report date, number of loans and clients, outstanding, EL, EL / outstanding, the share of 90+, the EUR / USD rate, the number of rejected rows"
-msgstr ""
+msgstr "дата на отчета, брой кредити и клиенти, непогасена сума, EL, EL / непогасена сума, делът на 90+, курсът EUR / USD, броят отхвърлени редове"
 
 #. table cell
 #: site/project.md:95
 msgid "outstanding by segment and DPD bucket, with totals"
-msgstr ""
+msgstr "непогасена сума по сегмент и група по DPD, с общи суми"
 
 #. table cell
 #: site/project.md:96
 msgid "outstanding by segment and grade, the grades in the order of the scale"
-msgstr ""
+msgstr "непогасена сума по сегмент и клас, класовете в реда на скалата"
 
 #. table cell
 #: site/project.md:97
 msgid "the rating migration matrix: previous month end -> report date, all ratings"
-msgstr ""
+msgstr "матрицата на миграция на рейтингите: предишен край на месеца -> дата на отчета, всички рейтинги"
 
 #. table cell
 #: site/project.md:98
 msgid "loans and outstanding for every month end up to the report date, with the change from the previous month"
-msgstr ""
+msgstr "кредити и непогасена сума за всеки край на месеца до датата на отчета, с промяната спрямо предишния месец"
 
 #. table cell
 #: site/project.md:99
 msgid "the 10 largest clients: id, name (from the register), segment, grade, outstanding, share of the portfolio"
-msgstr ""
+msgstr "10-те най-големи клиента: номер, име (от регистъра), сегмент, клас, непогасена сума, дял от портфейла"
 
 #. table cell
 #: site/project.md:100
 msgid "the table of step 2"
-msgstr ""
+msgstr "таблицата от стъпка 2"
 
 #. table cell
 #: site/project.md:101
 msgid "per dataset and column: rows, missing values, rejected values"
-msgstr ""
+msgstr "по набор от данни и колона: редове, липсващи стойности, отхвърлени стойности"
 
 #. heading 3
 #: site/project.md:103
 msgid "5. Report"
-msgstr ""
+msgstr "5. Отчет"
 
 #. paragraph
 #: site/project.md:105
 msgid "One Excel file with the sheets above (`pd.ExcelWriter`, session 16): readable widths, a number format for the amounts, a title row on the summary."
-msgstr ""
+msgstr "Един Excel файл с листата по-горе (`pd.ExcelWriter`, занятие 16): четими ширини, числов формат за сумите, ред със заглавие в обобщението."
 
 #. paragraph
 #: site/project.md:107
 msgid "One chart (PNG): the monthly outstanding (trend), or the outstanding by segment and DPD bucket."
-msgstr ""
+msgstr "Една графика (PNG): месечната непогасена сума (тренд) или непогасената сума по сегмент и група по DPD."
 
 #. paragraph
 #: site/project.md:109
 msgid "The script prints the checks (next section) at the end."
-msgstr ""
+msgstr "Накрая скриптът отпечатва проверките (следващия раздел)."
 
 #. heading 3
 #: site/project.md:111
 msgid "6. Git"
-msgstr ""
+msgstr "6. Git"
 
 #. paragraph
 #: site/project.md:113
 msgid "The project lives in a folder `project/` of your copy of the homework repository (session 10): `report.py`, `homework_nomenclature.py`, any other module of yours, a `README.md` (what the report does, how to run it, what each sheet means). `out/` is not committed. Commit after each step that works - the history should show the steps."
-msgstr ""
+msgstr "Проектът живее в папка `project/` на вашето копие на homework repository (занятие 10): `report.py`, `homework_nomenclature.py`, всеки друг ваш модул и `README.md` (какво прави отчетът, как се пуска, какво означава всеки лист). `out/` не се commit-ва. Направете commit след всяка стъпка, която работи - историята трябва да показва стъпките."
 
 #. heading 2
 #: site/project.md:119
 msgid "The checks your report must pass"
-msgstr ""
+msgstr "Проверките, които отчетът ви трябва да мине"
 
 #. paragraph
 #: site/project.md:121
 msgid "For the report date **2026-09-30** (the numbers of sessions 4, 6, 13 and 15):"
-msgstr ""
+msgstr "За дата на отчета **2026-09-30** (числата от занятия 4, 6, 13 и 15):"
 
 #. paragraph
 #: site/project.md:123
 msgid "400 loans, 143 clients with loans, outstanding **131,370,708.60**;"
-msgstr ""
+msgstr "400 кредита, 143 клиента с кредити, непогасена сума **131,370,708.60**;"
 
 #. paragraph
 #: site/project.md:124
 msgid "EL with LGD 0.45: **1,140,106.56**;"
-msgstr ""
+msgstr "EL с LGD 0.45: **1,140,106.56**;"
 
 #. paragraph
 #: site/project.md:125
 msgid "outstanding by segment: corporate 93,087,049.89, retail 6,837,600.42, sme 31,446,058.29;"
-msgstr ""
+msgstr "непогасена сума по сегмент: corporate 93,087,049.89, retail 6,837,600.42, sme 31,446,058.29;"
 
 #. paragraph
 #: site/project.md:127
 msgid "the migration matrix August -> September: 150 clients, 10 downgrades;"
-msgstr ""
+msgstr "матрицата на миграция август -> септември: 150 клиента, 10 понижения;"
 
 #. paragraph
 #: site/project.md:128
 msgid "the totals of every table = the total of the data (no rows lost or doubled in a join)."
-msgstr ""
+msgstr "общите суми на всяка таблица = общата сума на данните (няма загубени или удвоени редове при join)."
 
 #. paragraph
 #: site/project.md:131
 msgid "For **2026-08-31**: outstanding 133,492,549.54 and EL 1,093,088.84."
-msgstr ""
+msgstr "За **2026-08-31**: непогасена сума 133,492,549.54 и EL 1,093,088.84."
 
 #. heading 2
 #: site/project.md:133
 msgid "Checklist"
-msgstr ""
+msgstr "Списък за проверка"
 
 #. paragraph
 #: site/project.md:135
 msgid "[ ] `python report.py 2026-09-30` runs from a fresh terminal, in the virtual     environment, without errors."
-msgstr ""
+msgstr "[ ] `python report.py 2026-09-30` се изпълнява от нов терминал, във виртуалната среда, без грешки."
 
 #. paragraph
 #: site/project.md:137
 msgid "[ ] Another month end works without a change in the code."
-msgstr ""
+msgstr "[ ] Друг край на месеца работи без промяна в кода."
 
 #. paragraph
 #: site/project.md:138
 msgid "[ ] No date, path or LGD is written inside the functions: they are parameters (or     constants at the top of the file)."
-msgstr ""
+msgstr "[ ] Във функциите не е написана дата, път или LGD: те са параметри (или константи в началото на файла)."
 
 #. paragraph
 #: site/project.md:140
 msgid "[ ] The SQL uses parameters (`?` or `:name`)."
-msgstr ""
+msgstr "[ ] SQL-ът използва параметри (`?` или `:name`)."
 
 #. paragraph
 #: site/project.md:141
 msgid "[ ] The nomenclatures are objects of your classes of session 12."
-msgstr ""
+msgstr "[ ] Номенклатурите са обекти на вашите класове от занятие 12."
 
 #. paragraph
 #: site/project.md:142
 msgid "[ ] Every rejected row is in the `rejects` sheet, with its reason."
-msgstr ""
+msgstr "[ ] Всеки отхвърлен ред е в листа `rejects`, с причината си."
 
 #. paragraph
 #: site/project.md:143
 msgid "[ ] The checks above are printed and agree."
-msgstr ""
+msgstr "[ ] Проверките по-горе се отпечатват и съвпадат."
 
 #. paragraph
 #: site/project.md:144
 msgid "[ ] Every function has a docstring; the steps are functions (load, validate,     transform, aggregate, write) called from `main()`."
-msgstr ""
+msgstr "[ ] Всяка функция има docstring; стъпките са функции (load, validate, transform, aggregate, write), извиквани от `main()`."
 
 #. paragraph
 #: site/project.md:146
 msgid "[ ] `README.md` explains how to run it."
-msgstr ""
+msgstr "[ ] `README.md` обяснява как се пуска."
 
 #. paragraph
 #: site/project.md:147
 msgid "[ ] The history in Git shows the steps (several commits, clear messages)."
-msgstr ""
+msgstr "[ ] Историята в Git показва стъпките (няколко commits, ясни съобщения)."
 
 #. heading 2
 #: site/project.md:149
 msgid "Ideas for more"
-msgstr ""
+msgstr "Идеи за още"
 
 #. paragraph
 #: site/project.md:151
 msgid "The rejects and the data quality sheet with colours (Self-study of session 16)."
-msgstr ""
+msgstr "Листовете с отхвърлените и с качеството на данните, оцветени (Self-study на занятие 16)."
 
 #. paragraph
 #: site/project.md:152
 msgid "The check digits of the EIKs and the IBANs (Self-study of session 8)."
-msgstr ""
+msgstr "Контролните цифри на ЕИК и IBAN (Self-study на занятие 8)."
 
 #. paragraph
 #: site/project.md:153
 msgid "The report of all month ends in one run (a loop over `pd.date_range(freq=\"ME\")`), and one sheet that compares them."
-msgstr ""
+msgstr "Отчетът за всички краища на месеца с едно пускане (цикъл по `pd.date_range(freq=\"ME\")`) и един лист, който ги сравнява."
 
 #. paragraph
 #: site/project.md:155
 msgid "The loans in USD shown in EUR with the rate of the report date (take the amounts of the sample data as amounts in the loan's currency)."
-msgstr ""
+msgstr "Кредитите в USD, показани в EUR с курса към датата на отчета (приемете сумите в примерните данни за суми във валутата на кредита)."
 
 #. paragraph
 #: site/project.md:157
 msgid "A command-line option for the LGD (`argparse`, Self-study of session 10)."
-msgstr ""
+msgstr "Опция от командния ред за LGD (`argparse`, Self-study на занятие 10)."
 
 #~ msgid "In the last two sessions (15 and 16) you build one complete process, of the kind you now do in SAS or SQL:"
 #~ msgstr "В последните две занятия (15 и 16) изграждате един цялостен процес, от вида, който сега правите в SAS или SQL:"

@@ -71,7 +71,7 @@ msgstr "ср 28.10"
 #. table cell
 #: site/agenda.md:26
 msgid "[Conditional statements and loops](/lectures/02-conditions-and-loops)"
-msgstr "[Условни конструкции и loops](/lectures/02-conditions-and-loops)"
+msgstr "[Условни конструкции и цикли](/lectures/02-conditions-and-loops)"
 
 #. table cell
 #: site/agenda.md:27
@@ -101,7 +101,7 @@ msgstr "пон 09.11"
 #. table cell
 #: site/agenda.md:29
 msgid "[Lists (advanced)](/lectures/05-lists-advanced)"
-msgstr ""
+msgstr "[Lists (за напреднали)](/lectures/05-lists-advanced)"
 
 #. table cell
 #: site/agenda.md:30
@@ -111,7 +111,7 @@ msgstr "ср 11.11"
 #. table cell
 #: site/agenda.md:30
 msgid "[Dictionaries](/lectures/06-dictionaries)"
-msgstr ""
+msgstr "[Dictionaries](/lectures/06-dictionaries)"
 
 #. table cell
 #: site/agenda.md:31
@@ -121,7 +121,7 @@ msgstr "пон 16.11"
 #. table cell
 #: site/agenda.md:31
 msgid "[Text processing](/lectures/07-text-processing)"
-msgstr ""
+msgstr "[Обработка на текст](/lectures/07-text-processing)"
 
 #. table cell
 #: site/agenda.md:32
@@ -131,7 +131,7 @@ msgstr "ср 18.11"
 #. table cell
 #: site/agenda.md:32
 msgid "[Regular expressions](/lectures/08-regular-expressions)"
-msgstr ""
+msgstr "[Регулярни изрази (regular expressions)](/lectures/08-regular-expressions)"
 
 #. table cell
 #: site/agenda.md:33
@@ -140,10 +140,8 @@ msgstr "пон 23.11"
 
 #. table cell
 #: site/agenda.md:33
-#, fuzzy
-#| msgid "Error handling and file handling"
 msgid "[Error handling and file handling](/lectures/09-errors-and-files)"
-msgstr "Обработка на грешки и работа с файлове"
+msgstr "[Обработка на грешки и работа с файлове](/lectures/09-errors-and-files)"
 
 #. table cell
 #: site/agenda.md:34
@@ -152,10 +150,8 @@ msgstr "ср 25.11"
 
 #. table cell
 #: site/agenda.md:34
-#, fuzzy
-#| msgid "Modules, packages, Git and GitHub"
 msgid "[Modules, packages, Git and GitHub](/lectures/10-modules-and-git)"
-msgstr "Модули, пакети, Git и GitHub"
+msgstr "[Модули, пакети, Git и GitHub](/lectures/10-modules-and-git)"
 
 #. table cell
 #: site/agenda.md:35
@@ -164,10 +160,8 @@ msgstr "пон 30.11"
 
 #. table cell
 #: site/agenda.md:35
-#, fuzzy
-#| msgid "OOP: first steps, classes and objects"
 msgid "[OOP: first steps, classes and objects](/lectures/11-oop-classes)"
-msgstr "ООП: първи стъпки, класове и обекти"
+msgstr "[ООП: първи стъпки, класове и обекти](/lectures/11-oop-classes)"
 
 #. table cell
 #: site/agenda.md:36
@@ -176,10 +170,8 @@ msgstr "ср 02.12"
 
 #. table cell
 #: site/agenda.md:36
-#, fuzzy
-#| msgid "OOP in practice: nomenclatures"
 msgid "[OOP in practice: nomenclatures](/lectures/12-oop-nomenclatures)"
-msgstr "ООП на практика: номенклатури"
+msgstr "[ООП на практика: номенклатури](/lectures/12-oop-nomenclatures)"
 
 #. table cell
 #: site/agenda.md:37
@@ -188,10 +180,8 @@ msgstr "пон 07.12"
 
 #. table cell
 #: site/agenda.md:37
-#, fuzzy
-#| msgid "Working with databases"
 msgid "[Working with databases](/lectures/13-databases)"
-msgstr "Работа с бази данни"
+msgstr "[Работа с бази данни](/lectures/13-databases)"
 
 #. table cell
 #: site/agenda.md:38
@@ -200,10 +190,8 @@ msgstr "ср 09.12"
 
 #. table cell
 #: site/agenda.md:38
-#, fuzzy
-#| msgid "NumPy and introduction to pandas"
 msgid "[NumPy and introduction to pandas](/lectures/14-numpy-pandas-intro)"
-msgstr "NumPy и въведение в pandas"
+msgstr "[NumPy и въведение в pandas](/lectures/14-numpy-pandas-intro)"
 
 #. table cell
 #: site/agenda.md:39
@@ -213,7 +201,7 @@ msgstr "пон 14.12"
 #. table cell
 #: site/agenda.md:39
 msgid "[pandas: selection, aggregation, joins](/lectures/15-pandas-select-aggregate-join)"
-msgstr ""
+msgstr "[pandas: селекция, агрегиране, съединяване (joins)](/lectures/15-pandas-select-aggregate-join)"
 
 #. table cell
 #: site/agenda.md:40
@@ -222,10 +210,8 @@ msgstr "ср 16.12"
 
 #. table cell
 #: site/agenda.md:40
-#, fuzzy
-#| msgid "pandas: reports and the [final project](/project)"
 msgid "[pandas: reports](/lectures/16-pandas-reports-project) and the [final project](/project)"
-msgstr "pandas: отчети и [финалният проект](/project)"
+msgstr "[pandas: отчети](/lectures/16-pandas-reports-project) и [финалният проект](/project)"
 
 #. heading 2
 #: site/agenda.md:42
@@ -260,7 +246,7 @@ msgstr "f-strings; `Decimal` за парични стойности."
 #. heading 3
 #: site/agenda.md:51
 msgid "2. Conditional statements and loops"
-msgstr "2. Условни конструкции и loops"
+msgstr "2. Условни конструкции и цикли"
 
 #. paragraph
 #: site/agenda.md:53
@@ -270,7 +256,7 @@ msgstr "`if` / `elif` / `else`, логически оператори, `match`."
 #. paragraph
 #: site/agenda.md:55
 msgid "The Python version of `CASE WHEN` and of the loops in a DATA step."
-msgstr "Версията на Python за `CASE WHEN` и за loops в DATA step."
+msgstr "Версията на Python за `CASE WHEN` и за циклите в DATA step."
 
 #. paragraph
 #: site/agenda.md:56
@@ -340,7 +326,7 @@ msgstr "6. Dictionaries"
 #. paragraph
 #: site/agenda.md:78
 msgid "Working with `dict`, looping over it, nested dictionaries, dict comprehensions."
-msgstr "Работа с `dict`, обхождане с loop, вложени dictionaries, dict comprehensions."
+msgstr "Работа с `dict`, обхождане с цикъл, вложени dictionaries, dict comprehensions."
 
 #. paragraph
 #: site/agenda.md:80

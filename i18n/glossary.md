@@ -24,7 +24,6 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | string, strings | the type and its values: "стойност от тип string" |
 | int, float, bool, None | the types, written as in code |
 | f-string | |
-| loop, loops | "loop-ът"; "`for` loop", "вложени loops" |
 | list comprehension, dict comprehension | |
 | slice, slicing | |
 | lambda | |
@@ -111,6 +110,7 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | cell (notebook) | клетка |
 | days past due | дни просрочие |
 | loan card (homework 1) | карта на кредит |
+| loop, loops | цикъл, цикли: "цикълът", "цикъла"; "`for` loop" is "цикъл `for`", "nested loops" is "вложени цикли" (Iva, 2026-10-25) |
 | bucket (of days past due) | група |
 | stage (IFRS 9) | етап |
 | repayment schedule, annuity loan | погасителен план, анюитетен кредит |

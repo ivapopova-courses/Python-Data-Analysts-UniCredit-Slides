@@ -95,10 +95,8 @@ msgstr "За какво"
 
 #. table cell
 #: site/how-to.md:47
-#, fuzzy
-#| msgid "[Python](https://www.python.org/downloads/)"
 msgid "[Python](https://www.python.org/downloads/windows/)"
-msgstr "[Python](https://www.python.org/downloads/)"
+msgstr "[Python](https://www.python.org/downloads/windows/)"
 
 #. table cell
 #: site/how-to.md:47
@@ -153,7 +151,7 @@ msgstr "вашето собствено копие на задачите"
 #. paragraph
 #: site/how-to.md:52
 msgid "On Windows, open the [Windows downloads page](https://www.python.org/downloads/windows/), find the newest **Python 3.13.x** under *Stable Releases* and take **Download Windows installer (64-bit)** - not the \"Python install manager\" and not the newest Python (3.15) at the top. On the first screen of the installer, tick **Add python.exe to PATH**. Check the tools in a terminal (in VS Code: **Terminal > New Terminal**):"
-msgstr ""
+msgstr "На Windows отворете [страницата за изтегляне за Windows](https://www.python.org/downloads/windows/), намерете най-новия **Python 3.13.x** под *Stable Releases* и изберете **Download Windows installer (64-bit)** - не \"Python install manager\" и не най-новия Python (3.15) най-горе. На първия екран на инсталатора сложете отметка на **Add python.exe to PATH**. Проверете инструментите в терминал (във VS Code: **Terminal > New Terminal**):"
 
 #. paragraph
 #: site/how-to.md:69
@@ -328,7 +326,7 @@ msgstr "В терминала на VS Code, в папката Homework:"
 #. paragraph
 #: site/how-to.md:193
 msgid "PowerShell says *running scripts is disabled on this system*? Run `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`, then activate again (more in [lecture 1](/lectures/01-intro-syntax-types#virtual-environments))."
-msgstr ""
+msgstr "PowerShell казва *running scripts is disabled on this system*? Изпълнете `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process` и после активирайте отново (повече в [лекция 1](/lectures/01-intro-syntax-types#virtual-environments))."
 
 #. paragraph
 #: site/how-to.md:197
