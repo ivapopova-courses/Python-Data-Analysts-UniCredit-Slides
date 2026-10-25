@@ -89,7 +89,9 @@ Recommendations**, hover over the header and click the cloud icon (**Install
 Workspace Recommended Extensions**).
 
 To get the same list in another project, create the file `.vscode/extensions.json`
-in its folder with this content:
+in its folder with this content (or download
+[extensions.json](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Slides/blob/main/.vscode/extensions.json)
+and put it into the `.vscode` folder of your project):
 
 ```json
 {
