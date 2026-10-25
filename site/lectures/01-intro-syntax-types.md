@@ -543,26 +543,18 @@ runs your files with it, and new terminals activate the venv by themselves.
 2. Write:
 
    ```python
-   my_name = "Iva"
+   my_name = "Iva"  # put your name
    print("Hello, " + my_name)
    ```
 
 3. Run it, in one of these ways:
    - the **Run Python File** button (the triangle, top right);
    - right-click in the editor > **Run Python > Run Python File in Terminal**;
-   - in the terminal: `python hello.py`;
-   - `Ctrl+Enter` - only in the Labs folder, which has this shortcut in
-     `.vscode/keybindings.json`.
+   - in the terminal: `python hello.py`; 
 
 The output appears in the **Terminal** panel.
 
-::: tip Old way: a build task
-Older courses used a *task* in `.vscode/tasks.json` and `Ctrl+Shift+B` to run the
-file ([Tasks](https://code.visualstudio.com/docs/debugtest/tasks)). It still works, but
-the Run button does the same without setup.
-:::
-
-### Shortcuts worth learning first
+### Shortcuts worth learning
 
 | Keys | Action |
 |---|---|

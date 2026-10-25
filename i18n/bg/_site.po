@@ -72,3 +72,78 @@ msgstr "Финален проект"
 #: site/.vitepress/config.mjs
 msgid "1. Introduction, syntax, types"
 msgstr "1. Въведение, синтаксис, типове"
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "2. Conditions and loops"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "3. Lists, tuples, sets"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "4. Functions"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "5. Lists (advanced)"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "6. Dictionaries"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "7. Text processing"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "8. Regular expressions"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "9. Errors and files"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "10. Modules and Git"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "11. OOP: classes and objects"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "12. OOP: nomenclatures"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "13. Databases"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "14. NumPy and pandas"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "15. pandas: select, group, join"
+msgstr ""
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "16. pandas: reports, project"
+msgstr ""
