@@ -37,6 +37,9 @@ const course = defineCourse({
   lang: 'en',
   // private trainer notes: a folder next to this repo, never published
   trainerDir: '../trainer',
+  // the "In this page" column from 1152px (VitePress: 1280px), so it shows on a
+  // laptop at 100% zoom
+  asideMinWidth: 1152,
   nav: [
     { text: 'Agenda', link: '/agenda' },
     { text: 'Lectures', link: lectures.at(-1).link },
