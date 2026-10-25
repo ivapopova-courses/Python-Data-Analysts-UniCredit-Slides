@@ -691,6 +691,25 @@ example runs on its own - in a notebook they do not.)
 - If you run cells out of order, or delete a cell, the kernel still remembers its
   variables. Before you trust a result: **Restart** the kernel and **Run All**.
 
+### Install Jupyter
+
+A notebook needs two packages in the project's venv: `ipykernel` (runs the
+notebook with the venv's Python) and `jupyterlab` (notebooks in the browser). Both
+are in `requirements.txt` (section 4) - if you installed it, you have them. In a
+new project, with the venv active:
+
+```bash
+pip install jupyterlab ipykernel
+jupyter lab --version     # check: prints the version
+```
+
+In VS Code you also need the **Jupyter** extension (section 5).
+
+::: warning "Running cells requires the ipykernel package"
+VS Code shows this when the selected kernel has no `ipykernel` - usually the system
+Python instead of the `.venv`. Select the `.venv` kernel, or click **Install**.
+:::
+
 ### Notebooks in VS Code
 
 1. `Ctrl+Shift+P` > **Create: New Jupyter Notebook** (or a new file `analysis.ipynb`).
