@@ -32,18 +32,18 @@ features:
 | 2 | [Conditional statements and loops](/lectures/02-conditions-and-loops) |
 | 3 | [Lists (basics), tuples and sets](/lectures/03-lists-tuples-sets) |
 | 4 | [Functions](/lectures/04-functions) |
-| 5 | Lists (advanced) |
-| 6 | Dictionaries |
-| 7 | Text processing |
-| 8 | Regular expressions |
-| 9 | Error handling and file handling |
-| 10 | Modules, packages, Git and GitHub |
-| 11 | OOP: first steps, classes and objects |
-| 12 | OOP in practice: nomenclatures |
-| 13 | Working with databases |
-| 14 | NumPy and introduction to pandas |
-| 15 | pandas: selection, aggregation, joins |
-| 16 | pandas: reports and the [final project](/project) |
+| 5 | [Lists (advanced)](/lectures/05-lists-advanced) |
+| 6 | [Dictionaries](/lectures/06-dictionaries) |
+| 7 | [Text processing](/lectures/07-text-processing) |
+| 8 | [Regular expressions](/lectures/08-regular-expressions) |
+| 9 | [Error handling and file handling](/lectures/09-errors-and-files) |
+| 10 | [Modules, packages, Git and GitHub](/lectures/10-modules-and-git) |
+| 11 | [OOP: first steps, classes and objects](/lectures/11-oop-classes) |
+| 12 | [OOP in practice: nomenclatures](/lectures/12-oop-nomenclatures) |
+| 13 | [Working with databases](/lectures/13-databases) |
+| 14 | [NumPy and introduction to pandas](/lectures/14-numpy-pandas-intro) |
+| 15 | [pandas: selection, aggregation, joins](/lectures/15-pandas-select-aggregate-join) |
+| 16 | [pandas: reports](/lectures/16-pandas-reports-project) and the [final project](/project) |
 
 <style>
 .VPHome .vp-doc { max-width: 1152px; margin: 48px auto 0; padding: 0 24px; }

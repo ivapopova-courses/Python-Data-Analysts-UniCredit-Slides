@@ -21,6 +21,8 @@ import base64, io, os, sys, traceback, warnings
 os.environ.setdefault("MPLBACKEND", "AGG")
 os.environ.setdefault("COLUMNS", "200")   # pandas: print wide tables without "..." (the output scrolls)
 warnings.filterwarnings("ignore", message=".*non-interactive.*")
+# savefig() of an example: a deprecation warning inside Pyodide's matplotlib, not the example's fault
+warnings.filterwarnings("ignore", message="The [xy] parameter as float was deprecated")
 
 class _LineEnd:
     """sys.stdout that remembers whether the output ends with a new line: the
@@ -36,8 +38,22 @@ class _LineEnd:
     def __getattr__(self, name):
         return getattr(self._stream, name)
 
+async def _course_openpyxl(source):
+    """Pyodide has no openpyxl package: install it from PyPI (micropip) the first
+    time an example works with Excel files, so read_excel / to_excel run too.
+    micropip itself is loaded by runPython (EXCEL), without its messages."""
+    text = source.lower()
+    if not any(word in text for word in ("excel", "openpyxl", ".xlsx")):
+        return
+    try:
+        import openpyxl
+    except ImportError:
+        import micropip
+        await micropip.install("openpyxl")
+
 async def _course_run(source):
     from pyodide.code import eval_code_async
+    await _course_openpyxl(source)
     namespace = {"__name__": "__main__"}
     stdout = sys.stdout
     sys.stdout = tracked = _LineEnd(stdout)
@@ -69,6 +85,9 @@ async def _course_run(source):
     sys.stderr.flush()
     return images
 `
+
+// the examples that need openpyxl (the same words as in _course_openpyxl)
+const EXCEL = /excel|openpyxl|\.xlsx/i
 
 let pyodidePromise = null
 let queue = Promise.resolve()
@@ -113,6 +132,7 @@ export function runPython(source, write, onStatus) {
     try {
       onStatus?.('packages')
       await py.loadPackagesFromImports(source, { messageCallback: () => {} })
+      if (EXCEL.test(source)) await py.loadPackage('micropip', { messageCallback: () => {} })
     } catch (error) {
       write({ kind: 'error', text: String(error.message || error) })
     }

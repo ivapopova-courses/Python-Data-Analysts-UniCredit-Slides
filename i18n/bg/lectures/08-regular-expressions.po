@@ -1,0 +1,1224 @@
+# Translation of site/lectures/08-regular-expressions.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/lectures/08-regular-expressions.md\n"
+
+#. front matter: title
+#: site/lectures/08-regular-expressions.md:2 site/lectures/08-regular-expressions.md:5
+msgid "8. Regular expressions"
+msgstr ""
+
+#. html
+#: site/lectures/08-regular-expressions.md:8
+msgid "<span>Session 8</span><span>practice: <code>08-regular-expressions/</code> in the homework repository</span>"
+msgstr ""
+
+#. html
+#: site/lectures/08-regular-expressions.md:9
+msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:12
+msgid "**Today you will learn to:**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:14
+msgid "describe the **shape** of a text with a pattern: \"an L and six digits\", \"BG, two digits, four letters, ...\";"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:16
+msgid "find, check and extract with the `re` module - the Python `PRXMATCH`, `LIKE` and `REGEXP_LIKE`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:18
+msgid "use groups to take a text apart: the day, the month and the year of a date; the amount and the currency of a payment;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:20
+msgid "validate a whole column of ids, IBANs, e-mails and dates;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:21
+msgid "pull amounts, dates, IBANs and loan ids out of free-text comments;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:22
+msgid "replace with patterns - the Python `PRXCHANGE` and `REGEXP_REPLACE`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:24
+msgid "From SAS to Python - which comments mention an IBAN?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:46
+msgid "`r\"BG\\d{2}\\s?[A-Z]{4}\"` reads: `BG`, two digits, maybe a space, four capital letters. By the end of today you will read and write such patterns."
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:49
+msgid "1. What a regular expression is"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:51
+msgid "A pattern for many strings"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:53
+msgid "The string methods of session 7 look for **one** exact text: `\"EUR\" in s`. A **regular expression** (*regex*) describes a **set** of texts by their shape: \"a date like 30.09.2026\" covers every date in that format."
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:57
+msgid "Want"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:57
+msgid "String method"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:57
+msgid "Regular expression"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:59
+msgid "contains `EUR`"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:60
+msgid "starts with `L`"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:61
+msgid "an L and 6 digits"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:62
+msgid "any date `dd.mm.yyyy` inside a text"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:62
+msgid "- (a loop with `find` and checks)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:64
+msgid "Simple tests: use the string methods - they are clearer. Patterns: use a regex. The same check, both ways:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:75
+msgid "`re.search` and the match object"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:77
+msgid "The module `re` comes with Python. `re.search(pattern, text)` looks for the first place where the pattern matches. It returns a **match object** - or `None` if there is no match:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:94
+msgid "A match object is \"true\" and `None` is \"false\", so `if re.search(...):` asks \"is it there?\" - like `if prxmatch(...) > 0` in SAS:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:107
+msgid "The same test on the loan portfolio: how many of the comments mention a date in the format `dd.mm.yyyy`?"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:122
+msgid "Raw strings: `r\"...\"`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:124
+msgid "Patterns use many backslashes: `\\d`, `\\.`, `\\s`. In a normal string, Python itself reads some backslash pairs first (`\\n` is a new line, `\\b` a backspace). A **raw string** `r\"...\"` gives every backslash to the `re` module unchanged:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:134
+msgid "Rule: **always write patterns as raw strings**, `r\"...\"`."
+msgstr ""
+
+#. box title
+#: site/lectures/08-regular-expressions.md:136 site/lectures/08-regular-expressions.md:255 site/lectures/08-regular-expressions.md:360 site/lectures/08-regular-expressions.md:480 site/lectures/08-regular-expressions.md:588 site/lectures/08-regular-expressions.md:724 site/lectures/08-regular-expressions.md:917 site/lectures/08-regular-expressions.md:1037
+msgid "Try it"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:137
+msgid "Change the pattern of the first block of this section to find the amount (`1 250,00`) instead of the date. Hint: digits, a space, digits, a comma, two digits: `r\"\\d+ \\d+,\\d{2}\"`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:142
+msgid "2. Characters and classes"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:144
+msgid "Literal characters and `.`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:146
+msgid "Letters and digits match themselves. The **point** `.` matches **any one character** (except a new line). To match a real point, escape it: `\\.`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:157
+msgid "The characters with a special meaning are `. ^ $ * + ? { } [ ] \\ | ( )`. Escape them with `\\` when you mean the character itself; `re.escape(text)` does it for you:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:167
+msgid "Classes: `[...]`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:169
+msgid "Square brackets match **one** character from a set:"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:171
+msgid "Pattern"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:171
+msgid "Matches one character that is"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:173
+msgid "`a`, `b` or `c`"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:174
+msgid "a digit"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:175
+msgid "a capital Latin letter"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:176
+msgid "a Latin letter or a digit"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:177
+msgid "**not** a digit (`^` first inside the brackets)"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:178
+msgid "a point or a comma (inside brackets, `.` is a point)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:189
+msgid "Shorthand classes"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:191
+msgid "Shorthand"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:191 site/lectures/08-regular-expressions.md:267 site/lectures/08-regular-expressions.md:1099
+msgid "Means"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:191
+msgid "The capital means \"not\""
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:193
+msgid "a digit, `[0-9]`"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:193
+msgid "`\\D` not a digit"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:194
+msgid "a \"word\" character: a letter, a digit or `_`"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:195
+msgid "a space, a tab, a new line"
+msgstr ""
+
+#. box title
+#: site/lectures/08-regular-expressions.md:206
+msgid "`\\d` and `\\w` know Cyrillic too"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:207
+msgid "In Python, `\\w` matches letters of **all** languages, and `\\d` all kinds of digits. For \"Latin letters only\", write `[A-Za-z]`."
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:218
+msgid "Anchors: `^`, `$`, `\\b`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:220
+msgid "Anchors match a **position**, not a character:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:222
+msgid "`^` - the start of the text;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:223
+msgid "`$` - the end of the text;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:224
+msgid "`\\b` - a word boundary: between a word character and a non-word character."
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:237
+msgid "`LIKE` and regex"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:239
+msgid "SQL `LIKE`"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:239
+msgid "Regex"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:241
+msgid "any one character"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:242
+msgid "any text, also empty"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:243
+msgid "starts with L"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:244
+msgid "ends with EUR"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:245
+msgid "contains EUR"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:256
+msgid "Write a pattern that finds the three-letter currency codes (`EUR`, `USD`, ...) in `\"100 EUR, 50 usd, 20 GBP and EURO\"` - whole words in capitals only. Which anchor do you need so that `EURO` is not found?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:261
+msgid "3. Quantifiers"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:263
+msgid "How many times"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:265
+msgid "A **quantifier** after a character or a class says how many times it repeats:"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:267
+msgid "Quantifier"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:269
+msgid "0 or more"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:270
+msgid "1 or more"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:271
+msgid "0 or 1 (optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:272
+msgid "exactly 3"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:273
+msgid "2 to 4"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:274
+msgid "2 or more"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:285
+msgid "`*` also matches **nothing** - zero digits are \"0 or more\". With `findall`, that gives empty strings between the matches:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:295
+msgid "When you want \"at least one\", write `+`, not `*`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:297
+msgid "On the client register: the names typed with two or more spaces in a row - `\\s{2,}`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:310
+msgid "An amount with an optional decimal part - `?` after a **group** in brackets (section 5) makes the whole part optional:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:320
+msgid "A Bulgarian amount with groups of thousands: 1 to 3 digits, then any number of \"a space and 3 digits\", then a comma and 2 digits:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:332
+msgid "Greedy and lazy"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:334
+msgid "Quantifiers are **greedy**: they take as much text as they can, and give back only what is needed for the rest of the pattern to match:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:344
+msgid "A `?` after the quantifier makes it **lazy**: as little as possible."
+msgstr ""
+
+#. box title
+#: site/lectures/08-regular-expressions.md:354
+msgid "`.*` takes too much"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:355
+msgid "`.*` is the most common cause of a wrong match: it runs to the end of the line, then steps back. When the text between two markers cannot contain the marker, write a class with `^`: `\"[^\"]*\"`, `\\([^)]*\\)`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:361
+msgid "In `\"(valuation report from 12.06.2026) (checked 2026-06-15)\"`, find the text inside each pair of brackets. First try `\\(.*\\)`, then make it lazy."
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:365
+msgid "4. The functions of `re`"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:369
+msgid "Function"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:369
+msgid "Where the pattern must match"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:369 site/lectures/08-regular-expressions.md:1075
+msgid "SAS / SQL"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:371
+msgid "anywhere"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:372
+msgid "at the **start**"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:373
+msgid "the **whole** text"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:387
+msgid "For **validation**, use `fullmatch`: `search` says yes when the pattern is **somewhere** in the text, also with junk around it."
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:390
+msgid "`findall` and `finditer`: all matches"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:392
+msgid "`findall` returns a **list of strings** - all the matches:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:402
+msgid "`finditer` gives the **match objects**, with their positions - when you need more than the text:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:413
+msgid "How many times a pattern occurs - `REGEXP_COUNT` in SQL - is the length of `findall`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:423
+msgid "`split` with a pattern"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:425
+msgid "`re.split` cuts at every match - when the separators vary:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:434
+msgid "Flags: `re.IGNORECASE`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:436
+msgid "Flags change how a pattern works. The most useful one ignores the case:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:446
+msgid "With a text of many lines, `^` and `$` mean the start and the end of the **whole** text. The flag `re.MULTILINE` (`re.M`) makes them work **per line**:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:461
+msgid "`re.compile`: a pattern used many times"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:463
+msgid "`re.compile` turns a pattern into an object with the same methods. Give it a name at the top of the script, and use it in a loop - it reads well and is checked once:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:481
+msgid "Count the comments that contain the word `review` in any case, with `search` and a flag. Then count them with a string method (`\"review\" in c.lower()`). Same number?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:485
+msgid "5. Groups and alternatives"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:487
+msgid "Groups: take the match apart"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:489
+msgid "Round brackets make a **group**. After a match, `group(1)`, `group(2)`, ... give the text of each group; `groups()` gives all of them as a tuple:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:504
+msgid "In SAS: `PRXPOSN(re, 1, text)` after `PRXMATCH`."
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:506
+msgid "Named groups: `(?P<name>...)`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:508
+msgid "With many groups, numbers are hard to follow. Give each group a **name**:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:521
+msgid "A group that did not take part in the match gives `None` - for example an optional part:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:533
+msgid "`findall` with groups gives tuples"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:535
+msgid "With **one** group, `findall` returns the text of the group; with **several** groups, a list of tuples:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:546
+msgid "`(?:...)` is a group that only **groups** - for `|` or a quantifier - and is not returned."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:549
+msgid "A list of records from a text - `finditer` with named groups and `groupdict()`, one dictionary per match (session 6):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:562
+msgid "Alternatives: `|`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:564
+msgid "`a|b` matches `a` or `b`. Inside a group, it is one of several options in one place:"
+msgstr ""
+
+#. box title
+#: site/lectures/08-regular-expressions.md:574
+msgid "The order of the alternatives"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:575
+msgid "At one position, the alternatives are tried **from left to right**, and the first one that matches wins - not the longest:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:589
+msgid "Write one pattern with named groups for `\"Overdue 60 days. Reminder sent to radoslav.iliev@example.org on 2026-04-24.\"` that gives the days, the e-mail and the date with `groupdict()`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:594
+msgid "6. Validation with `fullmatch`"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:596
+msgid "The patterns of our ids"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:598
+msgid "Each pattern describes the **shape** of a valid value. With `fullmatch`, the whole text must fit:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:623
+msgid "The Bulgarian IBAN: `BG`, 2 check digits, 4 letters of the bank, 4 digits of the branch, 2 digits of the account type, 8 letters or digits of the account - 22 characters."
+msgstr ""
+
+#. box title
+#: site/lectures/08-regular-expressions.md:627
+msgid "`|` and `fullmatch`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:628
+msgid "`fullmatch(r\"\\d{9}|\\d{13}\", s)` works: `fullmatch` applies to the whole pattern. But with `search` and anchors, `^\\d{9}|\\d{13}$` means \"`^\\d{9}` **or** `\\d{13}$`\" - write `^(?:\\d{9}|\\d{13})$`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:633
+msgid "Validate a whole column - every loan id of `loans.csv`, every currency:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:650
+msgid "E-mails"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:652
+msgid "The official grammar of e-mail addresses is very complex. For data checks, a practical pattern is enough: something without spaces and `@`, an `@`, a domain with at least one point:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:666
+msgid "The shape is not the meaning"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:668
+msgid "A regex checks the **form**. `31.09.2026` has the right shape, but there is no 31st of September; `BG00TEST...` has the right shape, but wrong check digits. So: the regex first, then the real check - `strptime` for a date (session 7), the check digits for an IBAN (Self-study):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:687
+msgid "(Session 9 shows a shorter way: try `strptime` and catch the error.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:689
+msgid "A whole column"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:691
+msgid "The IBANs of the register: clean them with the function of session 7, then check the shape:"
+msgstr ""
+
+#. box title
+#: site/lectures/08-regular-expressions.md:709
+msgid "The same in pandas and SQL"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:710
+msgid "pandas: `df[\"iban\"].str.fullmatch(pattern)` gives a column of `True` / `False`; `str.contains`, `str.extract` and `str.replace(..., regex=True)` use patterns too (session 15). Most databases have regex functions: `REGEXP_LIKE` (Oracle, MySQL), `~` (PostgreSQL); MS SQL Server only since version 2025."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:725
+msgid "Write a pattern for a client id that also accepts the messy forms of the register: an optional space or `-` after the `C`, and 1 to 4 digits (`C17`, `c 0014`, `C-0026`). Use `re.I`. How many of the 150 raw ids does it accept?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:730
+msgid "7. Extraction from free text"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:732
+msgid "The comments of the credit officers (`loan_comments.csv`, new today) are free text. Each type of comment has its own shape:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:748
+msgid "Classify every comment with a dictionary **type -> pattern**: the first pattern that matches gives the type - like a `CASE WHEN ... LIKE` chain:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:778
+msgid "Amounts and their currency"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:780
+msgid "Amounts are written in different styles: `2 069,77 EUR`, `20,960.03 EUR`, `99,400 EUR`. One pattern for \"digits with spaces, commas and points, then a currency\", and the `parse_amount` of session 7 for the number:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:805
+msgid "The total of the payments received in September 2026:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:825
+msgid "Dates in two formats"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:827
+msgid "The comments use `dd.mm.yyyy`, `dd/mm/yyyy` and ISO dates. One pattern with alternatives - and a **named group per part**, in both orders:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:849
+msgid "IBANs, with or without spaces"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:851
+msgid "An IBAN in a comment can be written in groups of four. Allow an optional space between the groups, then remove the spaces:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:865
+msgid "Does the comment agree with the register?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:867
+msgid "A real check: the IBAN in a disbursement comment must be the IBAN of the client of the loan. Three files, a dictionary for each lookup (session 6):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:895
+msgid "(`re.sub(r\"\\D\", \"\", ...)` keeps only the digits - section 8.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:897
+msgid "The same check for the EIKs in the guarantee comments - are they EIKs of companies in the register?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:914
+msgid "(`for m in [...]` inside the comprehension gives the match a name, so it is computed once. Python 3.8+ also has `:=`, the \"walrus\" operator, for the same.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:918
+msgid "Extract the **new maturity** of every restructuring comment (`\"... new maturity 2034-11-04.\"`) with a named group, and find the latest one."
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:922
+msgid "8. Replace with `sub`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:926
+msgid "`re.sub` replaces **every** match - the SAS `PRXCHANGE('s/.../.../', -1, text)`, SQL `REGEXP_REPLACE`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:938
+msgid "`re.subn` also returns the number of replacements - useful in a cleaning report:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:947
+msgid "Before you share a file of comments, hide the e-mail addresses - the same `sub` on every row:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:965
+msgid "Back-references: reorder the parts"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:967
+msgid "In the replacement, `\\1`, `\\2` (or `\\g<name>`) insert the text of a group. A date `dd.mm.yyyy` becomes ISO:"
+msgstr ""
+
+#. box title
+#: site/lectures/08-regular-expressions.md:978
+msgid "The replacement is a raw string too"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:979
+msgid "Without `r`, Python reads `\"\\1\"` itself, as the character number 1 - the group is lost:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:990
+msgid "A function as the replacement"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:992
+msgid "When the new text must be **calculated**, give `sub` a function: it gets the match object and returns the replacement. Every amount in a text, converted to thousands of EUR:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1007
+msgid "Normalise all legal forms in company names with one pattern and a dictionary:"
+msgstr ""
+
+#. box title
+#: site/lectures/08-regular-expressions.md:1023
+msgid "A regex is code: test it"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1024
+msgid "A pattern that looks right can match too much or too little. Test it on good **and** bad examples, as the checks of the tasks do. [regex101.com](https://regex101.com) (choose the flavour *Python*) shows what each part of a pattern matches."
+msgstr ""
+
+#. box title
+#: site/lectures/08-regular-expressions.md:1029
+msgid "Advanced: patterns that take forever"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1030
+msgid "Patterns with nested quantifiers, like `(\\d+)+$`, can take a very long time on a long text that almost matches (\"catastrophic backtracking\"). Keep patterns simple, avoid `(...+)+`, and do not run patterns written by other people on big data without a test. Python 3.11 added *possessive* quantifiers (`*+`, `++`) and atomic groups `(?>...)` that prevent it - rarely needed in data work."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1038
+msgid "Mask the account part of every IBAN in a text for a report: keep `BG` and the first 6 characters, replace the rest with `*`. Hint: a group for the part you keep, and `r\"\\1\" + \"*\" * 14` as the replacement."
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:1043
+msgid "9. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1045
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1053
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1053
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1053
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1055
+msgid "Write patterns: ids, codes, currencies, whole words"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1056
+msgid "Predict `findall`, `search`, `sub`; greedy and lazy"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1057
+msgid "Validators with `fullmatch`: loan id, EIK, IBAN, e-mail, date"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1058
+msgid "Amounts, dates and loan ids from comments"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1059
+msgid "Named groups: a payment line, a file name, a rate change"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1060
+msgid "`task6-sub.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1060
+msgid "Clean and reformat with `sub`: dates, spaces, masks"
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:1062
+msgid "Summary"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1064
+msgid "Topic"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1064
+msgid "Remember"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1066
+msgid "Patterns"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1066
+msgid "always `r\"...\"`; letters match themselves; `.` any character, `\\.` a point"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1067
+msgid "Classes"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1067
+msgid "`[abc]`, `[0-9]`, `[^...]`; `\\d`, `\\w`, `\\s` and `\\D`, `\\W`, `\\S`"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1068
+msgid "Anchors"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1068
+msgid "`^` start, `$` end, `\\b` word boundary"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1069
+msgid "Quantifiers"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1069
+msgid "`*` `+` `?` `{n}` `{n,m}`; greedy - add `?` for lazy, or use `[^x]*`"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1070
+msgid "Functions"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1070
+msgid "`search` (anywhere), `match` (start), `fullmatch` (all - for validation), `findall`, `finditer`, `split`, `sub`, `subn`"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1071
+msgid "Groups"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1071
+msgid "`( )` and `group(1)`; `(?P<name>...)`, `m[\"name\"]`, `groupdict()`; `(?:...)` does not capture"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1072
+msgid "Alternatives"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1072
+msgid "`a\\|b` - the first that matches wins; use `\\b` or the longer one first"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1073
+msgid "Flags"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1073
+msgid "`re.I` ignores the case; `re.compile` for a pattern used many times"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1074
+msgid "Validation"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1074
+msgid "the shape with a regex, then the meaning (a real date, check digits)"
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:1077
+msgid "Homework"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1079
+msgid "`08-regular-expressions/homework.py` (in the homework repository): **mine the comments** - classify every comment of `loan_comments.csv` by its type, extract the amounts of the payments, the new maturities of the restructurings and the IBANs of the disbursements, and check the IBANs against the register. Every check must print `OK`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1084
+msgid "The practice tasks you did not finish in class."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1085
+msgid "Optional: find the e-mail addresses in the comments that are **not** in the register (after cleaning both)."
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:1088
+msgid "Self-study"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1090
+msgid "This part is not covered in class. It is for reading at home: patterns that look around without taking text, readable patterns with comments, and the check digits of an IBAN and an EIK."
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:1094
+msgid "Lookarounds and verbose patterns"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1096
+msgid "A **lookaround** checks what is before or after a position, without making it part of the match:"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1099
+msgid "Syntax"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1101
+msgid "X, if Y follows"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1102
+msgid "X, if Y does not follow"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1103
+msgid "X, if Y is before it"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1104
+msgid "X, if Y is not before it"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1115
+msgid "Long patterns are hard to read. With `re.VERBOSE` (`re.X`), spaces in the pattern are ignored and `#` starts a comment - the pattern can be written on several lines:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1133 site/lectures/08-regular-expressions.md:1196
+msgid "**Exercises**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1135
+msgid "Find the amounts that are **followed** by ` EUR`, without taking ` EUR` into the match, in `\"paid 2 069,77 EUR and 15,00 USD and 99,50 EUR\"`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1137
+msgid "Rewrite the e-mail pattern of section 6 with `re.VERBOSE` and a comment per part."
+msgstr ""
+
+#. box title
+#: site/lectures/08-regular-expressions.md:1139 site/lectures/08-regular-expressions.md:1202
+msgid "Answer"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1140
+msgid "`re.findall(r\"\\d[\\d ]*,\\d{2}(?= EUR)\", text)` gives `['2 069,77', '99,50']`."
+msgstr ""
+
+#. heading 3
+#: site/lectures/08-regular-expressions.md:1152
+msgid "Check digits: IBAN and EIK"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1154
+msgid "The shape is half of the check. Both an IBAN and an EIK have **check digits**, computed from the other digits, that catch most typing errors."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1157
+msgid "**IBAN (ISO 13616):** move the first four characters to the end, replace each letter by a number (`A` = 10, `B` = 11, ..., `Z` = 35), and read it all as one big number. It must give the remainder **1** when divided by 97. Python's `int` has no size limit, so this is two lines:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1176
+msgid "**EIK (BULSTAT), 9 digits:** multiply the first 8 digits by the weights 1, 2, ..., 8, and take the sum modulo 11. If it is 10, use the weights 3, 4, ..., 10 instead; if it is 10 again, the check digit is 0. The result must be the 9th digit."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1193
+msgid "(The 13-digit EIK of a branch has a second check digit for the last 4 digits, with the weights 2, 7, 3, 5 - and 4, 9, 5, 7 if the first sum gives 10.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1198
+msgid "Find the IBANs of the register with a valid shape but wrong check digits. How many are there?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1200
+msgid "Find the 9-digit EIKs of the register (after cleaning) whose check digit is wrong."
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1214
+msgid "The register has two IBANs and three EIKs with wrong check digits - typing errors that a shape check cannot find."
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:1218
+msgid "Read more"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1220
+msgid "[Regular expression HOWTO](https://docs.python.org/3/howto/regex.html) (the official tutorial); reference: [`re`](https://docs.python.org/3/library/re.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1222
+msgid "[regex101.com](https://regex101.com) - test a pattern and see what each part matches (choose *Python*)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1224
+msgid "Real Python: [Regular expressions: regexes in Python](https://realpython.com/regex-python/)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1226
+msgid "**Next session:** errors and files - catch errors instead of stopping, read and write CSV, JSON and Excel files, and load data with bad rows the way a SAS log would report them."
+msgstr ""

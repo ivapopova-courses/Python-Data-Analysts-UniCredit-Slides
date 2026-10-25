@@ -105,63 +105,113 @@ msgstr "[Функции](/lectures/04-functions)"
 
 #. table cell
 #: site/index.md:35
-msgid "Lists (advanced)"
-msgstr "Lists (за напреднали)"
+msgid "[Lists (advanced)](/lectures/05-lists-advanced)"
+msgstr ""
 
 #. table cell
 #: site/index.md:36
-msgid "Dictionaries"
-msgstr "Dictionaries"
+msgid "[Dictionaries](/lectures/06-dictionaries)"
+msgstr ""
 
 #. table cell
 #: site/index.md:37
-msgid "Text processing"
-msgstr "Обработка на текст"
+msgid "[Text processing](/lectures/07-text-processing)"
+msgstr ""
 
 #. table cell
 #: site/index.md:38
-msgid "Regular expressions"
-msgstr "Регулярни изрази (regular expressions)"
+msgid "[Regular expressions](/lectures/08-regular-expressions)"
+msgstr ""
 
 #. table cell
 #: site/index.md:39
-msgid "Error handling and file handling"
+#, fuzzy
+#| msgid "Error handling and file handling"
+msgid "[Error handling and file handling](/lectures/09-errors-and-files)"
 msgstr "Обработка на грешки и работа с файлове"
 
 #. table cell
 #: site/index.md:40
-msgid "Modules, packages, Git and GitHub"
+#, fuzzy
+#| msgid "Modules, packages, Git and GitHub"
+msgid "[Modules, packages, Git and GitHub](/lectures/10-modules-and-git)"
 msgstr "Модули, пакети, Git и GitHub"
 
 #. table cell
 #: site/index.md:41
-msgid "OOP: first steps, classes and objects"
+#, fuzzy
+#| msgid "OOP: first steps, classes and objects"
+msgid "[OOP: first steps, classes and objects](/lectures/11-oop-classes)"
 msgstr "ООП: първи стъпки, класове и обекти"
 
 #. table cell
 #: site/index.md:42
-msgid "OOP in practice: nomenclatures"
+#, fuzzy
+#| msgid "OOP in practice: nomenclatures"
+msgid "[OOP in practice: nomenclatures](/lectures/12-oop-nomenclatures)"
 msgstr "ООП на практика: номенклатури"
 
 #. table cell
 #: site/index.md:43
-msgid "Working with databases"
+#, fuzzy
+#| msgid "Working with databases"
+msgid "[Working with databases](/lectures/13-databases)"
 msgstr "Работа с бази данни"
 
 #. table cell
 #: site/index.md:44
-msgid "NumPy and introduction to pandas"
+#, fuzzy
+#| msgid "NumPy and introduction to pandas"
+msgid "[NumPy and introduction to pandas](/lectures/14-numpy-pandas-intro)"
 msgstr "NumPy и въведение в pandas"
 
 #. table cell
 #: site/index.md:45
-msgid "pandas: selection, aggregation, joins"
-msgstr "pandas: селекция, агрегиране, съединяване (joins)"
+msgid "[pandas: selection, aggregation, joins](/lectures/15-pandas-select-aggregate-join)"
+msgstr ""
 
 #. table cell
 #: site/index.md:46
-msgid "pandas: reports and the [final project](/project)"
+#, fuzzy
+#| msgid "pandas: reports and the [final project](/project)"
+msgid "[pandas: reports](/lectures/16-pandas-reports-project) and the [final project](/project)"
 msgstr "pandas: отчети и [финалният проект](/project)"
+
+#~ msgid "pandas: selection, aggregation, joins"
+#~ msgstr "pandas: селекция, агрегиране, съединяване (joins)"
+
+#~ msgid "pandas: reports and the [final project](/project)"
+#~ msgstr "pandas: отчети и [финалният проект](/project)"
+
+#~ msgid "Lists (advanced)"
+#~ msgstr "Lists (за напреднали)"
+
+#~ msgid "Dictionaries"
+#~ msgstr "Dictionaries"
+
+#~ msgid "Text processing"
+#~ msgstr "Обработка на текст"
+
+#~ msgid "Regular expressions"
+#~ msgstr "Регулярни изрази (regular expressions)"
+
+#~ msgid "Error handling and file handling"
+#~ msgstr "Обработка на грешки и работа с файлове"
+
+#~ msgid "Modules, packages, Git and GitHub"
+#~ msgstr "Модули, пакети, Git и GitHub"
+
+#~ msgid "OOP: first steps, classes and objects"
+#~ msgstr "ООП: първи стъпки, класове и обекти"
+
+#~ msgid "OOP in practice: nomenclatures"
+#~ msgstr "ООП на практика: номенклатури"
+
+#~ msgid "Working with databases"
+#~ msgstr "Работа с бази данни"
+
+#~ msgid "NumPy and introduction to pandas"
+#~ msgstr "NumPy и въведение в pandas"
 
 #~ msgid "Conditional statements and loops"
 #~ msgstr "Условни конструкции и loops"

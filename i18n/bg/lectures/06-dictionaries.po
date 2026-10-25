@@ -1,0 +1,1079 @@
+# Translation of site/lectures/06-dictionaries.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/lectures/06-dictionaries.md\n"
+
+#. front matter: title
+#: site/lectures/06-dictionaries.md:2 site/lectures/06-dictionaries.md:5
+msgid "6. Dictionaries"
+msgstr ""
+
+#. html
+#: site/lectures/06-dictionaries.md:8
+msgid "<span>Session 6</span><span>practice: <code>06-dictionaries/</code> in the homework repository</span>"
+msgstr ""
+
+#. html
+#: site/lectures/06-dictionaries.md:9
+msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:12
+msgid "**Today you will learn to:**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:14
+msgid "keep pairs of a **key** and a **value** in a dictionary, and find a value by its key in one step;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:16
+msgid "add, change and remove entries, and loop over keys, values and pairs;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:17
+msgid "use a dictionary as a **lookup table** - the Python version of a SAS format, a hash object and a small SQL reference table;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:19
+msgid "build dictionaries in one line with a **dict comprehension**;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:20
+msgid "count, sum and average **by group** - `GROUP BY` without pandas - with `get`, `defaultdict` and `Counter`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:22
+msgid "work with **records**: a row as a dictionary, a table as a dictionary of rows."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:24
+msgid "From SAS to Python - a format that turns a code into a name:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:52
+msgid "And the question of homework 4, \"what is the rating of the client of each loan?\", answered for all 400 loans with one dictionary - instead of 400 x 150 comparisons:"
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:68
+msgid "1. What is a dictionary?"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:70
+msgid "A key and a value"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:72
+msgid "A **dictionary** (type `dict`) keeps **pairs**: a **key** and its **value**. You find a value by its key - not by a position, as in a list:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:83
+msgid "The syntax: curly brackets, pairs `key: value`, separated by commas. The same curly brackets as a set (session 3) - but a set has only values, a dictionary has pairs."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:86
+msgid "Think of it as a two-column table with a **unique key**, like a SQL table with a primary key:"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:89
+msgid "key (`grade`)"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:89
+msgid "value (`pd`)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:95
+msgid "![A dictionary next to a SAS format and a SQL lookup table: the same key-value pairs in three forms](/diagrams/dict-lookup.svg){.diagram}"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:97
+msgid "SAS"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:97
+msgid "SQL"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:97
+msgid "Python"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:99
+msgid "A code -> a text"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:99
+msgid "a lookup table + `JOIN`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:100
+msgid "A key -> several values"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:100
+msgid "a hash object, `h.find()`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:100
+msgid "a reference table + `JOIN`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:100
+msgid "a dict of tuples or dicts"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:101
+msgid "Not found"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:103
+msgid "Create a dictionary"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:114
+msgid "From two lists - the keys and the values - with `zip` (session 5):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:124
+msgid "Read a value: `[]` and `get`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:126
+msgid "`d[key]` gives the value. A key that is not there is a `KeyError` - the program stops:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:136
+msgid "`d.get(key)` gives `None` for a missing key, and `d.get(key, default)` gives the default - like `OTHER=` in a format:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:147
+msgid "Which one to use? `d[key]` when a missing key is an **error** in the data and you want to know at once. `get` when a missing key is **normal**, and you know what to use instead."
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:151
+msgid "`in` checks the keys"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:161
+msgid "Rules for keys"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:163
+msgid "Keys are **unique**. The same key twice: the last value wins."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:164
+msgid "Keys must be **hashable**: values that cannot change - `str`, `int`, `float`, `bool`, `tuple` (of such values). A list cannot be a key. (The same rule as for the items of a set.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:167
+msgid "Values can be anything: numbers, lists, other dictionaries, functions."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:168
+msgid "A dictionary keeps the **order** in which the keys were added (since Python 3.7)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:180
+msgid "Two useful forms of `dict.fromkeys`: unique values **in the order of their first appearance** (a set loses the order), and many keys with one start value:"
+msgstr ""
+
+#. box title
+#: site/lectures/06-dictionaries.md:190 site/lectures/06-dictionaries.md:299 site/lectures/06-dictionaries.md:392 site/lectures/06-dictionaries.md:596 site/lectures/06-dictionaries.md:636 site/lectures/06-dictionaries.md:885 site/lectures/06-dictionaries.md:1010
+msgid "Try it"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:191
+msgid "Predict, then run:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:199
+msgid "(`1`, `True` and `1.0` are equal and have the same hash, so they are **one** key: the first key stays, the last value wins.)"
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:203
+msgid "2. Change a dictionary"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:205
+msgid "A dictionary is **mutable**: you can add, change and remove pairs."
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:207
+msgid "Add and change: `d[key] = value`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:209
+msgid "The same statement does both: a new key is **added**, an existing key gets a **new value**:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:220
+msgid "Several at once: `update` and `|`"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:234
+msgid "Remove: `del`, `pop`"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:246
+msgid "`setdefault`: add only if missing"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:248
+msgid "`d.setdefault(key, value)` returns the value of the key; if the key is missing, it first adds it with `value`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:259
+msgid "A trap: changing a dictionary while looping over it"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:261
+msgid "Adding or removing keys while a loop goes over the same dictionary is an error:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:271
+msgid "Loop over a **copy of the keys**, or build a new dictionary (section 5):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:282
+msgid "Changing only the **values** of existing keys in a loop is fine."
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:284
+msgid "Compare two dictionaries"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:286
+msgid "`==` compares the pairs - the order does not matter. A quick check that a nomenclature did not change between two versions:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:300
+msgid "Start from `rates = {\"EUR\": 3.5, \"USD\": 5.25}`. Add `\"GBP\": 4.75`, change `EUR` to `3.25`, remove `USD` with `pop`, and print the dict. What does `rates.pop(\"CHF\", 0)` return?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:305
+msgid "3. Loop over a dictionary"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:309
+msgid "A `for` over a dictionary goes over its **keys**. For the values or the pairs, use the methods:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:325
+msgid "`items()` is the most common: it gives the key and the value together."
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:327
+msgid "Sort the result"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:329
+msgid "The order of a dictionary is the order of insertion. To show it sorted, sort the `items()` - by the key, or by the value:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:342
+msgid "The key with the largest value:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:350
+msgid "(`key=outstanding.get` - the method itself, without brackets: `max` calls it for each key.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:353
+msgid "A ranked report: `enumerate` over the sorted items (session 5):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:364
+msgid "The views are live"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:366
+msgid "`keys()`, `values()` and `items()` are **views**: they show the dictionary as it is **now**, also after a change:"
+msgstr ""
+
+#. box title
+#: site/lectures/06-dictionaries.md:378
+msgid "Advanced: keys behave like a set"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:379
+msgid "`keys()` supports the set operations of session 3 - handy to compare two nomenclatures:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:393
+msgid "Print the segments of the example sorted by the **length** of their name. Then print only the segments with more than EUR 10 million."
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:397
+msgid "4. Lookup tables and nomenclatures"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:399
+msgid "This is the main use of dictionaries in data work: a **code -> description** or **key -> attributes** table, used for every row of a dataset."
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:402
+msgid "A format with `OTHER=`"
+msgstr ""
+
+#. box title
+#: site/lectures/06-dictionaries.md:416 site/lectures/06-dictionaries.md:497 site/lectures/06-dictionaries.md:710 site/lectures/06-dictionaries.md:735 site/lectures/06-dictionaries.md:799
+msgid "Animation"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:417
+msgid "**Grouping by hand:** [1. A lookup](../animations/groupingByHand.html#1){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:420
+msgid "A nomenclature from a file: the rating scale"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:422
+msgid "`rating_scale.csv` is a nomenclature: one row per rating. Read it into a dictionary **rating -> (grade, PD)** once, and use it for every client:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:439
+msgid "`csv.DictReader` (the module `csv` comes with Python) reads a CSV file row by row, and gives each row as a dictionary: the column name is the key. No more `row[7]` - `row[\"outstanding\"]`. Files and `csv` in depth: session 9."
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:454
+msgid "Codes in the data: a lookup in a function"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:456
+msgid "When the same lookup is used in many places, put it in a function with the default in one place:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:469
+msgid "Keep the nomenclature (the dictionary) as a **constant** at the top of the script, in capitals: one place to change it. Session 12 turns such a nomenclature into a class with its own checks."
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:473
+msgid "The join: loans with the region of their client"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:475
+msgid "A `LEFT JOIN loans -> clients ON client_id` is: a dictionary of the clients, and a lookup for every loan."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:498
+msgid "**Grouping by hand:** [5. The join by key](../animations/groupingByHand.html#5){target=\"_blank\"}"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:501
+msgid "A SAS programmer would do this with a hash object (`declare hash h(dataset: \"clients\"); h.defineKey(\"client_id\"); ...; rc = h.find();`). The dictionary is the same idea, with less code."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:505
+msgid "Why it is fast: a dictionary finds a key in **one step**, however big it is - homework 4 needed up to 150 comparisons per loan. Section \"How a dictionary works\" in the Self-study explains why."
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:509
+msgid "The expected loss of homework 4, again"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:511
+msgid "The same result as homework 4 - 1,140,106.56 - with two lookups per loan:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:532
+msgid "Inverting a dictionary - a trap"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:534
+msgid "Value -> key: swap the pairs. But values are not unique; when two keys have the same value, one of them is lost:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:544
+msgid "For \"group -> all products\" you need a dictionary of **lists** (section 6)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:546
+msgid "Ranges are not keys"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:548
+msgid "A dictionary needs the **exact** key. PD bands, days-past-due buckets, amount ranges - a value **between** two limits - are not a dictionary lookup. Use a function with `if` (sessions 2 and 4), or a list of limits:"
+msgstr ""
+
+#. box title
+#: site/lectures/06-dictionaries.md:564
+msgid "Advanced: `bisect` for many ranges"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:565
+msgid "For a long, sorted list of limits, the module `bisect` finds the position of a value by halving the list, not by checking every limit:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:580
+msgid "In pandas, `pd.cut` does the same for a whole column (session 15)."
+msgstr ""
+
+#. box title
+#: site/lectures/06-dictionaries.md:583 site/lectures/06-dictionaries.md:872
+msgid "The same in pandas"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:584
+msgid "`Series.map(dictionary)` applies a dictionary to a whole column - a SAS format on a column. Missing keys become `NaN`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:597
+msgid "In \"The join\" example, add the `rating` of the client to each printed line. Then change one `client_id` in the loop to `\"C9999\"` (a client that does not exist): what does `client.get(...)` give, and what would `client[...]` do?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:602
+msgid "5. Dict comprehensions"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:604
+msgid "Like a list comprehension (session 5), with `key: value` and curly brackets:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:618
+msgid "`SELECT key, expression FROM ... WHERE ...` into a lookup table. Common forms:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:637
+msgid "From `rating_scale.csv`, build `{grade: description}` with one comprehension over `csv.DictReader`. Then keep only the grades whose description contains `\"risk\"`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:641
+msgid "6. Grouping by hand: `GROUP BY`"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:643
+msgid "Count by group: from `if` to `Counter`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:645
+msgid "`SELECT region, COUNT(*) FROM clients GROUP BY region` - four ways, from the longest to the shortest. All do the same: a dictionary **group -> count** that grows row by row."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:666
+msgid "**2. `get` with a default** - \"the count so far, or 0\":"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:680
+msgid "**3. `defaultdict(int)`** - a dictionary that creates a missing key by itself, with `int()`, that is `0`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:696
+msgid "**4. `Counter`** - made for counting:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:711
+msgid "**Grouping by hand:** [2. Count with `get`](../animations/groupingByHand.html#2){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:714
+msgid "Sum by group"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:716
+msgid "`SELECT segment, SUM(outstanding) ... GROUP BY segment` - the segment is in `clients.csv`, the amount in `loans.csv`: a lookup (section 4) and a sum:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:736
+msgid "**Grouping by hand:** [3. Sum with `defaultdict`](../animations/groupingByHand.html#3){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:739
+msgid "Several aggregates per group"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:741
+msgid "`COUNT`, `SUM`, `AVG`, `MAX` by product - keep a small list per group, `[count, sum, max]`, and compute the average at the end:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:761
+msgid "This is `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line (session 15) - but now you know what it does."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:764
+msgid "The **share** of each group in the total - one more pass over the small result, not over the data:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:781
+msgid "Group into lists"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:783
+msgid "Sometimes you need the **rows** of each group, not only a number - a dictionary of lists:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:800
+msgid "**Grouping by hand:** [4. Group into lists](../animations/groupingByHand.html#4){target=\"_blank\"}"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:803
+msgid "Two keys: `GROUP BY segment, stage`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:805
+msgid "A **tuple** of the two values is the key:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:824
+msgid "`HAVING` and `ORDER BY` on the result"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:826
+msgid "The result is a dictionary - filter it with a comprehension (`HAVING`), sort its items (`ORDER BY`):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:842
+msgid "`Counter` arithmetic: two months side by side"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:844
+msgid "Counters can be added and subtracted. The change of the number of loans per stage between two months:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:859
+msgid "A trap: the group key from dirty text"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:861
+msgid "`\"Sofia\"`, `\"sofia\"` and `\"Sofia \"` are three different keys. Clean the key before you group (text cleaning: session 7):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:873
+msgid "`value_counts` and `groupby` do all of this section (sessions 14 - 15):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:886
+msgid "Count the loans per **currency** with `Counter`, then sum the outstanding per **currency and stage** with a tuple key. Predict first: how many groups will the second result have at most?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:891
+msgid "7. Nested dictionaries and records"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:893
+msgid "A row as a dictionary"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:895
+msgid "`csv.DictReader` gives each row as a dictionary: a **record** with named fields. A list of them is a table where the columns have names:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:909
+msgid "Compare with session 5: `row[3] == \"USD\"` vs `loan[\"currency\"] == \"USD\"`. The name says what the column is, and adding a column to the file does not break the code."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:912
+msgid "The values are still **text**. Convert them once, into a new record:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:934
+msgid "Sort a list of records by one or more fields - `ORDER BY` with column names:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:947
+msgid "A dictionary of dictionaries: a table keyed by id"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:959
+msgid "Like a SAS dataset with an index on `client_id`, or a hash object with several data fields."
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:962
+msgid "Safe nested access"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:964
+msgid "With nested dictionaries, a missing level is a `KeyError` (or a `TypeError` on `None`). Chain `get` with an empty dictionary as the default:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:975
+msgid "The shape of JSON"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:977
+msgid "Nested dictionaries and lists are the shape of **JSON**, the text format of web APIs and of many configuration files. The module `json` turns one into the other (JSON files: session 9):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:994
+msgid "Copies of nested dictionaries"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:996
+msgid "The same rule as for nested lists (session 5): `d.copy()` and `dict(d)` are **shallow** - the inner dictionaries are shared. `copy.deepcopy` copies all levels:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1011
+msgid "From `clients.csv`, build `{client_id: {\"segment\": ..., \"rating\": int(...)}}` with one dict comprehension (only two fields per client). Then print the rating of `C0132` and the number of corporate clients with a rating of 6 or worse."
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:1016
+msgid "8. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1018
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1026
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1026
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1026
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1028
+msgid "A product nomenclature: create, read with a default, add, change, remove"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1029
+msgid "Predict: duplicate keys, `True` / `1` keys, `get` vs `[]`, live views"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1030
+msgid "Rating -> grade / PD; codes -> names; loans with the region of their client"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1031
+msgid "Clients per region, outstanding per segment, `most_common`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1032
+msgid "Count / sum / average / max per product, `HAVING`, a sorted report"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1033
+msgid "`task6-nested-groups.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1033
+msgid "Clients as a dict of dicts; segment x stage totals with tuple keys"
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:1035
+msgid "Summary"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1037
+msgid "Topic"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1037
+msgid "Remember"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1039
+msgid "Dictionary"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1039
+msgid "`{key: value}`; keys unique and hashable; keeps the insertion order"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1040
+msgid "Read"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1040
+msgid "`d[key]` (KeyError if missing); `d.get(key, default)`; `key in d` checks the keys"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1041
+msgid "Change"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1041
+msgid "`d[key] = v` adds or changes; `update`, `\\|`; `del`, `pop(key, default)`; `setdefault`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1042
+msgid "Loop"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1042
+msgid "`for k in d`; `d.values()`; `for k, v in d.items()`; sort with `sorted(d.items(), key=...)`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1043
+msgid "Lookups"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1043
+msgid "a dict = a SAS format / hash object / lookup table; `get(code, \"Other\")` = `OTHER=`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1044
+msgid "Join"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1044
+msgid "a dict of the right table, `get` for every row of the left one = `LEFT JOIN`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1045
+msgid "Ranges"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1045
+msgid "not keys: a function with `if`, or `bisect`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1046
+msgid "Comprehension"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1048
+msgid "Several keys"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1048
+msgid "a tuple as the key: `(segment, stage)`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1049
+msgid "Records"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1049
+msgid "`csv.DictReader`: rows as dicts; a dict of dicts keyed by id; `json.dumps` / `loads`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1050
+msgid "Copies"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1050
+msgid "`copy()` is shallow; `copy.deepcopy` for nested dicts"
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:1052
+msgid "Homework"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1054
+msgid "`06-dictionaries/homework.py` (in the homework repository): **homework 4 again, with dictionaries** - lookups instead of loops; the expected loss of the portfolio (it must be the same 1,140,106.56), the expected loss by segment and by grade, and a sorted text report. Every check must print `OK`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1058
+msgid "The practice tasks you did not finish in class."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1059
+msgid "Optional: a **migration of client counts by region**: count the clients per region in `clients.csv`, then per region **and segment**, and print a small table with the regions as rows and the segments as columns (the Self-study below shows how)."
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:1063
+msgid "Self-study"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1065
+msgid "This part is not covered in class. It is for reading at home: a cross table by hand, and why a dictionary is fast."
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:1068
+msgid "A pivot by hand: `PROC TABULATE` without pandas"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1070
+msgid "A **dictionary of dictionaries** is a cross table: the outer key is the row, the inner key is the column. Build it, then print it with the rows and columns sorted:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1092
+msgid "`defaultdict(lambda: defaultdict(int))`: a missing row is created as a new `defaultdict(int)` - so `table[region][segment] += 1` works for any new pair."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1095
+msgid "And back - from the cross table to rows (`region, segment, count`), the job of `PROC TRANSPOSE` or `melt` in pandas (session 16):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1104
+msgid "**Exercises**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1106
+msgid "Build the cross table **product x stage** from `loans.csv`, with the total outstanding (in EUR thousands, rounded) in each cell."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1108
+msgid "Add a total row at the bottom."
+msgstr ""
+
+#. box title
+#: site/lectures/06-dictionaries.md:1110 site/lectures/06-dictionaries.md:1173
+msgid "Answer"
+msgstr ""
+
+#. heading 3
+#: site/lectures/06-dictionaries.md:1127
+msgid "How a dictionary works: hashing"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1129
+msgid "Why is `d[key]` fast, and why must keys not change?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1131
+msgid "A dictionary keeps its pairs in a table of slots. To store a key, Python computes `hash(key)` - a big integer made from the value - and uses it to choose the slot. To find the key later, it computes the hash again and looks **in that slot only**. So a lookup costs the same for 10 keys or 10 million keys:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1142
+msgid "A list is not hashable because it can **change**: after a change, its hash would change, and the dictionary would look in the wrong slot. That is why keys must be immutable values."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1146
+msgid "The hash of a string changes **between runs** of Python (a security feature), but not during one run. Never save hashes to a file."
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1149
+msgid "The speed, measured:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1169
+msgid "**Exercise**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1171
+msgid "Why is `{(1, [2, 3]): \"x\"}` an error, but `{(1, (2, 3)): \"x\"}` is fine?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1174
+msgid "A tuple is hashable only if everything inside it is hashable. `(1, [2, 3])` contains a list, which can change, so the tuple has no hash. `(1, (2, 3))` contains only immutable values."
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:1179
+msgid "Read more"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1181
+msgid "Python tutorial: [Dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries), [Looping techniques](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1183
+msgid "Reference: [Mapping types - dict](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict), [`collections`](https://docs.python.org/3/library/collections.html) (`defaultdict`, `Counter`), [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1186
+msgid "Real Python: [Dictionaries in Python](https://realpython.com/python-dicts/), [Python's Counter](https://realpython.com/python-counter/)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1189
+msgid "**Next session:** text processing - clean ids, names and codes, read numbers written the Bulgarian way, and dates from text, with the methods of `str` and `datetime`."
+msgstr ""

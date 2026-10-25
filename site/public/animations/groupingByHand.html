@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grouping by hand</title>
+<!--
+    Step-by-step animation: a dictionary as a lookup table and as the result of a
+    GROUP BY that grows row by row (get, defaultdict, lists, a join by key).
+    Engine and look: anim.js, anim.css. Deep link: groupingByHand.html#3 (scenario 3),
+    #3.2 (its step 2); Bulgarian: ?lang=bg (bg/groupingByHand.html redirects there).
+    The texts are in English only for now: tr() shows a plain string in both
+    languages. To translate, turn a text into a pair T('English', 'Bulgarian').
+-->
+<link rel="stylesheet" href="anim.css">
+<style>
+.stage { display: grid; grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); gap: 1rem; }
+.col { display: grid; grid-template-rows: auto auto minmax(0, 1fr); gap: .7rem; min-height: 0; }
+.right { grid-template-rows: auto auto minmax(0, 1fr); }
+
+.test { font-family: var(--mono); font-size: 1.1rem; min-height: 2.6rem; display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
+.test .src { padding: .1rem .5rem; border-radius: .3rem; background: var(--read-bg); }
+.test .res { padding: .1rem .55rem; border-radius: .3rem; font-weight: 700; animation: pop .45s ease-out; background: var(--write-bg); }
+.test .note { font-family: var(--sans); font-size: .85rem; color: var(--muted); }
+.static .test .res { animation: none; }
+
+.iter { font-size: .8rem; font-weight: 700; color: var(--ref); letter-spacing: .04em; }
+
+.vars { width: 100%; border-collapse: separate; border-spacing: 0 .4rem; }
+.vars td { padding: .4rem .8rem; font-family: var(--mono); font-size: 1.1rem; }
+.vars td.name { width: 40%; font-weight: 700; color: var(--name-ink); background: var(--name-bg); border: 2px solid var(--name-border); border-radius: .5rem 0 0 .5rem; }
+.vars td.val { background: var(--obj-bg); border: 2px solid var(--obj-border); border-left: none; border-radius: 0 .5rem .5rem 0; font-weight: 700; transition: box-shadow .25s; }
+.vars tr.write td.val { box-shadow: 0 0 0 3px var(--write), 0 0 0 7px var(--write-bg); }
+.vars tr.read td.val { box-shadow: 0 0 0 3px var(--read), 0 0 0 7px var(--read-bg); }
+.vars tr.new td { animation: pop .45s ease-out; }
+.vars td.old { font-size: .8rem; color: var(--muted); text-decoration: line-through; background: none; border: none; width: 1%; white-space: nowrap; }
+
+.dict { width: 100%; border-collapse: collapse; font-family: var(--mono); font-size: 1.1rem; }
+.dict th { text-align: left; font-family: var(--sans); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding: .2rem .7rem; }
+.dict td { padding: .4rem .7rem; border: 1.5px solid var(--obj-border); background: var(--obj-bg); font-weight: 700; transition: box-shadow .25s; }
+.dict td.k { color: var(--name-ink); background: var(--name-bg); border-color: var(--name-border); width: 40%; }
+.dict tr.write td.v { box-shadow: inset 0 0 0 3px var(--write); background: var(--write-bg); }
+.dict tr.read td { box-shadow: inset 0 0 0 3px var(--read); background: var(--read-bg); }
+.dict tr.new td { animation: pop .45s ease-out; box-shadow: inset 0 0 0 3px var(--write); }
+.dict-name { font-family: var(--mono); font-weight: 700; color: var(--name-ink); }
+</style>
+</head>
+<body>
+<div class="app">
+    <header class="top">
+        <h1 id="title"></h1>
+        <nav class="tabs" id="tabs" role="tablist"></nav>
+        <a class="btn lang-btn" id="langBtn" href="#">BG</a>
+        <button class="btn icon-btn" id="themeBtn"></button>
+    </header>
+    <main class="stage">
+        <div class="col">
+            <section class="panel code-panel"><div class="panel-title"><span id="tCode"></span><span class="iter" id="iter"></span></div><ol class="code" id="code"></ol></section>
+            <section class="panel"><div class="panel-title" id="tTest"></div><div class="test" id="test"></div></section>
+        </div>
+        <div class="col right">
+            <section class="panel"><div class="panel-title" id="tVars"></div><table class="vars" id="vars"></table></section>
+            <section class="panel"><div class="panel-title"><span id="tDict"></span> <span class="dict-name" id="dictName"></span></div><table class="dict" id="dict"></table></section>
+            <section class="panel"><div class="panel-title" id="tOut"></div><div class="console" id="console"></div></section>
+        </div>
+    </main>
+    <footer class="bottom">
+        <div class="explain" id="explain"></div>
+        <div class="controls">
+            <button class="btn icon-btn" id="firstBtn"></button>
+            <button class="btn" id="prevBtn"></button>
+            <span class="counter" id="counter"></span>
+            <button class="btn" id="playBtn"></button>
+            <button class="btn primary" id="nextBtn"></button>
+        </div>
+    </footer>
+</div>
+<script src="anim.js"></script>
+<script>
+'use strict'
+const { tr, esc, highlightPy } = Anim
+
+// ---------- the steps: helpers that change a copy of the state ----------
+function set(s, name, value) {
+    const v = s.vars.find(v => v.name === name)
+    if (v) { v.old = v.value; v.value = value; s.hl[name] = 'write' } else { s.vars.push({ name, value }); s.hl[name] = 'new' }
+}
+function read(s, ...names) { for (const n of names) s.hl[n] = s.hl[n] || 'read' }
+function put(s, key, value) {
+    const e = s.dict.find(e => e.key === key)
+    if (e) { e.value = value; s.dhl[key] = 'write' } else { s.dict.push({ key, value }); s.dhl[key] = 'new' }
+}
+function look(s, key) { s.dhl[key] = 'read' }
+function test(s, src, result, note = '') { s.test = { src, result, note } }
+function info(s, note) { s.test = { src: '', result: null, note } }
+function out(s, text) { s.out.push(text) }
+function iter(s, n) { s.iter = n }
+
+const NO_MORE = 'no more items: the loop ends'
+
+const SCENARIOS = [
+{
+    tab: 'A lookup',
+    dict: 'names',
+    code: ['names = {"mortgage": "Mortgage loan",', '         "overdraft": "Overdraft"}', 'for code in ["overdraft", "leasing"]:',
+           '    print(names.get(code, "Other"))'],
+    steps: [
+        { line: 1, do: s => { put(s, '"mortgage"', '"Mortgage loan"'); put(s, '"overdraft"', '"Overdraft"') },
+          text: 'A dictionary of two pairs: a **code** (the key) and its **name** (the value) - a SAS format with two lines.' },
+        { line: 3, do: s => { iter(s, 1); set(s, 'code', '"overdraft"') },
+          text: 'The first code to translate.' },
+        { line: 4, do: s => { read(s, 'code'); look(s, '"overdraft"'); test(s, 'names.get("overdraft", "Other")', '"Overdraft"', 'the key is there'); out(s, 'Overdraft') },
+          text: 'Python finds the key **in one step** (it does not read the pairs one by one) and gives its value.' },
+        { line: 3, do: s => { iter(s, 2); set(s, 'code', '"leasing"') },
+          text: 'The next code: `"leasing"`.' },
+        { line: 4, do: s => { read(s, 'code'); test(s, 'names.get("leasing", "Other")', '"Other"', 'no such key: the default'); out(s, 'Other') },
+          text: 'The key is **not** in the dictionary. `get` gives the default - like `OTHER=` in `PROC FORMAT`. `names["leasing"]` would stop with a `KeyError`.' },
+        { line: 3, do: s => { iter(s, 0); info(s, NO_MORE) }, text: 'Done. The dictionary did not change: a lookup only reads.' },
+    ],
+},
+{
+    tab: 'Count with `get`',
+    dict: 'counts',
+    code: ['counts = {}', 'for region in ["Ruse", "Varna", "Ruse"]:', '    counts[region] = counts.get(region, 0) + 1', 'print(counts)'],
+    steps: [
+        { line: 1, do: s => info(s, 'an empty dictionary'),
+          text: 'The result of `GROUP BY region` starts **empty**: no groups yet.' },
+        { line: 2, do: s => { iter(s, 1); set(s, 'region', '"Ruse"') }, text: 'The first row: Ruse.' },
+        { line: 3, do: s => { read(s, 'region'); test(s, 'counts.get("Ruse", 0)', '0', 'no such group yet'); put(s, '"Ruse"', '1') },
+          text: '"Ruse" is not a key yet: `get` gives **0**, plus 1 is 1. The assignment **adds** the key - a new group.' },
+        { line: 2, do: s => { iter(s, 2); set(s, 'region', '"Varna"') }, text: 'The second row: Varna.' },
+        { line: 3, do: s => { read(s, 'region'); test(s, 'counts.get("Varna", 0)', '0', 'a new group'); put(s, '"Varna"', '1') },
+          text: 'Another new group.' },
+        { line: 2, do: s => { iter(s, 3); set(s, 'region', '"Ruse"') }, text: 'The third row: Ruse again.' },
+        { line: 3, do: s => { read(s, 'region'); look(s, '"Ruse"'); test(s, 'counts.get("Ruse", 0)', '1', 'the group exists'); put(s, '"Ruse"', '2') },
+          text: 'Now the key exists: `get` gives its count so far, **1**; plus 1 is 2. The same line adds a group or updates it.' },
+        { line: 2, do: s => { iter(s, 0); info(s, NO_MORE) }, text: 'All rows are read.' },
+        { line: 4, do: s => out(s, "{'Ruse': 2, 'Varna': 1}"),
+          text: 'One pass over the data, one dictionary entry per group - what `SELECT region, COUNT(*) ... GROUP BY region` does inside.' },
+    ],
+},
+{
+    tab: 'Sum with `defaultdict`',
+    dict: 'totals',
+    code: ['from collections import defaultdict', 'rows = [("sme", 100.0), ("retail", 20.0), ("sme", 50.0)]',
+           'totals = defaultdict(float)', 'for segment, amount in rows:', '    totals[segment] += amount'],
+    steps: [
+        { line: 3, do: s => info(s, 'a missing key is created with float() = 0.0'),
+          text: 'A `defaultdict(float)` creates a missing key **by itself**, with the value `float()`, that is `0.0`.' },
+        { line: 4, do: s => { iter(s, 1); set(s, 'segment', '"sme"'); set(s, 'amount', '100.0') }, text: 'The first row: sme, 100.' },
+        { line: 5, do: s => { read(s, 'segment', 'amount'); put(s, '"sme"', '100.0'); test(s, 'totals["sme"]', '0.0 + 100.0', 'created, then added') },
+          text: '`totals["sme"]` does not exist: it is created as 0.0, then `+= 100.0`. No `if`, no `get`.' },
+        { line: 4, do: s => { iter(s, 2); set(s, 'segment', '"retail"'); set(s, 'amount', '20.0') }, text: 'The second row: retail, 20.' },
+        { line: 5, do: s => { read(s, 'segment', 'amount'); put(s, '"retail"', '20.0'); test(s, 'totals["retail"]', '0.0 + 20.0') },
+          text: 'A new group.' },
+        { line: 4, do: s => { iter(s, 3); set(s, 'segment', '"sme"'); set(s, 'amount', '50.0') }, text: 'The third row: sme again.' },
+        { line: 5, do: s => { read(s, 'segment', 'amount'); look(s, '"sme"'); put(s, '"sme"', '150.0'); test(s, 'totals["sme"]', '100.0 + 50.0') },
+          text: 'The group exists: the amount is added to it. `SUM(amount) ... GROUP BY segment`.' },
+        { line: 4, do: s => { iter(s, 0); info(s, NO_MORE) }, text: 'The totals are ready.' },
+    ],
+},
+{
+    tab: 'Group into lists',
+    dict: 'loans_of',
+    code: ['loans_of = defaultdict(list)', 'rows = [("L1", "C2"), ("L2", "C1"), ("L3", "C2")]',
+           'for loan_id, client_id in rows:', '    loans_of[client_id].append(loan_id)', 'print(loans_of["C2"])'],
+    steps: [
+        { line: 1, do: s => info(s, 'a missing key is created with list() = []'),
+          text: 'This time the value of each group is a **list** - the rows of the group, not a number.' },
+        { line: 3, do: s => { iter(s, 1); set(s, 'loan_id', '"L1"'); set(s, 'client_id', '"C2"') }, text: 'Loan L1 of client C2.' },
+        { line: 4, do: s => { read(s, 'loan_id', 'client_id'); put(s, '"C2"', '["L1"]') },
+          text: 'A new key with an empty list, then `append("L1")`.' },
+        { line: 3, do: s => { iter(s, 2); set(s, 'loan_id', '"L2"'); set(s, 'client_id', '"C1"') }, text: 'Loan L2 of client C1.' },
+        { line: 4, do: s => { read(s, 'loan_id', 'client_id'); put(s, '"C1"', '["L2"]') }, text: 'Another client, another list.' },
+        { line: 3, do: s => { iter(s, 3); set(s, 'loan_id', '"L3"'); set(s, 'client_id', '"C2"') }, text: 'Loan L3 - client C2 again.' },
+        { line: 4, do: s => { read(s, 'loan_id', 'client_id'); put(s, '"C2"', '["L1", "L3"]') },
+          text: 'The list of C2 exists: `append` adds L3 to it.' },
+        { line: 3, do: s => { iter(s, 0); info(s, NO_MORE) }, text: 'Done.' },
+        { line: 5, do: s => { look(s, '"C2"'); out(s, "['L1', 'L3']") },
+          text: 'All loans of one client, found in one step - like a hash object with many rows per key (`multidata: "y"`).' },
+    ],
+},
+{
+    tab: 'The join by key',
+    dict: 'region_of',
+    code: ['region_of = {"C1": "Ruse", "C2": "Varna"}', 'for loan_id, client_id in [("L1", "C2"), ("L2", "C9")]:',
+           '    print(loan_id, region_of.get(client_id, "?"))'],
+    steps: [
+        { line: 1, do: s => { put(s, '"C1"', '"Ruse"'); put(s, '"C2"', '"Varna"') },
+          text: 'The right table of the join, as a dictionary: `client_id -> region`. It is built **once**.' },
+        { line: 2, do: s => { iter(s, 1); set(s, 'loan_id', '"L1"'); set(s, 'client_id', '"C2"') }, text: 'The first loan: client C2.' },
+        { line: 3, do: s => { read(s, 'loan_id', 'client_id'); look(s, '"C2"'); test(s, 'region_of.get("C2", "?")', '"Varna"'); out(s, 'L1 Varna') },
+          text: 'One lookup per loan - not a loop over all clients. With 400 loans and 150 clients: 400 lookups instead of up to 60,000 comparisons.' },
+        { line: 2, do: s => { iter(s, 2); set(s, 'loan_id', '"L2"'); set(s, 'client_id', '"C9"') }, text: 'The second loan: client C9.' },
+        { line: 3, do: s => { read(s, 'loan_id', 'client_id'); test(s, 'region_of.get("C9", "?")', '"?"', 'not found'); out(s, 'L2 ?') },
+          text: 'C9 is not in the clients: `get` gives the default and the loan **stays** in the result - a `LEFT JOIN`. With `region_of[client_id]` it would be a `KeyError`.' },
+        { line: 2, do: s => { iter(s, 0); info(s, NO_MORE) }, text: 'Done.' },
+    ],
+},
+]
+
+// ---------- the states of a scenario ----------
+function build(sc) {
+    let s = { vars: [], dict: [], out: [], iter: 0 }
+    const states = [{ ...s, hl: {}, dhl: {}, test: null, line: 0,
+        text: 'Press **Next** (or the Right arrow) to run the code step by step.' }]
+    for (const st of sc.steps) {
+        s = structuredClone({ vars: s.vars, dict: s.dict, out: s.out, iter: s.iter })
+        for (const v of s.vars) delete v.old
+        Object.assign(s, { hl: {}, dhl: {}, test: null })
+        st.do(s)
+        s.line = st.line
+        s.text = st.text
+        states.push(s)
+    }
+    return states
+}
+
+// ---------- drawing ----------
+const $ = id => document.getElementById(id)
+$('tCode').textContent = tr('Code')
+$('tTest').textContent = tr('The lookup')
+$('tVars').textContent = tr('Variables')
+$('tDict').textContent = tr('Dictionary')
+$('tOut').textContent = tr('Output')
+
+function render(sc, s, prev) {
+    document.body.classList.toggle('static', !prev)
+    $('code').innerHTML = sc.code.map((l, i) =>
+        `<li class="${i + 1 === s.line ? 'active' : ''}"><span class="ln">${i + 1}</span><span>${highlightPy(l)}</span></li>`).join('')
+    $('iter').textContent = s.iter ? tr(`row ${s.iter}`) : ''
+    const t = s.test
+    $('test').innerHTML = !t ? '<span class="empty">-</span>'
+        : (t.src ? `<span class="src">${esc(t.src)}</span> -&gt; <span class="res">${esc(t.result)}</span>` : '')
+          + (t.note ? `<span class="note">${esc(tr(t.note))}</span>` : '')
+    $('vars').innerHTML = s.vars.length ? s.vars.map(v =>
+        `<tr class="${s.hl[v.name] || ''}"><td class="name">${esc(v.name)}</td><td class="val">${esc(v.value)}</td>` +
+        `<td class="old">${v.old !== undefined ? esc(v.old) : ''}</td></tr>`).join('')
+        : '<tr><td class="empty">-</td></tr>'
+    $('dictName').textContent = sc.dict
+    $('dict').innerHTML = s.dict.length
+        ? `<tr><th>${esc(tr('key'))}</th><th>${esc(tr('value'))}</th></tr>` + s.dict.map(e =>
+            `<tr class="${prev ? (s.dhl[e.key] || '') : ''}"><td class="k">${esc(e.key)}</td><td class="v">${esc(e.value)}</td></tr>`).join('')
+        : `<tr><td class="empty">{ }</td></tr>`
+    const before = prev ? prev.out.length : s.out.length
+    $('console').innerHTML = s.out.length
+        ? s.out.map((o, i) => `<div class="cline${i >= before ? ' new' : ''}">${esc(o)}</div>`).join('')
+        : '<span class="empty">-</span>'
+}
+
+Anim.start({
+    title: 'Grouping by hand',
+    subtitle: 'a dictionary as a lookup table and as GROUP BY',
+    scenarios: SCENARIOS,
+    build,
+    render,
+})
+</script>
+</body>
+</html>

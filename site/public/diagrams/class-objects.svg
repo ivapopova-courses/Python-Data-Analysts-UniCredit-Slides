@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 330" width="920" height="330" role="img">
+<title>A class and two objects</title>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b616b"/></marker></defs>
+<rect x="20" y="30" width="330" height="270" rx="10" fill="#e3edfb" stroke="#3b6fc4" stroke-width="2"/>
+<text x="34" y="56" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">class Loan  (the blueprint)</text>
+<text x="34" y="80" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">def __init__(self, loan_id, product,</text>
+<text x="34" y="101" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">             amount, outstanding):</text>
+<text x="34" y="122" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">    self.loan_id = loan_id</text>
+<text x="34" y="143" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">    self.product = product</text>
+<text x="34" y="164" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">    ...</text>
+<text x="34" y="185" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve"></text>
+<text x="34" y="206" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">def repaid_share(self):</text>
+<text x="34" y="227" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">    return 1 - self.outstanding</text>
+<text x="34" y="248" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">               / self.amount</text>
+<rect x="560" y="30" width="340" height="120" rx="10" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="574" y="56" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">first  -  an object (an instance)</text>
+<text x="574" y="80" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">loan_id = 'L000001'</text>
+<text x="574" y="101" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">product = 'investment'</text>
+<text x="574" y="122" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">amount = 1156900.0</text>
+<text x="574" y="143" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">outstanding = 1044231.3</text>
+<path d="M352,90 L556,80" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="560" y="180" width="340" height="120" rx="10" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="574" y="206" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">second  -  an object (an instance)</text>
+<text x="574" y="230" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">loan_id = 'L000002'</text>
+<text x="574" y="251" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">product = 'investment'</text>
+<text x="574" y="272" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">amount = 1977400.0</text>
+<text x="574" y="293" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="13" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">outstanding = 651927.3</text>
+<path d="M352,210 L556,230" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="455" y="160" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#5b616b" text-anchor="middle" xml:space="preserve">Loan(...) makes an object</text>
+<text x="20" y="322" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">the methods are shared by all objects</text>
+</svg>

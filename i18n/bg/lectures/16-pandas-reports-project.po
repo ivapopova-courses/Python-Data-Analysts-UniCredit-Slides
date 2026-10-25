@@ -1,0 +1,889 @@
+# Translation of site/lectures/16-pandas-reports-project.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/lectures/16-pandas-reports-project.md\n"
+
+#. front matter: title
+#: site/lectures/16-pandas-reports-project.md:2 site/lectures/16-pandas-reports-project.md:5
+msgid "16. pandas: reports and the final project"
+msgstr ""
+
+#. html
+#: site/lectures/16-pandas-reports-project.md:8
+msgid "<span>Session 16</span><span>practice: <code>16-pandas-reports-project/</code> in the homework repository</span>"
+msgstr ""
+
+#. html
+#: site/lectures/16-pandas-reports-project.md:9
+msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:12
+msgid "**Today you will learn to:**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:14
+msgid "turn a long table into a report table with `pivot_table` and `pd.crosstab` - and back with `melt`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:16
+msgid "work with dates: month ends, months between two dates, periods;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:17
+msgid "compare each month with the previous one - the `LAG` and `RETAIN` of a DATA step;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:18
+msgid "build a rating migration matrix;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:19
+msgid "write a report into one Excel file with several sheets, and draw charts;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:20
+msgid "organise the final project as a script that runs again every month."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:22
+msgid "From SAS to pandas - a two-way report table:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:43
+msgid "Sessions 14 and 15 gave you the data and the numbers. Today they become a report."
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:45
+msgid "1. Pivot tables"
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:47
+msgid "`pivot_table`: groups in rows and columns"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:49
+msgid "`pivot_table` is a `groupby` with two keys, where the second key goes into the columns - `PROC TABULATE`, or Excel's pivot table:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:59
+msgid "Where a combination has no rows, the cell is `NaN`. `fill_value=0` writes 0 instead, and `margins=True` adds the totals (the `ALL` of `PROC TABULATE`):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:70
+msgid "Several values and several functions give a column header with two levels:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:84
+msgid "Large numbers come out as `1.101848e+08`. A display format for the whole session - only the display changes, not the values:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:96
+msgid "A list of functions - the count and the sum side by side (`N` and `SUM` in `PROC TABULATE`):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:109
+msgid "The rows in the order of the report, not alphabetical: `reindex` with the list of labels:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:123
+msgid "`unstack`: a pivot from a `groupby`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:125
+msgid "A `groupby` with two keys (session 15) gives a long Series; `unstack` moves the last key into the columns - the same table:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:138
+msgid "`pivot` without aggregation"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:140
+msgid "`pivot` only reshapes: every (row, column) pair must appear **once**. It is the right tool for a monthly history - one row per client, one column per month (`PROC TRANSPOSE`):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:153
+msgid "If a pair appears twice, `pivot` stops with `ValueError: Index contains duplicate entries` - a good check. `pivot_table` would aggregate them silently (the mean, by default)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:157
+msgid "`pd.crosstab`: counts and shares"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:159
+msgid "`pd.crosstab` counts the combinations of two columns - `PROC FREQ; TABLES a * b;`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:171
+msgid "`normalize=\"index\"` gives the share of each row (each row sums to 1), `\"columns\"` of each column, `True` of the whole table. With `values=` and `aggfunc=`, `crosstab` sums amounts instead of counting rows."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:175
+msgid "`crosstab` with amounts - the outstanding by product and DPD bucket, in EUR thousands:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:189
+msgid "Percentages of the total"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:191
+msgid "Divide a table by its row totals with `div(..., axis=0)`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:204
+msgid "Two-level column names (a `pivot_table` with several values) are awkward in Excel and in later code. Join them into one level:"
+msgstr ""
+
+#. box title
+#: site/lectures/16-pandas-reports-project.md:219 site/lectures/16-pandas-reports-project.md:454 site/lectures/16-pandas-reports-project.md:594 site/lectures/16-pandas-reports-project.md:695 site/lectures/16-pandas-reports-project.md:840 site/lectures/16-pandas-reports-project.md:951
+msgid "Try it"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:220
+msgid "A table with the regions in the rows and the segments in the columns: the **number** of clients (`clients.csv`), with totals. Then the same as shares of each region. Which region has the most corporate clients?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:225
+msgid "2. From wide to long: `melt`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:227
+msgid "`melt` is the opposite of `pivot`: columns become rows - `PROC TRANSPOSE` back, or SQL `UNPIVOT`. A budget in Excel often comes wide, one column per month:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:243
+msgid "Long data is what `groupby`, `merge` and charts want: one row per fact. The way back is `pivot`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:255
+msgid "`value_vars` melts only some of the columns. The monthly ratings, wide (section 1), back to long - the same table as the file:"
+msgstr ""
+
+#. box title
+#: site/lectures/16-pandas-reports-project.md:269
+msgid "Check yourself: a table has 150 clients and 12 month columns. How many rows does `melt(id_vars=\"client_id\")` give?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:270
+msgid "150 x 12 = 1800 rows - one per client and month, with three columns: `client_id`, `variable` (the month) and `value`. That is the shape of `ratings_history.csv`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:274
+msgid "3. Dates and month ends"
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:276
+msgid "Text to dates"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:278
+msgid "Session 7 parsed dates one by one with `datetime.strptime`. `pd.to_datetime` does the whole column; `format=` says how, `errors=\"coerce\"` turns a bad date into `NaT` (the `NaN` of dates):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:291
+msgid "`read_csv(parse_dates=...)` (session 14) does the same while reading. A date column has the `.dt` methods:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:308
+msgid "Real files mix formats. `client_register.csv` has the registration date in four formats (session 7). Try one format after another, and keep the first that works - a `COALESCE` of the parsing attempts:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:324
+msgid "Month ends: `INTNX`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:326
+msgid "`pd.offsets.MonthEnd` moves a date to a month end - `INTNX('month', date, n, 'end')`:"
+msgstr ""
+
+#. box title
+#: site/lectures/16-pandas-reports-project.md:339
+msgid "`MonthEnd(1)` means \"the next month end\""
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:340
+msgid "From the 15th, the next month end is the end of **this** month; from the 30th of September, it is the end of October. To get the end of the month of any date, use `MonthEnd(0)`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:345
+msgid "The usual report dates from one report date - the start of the year, the end of the previous month, the same day one year ago:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:358
+msgid "All the month ends of a period - the report dates of a year:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:368
+msgid "(`freq=\"ME\"` is \"month end\" since pandas 2.2; older code writes `\"M\"`, which now gives a warning.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:371
+msgid "Filter rows by a date range - `between` works with dates too (both ends included):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:384
+msgid "Months between: `INTCK`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:386
+msgid "The number of month boundaries between two dates - `INTCK('month', a, b)`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:403
+msgid "Bands of the loan age - `pd.cut` (session 15) on the months:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:416
+msgid "The difference of two dates is a `Timedelta` - days, not months:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:427
+msgid "Periods: a month as a value"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:429
+msgid "`to_period(\"M\")` turns a date into its month - good for grouping and for labels (`2026-09`):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:442
+msgid "Periods can be added and subtracted - a month plus one, the months between two periods:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:455
+msgid "For each loan: the month end of its start date, and the number of months until the report date 30.09.2026. How many loans are younger than 6 months?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:459
+msgid "4. Monthly history: LAG, changes, running totals"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:461
+msgid "`balances_monthly.csv` has the outstanding and the days past due of every loan at 12 month ends - the kind of table a monthly risk report is built from."
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:464
+msgid "The portfolio over time"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:478
+msgid "`diff()` is the value minus the previous row (`DIF`), `pct_change()` the relative change. The first month has no previous one: `NaN`."
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:481
+msgid "LAG by loan"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:483
+msgid "For each loan, the value of the previous month: sort, then `shift` inside the group - `LAG` with `BY loan_id`, or `LAG() OVER (PARTITION BY loan_id ORDER BY month_end)`:"
+msgstr ""
+
+#. box title
+#: site/lectures/16-pandas-reports-project.md:498
+msgid "Sort first"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:499
+msgid "`shift(1)` takes the previous **row**. If the rows are not in month order inside each loan, it takes a wrong month - and nothing warns you. Always `sort_values([key, date])` first (in SAS, `PROC SORT` before `BY`)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:504
+msgid "A loan that **crossed** 30 days past due this month - the flow into arrears:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:516
+msgid "The last month of each loan - `LAST.loan_id` - and the month a loan first appears in the history (new loans per month):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:529
+msgid "Running totals: `RETAIN`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:531
+msgid "`cumsum`, `cummax`, `cumcount` inside a group - a `RETAIN` variable that restarts with each `BY` group:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:544
+msgid "The portfolio by month and segment - a pivot with the months in the rows, the shape for a chart:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:558
+msgid "The DPD buckets per month - how the arrears move over the year:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:569
+msgid "Moving averages and a date index"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:571
+msgid "`rolling(3)` looks at the last 3 rows - a 3-month average smooths the monthly noise:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:583
+msgid "With dates in the index, `resample` groups by calendar periods - here, quarters (`QE` = quarter end):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:595
+msgid "For each month end: the number of loans more than 30 days past due and their share of the outstanding. In which month was the share the highest?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:599
+msgid "5. The rating migration matrix"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:601
+msgid "How did the ratings of the clients move over the year? The rating at the start of the history in the rows, the rating now in the columns - a **migration matrix**, a standard table of credit risk:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:617
+msgid "The diagonal is \"no change\"; above it, the client got a worse rating (a higher number); below it, a better one. As shares of each row - the probability of moving from one rating to another:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:633
+msgid "The summary - upgrades, downgrades, stable - is a comparison of the two columns, no matrix needed:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:652
+msgid "With the grades as labels, and all ratings in the rows and columns even when a rating has no client (`reindex`, `fill_value=0`) - the matrix keeps its square shape every month:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:672
+msgid "The same matrix weighted by **exposure** - how much money moved, not how many clients:"
+msgstr ""
+
+#. box title
+#: site/lectures/16-pandas-reports-project.md:689
+msgid "The same in SQL (session 13)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:690
+msgid "`SELECT s.rating, e.rating, COUNT(*) FROM history s JOIN history e ON ... GROUP BY 1, 2` gives the long form; `crosstab` gives the matrix directly. In SAS: `PROC FREQ; TABLES rating_start * rating_end / NOCOL NOPERCENT;`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:696
+msgid "Make the matrix between 31.08.2026 and 30.09.2026 (one month). Is the diagonal stronger than for the whole year? Why would it be?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:700
+msgid "6. An Excel report with several sheets"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:704
+msgid "One `to_excel` writes one sheet. For several sheets in one file, open a `pd.ExcelWriter` and write each table with its `sheet_name` - `ODS EXCEL` with `SHEET_NAME=`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:731
+msgid "`with` closes the file at the end (session 9) - only then is it a valid Excel file. `index=False` leaves out the row numbers; keep the index when it holds the labels (the segments of the pivot)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:735
+msgid "A title above the table, widths and number formats"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:737
+msgid "`startrow` leaves room for a title; then `writer.sheets[...]` gives the openpyxl worksheet (session 9) to write the title, set the widths and the number format:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:762
+msgid "The numbers stay numbers in Excel (they can be summed); only their display changes. (More formatting - bold headers, frozen panes, colours, a chart inside the file - in Self-study.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:766
+msgid "Several tables on **one** sheet - each with its `startrow`, one under another:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:784
+msgid "Add or replace one sheet of an existing file - `mode=\"a\"` with `if_sheet_exists`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:800
+msgid "A report is often a dictionary of tables - one loop writes them all, in order:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:820
+msgid "For a system that wants CSV - the export side of session 14: `;`, decimal comma, a BOM so that Excel shows the Cyrillic right:"
+msgstr ""
+
+#. box title
+#: site/lectures/16-pandas-reports-project.md:834
+msgid "Do not round before you sum"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:835
+msgid "Round only the numbers you **show**. If you round every loan and then sum, the total in the report is not the total of the data. Keep full precision in the calculations, and round the final table (or use the number format)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:841
+msgid "Add a third sheet \"migration\" with the migration matrix of section 5 to `portfolio_2026-09.xlsx`, and read the file back to check the sheet names."
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:845
+msgid "7. Charts"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:847
+msgid "pandas draws with **matplotlib**: `df.plot(...)` makes the chart, `plt.savefig` writes it to a file. Import `matplotlib.pyplot` yourself (on the site, that also loads it):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:869
+msgid "A line over time - the monthly total of section 4:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:887
+msgid "Save the chart as a file for the report or a presentation:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:904
+msgid "The distribution of one column - a histogram (`PROC UNIVARIATE` with `HISTOGRAM`):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:918
+msgid "Two columns against each other - a scatter plot:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:931
+msgid "Several charts in a loop - `plt.close()` after each saved file:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:948
+msgid "In a script (not a notebook), `plt.show()` opens a window and waits; for a report, only `savefig` - and `plt.close()` after it, so that the next chart starts empty."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:952
+msgid "A bar chart of the migration summary of section 5 (upgrades, stable, downgrades)."
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:955
+msgid "8. The final project: from script to process"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:957
+msgid "The [final project](../project) brings all sessions together: a monthly report that runs again for every new month. The brief is on the project page; here is the shape of the code."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:961
+msgid "A folder with the modules of the course and one main script:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:974
+msgid "`report.py` - every step a function that can be tested alone, the report date as a parameter (session 10):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1025
+msgid "The same shape, small enough to run here - every step a function, the date a parameter:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1064
+msgid "Rules that make a report reliable:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1066
+msgid "**No hard-coded dates or paths** in the functions: the report date is a parameter."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1067
+msgid "**Check the totals**: the total outstanding of the report = the total of the input; the EL = 1,140,106.56 for 30.09.2026."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1069
+msgid "**Rejects are part of the output**: the rows that failed the validation, with the reason, in their own sheet - never silently dropped."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1071
+msgid "**Run it twice**: the second run gives the same file. Then run it for 31.08.2026."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1072
+msgid "**Commit** after each step that works (session 10)."
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:1074
+msgid "9. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1076
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root (with the virtual environment active):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1084
+msgid "The tasks that write files write them into `out/` (ignored by Git)."
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1086
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1086
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1086
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1088
+msgid "`pivot_table` with totals, `crosstab` with shares, `melt` back"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1089
+msgid "Parse dates, month ends, months between, periods"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1090
+msgid "LAG by loan, monthly totals, months in arrears"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1091
+msgid "The migration matrix, upgrades and downgrades, the default rate"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1092
+msgid "A three-sheet Excel report, read back and checked"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1093
+msgid "`task6-chart.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1093
+msgid "A bar chart and a line chart saved as PNG files"
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:1095
+msgid "Summary"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1097
+msgid "SQL / SAS"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1097
+msgid "pandas"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1100
+msgid "`pivot` (no aggregation), `unstack`; back: `melt`"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1102
+msgid "SAS dates, `INPUT(x, ddmmyy10.)`"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1106
+msgid "`LAG`, `DIF` by group"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1106
+msgid "`sort_values`, then `groupby(key)[col].shift(1)` / `diff()`"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1108
+msgid "migration matrix"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1108
+msgid "merge two month ends, `pd.crosstab(start, end)`"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1109
+msgid "`pd.ExcelWriter` + `to_excel(writer, sheet_name=...)`; openpyxl for formats"
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:1112
+msgid "Homework"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1114
+msgid "`16-pandas-reports-project/homework.py` (in the homework repository): **the monthly report, part 1 of the project** - `build_report(data, report_date)` returns a dictionary of tables (summary, segment x stage, DPD buckets, migration, monthly trend, top clients) and `write_report(tables, path)` writes them into one Excel file. Every check must print `OK`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1119
+msgid "The practice tasks you did not finish in class."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1120
+msgid "The [final project](../project): start from the homework, add the loading from the database, the validation with your nomenclatures, a chart, and Git."
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:1123
+msgid "Self-study"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1125
+msgid "This part is not covered in class. It is for reading at home: a report that looks finished, charts with more control, and where to go after the course."
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:1128
+msgid "A formatted Excel report"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1130
+msgid "openpyxl (session 9) can style everything after pandas has written the data: fonts, fills, number formats, frozen panes, filters, conditional colours - and a native Excel chart:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1170
+msgid "The chart is an Excel chart: it changes when somebody edits the numbers in the file. (A PNG from matplotlib can be put in with `openpyxl.drawing.image.Image`; it needs the Pillow package.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1174
+msgid "**Exercises**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1176
+msgid "Write the migration matrix (section 5) to a sheet and colour it with a `ColorScaleRule` from white (0) to red (the maximum). Freeze the first row and the first column (`freeze_panes = \"B2\"`)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1179
+msgid "Write the segment x stage pivot with `margins=True` and make the \"total\" row bold."
+msgstr ""
+
+#. box title
+#: site/lectures/16-pandas-reports-project.md:1182 site/lectures/16-pandas-reports-project.md:1253
+msgid "Answer"
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:1215
+msgid "Charts in more depth"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1217
+msgid "For full control, create the figure and its axes yourself and give each chart its axes - here two charts side by side:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1244
+msgid "`fig.savefig(\"chart.png\", dpi=200)` saves the whole figure - 200 dpi is sharp enough for a presentation."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1247
+msgid "**Exercise**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1249
+msgid "Draw the share of loans more than 30 days past due per month end (section 4, Try it) as a line, with the y axis in percent (`FuncFormatter(lambda v, _: f\"{v:.1%}\")`), next to a bar chart of the number of such loans."
+msgstr ""
+
+#. heading 3
+#: site/lectures/16-pandas-reports-project.md:1274
+msgid "What next"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1276
+msgid "You now have the tools for most of the daily work. Where to go from here, when you need it:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1279
+msgid "**Jupyter** (installed with `requirements.txt`): for exploring a new dataset step by step, with tables and charts under the code. Keep the final, repeatable report as a `.py` script."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1282
+msgid "**The pandas documentation**: the [user guide](https://pandas.pydata.org/docs/user_guide/index.html) and the comparisons with [SAS](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sas.html) and [SQL](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1285
+msgid "**DuckDB**: SQL directly on DataFrames, CSV and Parquet files - your SQL, inside Python, very fast on large files."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1287
+msgid "**polars**: a newer DataFrame library, faster than pandas on large data, with a different (expression-based) API."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1289
+msgid "**statsmodels** and **scikit-learn**: regression, scorecards, model validation - the modelling side."
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1291
+msgid "**Scheduling**: a script with a report-date argument can run every month by itself (Windows Task Scheduler, cron on Linux)."
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:1294
+msgid "Read more"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1296
+msgid "pandas: [Reshaping and pivot tables](https://pandas.pydata.org/docs/user_guide/reshaping.html), [Time series / date functionality](https://pandas.pydata.org/docs/user_guide/timeseries.html), [Windowing operations](https://pandas.pydata.org/docs/user_guide/window.html), [Chart visualization](https://pandas.pydata.org/docs/user_guide/visualization.html), [`ExcelWriter`](https://pandas.pydata.org/docs/reference/api/pandas.ExcelWriter.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1301
+msgid "openpyxl: [Styling cells](https://openpyxl.readthedocs.io/en/stable/styles.html), [Charts](https://openpyxl.readthedocs.io/en/stable/charts/introduction.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1303
+msgid "matplotlib: [Quick start guide](https://matplotlib.org/stable/users/explain/quick_start.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1305
+msgid "**This was the last session.** The [final project](../project) is the next step: one report of your own work, in Python, from the data to the Excel file."
+msgstr ""

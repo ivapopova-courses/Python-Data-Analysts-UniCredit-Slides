@@ -768,6 +768,8 @@ print(sys.getsizeof(as_list), "bytes for the list")
 print(sys.getsizeof(as_tuple), "bytes for the tuple")
 ```
 
+(The exact numbers depend on the Python version; the tuple is always smaller.)
+
 Rule of thumb: a **list** for many values of the **same kind** (all loan ids), a
 **tuple** for a few values of **different kinds** that belong together (one loan).
 
@@ -884,7 +886,7 @@ print(int_dup_numbers == {1, 2, 3, 4, 5})    # order and duplicates do not matte
 ```
 
 ```python run
-set_of_mutables = {[1, 2, 3], ["a", "b"]}    # TypeError: unhashable type: 'list'
+set_of_mutables = {[1, 2, 3], ["a", "b"]}    # TypeError: a list is unhashable
 ```
 
 ::: warning `{}` is not an empty set
@@ -949,8 +951,8 @@ set. `len`, `in`, `min`, `max`, `sum` and `for` work as with lists.
 
 ### Sets and dictionaries
 
-- Both are **unordered** collections; both are **mutable**; both use **curly
-  brackets**.
+- Both are **mutable**, and both use **curly brackets**. A set has no order; a
+  dictionary keeps the order in which the keys were added (session 6).
 - A dictionary is a collection of `key: value` **pairs**; a set is a collection of
   **values** only - like the keys of a dictionary without the values.
 
@@ -1004,7 +1006,7 @@ print(frozenset({"USD", "EUR"}) in pairs)      # the order does not matter
 |---|---|---|---|---|
 | union | `a \| b` | `a.union(b)` | in `a` or in `b` | `UNION` |
 | intersection | `a & b` | `a.intersection(b)` | in both | `INTERSECT` |
-| difference | `a - b` | `a.difference(b)` | in `a`, not in `b` | `EXCEPT` (Oracle: `MINUS`) |
+| difference | `a - b` | `a.difference(b)` | in `a`, not in `b` | `EXCEPT` (older Oracle: `MINUS`) |
 | symmetric difference | `a ^ b` | `a.symmetric_difference(b)` | in one of them, not in both | - |
 
 Each operation returns a **new** set.

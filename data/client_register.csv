@@ -1,0 +1,151 @@
+client_id,name,eik,iban,email,city,registered,turnover
+C0001,NIKOLAY KOLEV,,BG52FAKE26259244915414,nikolay.kolev@example.net,gr. Pleven,2007-04-21,
+C0002,ROSE SYSTEMS EAD,175591301,BG71 DEMO 2491 1988 6173 30,office.rosesystems@example.net,Ruse,08.06.2014,"6 639 678,04"
+C0003,rila print ead,1055848667739,BG82XMPL98235311476247,office.rilaprint@example.com,Плевен,2021-11-05,"16,510,296.23"
+C0004,Iron Retail ET,172422691,BG37 XMPL 3113 4610 7020 69,office.ironretail@example.net,Burgas,20050121,"6 207 212,09"
+C0005,Balkan Foods EOOD,232192564,,office.balkanfoods at example.net,Burgas,2023-04-11,EUR 7 729 271
+C0006,Silver Design EOOD,153127921,BG55DEMO72277313948133,office.silverdesign@example.org,BURGAS,2009-09-19,"15,705,541.23"
+C0007,Georgi Nikolov,,BG67 TEST 4140 6294 4674 22,georgi.nikolov@example.net,Варна,2023-01-22,
+C0008,Simona Marinova,,bg65test47275935247501,simona.marinova@example.org,gr. Stara Zagora,09.07.2016,
+C 0009,IRON ENERGY ET,257745599,bg05test77018249464461,office.ironenergy@example.net,gr. Ruse,2011-06-15,"2 538 121,54"
+C0010 ,Petar Kolev,,BG96 XMPL 9908 6201 1882 28,petar.kolev@example.net,STARA ZAGORA,2020-10-15,
+ C0011,Sunny Metals EOOD,252798377,BG49 FAKE 8396 6676 5508 02,office.sunnymetals@example.net,  varna,20150506,"3,623,092.17"
+C0012,Yana Koleva,,BG15DEMO79938080691814,yana.koleva@example.org,Burgas,2024-12-25,
+C0013,Dimitar Nikolov,,BG11XMPL40665568456926,dimitar.nikolov@example.net,RUSE,20230101,
+c0014,oak trade ead,144 229 539,BG94TEST51071082664358,office.oaktrade@example.org,Ruse,06.12.2013,"13 492 222,28"
+C0015,BLACK SEA DESIGN ET,296921657,BG56 FAKE 3050 1113 2692 81,office.blackseadesign@example.net,Burgas,2016-08-14,"290,993,616.39"
+C0016,Iron Foods AD,253545747,BG49FAKE95385224370312,office.ironfoods@example.net,  ruse,2022-03-06,"8 282 637,56"
+C17,Yana Todorova,,BG81 XMPL 6788 4688 0797 83,yana.todorova@example.com,gr. Stara Zagora,2007-04-21,
+C0018,Rila Software AD,BG165960351,BG35 FAKE 1749 3899 6924 55,office.rilasoftware@example.net,Burgas,12.03.2008,"12,991,953.91"
+c0019,Stefan Kolev,,BG21TEST36864219691633,stefan.kolev@example.net,STARA ZAGORA,2020-09-19,
+C0020,Elena Dimitrova,,BG50DEMO65946494758659,elena.dimitrova@example.net,  burgas,2021-01-10,
+C0021,Green Build E.A.D.,108448483,BG55DEMO33053427543050,office.greenbuild@example.net,Русе,2020-01-09,"223 362 182,31"
+C0022,Blue Wines EOOD,163740826,,office.bluewines@example.org,Ruse,2020-08-30,142571911.04
+C0023,Stefan Stoyanov,,BG57 XMPL 1564 6105 4495 43,STEFAN.STOYANOV@EXAMPLE.NET,Varna,29/08/2023,
+C0024,NIKOLAY DIMITROV,,BG77FAKE20830650959772,nikolay.dimitrov@example.org,Sofia,2008-05-12,
+C0025,Sunny Motors E.A.D.,BG100843457,BG86TEST58046922564528,office.sunnymotors@example.net,gr. Ruse,27.01.2013,"13 385 584,95"
+C-0026,"""Silver Textiles"" AD",1965730713386,BG27TEST65808265754078,office.silvertextiles@example.org,VARNA,20.06.2015,"306.837.020,60"
+C0027,Dimitar Dimitrov,,BG98 TEST 6227 4550 0754 87,dimitar.dimitrov@example.org,Ruse,2019-11-22,
+C0028,"""North Hotels"" ET",255367357,BG48 TEST 2842 8550 6261 39,OFFICE.NORTHHOTELS@EXAMPLE.ORG,PLEVEN,20120208,118597863.74
+C0029,Boyan Nikolov,,BG18 XMPL 1958 8454 7604 63,boyan.nikolov@example.org,gr. Stara Zagora,2022-08-11,
+c0030,thracian energy ad,109234347,BG64 DEMO 5205 8142 4783 62,office.thracianenergy@example.net,Варна,08/02/2009,"339 333 879,95"
+C0031,Blue Energy OOD,252549479,BG74TEST99765584088855,office.blueenergy@example.com,SOFIA,5 Apr 2025,"276.478.083,08"
+C0032,Radoslav Marinov,,BG82TEST01073185388648,radoslav.marinov@example.com,София,2009-05-14,
+C0033,"""Rila Metals"" ET",291879631,BG46TEST43420896706662, office.rilametals@example.com,Sofia,2005-01-02,"18.678.047,52"
+C0034,SIMONA TODOROVA,,BG92DEMO58066339066119,simona.todorova@example.org,Русе,05.10.2023,
+c0035,BOYAN NIKOLOV,,BG14FAKE48363783444307,boyan.nikolov@example.org,Ruse,01.01.2006,
+C0036 ,Stone Trade EAD,189034981,BG56DEMO70580066613618,office.stonetrade@example.com,VARNA,21/06/2008,"8 308 063,30"
+C0037,Yana Nikolova,,BG24 DEMO 9053 3648 1168 91,yana.nikolova@example.net,  pleven,2016-01-14,
+C0038,Iron Farms ET,192 824 477,BG70DEMO99940663023770,office.ironfarms@example.com,Plovdiv,01/01/2010,"17 199 620,18"
+C 0039,DIMITAR ANGELOV,,BG25XMPL23467899617988,dimitar.angelov@example.org,STARA ZAGORA,27 Apr 2016,
+C0040 ,  Ivanka  Marinova ,,BG82FAKE52245507480731, ivanka.marinova@example.net,Burgas,2019-12-30,
+C0041,Kalina Marinova,,bg49fake91685381348992,kalina.marinova@example.com,gr. Ruse,2011-11-12,
+C42,Boyan Dimitrov,,,boyan.dimitrov@example.org,Бургас,2023-02-15,
+C43,Desislava Georgieva,,,desislava.georgieva@example.net,SOFIA,25 Sep 2013,
+c0044,Blue Metals EOOD,286347939,BG80DEMO02024299800889,office.bluemetals@example.com,Sofia,01.07.2019,"10,081,260.10"
+C45,Kalina Ilieva,,BG12XMPL90600813824132,kalina.ilieva@example.net,RUSE,2015-09-05,
+C0046,Ivanka Nikolova,,BG75FAKE91110106170538,ivanka.nikolova@example.org,Varna,2015-02-05,
+C0047,Ivan Todorov,,BG19TEST31133934048732,ivan.todorov@example.net,Ruse,16.11.2018,
+C0048,Green Pharma EAD,197292846,BG30FAKE46297615925520,office.greenpharma@example.org,Plovdiv ,2009-08-23,"3,394,682.69"
+C49,Simona Ilieva,,BG50 XMPL 5877 1935 6445 41,SIMONA.ILIEVA@EXAMPLE.ORG,Stara Zagora,11.12.2020,
+C-0050,Dimitar Stoyanov,,BG75TEST34436489043273,dimitar.stoyanov@example.net,BURGAS,2005-10-07,
+C0051,Desislava Petrova,,BG57 DEMO 0576 0031 1854 57,desislava.petrova@example.org,  ruse,26/10/2023,
+C0052,Martin Iliev,,bg61fake65738947226583,martin.iliev@example.com,Pleven ,2021-12-05,
+c0053,black sea systems ad,201085564,BG98DEMO29548032038992,office.blackseasystems@example.com,Sofia,2019-06-26,"16 328 994,22"
+c0054,  Simona  Petrova ,,BG45 FAKE 5936 9287 3692 81,simona.petrova@example.org,Pleven,18 Oct 2024,
+C0055,desislava koleva,,BG85TEST17403219878504,desislava.koleva@example.org,Pleven,04.03.2009,
+C0056,Ivanka Dimitrova,,BG31 DEMO 4902 8281 5817 15,ivanka.dimitrova@example.net,Burgas,15.12.2016,
+C-0057,  Boyan  Stoyanov ,,BG35TEST63842434731825,boyan.stoyanov@example.net,gr. Varna,2008-12-02,
+c0058,  Nikolay  Todorov ,,BG56DEMO86439922950490,nikolay.todorov@example.org,gr. Burgas,2022-07-02,
+C0059,Golden Pharma ET,274 692 063,BG22FAKE94441953195710,office.goldenpharma@example.org,Ruse,22.12.2014,"14,690,858.40"
+C0060,Simona Petrova,,,simona.petrova@example.com,  pleven,2016-10-08,
+C-0061,Balkan Energy EOOD,203216610,BG79XMPL72664761222430, office.balkanenergy@example.net,Plovdiv ,02.02.2007,1602949.24
+C0062,Iron Motors ET,231826026,BG98TEST52896449728709,office.ironmotors@example.net,  stara zagora,25/02/2014,"4 379 285,36"
+C0063 ,Radoslav Marinov,,,RADOSLAV.MARINOV@EXAMPLE.ORG,Plovdiv,11.08.2005,
+C 0064,georgi nikolov,,BG22 FAKE 2962 6117 7071 29,georgi.nikolov@example.net,Пловдив,21 Nov 2012,
+C0065,stefan georgiev,,BG58TEST36951583115290,STEFAN.GEORGIEV@EXAMPLE.COM,Sofia ,04.12.2018,
+C0066 ,Silver Systems OOD,148289124,BG46 FAKE 9678 7581 6353 90,office.silversystems@example.org,Русе,2017-10-13,"13,879,395.59"
+ C0067,Martin Todorov,,BG64 FAKE 2979 3117 0461 39, martin.todorov@example.org,  sofia,20220713,
+C68,Yana Todorova,,BG42 FAKE 4341 3855 3533 03,yana.todorova@example.com,Burgas,04.11.2008,
+C0069,DIMITAR TODOROV,,BG39DEMO31239912007591,dimitar.todorov@example.org,Pleven ,2009-02-28,
+C0070 ,iron build ad,232 193 196,BG10DEMO91033962205834, office.ironbuild@example.org,  sofia,20120113,EUR 381 212
+C-0071,Nikolay Iliev,,BG53DEMO72705329563518,nikolay.iliev@example.net,VARNA,15/08/2008,
+C0072,Yana Marinova,,BG80 TEST 4216 0828 1126 60,yana.marinova@example.net,Sofia,2005-04-24,
+C0073,Martin Stoyanov,,BG87 DEMO 5643 8578 4145 47, martin.stoyanov@example.com,Burgas,2005-05-07,
+C0074,Yana Dimitrova,,BG48 XMPL 9288 9799 8985 20,yana.dimitrova@example.com,Plovdiv,2005-07-08,
+C0075,Simona Todorova,,BG98TEST53587414330285,SIMONA.TODOROVA@EXAMPLE.ORG,Pleven ,09.11.2012,
+C76,Stefan Petrov,,BG95XMPL63435864017398,stefan.petrov@example.com,  burgas,2018-08-15,
+C0077,Rose Textiles ET,287 826 231,,office.rosetextiles at example.org,Burgas,2018-08-19,"3 133 141,10"
+C0078,Simona Angelova,,BG51DEMO03584531119852, simona.angelova@example.com,gr. Burgas,2014-07-23,
+ C0079,OAK WINES OOD,124613297,BG75TEST45929006750691,OFFICE.OAKWINES@EXAMPLE.COM,  pleven,2020-04-14,223524574.83
+C0080,Golden Motors ET,203360112,BG18TEST27114389493439, office.goldenmotors@example.com,  varna,2011-07-20,"22,761,724.85"
+C0081,rose systems ood,289678781,BG75XMPL78787551413519,office.rosesystems@example.org,Burgas,2011-04-25,"33,680,729.19"
+C0082,Rose Metals OOD,246020717,BG84 DEMO 3342 7308 3758 85,office.rosemetals@example.com,Варна,30 Aug 2011,EUR 14 334 442
+C0083,OAK TRADE ET,159065889,bg69demo63238940554331,office.oaktrade@example.net,Ruse,06/06/2009,"17.597.602,71"
+C0084,NIKOLAY STOYANOV,,BG67XMPL66866480006482,nikolay.stoyanov@example.com,Стара Загора,12 Jul 2007,
+C-0085,Petar Iliev,,BG19 XMPL 5663 2679 8058 29,petar.iliev@example.com,  ruse,20121210,
+C0086,Georgi Stoyanov,,BG70DEMO93080993434631,georgi.stoyanov@example.com,  stara zagora,2011-10-12,
+C0087,Stefan Petrov,,BG12 DEMO 7928 7586 2475 87,STEFAN.PETROV@EXAMPLE.COM,Burgas ,17 Jun 2013,
+C0088,Martin Stoyanov,,BG45TEST92304146865970,martin.stoyanov@example.org,Burgas,2019-11-11,
+C0089,VIKTORIA PETROVA,,BG12DEMO35992658423887,viktoria.petrova@example.com,  stara zagora,20210201,
+C0090,DANUBE FIELDS EOOD,254244444,,office.danubefields@example.net,Stara Zagora,26.11.2013,"101.512.159,01"
+C 0091,Thracian Fields ET,187137395,BG22 DEMO 5281 9915 9422 05,office.thracianfields@example.net,  sofia,2017-02-20,8918166.85
+C-0092,petar iliev,,BG82DEMO26958883176046,petar.iliev@example.net,Varna,2012-01-23,
+C0093,Viktoria Dimitrova,,BG94DEMO49567492839313,viktoria.dimitrova@example.net,Пловдив,28.05.2017,
+C0094,Yana Petrova,,BG83 XMPL 1634 1434 4474 08,yana.petrova@example.net,Pleven,24 Jun 2023,
+C0095 ,DESISLAVA ILIEVA,,BG92TEST70454053139918,desislava.ilieva@example.net,Pleven,1 Sep 2021,
+C0096,Radoslav Todorov,,BG23 DEMO 5401 8634 0194 21,radoslav.todorov@example.org,Stara Zagora,09.11.2023,
+c0097,Desislava Dimitrova,,bg85fake67126101747717,desislava.dimitrova@example.com,Plovdiv ,26.03.2020,
+C0098,Simona Nikolova,,BG73FAKE48810701043522,simona.nikolova@example.com,PLOVDIV,2021-09-18,
+C0099,"""Danube Metals"" AD",293254190,bg45test34856204863280,office.danubemetals@example.org,Pleven,20170806,"316 737 602,09"
+C0100,Sunny Textiles EAD,192 992 830,BG15 TEST 4927 2240 2204 14,office.sunnytextiles@example.com,Varna,28/05/2013,"3,947,622.96"
+c0101,Boyan Todorov,,BG81TEST06205460397358, boyan.todorov@example.org,Бургас,20250213,
+C0102 ,Danube Build E.T.,192529992,BG11TEST04553796027935,office.danubebuild@example.org,Ruse,20.03.2009,"15 014 504,17"
+C103,SIMONA ILIEVA,,,simona.ilieva@example.net,Sofia,2012-12-13,
+C0104,Amber Farms EAD,194727581,BG43 DEMO 9360 5502 2069 39,office.amberfarms@example.com,PLEVEN,2 Oct 2020,"9 742 267,88"
+C0105,Georgi Angelov,,BG12 XMPL 1577 5836 1756 79,georgi.angelov@example.org,Varna,12.05.2013,
+C0106,Kalina Todorova,,BG76XMPL85654954866475,kalina.todorova@example.net,  varna,2008-02-05,
+C0107,Amber Wines EAD,274252939,BG23DEMO44207115193378,office.amberwines@example.com,Ruse,23.01.2024,6879116.36
+C0108,Oak Hotels E.T.,243302847,bg45demo75995373159323,office.oakhotels@example.com,  ruse,2017-11-04,"18 699 754,77"
+ C0109,Radoslav Marinov,,BG60FAKE78339053970494,radoslav.marinov@example.org,Ruse,2023-03-20,
+C0110,Rila Textiles O.O.D.,169 293 439,BG22TEST18887561809763,office.rilatextiles@example.net,Plovdiv,2007-05-10,EUR 15 018 126
+ C0111,STEFAN ILIEV,,BG44FAKE04076127325900,stefan.iliev@example.net,gr. Varna,2011-12-18,
+C0112,Kalina Koleva,,BG78 FAKE 3230 6302 7105 95,kalina.koleva@example.net,Русе,2019-11-09,
+C0113,GREEN ENERGY OOD,107393678,BG70XMPL33598686142966,OFFICE.GREENENERGY@EXAMPLE.COM,RUSE,05.01.2013,"9,476,255.48"
+C0114,Maria Dimitrova,,BG62FAKE23054822407101,maria.dimitrova@example.com,Бургас,26.03.2009,
+C0115 ,  Silver  Trade EOOD ,107228267,BG33 TEST 1696 7830 9803 93,office.silvertrade@example.com,Stara Zagora,25 Jun 2014,"266 370 171,01"
+ C0116,IVAN MARINOV,,BG56 DEMO 3845 4812 6397 12,ivan.marinov@example.com,Pleven,2025-03-27,
+C-0117,silver fields ood,180008184,, office.silverfields@example.com,STARA ZAGORA,30 Aug 2005,"11,731,348.42"
+C0118 ,teodora dimitrova,,BG37 FAKE 3955 2298 8975 03,teodora.dimitrova@example.org,Русе,31 Mar 2008,
+C0119,Radoslav Iliev,,BG11 XMPL 9934 3366 3423 38, radoslav.iliev@example.org,Стара Загора,07.06.2019,
+C0120,RILA FARMS EAD,136797150,BG35DEMO56312703221476, office.rilafarms@example.com,  pleven,2006-06-06,18544581.07
+C-0121,Radoslav Kolev,,BG02XMPL71978551741884,RADOSLAV.KOLEV@EXAMPLE.NET,Ruse,26.07.2010,
+C0122,Desislava Stoyanova,,BG32DEMO80665925318486,desislava.stoyanova@example.com,VARNA,14.11.2015,
+C0123,Ivanka Georgieva,,BG83TEST31103074776622, ivanka.georgieva@example.com,VARNA,3 Nov 2018,
+C124,SIMONA KOLEVA,,BG70 TEST 2826 7306 0308 76,simona.koleva@example.org,Sofia,20 Oct 2012,
+C0125,Ivan Todorov,,bg18fake32191385307787,ivan.todorov@example.net,  plovdiv,03.08.2023,
+C126,Stefan Todorov,,BG68DEMO30723605664566,stefan.todorov@example.com,Pleven,2015-03-25,
+C127,DANUBE TRADE OOD,212816038,BG08DEMO79762380301576,office.danubetrade@example.net,София,14.06.2022,EUR 252 405 107
+C 0128,Desislava Koleva,,BG34XMPL89022799677752,desislava.koleva@example.net,Pleven,2019-11-07,
+C0129,Boyan Dimitrov,,,boyan.dimitrov@example.net,VARNA,20120328,
+C0130,North Trade AD,166 166 536,BG52DEMO07240165646970,office.northtrade@example.org,  stara zagora,15.01.2014,282144197.32
+C131,Yana Stoyanova,,BG36 DEMO 4936 1079 7426 94,yana.stoyanova@example.com,Pleven ,16 Jun 2020,
+C0132,Maple Energy OOD,173864477,BG86DEMO89284112915345, office.mapleenergy@example.com,Pleven,2014-03-11,EUR 132 014 229
+C0133,  Iron  Retail AD ,153377796,,office.ironretail@example.com,Burgas,04.09.2014,EUR 19 959 225
+C0134,Elena Dimitrova,,BG55DEMO10492949963902,ELENA.DIMITROVA@EXAMPLE.COM,Плевен,24.08.2007,
+C0135,Petar Todorov,,,petar.todorov@example.com,PLOVDIV,2017-03-24,
+C0136,Thracian Build O.O.D.,236872262,,office.thracianbuild@example.com,Plovdiv,21.03.2008,16395901.73
+C0137,Radoslav Stoyanov,,BG59TEST28593968938263, radoslav.stoyanov@example.com,gr. Burgas,2019-03-16,
+C0138,Simona Ilieva,,BG43TEST10927088494306,SIMONA.ILIEVA@EXAMPLE.NET,gr. Sofia,1 May 2017,
+C0139,Silver Farms EAD,109854241,,office.silverfarms@example.org,gr. Stara Zagora,18 May 2025,EUR 11 942 783
+C0140,"""Silver Design"" AD",226543375,,office.silverdesign@example.com,STARA ZAGORA,03.08.2016,"12.090.218,70"
+C0141,Viktoria Georgieva,,BG80 DEMO 7598 1195 9373 56,viktoria.georgieva@example.com,Burgas,01.04.2021,
+C-0142,VIKTORIA TODOROVA,,BG39TEST84043526246232,viktoria.todorova@example.com,gr. Varna,2017-07-15,
+C0143,DANUBE TRADE OOD,216231021,,office.danubetrade@example.org,Ruse,7 Sep 2023,"5 550 557,83"
+C0144,Golden Motors EOOD,2241210127429,BG59XMPL95486564709281,office.goldenmotors@example.org,Burgas ,2012-08-07,1419253.05
+C0145 ,Elena Nikolova,,BG91DEMO34978800388117, elena.nikolova@example.org,Stara Zagora,09.02.2024,
+C0146,Green Design OOD,119783141,BG54TEST44974947593232,office.greendesign@example.net,Varna,28.06.2022,34628011.30
+C0147,Desislava Petrova,,BG24 XMPL 2511 9754 6990 31,desislava.petrova@example.org,Stara Zagora,2013-04-15,
+C0148 ,stefan nikolov,,bg95demo93303467025544,stefan.nikolov@example.org,Стара Загора,18.03.2009,
+C0149,Simona Petrova,,BG10 DEMO 3121 1916 3434 13,simona.petrova@example.net,Varna ,2009-12-03,
+C0150,north logistics ad,215282123,bg92fake60813308434396,office.northlogistics@example.net,Plovdiv,28.10.2020,"318.776.449,03"

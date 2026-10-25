@@ -1,0 +1,1264 @@
+# Translation of site/lectures/09-errors-and-files.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/lectures/09-errors-and-files.md\n"
+
+#. front matter: title
+#: site/lectures/09-errors-and-files.md:2 site/lectures/09-errors-and-files.md:5
+msgid "9. Error handling and file handling"
+msgstr ""
+
+#. html
+#: site/lectures/09-errors-and-files.md:8
+msgid "<span>Session 9</span><span>practice: <code>09-errors-and-files/</code> in the homework repository</span>"
+msgstr ""
+
+#. html
+#: site/lectures/09-errors-and-files.md:9
+msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:12
+msgid "**Today you will learn to:**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:14
+msgid "read a traceback, and know the common exceptions of data work;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:15
+msgid "catch an error with `try` / `except` and go on - instead of stopping the whole script;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:17
+msgid "raise your own errors with a clear message when the data is wrong;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:18
+msgid "work with files and folders through `pathlib`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:19
+msgid "read and write text, CSV, JSON and Excel files;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:20
+msgid "load a file with bad rows: keep the good rows, write the bad ones to a reject file with the reason, and report a summary - the job of the SAS log, done properly."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:23
+msgid "From SAS to Python - a bad value in the data. SAS writes a NOTE to the log, sets the value to missing and goes on:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:35
+msgid "Python stops at the first bad value - unless you tell it what to do:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:53
+msgid "By the end of today you will turn this into a loader that checks every field, and writes the bad rows into their own file."
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:56
+msgid "1. Errors and exceptions"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:58
+msgid "Two kinds of errors"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:60
+msgid "A **syntax error**: the code is not valid Python. Nothing runs - Python checks the whole file first (session 1)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:62
+msgid "An **exception**: the code is valid, but something goes wrong **while it runs**: a text that is not a number, a missing file, a missing key. The script stops at that line - unless the exception is **caught**."
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:72
+msgid "Read the traceback from the bottom"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:74
+msgid "When an exception is not caught, Python prints a **traceback**: the way the program went to the error, the last call at the bottom."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:87
+msgid "Read it **from the bottom up**:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:89
+msgid "The last line: the **type** of the exception and its **message** - `ValueError: could not convert string to float: 'n/a'`. Often this is enough."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:91
+msgid "Above it: the line of **your** code where it happened, and the function."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:92
+msgid "Higher: who called that function, and so on, up to the first call."
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:94
+msgid "The exceptions you will meet"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:96
+msgid "Exception"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:96
+msgid "When"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:96
+msgid "A data example"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:98
+msgid "the type is right, the value is wrong"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:99
+msgid "the type is wrong"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:100
+msgid "a dictionary has no such key"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:101
+msgid "a list has no such position"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:101
+msgid "`fields[5]` of a short row"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:102
+msgid "division by zero"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:102
+msgid "the average of an empty group"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:103
+msgid "no such file"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:103
+msgid "a wrong path, a file not delivered yet"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:104
+msgid "the wrong encoding"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:104
+msgid "a cp1251 file read as UTF-8"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:105
+msgid "an object has no such method"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:118
+msgid "(This loop already uses `try` / `except` - the next section.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:120
+msgid "Two more that come from the data, not from your code - a value that is `None`, and a file in another encoding:"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:133 site/lectures/09-errors-and-files.md:538 site/lectures/09-errors-and-files.md:857
+msgid "SAS"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:133 site/lectures/09-errors-and-files.md:538 site/lectures/09-errors-and-files.md:857
+msgid "Python"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:135
+msgid "`NOTE: Invalid data`, the value becomes missing, the step goes on"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:135
+msgid "the script **stops**, unless you catch the exception"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:136
+msgid "`_ERROR_ = 1` for the row"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:136
+msgid "the `except` block runs for the row"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:137
+msgid "`ERROR:` in the log stops the step"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:137
+msgid "an exception that nobody catches"
+msgstr ""
+
+#. box title
+#: site/lectures/09-errors-and-files.md:139 site/lectures/09-errors-and-files.md:276 site/lectures/09-errors-and-files.md:367 site/lectures/09-errors-and-files.md:514 site/lectures/09-errors-and-files.md:624 site/lectures/09-errors-and-files.md:729 site/lectures/09-errors-and-files.md:863 site/lectures/09-errors-and-files.md:948 site/lectures/09-errors-and-files.md:1058 site/lectures/09-errors-and-files.md:1254
+msgid "Try it"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:140
+msgid "Run each line alone, and name the exception before you run it: `int(\" 42 \")`, `int(\"4 2\")`, `float(\"1e3\")`, `[\"a\"].index(\"b\")`, `\"abc\"[10]`."
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:146
+msgid "Catch an exception"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:148
+msgid "Put the code that can fail in a `try` block. If an exception happens there, Python jumps to the `except` block that matches its type - and the script goes on:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:161
+msgid "The rest of the `try` block after the error does **not** run."
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:163
+msgid "`as error`: the message"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:165
+msgid "`except ValueError as error` gives the exception object a name. `str(error)` is the message - write it into your report:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:177
+msgid "Several kinds"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:179
+msgid "Several `except` blocks for different types, or one block for a **tuple** of types:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:206
+msgid "`to_float` is a small helper you will use in every loader: \"a number, or `None`\" - like an informat with the `??` modifier in SAS, which reads a bad value as missing without a note."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:210
+msgid "On a real column - the `Outstanding` of `loans_export.csv`, with its decimal commas and a SAS-style `.` for missing values. Convert, count what failed:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:230
+msgid "Try the formats one by one"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:232
+msgid "Session 7 detected the date format by the shape of the text. With `try`, there is a shorter way: try each format, and take the first that works:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:252
+msgid "The traps: catching too much"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:254
+msgid "A bare `except:` (or `except Exception:`) catches **everything** - also your own typos. The script then gives a wrong result without a word:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:270
+msgid "Rules:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:272
+msgid "Catch the **specific** exception you expect (`ValueError`, `KeyError`), not all."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:273
+msgid "Keep the `try` block **small**: only the line that can fail."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:274
+msgid "Never `pass` silently in a loader: count the error, or write it somewhere."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:277
+msgid "Change `to_float` so that it also accepts the Bulgarian format `\"12,50\"`: try `float(value)` first, and if that fails, try again with the comma replaced. Test it with `\"12,50\"`, `\"12.50\"`, `\"1 234,5\"` and `\"abc\"`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:282
+msgid "3. `else` and `finally`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:284
+msgid "The full form has two more parts:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:309
+msgid "`else` keeps the `try` block small: only the risky line is inside, the code that **uses** the result is in `else`. `finally` is for clean-up that must happen whatever comes - closing a connection (session 13), writing the last log line."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:313
+msgid "A monthly file that may not be there yet - the error is expected, the work on the file is in `else`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:327
+msgid "`finally` runs even when the error is **not** caught - the clean-up happens, then the error goes on:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:342
+msgid "Ask first, or try and catch?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:344
+msgid "Two styles for the same check:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:363
+msgid "Both are fine. Python code often uses EAFP when the check would repeat the work (converting a number to see if it can be converted), and `if` / `get` when the check is cheap and clear (a key in a dictionary)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:368
+msgid "Predict the output, then run:"
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:384
+msgid "4. `raise` and your own exceptions"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:386
+msgid "`raise`: stop with a clear message"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:388
+msgid "Your own checks can **raise** an exception, with a message that says what is wrong and where. In SAS: `PUTLOG \"ERROR: ...\"` and `ABORT`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:401
+msgid "A good message names the **value** and the **rule**. \"Error\" alone helps nobody at the end of a month."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:404
+msgid "A wrong **setting** must stop the report before it starts - a report for the wrong month is worse than no report:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:421
+msgid "Your own exception type"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:423
+msgid "A one-line class (classes: session 11) makes a new kind of exception. Then the loader can catch **your** data errors, and let real bugs (a `NameError`, a `TypeError` in your code) stop the script:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:447
+msgid "`raise ... from None` replaces the original `ValueError` by the clearer `DataError` (without it, Python shows both). Because `DataError` is a kind of `ValueError`, code that catches `ValueError` catches it too."
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:451
+msgid "Re-raise: add context and go on up"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:453
+msgid "Sometimes a function cannot handle an error, but it can add information - the file and the line - and raise again:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:473
+msgid "All problems of a row, not only the first"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:475
+msgid "The loader of section 10 stops at the **first** broken rule of a row. For a data quality report you may want **every** problem - collect the messages in a list instead of raising:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:498
+msgid "When to stop, when to go on"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:500
+msgid "Situation"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:500
+msgid "What to do"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:502
+msgid "a bad row in a big input"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:502
+msgid "go on: reject the row, count it, report it"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:503
+msgid "a missing input file, a wrong report date"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:503
+msgid "stop: `raise` - a report on wrong input is worse than no report"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:504
+msgid "too many bad rows (say more than 1%)"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:504
+msgid "stop after loading: the input is broken"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:505
+msgid "a bug in your code"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:505
+msgid "let it stop - do not catch it"
+msgstr ""
+
+#. box title
+#: site/lectures/09-errors-and-files.md:507
+msgid "`assert` is not for data checks"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:508
+msgid "`assert x > 0, \"message\"` raises an `AssertionError` when the condition is false - but Python **removes** all `assert` statements when run with `python -O`. Use `assert` in tests and for \"this can never happen\" checks of your own code; check data with `if` and `raise`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:515
+msgid "Write `check_currency(code)` that returns the code in capitals if it is one of `EUR`, `USD`, `GBP` (any case, spaces at the ends allowed), and raises a `DataError` with the value in the message otherwise."
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:520
+msgid "5. Paths with `pathlib`"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:522
+msgid "A path is an object"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:524
+msgid "The module `pathlib` gives `Path` objects. The operator `/` joins the parts - the same code works on Windows (`\\`) and on Linux / macOS (`/`):"
+msgstr ""
+
+#. box title
+#: site/lectures/09-errors-and-files.md:544
+msgid "Windows paths in Python code"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:545
+msgid "A Windows path in a normal string has backslashes - and `\"\\n\"`, `\"\\t\"` are special characters (session 8). Use a raw string, or forward slashes, which Windows also accepts:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:555
+msgid "What is in a folder: `iterdir`"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:565
+msgid "Find files: `glob`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:567
+msgid "`glob(pattern)` lists the files of a folder whose names fit a pattern - `*` is any text (the shell kind of pattern, not a regex):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:579
+msgid "Create folders, read and write whole files"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:593
+msgid "`exist_ok=True` makes `mkdir` safe to run every month. `parents=True` creates the missing folders above it too."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:596
+msgid "Build the names of output files from parts - the month in the name, another suffix for the same name:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:610
+msgid "A missing input file is a `FileNotFoundError` - catch it and say **which** file is missing:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:625
+msgid "List the files in `data/` that are **not** CSV files, with their size in KB, sorted by size."
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:629
+msgid "6. Text files"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:631
+msgid "Open, read, close: `with`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:633
+msgid "Since session 2 you open files with `with open(...) as file:`. `with` **closes** the file at the end of the block - also when an exception happens inside. Without `with`, an error can leave the file open (and on Windows, locked)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:637
+msgid "The **mode** says what you want to do:"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:639
+msgid "Mode"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:639
+msgid "Means"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:641
+msgid "read (the default)"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:642
+msgid "write - a new file, or **empty** an existing one"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:643
+msgid "append at the end"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:644
+msgid "write a new file - an error if it exists"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:646
+msgid "Always give the `encoding` (session 7):"
+msgstr ""
+
+#. box title
+#: site/lectures/09-errors-and-files.md:665
+msgid "`\"w\"` empties the file at once"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:666
+msgid "The file is emptied when it is **opened** with `\"w\"` - before anything is written. To add lines to a log, use `\"a\"`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:682
+msgid "Read: all at once, or line by line"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:698
+msgid "For big files, loop over the file object: only one line is in memory at a time."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:700
+msgid "The mode `\"x\"` protects a file that must not be overwritten - the second run fails instead of destroying the first result:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:718
+msgid "Write and read Cyrillic text - the same `encoding` on both sides:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:730
+msgid "Write the 10 loan ids with the largest outstanding into `out/top10.txt`, one per line, then read the file back and print the number of lines."
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:734
+msgid "7. CSV files"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:736
+msgid "Read: `csv.reader` and `csv.DictReader`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:738
+msgid "You know `csv.DictReader` (session 6). `csv.reader` gives each row as a **list**. Both understand quotes, and both take a `delimiter` for files that are not comma-separated - like `;` in a Bulgarian Excel export:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:754
+msgid "(`utf-8-sig` removes the BOM that Excel writes at the start - session 7, Self-study.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:756
+msgid "A file **without** a header line: give the column names with `fieldnames`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:768
+msgid "(`io.StringIO` makes a string behave like an open file - handy for examples and tests. Note the quoted `\"1,250.00\"`: one field, not two.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:771
+msgid "The values are text. With `DictReader` and a dictionary of converters, a file becomes typed records:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:786
+msgid "Write: `csv.writer` and `csv.DictWriter`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:788
+msgid "Open the file with `newline=\"\"` - the `csv` module writes the line ends itself. Without it, on Windows every second line of the file is empty:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:806
+msgid "`DictWriter` writes dictionaries; `fieldnames` gives the columns and their order:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:823
+msgid "The comma inside `\"late, 35 days\"` is quoted automatically, so the file reads back correctly. Some systems want **every** field in quotes - `quoting=csv.QUOTE_ALL`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:836
+msgid "A file for Excel users"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:838
+msgid "A Bulgarian Excel opens CSV files with `;` and a decimal comma best - and it needs the BOM to see UTF-8 Cyrillic:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:864
+msgid "Read `regions_bg.csv` (cp1251) and write it again as `out/regions_utf8.csv` in UTF-8 with `;` as the separator. Open the result with `read_text` to check it."
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:868
+msgid "8. JSON files"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:870
+msgid "JSON (session 6) is the format of configuration files and of web APIs. `json.load` reads a file into dictionaries and lists; `json.dump` writes one:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:883
+msgid "Settings in a file, not in the code: next month you change the file, not the script."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:885
+msgid "`json.loads` reads JSON from a **string** - for example the answer of a web service:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:910
+msgid "A summary made from the portfolio - counted with a dictionary (session 6), written with `sort_keys=True` so that the file looks the same in every run (easy to compare in Git, session 10):"
+msgstr ""
+
+#. box title
+#: site/lectures/09-errors-and-files.md:928
+msgid "JSON knows only a few types"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:929
+msgid "Strings, numbers, `true` / `false`, `null` (`None`), lists and objects (dicts). A `date` is not one of them - `json.dump` raises a `TypeError`. Store dates as ISO text (`d.isoformat()`), and convert back after reading. Keys of JSON objects are always strings: `{1: 323}` comes back as `{\"1\": 323}`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:949
+msgid "Change the LGD in a copy of the config to 0.40, save it as `out/config_test.json`, read it back, and print the LGD."
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:953
+msgid "9. Excel files with `openpyxl`"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:955
+msgid "Read a workbook"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:957
+msgid "`openpyxl` (in `requirements.txt`) reads and writes `.xlsx` files. A **workbook** has **sheets**; a sheet has rows of **cells**:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:972
+msgid "`values_only=True` gives the values as tuples. The cells are **typed**: a date cell gives a `datetime`, a number a `float` - no conversion from text."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:975
+msgid "A single cell by its address, and the size of a sheet:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:986
+msgid "All sheets into one dictionary **date -> USD rate**:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:1005
+msgid "Write a workbook"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1032
+msgid "Read it back - the number format is stored in the file, the value stays a number:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1049
+msgid "In SAS: `PROC IMPORT DBMS=XLSX`, `LIBNAME x XLSX`, `ODS EXCEL`. pandas reads and writes whole sheets in one line (`read_excel`, sessions 14 and 16; `to_excel` with several sheets, session 16) - with openpyxl working inside."
+msgstr ""
+
+#. box title
+#: site/lectures/09-errors-and-files.md:1053
+msgid "Excel on this site"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1054
+msgid "The site installs `openpyxl` the first time an example uses Excel - the first run of such an example takes a few seconds longer."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1059
+msgid "Add a third sheet `usd` to `out/stages.xlsx`'s workbook (before saving) with the USD rates of September: one row per day, `date` and `rate`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:1063
+msgid "10. Loading data with bad records"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:1065
+msgid "The task"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1067
+msgid "`payments_2026-09.csv` has 280 lines; most are fine, some are not:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1079
+msgid "The rules of a valid payment:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1081
+msgid "exactly 5 fields;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1082
+msgid "the loan id exists in `loans.csv`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1083
+msgid "the date is a real date in September 2026 (`yyyy-mm-dd`);"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1084
+msgid "the amount is a number greater than 0;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1085
+msgid "the currency is EUR or USD."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1087
+msgid "A quick profile of the good rows first - how many payments per currency, and the range of the dates, for the rows that convert without problems:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1102
+msgid "The text dates sort correctly because they are ISO - and `30.09.2026` sorts **after** every ISO date: one more sign of a bad row."
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:1105
+msgid "One check function per rule, one `try` per row"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1107
+msgid "Each check raises a `DataError` with a clear message. The loader has **one** `try` per row: the first broken rule rejects the row, with its reason:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1163
+msgid "`reader.line_num` is the line number in the file - the `_N_` of the log, but for the file line (the header is line 1)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:1166
+msgid "The reject file and the summary"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1168
+msgid "The rejected rows go into their own file, with the reason - so that the source system can fix them. And a short summary, like the end of a SAS log:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1229
+msgid "This is the pattern for every input of a monthly process: **never stop on a bad row, never lose a bad row, always report**."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1232
+msgid "The reject file is a normal CSV - the next person reads it with the same tools:"
+msgstr ""
+
+#. box title
+#: site/lectures/09-errors-and-files.md:1247
+msgid "The same in pandas"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1248
+msgid "pandas has options for bad lines (`pd.read_csv(..., on_bad_lines=\"skip\")`) and turns bad numbers into `NaN` with `pd.to_numeric(..., errors=\"coerce\")` (session 15). They are faster - but they do not tell you **why** a row is bad. For an input you must explain to someone, the loader of this section is the better tool."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1255
+msgid "Add a rule: a payment may not be larger than the outstanding amount of its loan. You need a dictionary `loan_id -> outstanding` from `loans.csv`. How many rows does the new rule reject?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:1260
+msgid "11. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1262
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1270
+msgid "The tasks that write files write them into the folder `out/` of the repository (it is in `.gitignore`)."
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1273
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1273
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1273
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1275
+msgid "`to_float`, `to_int`, `to_date` with `try` / `except`"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1276
+msgid "Predict the exception, and the output with `else` / `finally`"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1277
+msgid "Check functions that raise a `DataError` with a clear message"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1278
+msgid "`pathlib`: list files, build names, write and read a text file"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1279
+msgid "Read the config, write a CSV report with `DictWriter`"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1280
+msgid "`task6-excel.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1280
+msgid "Read the three FX sheets; write a workbook with two sheets"
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:1282
+msgid "Summary"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1284
+msgid "Topic"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1284
+msgid "Remember"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1286
+msgid "Exceptions"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1286
+msgid "an error while the code runs; it stops the script unless caught; read the traceback from the bottom"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1287
+msgid "Common types"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1288
+msgid "catch the specific type; `as error` for the message; a tuple for several types; keep `try` small"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1289
+msgid "`else` without an error; `finally` always"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1291
+msgid "Stop or go on"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1291
+msgid "bad rows: reject and report; bad inputs or settings: raise; bugs: let them stop"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1293
+msgid "Files"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1293
+msgid "`with open(path, mode, encoding=\"utf-8\")`; modes `r`, `w`, `a`, `x`; loop over the file for big files"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1294
+msgid "CSV"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1294
+msgid "`csv.reader` / `DictReader`; `delimiter=\";\"`; write with `newline=\"\"`; `utf-8-sig` for Excel"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1295
+msgid "JSON"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1295
+msgid "`json.load(f)`, `json.dump(obj, f, indent=2)`; dates as ISO text"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1296
+msgid "Excel"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1297
+msgid "Loader"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1297
+msgid "one check per rule, one `try` per row, a reject file with the reason, a summary"
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:1299
+msgid "Homework"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1301
+msgid "`09-errors-and-files/homework.py` (in the homework repository): **load the September payments** - check every row against the rules, write the valid payments and a reject file with the line number and the reason, compute the totals per currency and per day, and return a summary. Every check must print `OK`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1305
+msgid "The practice tasks you did not finish in class."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1306
+msgid "Optional: read `report_config.json` in your loader, and take the report month and the allowed currencies from it instead of writing them in the code."
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:1309
+msgid "Self-study"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1311
+msgid "This part is not covered in class. It is for reading at home: a real log for your scripts, and a loader for a whole folder of monthly files."
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:1314
+msgid "`logging`: the SAS log for Python scripts"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1316
+msgid "`print` is fine while you develop. A script that runs every month needs a **log**: lines with a time and a level, in a file, that you can read when something went wrong. The module `logging` comes with Python:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1342
+msgid "The **levels**, from the least to the most serious: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`. `level=logging.INFO` writes INFO and above; switch to `DEBUG` when you look for a problem, without changing the code. Use `%s` placeholders, not f-strings, in log messages - the text is built only if the line is written. (`force=True` replaces an earlier setup; in a script you call `basicConfig` once, at the start.)"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1348
+msgid "SAS log"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1353
+msgid "`OPTIONS MPRINT;` for more detail"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1355 site/lectures/09-errors-and-files.md:1411
+msgid "**Exercises**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1357
+msgid "Rewrite the summary of the payments loader (section 10) with `logging` instead of `print`: one INFO line per currency, a WARNING if more than 1% of the rows were rejected."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1360
+msgid "Add a second handler that also prints the WARNING lines on the screen. (Hint: `logging.StreamHandler()`, `setLevel`, `log.addHandler`.)"
+msgstr ""
+
+#. box title
+#: site/lectures/09-errors-and-files.md:1363 site/lectures/09-errors-and-files.md:1419
+msgid "Answer"
+msgstr ""
+
+#. heading 3
+#: site/lectures/09-errors-and-files.md:1377
+msgid "A folder of monthly files"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1379
+msgid "A monthly process often reads **all** files of a folder: one per month, one per branch. `glob` finds them, a regex (session 8) takes the month from the name, and the loader reads each - one bad file must not stop the others:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1408
+msgid "The loop catches the errors **per file**: the good months are loaded, the broken one is reported with the kind of error."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1413
+msgid "Change the loop so that a file with a bad amount is still loaded, without the bad rows (use the `to_float` of section 2), and the number of skipped rows per file is reported."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1416
+msgid "Sort the files by the month in their name, not by the name itself. When is that different? (Hint: `payments_2026-10.csv` and `payments_2026-9.csv`.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1420
+msgid "Inside the `with`: `values = [to_float(row[\"amount\"]) for row in csv.DictReader(file)]`, then `totals[month] = sum(v for v in values if v is not None)` and `skipped[path.name] = values.count(None)`. The `UnicodeDecodeError` still needs the `try`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1424
+msgid "`sorted(folder.glob(...), key=lambda p: tuple(int(x) for x in re.search(r\"(\\d{4})-(\\d{1,2})\", p.name).groups()))`. Sorting by name puts `2026-10` before `2026-9`, because text is compared letter by letter - another reason for two-digit months in file names."
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:1429
+msgid "Read more"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1431
+msgid "Python tutorial: [Errors and exceptions](https://docs.python.org/3/tutorial/errors.html), [Reading and writing files](https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1433
+msgid "Reference: [Built-in exceptions](https://docs.python.org/3/library/exceptions.html), [`pathlib`](https://docs.python.org/3/library/pathlib.html), [`csv`](https://docs.python.org/3/library/csv.html), [`json`](https://docs.python.org/3/library/json.html), [Logging HOWTO](https://docs.python.org/3/howto/logging.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1438
+msgid "[openpyxl tutorial](https://openpyxl.readthedocs.io/en/stable/tutorial.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1439
+msgid "Real Python: [Python exceptions: an introduction](https://realpython.com/python-exceptions/), [Python's pathlib module](https://realpython.com/python-pathlib/)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1442
+msgid "**Next session:** modules, packages and Git - turn your functions into a module you can import, set up a project folder, and keep its history in Git."
+msgstr ""

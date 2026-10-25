@@ -1,0 +1,1204 @@
+# Translation of site/lectures/05-lists-advanced.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/lectures/05-lists-advanced.md\n"
+
+#. front matter: title
+#: site/lectures/05-lists-advanced.md:2 site/lectures/05-lists-advanced.md:5
+msgid "5. Lists (advanced)"
+msgstr ""
+
+#. html
+#: site/lectures/05-lists-advanced.md:8
+msgid "<span>Session 5</span><span>practice: <code>05-lists-advanced/</code> in the homework repository</span>"
+msgstr ""
+
+#. html
+#: site/lectures/05-lists-advanced.md:9
+msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:12
+msgid "**Today you will learn to:**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:14
+msgid "build a new list from an old one in one line, with a **list comprehension** - the Python `SELECT expression ... WHERE condition`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:16
+msgid "check a whole list at once with `any` and `all`, and find extremes with `min` and `max`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:18
+msgid "sort by several columns, in mixed directions, and take the top N;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:19
+msgid "walk over several lists together with `zip`, and number the items with `enumerate`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:21
+msgid "apply a function to every item with `map`, and keep some items with `filter`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:22
+msgid "keep a whole table in memory as a **list of rows**, and do `WHERE`, derived columns, `ORDER BY` and column totals on it;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:24
+msgid "copy a table safely, so that a change of the copy does not change the original."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:26
+msgid "From SQL to Python - the same question, two ways. The ten largest exposures:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:47
+msgid "Three lines do the work: a comprehension reads the table, a second one selects the columns, and `sorted(...)[:10]` is `ORDER BY ... FETCH FIRST 10`. By the end of today you can write each of them."
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:51
+msgid "1. List comprehensions"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:53
+msgid "From a loop to one line"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:55
+msgid "In sessions 2 and 3 you built lists with a loop and `append`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:67
+msgid "This pattern - an empty list, a loop, one `append` - is so common that Python has a short form for it, the **list comprehension**:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:77
+msgid "Read it from the middle: \"**for** each `amount` **in** `amounts`, take `amount / 1000`\". The square brackets say: collect the results in a new list."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:86
+msgid "It is the same as `SELECT amount / 1000 FROM amounts` in SQL, and the same as a derived variable in a DATA step:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:96
+msgid "The original list does not change: a comprehension always makes a **new** list."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:98
+msgid "Any expression"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:100
+msgid "The expression can be anything that gives a value: a calculation, a method call, a function call, a tuple."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:114
+msgid "With your own function from session 4:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:130
+msgid "Filter with `if`: the `WHERE`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:132
+msgid "Add `if condition` at the end, and only the items that pass go into the new list:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:149
+msgid "`SELECT d FROM days WHERE d > 90`. With both parts - a new value **and** a filter:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:158
+msgid "On the portfolio"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:160
+msgid "Read `loans.csv` into a list of rows - one comprehension - and select from it. Each row is a list of strings, in the order of the header:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:173
+msgid "The ids of the stage 3 loans (`stage` is column 10), and the outstanding amounts in thousands of the USD loans:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:188
+msgid "The columns are still **text** - `row[10] == \"3\"`, not `== 3`. Convert where you need a number (`float(row[7])`), as in session 2."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:191
+msgid "`CASE WHEN` inside: `a if condition else b`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:193
+msgid "A conditional expression (session 2) can be the expression of a comprehension. Then every item goes into the list, with one of two values:"
+msgstr ""
+
+#. box title
+#: site/lectures/05-lists-advanced.md:203
+msgid "The position of `if` decides what it does"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:204
+msgid "`if` **at the end** filters: fewer items. No `else` is allowed there."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:205
+msgid "`a if c else b` **at the start** chooses a value: the same number of items. The `else` is required."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:221
+msgid "Generator expressions: `sum(... for ...)`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:223
+msgid "When you only need the **total**, you do not need the list. Write the comprehension without the square brackets, inside the call:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:238
+msgid "This is a **generator expression**: it gives the values one by one to `sum`, and never builds a list in memory. It works with any function that takes many values: `sum`, `min`, `max`, `any`, `all`, `sorted`, `set`, `\", \".join(...)`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:242
+msgid "`sum(1 for ... if ...)` is `COUNT(*) ... WHERE ...`. Another way to count: `True` is `1` (session 2), so `sum(int(row[9]) > 0 for row in rows)` gives the same."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:245
+msgid "Set comprehensions: `SELECT DISTINCT`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:247
+msgid "Curly brackets make a **set** - the unique values (session 3):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:261
+msgid "Dictionary comprehensions, with `{key: value for ...}`, are in session 6."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:263
+msgid "When not to use a comprehension"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:265
+msgid "A comprehension is for **building a new list**. Use a normal loop when:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:267
+msgid "you only want an effect, not a list - for example printing: `[print(x) for x in items]` works, but builds a useless list of `None`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:269
+msgid "the logic needs several steps, `try` / `except`, or several `if` / `elif` branches - put it into a function (session 4) and call the function in the comprehension, or write the loop;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:272
+msgid "the line becomes too long to read in one look (more than about 80 characters)."
+msgstr ""
+
+#. box title
+#: site/lectures/05-lists-advanced.md:289
+msgid "Advanced: two `for` in one comprehension"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:290
+msgid "Several `for` parts run like nested loops, the first one outside:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:304
+msgid "Read it as the loops it replaces: `for month in monthly:` then `for x in month:`. More than two `for` parts are hard to read - write the loops."
+msgstr ""
+
+#. box title
+#: site/lectures/05-lists-advanced.md:308 site/lectures/05-lists-advanced.md:724 site/lectures/05-lists-advanced.md:1005
+msgid "The same in pandas"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:309
+msgid "In pandas (session 14) you do not loop at all - an operation on a column works on all its values:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:320
+msgid "The idea is the same as a comprehension: a new column from an old one, with a filter."
+msgstr ""
+
+#. box title
+#: site/lectures/05-lists-advanced.md:324 site/lectures/05-lists-advanced.md:439 site/lectures/05-lists-advanced.md:598 site/lectures/05-lists-advanced.md:736 site/lectures/05-lists-advanced.md:821 site/lectures/05-lists-advanced.md:1018
+msgid "Try it"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:325
+msgid "Predict, then press **Run**:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:335
+msgid "Then change the second line to keep only the values between 10 and 100."
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:338
+msgid "2. Checks and extremes: `any`, `all`, `min`, `max`"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:340
+msgid "`any` and `all`: questions about the whole list"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:342
+msgid "`any(values)` is `True` if **at least one** value is true."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:343
+msgid "`all(values)` is `True` if **every** value is true."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:345
+msgid "With a generator expression, they ask a question about every row - the checks you run on data before a report:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:359
+msgid "In SQL these are `EXISTS (SELECT ... WHERE ...)` and `NOT EXISTS (... WHERE NOT ...)`. Both stop as soon as the answer is known: `any` at the first true value, `all` at the first false one."
+msgstr ""
+
+#. box title
+#: site/lectures/05-lists-advanced.md:363
+msgid "Empty lists"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:364
+msgid "`any([])` is `False` - nothing is true. `all([])` is `True` - nothing is false. A check with `all` on an empty file \"passes\". Check the number of rows too."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:372
+msgid "`min` and `max` with `key`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:374
+msgid "Session 4 showed `key=` with `sorted`, `min` and `max`. With rows, `key` says which column to compare - and you get back the **whole row**, not only the value:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:388
+msgid "Without `key`, `max(rows)` compares the rows as lists of strings - the first column first. That is the largest **id**, not the largest loan. And `max` of the column alone gives only the number:"
+msgstr ""
+
+#. box title
+#: site/lectures/05-lists-advanced.md:401
+msgid "A trap: numbers as text"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:402
+msgid "`max([\"9\", \"10\", \"100\"])` is `\"9\"`: strings compare letter by letter (session 2). Convert first - `key=float` or `float(...)` in the generator."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:411
+msgid "`default=`: when the list can be empty"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:413
+msgid "`max([])` is a `ValueError`. When a filter may leave nothing, give a `default`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:422
+msgid "`sum`, `len` and the average"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:436
+msgid "This is `PROC MEANS` for one variable. The module `statistics` (session 10) adds `median`, `stdev` and more; pandas gives all of them in one `describe()` (session 14)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:440
+msgid "Change the checks block above: is there a loan with `outstanding` greater than `amount`? Is every `stage` one of `\"1\"`, `\"2\"`, `\"3\"`? Predict the answers first."
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:444
+msgid "3. Sorting, in depth"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:446
+msgid "A recap"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:448
+msgid "Session 3: `list.sort()` changes the list, `sorted(x)` returns a new list. Session 4: `key=` sorts by any expression, `reverse=True` sorts from the largest. Today: several columns, mixed directions, and the top N."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:452
+msgid "Several columns: a tuple as the key"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:454
+msgid "A key that returns a **tuple** sorts by the first value, then by the second for equal first values, and so on - like `ORDER BY a, b`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:470
+msgid "Mixed directions: `ORDER BY product, outstanding DESC`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:472
+msgid "`reverse=True` reverses **all** columns. For mixed directions there are two ways."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:474
+msgid "**1. Negate a number.** `-outstanding` sorts the largest first, inside an ascending sort:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:489
+msgid "This works only for numbers - you cannot negate a string."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:491
+msgid "**2. Two sorts.** Python's sort is **stable**: items with equal keys keep their order. So sort by the **last** column first, then by the first one:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:509
+msgid "`PROC SORT` is stable too (with the default `EQUALS` option), so this is familiar."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:513
+msgid "For keys that only pick columns, the module `operator` has a ready function: `itemgetter(2)` is the same as `lambda row: row[2]`, and `itemgetter(1, 2)` gives the tuple `(row[1], row[2])`. It is a bit faster and reads like a column list:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:530
+msgid "The top N"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:532
+msgid "`sorted(...)[:n]` - sort, then take a slice (session 3). With `enumerate` (section 4) you get the rank:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:545
+msgid "The five clients with the **most** loans - count with a comprehension, sort the pairs:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:559
+msgid "(Counting with `list.count` inside a loop reads the list again for every item - slow for big lists. Session 6 counts with a dictionary in one pass.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:562
+msgid "A trap: `None` and mixed types"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:564
+msgid "`sorted` compares the keys with `<`. Two values that cannot be compared - a number and `None`, a number and a string - stop the sort with a `TypeError`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:572
+msgid "In data, a missing value is common. Decide where it goes, and say it in the key:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:581
+msgid "SAS sorts a missing value **first** (it is the smallest number); SQL puts `NULL`s first or last depending on the database. In Python you choose."
+msgstr ""
+
+#. box title
+#: site/lectures/05-lists-advanced.md:584
+msgid "Advanced: `heapq.nlargest`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:585
+msgid "For the top N of a very long list, the module `heapq` does not sort the whole list:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:595
+msgid "It also takes `key=`. For a few thousand rows `sorted(...)[:n]` is just as good."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:599
+msgid "In the \"ORDER BY product, outstanding DESC\" example, sort by `product DESC, outstanding DESC` instead. Which of the two ways do you need? (Answer: `reverse=True` on the tuple key is enough - both columns go down.)"
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:604
+msgid "4. `zip` and `enumerate`"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:606
+msgid "`zip`: several lists side by side"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:608
+msgid "`zip` takes several lists and gives **tuples**: the first items together, then the second items, and so on:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:622
+msgid "Columns become rows. A common use: two lists of the same months, compared month by month:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:634
+msgid "And a list with itself, one step apart - the change from month to month (in SAS: `LAG`):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:644
+msgid "`zip(*rows)`: transpose a table"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:646
+msgid "With the `*` of session 4, `zip(*rows)` turns a list of rows into a list of **columns** - a small `PROC TRANSPOSE`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:662
+msgid "A trap: the shortest list wins"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:664
+msgid "`zip` stops at the end of the **shortest** list - without an error. A missing value in one list silently drops the last row:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:674
+msgid "Since Python 3.10, `strict=True` turns this into an error - use it when the lists must have the same length:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:684
+msgid "`enumerate`: the number of each item"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:686
+msgid "`enumerate` (session 2) gives pairs `(number, item)`. `start=1` numbers from 1 - a rank, or the line number of a file (the line 1 is the header):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:698
+msgid "The line numbers of the bad rows - in SAS: `_N_`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:709
+msgid "A trap: `zip`, `enumerate` and `map` are used up"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:711
+msgid "`zip`, `enumerate`, `map` and `filter` (section 5) do not build a list. They are **iterators**: they give the values one by one, **once**. The second time they are empty:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:722
+msgid "If you need the values twice, keep a list: `pairs = list(zip(...))`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:725
+msgid "In a DataFrame, the columns are already side by side - no `zip` is needed. The month-to-month change is `shift` (session 16):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:737
+msgid "Predict the output, then run it:"
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:749
+msgid "5. `map` and `filter`"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:751
+msgid "`map`: one function, every item"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:753
+msgid "`map(function, iterable)` calls the function for every item. It is an iterator - wrap it in `list()` to see the values:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:763
+msgid "It is most useful with a function that already exists - `float`, `int`, `str.strip`, `str.upper`, your own:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:771
+msgid "`filter`: keep some items"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:773
+msgid "`filter(function, iterable)` keeps the items for which the function returns something true:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:785
+msgid "`map` / `filter` or a comprehension?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:787
+msgid "Both do the same job:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:799
+msgid "Most Python programmers prefer the **comprehension**: it reads like a sentence and needs no `lambda`. `map` is nice when the function already has a name: `map(float, fields)`. You will meet both in other people's code."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:803
+msgid "In pandas, `map` comes back: `series.map(function)` or `series.map(dictionary)` - the Python version of a SAS format (sessions 6 and 15)."
+msgstr ""
+
+#. box title
+#: site/lectures/05-lists-advanced.md:806
+msgid "Advanced: `functools.reduce`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:807
+msgid "`reduce` combines the items into **one** value, two at a time:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:817
+msgid "For sums, minimums and maximums the built-in functions are clearer. `reduce` is useful for \"fold\" operations without a built-in - for example, combining many sets with `|`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:822
+msgid "Change `row` in the `map(str.strip, ...)` example: convert the fields to upper case too. Can you do both with one `map`? (Hint: a `lambda`, or a comprehension: `[f.strip().upper() for f in row.split(\",\")]`.)"
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:827
+msgid "6. A table as a list of rows"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:829
+msgid "The shape of a table in Python"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:831
+msgid "A SAS dataset or an SQL table has rows and columns. In plain Python, the simplest form is a **list of rows**, where each row is a list or a tuple, and a separate list of column names:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:848
+msgid "![A table drawn as a grid; one row is rows[1], one column is the list [row[2] for row in rows], one cell is rows[1][2]](/diagrams/table-rows.svg){.diagram}"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:850
+msgid "**a row**: `rows[i]`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:851
+msgid "**a cell**: `rows[i][j]` - first the row, then the column;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:852
+msgid "**a column**: `[row[j] for row in rows]` - a comprehension over the rows."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:854
+msgid "Read a CSV file into rows, with types"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:856
+msgid "The fields of a file are text. A function that reads the file and converts each column once, at the start:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:877
+msgid "Column numbers like `7` are hard to remember. Find them by name with `header.index`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:889
+msgid "(Session 6 gives each row its column names, with dictionaries. pandas does it for you.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:892
+msgid "SQL on a list of rows"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:894
+msgid "The usual SQL operations, one line each. Read the file once, then:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:932
+msgid "Note `r + [value]`: a new row, longer by one column. `r.append(value)` would change the original row - section 7."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:935
+msgid "Column totals by group, with a loop"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:937
+msgid "`GROUP BY stage` with a list: one total per stage, and the stage number as the index (stage `1` at position `0`):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:963
+msgid "This works because the groups are the numbers 1, 2, 3. For groups like products or regions you need a dictionary - session 6."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:966
+msgid "A cross table: a list of lists"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:968
+msgid "A table of counts: stages in the rows, currencies in the columns - `PROC FREQ` with `TABLES stage * currency`:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:987
+msgid "A trap: `[[0] * 3] * 3`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:989
+msgid "Why `[[0, 0] for stage in range(3)]`, and not the shorter `[[0, 0]] * 3`? The `*` repeats the **reference**, not the list: all three rows are **one** list."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1002
+msgid "The comprehension runs `[0, 0]` three times - three new lists. (The name `_` is the custom for a loop variable that is not used.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1006
+msgid "A DataFrame is a table with names for the columns, and the operations of this section are one call each (sessions 14 - 15):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1019
+msgid "In the \"SQL on a list of rows\" block, add a line for `WHERE product = 'mortgage' AND interest_rate > 6` - how many loans? Then add the derived column \"years to maturity\" (hint: the year is `int(r[5][:4])`, the report year is 2026)."
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:1024
+msgid "7. Copies of nested lists"
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:1026
+msgid "A shallow copy shares the rows"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1028
+msgid "Session 3: `rows.copy()`, `rows[:]` and `list(rows)` make a **new list**. But the items in it - here the rows - are the **same** objects. The copy is *shallow*:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1042
+msgid "The outer list is copied; the inner lists are shared. Changing a **cell** shows in both; adding or removing a **row** does not."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:1045
+msgid "`copy.deepcopy`: copy everything"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1047
+msgid "`copy.deepcopy` copies the list **and** every list inside it, at every level:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1059
+msgid "Use it before you change cells of a table that you still need in its original form - like `data backup; set loans; run;` before an update in SAS."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:1062
+msgid "Better: rows that cannot change"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1064
+msgid "If the rows are **tuples**, nobody can change a cell - not by mistake, not through a shared reference. To change a value, you build a new row:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1075
+msgid "The comprehensions of this lecture always build new rows - `r + [value]`, `(r[0], r[2])` - so they never change the input. That is the safe default for data work."
+msgstr ""
+
+#. box title
+#: site/lectures/05-lists-advanced.md:1078
+msgid "pandas and copies"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1079
+msgid "In pandas 3 (and in 2.2 with copy-on-write switched on), a selection behaves like a copy: changing it never changes the original DataFrame. Session 15 shows it."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1083
+msgid "**Check yourself.** What does this print?"
+msgstr ""
+
+#. box title
+#: site/lectures/05-lists-advanced.md:1093 site/lectures/05-lists-advanced.md:1219 site/lectures/05-lists-advanced.md:1277
+msgid "Answer"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1094
+msgid "`[[1, 2], [7, 4]]`. `b[0] = [9, 9]` puts a new list into `b` only (the outer lists are different). `b[1][0] = 7` changes the inner list that `a` and `b` share."
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:1098
+msgid "8. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1100
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1108
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1108
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1108
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1110
+msgid "Derived lists and filters on a list of loans"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1111
+msgid "Predict: comprehension filters, `zip` length, a used-up `map`, `[[0] * 2] * 2`"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1112
+msgid "Data checks with `any` / `all`; `min` / `max` with `key` and `default`"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1113
+msgid "Several sort keys with mixed directions; the top 10 with a rank"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1114
+msgid "Columns to rows and back; the change from month to month"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1115
+msgid "`task6-table-of-rows.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1115
+msgid "`loans.csv` as a list of rows: convert, select, filter, sort, totals, a safe copy"
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:1117
+msgid "Summary"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1119
+msgid "Topic"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1119
+msgid "Remember"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1121
+msgid "Comprehension"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1121
+msgid "`[expr for x in items if cond]` = `SELECT expr ... WHERE cond`; always a new list"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1122
+msgid "`if` position"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1122
+msgid "`if` at the end filters; `a if c else b` at the start chooses a value (CASE)"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1123
+msgid "Generator expression"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1123
+msgid "`sum(x for x in items)` - no list in memory; also `min`, `max`, `any`, `all`"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1124
+msgid "Set comprehension"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1125
+msgid "Checks"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1125
+msgid "`any(...)` = `EXISTS`; `all(...)` - every row; `all([])` is `True`"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1126
+msgid "Extremes"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1126
+msgid "`max(rows, key=...)` gives the whole row; `default=` for empty input; convert text first"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1127
+msgid "Sorting"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1127
+msgid "a tuple key = `ORDER BY a, b`; `-x` for a descending number; or two stable sorts; top N: `sorted(...)[:n]`"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1128
+msgid "parallel lists -> tuples; `zip(*rows)` transposes; stops at the shortest - `strict=True`"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1129
+msgid "`(number, item)`; `start=1` for a rank or a line number"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1130
+msgid "Iterators"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1130
+msgid "`zip`, `map`, `filter`, `enumerate` give their values once"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1131
+msgid "`map(float, fields)`; a comprehension is usually clearer"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1132
+msgid "Table"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1132
+msgid "a list of rows; cell `rows[i][j]`; column `[r[j] for r in rows]`; never `[[0] * n] * m`"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1133
+msgid "Copies"
+msgstr ""
+
+#. table cell
+#: site/lectures/05-lists-advanced.md:1133
+msgid "`rows.copy()` shares the rows; `copy.deepcopy` copies all; tuples cannot change"
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:1135
+msgid "Homework"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1137
+msgid "`05-lists-advanced/homework.py` (in the homework repository): **the portfolio as a list of records** - read `loans.csv` into rows with types, find the ten largest exposures and their share of the portfolio (the concentration), build the stage x product count table as a list of lists (a `PROC FREQ` cross table by hand), and check the data with `any` / `all`. Every check must print `OK`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1142
+msgid "The practice tasks you did not finish in class."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1143
+msgid "Optional: print the cross table of the homework as a small report, with the products as columns, totals at the end of each row and a total row at the bottom."
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:1146
+msgid "Self-study"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1148
+msgid "This part is not covered in class. It is for reading at home: two tools that SAS users miss in plain Python - `RETAIN`, `LAG` and BY groups - and a way to read files that do not fit in memory."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:1152
+msgid "`itertools`: running totals, `LAG` and BY groups"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1154
+msgid "The module `itertools` has building blocks for loops. Three of them replace common DATA step patterns."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1157
+msgid "**`accumulate` - a running total (`RETAIN`).** In SAS: `retain total 0; total + x;`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1167
+msgid "**`pairwise` - the value and the one before (`LAG`).** Since Python 3.10:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1177
+msgid "It is the same as `zip(xs, xs[1:])` from section 4, without the copy of the list."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1179
+msgid "**`groupby` - BY-group processing (`FIRST.` / `LAST.`).** `groupby` cuts a **sorted** list into groups of equal keys - like a DATA step with `BY product`:"
+msgstr ""
+
+#. box title
+#: site/lectures/05-lists-advanced.md:1196
+msgid "Sort first"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1197
+msgid "`groupby` starts a new group every time the key **changes**. On unsorted data the same product appears in many small groups - exactly like a SAS `BY` without `PROC SORT`, except that Python does not stop with an error."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1202
+msgid "Two more: `islice(iterable, n)` takes the first `n` items of any iterator (`OBS=n`), and `chain(a, b)` reads several lists one after another (`SET a b;`)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1212 site/lectures/05-lists-advanced.md:1271
+msgid "**Exercises**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1214
+msgid "With `accumulate`, find the first month in which the running total of `[1200, 800, 1500, 900, 1100]` goes over 3000."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1216
+msgid "With `groupby`, count the loans per currency in `loans.csv`. Why must you sort first?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1229
+msgid "Sort by currency, then `groupby(rows, key=lambda r: r[3])` and `len(list(group))`: EUR 361, USD 39. Without sorting, EUR and USD rows alternate, and you get many small groups instead of two."
+msgstr ""
+
+#. heading 3
+#: site/lectures/05-lists-advanced.md:1234
+msgid "Generator functions: `yield`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1236
+msgid "A function with `yield` instead of `return` is a **generator function**. Each call of `next` runs it until the next `yield`, and the function **waits** there, with its local variables, until the next value is asked for:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1250
+msgid "This is useful for big files: a generator that reads one row at a time, converts it and gives it on. The whole file is never in memory - only the current row:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1267
+msgid "A generator, like `zip` or `map`, is used up after one pass - here each line calls `loan_rows(...)` again, which opens the file again. A SAS DATA step works this way too: it reads one observation at a time."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1273
+msgid "Write a generator `late_loans(path, limit)` that yields only the `loan_id` of the loans with `days_past_due` greater than `limit`. Count them for `limit=90`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1275
+msgid "What does `list(g)` print the second time, for `g = loan_rows(\"data/loans.csv\")`?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1290
+msgid "`[]` - the generator is used up after the first `list(g)`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/05-lists-advanced.md:1293
+msgid "Read more"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1295
+msgid "Python tutorial: [List comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions), [Nested list comprehensions](https://docs.python.org/3/tutorial/datastructures.html#nested-list-comprehensions)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1297
+msgid "[Sorting techniques](https://docs.python.org/3/howto/sorting.html) (keys, stability, `operator.itemgetter`)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1299
+msgid "Reference: [`zip`](https://docs.python.org/3/library/functions.html#zip), [`enumerate`](https://docs.python.org/3/library/functions.html#enumerate), [`map`](https://docs.python.org/3/library/functions.html#map), [`filter`](https://docs.python.org/3/library/functions.html#filter), [`copy`](https://docs.python.org/3/library/copy.html), [`itertools`](https://docs.python.org/3/library/itertools.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1305
+msgid "Real Python: [When to use a list comprehension](https://realpython.com/list-comprehension-python/), [Python's `zip()` function](https://realpython.com/python-zip-function/)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:1308
+msgid "**Next session:** dictionaries - a key and a value, the Python version of a SAS format and of a lookup table; counting and `GROUP BY` without pandas."
+msgstr ""

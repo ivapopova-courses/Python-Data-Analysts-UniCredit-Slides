@@ -20,45 +20,411 @@ msgstr "Финален проект"
 
 #. paragraph
 #: site/project.md:3
-msgid "In the last two sessions (15 and 16) you build one complete process, of the kind you now do in SAS or SQL:"
-msgstr "В последните две занятия (15 и 16) изграждате един цялостен процес, от вида, който сега правите в SAS или SQL:"
+msgid "In the last two sessions (15 and 16) you build one complete process, of the kind you now do in SAS or SQL: **the monthly portfolio report**. It runs for any month end of the history, from the raw data to one Excel file, and it can be run again next month without changes."
+msgstr ""
 
 #. paragraph
-#: site/project.md:6
+#: site/project.md:8
 msgid "**Load** the data from files (CSV, Excel) and from a database (SQLite)."
 msgstr "**Зареждане** на данните от файлове (CSV, Excel) и от база данни (SQLite)."
 
 #. paragraph
-#: site/project.md:7
+#: site/project.md:9
 msgid "**Validate** it with nomenclatures written as classes (session 12): codes that do not exist, values out of range, missing values."
 msgstr "**Валидиране** с номенклатури, написани като класове (занятие 12): кодове, които не съществуват, стойности извън диапазона, липсващи стойности."
 
 #. paragraph
-#: site/project.md:9
+#: site/project.md:11
 msgid "**Clean and transform** it with pandas: types, dates, new columns."
 msgstr "**Почистване и трансформиране** с pandas: типове, дати, нови колони."
 
 #. paragraph
-#: site/project.md:10
+#: site/project.md:12
 msgid "**Aggregate**: groups, pivot tables, joins."
 msgstr "**Агрегиране**: групи, pivot tables, joins."
 
 #. paragraph
-#: site/project.md:11
+#: site/project.md:13
 msgid "**Report**: an Excel file with several sheets, and a chart."
 msgstr "**Отчет**: Excel файл с няколко листа и графика."
 
 #. paragraph
-#: site/project.md:12
+#: site/project.md:14
 msgid "**Keep the code in Git**, as a script that can be run again on new data."
 msgstr "**Кодът се пази в Git**, като скрипт, който може да се пусне отново върху нови данни."
 
 #. paragraph
-#: site/project.md:14
-msgid "Each lecture adds a part that the project reuses: functions (4), dictionaries as lookup tables (6), text cleaning and regular expressions (7, 8), reading files and handling bad records (9), modules and Git (10), classes (11, 12), databases (13) and pandas (14 - 16)."
+#: site/project.md:16
+#, fuzzy
+#| msgid "Each lecture adds a part that the project reuses: functions (4), dictionaries as lookup tables (6), text cleaning and regular expressions (7, 8), reading files and handling bad records (9), modules and Git (10), classes (11, 12), databases (13) and pandas (14 - 16)."
+msgid "Each lecture adds a part that the project reuses: functions (4), dictionaries as lookup tables (6), text cleaning and regular expressions (7, 8), reading files and handling bad records (9), modules and Git (10), classes (11, 12), databases (13) and pandas (14 - 16). The homework of session 16 is the first part of the project."
 msgstr "Всяка лекция добавя част, която проектът използва: функции (4), dictionaries като таблици за търсене (6), почистване на текст и регулярни изрази (7, 8), четене на файлове и обработка на лоши записи (9), модули и Git (10), класове (11, 12), бази данни (13) и pandas (14 - 16)."
 
+#. heading 2
+#: site/project.md:22
+msgid "The task"
+msgstr ""
+
 #. paragraph
-#: site/project.md:19
-msgid "The details, the data and the checklist are given in session 15."
-msgstr "Подробностите, данните и списъкът за проверка се дават в занятие 15."
+#: site/project.md:24
+msgid "Write `report.py`. Run as"
+msgstr ""
+
+#. paragraph
+#: site/project.md:30
+msgid "it writes `out/portfolio_report_2026-09-30.xlsx` and `out/portfolio_2026-09-30.png`, and prints a short summary with the checks. With `2026-08-31` (or any month end from 2025-10-31 to 2026-09-30) it makes the report of that month."
+msgstr ""
+
+#. heading 2
+#: site/project.md:34
+msgid "The data"
+msgstr ""
+
+#. paragraph
+#: site/project.md:36
+msgid "All in `data/` of the homework repository ([the sample data](./sample-data)):"
+msgstr ""
+
+#. table cell
+#: site/project.md:38
+msgid "Source"
+msgstr ""
+
+#. table cell
+#: site/project.md:38
+msgid "What you take from it"
+msgstr ""
+
+#. table cell
+#: site/project.md:40
+msgid "`portfolio.db` (SQLite)"
+msgstr ""
+
+#. table cell
+#: site/project.md:40
+msgid "the tables `clients`, `loans` (the client of each loan, product, currency, dates), `rating_scale`, `ratings_history` - with SQL and parameters (session 13)"
+msgstr ""
+
+#. table cell
+#: site/project.md:41
+msgid "the outstanding and the days past due of each loan at each month end"
+msgstr ""
+
+#. table cell
+#: site/project.md:42
+msgid "the names, EIKs, IBANs and cities of the clients (messy text - sessions 7, 8)"
+msgstr ""
+
+#. table cell
+#: site/project.md:43
+msgid "the EUR exchange rates of each working day, one sheet per month (sessions 9, 14)"
+msgstr ""
+
+#. table cell
+#: site/project.md:44
+msgid "the region codes and names (cp1251 - session 7)"
+msgstr ""
+
+#. heading 2
+#: site/project.md:46
+msgid "The steps"
+msgstr ""
+
+#. heading 3
+#: site/project.md:48
+msgid "1. Load"
+msgstr ""
+
+#. paragraph
+#: site/project.md:50
+msgid "From the database: the clients, the loans, the rating scale, and the ratings of the report date **and** of the previous month end - the date as a **parameter** of the query, never pasted into the SQL text."
+msgstr ""
+
+#. paragraph
+#: site/project.md:53
+msgid "From `balances_monthly.csv`: the rows of the report date (and all months up to it, for the trend)."
+msgstr ""
+
+#. paragraph
+#: site/project.md:55
+msgid "From `fx_rates.xlsx`: the EUR / USD rate of the last working day on or before the report date (all sheets; `n/a` if the month is not in the file)."
+msgstr ""
+
+#. paragraph
+#: site/project.md:57
+msgid "From `client_register.csv`: the register, for the data quality checks."
+msgstr ""
+
+#. heading 3
+#: site/project.md:59
+msgid "2. Validate"
+msgstr ""
+
+#. paragraph
+#: site/project.md:61
+msgid "Use your module `homework_nomenclature.py` of session 12 (copy it next to `report.py`). At least:"
+msgstr ""
+
+#. paragraph
+#: site/project.md:64
+msgid "**codes**: product, segment, region and rating - every value must be in its nomenclature;"
+msgstr ""
+
+#. paragraph
+#: site/project.md:66
+msgid "**values out of range**: outstanding below 0 or above the amount, days past due below 0, an interest rate outside 0 - 30, a maturity date before the start date;"
+msgstr ""
+
+#. paragraph
+#: site/project.md:68
+msgid "**missing values**: a loan without a client or a client without a rating at the report date;"
+msgstr ""
+
+#. paragraph
+#: site/project.md:70
+msgid "**the register** (sessions 7, 8): ids that are not in the clients table after cleaning, EIKs and IBANs with a wrong shape."
+msgstr ""
+
+#. paragraph
+#: site/project.md:73
+msgid "Every failed check is one row of a **rejects** table: the dataset, the id, the column, the value, the reason. A row that fails is reported, never dropped silently. The report says how many rows were rejected; the loans that pass go on."
+msgstr ""
+
+#. paragraph
+#: site/project.md:77
+msgid "The sample data is mostly clean, so most checks find nothing. Test each check: make a copy of a table, break it on purpose (a product `leasing`, a negative balance, a client id `C9999`) and see that the row appears in the rejects."
+msgstr ""
+
+#. heading 3
+#: site/project.md:81
+msgid "3. Transform"
+msgstr ""
+
+#. paragraph
+#: site/project.md:83
+msgid "One DataFrame with a row per loan at the report date: the loan, its balance and days past due, the client's segment and region, the rating and grade, the PD (the middle of the band), the EL (PD x LGD x outstanding, LGD 0.45 - a parameter), the DPD bucket (`current`, `1-30`, `31-90`, `90+`), and the age of the loan in months."
+msgstr ""
+
+#. heading 3
+#: site/project.md:88
+msgid "4. Aggregate"
+msgstr ""
+
+#. paragraph
+#: site/project.md:90
+msgid "The tables of the report:"
+msgstr ""
+
+#. table cell
+#: site/project.md:92
+msgid "Sheet"
+msgstr ""
+
+#. table cell
+#: site/project.md:92
+msgid "Content"
+msgstr ""
+
+#. table cell
+#: site/project.md:94
+msgid "report date, number of loans and clients, outstanding, EL, EL / outstanding, the share of 90+, the EUR / USD rate, the number of rejected rows"
+msgstr ""
+
+#. table cell
+#: site/project.md:95
+msgid "outstanding by segment and DPD bucket, with totals"
+msgstr ""
+
+#. table cell
+#: site/project.md:96
+msgid "outstanding by segment and grade, the grades in the order of the scale"
+msgstr ""
+
+#. table cell
+#: site/project.md:97
+msgid "the rating migration matrix: previous month end -> report date, all ratings"
+msgstr ""
+
+#. table cell
+#: site/project.md:98
+msgid "loans and outstanding for every month end up to the report date, with the change from the previous month"
+msgstr ""
+
+#. table cell
+#: site/project.md:99
+msgid "the 10 largest clients: id, name (from the register), segment, grade, outstanding, share of the portfolio"
+msgstr ""
+
+#. table cell
+#: site/project.md:100
+msgid "the table of step 2"
+msgstr ""
+
+#. table cell
+#: site/project.md:101
+msgid "per dataset and column: rows, missing values, rejected values"
+msgstr ""
+
+#. heading 3
+#: site/project.md:103
+msgid "5. Report"
+msgstr ""
+
+#. paragraph
+#: site/project.md:105
+msgid "One Excel file with the sheets above (`pd.ExcelWriter`, session 16): readable widths, a number format for the amounts, a title row on the summary."
+msgstr ""
+
+#. paragraph
+#: site/project.md:107
+msgid "One chart (PNG): the monthly outstanding (trend), or the outstanding by segment and DPD bucket."
+msgstr ""
+
+#. paragraph
+#: site/project.md:109
+msgid "The script prints the checks (next section) at the end."
+msgstr ""
+
+#. heading 3
+#: site/project.md:111
+msgid "6. Git"
+msgstr ""
+
+#. paragraph
+#: site/project.md:113
+msgid "The project lives in a folder `project/` of your copy of the homework repository (session 10): `report.py`, `homework_nomenclature.py`, any other module of yours, a `README.md` (what the report does, how to run it, what each sheet means). `out/` is not committed. Commit after each step that works - the history should show the steps."
+msgstr ""
+
+#. heading 2
+#: site/project.md:119
+msgid "The checks your report must pass"
+msgstr ""
+
+#. paragraph
+#: site/project.md:121
+msgid "For the report date **2026-09-30** (the numbers of sessions 4, 6, 13 and 15):"
+msgstr ""
+
+#. paragraph
+#: site/project.md:123
+msgid "400 loans, 143 clients with loans, outstanding **131,370,708.60**;"
+msgstr ""
+
+#. paragraph
+#: site/project.md:124
+msgid "EL with LGD 0.45: **1,140,106.56**;"
+msgstr ""
+
+#. paragraph
+#: site/project.md:125
+msgid "outstanding by segment: corporate 93,087,049.89, retail 6,837,600.42, sme 31,446,058.29;"
+msgstr ""
+
+#. paragraph
+#: site/project.md:127
+msgid "the migration matrix August -> September: 150 clients, 10 downgrades;"
+msgstr ""
+
+#. paragraph
+#: site/project.md:128
+msgid "the totals of every table = the total of the data (no rows lost or doubled in a join)."
+msgstr ""
+
+#. paragraph
+#: site/project.md:131
+msgid "For **2026-08-31**: outstanding 133,492,549.54 and EL 1,093,088.84."
+msgstr ""
+
+#. heading 2
+#: site/project.md:133
+msgid "Checklist"
+msgstr ""
+
+#. paragraph
+#: site/project.md:135
+msgid "[ ] `python report.py 2026-09-30` runs from a fresh terminal, in the virtual     environment, without errors."
+msgstr ""
+
+#. paragraph
+#: site/project.md:137
+msgid "[ ] Another month end works without a change in the code."
+msgstr ""
+
+#. paragraph
+#: site/project.md:138
+msgid "[ ] No date, path or LGD is written inside the functions: they are parameters (or     constants at the top of the file)."
+msgstr ""
+
+#. paragraph
+#: site/project.md:140
+msgid "[ ] The SQL uses parameters (`?` or `:name`)."
+msgstr ""
+
+#. paragraph
+#: site/project.md:141
+msgid "[ ] The nomenclatures are objects of your classes of session 12."
+msgstr ""
+
+#. paragraph
+#: site/project.md:142
+msgid "[ ] Every rejected row is in the `rejects` sheet, with its reason."
+msgstr ""
+
+#. paragraph
+#: site/project.md:143
+msgid "[ ] The checks above are printed and agree."
+msgstr ""
+
+#. paragraph
+#: site/project.md:144
+msgid "[ ] Every function has a docstring; the steps are functions (load, validate,     transform, aggregate, write) called from `main()`."
+msgstr ""
+
+#. paragraph
+#: site/project.md:146
+msgid "[ ] `README.md` explains how to run it."
+msgstr ""
+
+#. paragraph
+#: site/project.md:147
+msgid "[ ] The history in Git shows the steps (several commits, clear messages)."
+msgstr ""
+
+#. heading 2
+#: site/project.md:149
+msgid "Ideas for more"
+msgstr ""
+
+#. paragraph
+#: site/project.md:151
+msgid "The rejects and the data quality sheet with colours (Self-study of session 16)."
+msgstr ""
+
+#. paragraph
+#: site/project.md:152
+msgid "The check digits of the EIKs and the IBANs (Self-study of session 8)."
+msgstr ""
+
+#. paragraph
+#: site/project.md:153
+msgid "The report of all month ends in one run (a loop over `pd.date_range(freq=\"ME\")`), and one sheet that compares them."
+msgstr ""
+
+#. paragraph
+#: site/project.md:155
+msgid "The loans in USD shown in EUR with the rate of the report date (take the amounts of the sample data as amounts in the loan's currency)."
+msgstr ""
+
+#. paragraph
+#: site/project.md:157
+msgid "A command-line option for the LGD (`argparse`, Self-study of session 10)."
+msgstr ""
+
+#~ msgid "In the last two sessions (15 and 16) you build one complete process, of the kind you now do in SAS or SQL:"
+#~ msgstr "В последните две занятия (15 и 16) изграждате един цялостен процес, от вида, който сега правите в SAS или SQL:"
+
+#~ msgid "Each lecture adds a part that the project reuses: functions (4), dictionaries as lookup tables (6), text cleaning and regular expressions (7, 8), reading files and handling bad records (9), modules and Git (10), classes (11, 12), databases (13) and pandas (14 - 16)."
+#~ msgstr "Всяка лекция добавя част, която проектът използва: функции (4), dictionaries като таблици за търсене (6), почистване на текст и регулярни изрази (7, 8), четене на файлове и обработка на лоши записи (9), модули и Git (10), класове (11, 12), бази данни (13) и pandas (14 - 16)."
+
+#~ msgid "The details, the data and the checklist are given in session 15."
+#~ msgstr "Подробностите, данните и списъкът за проверка се дават в занятие 15."

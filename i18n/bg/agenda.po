@@ -100,8 +100,8 @@ msgstr "пон 09.11"
 
 #. table cell
 #: site/agenda.md:29
-msgid "Lists (advanced)"
-msgstr "Lists (за напреднали)"
+msgid "[Lists (advanced)](/lectures/05-lists-advanced)"
+msgstr ""
 
 #. table cell
 #: site/agenda.md:30
@@ -110,8 +110,8 @@ msgstr "ср 11.11"
 
 #. table cell
 #: site/agenda.md:30
-msgid "Dictionaries"
-msgstr "Dictionaries"
+msgid "[Dictionaries](/lectures/06-dictionaries)"
+msgstr ""
 
 #. table cell
 #: site/agenda.md:31
@@ -120,8 +120,8 @@ msgstr "пон 16.11"
 
 #. table cell
 #: site/agenda.md:31
-msgid "Text processing"
-msgstr "Обработка на текст"
+msgid "[Text processing](/lectures/07-text-processing)"
+msgstr ""
 
 #. table cell
 #: site/agenda.md:32
@@ -130,8 +130,8 @@ msgstr "ср 18.11"
 
 #. table cell
 #: site/agenda.md:32
-msgid "Regular expressions"
-msgstr "Регулярни изрази (regular expressions)"
+msgid "[Regular expressions](/lectures/08-regular-expressions)"
+msgstr ""
 
 #. table cell
 #: site/agenda.md:33
@@ -140,7 +140,9 @@ msgstr "пон 23.11"
 
 #. table cell
 #: site/agenda.md:33
-msgid "Error handling and file handling"
+#, fuzzy
+#| msgid "Error handling and file handling"
+msgid "[Error handling and file handling](/lectures/09-errors-and-files)"
 msgstr "Обработка на грешки и работа с файлове"
 
 #. table cell
@@ -150,7 +152,9 @@ msgstr "ср 25.11"
 
 #. table cell
 #: site/agenda.md:34
-msgid "Modules, packages, Git and GitHub"
+#, fuzzy
+#| msgid "Modules, packages, Git and GitHub"
+msgid "[Modules, packages, Git and GitHub](/lectures/10-modules-and-git)"
 msgstr "Модули, пакети, Git и GitHub"
 
 #. table cell
@@ -160,7 +164,9 @@ msgstr "пон 30.11"
 
 #. table cell
 #: site/agenda.md:35
-msgid "OOP: first steps, classes and objects"
+#, fuzzy
+#| msgid "OOP: first steps, classes and objects"
+msgid "[OOP: first steps, classes and objects](/lectures/11-oop-classes)"
 msgstr "ООП: първи стъпки, класове и обекти"
 
 #. table cell
@@ -170,7 +176,9 @@ msgstr "ср 02.12"
 
 #. table cell
 #: site/agenda.md:36
-msgid "OOP in practice: nomenclatures"
+#, fuzzy
+#| msgid "OOP in practice: nomenclatures"
+msgid "[OOP in practice: nomenclatures](/lectures/12-oop-nomenclatures)"
 msgstr "ООП на практика: номенклатури"
 
 #. table cell
@@ -180,7 +188,9 @@ msgstr "пон 07.12"
 
 #. table cell
 #: site/agenda.md:37
-msgid "Working with databases"
+#, fuzzy
+#| msgid "Working with databases"
+msgid "[Working with databases](/lectures/13-databases)"
 msgstr "Работа с бази данни"
 
 #. table cell
@@ -190,7 +200,9 @@ msgstr "ср 09.12"
 
 #. table cell
 #: site/agenda.md:38
-msgid "NumPy and introduction to pandas"
+#, fuzzy
+#| msgid "NumPy and introduction to pandas"
+msgid "[NumPy and introduction to pandas](/lectures/14-numpy-pandas-intro)"
 msgstr "NumPy и въведение в pandas"
 
 #. table cell
@@ -200,8 +212,8 @@ msgstr "пон 14.12"
 
 #. table cell
 #: site/agenda.md:39
-msgid "pandas: selection, aggregation, joins"
-msgstr "pandas: селекция, агрегиране, съединяване (joins)"
+msgid "[pandas: selection, aggregation, joins](/lectures/15-pandas-select-aggregate-join)"
+msgstr ""
 
 #. table cell
 #: site/agenda.md:40
@@ -210,7 +222,9 @@ msgstr "ср 16.12"
 
 #. table cell
 #: site/agenda.md:40
-msgid "pandas: reports and the [final project](/project)"
+#, fuzzy
+#| msgid "pandas: reports and the [final project](/project)"
+msgid "[pandas: reports](/lectures/16-pandas-reports-project) and the [final project](/project)"
 msgstr "pandas: отчети и [финалният проект](/project)"
 
 #. heading 2
@@ -527,6 +541,42 @@ msgstr "`pivot_table`, `melt`, дати и времеви редове, експ
 #: site/agenda.md:145
 msgid "[Final project](/project): load data from a file and a database, nomenclatures as classes, cleaning, aggregation and a finished report."
 msgstr "[Финален проект](/project): зареждане на данни от файл и от база данни, номенклатури като класове, почистване, агрегиране и готов отчет."
+
+#~ msgid "pandas: selection, aggregation, joins"
+#~ msgstr "pandas: селекция, агрегиране, съединяване (joins)"
+
+#~ msgid "pandas: reports and the [final project](/project)"
+#~ msgstr "pandas: отчети и [финалният проект](/project)"
+
+#~ msgid "Lists (advanced)"
+#~ msgstr "Lists (за напреднали)"
+
+#~ msgid "Dictionaries"
+#~ msgstr "Dictionaries"
+
+#~ msgid "Text processing"
+#~ msgstr "Обработка на текст"
+
+#~ msgid "Regular expressions"
+#~ msgstr "Регулярни изрази (regular expressions)"
+
+#~ msgid "Error handling and file handling"
+#~ msgstr "Обработка на грешки и работа с файлове"
+
+#~ msgid "Modules, packages, Git and GitHub"
+#~ msgstr "Модули, пакети, Git и GitHub"
+
+#~ msgid "OOP: first steps, classes and objects"
+#~ msgstr "ООП: първи стъпки, класове и обекти"
+
+#~ msgid "OOP in practice: nomenclatures"
+#~ msgstr "ООП на практика: номенклатури"
+
+#~ msgid "Working with databases"
+#~ msgstr "Работа с бази данни"
+
+#~ msgid "NumPy and introduction to pandas"
+#~ msgstr "NumPy и въведение в pandas"
 
 #~ msgid "**How we work:** about 30% explanation and 70% practice. Every topic is connected to what you already know from SQL and SAS. All examples and tasks use made-up data in the shape of the data you work with (a loan portfolio: clients, loans, a rating scale) - never real data."
 #~ msgstr "**Как работим:** около 30% обяснение и 70% практика. Всяка тема е свързана с това, което вече знаете от SQL и SAS. Всички примери и задачи използват измислени данни с формата на данните, с които работите (кредитен портфейл: клиенти, кредити, рейтингова скала) - никога реални данни."

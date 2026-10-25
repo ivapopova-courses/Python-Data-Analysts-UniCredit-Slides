@@ -9,7 +9,7 @@ A term that is the same word in both languages is written in Bulgarian (функ
 PROC SORT) stay as they are.
 
 Started on 2026-10-24 with the course structure; add the terms of each lecture when
-it is written (lecture 1: added 2026-10-24).
+it is written (lecture 1: added 2026-10-24; lectures 2 - 4: added 2026-10-25).
 
 ## Stays in English
 
@@ -47,6 +47,16 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | dynamic typing, immutable | at first use with the Bulgarian: "динамично типизиране (dynamic typing)", "непроменими (immutable)" |
 | truthy, falsy | |
 | banker's rounding | "банкерското закръгляне (banker's rounding)" |
+| iterable, iteration | "iterable"; iteration is "итерация" |
+| pattern, guard, `match` / `case` | lecture 2: "pattern", "guard" |
+| short-circuit evaluation | |
+| mutable, hashable | at first use with the Bulgarian: "променяема (mutable)"; then either |
+| named tuple, frozenset | |
+| keyword-only, positional-only | the kinds of parameters |
+| namespace, LEGB | "namespace" |
+| closure, dispatch table | |
+| higher-order function | "функция от по-висок ред (higher-order function)" at first use |
+| Pylance, mypy, PEP | tools and documents |
 
 ## Translated
 
@@ -101,3 +111,18 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | cell (notebook) | клетка |
 | days past due | дни просрочие |
 | loan card (homework 1) | карта на кредит |
+| bucket (of days past due) | група |
+| stage (IFRS 9) | етап |
+| repayment schedule, annuity loan | погасителен план, анюитетен кредит |
+| accumulator | акумулатор |
+| to unpack, unpacking | разопаковам, разопаковане (unpacking) |
+| sequence | поредица |
+| union, intersection, difference | обединение, сечение, разлика |
+| shallow copy, deep copy | плитко копие, дълбоко копие |
+| control flow statements | конструкции за управление |
+| conditional expression | условен израз |
+| keyword argument, positional argument | именуван аргумент, позиционен аргумент |
+| return value, to return | върната стойност, връщам |
+| to call, call | извиквам, извикване |
+| pure function, side effect | чиста функция, страничен ефект |
+| decorator | декоратор |

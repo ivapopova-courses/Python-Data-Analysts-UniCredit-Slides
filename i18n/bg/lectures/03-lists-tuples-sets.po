@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python for Data Analysts\n"
 "Language-Team: \n"
-"Last-Translator: \n"
+"Last-Translator: Claude Opus 5.5 (machine translation - to review)\n"
 "PO-Revision-Date: \n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -16,1419 +16,1424 @@ msgstr ""
 #. front matter: title
 #: site/lectures/03-lists-tuples-sets.md:2 site/lectures/03-lists-tuples-sets.md:5
 msgid "3. Lists (basics), tuples and sets"
-msgstr ""
+msgstr "3. Lists (основи), tuples и sets"
 
 #. html
 #: site/lectures/03-lists-tuples-sets.md:8
 msgid "<span>Session 3</span><span>practice: <code>03-lists-tuples-sets/</code> in the homework repository</span>"
-msgstr ""
+msgstr "<span>Занятие 3</span><span>упражнения: <code>03-lists-tuples-sets/</code> в homework repository</span>"
 
 #. html
 #: site/lectures/03-lists-tuples-sets.md:9
 msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
-msgstr ""
+msgstr "<span><a href=\"../sample-data\">примерните данни</a></span>"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:12
 msgid "**Today you will learn to:**"
-msgstr ""
+msgstr "**Днес ще се научите да:**"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:14
 msgid "keep many values in one **list**, and read them by index (from 0!) and by slices;"
-msgstr ""
+msgstr "пазите много стойности в един **list** и да ги четете по индекс (от 0!) и със slices;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:15
 msgid "use the operations that all sequences share: `+`, `*`, `in`, `len`, `min`, `max`;"
-msgstr ""
+msgstr "използвате операциите, общи за всички поредици: `+`, `*`, `in`, `len`, `min`, `max`;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:16
 msgid "change a list with its methods, and sort it;"
-msgstr ""
+msgstr "променяте list с неговите методи и да го сортирате;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:17
 msgid "understand why two names can show the same list - and how to make a copy;"
-msgstr ""
+msgstr "разбирате защо две имена могат да показват един и същ list - и как да направите копие;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:18
 msgid "use **tuples** as records that cannot change, and unpack them;"
-msgstr ""
+msgstr "използвате **tuples** като записи, които не могат да се променят, и да ги разопаковате;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:19
 msgid "use `range` for sequences of numbers;"
-msgstr ""
+msgstr "използвате `range` за поредици от числа;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:20
 msgid "find unique values with **sets**, and compare groups with `UNION`, `INTERSECT` and `EXCEPT` - the Python way."
-msgstr ""
+msgstr "намирате уникалните стойности със **sets** и да сравнявате групи с `UNION`, `INTERSECT` и `EXCEPT` - по начина на Python."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:23
 msgid "From SQL to Python - the same question, two ways. Which clients have no loans?"
-msgstr ""
+msgstr "От SQL към Python - един и същ въпрос, по два начина. Кои клиенти нямат кредити?"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:49
 msgid "1. Sequences"
-msgstr ""
+msgstr "1. Поредици"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:51
 msgid "What is a sequence?"
-msgstr ""
+msgstr "Какво е поредица (sequence)?"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:53
 msgid "Session 2 used `for` on strings, lists and ranges. They are all **sequences**: containers that keep an **ordered** collection of values. The main sequence types:"
-msgstr ""
+msgstr "В занятие 2 използвахме `for` върху strings, lists и ranges. Всички те са **поредици** (sequences): контейнери, които пазят **подредена** колекция от стойности. Основните типове поредици:"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:56
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:56 site/lectures/03-lists-tuples-sets.md:87
 msgid "Example"
-msgstr ""
+msgstr "Пример"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:56
 msgid "Can it change?"
-msgstr ""
+msgstr "Може ли да се променя?"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:58
 msgid "yes"
-msgstr ""
+msgstr "да"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:59 site/lectures/03-lists-tuples-sets.md:60 site/lectures/03-lists-tuples-sets.md:61 site/lectures/03-lists-tuples-sets.md:758
 msgid "no"
-msgstr ""
+msgstr "не"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:73
 msgid "Every item of a sequence has a number - its position, or **index**. The index **starts from 0**."
-msgstr ""
+msgstr "Всеки елемент на поредицата има номер - своята позиция, или **индекс**. Индексът **започва от 0**."
 
 #. box title
 #: site/lectures/03-lists-tuples-sets.md:76
 msgid "Python counts from 0, SAS from 1"
-msgstr ""
+msgstr "Python брои от 0, SAS - от 1"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:77
 msgid "The first character of a string: `SUBSTR(loan_id, 1, 1)` in SAS and SQL, but `loan_id[0]` in Python. The first element of a SAS array is `arr{1}`; of a Python list it is `items[0]`. This is the most common mistake in the first weeks - count with care."
-msgstr ""
+msgstr "Първият символ на string: `SUBSTR(loan_id, 1, 1)` в SAS и SQL, но `loan_id[0]` в Python. Първият елемент на SAS array е `arr{1}`; на Python list е `items[0]`. Това е най-честата грешка през първите седмици - броете внимателно."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:83
 msgid "What all sequences can do"
-msgstr ""
+msgstr "Какво могат всички поредици"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:85
 msgid "All sequences support the same **common operations** - you learn them once:"
-msgstr ""
+msgstr "Всички поредици поддържат едни и същи **общи операции** - учите ги веднъж:"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:87 site/lectures/03-lists-tuples-sets.md:1003
+#: site/lectures/03-lists-tuples-sets.md:87 site/lectures/03-lists-tuples-sets.md:1005
 msgid "Operation"
-msgstr ""
+msgstr "Операция"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:87 site/lectures/03-lists-tuples-sets.md:1003
+#: site/lectures/03-lists-tuples-sets.md:87 site/lectures/03-lists-tuples-sets.md:1005
 msgid "Result"
-msgstr ""
+msgstr "Резултат"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:89
 msgid "length"
-msgstr ""
+msgstr "дължина"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:89
 msgid "the number of items"
-msgstr ""
+msgstr "броят елементи"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:90
 msgid "indexing"
-msgstr ""
+msgstr "индексиране"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:90
 msgid "the first, the last item"
-msgstr ""
+msgstr "първият, последният елемент"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:91
 msgid "slicing"
-msgstr ""
+msgstr "slicing"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:91
 msgid "a part of the sequence"
-msgstr ""
+msgstr "част от поредицата"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:92
 msgid "concatenation"
-msgstr ""
+msgstr "конкатенация"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:92
 msgid "the two joined (not for `range`)"
-msgstr ""
+msgstr "двете, съединени (не за `range`)"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:93
 msgid "repetition"
-msgstr ""
+msgstr "повторение"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:93
 msgid "three times (not for `range`)"
-msgstr ""
+msgstr "три пъти (не за `range`)"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:94
 msgid "membership"
-msgstr ""
+msgstr "принадлежност"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:95
 msgid "minimum, maximum"
-msgstr ""
+msgstr "минимум, максимум"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:95
 msgid "the smallest, the largest item"
-msgstr ""
+msgstr "най-малкият, най-големият елемент"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:96
 msgid "counting"
-msgstr ""
+msgstr "броене"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:96
 msgid "how many times `x` is in `s`"
-msgstr ""
+msgstr "колко пъти `x` е в `s`"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:97
 msgid "searching"
-msgstr ""
+msgstr "търсене"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:97
 msgid "the index of the first `x`"
-msgstr ""
+msgstr "индексът на първия `x`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:99
 msgid "Each type also has its **own** methods: lists can be sorted and changed, strings can be made upper case. Reference: [Common sequence operations](https://docs.python.org/3/library/stdtypes.html#common-sequence-operations)."
-msgstr ""
+msgstr "Всеки тип има и **собствени** методи: lists могат да се сортират и променят, strings могат да станат с главни букви. Reference: [Common sequence operations](https://docs.python.org/3/library/stdtypes.html#common-sequence-operations)."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:103
 msgid "2. Lists"
-msgstr ""
+msgstr "2. Lists"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:105
 msgid "What is a list?"
-msgstr ""
+msgstr "Какво е list?"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:107
 msgid "A **list** is a **mutable** (changeable) sequence of values:"
-msgstr ""
+msgstr "**List** е **променяема** (mutable) поредица от стойности:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:109
 msgid "you can add, remove and change items: a list can grow and shrink;"
-msgstr ""
+msgstr "можете да добавяте, премахвате и променяте елементи: list може да расте и да се свива;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:110
 msgid "the items can be of any type, and of different types in one list;"
-msgstr ""
+msgstr "елементите могат да са от всякакъв тип, и от различни типове в един list;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:111
 msgid "the same value can be in a list many times."
-msgstr ""
+msgstr "една и съща стойност може да е в list много пъти."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:113
 msgid "Lists are the general-purpose container of Python. A list is close to a column of a table, or to a SAS array - but it can grow, and it lives in memory."
-msgstr ""
+msgstr "Lists са контейнерът за всичко в Python. List е близо до колона на таблица или до SAS array - но може да расте и живее в паметта."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:116
 msgid "Create a list"
-msgstr ""
+msgstr "Създаване на list"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:118
 msgid "A list is written in **square brackets**, with the items separated by **commas**:"
-msgstr ""
+msgstr "List се пише в **квадратни скоби**, с елементи, разделени със **запетаи**:"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:134
 msgid "Read an item"
-msgstr ""
+msgstr "Четене на елемент"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:147
 msgid "An index that does not exist is an error:"
-msgstr ""
+msgstr "Индекс, който не съществува, е грешка:"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:154
 msgid "Change an item"
-msgstr ""
+msgstr "Промяна на елемент"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:168
 msgid "`del` removes an item by its index:"
-msgstr ""
+msgstr "`del` премахва елемент по индекса му:"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:176
 msgid "3. Indexes and slices"
-msgstr ""
+msgstr "3. Индекси и slices"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:178
 msgid "Indexes from the start and from the end"
-msgstr ""
+msgstr "Индекси от началото и от края"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:180
 msgid "The first item has the index **0**; each next one is 1 more."
-msgstr ""
+msgstr "Първият елемент има индекс **0**; всеки следващ е с 1 повече."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:181
 msgid "The last item has the index **-1**; counting back, each one is 1 less."
-msgstr ""
+msgstr "Последният елемент има индекс **-1**; броейки назад, всеки е с 1 по-малко."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:182
 msgid "Only whole numbers are valid indexes."
-msgstr ""
+msgstr "Валидни индекси са само цели числа."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:184
 msgid "![A list of six loans with the indexes 0 to 5 above the items and -6 to -1 below them; the slice loans[1:4] is highlighted](/diagrams/list-indexing.svg){.diagram}"
-msgstr ""
+msgstr "![List от шест кредита с индексите от 0 до 5 над елементите и от -6 до -1 под тях; slice-ът loans[1:4] е оцветен](/diagrams/list-indexing.svg){.diagram}"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:192
 msgid "Negative indexes are handy for \"the last ones\": the last month of a list of monthly values is `values[-1]`, whatever the length of the list."
-msgstr ""
+msgstr "Отрицателните индекси са удобни за \"последните\": последният месец в list от месечни стойности е `values[-1]`, каквато и да е дължината на list-а."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:195
 msgid "Slices: `[start:stop:step]`"
-msgstr ""
+msgstr "Slices: `[start:stop:step]`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:197
 msgid "A **slice** takes a part of a sequence:"
-msgstr ""
+msgstr "**Slice** взема част от поредица:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:203
 msgid "`start` - the index of the first item taken (included); empty = from the start;"
-msgstr ""
+msgstr "`start` - индексът на първия взет елемент (включен); празно = от началото;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:204
 msgid "`stop` - the index where the slice **stops** (this item is **not** included); empty = to the end;"
-msgstr ""
+msgstr "`stop` - индексът, където slice-ът **спира** (този елемент **не** е включен); празно = до края;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:206
 msgid "`step` - take every n-th item; empty = 1. A negative step goes backwards."
-msgstr ""
+msgstr "`step` - взема всеки n-ти елемент; празно = 1. Отрицателна стъпка върви назад."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:215
 msgid "The rule \"the stop is not included\" is the same as in `range` (session 2). It has a nice side: `a[:3]` is the first 3 items, `a[3:]` the rest, and `a[2:5]` has 5 - 2 = 3 items."
-msgstr ""
+msgstr "Правилото \"stop не е включен\" е същото като в `range` (занятие 2). То има хубава страна: `a[:3]` са първите 3 елемента, `a[3:]` - останалите, а `a[2:5]` има 5 - 2 = 3 елемента."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:231
 msgid "A slice never gives an `IndexError` - out of range, it simply takes what there is:"
-msgstr ""
+msgstr "Slice никога не дава `IndexError` - извън границите просто взема каквото има:"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:239
 msgid "Slices of strings: `SUBSTR`"
-msgstr ""
+msgstr "Slices на strings: `SUBSTR`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:241
 msgid "A string is a sequence of characters, so the same indexes and slices work - this is the Python `SUBSTR`:"
-msgstr ""
+msgstr "String е поредица от символи, така че същите индекси и slices работят - това е `SUBSTR` на Python:"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:244
 msgid "SAS / SQL"
-msgstr ""
+msgstr "SAS / SQL"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:244 site/lectures/03-lists-tuples-sets.md:818
+#: site/lectures/03-lists-tuples-sets.md:244 site/lectures/03-lists-tuples-sets.md:820
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:263
 msgid "Strings cannot be changed: `loan_id[0] = \"X\"` is an error. String methods (session 7) make **new** strings."
-msgstr ""
+msgstr "Strings не могат да се променят: `loan_id[0] = \"X\"` е грешка. Методите на strings (занятие 7) правят **нови** strings."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:266
 msgid "4. More common operations"
-msgstr ""
+msgstr "4. Още общи операции"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:268
 msgid "Concatenation `+` and repetition `*`"
-msgstr ""
+msgstr "Конкатенация `+` и повторение `*`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:270
 msgid "`+` joins two sequences of the **same type** into a new one; `*` repeats a sequence. The multiplier must be a whole number."
-msgstr ""
+msgstr "`+` съединява две поредици от **един и същ тип** в нова; `*` повтаря поредица. Множителят трябва да е цяло число."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:287
 msgid "Only strings, lists and tuples can be joined and repeated. A `range` cannot (but you can make a list of it first: `list(range(3)) * 2`)."
-msgstr ""
+msgstr "Само strings, lists и tuples могат да се съединяват и повтарят. `range` не може (но можете първо да направите list от него: `list(range(3)) * 2`)."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:290
 msgid "`+` makes a **new** list. Joining lists of rows one under the other is `UNION ALL` in SQL, or `SET a b;` in a DATA step:"
-msgstr ""
+msgstr "`+` прави **нов** list. Съединяването на lists от редове един под друг е `UNION ALL` в SQL или `SET a b;` в DATA step:"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:300
 msgid "Membership: `in`, `not in`"
-msgstr ""
+msgstr "Принадлежност: `in`, `not in`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:302
 msgid "`x in sequence` is `True` when `x` is one of the items - like `IN (...)` in SQL and SAS:"
-msgstr ""
+msgstr "`x in sequence` е `True`, когато `x` е един от елементите - като `IN (...)` в SQL и SAS:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:320
 msgid "For strings, `in` looks for a part of the string: `\"USD\" in \"EUR,USD\"` is `True`."
-msgstr ""
+msgstr "При strings `in` търси част от string-а: `\"USD\" in \"EUR,USD\"` е `True`."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:336
 msgid "`min` and `max` work on strings too (alphabetically, session 2). `sum` only on numbers. `index` gives a `ValueError` when the value is not in the list - test with `in` first."
-msgstr ""
+msgstr "`min` и `max` работят и върху strings (по азбучен ред, занятие 2). `sum` - само върху числа. `index` дава `ValueError`, когато стойността не е в list-а - първо проверете с `in`."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:340
 msgid "5. Create lists from other values"
-msgstr ""
+msgstr "5. Създаване на lists от други стойности"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:342
 msgid "`list()`: a list from any sequence"
-msgstr ""
+msgstr "`list()`: list от всяка поредица"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:344
 msgid "`list()` makes a new list from the items of any sequence (any *iterable*):"
-msgstr ""
+msgstr "`list()` прави нов list от елементите на всяка поредица (на всеки *iterable*):"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:360
 msgid "From text: `split`"
-msgstr ""
+msgstr "От текст: `split`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:362
 msgid "`split()` (session 1) cuts a string into a list of strings:"
-msgstr ""
+msgstr "`split()` (занятие 1) нарязва string на list от strings:"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:373
 msgid "Collect values in a loop: `append`"
-msgstr ""
+msgstr "Събиране на стойности в loop: `append`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:375
 msgid "Start with an empty list and **append** a value in each iteration. It is the Python `OUTPUT` statement: the DATA step writes a row to the output data set, `append` adds an item to the list."
-msgstr ""
+msgstr "Започнете с празен list и **добавяйте** (append) стойност във всяка итерация. Това е statement-ът `OUTPUT` на Python: DATA step-ът записва ред в изходния набор от данни, `append` добавя елемент в list-а."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:401
 msgid "6. The methods of a list"
-msgstr ""
+msgstr "6. Методите на list"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:403
 msgid "Add, remove, reverse, sort"
-msgstr ""
+msgstr "Добавяне, премахване, обръщане, сортиране"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:405 site/lectures/03-lists-tuples-sets.md:1003 site/lectures/03-lists-tuples-sets.md:1065
+#: site/lectures/03-lists-tuples-sets.md:405 site/lectures/03-lists-tuples-sets.md:1005 site/lectures/03-lists-tuples-sets.md:1067
 msgid "Method"
-msgstr ""
+msgstr "Метод"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:405
 msgid "What it does"
-msgstr ""
+msgstr "Какво прави"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:407
 msgid "adds `x` at the end"
-msgstr ""
+msgstr "добавя `x` в края"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:408
 msgid "adds all items of `other` at the end"
-msgstr ""
+msgstr "добавя всички елементи на `other` в края"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:409
 msgid "inserts `x` before the index `i`"
-msgstr ""
+msgstr "вмъква `x` преди индекса `i`"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:410
 msgid "removes the last item and returns it"
-msgstr ""
+msgstr "премахва последния елемент и го връща"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:411
 msgid "removes the item at index `i` and returns it"
-msgstr ""
+msgstr "премахва елемента на индекс `i` и го връща"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:412
 msgid "removes the first item equal to `x` (`ValueError` if there is none)"
-msgstr ""
+msgstr "премахва първия елемент, равен на `x` (`ValueError`, ако няма такъв)"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:413
 msgid "removes all items"
-msgstr ""
+msgstr "премахва всички елементи"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:414
 msgid "the index of the first `x`; how many `x`"
-msgstr ""
+msgstr "индексът на първия `x`; колко `x` има"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:415
 msgid "reverses the list in place"
-msgstr ""
+msgstr "обръща list-а на място"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:416
 msgid "sorts the list in place; `sort(reverse=True)`: from the largest"
-msgstr ""
+msgstr "сортира list-а на място; `sort(reverse=True)`: от най-големия"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:417
 msgid "a new list with the same items (section 7)"
-msgstr ""
+msgstr "нов list със същите елементи (раздел 7)"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:418
 msgid "removes an item, a slice"
-msgstr ""
+msgstr "премахва елемент, slice"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:451
 msgid "More: [More on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) in the tutorial."
-msgstr ""
+msgstr "Още: [More on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists) в tutorial-а."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:454
 msgid "`append` or `extend`?"
-msgstr ""
+msgstr "`append` или `extend`?"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:466
 msgid "The methods change the list - and return `None`"
-msgstr ""
+msgstr "Методите променят list-а - и връщат `None`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:468
 msgid "`append`, `sort`, `reverse` and the others change the list **in place**. They return `None`, not the list. A classic bug:"
-msgstr ""
+msgstr "`append`, `sort`, `reverse` и другите променят list-а **на място**. Те връщат `None`, а не list-а. Класически бъг:"
 
 #. box title
 #: site/lectures/03-lists-tuples-sets.md:477
 msgid "Answer"
-msgstr ""
+msgstr "Отговор"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:478
 msgid "`numbers.sort()` sorts the list and returns `None`, and `numbers = ...` binds the name to that `None` - the sorted list is lost. Write only `numbers.sort()`, or use `sorted()` (next)."
-msgstr ""
+msgstr "`numbers.sort()` сортира list-а и връща `None`, а `numbers = ...` свързва името с този `None` - сортираният list е загубен. Пишете само `numbers.sort()` или използвайте `sorted()` (следва)."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:483
 msgid "`sort()` or `sorted()`?"
-msgstr ""
+msgstr "`sort()` или `sorted()`?"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:485
 msgid "`lst.sort()` sorts **this** list. Only lists have it."
-msgstr ""
+msgstr "`lst.sort()` сортира **този** list. Има го само при lists."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:486
 msgid "`sorted(x)` returns a **new**, sorted list, and does not change `x`. It works on any sequence: a tuple, a string, a set, a range."
-msgstr ""
+msgstr "`sorted(x)` връща **нов**, сортиран list и не променя `x`. Работи върху всяка поредица: tuple, string, set, range."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:498
 msgid "Sorting compares the items with `<` (session 2): strings alphabetically - capital letters before small ones - and a mix of numbers and strings is an error:"
-msgstr ""
+msgstr "Сортирането сравнява елементите с `<` (занятие 2): strings - по азбучен ред, главните букви преди малките, а смесица от числа и strings е грешка:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:506
 msgid "`PROC SORT` and `ORDER BY` can sort by a column, or by several. In Python that is `sorted(..., key=...)`: sessions 4 and 5."
-msgstr ""
+msgstr "`PROC SORT` и `ORDER BY` могат да сортират по колона или по няколко. В Python това е `sorted(..., key=...)`: занятия 4 и 5."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:509
 msgid "7. A list is mutable: names and references"
-msgstr ""
+msgstr "7. List е mutable: имена и референции"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:511
 msgid "Two names, one list"
-msgstr ""
+msgstr "Две имена, един list"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:513
 msgid "Session 1 showed that a variable is a **name** bound to an **object**. With numbers and strings this hardly matters, because they cannot change. A list **can** change - and then it matters a lot:"
-msgstr ""
+msgstr "Занятие 1 показа, че променливата е **име**, свързано с **обект**. При числа и strings това почти няма значение, защото те не могат да се променят. List **може** да се променя - и тогава това има голямо значение:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:527
 msgid "`new_list = original` does not copy anything. Both names point to **the same list object** in memory, so a change through one name is seen through the other. `is` (and `id()`) shows it."
-msgstr ""
+msgstr "`new_list = original` не копира нищо. Двете имена сочат към **един и същ обект list** в паметта, така че промяна през едното име се вижда през другото. `is` (и `id()`) го показва."
 
 #. box title
 #: site/lectures/03-lists-tuples-sets.md:531 site/lectures/03-lists-tuples-sets.md:643
 msgid "Animation"
-msgstr ""
+msgstr "Анимация"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:532
 msgid "**Lists and references:** [1. A list changes in place](../animations/listsAndReferences.html#1){target=\"_blank\"}, [2. Two names, one list](../animations/listsAndReferences.html#2){target=\"_blank\"}, [3. A copy](../animations/listsAndReferences.html#3){target=\"_blank\"}, [4. `sort()` and `sorted()`](../animations/listsAndReferences.html#4){target=\"_blank\"}"
-msgstr ""
+msgstr "**Lists и референции:** [1. List се променя на място](../animations/listsAndReferences.html#1){target=\"_blank\"}, [2. Две имена, един list](../animations/listsAndReferences.html#2){target=\"_blank\"}, [3. Копие](../animations/listsAndReferences.html#3){target=\"_blank\"}, [4. `sort()` и `sorted()`](../animations/listsAndReferences.html#4){target=\"_blank\"}"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:539
 msgid "Make a copy"
-msgstr ""
+msgstr "Направете копие"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:541
 msgid "When you need an independent list, make a **copy**. Three ways give the same:"
-msgstr ""
+msgstr "Когато ви трябва независим list, направете **копие**. Три начина дават едно и също:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:555
 msgid "These are **shallow** copies: the new list has the same items. When the items are lists themselves (a table as a list of rows), the rows are still shared - session 5 explains shallow and deep copies."
-msgstr ""
+msgstr "Това са **плитки** (shallow) копия: новият list има същите елементи. Когато елементите сами са lists (таблица като list от редове), редовете пак са общи - занятие 5 обяснява плитките и дълбоките копия."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:559
 msgid "8. Tuples"
-msgstr ""
+msgstr "8. Tuples"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:561
 msgid "What is a tuple?"
-msgstr ""
+msgstr "Какво е tuple?"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:563
 msgid "A **tuple** is an **immutable** sequence: once created, it cannot change - no item can be added, removed or replaced."
-msgstr ""
+msgstr "**Tuple** е **непроменима** (immutable) поредица: щом е създаден, не може да се промени - не може да се добави, премахне или замени елемент."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:566
 msgid "Good for fixed data: a record (one row of a table), a date, a pair of coordinates."
-msgstr ""
+msgstr "Подходящ е за фиксирани данни: запис (един ред от таблица), дата, двойка координати."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:567
 msgid "A tuple uses a little less memory than a list, and is a little faster."
-msgstr ""
+msgstr "Tuple използва малко по-малко памет от list и е малко по-бърз."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:568
 msgid "Tuples can do everything a sequence can (section 1), but have only two methods: `count` and `index`."
-msgstr ""
+msgstr "Tuples могат всичко, което може една поредица (раздел 1), но имат само два метода: `count` и `index`."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:571
 msgid "Create a tuple"
-msgstr ""
+msgstr "Създаване на tuple"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:573
 msgid "A tuple is written in **round brackets**, with the items separated by **commas**:"
-msgstr ""
+msgstr "Tuple се пише в **кръгли скоби**, с елементи, разделени със **запетаи**:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:592
 msgid "It is the **comma** that makes a tuple, not the brackets. That is why `x, y = 1, 2` (session 1) works: the right side is a tuple."
-msgstr ""
+msgstr "**Запетаята** прави tuple, а не скобите. Затова `x, y = 1, 2` (занятие 1) работи: дясната страна е tuple."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:595
 msgid "Read the items"
-msgstr ""
+msgstr "Четене на елементите"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:607
 msgid "A tuple cannot change"
-msgstr ""
+msgstr "Tuple не може да се променя"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:614
 msgid "To \"change\" a tuple, you make a new one (the name moves to it, like with numbers):"
-msgstr ""
+msgstr "За да \"промените\" tuple, правите нов (името се премества към него, както при числата):"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:622
 msgid "A list inside a tuple can change"
-msgstr ""
+msgstr "List вътре в tuple може да се променя"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:624
 msgid "A tuple cannot change **which objects** it holds. If one of them is a list, the list itself can still change:"
-msgstr ""
+msgstr "Tuple не може да промени **кои обекти** държи. Ако един от тях е list, самият list все пак може да се променя:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:644
 msgid "**Lists and references:** [5. A tuple cannot change](../animations/listsAndReferences.html#5){target=\"_blank\"}, [6. A list inside a tuple (advanced)](../animations/listsAndReferences.html#6){target=\"_blank\"}"
-msgstr ""
+msgstr "**Lists и референции:** [5. Tuple не може да се променя](../animations/listsAndReferences.html#5){target=\"_blank\"}, [6. List вътре в tuple (за напреднали)](../animations/listsAndReferences.html#6){target=\"_blank\"}"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:649
 msgid "Unpacking"
-msgstr ""
+msgstr "Разопаковане (unpacking)"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:651
 msgid "A tuple (or a list) can be **unpacked** into several names at once - the number of names must be the number of items:"
-msgstr ""
+msgstr "Tuple (или list) може да се **разопакова** в няколко имена наведнъж - броят на имената трябва да е равен на броя на елементите:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:667
 msgid "A name with a star `*` takes \"the rest\", as a list:"
-msgstr ""
+msgstr "Име със звездичка `*` взема \"останалото\", като list:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:678
 msgid "`_` is the usual name for a value you do not need: `loan_id, _, product = ...`."
-msgstr ""
+msgstr "`_` е обичайното име за стойност, която не ви трябва: `loan_id, _, product = ...`."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:680
 msgid "Tuples as records"
-msgstr ""
+msgstr "Tuples като записи"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:682
 msgid "A list of tuples is a small **table**: each tuple is a row, each position a column. `for` with unpacking (session 2) reads it row by row:"
-msgstr ""
+msgstr "List от tuples е малка **таблица**: всеки tuple е ред, всяка позиция - колона. `for` с разопаковане (занятие 2) я чете ред по ред:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:702
 msgid "A common use of a list of tuples - coordinates, or a value with its label - and separating it into two lists again:"
-msgstr ""
+msgstr "Често използване на list от tuples - координати или стойност с етикета си - и разделянето му отново на два lists:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:717
 msgid "The other way round - a **tuple of lists** - is a fixed structure of groups that can change inside:"
-msgstr ""
+msgstr "Обратното - **tuple от lists** - е фиксирана структура от групи, които могат да се променят отвътре:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:730
 msgid "Tuples are also used for **several return values of a function** (session 4) and as **keys of a dictionary** (session 6), where a list is not allowed."
-msgstr ""
+msgstr "Tuples се използват и за **няколко върнати стойности на функция** (занятие 4) и като **ключове на dictionary** (занятие 6), където list не е позволен."
 
 #. box title
 #: site/lectures/03-lists-tuples-sets.md:733
 msgid "Advanced: named tuples"
-msgstr ""
+msgstr "За напреднали: named tuples"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:734
 msgid "In a plain tuple, `loan[2]` does not say what the third column is. A **named tuple** gives the positions names - a lightweight record:"
-msgstr ""
+msgstr "В обикновен tuple `loan[2]` не казва коя е третата колона. **Named tuple** дава имена на позициите - лек запис:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:749
 msgid "Classes and data classes (sessions 11 - 12) go further: records that can also check their data and have their own methods."
-msgstr ""
+msgstr "Класовете и data classes (занятия 11 - 12) отиват по-далеч: записи, които могат и да проверяват данните си и имат собствени методи."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:753
 msgid "9. Lists or tuples?"
-msgstr ""
+msgstr "9. Lists или tuples?"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:755
 msgid "List"
-msgstr ""
+msgstr "List"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:755
 msgid "Tuple"
-msgstr ""
+msgstr "Tuple"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:757
 msgid "Brackets"
-msgstr ""
+msgstr "Скоби"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:758
 msgid "Can change"
-msgstr ""
+msgstr "Може да се променя"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:758
 msgid "yes: add, remove, sort"
-msgstr ""
+msgstr "да: добавяне, премахване, сортиране"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:759
 msgid "Use for"
-msgstr ""
+msgstr "Използвайте за"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:759
 msgid "a collection that grows: the loans of a report, the values of a column"
-msgstr ""
+msgstr "колекция, която расте: кредитите на един отчет, стойностите на една колона"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:759
 msgid "a fixed record: one row, a date, a pair"
-msgstr ""
+msgstr "фиксиран запис: един ред, дата, двойка"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:760
 msgid "Memory, speed"
-msgstr ""
+msgstr "Памет, скорост"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:760
 msgid "a little more, a little slower"
-msgstr ""
+msgstr "малко повече, малко по-бавно"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:760
 msgid "a little less, a little faster"
-msgstr ""
+msgstr "малко по-малко, малко по-бързо"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:771
+msgid "(The exact numbers depend on the Python version; the tuple is always smaller.)"
+msgstr "(Точните числа зависят от версията на Python; tuple винаги е по-малък.)"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:773
 msgid "Rule of thumb: a **list** for many values of the **same kind** (all loan ids), a **tuple** for a few values of **different kinds** that belong together (one loan)."
-msgstr ""
+msgstr "Практическо правило: **list** за много стойности от **един и същ вид** (всички номера на кредити), **tuple** за няколко стойности от **различен вид**, които са свързани (един кредит)."
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:774
-msgid "Convert between them"
-msgstr ""
-
-#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:776
+msgid "Convert between them"
+msgstr "Преобразуване между тях"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:778
 msgid "`list()` and `tuple()` convert in both directions:"
-msgstr ""
+msgstr "`list()` и `tuple()` преобразуват в двете посоки:"
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:792
-msgid "Syntax"
-msgstr ""
-
-#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:794
+msgid "Syntax"
+msgstr "Синтаксис"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:796
 msgid "`range` gives an **immutable sequence of whole numbers**:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:802
-msgid "`stop` is the only required argument. The numbers end at **`stop - 1`**."
-msgstr ""
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:803
-msgid "`start` is 0 when left out; `step` is 1 when left out."
-msgstr ""
+msgstr "`range` дава **непроменима поредица от цели числа**:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:804
-msgid "All three must be whole numbers. `step` can be negative, but not 0 (`ValueError`)."
-msgstr ""
+msgid "`stop` is the only required argument. The numbers end at **`stop - 1`**."
+msgstr "`stop` е единственият задължителен аргумент. Числата свършват на **`stop - 1`**."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:805
-msgid "If the arguments give no numbers, the range is empty."
-msgstr ""
+msgid "`start` is 0 when left out; `step` is 1 when left out."
+msgstr "`start` е 0, когато е пропуснат; `step` е 1, когато е пропуснат."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:806
+msgid "All three must be whole numbers. `step` can be negative, but not 0 (`ValueError`)."
+msgstr "И трите трябва да са цели числа. `step` може да е отрицателен, но не и 0 (`ValueError`)."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:807
+msgid "If the arguments give no numbers, the range is empty."
+msgstr "Ако аргументите не дават числа, range-ът е празен."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:809
 msgid "Reference: [Ranges](https://docs.python.org/3/library/stdtypes.html#ranges)."
-msgstr ""
+msgstr "Reference: [Ranges](https://docs.python.org/3/library/stdtypes.html#ranges)."
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:818
+#: site/lectures/03-lists-tuples-sets.md:820
 msgid "SAS `DO` loop"
-msgstr ""
+msgstr "SAS loop `DO`"
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:824
-msgid "A range does not keep its numbers"
-msgstr ""
-
-#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:826
+msgid "A range does not keep its numbers"
+msgstr "Range не пази числата си"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:828
 msgid "**Immutable**: a range cannot change."
-msgstr ""
+msgstr "**Непроменим** (immutable): range не може да се променя."
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:827
+#: site/lectures/03-lists-tuples-sets.md:829
 msgid "**Small in memory**: a range keeps only `start`, `stop` and `step`, and calculates each number when it is needed. A range of a billion numbers is as small as a range of ten."
-msgstr ""
+msgstr "**Малък в паметта**: range пази само `start`, `stop` и `step` и изчислява всяко число, когато потрябва. Range от милиард числа е толкова малък, колкото range от десет."
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:830
+#: site/lectures/03-lists-tuples-sets.md:832
 msgid "Used mostly in `for` loops, to repeat something a given number of times."
-msgstr ""
+msgstr "Използва се най-вече във `for` loops, за да повторите нещо определен брой пъти."
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:839
+#: site/lectures/03-lists-tuples-sets.md:841
 msgid "When you print a range, you see only the \"formula\". To see the numbers, make a list or a tuple of it - or loop over it:"
-msgstr ""
+msgstr "Когато отпечатате range, виждате само \"формулата\". За да видите числата, направете list или tuple от него - или го обходете с loop:"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:850
+#: site/lectures/03-lists-tuples-sets.md:852
 msgid "A range is a real sequence: `len`, indexes, slices and `in` work, and fast:"
-msgstr ""
+msgstr "Range е истинска поредица: `len`, индекси, slices и `in` работят, и то бързо:"
 
 #. heading 2
-#: site/lectures/03-lists-tuples-sets.md:858
+#: site/lectures/03-lists-tuples-sets.md:860
 msgid "11. Sets"
-msgstr ""
+msgstr "11. Sets"
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:860
-msgid "What is a set?"
-msgstr ""
-
-#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:862
+msgid "What is a set?"
+msgstr "Какво е set?"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:864
 msgid "A **set** is an **unordered** collection of **unique** values - the sets of mathematics."
-msgstr ""
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:865
-msgid "No duplicates: each value is in a set **once**."
-msgstr ""
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:866
-msgid "No order: a set has no first and no last item, and no indexes."
-msgstr ""
+msgstr "**Set** е **неподредена** колекция от **уникални** стойности - множествата от математиката."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:867
-msgid "The items must be **immutable** (*hashable*): numbers, strings, tuples - not lists."
-msgstr ""
+msgid "No duplicates: each value is in a set **once**."
+msgstr "Без повторения: всяка стойност е в set **веднъж**."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:868
-msgid "The set itself is mutable: you can add and remove items."
-msgstr ""
+msgid "No order: a set has no first and no last item, and no indexes."
+msgstr "Без ред: set няма първи и последен елемент и няма индекси."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:869
+msgid "The items must be **immutable** (*hashable*): numbers, strings, tuples - not lists."
+msgstr "Елементите трябва да са **непроменими** (*hashable*): числа, strings, tuples - не lists."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:870
+msgid "The set itself is mutable: you can add and remove items."
+msgstr "Самият set е променяем: можете да добавяте и премахвате елементи."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:872
 msgid "Sets are used to test membership, to remove duplicates, and to compare groups: union, intersection, difference (section 12)."
-msgstr ""
+msgstr "Sets се използват за проверка на принадлежност, за премахване на повторения и за сравняване на групи: обединение, сечение, разлика (раздел 12)."
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:873
-msgid "Create a set"
-msgstr ""
-
-#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:875
+msgid "Create a set"
+msgstr "Създаване на set"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:877
 msgid "A set is written in **curly brackets**:"
-msgstr ""
+msgstr "Set се пише в **къдрави скоби**:"
 
 #. box title
-#: site/lectures/03-lists-tuples-sets.md:890
+#: site/lectures/03-lists-tuples-sets.md:892
 msgid "`{}` is not an empty set"
-msgstr ""
+msgstr "`{}` не е празен set"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:891
+#: site/lectures/03-lists-tuples-sets.md:893
 msgid "`{}` is an empty **dictionary** (session 6). An empty set is `set()`:"
-msgstr ""
+msgstr "`{}` е празен **dictionary** (занятие 6). Празният set е `set()`:"
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:898
-msgid "Unique values: `SELECT DISTINCT`"
-msgstr ""
-
-#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:900
-msgid "`set()` makes a set from any sequence - the duplicates disappear:"
-msgstr ""
+msgid "Unique values: `SELECT DISTINCT`"
+msgstr "Уникални стойности: `SELECT DISTINCT`"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:913
+#: site/lectures/03-lists-tuples-sets.md:902
+msgid "`set()` makes a set from any sequence - the duplicates disappear:"
+msgstr "`set()` прави set от всяка поредица - повторенията изчезват:"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:915
 msgid "On the data - the distinct products and regions:"
-msgstr ""
+msgstr "Върху данните - различните продукти и региони:"
 
 #. box title
-#: site/lectures/03-lists-tuples-sets.md:924
+#: site/lectures/03-lists-tuples-sets.md:926
 msgid "The order of a set is not kept"
-msgstr ""
+msgstr "Редът на set не се запазва"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:925
+#: site/lectures/03-lists-tuples-sets.md:927
 msgid "A set does not remember the order in which values came. Print the same set of strings in two runs of a program, and the order can be different. When the order matters - in a report, in a test - use `sorted(the_set)`. (To remove duplicates **and** keep the first order: `list(dict.fromkeys(items))`, session 6.)"
-msgstr ""
+msgstr "Set не помни реда, в който са дошли стойностите. Отпечатайте един и същ set от strings при две пускания на програмата и редът може да е различен. Когато редът има значение - в отчет, в тест - използвайте `sorted(the_set)`. (За да премахнете повторенията **и** да запазите първоначалния ред: `list(dict.fromkeys(items))`, занятие 6.)"
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:931
+#: site/lectures/03-lists-tuples-sets.md:933
 msgid "Add and remove"
-msgstr ""
+msgstr "Добавяне и премахване"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:947
+#: site/lectures/03-lists-tuples-sets.md:949
 msgid "`pop()` removes and returns some item (which one is not defined), `clear()` empties the set. `len`, `in`, `min`, `max`, `sum` and `for` work as with lists."
-msgstr ""
+msgstr "`pop()` премахва и връща някой елемент (кой - не е определено), `clear()` изпразва set-а. `len`, `in`, `min`, `max`, `sum` и `for` работят както при lists."
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:950
-msgid "Sets and dictionaries"
-msgstr ""
-
-#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:952
-msgid "Both are **unordered** collections; both are **mutable**; both use **curly brackets**."
-msgstr ""
+msgid "Sets and dictionaries"
+msgstr "Sets и dictionaries"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:954
-msgid "A dictionary is a collection of `key: value` **pairs**; a set is a collection of **values** only - like the keys of a dictionary without the values."
-msgstr ""
+msgid "Both are **mutable**, and both use **curly brackets**. A set has no order; a dictionary keeps the order in which the keys were added (session 6)."
+msgstr "И двата са **променяеми** (mutable) и двата използват **къдрави скоби**. Set няма ред; dictionary пази реда, в който са добавени ключовете (занятие 6)."
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:957
+#: site/lectures/03-lists-tuples-sets.md:956
+msgid "A dictionary is a collection of `key: value` **pairs**; a set is a collection of **values** only - like the keys of a dictionary without the values."
+msgstr "Dictionary е колекция от **двойки** `key: value`; set е колекция само от **стойности** - като ключовете на dictionary без стойностите."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:959
 msgid "Dictionaries are the topic of session 6."
-msgstr ""
+msgstr "Dictionaries са темата на занятие 6."
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:959
-msgid "Sets are fast for `in`"
-msgstr ""
-
-#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:961
-msgid "A set is a **hash table** inside: Python calculates from the value where it must be, and looks only there. A list is searched item by item, from the start. For `in` on a large collection, a set is much faster; for going through all items, and for access by index, a list is better."
-msgstr ""
+msgid "Sets are fast for `in`"
+msgstr "Sets са бързи за `in`"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:984
+#: site/lectures/03-lists-tuples-sets.md:963
+msgid "A set is a **hash table** inside: Python calculates from the value where it must be, and looks only there. A list is searched item by item, from the start. For `in` on a large collection, a set is much faster; for going through all items, and for access by index, a list is better."
+msgstr "Отвътре set е **hash таблица**: Python изчислява от стойността къде трябва да е тя и търси само там. List се претърсва елемент по елемент, от началото. За `in` върху голяма колекция set е много по-бърз; за обхождане на всички елементи и за достъп по индекс list е по-добър."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:986
 msgid "So when you check many values against a long list of allowed codes - a nomenclature - put the codes into a set first."
-msgstr ""
+msgstr "Затова, когато проверявате много стойности срещу дълъг списък от позволени кодове - номенклатура - първо сложете кодовете в set."
 
 #. box title
-#: site/lectures/03-lists-tuples-sets.md:987
+#: site/lectures/03-lists-tuples-sets.md:989
 msgid "Advanced: `frozenset`"
-msgstr ""
+msgstr "За напреднали: `frozenset`"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:988
+#: site/lectures/03-lists-tuples-sets.md:990
 msgid "A `frozenset` is an immutable set. Because it cannot change, it can be an item of a set, or a key of a dictionary:"
-msgstr ""
+msgstr "`frozenset` е непроменим set. Понеже не може да се променя, може да бъде елемент на set или ключ на dictionary:"
 
 #. heading 2
-#: site/lectures/03-lists-tuples-sets.md:997
+#: site/lectures/03-lists-tuples-sets.md:999
 msgid "12. Set operations: `UNION`, `INTERSECT`, `EXCEPT`"
-msgstr ""
+msgstr "12. Операции със sets: `UNION`, `INTERSECT`, `EXCEPT`"
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:999
-msgid "The four operations"
-msgstr ""
-
-#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1001
-msgid "![Four Venn diagrams of two sets a and b: union, intersection, difference and symmetric difference, with the Python operator, the method and the SQL keyword of each](/diagrams/set-operations.svg){.diagram}"
-msgstr ""
+msgid "The four operations"
+msgstr "Четирите операции"
 
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1003 site/lectures/03-lists-tuples-sets.md:1065
-msgid "Operator"
-msgstr ""
-
-#. table cell
+#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1003
+msgid "![Four Venn diagrams of two sets a and b: union, intersection, difference and symmetric difference, with the Python operator, the method and the SQL keyword of each](/diagrams/set-operations.svg){.diagram}"
+msgstr "![Четири диаграми на Вен за два sets a и b: обединение, сечение, разлика и симетрична разлика, с оператора на Python, метода и ключовата дума на SQL за всяка](/diagrams/set-operations.svg){.diagram}"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1005 site/lectures/03-lists-tuples-sets.md:1067
+msgid "Operator"
+msgstr "Оператор"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1005
 msgid "SQL"
-msgstr ""
+msgstr "SQL"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1005
+#: site/lectures/03-lists-tuples-sets.md:1007
 msgid "union"
-msgstr ""
+msgstr "обединение"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1005
+#: site/lectures/03-lists-tuples-sets.md:1007
 msgid "in `a` or in `b`"
-msgstr ""
+msgstr "в `a` или в `b`"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1006
+#: site/lectures/03-lists-tuples-sets.md:1008
 msgid "intersection"
-msgstr ""
+msgstr "сечение"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1006
+#: site/lectures/03-lists-tuples-sets.md:1008
 msgid "in both"
-msgstr ""
+msgstr "и в двата"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1007
+#: site/lectures/03-lists-tuples-sets.md:1009
 msgid "difference"
-msgstr ""
+msgstr "разлика"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1007
+#: site/lectures/03-lists-tuples-sets.md:1009
 msgid "in `a`, not in `b`"
-msgstr ""
+msgstr "в `a`, не в `b`"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1007
-msgid "`EXCEPT` (Oracle: `MINUS`)"
-msgstr ""
+#: site/lectures/03-lists-tuples-sets.md:1009
+msgid "`EXCEPT` (older Oracle: `MINUS`)"
+msgstr "`EXCEPT` (в по-старите Oracle: `MINUS`)"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1008
-msgid "symmetric difference"
-msgstr ""
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1008
-msgid "in one of them, not in both"
-msgstr ""
-
-#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1010
-msgid "Each operation returns a **new** set."
-msgstr ""
+msgid "symmetric difference"
+msgstr "симетрична разлика"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1010
+msgid "in one of them, not in both"
+msgstr "в единия от тях, но не и в двата"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1022
+#: site/lectures/03-lists-tuples-sets.md:1012
+msgid "Each operation returns a **new** set."
+msgstr "Всяка операция връща **нов** set."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1024
 msgid "The methods accept any sequence, the operators only sets:"
-msgstr ""
+msgstr "Методите приемат всяка поредица, операторите - само sets:"
 
 #. box title
-#: site/lectures/03-lists-tuples-sets.md:1030
+#: site/lectures/03-lists-tuples-sets.md:1032
 msgid "`UNION` or `UNION ALL`?"
-msgstr ""
+msgstr "`UNION` или `UNION ALL`?"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1031
+#: site/lectures/03-lists-tuples-sets.md:1033
 msgid "SQL `UNION` removes duplicates - that is a set union, `a | b`. `UNION ALL` keeps every row - that is joining two lists, `list_a + list_b` (section 4)."
-msgstr ""
+msgstr "`UNION` в SQL премахва повторенията - това е обединение на sets, `a | b`. `UNION ALL` пази всеки ред - това е съединяване на два lists, `list_a + list_b` (раздел 4)."
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:1035
-msgid "Example: the clients of two months"
-msgstr ""
-
-#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1037
-msgid "The client ids with a loan at the end of August and at the end of September:"
-msgstr ""
-
-#. heading 3
-#: site/lectures/03-lists-tuples-sets.md:1050
-msgid "Example: what is missing from a credit file"
-msgstr ""
+msgid "Example: the clients of two months"
+msgstr "Пример: клиентите от два месеца"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1061
-msgid "`\", \".join(...)` makes one string of the items, with `\", \"` between them (session 7)."
-msgstr ""
+#: site/lectures/03-lists-tuples-sets.md:1039
+msgid "The client ids with a loan at the end of August and at the end of September:"
+msgstr "Номерата на клиентите с кредит в края на август и в края на септември:"
 
 #. heading 3
-#: site/lectures/03-lists-tuples-sets.md:1063
-msgid "Subsets and checks of the data"
-msgstr ""
+#: site/lectures/03-lists-tuples-sets.md:1052
+msgid "Example: what is missing from a credit file"
+msgstr "Пример: какво липсва в кредитно досие"
 
-#. table cell
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1063
+msgid "`\", \".join(...)` makes one string of the items, with `\", \"` between them (session 7)."
+msgstr "`\", \".join(...)` прави един string от елементите, с `\", \"` между тях (занятие 7)."
+
+#. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1065
-msgid "Test"
-msgstr ""
+msgid "Subsets and checks of the data"
+msgstr "Подмножества и проверки на данните"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1067
-msgid "every item of `a` is in `b`"
-msgstr ""
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1068
-msgid "`b` has every item of `a`"
-msgstr ""
+msgid "Test"
+msgstr "Проверка"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1069
+msgid "every item of `a` is in `b`"
+msgstr "всеки елемент на `a` е в `b`"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1070
+msgid "`b` has every item of `a`"
+msgstr "`b` има всеки елемент на `a`"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1071
 msgid "no common items"
-msgstr ""
+msgstr "няма общи елементи"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1071
+#: site/lectures/03-lists-tuples-sets.md:1073
 msgid "These are quick checks of the data, like the checks you write in SQL before a join:"
-msgstr ""
+msgstr "Това са бързи проверки на данните, като проверките, които пишете в SQL преди join:"
 
 #. heading 2
-#: site/lectures/03-lists-tuples-sets.md:1096
+#: site/lectures/03-lists-tuples-sets.md:1098
 msgid "13. Practice"
-msgstr ""
+msgstr "13. Упражнения"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1098
+#: site/lectures/03-lists-tuples-sets.md:1100
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
-msgstr ""
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1106
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1106
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1106
-msgid "What you do"
-msgstr ""
+msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: `git pull upstream main`) и пускайте задачите от терминала, в главната папка на repository-то:"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1108
-msgid "Predict 14 indexes, slices and operations, then check"
-msgstr ""
+msgid "Task"
+msgstr "Задача"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1109
-msgid "Parts of ids and dates; quarters of a year of monthly values"
-msgstr ""
+#: site/lectures/03-lists-tuples-sets.md:1108
+msgid "File"
+msgstr "Файл"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1108
+msgid "What you do"
+msgstr "Какво правите"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1110
-msgid "A watch list: add, insert, remove, sort, count"
-msgstr ""
+msgid "Predict 14 indexes, slices and operations, then check"
+msgstr "Предвидете 14 индекса, slices и операции, после проверете"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1111
-msgid "Records as tuples: unpack, read, sum; a list of tuples"
-msgstr ""
+msgid "Parts of ids and dates; quarters of a year of monthly values"
+msgstr "Части от номера и дати; тримесечия от година месечни стойности"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1112
-msgid "The clients of two months: new, closed, stayed; a credit file"
-msgstr ""
+msgid "A watch list: add, insert, remove, sort, count"
+msgstr "Списък за наблюдение: добавяне, вмъкване, премахване, сортиране, броене"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1113
+msgid "Records as tuples: unpack, read, sum; a list of tuples"
+msgstr "Записи като tuples: разопаковане, четене, сумиране; list от tuples"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1114
+msgid "The clients of two months: new, closed, stayed; a credit file"
+msgstr "Клиентите от два месеца: нови, закрити, останали; кредитно досие"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1115
 msgid "From `loans.csv` and `clients.csv`: distinct values, lists, set checks"
-msgstr ""
+msgstr "От `loans.csv` и `clients.csv`: различни стойности, lists, проверки със sets"
 
 #. heading 2
-#: site/lectures/03-lists-tuples-sets.md:1115
+#: site/lectures/03-lists-tuples-sets.md:1117
 msgid "Summary"
-msgstr ""
+msgstr "Обобщение"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1117
+#: site/lectures/03-lists-tuples-sets.md:1119
 msgid "Topic"
-msgstr ""
+msgstr "Тема"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1117
+#: site/lectures/03-lists-tuples-sets.md:1119
 msgid "Remember"
-msgstr ""
+msgstr "Запомнете"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1119
+#: site/lectures/03-lists-tuples-sets.md:1121
 msgid "Sequences"
-msgstr ""
+msgstr "Поредици"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1119
+#: site/lectures/03-lists-tuples-sets.md:1121
 msgid "`list`, `tuple`, `range`, `str`: ordered; `len`, `in`, `+`, `*`, `min`, `max`, `count`, `index`"
-msgstr ""
+msgstr "`list`, `tuple`, `range`, `str`: подредени; `len`, `in`, `+`, `*`, `min`, `max`, `count`, `index`"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1120
+#: site/lectures/03-lists-tuples-sets.md:1122
 msgid "Indexes"
-msgstr ""
+msgstr "Индекси"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1120
+#: site/lectures/03-lists-tuples-sets.md:1122
 msgid "from **0**; `-1` is the last; a wrong index is an `IndexError`"
-msgstr ""
+msgstr "от **0**; `-1` е последният; грешен индекс е `IndexError`"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1121
+#: site/lectures/03-lists-tuples-sets.md:1123
 msgid "Slices"
-msgstr ""
+msgstr "Slices"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1121
+#: site/lectures/03-lists-tuples-sets.md:1123
 msgid "`s[start:stop:step]`, the stop is not included; `s[:3]` the first 3, `s[-3:]` the last 3, `s[::-1]` reversed, `s[:]` a copy"
-msgstr ""
+msgstr "`s[start:stop:step]`, stop не е включен; `s[:3]` първите 3, `s[-3:]` последните 3, `s[::-1]` обърнат, `s[:]` копие"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1122
+#: site/lectures/03-lists-tuples-sets.md:1124
 msgid "Lists"
-msgstr ""
+msgstr "Lists"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1122
+#: site/lectures/03-lists-tuples-sets.md:1124
 msgid "`[...]`, mutable; `append`, `extend`, `insert`, `pop`, `remove`, `sort`; the methods return `None`"
-msgstr ""
+msgstr "`[...]`, mutable; `append`, `extend`, `insert`, `pop`, `remove`, `sort`; методите връщат `None`"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1123
+#: site/lectures/03-lists-tuples-sets.md:1125
 msgid "Sorting"
-msgstr ""
+msgstr "Сортиране"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1123
+#: site/lectures/03-lists-tuples-sets.md:1125
 msgid "`lst.sort()` changes the list; `sorted(x)` returns a new list"
-msgstr ""
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1124
-msgid "References"
-msgstr ""
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1124
-msgid "`b = a` is the same list with two names; a copy: `a[:]`, `a.copy()`, `list(a)`"
-msgstr ""
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1125
-msgid "Tuples"
-msgstr ""
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1125
-msgid "`(...)`, immutable, the comma makes it: `(99,)`; unpacking `a, b, *rest = t`; records"
-msgstr ""
+msgstr "`lst.sort()` променя list-а; `sorted(x)` връща нов list"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1126
+msgid "References"
+msgstr "Референции"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1126
+msgid "`b = a` is the same list with two names; a copy: `a[:]`, `a.copy()`, `list(a)`"
+msgstr "`b = a` е същият list с две имена; копие: `a[:]`, `a.copy()`, `list(a)`"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1127
+msgid "Tuples"
+msgstr "Tuples"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1127
+msgid "`(...)`, immutable, the comma makes it: `(99,)`; unpacking `a, b, *rest = t`; records"
+msgstr "`(...)`, immutable, прави го запетаята: `(99,)`; разопаковане `a, b, *rest = t`; записи"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1128
 msgid "`range(start, stop, step)`, stop not included; small in memory"
-msgstr ""
+msgstr "`range(start, stop, step)`, stop не е включен; малък в паметта"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1127
+#: site/lectures/03-lists-tuples-sets.md:1129
 msgid "Sets"
-msgstr ""
+msgstr "Sets"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1127
+#: site/lectures/03-lists-tuples-sets.md:1129
 msgid "`{...}` / `set()`, unique, unordered; `add`, `discard`; fast `in`; print with `sorted()`"
-msgstr ""
+msgstr "`{...}` / `set()`, уникални, неподредени; `add`, `discard`; бърз `in`; отпечатване със `sorted()`"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1128
-msgid "Set operations"
-msgstr ""
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1128
-msgid "`\\|` `UNION`, `&` `INTERSECT`, `-` `EXCEPT`, `^` symmetric difference; `<=` subset"
-msgstr ""
-
-#. heading 2
 #: site/lectures/03-lists-tuples-sets.md:1130
-msgid "Homework"
-msgstr ""
+msgid "Set operations"
+msgstr "Операции със sets"
 
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1132
-msgid "`03-lists-tuples-sets/homework.py` (in the homework repository): a **portfolio snapshot** from `loans.csv` - the loans as a list of tuples, the five largest exposures, the distinct products, and the clients that have loans in both currencies. Every check must print `OK`."
-msgstr ""
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1136
-msgid "The practice tasks you did not finish in class."
-msgstr ""
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1137
-msgid "Optional: `names.py` asks how many names the user will enter, reads them with `input()` in a loop into a list, and prints them sorted, without duplicates, and how many were duplicates."
-msgstr ""
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1140
-msgid "Optional: a word is a *palindrome* if it reads the same forwards and backwards, ignoring case (`\"Racecar\"`). Check it with a slice, for words typed by the user."
-msgstr ""
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1130
+msgid "`\\|` `UNION`, `&` `INTERSECT`, `-` `EXCEPT`, `^` symmetric difference; `<=` subset"
+msgstr "`\\|` `UNION`, `&` `INTERSECT`, `-` `EXCEPT`, `^` симетрична разлика; `<=` подмножество"
 
 #. heading 2
-#: site/lectures/03-lists-tuples-sets.md:1143
-msgid "Read more"
-msgstr ""
+#: site/lectures/03-lists-tuples-sets.md:1132
+msgid "Homework"
+msgstr "Домашно"
 
 #. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1134
+msgid "`03-lists-tuples-sets/homework.py` (in the homework repository): a **portfolio snapshot** from `loans.csv` - the loans as a list of tuples, the five largest exposures, the distinct products, and the clients that have loans in both currencies. Every check must print `OK`."
+msgstr "`03-lists-tuples-sets/homework.py` (в homework repository): **моментна снимка на портфейла** от `loans.csv` - кредитите като list от tuples, петте най-големи експозиции, различните продукти и клиентите, които имат кредити и в двете валути. Всяка проверка трябва да отпечата `OK`."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1138
+msgid "The practice tasks you did not finish in class."
+msgstr "Задачите за упражнение, които не сте довършили в клас."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1139
+msgid "Optional: `names.py` asks how many names the user will enter, reads them with `input()` in a loop into a list, and prints them sorted, without duplicates, and how many were duplicates."
+msgstr "По желание: `names.py` пита колко имена ще въведе потребителят, чете ги с `input()` в loop в list и ги отпечатва сортирани, без повторения, и колко са били повторенията."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1142
+msgid "Optional: a word is a *palindrome* if it reads the same forwards and backwards, ignoring case (`\"Racecar\"`). Check it with a slice, for words typed by the user."
+msgstr "По желание: една дума е *палиндром*, ако се чете еднакво отпред назад и отзад напред, без значение главни или малки букви (`\"Racecar\"`). Проверете го със slice, за думи, въведени от потребителя."
+
+#. heading 2
 #: site/lectures/03-lists-tuples-sets.md:1145
-msgid "Python tutorial: [Data structures](https://docs.python.org/3/tutorial/datastructures.html) (lists, `del`, tuples and sequences, sets)"
-msgstr ""
+msgid "Read more"
+msgstr "Още за четене"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1147
+msgid "Python tutorial: [Data structures](https://docs.python.org/3/tutorial/datastructures.html) (lists, `del`, tuples and sequences, sets)"
+msgstr "Python tutorial: [Data structures](https://docs.python.org/3/tutorial/datastructures.html) (lists, `del`, tuples и поредици, sets)"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1149
 msgid "Reference: [Sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range), [Set types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset), [`copy`](https://docs.python.org/3/library/copy.html)"
-msgstr ""
+msgstr "Reference: [Sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range), [Set types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset), [`copy`](https://docs.python.org/3/library/copy.html)"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1150
+#: site/lectures/03-lists-tuples-sets.md:1152
 msgid "Real Python: [Lists and tuples](https://realpython.com/python-lists-tuples/), [Sets](https://realpython.com/python-sets/)"
-msgstr ""
+msgstr "Real Python: [Lists and tuples](https://realpython.com/python-lists-tuples/), [Sets](https://realpython.com/python-sets/)"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1153
+#: site/lectures/03-lists-tuples-sets.md:1155
 msgid "**Next session:** functions - your own `def`, parameters and return values, and why a function is the Python version of a SAS macro."
-msgstr ""
+msgstr "**Следващото занятие:** функции - собствен `def`, параметри и върнати стойности и защо функцията е версията на SAS macro в Python."

@@ -1361,8 +1361,8 @@ for letter in word:
     print(letter, end=",")
 ```
 
-In data work, `continue` skips the records you do not want - like a `WHERE`, or a
-`DELETE` / `RETURN` in a DATA step. Count only the USD loans, and skip empty lines:
+In data work, `continue` skips the records you do not want - like a `WHERE`, a
+subsetting `IF` or `DELETE` in a DATA step. Count only the USD loans, and skip empty lines:
 
 ```python run
 usd_count = 0

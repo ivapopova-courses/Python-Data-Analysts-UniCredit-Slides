@@ -26,18 +26,18 @@ The dates are planned and may change.
 | 2 | Wed 28.10 | [Conditional statements and loops](/lectures/02-conditions-and-loops) |
 | 3 | Mon 02.11 | [Lists (basics), tuples and sets](/lectures/03-lists-tuples-sets) |
 | 4 | Wed 04.11 | [Functions](/lectures/04-functions) |
-| 5 | Mon 09.11 | Lists (advanced) |
-| 6 | Wed 11.11 | Dictionaries |
-| 7 | Mon 16.11 | Text processing |
-| 8 | Wed 18.11 | Regular expressions |
-| 9 | Mon 23.11 | Error handling and file handling |
-| 10 | Wed 25.11 | Modules, packages, Git and GitHub |
-| 11 | Mon 30.11 | OOP: first steps, classes and objects |
-| 12 | Wed 02.12 | OOP in practice: nomenclatures |
-| 13 | Mon 07.12 | Working with databases |
-| 14 | Wed 09.12 | NumPy and introduction to pandas |
-| 15 | Mon 14.12 | pandas: selection, aggregation, joins |
-| 16 | Wed 16.12 | pandas: reports and the [final project](/project) |
+| 5 | Mon 09.11 | [Lists (advanced)](/lectures/05-lists-advanced) |
+| 6 | Wed 11.11 | [Dictionaries](/lectures/06-dictionaries) |
+| 7 | Mon 16.11 | [Text processing](/lectures/07-text-processing) |
+| 8 | Wed 18.11 | [Regular expressions](/lectures/08-regular-expressions) |
+| 9 | Mon 23.11 | [Error handling and file handling](/lectures/09-errors-and-files) |
+| 10 | Wed 25.11 | [Modules, packages, Git and GitHub](/lectures/10-modules-and-git) |
+| 11 | Mon 30.11 | [OOP: first steps, classes and objects](/lectures/11-oop-classes) |
+| 12 | Wed 02.12 | [OOP in practice: nomenclatures](/lectures/12-oop-nomenclatures) |
+| 13 | Mon 07.12 | [Working with databases](/lectures/13-databases) |
+| 14 | Wed 09.12 | [NumPy and introduction to pandas](/lectures/14-numpy-pandas-intro) |
+| 15 | Mon 14.12 | [pandas: selection, aggregation, joins](/lectures/15-pandas-select-aggregate-join) |
+| 16 | Wed 16.12 | [pandas: reports](/lectures/16-pandas-reports-project) and the [final project](/project) |
 
 ## Session details
 

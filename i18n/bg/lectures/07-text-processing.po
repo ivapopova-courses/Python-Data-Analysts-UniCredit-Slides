@@ -1,0 +1,1219 @@
+# Translation of site/lectures/07-text-processing.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/lectures/07-text-processing.md\n"
+
+#. front matter: title
+#: site/lectures/07-text-processing.md:2 site/lectures/07-text-processing.md:5
+msgid "7. Text processing"
+msgstr ""
+
+#. html
+#: site/lectures/07-text-processing.md:8
+msgid "<span>Session 7</span><span>practice: <code>07-text-processing/</code> in the homework repository</span>"
+msgstr ""
+
+#. html
+#: site/lectures/07-text-processing.md:9
+msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:12
+msgid "**Today you will learn to:**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:14
+msgid "change the case of text and remove extra spaces - the Python `UPCASE`, `PROPCASE`, `STRIP` and `COMPBL`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:16
+msgid "find and test parts of a string, and check what kind of characters it has;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:17
+msgid "split a line into fields and join fields into a line - `SCAN` and `CATX`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:18
+msgid "replace and remove characters - `TRANWRD` and `COMPRESS`;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:19
+msgid "pad codes with zeros and align text in columns;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:20
+msgid "clean real identifiers: client ids, company names, EIKs, IBANs, e-mails, city names;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:22
+msgid "read numbers written the Bulgarian way (`1 234 567,89`), and dates written in different formats, with `datetime`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:25
+msgid "From SAS to Python - the same cleaning step, two ways:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:49
+msgid "The file `client_register.csv` is new today: the 150 clients of the sample data, with their text fields typed by many people over many years. It is made up, but the problems in it are real ones."
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:53
+msgid "1. Strings: a recap and the new data"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:55
+msgid "You know from session 1 and 3: a string is a **sequence** of characters; `len(s)`, `s[0]`, `s[-1]`, `s[2:5]` work like on a list; `s[2:5]` is `SUBSTR(s, 3, 3)`. And a string **cannot change** (it is immutable): every method returns a **new** string."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:69
+msgid "This is the most common mistake of today: a method call without `=`. `repr()` (or `!r` in an f-string) shows the quotes, so you can see the spaces."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:72
+msgid "The columns of the new file:"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:85
+msgid "Column"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:85
+msgid "What is wrong in it"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:87
+msgid "lower case, spaces, `-`, missing zeros: `c0014`, `C 0009`, `C-0026`, `C17`"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:88
+msgid "case, extra spaces, quotes, legal forms written as `E.A.D.`"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:89
+msgid "spaces inside, a `BG` prefix (the VAT number), 9 or 13 digits"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:90
+msgid "groups of 4 with spaces, lower case, empty"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:91
+msgid "upper case, spaces, `\" at \"` instead of `@`"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:92
+msgid "case, spaces, `gr. ` in front, Cyrillic"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:93
+msgid "four date formats"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:94
+msgid "Bulgarian and English number formats, `EUR` in front"
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:96
+msgid "2. Case and spaces"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:98
+msgid "Upper, lower, title"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:109 site/lectures/07-text-processing.md:252
+msgid "SAS"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:109
+msgid "SQL"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:109 site/lectures/07-text-processing.md:252
+msgid "Python"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:113
+msgid "`INITCAP(s)` (Oracle, PostgreSQL)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:115
+msgid "Compare text without case: lower (or upper) **both** sides:"
+msgstr ""
+
+#. box title
+#: site/lectures/07-text-processing.md:123
+msgid "`title()` is not clever"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:124
+msgid "`title()` gives a capital after **every** non-letter, and it does not know legal forms or abbreviations:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:133
+msgid "Fix the known words after `title()` (section 7)."
+msgstr ""
+
+#. box title
+#: site/lectures/07-text-processing.md:136
+msgid "Advanced: `casefold()`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:137
+msgid "For comparing text in any language, `casefold()` is stronger than `lower()`: the German `\"Straße\".casefold()` is `\"strasse\"`. For Bulgarian and English, `lower()` is enough."
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:142
+msgid "Remove spaces: `strip`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:144
+msgid "`strip()` removes spaces (and tabs and new lines) at **both ends**; `lstrip()` only at the start, `rstrip()` only at the end:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:155
+msgid "With an argument, `strip` removes **those characters** from the ends (any of them, in any order) - not a word:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:165
+msgid "Spaces inside: `COMPBL`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:167
+msgid "`strip` does not touch the spaces **inside**. `split()` without an argument splits on any run of spaces, and `\" \".join(...)` puts the words back with one space:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:177
+msgid "`\" \".join(s.split())` is the standard Python idiom for \"remove all extra spaces\". Section 4 explains `split` and `join`."
+msgstr ""
+
+#. box title
+#: site/lectures/07-text-processing.md:180 site/lectures/07-text-processing.md:274 site/lectures/07-text-processing.md:388 site/lectures/07-text-processing.md:465 site/lectures/07-text-processing.md:521 site/lectures/07-text-processing.md:714 site/lectures/07-text-processing.md:818 site/lectures/07-text-processing.md:1001
+msgid "Try it"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:181
+msgid "Clean `\"  GREEN   build  eood \"` into `\"Green Build EOOD\"`. You need `split`, `join`, `title`, and one more step for the legal form. (Hint: `s[:-4] + \"EOOD\"` works when you know the last word; section 7 does it properly.)"
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:186
+msgid "3. Find and test"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:188
+msgid "Is it in there?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:200
+msgid "`startswith` and `endswith` take a **tuple** of options:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:210
+msgid "Where is it? `find` and `index`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:212
+msgid "`find` gives the position of the first match, or **-1** if there is none. `index` does the same, but a missing value is an **error**:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:225
+msgid "SAS `INDEX` and `FIND` count from **1** and give **0** when nothing is found; Python counts from 0 and gives -1. A classic bug: `if s.find(\"x\"):` is true for -1 and false when `\"x\"` is at position 0. Use `in` for \"is it there?\"."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:229
+msgid "With a position you can cut: the text after `\"on \"`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:238
+msgid "(Session 8 does this kind of extraction with regular expressions - shorter and safer.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:241
+msgid "What kind of characters?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:243
+msgid "These methods return `True` if **all** characters are of a kind (and the string is not empty):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:259
+msgid "Check an id by its parts - \"an L and six digits\":"
+msgstr ""
+
+#. box title
+#: site/lectures/07-text-processing.md:268
+msgid "`isdigit` is not \"is a number\""
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:269
+msgid "`\"12.50\".isdigit()` and `\"-5\".isdigit()` are `False` - a point and a minus are not digits. Use `isdigit` for ids and codes; for numbers, convert with `float()` (section 8)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:275
+msgid "Write `is_client_id(s)`: `\"C\"` and four digits. Test it on `\"C0001\"`, `\"c0001\"`, `\"C001\"`, `\"C00010\"`. Then change it to accept a lower-case `c` too."
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:279
+msgid "4. Split and join"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:281
+msgid "`split`: a line into fields"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:290
+msgid "Two kinds of `split`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:292
+msgid "`split(\",\")` with a separator: **every** comma splits, so two commas give an **empty** field - right for CSV, where an empty field means a missing value;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:294
+msgid "`split()` without an argument: any run of spaces, tabs and new lines splits, and there are no empty fields - right for words."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:304
+msgid "`maxsplit` limits the number of cuts; `rsplit` cuts from the right - the last word of a company name is its legal form:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:316
+msgid "`partition` cuts at the **first** separator and always gives three parts - handy for `key=value`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:327
+msgid "`splitlines` splits a text into lines (on `\\n`, `\\r\\n` and more):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:334
+msgid "`join`: fields into a line"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:336
+msgid "`separator.join(list_of_strings)` - the separator comes **first**, the list in the brackets:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:347
+msgid "`CATX(',', a, b, c)` in SAS, `CONCAT_WS(',', ...)` or `STRING_AGG` in SQL."
+msgstr ""
+
+#. box title
+#: site/lectures/07-text-processing.md:349
+msgid "`join` takes only strings"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:350
+msgid "A number in the list is a `TypeError`. Convert first:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:359
+msgid "Why not `split(\",\")` for CSV files?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:361
+msgid "A field can contain the separator, inside quotes. `split` does not know quotes; the `csv` module does:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:372
+msgid "That is why the examples since session 6 read files with `csv.DictReader`. Session 9 covers the `csv` module."
+msgstr ""
+
+#. box title
+#: site/lectures/07-text-processing.md:375 site/lectures/07-text-processing.md:701
+msgid "The same in pandas"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:376
+msgid "In pandas, every string method works on a whole column with `.str`: `loans[\"product\"].str.upper()`, `names.str.split()`, `ids.str.startswith(\"L\")` (session 15):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:389
+msgid "`settings = \"lgd=0.45;currency=EUR;report_date=2026-09-30\"`. Turn it into a dictionary `{\"lgd\": \"0.45\", ...}` with one comprehension: `split(\";\")`, then `partition(\"=\")`. Then join it back into the same string."
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:394
+msgid "5. Replace and remove"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:398
+msgid "`replace(old, new)` replaces **every** occurrence; a third argument limits the number:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:409
+msgid "Chains of `replace` run from left to right - each one on the result of the one before:"
+msgstr ""
+
+#. box title
+#: site/lectures/07-text-processing.md:418
+msgid "The order of replacements matters"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:419
+msgid "Swap `,` and `.` in `\"1,234.56\"` (English -> Bulgarian) with two `replace` calls, and the second one changes the result of the first:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:428
+msgid "`translate` (below) swaps characters in one step, without this problem."
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:431
+msgid "`removeprefix` and `removesuffix`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:433
+msgid "Since Python 3.9: remove a text at the start or the end - only if it is there:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:442
+msgid "Not the same as `strip(\"gr. \")` - that removes the **characters** g, r, `.` and space from both ends, as long as it finds them:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:451
+msgid "`translate`: map or delete characters"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:453
+msgid "`str.maketrans` builds a table of character changes, `translate` applies it - in one pass. The SAS `TRANSLATE` and `COMPRESS(s, chars)`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:466
+msgid "`\"BG80 test 9661-1020 3456 78\"`: make it upper case, without spaces and dashes - in one line with `translate` and `upper`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:470
+msgid "6. Padding and alignment"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:472
+msgid "`zfill` pads a number-like string with zeros on the left - the SAS format `Z`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:480
+msgid "`zfill` pads the **whole** string, and keeps a sign in front - it does not know that `C` is a prefix. Pad the number part only:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:489
+msgid "`rjust`, `ljust` and `center` pad to a width with any character:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:495
+msgid "A fixed-width line - some old systems still want them. The f-string format spec of session 1 does the same, and is easier to read:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:506
+msgid "The same on the loan portfolio - a small text report with a title, a header and the amounts aligned on the right:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:522
+msgid "Print the numbers 1, 25 and 400 as loan ids `L000001`, `L000025`, `L000400` - once with `zfill`, once with an f-string."
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:526
+msgid "7. Cleaning identifiers and names"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:528
+msgid "Now the real file. One **function per column**: it takes the raw text and returns the clean value - or `None` when the value cannot be fixed. Small functions are easy to test, and the same function cleans the next file too."
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:532
+msgid "Client ids"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:549
+msgid "On the whole file - how many ids needed a fix, and are they unique now?"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:569
+msgid "Company and person names"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:571
+msgid "Spaces, case, quotes, and the legal form at the end:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:590
+msgid "EIK and IBAN"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:592
+msgid "The EIK (the company id of the Bulgarian register) has 9 digits, or 13 for a branch. `BG` in front makes it a VAT number. Keep the digits only, then check the length:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:607
+msgid "An IBAN is written in groups of 4 for people, and without spaces for machines. A Bulgarian IBAN has 22 characters and starts with `BG`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:628
+msgid "Both checks are only the **shape**. A real EIK and a real IBAN also have **check digits** that catch typing errors - the Self-study of session 8 computes them."
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:631
+msgid "E-mails"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:649
+msgid "(Session 8 checks e-mails with a regular expression.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:651
+msgid "Cities: a mapping of variants"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:653
+msgid "Some variants are only case and spaces; some are a prefix; some are in Cyrillic. Clean what string methods can clean, then a **dictionary** (session 6) maps the Cyrillic names:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:677
+msgid "Compare with `clients.csv`, where the region is clean: the counts must be the same."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:698
+msgid "A check like this - \"the cleaned data agrees with a trusted source\" - is worth more than any amount of looking at the data."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:702
+msgid "The same functions work on a column with `.map(function)`, or with the `.str` methods (session 15):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:715
+msgid "Change `clean_name` so that it also removes a comma before the legal form (`\"Rila Print, EAD\"`). Then run it on all names of the file and count how many were changed."
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:720
+msgid "8. Numbers from text"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:722
+msgid "`float()` understands only one format: a point for the decimals, no separators. Text from Excel, reports and people has other formats:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:731
+msgid "`int()` is even stricter: it takes only whole numbers. A value like `\"4.0\"` from an export needs `float` first:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:740
+msgid "The turnover column has all of these:"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:742
+msgid "Text"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:742
+msgid "Style"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:742
+msgid "Value"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:744
+msgid "Bulgarian: space, comma"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:745
+msgid "German / Bulgarian Excel: point, comma"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:746
+msgid "English: comma, point"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:747
+msgid "plain"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:748
+msgid "a currency, no decimals"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:750
+msgid "The rule: the **last** of `,` and `.` is the decimal separator - if it has one to two digits after it; everything else is a thousands separator."
+msgstr ""
+
+#. box title
+#: site/lectures/07-text-processing.md:771
+msgid "A number without decimals is ambiguous"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:772
+msgid "`\"1,234\"` - is it one thousand two hundred thirty-four (English), or one point two three four (Bulgarian)? The rule above says 1234, because three digits after the separator are thousands. In your own data, **ask** which format a source uses, and write it down - do not guess per value."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:778
+msgid "The SAS informats do the same with a fixed rule per column: `COMMA12.` for `1,234,567.89` and `COMMAX12.` for `1.234.567,89`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:781
+msgid "And back: a number in the Bulgarian format for a report. The format spec gives the English format; then swap the characters with `translate` (section 5):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:794
+msgid "On the file - the total turnover of the companies:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:819
+msgid "What does `parse_amount(\"12,5\")` give? And `parse_amount(\"1,234\")`? Predict, then run. Which of the two answers would be wrong for an English-style source?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:823
+msgid "9. Dates from text"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:825
+msgid "`date` and `datetime`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:827
+msgid "The module `datetime` has the types for dates and times:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:829
+msgid "`date` - a day: year, month, day;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:830
+msgid "`datetime` - a day and a time;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:831
+msgid "`timedelta` - a length of time (days, seconds)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:843
+msgid "From ISO text: `fromisoformat`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:845
+msgid "The ISO format `YYYY-MM-DD` is the format of the sample data, of databases and of JSON. It has its own method:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:856
+msgid "ISO dates have one more advantage: as **text**, they sort in the right order (session 2). `\"16.04.2019\"` does not."
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:859
+msgid "Any format: `strptime` and `strftime`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:861
+msgid "`datetime.strptime(text, format)` reads a date in a format you describe with **format codes**; `strftime(format)` writes one:"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:864
+msgid "Code"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:864
+msgid "Means"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:864
+msgid "Example"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:866
+msgid "year, 4 digits"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:867
+msgid "month, 2 digits"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:868
+msgid "day, 2 digits"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:869
+msgid "month name, short"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:870
+msgid "month name"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:871
+msgid "hours, minutes, seconds"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:887
+msgid "`strptime` gives a `datetime`; `.date()` keeps only the day."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:889
+msgid "A text that does not match the format is a `ValueError` - also an impossible date:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:897
+msgid "(How to catch such an error and go on with the next row: session 9.)"
+msgstr ""
+
+#. box title
+#: site/lectures/07-text-processing.md:899
+msgid "Advanced: month names and the language"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:900
+msgid "`%b` and `%B` follow the **locale**. By default Python uses English month names, but if a program (or a library) switches the locale with `locale.setlocale`, `%b` expects the month names of that language, and `strptime(\"8 Jun 2014\", \"%d %b %Y\")` can fail. For data, prefer numeric formats. If a source has English month names, a small dictionary `{\"Jan\": 1, ...}` (session 6) is the safe way."
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:907
+msgid "Several formats in one column"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:909
+msgid "The `registered` column has four formats. Decide the format by the **shape** of the text, then read it:"
+msgstr ""
+
+#. box title
+#: site/lectures/07-text-processing.md:934
+msgid "`08/06/2014` - June or August?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:935
+msgid "In Bulgaria and most of Europe it is the 8th of June; in the USA it is the 6th of August. Python does not guess: you choose `%d/%m` or `%m/%d`. As with numbers: know the source."
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:940
+msgid "Date arithmetic"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:942
+msgid "Subtracting two dates gives a `timedelta`; its `.days` is the number of days - `INTCK('day', a, b)`, or `b - a` in SAS:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:958
+msgid "The first and the last day of a month - the **report dates** of risk reporting:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:970
+msgid "(Adding **months** is not in `datetime`: a month has no fixed length. Session 16 does it with pandas; session 10 shows the standard library.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:973
+msgid "On the file: years as a client"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1002
+msgid "Check the parsed dates against `clients.csv`, where `client_since` is clean ISO: are all 150 equal? (Read both files, compare the lists with `==`.)"
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:1006
+msgid "10. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1008
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1016
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1016
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1016
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1018
+msgid "Normalise names, cities and codes: case, spaces, prefixes"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1019
+msgid "Predict: `split`, `strip`, `find`, `join`, `replace`, slices"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1020
+msgid "Settings `key=value;...` into a dict and back; `SCAN`; a CSV line"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1021
+msgid "Clean client ids, EIKs, IBANs and e-mails"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1022
+msgid "Numbers in four formats to `float`; the Bulgarian format back"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1023
+msgid "`task6-dates.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1023
+msgid "Dates in five formats; days between; month ends; years as a client"
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:1025
+msgid "Summary"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1027
+msgid "Topic"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1027
+msgid "Remember"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1029
+msgid "Immutable"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1029
+msgid "every method returns a new string: `s = s.strip()`"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1030
+msgid "Case"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1030
+msgid "`upper`, `lower`, `title` (fix legal forms after it); compare with `.lower()` on both sides"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1031
+msgid "Spaces"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1031
+msgid "`strip` / `lstrip` / `rstrip` at the ends; `\" \".join(s.split())` = `COMPBL`"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1032
+msgid "Find"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1032
+msgid "`in`; `startswith((...))`; `find` gives -1, `index` raises; `count`"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1033
+msgid "Test"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1033
+msgid "`isdigit`, `isalpha`, `isalnum`, `isspace` - all characters, non-empty"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1034
+msgid "Split"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1034
+msgid "`split(\",\")` keeps empty fields; `split()` splits on any spaces; `rsplit`, `partition`, `splitlines`"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1035
+msgid "Join"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1035
+msgid "`\", \".join(strings)` - only strings; CSV with quotes: the `csv` module"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1036
+msgid "Replace"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1037
+msgid "Pad"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1037
+msgid "`zfill`, `rjust`, `ljust`; f-string `:>10`, `:06d`"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1038
+msgid "Cleaning"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1038
+msgid "one function per column, `None` for what cannot be fixed; check against a trusted source"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1039
+msgid "Numbers"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1039
+msgid "the last `,` or `.` with 1 - 2 digits after it is the decimal separator; know the source"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1040
+msgid "Dates"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1040
+msgid "`date.fromisoformat`; `datetime.strptime(s, \"%d.%m.%Y\").date()`; `strftime`; `b - a` gives a `timedelta`"
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:1042
+msgid "Homework"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1044
+msgid "`07-text-processing/homework.py` (in the homework repository): **clean the client register** - a function for each column of `client_register.csv`, then the whole file into a list of clean records, with a summary: how many values were fixed and how many could not be fixed, per column. Every check must print `OK`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1048
+msgid "The practice tasks you did not finish in class."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1049
+msgid "Optional: print the clean register as a fixed-width report: the client id, the name (30 characters), the EIK, the IBAN in groups of 4, and the turnover in the Bulgarian format, right-aligned."
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:1053
+msgid "Self-study"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1055
+msgid "This part is not covered in class. It is for reading at home: what an encoding is, why Cyrillic text sometimes comes out as `РЎРѕС„РёСЏ`, and how to write Cyrillic names in Latin letters."
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:1059
+msgid "Encodings: UTF-8, cp1251 and Cyrillic"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1061
+msgid "A file on disk is **bytes**, not text. An **encoding** is the rule that turns text into bytes and back. The same text gives different bytes in different encodings:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1074
+msgid "**UTF-8** - every character of every language; the standard of the web, of Python source files and of most new files."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1076
+msgid "**cp1251** (Windows-1251) - the old Windows encoding for Cyrillic. Exports from old systems and Excel files saved as \"CSV\" on a Bulgarian Windows are often cp1251."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1079
+msgid "Reading with the wrong encoding gives either an error, or **mojibake** - wrong letters:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1090
+msgid "That is why every `open()` in this course says `encoding=\"utf-8\"`: without it, Python 3.12 / 3.13 on Windows uses the Windows encoding of the computer (often cp1252 or cp1251), and the same script gives different results on different computers. (Python 3.15 uses UTF-8 by default everywhere.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1095
+msgid "The file `regions_bg.csv` is saved in **cp1251**:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1105
+msgid "`errors=\"replace\"` puts `?` (or `�`) instead of a byte that cannot be read, instead of stopping. Use it only to **look** at a file, never to load data."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1108
+msgid "One more detail: Excel saves \"CSV UTF-8\" with a **BOM** - three bytes `EF BB BF` at the start. Read such a file with `encoding=\"utf-8-sig\"`, or the first column name gets an invisible character in front:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1119
+msgid "**Exercises**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1121
+msgid "Read `regions_bg.csv` with `csv.DictReader` and the right encoding, and build a dictionary `name_bg -> name_en`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1123
+msgid "Write the same rows into a new file `regions_utf8.csv` in UTF-8, and read it back."
+msgstr ""
+
+#. box title
+#: site/lectures/07-text-processing.md:1125 site/lectures/07-text-processing.md:1185
+msgid "Answer"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1141
+msgid "(Writing files with `csv`: session 9.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/07-text-processing.md:1144
+msgid "Cyrillic names in Latin letters"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1146
+msgid "Bulgaria has an official transliteration (the Transliteration Act of 2009): `ж` -> `zh`, `ц` -> `ts`, `ч` -> `ch`, `ш` -> `sh`, `щ` -> `sht`, `ъ` -> `a`, `ю` -> `yu`, `я` -> `ya`, ... A dictionary of single letters to strings, used with `translate`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1163
+msgid "`str.maketrans` accepts a dictionary of **one character -> any string**, so one letter can become two or three. (The full rules have a few exceptions, for example `-ия` at the end of a word is `-ia`: `София` -> `Sofia`, not `Sofiya`.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1167
+msgid "Another trap of text from many sources: the same letter can be stored in two ways - `\"й\"` as one character, or `\"и\"` plus a combining mark. They look the same, but are not `==`. `unicodedata.normalize(\"NFC\", s)` brings both to the same form:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1180
+msgid "**Exercise**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1182
+msgid "Add the rule \"`ия` at the end of a word -> `ia`\" to the transliteration: first replace it, then `translate`. Check it with `София` and `Мария`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1197
+msgid "(The ASCII letters `ia` pass through `translate` unchanged.)"
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:1200
+msgid "Read more"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1202
+msgid "Reference: [String methods](https://docs.python.org/3/library/stdtypes.html#string-methods), [`datetime`](https://docs.python.org/3/library/datetime.html) (the table of [format codes](https://docs.python.org/3/library/datetime.html#format-codes)), [`csv`](https://docs.python.org/3/library/csv.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1206
+msgid "[Unicode HOWTO](https://docs.python.org/3/howto/unicode.html) (encodings, normalisation)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1207
+msgid "Real Python: [Strings and character data](https://realpython.com/python-strings/), [Using Python datetime to work with dates and times](https://realpython.com/python-datetime/)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1210
+msgid "**Next session:** regular expressions - patterns that find, check and extract IBANs, EIKs, e-mails, dates and amounts in free text; the Python `PRXMATCH`."
+msgstr ""

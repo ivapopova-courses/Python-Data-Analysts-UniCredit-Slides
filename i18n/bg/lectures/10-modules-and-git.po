@@ -1,0 +1,1284 @@
+# Translation of site/lectures/10-modules-and-git.md into Български.
+# Edit the msgstr lines only (Poedit or any PO editor). See i18n/README.md.
+msgid ""
+msgstr ""
+"Project-Id-Version: Python for Data Analysts\n"
+"Language-Team: \n"
+"Last-Translator: \n"
+"PO-Revision-Date: \n"
+"Language: bg\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Source-File: site/lectures/10-modules-and-git.md\n"
+
+#. front matter: title
+#: site/lectures/10-modules-and-git.md:2 site/lectures/10-modules-and-git.md:5
+msgid "10. Modules, packages, Git and GitHub"
+msgstr ""
+
+#. html
+#: site/lectures/10-modules-and-git.md:8
+msgid "<span>Session 10</span><span>practice: <code>10-modules-and-git/</code> in the homework repository</span>"
+msgstr ""
+
+#. html
+#: site/lectures/10-modules-and-git.md:9
+msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:12
+msgid "**Today you will learn to:**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:14
+msgid "import modules in all their forms, and know where Python finds them;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:15
+msgid "put your own functions into a **module**, and import it from a script or a notebook - the Python version of a SAS autocall macro library;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:17
+msgid "organise a project folder so that it can be run again, by you or by a colleague;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:18
+msgid "use the most useful parts of the standard library: dates and month ends, statistics, counters, settings from the environment;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:20
+msgid "keep the history of your code in **Git**: commit, look back, branch and merge;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:21
+msgid "work with a remote repository on GitHub: clone, push, pull, and a pull request."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:23
+msgid "From SAS to Python - the same reusable library, two ways:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:40
+msgid "A **module** is just a `.py` file. Everything you defined in it - functions, constants - can be imported by another file. That is how the code of sessions 4 - 9 becomes a library you use every month."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:46
+msgid "The forms of `import`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:48
+msgid "You have used `import` since session 1. The four forms:"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:64
+msgid "Form"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:64
+msgid "Use it when"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:66
+msgid "you use a few things, and want the reader to see where they come from (`math.sqrt`)"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:67
+msgid "you use a name often, and it is clear"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:68
+msgid "the module has a common short name: `pd`, `np`, `plt`"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:69
+msgid "**never** in your code: it hides where the names come from, and can overwrite your own"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:71
+msgid "What `import` does"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:73
+msgid "The first `import` of a module **runs** its file from top to bottom, and keeps the result in `sys.modules`. A second `import` of the same module does not run it again - it takes the module from there:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:86
+msgid "See it with a module of your own that prints when it runs - imported twice, it prints once:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:101
+msgid "`dir(module)` lists its names; `help(module.function)` shows the docstring (session 4). The docstring is also in `__doc__`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:111
+msgid "An imported name is a normal variable of **your** file. Giving it a new value changes it only in your file, not in the module:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:122
+msgid "A module can also be imported by a name that is only known when the script runs - for example from a setting:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:136
+msgid "Where Python looks: `sys.path`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:138
+msgid "`import name` looks for `name.py` (or a folder `name/`) in the folders of `sys.path`, in order:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:141
+msgid "the folder of the script you run (or the current folder in a notebook);"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:142
+msgid "the folders of the standard library;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:143
+msgid "`site-packages` of the active environment - where `pip` installs."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:152
+msgid "Which file was imported, and which version? `__file__` and `__version__` answer \"is this the pandas of my virtual environment?\" - the first question when a script works on one computer and not on another:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:165
+msgid "In your terminal, the path of `pandas` must be inside the `.venv` folder of your project."
+msgstr ""
+
+#. box title
+#: site/lectures/10-modules-and-git.md:168
+msgid "Do not name your file like a module"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:169
+msgid "A file `statistics.py`, `csv.py` or `pandas.py` in your project folder **hides** the real module: `import csv` imports **your** file, and nothing works. Name your files for what they do: `load_payments.py`, `portfolio_utils.py`."
+msgstr ""
+
+#. box title
+#: site/lectures/10-modules-and-git.md:191 site/lectures/10-modules-and-git.md:426 site/lectures/10-modules-and-git.md:583 site/lectures/10-modules-and-git.md:978 site/lectures/10-modules-and-git.md:1085 site/lectures/10-modules-and-git.md:1265 site/lectures/10-modules-and-git.md:1317 site/lectures/10-modules-and-git.md:1360
+msgid "Try it"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:192
+msgid "Import `date` from `datetime` in two ways - `import datetime` and `from datetime import date` - and create the date 2026-09-30 with each. Why is `datetime.datetime` not a typo?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:197
+msgid "2. Your own module"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:199
+msgid "Write the module"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:201
+msgid "A module is a `.py` file with functions and constants - and **no** code that does work when it is imported. This one collects functions of sessions 4 - 8:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:232
+msgid "Save it as `portfolio_utils.py` next to your script, and import it:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:240
+msgid "On this page, an example can write the file and import it - every example has the same folder:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:281
+msgid "Now any example can import it - like a script in the same folder:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:294
+msgid "(Run the example above first - it writes the file.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:296
+msgid "What is in the module, and the expected loss of the portfolio by stage with its functions:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:314
+msgid "The buckets of the whole portfolio, counted with the function of the module and a `Counter` (session 6):"
+msgstr ""
+
+#. box title
+#: site/lectures/10-modules-and-git.md:329
+msgid "`from module import CONSTANT` makes a copy of the name"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:330
+msgid "`from portfolio_utils import LGD` creates **your** variable `LGD`, with the value the module had at the import. A later change of `portfolio_utils.LGD` does not reach it. Read settings through the module (`pu.LGD`) - or better, pass them as arguments:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:344
+msgid "The `__main__` guard"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:346
+msgid "Every module has a name in `__name__`. When a file is **run** (`python portfolio_utils.py`), its `__name__` is `\"__main__\"`; when it is **imported**, its `__name__` is the module name. The guard runs code only when the file is run:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:381
+msgid "And **run** as a script - `runpy` does from Python what `python guard_demo.py` does in the terminal:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:390
+msgid "So a module can be both: a library to import, and a script with a self-test."
+msgstr ""
+
+#. box title
+#: site/lectures/10-modules-and-git.md:392
+msgid "Only on this page: `sys.modules.pop(...)`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:393
+msgid "All examples of a page run in the same Python, so a module imported by an earlier example stays in `sys.modules`. `sys.modules.pop(\"name\", None)` makes the next `import` read the file again. In your own scripts you do not need it."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:398
+msgid "Change the module, use it again"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:400
+msgid "A script reads the module **when it starts**, so after a change, run the script again. In a **Jupyter notebook** the kernel keeps the old version - restart the kernel, or switch on automatic reloading once, at the top of the notebook:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:410
+msgid "In a script or a running Python, `importlib.reload` reads a module again:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:427
+msgid "Add a function `stage(days_past_due, rating)` (session 4) to `portfolio_utils.py` with `write_text`, reload the module, and call it for `(45, 5)` and `(0, 10)`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:431
+msgid "3. Packages and the layout of a project"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:433
+msgid "A package: a folder of modules"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:435
+msgid "When one module grows too big, split it into several, in a **folder** with a file `__init__.py` (it can be empty). The folder is a **package**; import its modules with a point:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:471
+msgid "What is in a package - its modules, found by `pkgutil` (after the example above):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:481
+msgid "`__init__.py` can **re-export** the most used names, so that users write `from portfolio import dpd_bucket` without knowing the module inside:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:497
+msgid "The point in `from .rules import ...` means \"the module `rules` of **this** package\" - a *relative* import, possible only inside a package."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:500
+msgid "The layout of a data project"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:502
+msgid "A layout that colleagues recognise - and that works with Git (section 6):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:520
+msgid "Run the script from the project folder: `python report.py`. A module **inside** the package that should be run is started with `-m` and its dotted name:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:538
+msgid "A small script can make the skeleton of a new project - the same folders every time:"
+msgstr ""
+
+#. box title
+#: site/lectures/10-modules-and-git.md:554
+msgid "A path like `\"data/loans.csv\"` depends on where you start the script"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:555
+msgid "A relative path is read from the **current folder** of the terminal, not from the folder of the script. `python report.py` works in the project folder, and fails with `FileNotFoundError` when started from another one:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:571
+msgid "In a script, build the paths from the folder of the script itself: `DATA = Path(__file__).parent / \"data\"` - then it works from any folder. (In a notebook there is no `__file__`; start Jupyter in the project folder.)"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:576
+msgid "SAS"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:576
+msgid "Python"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:579
+msgid "the package `portfolio/`"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:581
+msgid "`DATA = Path(\"data\")` at the top of `report.py`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:584
+msgid "Add a module `cleaning.py` with `squeeze(s)` (session 7) to the `portfolio` package of the example above, and import it with `from portfolio.cleaning import squeeze`."
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:588
+msgid "4. A tour of the standard library"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:590
+msgid "\"Batteries included\" (session 1): Python comes with modules for most daily needs. The ones an analyst uses most:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:593
+msgid "`datetime` and `calendar`: report dates"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:595
+msgid "Session 7 introduced `date`, `datetime` and `timedelta`. Month ends - the report dates - need the number of days of a month: `calendar.monthrange(year, month)` gives the weekday of the 1st and the number of days:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:611
+msgid "**Adding months** is not in `datetime` - a month has no fixed length. A small function does it the way SAS `INTNX('month', d, n, 'e')` does, at month ends:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:629
+msgid "The months between two dates - `INTCK('month', a, b)`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:640
+msgid "Quarter ends, and the working days between two dates:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:660
+msgid "`calendar` also prints a month - handy to check a date in a hurry:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:668
+msgid "(pandas has all of this built in - `pd.offsets.MonthEnd`, `Period` - session 16.)"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:670
+msgid "`statistics`: `PROC MEANS` and `PROC UNIVARIATE` for a list"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:686
+msgid "By group - `PROC MEANS ... CLASS stage` - with a dictionary of lists (session 6) and `statistics` per group:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:703
+msgid "Since Python 3.10, `statistics` also has `correlation` and `linear_regression`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:716
+msgid "`stdev` is the sample standard deviation (like SAS `STD`), `pstdev` the population one. `quantiles(..., n=4)` gives the quartiles; note that the methods of computing quantiles differ a little between SAS, SQL and Python."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:720
+msgid "`collections`: more containers"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:722
+msgid "You know `Counter` and `defaultdict` (session 6). Two more:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:737
+msgid "A `namedtuple` is a tuple with names for its positions - a light record (session 3, Advanced). Classes (session 11) do the same with more power. Rows of a CSV file as named tuples:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:754
+msgid "`ChainMap` looks up a key in several dictionaries, in order - the layers of the settings of a report: the command line wins over the environment, which wins over the config file:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:771
+msgid "`math`: careful sums"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:785
+msgid "`math.prod` multiplies - compound growth over several periods:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:794
+msgid "Small helpers for reports"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:796
+msgid "`pprint` prints nested dictionaries and lists so that you can read them:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:806
+msgid "Dates in file names - ISO order, so that the files sort by date:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:816
+msgid "`string.Template` fills `$names` in a text - a mail or a report header that a colleague can edit without knowing Python:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:826
+msgid "`namedtuple` records turn into dictionaries (for `csv.DictWriter`) and can be copied with one field changed:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:838
+msgid "`itertools.batched` (Python 3.12+) cuts a list into pieces - for example ids for SQL `IN (...)` lists, which many databases limit to 1000 values:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:849
+msgid "`difflib.get_close_matches` finds the most similar known value - a typo in a city or a product name:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:860
+msgid "`random`: a sample for a manual check"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:862
+msgid "An auditor wants 10 loans chosen at random to check by hand. `random.seed` makes the choice **repeatable** - the same seed gives the same sample next week:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:882
+msgid "Like `PROC SURVEYSELECT ... SEED=` in SAS."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:884
+msgid "`hashlib`: did the input change?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:886
+msgid "A checksum of a file is a short text that changes when **any** byte of the file changes. Keep it with the report: next month you can prove which input was used:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:900
+msgid "`time`: how long it takes"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:912
+msgid "`os` and `sys`: the environment"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:914
+msgid "Settings that differ between computers or users - a folder, a server name, a **password** - do not belong in the code. Read them from the **environment variables**:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:929
+msgid "Session 13 reads the password of a database this way - never write a password into a script or a notebook that goes into Git."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:943
+msgid "Old code often uses `os.path` instead of `pathlib` - the same jobs, as functions on strings:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:955
+msgid "`shutil`: copy and archive"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:967
+msgid "And look into the archive with `zipfile`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:979
+msgid "Compute the quartiles of the outstanding amounts of the stage 1 loans with `statistics.quantiles(..., n=4)`. Then the median of the days past due of the loans that are late at all."
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:984
+msgid "5. `pip` and virtual environments, again"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:986
+msgid "Session 1 set up the environment of the Homework repository. The rules, once more, now that you will make projects of your own:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:989
+msgid "**one virtual environment per project**, in the project folder (`.venv`), never installed into the Python of the computer;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:991
+msgid "the packages of the project in `requirements.txt`, with the versions you tested (`pip freeze`);"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:993
+msgid "`.venv` is **not** in Git - `requirements.txt` is, and it rebuilds `.venv` on any computer."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1011
+msgid "The name you install is not always the name you import:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1032
+msgid "Which packages does a package need? The same as `pip show` lists under `Requires`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1043
+msgid "The part after `;` is a condition: `tzdata` is needed only on Windows (and on this site)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1046
+msgid "Does the environment match `requirements.txt`? A check at the start of a monthly script saves an hour of searching later:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1064
+msgid "Are you in a virtual environment at all? In a `.venv`, `sys.prefix` (the environment) differs from `sys.base_prefix` (the Python it was made from):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1075
+msgid "On this page the answer is `False` - the site has no `.venv`. Run the same three lines in the terminal of your Homework folder: `True`."
+msgstr ""
+
+#. box title
+#: site/lectures/10-modules-and-git.md:1078
+msgid "Advanced: uv"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1079
+msgid "[uv](https://docs.astral.sh/uv/) is a newer, much faster tool that does the work of `venv` and `pip` (and installs Python versions too): `uv venv`, `uv pip install -r requirements.txt`. It is free and popular, but `venv` + `pip` come with Python and are enough for this course."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1086
+msgid "In your Homework folder, run `python -m pip list` and find the versions of pandas and numpy. Then `python -m pip show openpyxl`: which packages does it need?"
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:1090
+msgid "6. Git: versions of your code"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1092
+msgid "Why"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1094
+msgid "Without version control, versions of a program look like this: `report.sas`, `report_v2.sas`, `report_v2_final.sas`, `report_v2_final_MARIA.sas`. Which one made last month's numbers? What changed between them?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1098
+msgid "**Git** keeps the full history of a project folder:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1100
+msgid "every saved version (**commit**) with its date, author and a message;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1101
+msgid "what changed in each one, line by line;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1102
+msgid "the way back to any earlier version;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1103
+msgid "parallel lines of work (**branches**) that can be merged."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1105
+msgid "Git runs on your computer (you installed it for session 1). **GitHub**, GitLab and Azure DevOps are websites that keep a copy of a repository, for sharing and backup (section 8)."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1109
+msgid "Three places"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1120
+msgid "the **working folder** - the files you edit;"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1121
+msgid "the **staging area** - the changes you have chosen for the next commit (`git add`);"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1122
+msgid "the **repository** - the commits, in the hidden folder `.git`."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1124
+msgid "The first repository"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1126
+msgid "In a terminal, in the project folder (the commands are the same on Windows and Linux):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1137
+msgid "Who you are - once per computer (the [how-to page](/how-to#practice-and-homework) did this):"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1145
+msgid "See the changes: `diff`"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1147
+msgid "What `git diff` shows is a **unified diff**: `-` for a removed line, `+` for an added one. The module `difflib` makes the same for two versions of a text:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1166
+msgid "The same for a data file: what changed between two versions of the rating scale? `n=0` shows only the changed lines, without context:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1180
+msgid "The Git commands:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1189
+msgid "`.gitignore`: what Git must not keep"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1191
+msgid "A text file `.gitignore` in the project folder lists the files and folders Git ignores. For a data project, this is not optional:"
+msgstr ""
+
+#. box title
+#: site/lectures/10-modules-and-git.md:1214
+msgid "Data and passwords never go into Git"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1215
+msgid "Git keeps **everything** forever: a file that was committed once stays in the history, even after you delete it. Real data of the bank, exports with client names, files with passwords must never be committed - not even \"just for a moment\". Put them in `.gitignore` **before** the first `git add`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1236
+msgid "The patterns of `.gitignore` are the same kind as `glob` (session 9). The module `fnmatch` tests a name against them - which files of a project would Git ignore?"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1251
+msgid "Good commits"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1253
+msgid "**Small**: one change, one commit - \"Add the reject file to the loader\", not \"work of Tuesday\"."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1255
+msgid "**A message that says what and why**: in the imperative, like a title: \"Fix the date format of the payments file\"."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1257
+msgid "**Working code**: commit when the script runs."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1259
+msgid "Git in VS Code"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1261
+msgid "The **Source Control** view (`Ctrl+Shift+G`) does the same with buttons: the changed files, **+** to stage, a message box and **Commit**, the history, and the changes of a file side by side. Use whatever you prefer - the commands are the same underneath."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1266
+msgid "In your Homework repository: `git status`, then `git log --oneline -5`. Change one line in a task file, and look at `git diff`. Then `git restore <file>` to undo it."
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:1270
+msgid "7. Branches and merge"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1272
+msgid "A **branch** is a separate line of commits. The main line is usually called `main`. Work on a change in its own branch; when it is ready, **merge** it into `main`:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1290
+msgid "Why branches, for a report script: `main` always holds the version that produced the last official numbers; the changes for next month are made on a branch, and merged after they are checked."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1294
+msgid "A conflict"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1296
+msgid "When two branches change the **same lines** of a file, Git cannot decide alone. `git merge` stops and marks the place in the file:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1307
+msgid "Edit the file to the version you want (delete the markers), then:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1314
+msgid "VS Code shows conflicts with buttons: **Accept Current**, **Accept Incoming**, **Accept Both**."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1318
+msgid "In a test folder: `git init`, commit a file `rules.py` with `LGD = 0.45`; create a branch, change it to `0.40`, commit; back on `main`, change it to `0.50`, commit; merge the branch. Resolve the conflict."
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:1323
+msgid "8. GitHub: remotes and pull requests"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1325
+msgid "A remote repository"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1327
+msgid "A **remote** is a copy of the repository on a server. The Homework repository of this course has two (how-to page): `upstream` (the course) and `origin` (yours)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1337
+msgid "The usual day: `git pull` before you start, commit as you work, `git push` at the end."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1339
+msgid "A pull request: a review before the merge"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1341
+msgid "On GitHub (and GitLab, Azure DevOps, Bitbucket), a **pull request** (a *merge request* in GitLab) asks: \"please merge my branch into `main`\". A colleague reads the changes line by line, comments, and approves - the four-eyes principle, for code:"
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1354
+msgid "Without GitHub"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1356
+msgid "If your company does not allow github.com, everything of sections 6 and 7 works on your computer alone, and a company server (GitLab, Azure DevOps, Bitbucket) works like section 8 - only the address in `git clone` is different."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1361
+msgid "On GitHub, open your own Homework repository: find the list of commits, open one, and look at its changes. Compare with `git log -p -1` in the terminal."
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:1365
+msgid "9. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1367
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1375
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1375
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1375
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1377
+msgid "`statistics`, `math` and `collections` on the portfolio"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1378
+msgid "Predict: module names, `__name__`, `dir`, what `import` returns"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1379
+msgid "Write `portfolio_utils.py` in the same folder; the task imports and checks it"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1380
+msgid "Month ends, add months, quarter ends, months between two dates"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1381
+msgid "Which Git command does what"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1382
+msgid "`task6-project-layout.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1382
+msgid "Create a project skeleton with `pathlib`, with a `.gitignore`"
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:1384
+msgid "Summary"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1386
+msgid "Topic"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1386
+msgid "Remember"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1388
+msgid "`import m`, `from m import f`, `import m as x`; never `import *`; runs the file once, keeps it in `sys.modules`"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1389
+msgid "Search path"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1389
+msgid "the folder of the script first; never name a file like a module (`csv.py`)"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1390
+msgid "Own module"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1390
+msgid "a `.py` file with functions and constants; no work at import time"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1391
+msgid "`if __name__ == \"__main__\":` - code that runs only when the file is run"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1392
+msgid "Notebooks"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1392
+msgid "`%load_ext autoreload` + `%autoreload 2`, or restart the kernel"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1393
+msgid "Package"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1393
+msgid "a folder with `__init__.py`; `from package.module import name`; `python -m package.module`"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1394
+msgid "Project"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1394
+msgid "`README.md`, `requirements.txt`, `.gitignore`, a package, `report.py`, `data/` and `out/` not in Git"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1395
+msgid "Standard library"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1395
+msgid "`calendar.monthrange` for month ends; `statistics`; `namedtuple`, `deque`; `math.fsum`, `isclose`; `os.getenv`"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1396
+msgid "Environments"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1396
+msgid "one `.venv` per project; `pip freeze > requirements.txt`; install name is not always import name"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1397
+msgid "Git"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1398
+msgid "`.venv/`, `data/`, `out/`, secrets - before the first commit; data and passwords never in Git"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1399
+msgid "Branches"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1399
+msgid "`switch -c`, `merge`, conflicts: edit, `add`, `commit`"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1400
+msgid "Remotes"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1400
+msgid "`clone`, `pull`, `push`; a pull request = a review before the merge"
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:1402
+msgid "Homework"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1404
+msgid "`10-modules-and-git/homework.py` and `10-modules-and-git/homework_utils.py` (in the homework repository): **the portfolio library as a module** - move the functions of sessions 4 - 9 into `homework_utils.py`, with docstrings, constants at the top and a `__main__` self-test; `homework.py` imports and checks them. Every check must print `OK`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1409
+msgid "The Git part (not checked by the file): make a new folder outside the Homework repository, copy `homework_utils.py` into it, and make it a repository with a `.gitignore`, three commits, and one branch that you merge."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1412
+msgid "The practice tasks you did not finish in class."
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:1414
+msgid "Self-study"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1416
+msgid "This part is not covered in class. It is for reading at home: a report script that takes the report date from the command line, and the Git commands that undo things."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1419
+msgid "Command-line arguments"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1421
+msgid "A monthly script should not need an edit every month. Give it the report date when you start it: `python report.py --date 2026-09-30`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1424
+msgid "The arguments are in `sys.argv` - a list of strings; the first is the script name:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1433
+msgid "The module `argparse` reads them properly: names, types, defaults, and a `--help` text for free:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1450
+msgid "In a script, `parser.parse_args()` without a list reads `sys.argv`. A wrong date stops the script with a clear message - before any work is done."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1464
+msgid "**Exercises**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1466
+msgid "Add an argument `--input` with the default `data/loans.csv` (type `Path`), and print whether the file exists."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1468
+msgid "What happens with `parser.parse_args([\"--date\", \"30.09.2026\"])`? Why is that good?"
+msgstr ""
+
+#. box title
+#: site/lectures/10-modules-and-git.md:1470 site/lectures/10-modules-and-git.md:1504
+msgid "Answer"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1471
+msgid "`parser.add_argument(\"--input\", type=Path, default=Path(\"data/loans.csv\"))`, then `print(args.input.exists())` (with `from pathlib import Path`)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1473
+msgid "`argparse` calls `date.fromisoformat(\"30.09.2026\")`, which raises a `ValueError`; `argparse` turns it into the message *argument --date: invalid fromisoformat value* and stops with an error code - the report never runs with a wrong date."
+msgstr ""
+
+#. heading 3
+#: site/lectures/10-modules-and-git.md:1478
+msgid "Git: undo and history"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1480
+msgid "You want to"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1480
+msgid "Command"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1482
+msgid "throw away the changes of a file since the last commit"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1483
+msgid "take a file out of the staging area"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1484
+msgid "change the message (or add a file) of the **last** commit, not pushed yet"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1485
+msgid "undo a commit that is already pushed - with a new commit that does the opposite"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1486
+msgid "see who changed each line, and when"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1487
+msgid "the history of one file, with the changes"
+msgstr ""
+
+#. table cell
+#: site/lectures/10-modules-and-git.md:1488
+msgid "find a word in all versions"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1490
+msgid "`revert` is the safe undo for shared history: it adds a commit, it never removes one."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1492
+msgid "**Notebooks in Git.** A `.ipynb` file keeps the **outputs** of the cells - tables, charts, sometimes data. Before a commit, clear the outputs (in VS Code: **Clear All Outputs**), or keep the reusable code in `.py` modules and only the exploration in notebooks. Outputs of real data in a notebook are data in Git (see the warning of section 6)."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1498
+msgid "**Exercise**"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1500
+msgid "In a test repository, commit a file three times with different `LGD` values. Use `git log -S \"LGD = 0.40\" --oneline` to find the commit that introduced `0.40`, and `git revert` it."
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1505
+msgid "`git log -S \"LGD = 0.40\" --oneline` lists the commits that added or removed that text; take the hash of the one that added it, and `git revert <hash>`. Git opens an editor for the message of the new commit (save and close it); the file is back to the value before that commit - unless a later commit changed the same line, which gives a conflict to resolve."
+msgstr ""
+
+#. heading 2
+#: site/lectures/10-modules-and-git.md:1512
+msgid "Read more"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1514
+msgid "Python tutorial: [Modules](https://docs.python.org/3/tutorial/modules.html), [Brief tour of the standard library](https://docs.python.org/3/tutorial/stdlib.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1516
+msgid "Reference: [`statistics`](https://docs.python.org/3/library/statistics.html), [`collections`](https://docs.python.org/3/library/collections.html), [`calendar`](https://docs.python.org/3/library/calendar.html), [`argparse` tutorial](https://docs.python.org/3/howto/argparse.html)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1520
+msgid "Git: [Pro Git](https://git-scm.com/book/en/v2) (the free book: chapters 1 - 3), [Version control in VS Code](https://code.visualstudio.com/docs/sourcecontrol/overview)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1522
+msgid "GitHub: [About pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1523
+msgid "Real Python: [Python modules and packages](https://realpython.com/python-modules-packages/)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/10-modules-and-git.md:1525
+msgid "**Next session:** object-oriented programming - your own classes and objects: a loan that knows its own rules, with attributes, methods and validation."
+msgstr ""

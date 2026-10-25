@@ -177,8 +177,9 @@ The ones you will feel most in this course:
 - **2008:** Python 3.0 - not compatible with Python 2. Python 2 ended in **2020**:
   if you find Python 2 code (`print "hello"` without brackets), it is old.
 - Since 2019 a new version comes out **every October** (3.12 in 2023, 3.13 in 2024,
-  3.14 in 2025), and each version gets security fixes for 5 years. In this course you
-  use **3.12 or 3.13**.
+  3.14 in 2025, 3.15 in 2026), and each version gets security fixes for 5 years. In
+  this course you use **3.12 or 3.13**: they now get only security fixes, which is fine
+  for the course.
 
 ### Implementations
 
@@ -235,7 +236,9 @@ dis.dis("interest = outstanding * rate / 100")
 ::: info Advanced: faster Python
 Python 3.13 added two experiments: a **JIT compiler** (it turns hot bytecode into
 machine code) and a **free-threaded** build without the GIL (Python code can run
-on several processor cores at once). Both are off by default. For data work, speed
+on several processor cores at once). Both are off by default. In 3.14 the
+free-threaded build is officially supported, and the Windows and macOS installers
+include the JIT (still off by default). For data work, speed
 comes from the libraries: pandas and NumPy do the heavy work in C.
 :::
 
@@ -263,11 +266,15 @@ step does, so you can do it again for a new project.
 
 Check it in a terminal:
 
-```bash
-py --version          # Windows: the Python launcher
-python --version      # Windows, if Python is in PATH
-python3 --version     # macOS, Linux
+::: code-group
+```powershell [Windows]
+py --version          # the Python launcher
+python --version      # if Python is in PATH
 ```
+```bash [Linux / macOS]
+python3 --version
+```
+:::
 
 ::: warning "python" opens the Microsoft Store?
 On Windows, `python` can start the Microsoft Store instead of your Python. Use
@@ -282,16 +289,18 @@ not found at all, Python is not in `PATH`:
 You can have several versions side by side. On Windows the **Python launcher**
 `py` chooses one:
 
-```bash
+```powershell
 py --list            # the installed versions (also: py -0)
 py -3.12 --version   # run a given version
 py -3.12 -m venv .venv   # a virtual environment with Python 3.12
 ```
 
 On macOS and Linux, the tools for this are [pyenv](https://github.com/pyenv/pyenv) and
-[uv](https://docs.astral.sh/uv/) (`uv python install 3.12`). Since Python 3.14,
-python.org also offers the *Python install manager* for Windows, which installs and
-updates versions from the command line.
+[uv](https://docs.astral.sh/uv/) (`uv python install 3.12`). On Windows, python.org
+now offers the *Python install manager* first: with it, `py install 3.13` installs a
+version and `py list` shows the installed ones. The classic installer of each
+version (with **Add python.exe to PATH**) is still on the
+[Windows downloads page](https://www.python.org/downloads/windows/).
 
 ### Packages and pip
 
@@ -330,31 +339,45 @@ it is active go there, and only there.
 
 The `venv` module comes with Python. Once per project, in the project folder:
 
-```bash
-py -m venv .venv            # macOS / Linux: python3 -m venv .venv
+::: code-group
+```powershell [Windows]
+py -m venv .venv
 ```
+```bash [Linux / macOS]
+python3 -m venv .venv
+```
+:::
 
 Every time you work on the project, **activate** it:
 
-```bash
-.venv\Scripts\activate          # Windows cmd and PowerShell
-source .venv/Scripts/activate   # Windows Git Bash
-source .venv/bin/activate       # macOS / Linux
+::: code-group
+```powershell [Windows]
+.venv\Scripts\activate            # PowerShell and cmd
+source .venv/Scripts/activate     # only in Git Bash
 ```
+```bash [Linux / macOS]
+source .venv/bin/activate
+```
+:::
 
 The prompt starts with `(.venv)`. Now `python` and `pip` are the ones in `.venv`:
 
-```bash
-where python       # Windows: the first line must end with .venv\Scripts\python.exe
-which python       # macOS / Linux
+::: code-group
+```powershell [Windows]
+where.exe python   # the first line must end with .venv\Scripts\python.exe
 deactivate         # leave the virtual environment
 ```
+```bash [Linux / macOS]
+which python       # must end with .venv/bin/python
+deactivate         # leave the virtual environment
+```
+:::
 
 ::: warning PowerShell: "running scripts is disabled on this system"
 PowerShell may refuse to run `Activate.ps1`. Allow it for the current terminal only,
 then activate again:
 
-```bash
+```powershell
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
 .venv\Scripts\activate
 ```
@@ -383,9 +406,16 @@ pip install -r requirements.txt     # install all of them
 pip freeze > requirements.txt       # or: write down the exact versions you have now
 ```
 
-`pip freeze` gives exact versions (`pandas==2.3.3`): use it when a report must
+`pip freeze` gives exact versions (`pandas==3.1.0`): use it when a report must
 give the same result next year, on another computer. This is called *freezing the
 dependencies* - it avoids "but it works on my machine".
+
+::: info pandas 2 or pandas 3?
+`>=` means "this version or newer", so `pandas>=2.2` installs the newest pandas -
+**pandas 3** today (3.1 in October 2026). The site runs pandas 3 too, so this course
+uses pandas 3; where pandas 2.2 behaves differently (the type of text columns,
+copies of a DataFrame), sessions 14 - 16 say so. Check yours with `pip show pandas`.
+:::
 
 What the packages of this course are for:
 
@@ -453,19 +483,20 @@ python.org Python with `venv` and `pip`, which is free for everyone.
 | Panel | bottom | the Terminal, Problems, Output |
 | Status Bar | very bottom | the active Python (for example `3.12.7 ('.venv')`) - click it to change it |
 
-Read more: [User interface](https://code.visualstudio.com/docs/getstarted/userinterface).
+Read more: [User interface](https://code.visualstudio.com/docs/editing/getting-started/userinterface).
 
 ### Extensions and themes
 
-Install these from the **Extensions** view (`Ctrl+Shift+X`); all three are from
+Install these from the **Extensions** view (`Ctrl+Shift+X`); both are from
 Microsoft:
 
-- **Python** - running and debugging Python; it installs **Pylance** too
-  (completion, errors while you type);
+- **Python** - running and debugging Python; it installs three more extensions
+  too: **Pylance** (completion, errors while you type), **Python Debugger** and
+  **Python Environments**;
 - **Jupyter** - notebooks inside VS Code.
 
 A colour theme: `Ctrl+K Ctrl+T`
-([Themes](https://code.visualstudio.com/docs/getstarted/themes)).
+([Themes](https://code.visualstudio.com/docs/configure/themes)).
 
 ### A folder is a workspace
 
@@ -474,7 +505,7 @@ or right-click the folder in Windows Explorer > **Open with Code**. The folder i
 your **workspace**: VS Code remembers the open files, and you can keep settings for
 this folder only in `.vscode/settings.json` (`Ctrl+Shift+P` >
 **Preferences: Open Workspace Settings**). Read more:
-[What is a VS Code workspace?](https://code.visualstudio.com/docs/editor/workspaces)
+[What is a VS Code workspace?](https://code.visualstudio.com/docs/editing/workspaces/workspaces)
 
 For this course, the folders are:
 
@@ -510,7 +541,7 @@ The output appears in the **Terminal** panel.
 
 ::: tip Old way: a build task
 Older courses used a *task* in `.vscode/tasks.json` and `Ctrl+Shift+B` to run the
-file ([Tasks](https://code.visualstudio.com/docs/editor/tasks)). It still works, but
+file ([Tasks](https://code.visualstudio.com/docs/debugtest/tasks)). It still works, but
 the Run button does the same without setup.
 :::
 
@@ -532,7 +563,7 @@ the Run button does the same without setup.
 | `F5` | run with the debugger |
 
 In the terminal, `cls` (cmd) or `clear` clears the screen. All shortcuts:
-[keyboard reference sheets](https://code.visualstudio.com/docs/getstarted/tips-and-tricks#_keyboard-reference-sheets).
+[keyboard reference sheets](https://code.visualstudio.com/docs/editing/getting-started/tips-and-tricks#_keyboard-reference-sheets).
 
 ### Git in VS Code
 
@@ -1248,8 +1279,8 @@ print(2 ** 3 ** 2)              # 512: 3 ** 2 first
 |---|---|---|---|
 | `==` | `=` | `=`, `EQ` | equal |
 | `!=` | `<>`, `!=` | `^=`, `NE` | not equal |
-| `<`, `<=` | `<`, `<=` | `<`, `LE` | less (or equal) |
-| `>`, `>=` | `>`, `>=` | `>`, `GE` | greater (or equal) |
+| `<`, `<=` | `<`, `<=` | `<`, `<=` (`LT`, `LE`) | less (or equal) |
+| `>`, `>=` | `>`, `>=` | `>`, `>=` (`GT`, `GE`) | greater (or equal) |
 
 `=` gives a name, `==` compares. The result is a `bool`. Comparisons can be
 **chained** - like `BETWEEN` in SQL:
@@ -1657,8 +1688,8 @@ print(round(2.675, 2))
 ```
 
 - `round()` rounds a 5 to the **even** neighbour: `round(2.5)` is `2`. This is
-  "banker's rounding" - it does not push sums up. SAS `ROUND` and SQL `ROUND` round
-  a 5 **away from zero** (`2.5` -> `3`).
+  "banker's rounding" - it does not push sums up. SAS `ROUND`, and SQL `ROUND` on
+  `DECIMAL` / `NUMERIC` values, round a 5 **away from zero** (`2.5` -> `3`).
 - `round(2.675, 2)` gives `2.67`, because `2.675` in binary is a tiny bit less
   than 2.675.
 
@@ -1806,7 +1837,7 @@ you run the file - the point is to think first.
   [Using Python on Windows](https://docs.python.org/3/using/windows.html)
 - VS Code: [Python in VS Code](https://code.visualstudio.com/docs/languages/python),
   [Jupyter notebooks in VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks),
-  [Tips and tricks](https://code.visualstudio.com/docs/getstarted/tips-and-tricks),
+  [Tips and tricks](https://code.visualstudio.com/docs/editing/getting-started/tips-and-tricks),
   [VS Code - setup and basics (video)](https://www.youtube.com/watch?v=SYRwSyjD8oI),
   [the default terminal: cmd instead of PowerShell](https://code.visualstudio.com/docs/terminal/profiles)
 - Jupyter: [JupyterLab documentation](https://jupyterlab.readthedocs.io/en/stable/)
@@ -1815,9 +1846,9 @@ you run the file - the point is to think first.
 - Numbers: [Floating point arithmetic](https://docs.python.org/3/tutorial/floatingpoint.html),
   [decimal](https://docs.python.org/3/library/decimal.html),
   [math](https://docs.python.org/3/library/math.html)
-- Videos for later: [NumPy for beginners (SciPy 2019)](https://www.youtube.com/watch?v=V0D2mhVt7NE),
-  [pandas from the ground up (PyCon 2015)](https://www.youtube.com/watch?v=5JnMutdy6Fw),
-  [JupyterLab (video)](https://www.youtube.com/watch?v=w7jq4XgwLJQ)
+- Videos for later: [NumPy for beginners (SciPy 2018)](https://www.youtube.com/watch?v=V0D2mhVt7NE),
+  [JupyterLab - get started](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html)
+  (the documentation)
 
 **Next session:** conditional statements and loops - `if` / `elif` / `else`, the
 Python `CASE WHEN`, and `for` / `while` loops over the rows of a file.

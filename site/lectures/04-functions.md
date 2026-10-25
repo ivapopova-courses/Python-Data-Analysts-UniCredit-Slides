@@ -255,7 +255,7 @@ greet("Maria")
 greet()
 ```
 
-On the portfolio - the most common term and the usual LGD as defaults:
+On the portfolio - the most common term as a default:
 
 ```python run
 def annuity_payment(amount, yearly_rate, years=5):

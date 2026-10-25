@@ -44,18 +44,27 @@ The tasks and the final project run on your own computer. You need:
 
 | Program | Version | What for |
 |---|---|---|
-| [Python](https://www.python.org/downloads/) | 3.12 or 3.13, 64-bit | the language |
+| [Python](https://www.python.org/downloads/windows/) | 3.12 or 3.13, 64-bit | the language |
 | [Visual Studio Code](https://code.visualstudio.com/) | latest | the editor, with the extensions **Python** and **Jupyter** (Microsoft) |
 | [Git](https://git-scm.com/downloads) | latest | versions of your code; the tasks come with it |
 | [GitHub](https://github.com/signup) account | free | your own copy of the tasks |
 
-On Windows, tick **Add python.exe to PATH** on the first screen of the Python
-installer. Check the tools in a terminal (in VS Code: **Terminal > New Terminal**):
+On Windows, open the [Windows downloads page](https://www.python.org/downloads/windows/),
+find the newest **Python 3.13.x** under *Stable Releases* and take **Download Windows
+installer (64-bit)** - not the "Python install manager" and not the newest Python
+(3.15) at the top. On the first screen of the installer, tick **Add python.exe to
+PATH**. Check the tools in a terminal (in VS Code: **Terminal > New Terminal**):
 
-```bash
-py --version     # Python 3.12.x or 3.13.x  (macOS / Linux: python3 --version)
+::: code-group
+```powershell [Windows]
+py --version     # Python 3.12.x or 3.13.x
 git --version    # git version 2.x.x
 ```
+```bash [Linux / macOS]
+python3 --version     # Python 3.12.x or 3.13.x
+git --version         # git version 2.x.x
+```
+:::
 
 The libraries (pandas, NumPy, ...) are installed into a *virtual environment* in
 the Homework folder - see step 8 below.
@@ -166,12 +175,24 @@ the tasks: then the terminal starts in the right place.
 
 In the terminal of VS Code, in the Homework folder:
 
-```bash
-py -m venv .venv                      # macOS / Linux: python3 -m venv .venv
-.venv\Scripts\activate                # macOS / Linux: source .venv/bin/activate
+::: code-group
+```powershell [Windows]
+py -m venv .venv
+.venv\Scripts\activate
 python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
+```bash [Linux / macOS]
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+:::
+
+PowerShell says *running scripts is disabled on this system*? Run
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`, then activate
+again (more in [lecture 1](/lectures/01-intro-syntax-types#virtual-environments)).
 
 The prompt now starts with `(.venv)`. In VS Code, choose the interpreter once:
 `Ctrl+Shift+P` > **Python: Select Interpreter** > the one in `.venv`. Git ignores

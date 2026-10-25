@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 300" width="920" height="300" role="img">
+<title>A table as a list of rows</title>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b616b"/></marker></defs>
+<text x="84" y="67" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#5b616b" text-anchor="end" xml:space="preserve">header</text>
+<rect x="100" y="40" width="130" height="42" rx="0" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="165.0" y="67" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">loan_id</text>
+<rect x="230" y="40" width="150" height="42" rx="0" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="305.0" y="67" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">product</text>
+<rect x="380" y="40" width="150" height="42" rx="0" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="455.0" y="67" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">outstanding</text>
+<rect x="530" y="40" width="80" height="42" rx="0" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="570.0" y="67" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">stage</text>
+<text x="84" y="117" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#5b616b" text-anchor="end" xml:space="preserve">rows[0]</text>
+<rect x="100" y="90" width="130" height="42" rx="0" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="165.0" y="117" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">L000001</text>
+<rect x="230" y="90" width="150" height="42" rx="0" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="305.0" y="117" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">investment</text>
+<rect x="380" y="90" width="150" height="42" rx="0" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="455.0" y="117" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">1044231.30</text>
+<rect x="530" y="90" width="80" height="42" rx="0" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="570.0" y="117" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">1</text>
+<text x="84" y="159" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#5b616b" text-anchor="end" xml:space="preserve">rows[1]</text>
+<rect x="100" y="132" width="130" height="42" rx="0" fill="#e3edfb" stroke="#3b6fc4" stroke-width="2"/>
+<text x="165.0" y="159" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">L000002</text>
+<rect x="230" y="132" width="150" height="42" rx="0" fill="#e3edfb" stroke="#3b6fc4" stroke-width="2"/>
+<text x="305.0" y="159" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">investment</text>
+<rect x="380" y="132" width="150" height="42" rx="0" fill="#fdebd3" stroke="#c97a1c" stroke-width="2"/>
+<text x="455.0" y="159" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">651927.30</text>
+<rect x="530" y="132" width="80" height="42" rx="0" fill="#e3edfb" stroke="#3b6fc4" stroke-width="2"/>
+<text x="570.0" y="159" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">2</text>
+<text x="84" y="201" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#5b616b" text-anchor="end" xml:space="preserve">rows[2]</text>
+<rect x="100" y="174" width="130" height="42" rx="0" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="165.0" y="201" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">L000003</text>
+<rect x="230" y="174" width="150" height="42" rx="0" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="305.0" y="201" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">credit_card</text>
+<rect x="380" y="174" width="150" height="42" rx="0" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="455.0" y="201" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">644.25</text>
+<rect x="530" y="174" width="80" height="42" rx="0" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="570.0" y="201" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">2</text>
+<path d="M750,153 L634,153" fill="none" stroke="#3b6fc4" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="758" y="158" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#3b6fc4" text-anchor="start" xml:space="preserve">a row: rows[1]</text>
+<path d="M455.0,262 L455.0,220" fill="none" stroke="#4f8a45" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="455.0" y="284" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#4f8a45" text-anchor="middle" xml:space="preserve">a column: [row[2] for row in rows]</text>
+<text x="660" y="56" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#c97a1c" text-anchor="start" xml:space="preserve">a cell: rows[1][2]</text>
+<text x="660" y="76" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" fill="#c97a1c" text-anchor="start" xml:space="preserve">first the row, then the column</text>
+<path d="M690,84 Q670,130 520,136" fill="none" stroke="#c97a1c" stroke-width="2.2" marker-end="url(#head)"/>
+</svg>

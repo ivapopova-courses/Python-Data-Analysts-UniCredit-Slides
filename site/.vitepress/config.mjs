@@ -16,7 +16,19 @@ const lectures = [
   { text: '1. Introduction, syntax, types', link: '/lectures/01-intro-syntax-types' },
   { text: '2. Conditions and loops', link: '/lectures/02-conditions-and-loops' },
   { text: '3. Lists, tuples, sets', link: '/lectures/03-lists-tuples-sets' },
-  { text: '4. Functions', link: '/lectures/04-functions' }
+  { text: '4. Functions', link: '/lectures/04-functions' },
+  { text: '5. Lists (advanced)', link: '/lectures/05-lists-advanced' },
+  { text: '6. Dictionaries', link: '/lectures/06-dictionaries' },
+  { text: '7. Text processing', link: '/lectures/07-text-processing' },
+  { text: '8. Regular expressions', link: '/lectures/08-regular-expressions' },
+  { text: '9. Errors and files', link: '/lectures/09-errors-and-files' },
+  { text: '10. Modules and Git', link: '/lectures/10-modules-and-git' },
+  { text: '11. OOP: classes and objects', link: '/lectures/11-oop-classes' },
+  { text: '12. OOP: nomenclatures', link: '/lectures/12-oop-nomenclatures' },
+  { text: '13. Databases', link: '/lectures/13-databases' },
+  { text: '14. NumPy and pandas', link: '/lectures/14-numpy-pandas-intro' },
+  { text: '15. pandas: select, group, join', link: '/lectures/15-pandas-select-aggregate-join' },
+  { text: '16. pandas: reports, project', link: '/lectures/16-pandas-reports-project' }
 ].filter(it => isReleased(it.link))
 
 const course = defineCourse({

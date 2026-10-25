@@ -78,3 +78,15 @@ in calls; a list passed to a function.
 [4. A function calls a function](animations/functionCalls.html#4){target="_blank"},
 [5. A list passed to a function](animations/functionCalls.html#5){target="_blank"},
 [6. A list as a default value (advanced)](animations/functionCalls.html#6){target="_blank"}
+
+## Session 6 - Dictionaries
+
+**[Grouping by hand](animations/groupingByHand.html){target="_blank"}** -
+a dictionary as a lookup table, and as the result of a `GROUP BY` that grows row by
+row: a lookup with a default, counting with `get`, sums with `defaultdict`, groups of
+rows in lists, and a join by key.
+[1. A lookup](animations/groupingByHand.html#1){target="_blank"},
+[2. Count with `get`](animations/groupingByHand.html#2){target="_blank"},
+[3. Sum with `defaultdict`](animations/groupingByHand.html#3){target="_blank"},
+[4. Group into lists](animations/groupingByHand.html#4){target="_blank"},
+[5. The join by key](animations/groupingByHand.html#5){target="_blank"}

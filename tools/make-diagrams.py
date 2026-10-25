@@ -547,10 +547,187 @@ def scope_legb(t):
     return s.render()
 
 
+# ---------------------------------------------------------------------------
+# table-rows: a table as a list of rows - a row, a column, a cell
+
+TABLE = {
+    "en": {
+        "title": "A table as a list of rows",
+        "row": "a row: rows[1]",
+        "col": "a column: [row[2] for row in rows]",
+        "cell": "a cell: rows[1][2]",
+        "cell2": "first the row, then the column",
+        "header": "header",
+    },
+}
+TABLE["bg"] = dict(TABLE["en"])   # TODO: Bulgarian texts (the lecture is not translated yet)
+
+
+def table_rows(t):
+    blue, green, orange = COLORS["blue"][1], COLORS["green"][1], COLORS["orange"][1]
+    s = Svg(920, 300, t["title"])
+    header = ["loan_id", "product", "outstanding", "stage"]
+    rows = [["L000001", "investment", "1044231.30", "1"],
+            ["L000002", "investment", "651927.30", "2"],
+            ["L000003", "credit_card", "644.25", "2"]]
+    widths = [130, 150, 150, 80]
+    x0, y0, h = 100, 40, 42
+    xs = [x0 + sum(widths[:i]) for i in range(len(widths))]
+    s.text(x0 - 16, y0 + 27, t["header"], size=13, color=MUTED, anchor="end")
+    for j, name in enumerate(header):
+        s.rect(xs[j], y0, widths[j], h, "gray", radius=0)
+        s.text(xs[j] + widths[j] / 2, y0 + 27, name, size=14, weight=700, mono=True, anchor="middle")
+    for i, row in enumerate(rows):
+        y = y0 + h * (i + 1) + 8
+        s.text(x0 - 16, y + 27, f"rows[{i}]", size=14, mono=True, color=MUTED, anchor="end")
+        for j, value in enumerate(row):
+            color = "orange" if (i == 1 and j == 2) else "blue" if i == 1 else "green" if j == 2 else "gray"
+            s.rect(xs[j], y, widths[j], h, color, radius=0)
+            s.text(xs[j] + widths[j] / 2, y + 27, value, size=14, mono=True, anchor="middle")
+    right = x0 + sum(widths) + 20
+    s.arrow(right + 120, y0 + h * 2 + 8 + 21, right + 4, y0 + h * 2 + 8 + 21, color=blue)
+    s.text(right + 128, y0 + h * 2 + 8 + 26, t["row"], size=14, weight=700, color=blue)
+    cx = xs[2] + widths[2] / 2
+    s.arrow(cx, 262, cx, y0 + h * 4 + 12, color=green)
+    s.text(cx, 284, t["col"], size=14, weight=700, color=green, anchor="middle")
+    s.text(right + 30, y0 + 16, t["cell"], size=14, weight=700, color=orange)
+    s.text(right + 30, y0 + 36, t["cell2"], size=13, color=orange)
+    s.arrow(right + 60, y0 + 44, xs[2] + widths[2] - 10, y0 + h * 2 + 12, color=orange, curve=(right + 40, y0 + 90))
+    return s.render()
+
+
+# ---------------------------------------------------------------------------
+# dict-lookup: one lookup table in three forms - SAS format, SQL table, Python dict
+
+LOOKUP = {
+    "en": {
+        "title": "One lookup table, three forms",
+        "sas": "SAS: a format", "sql": "SQL: a lookup table", "py": "Python: a dictionary",
+        "use": "use it", "missing": "not found",
+    },
+}
+LOOKUP["bg"] = dict(LOOKUP["en"])   # TODO: Bulgarian texts (the lecture is not translated yet)
+
+
+def dict_lookup(t):
+    s = Svg(920, 330, t["title"])
+    w, h, y = 280, 210, 20
+    boxes = [
+        ("orange", t["sas"], ["proc format;", "  value $prod", "    'mortgage'  = 'Mortgage loan'",
+                               "    'overdraft' = 'Overdraft'", "    other       = 'Other';", "run;"]),
+        ("blue", t["sql"], ["TABLE product_names", "code       name", "---------  -------------",
+                             "mortgage   Mortgage loan", "overdraft  Overdraft"]),
+        ("green", t["py"], ["product_names = {", '  "mortgage": "Mortgage loan",', '  "overdraft": "Overdraft",',
+                             "}"]),
+    ]
+    uses = [("put(code, $prod.)", "other = 'Other'"),
+            ("LEFT JOIN ... ON code", "COALESCE(name, 'Other')"),
+            ("product_names[code]", 'product_names.get(code, "Other")')]
+    for i, ((color, title, lines), (use, missing)) in enumerate(zip(boxes, uses)):
+        x = 15 + i * (w + 20)
+        s.rect(x, y, w, h, color)
+        s.text(x + 14, y + 26, title, size=16, weight=700)
+        s.lines(x + 14, y + 54, [(line, {"mono": True}) for line in lines], size=12, gap=20)
+        s.text(x + 14, y + h + 34, t["use"] + ":", size=13, color=MUTED)
+        s.text(x + 14, y + h + 54, use, size=13, mono=True)
+        s.text(x + 14, y + h + 78, t["missing"] + ":", size=13, color=MUTED)
+        s.text(x + 14, y + h + 98, missing, size=12, mono=True)
+    return s.render()
+
+
+# ---------------------------------------------------------------------------
+# class-objects: a class is a blueprint; objects are made from it
+
+CLASSOBJ = {
+    "en": {
+        "title": "A class and two objects",
+        "cls": "class Loan  (the blueprint)",
+        "obj": "an object (an instance)",
+        "made": "Loan(...) makes an object",
+        "shared": "the methods are shared by all objects",
+    },
+}
+CLASSOBJ["bg"] = dict(CLASSOBJ["en"])   # TODO: Bulgarian texts (the lecture is not translated yet)
+
+
+def class_objects(t):
+    s = Svg(920, 330, t["title"])
+    s.box(20, 30, 330, 270, "blue", t["cls"], [
+        ("def __init__(self, loan_id, product,", {"mono": True, "size": 12}),
+        ("             amount, outstanding):", {"mono": True, "size": 12}),
+        ("    self.loan_id = loan_id", {"mono": True, "size": 12}),
+        ("    self.product = product", {"mono": True, "size": 12}),
+        ("    ...", {"mono": True, "size": 12}),
+        ("", {}),
+        ("def repaid_share(self):", {"mono": True, "size": 12}),
+        ("    return 1 - self.outstanding", {"mono": True, "size": 12}),
+        ("               / self.amount", {"mono": True, "size": 12}),
+    ])
+    objects = [("first", ["loan_id = 'L000001'", "product = 'investment'", "amount = 1156900.0",
+                          "outstanding = 1044231.3"]),
+               ("second", ["loan_id = 'L000002'", "product = 'investment'", "amount = 1977400.0",
+                           "outstanding = 651927.3"])]
+    for i, (name, lines) in enumerate(objects):
+        y = 30 + i * 150
+        s.box(560, y, 340, 120, "green", f"{name}  -  {t['obj']}", [(l, {"mono": True, "size": 13}) for l in lines],
+              title_size=14)
+        s.arrow(352, 90 + i * 120, 556, y + 50)
+    s.text(455, 160, t["made"], size=13, color=MUTED, anchor="middle")
+    s.text(20, 322, t["shared"], size=13, color=MUTED)
+    return s.render()
+
+
+# ---------------------------------------------------------------------------
+# nomenclature: the four parts of the client's sentence as the parts of a class
+
+NOMEN = {
+    "en": {
+        "title": "A nomenclature as a class",
+        "parts": [("data", "codes: {code: label}"), ("metadata", "name, version, valid_from, owner"),
+                  ("validation rules", "__post_init__, validate(values)"),
+                  ("processing methods", "lookup(), apply(rows, ...), the unmapped report")],
+        "cls": "class Nomenclature",
+        "banded": "BandedNomenclature", "banded2": "ranges: DPD, PD -> grade",
+        "hier": "HierarchicalNomenclature", "hier2": "code -> parent",
+        "registry": "Registry", "registry2": "has nomenclatures; applies them",
+        "isa": "is a", "hasa": "has",
+        "datasets": "loans.csv, clients.csv, ratings_history.csv, ...",
+    },
+}
+NOMEN["bg"] = dict(NOMEN["en"])   # TODO: Bulgarian texts (the lecture is not translated yet)
+
+
+def nomenclature_diagram(t):
+    s = Svg(920, 360, t["title"])
+    s.rect(20, 20, 430, 250, "blue")
+    s.text(40, 48, t["cls"], size=17, weight=700, mono=True)
+    for i, (part, how) in enumerate(t["parts"]):
+        y = 70 + i * 48
+        s.rect(40, y, 390, 40, "gray", radius=6)
+        s.text(54, y + 17, part, size=14, weight=700)
+        s.text(54, y + 33, how, size=12, mono=True, color=MUTED)
+    s.box(520, 20, 380, 60, "green", t["banded"], [t["banded2"]], title_size=15)
+    s.box(520, 100, 380, 60, "green", t["hier"], [t["hier2"]], title_size=15)
+    s.box(520, 200, 380, 70, "orange", t["registry"], [t["registry2"]], title_size=15)
+    s.arrow(516, 50, 454, 80)
+    s.text(486, 56, t["isa"], size=12, color=MUTED, anchor="middle")
+    s.arrow(516, 130, 454, 130)
+    s.text(486, 124, t["isa"], size=12, color=MUTED, anchor="middle")
+    s.arrow(516, 235, 454, 220, dash=True)
+    s.text(486, 248, t["hasa"], size=12, color=MUTED, anchor="middle")
+    s.arrow(710, 272, 710, 310)
+    s.text(710, 334, t["datasets"], size=14, mono=True, anchor="middle")
+    return s.render()
+
+
 DIAGRAMS = {"run-python": (run_python, RUN), "venv": (venv, VENV), "type-conversions": (type_conversions, CONV),
             "if-elif-else": (if_elif_else, IFS), "loop-flow": (loop_flow, LOOP),
             "list-indexing": (list_indexing, INDEX), "set-operations": (set_operations, SETS),
-            "scope-legb": (scope_legb, LEGB)}
+            "scope-legb": (scope_legb, LEGB),
+            "table-rows": (table_rows, TABLE),
+            "dict-lookup": (dict_lookup, LOOKUP),
+            "class-objects": (class_objects, CLASSOBJ),
+            "nomenclature": (nomenclature_diagram, NOMEN)}
 
 if __name__ == "__main__":
     for name, (draw, texts) in DIAGRAMS.items():

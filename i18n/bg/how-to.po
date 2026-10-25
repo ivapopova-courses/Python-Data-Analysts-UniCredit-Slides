@@ -95,7 +95,9 @@ msgstr "За какво"
 
 #. table cell
 #: site/how-to.md:47
-msgid "[Python](https://www.python.org/downloads/)"
+#, fuzzy
+#| msgid "[Python](https://www.python.org/downloads/)"
+msgid "[Python](https://www.python.org/downloads/windows/)"
 msgstr "[Python](https://www.python.org/downloads/)"
 
 #. table cell
@@ -150,260 +152,271 @@ msgstr "вашето собствено копие на задачите"
 
 #. paragraph
 #: site/how-to.md:52
-msgid "On Windows, tick **Add python.exe to PATH** on the first screen of the Python installer. Check the tools in a terminal (in VS Code: **Terminal > New Terminal**):"
-msgstr "На Windows сложете отметка **Add python.exe to PATH** на първия екран на инсталатора на Python. Проверете инструментите в терминал (във VS Code: **Terminal > New Terminal**):"
+msgid "On Windows, open the [Windows downloads page](https://www.python.org/downloads/windows/), find the newest **Python 3.13.x** under *Stable Releases* and take **Download Windows installer (64-bit)** - not the \"Python install manager\" and not the newest Python (3.15) at the top. On the first screen of the installer, tick **Add python.exe to PATH**. Check the tools in a terminal (in VS Code: **Terminal > New Terminal**):"
+msgstr ""
 
 #. paragraph
-#: site/how-to.md:60
+#: site/how-to.md:69
 msgid "The libraries (pandas, NumPy, ...) are installed into a *virtual environment* in the Homework folder - see step 8 below."
 msgstr "Библиотеките (pandas, NumPy, ...) се инсталират във *виртуална среда* (virtual environment) в папката Homework - вижте стъпка 8 по-долу."
 
 #. heading 2
-#: site/how-to.md:63
+#: site/how-to.md:72
 msgid "Practice and homework in VS Code"
 msgstr "Упражнения и домашни във VS Code"
 
 #. paragraph
-#: site/how-to.md:65
+#: site/how-to.md:74
 msgid "The practice tasks and the homework are in the **Homework repository**: https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework"
 msgstr "Задачите за упражнение и домашните са в **Homework repository**: https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework"
 
 #. paragraph
-#: site/how-to.md:68
+#: site/how-to.md:77
 msgid "Each lecture has a folder there (`01-intro-syntax-types/`, ...) with two kinds of tasks:"
 msgstr "Всяка лекция има папка там (`01-intro-syntax-types/`, ...) с два вида задачи:"
 
 #. paragraph
-#: site/how-to.md:71
+#: site/how-to.md:80
 msgid "**Practice tasks** (`practice/task1-....py`, ...): short exercises, one topic each, in the order of the lecture. We start them in class. Finish the rest at home if you can - later tasks and the final project reuse them."
 msgstr "**Задачи за упражнение** (`practice/task1-....py`, ...): кратки упражнения, всяко по една тема, в реда на лекцията. Започваме ги в час. Довършете останалите вкъщи, ако можете - по-късните задачи и финалният проект ги използват."
 
 #. paragraph
-#: site/how-to.md:74
+#: site/how-to.md:83
 msgid "**Homework** (`homework.py`): one larger task that puts the topics of the lecture together. Do it before the next session - we go through it together at the start."
 msgstr "**Домашно** (`homework.py`): една по-голяма задача, която събира темите на лекцията. Направете я преди следващото занятие - разглеждаме я заедно в началото."
 
 #. heading 3
-#: site/how-to.md:78
+#: site/how-to.md:87
 msgid "Set it up once"
 msgstr "Настройка (веднъж)"
 
 #. paragraph
-#: site/how-to.md:80
+#: site/how-to.md:89
 msgid "You do this only once, at the start of the course. It takes about 20 minutes."
 msgstr "Правите това само веднъж, в началото на курса. Отнема около 20 минути."
 
 #. paragraph
-#: site/how-to.md:82
+#: site/how-to.md:91
 msgid "**The idea.** A *repository* (or *repo*) is a project folder whose history Git keeps. In this course you work with three copies of the Homework repository:"
 msgstr "**Идеята.** *Repository* (или *repo*) е папка с проект, чиято история Git пази. В този курс работите с три копия на Homework repository:"
 
 #. paragraph
-#: site/how-to.md:96
+#: site/how-to.md:105
 msgid "**`upstream`** is the course repository. Only the trainer can change it. You only **pull** from it - this is how you get the new tasks."
 msgstr "**`upstream`** е repository-то на курса. Само преподавателят може да го променя. Вие само **изтегляте** (pull) от него - така получавате новите задачи."
 
 #. paragraph
-#: site/how-to.md:98
+#: site/how-to.md:107
 msgid "**`origin`** is your own repository. You **push** your solutions to it, so they are saved online and you can open them from any computer."
 msgstr "**`origin`** е вашето собствено repository. Вие **качвате** (push) решенията си в него, така че те са запазени онлайн и можете да ги отворите от всеки компютър."
 
 #. heading 4
-#: site/how-to.md:101
+#: site/how-to.md:110
 msgid "1. Check the tools"
 msgstr "1. Проверете инструментите"
 
 #. paragraph
-#: site/how-to.md:103
+#: site/how-to.md:112
 msgid "See [Set up Python on your computer](#setup) above."
 msgstr "Вижте [Инсталиране на Python на вашия компютър](#setup) по-горе."
 
 #. heading 4
-#: site/how-to.md:105
+#: site/how-to.md:114
 msgid "2. Tell Git who you are"
 msgstr "2. Кажете на Git кои сте"
 
 #. paragraph
-#: site/how-to.md:107
+#: site/how-to.md:116
 msgid "Git writes your name and email into every commit (every saved version):"
 msgstr "Git записва вашето име и email във всеки commit (всяка запазена версия):"
 
 #. paragraph
-#: site/how-to.md:114
+#: site/how-to.md:123
 msgid "Use the same email as in your GitHub account."
 msgstr "Използвайте същия email като в акаунта си в GitHub."
 
 #. heading 4
-#: site/how-to.md:116
+#: site/how-to.md:125
 msgid "3. Create your own repository on GitHub"
 msgstr "3. Създайте собствено repository в GitHub"
 
 #. paragraph
-#: site/how-to.md:118
+#: site/how-to.md:127
 msgid "Sign in to https://github.com."
 msgstr "Влезте в https://github.com."
 
 #. paragraph
-#: site/how-to.md:119
+#: site/how-to.md:128
 msgid "Click **+** (top right), then **New repository**."
 msgstr "Натиснете **+** (горе вдясно), след това **New repository**."
 
 #. paragraph
-#: site/how-to.md:120
+#: site/how-to.md:129
 msgid "**Repository name**: for example `python-course-homework`."
 msgstr "**Repository name**: например `python-course-homework`."
 
 #. paragraph
-#: site/how-to.md:121
+#: site/how-to.md:130
 msgid "Choose **Private** (only you can see it)."
 msgstr "Изберете **Private** (само вие го виждате)."
 
 #. paragraph
-#: site/how-to.md:122
+#: site/how-to.md:131
 msgid "Leave everything else as it is: **no** README, **no** `.gitignore`, **no** licence. The repository must be **empty** - otherwise step 5 fails."
 msgstr "Оставете всичко друго както е: **без** README, **без** `.gitignore`, **без** лиценз. Repository-то трябва да е **празно** - иначе стъпка 5 няма да успее."
 
 #. paragraph
-#: site/how-to.md:124
+#: site/how-to.md:133
 msgid "Click **Create repository** and copy the web address GitHub shows, like `https://github.com/your-user/python-course-homework.git`."
 msgstr "Натиснете **Create repository** и копирайте уеб адреса, който GitHub показва, например `https://github.com/your-user/python-course-homework.git`."
 
 #. heading 4
-#: site/how-to.md:127
+#: site/how-to.md:136
 msgid "4. Download the course repository and connect your own"
 msgstr "4. Изтеглете repository-то на курса и свържете вашето"
 
 #. paragraph
-#: site/how-to.md:129
+#: site/how-to.md:138
 msgid "In VS Code, open the folder where you keep the course (**File > Open Folder**), then open a terminal (**Terminal > New Terminal**) and type the commands one at a time:"
 msgstr "Във VS Code отворете папката, в която държите курса (**File > Open Folder**), след това отворете терминал (**Terminal > New Terminal**) и въведете командите една по една:"
 
 #. paragraph
-#: site/how-to.md:140
+#: site/how-to.md:149
 msgid "In the last command, paste **your** address from step 3."
 msgstr "В последната команда поставете **вашия** адрес от стъпка 3."
 
 #. heading 4
-#: site/how-to.md:142
+#: site/how-to.md:151
 msgid "5. Send everything to your repository (the first push)"
 msgstr "5. Изпратете всичко във вашето repository (първият push)"
 
 #. paragraph
-#: site/how-to.md:148
+#: site/how-to.md:157
 msgid "The first time, GitHub asks you to sign in: choose to sign in with the browser and allow the access."
 msgstr "Първия път GitHub ви моли да влезете: изберете влизане през браузъра и разрешете достъпа."
 
 #. heading 4
-#: site/how-to.md:151
+#: site/how-to.md:160
 msgid "6. Check the result"
 msgstr "6. Проверете резултата"
 
 #. paragraph
-#: site/how-to.md:157
+#: site/how-to.md:166
 msgid "`origin` must show **your** address, `upstream` the course address."
 msgstr "`origin` трябва да показва **вашия** адрес, `upstream` - адреса на курса."
 
 #. heading 4
-#: site/how-to.md:159
+#: site/how-to.md:168
 msgid "7. Open the folder in VS Code"
 msgstr "7. Отворете папката във VS Code"
 
 #. paragraph
-#: site/how-to.md:161
+#: site/how-to.md:170
 msgid "**File > Open Folder** and choose `Python-Data-Analysts-UniCredit-Homework` (the folder itself, not the folder above it). Always open this folder when you work on the tasks: then the terminal starts in the right place."
 msgstr "**File > Open Folder** и изберете `Python-Data-Analysts-UniCredit-Homework` (самата папка, не папката над нея). Винаги отваряйте тази папка, когато работите по задачите: тогава терминалът започва от правилното място."
 
 #. heading 4
-#: site/how-to.md:165
+#: site/how-to.md:174
 msgid "8. Create the virtual environment"
 msgstr "8. Създайте виртуалната среда"
 
 #. paragraph
-#: site/how-to.md:167
+#: site/how-to.md:176
 msgid "In the terminal of VS Code, in the Homework folder:"
 msgstr "В терминала на VS Code, в папката Homework:"
 
 #. paragraph
-#: site/how-to.md:176
+#: site/how-to.md:193
+msgid "PowerShell says *running scripts is disabled on this system*? Run `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process`, then activate again (more in [lecture 1](/lectures/01-intro-syntax-types#virtual-environments))."
+msgstr ""
+
+#. paragraph
+#: site/how-to.md:197
 msgid "The prompt now starts with `(.venv)`. In VS Code, choose the interpreter once: `Ctrl+Shift+P` > **Python: Select Interpreter** > the one in `.venv`. Git ignores the `.venv` folder."
 msgstr "Сега промптът започва с `(.venv)`. Във VS Code изберете интерпретатора веднъж: `Ctrl+Shift+P` > **Python: Select Interpreter** > този в `.venv`. Git игнорира папката `.venv`."
 
 #. heading 3
-#: site/how-to.md:180
+#: site/how-to.md:201
 msgid "Work on a task"
 msgstr "Работа по задача"
 
 #. paragraph
-#: site/how-to.md:182
+#: site/how-to.md:203
 msgid "Open the terminal (`` Ctrl+` ``) in the repository root and run a task:"
 msgstr "Отворете терминала (`` Ctrl+` ``) в основната папка на repository-то и пуснете задача:"
 
 #. paragraph
-#: site/how-to.md:188
+#: site/how-to.md:209
 msgid "Every task checks your code, prints `OK` or `FAIL` for each check and ends with a line like `5 of 7 checks passed`."
 msgstr "Всяка задача проверява вашия код, отпечатва `OK` или `FAIL` за всяка проверка и завършва с ред като `5 of 7 checks passed`."
 
 #. paragraph
-#: site/how-to.md:191
+#: site/how-to.md:212
 msgid "Save your work in your own repository:"
 msgstr "Запазете работата си във вашето собствено repository:"
 
 #. heading 3
-#: site/how-to.md:199
+#: site/how-to.md:220
 msgid "Get the new tasks"
 msgstr "Получаване на новите задачи"
 
 #. paragraph
-#: site/how-to.md:201
+#: site/how-to.md:222
 msgid "Before each session, commit your work, then:"
 msgstr "Преди всяко занятие направете commit на работата си, след това:"
 
 #. paragraph
-#: site/how-to.md:207
+#: site/how-to.md:228
 msgid "The new lecture folders appear next to your work. Existing files are not changed, so there are no conflicts."
 msgstr "Новите папки на лекциите се появяват до вашата работа. Съществуващите файлове не се променят, затова няма конфликти."
 
 #. heading 2
-#: site/how-to.md:210
+#: site/how-to.md:231
 msgid "Code from the lessons"
 msgstr "Кодът от занятията"
 
 #. paragraph
-#: site/how-to.md:212
+#: site/how-to.md:233
 msgid "The code written during the lessons is in the **Labs repository**: https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Labs"
 msgstr "Кодът, написан по време на занятията, е в **Labs repository**: https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Labs"
 
 #. paragraph
-#: site/how-to.md:215
+#: site/how-to.md:236
 msgid "Clone it once, and after each lesson run `git pull` in it to get the new code. Do not write your own code there - use the Homework repository for that."
 msgstr "Клонирайте го веднъж и след всяко занятие пускайте `git pull` в него, за да получите новия код. Не пишете собствен код там - за това използвайте Homework repository."
 
 #. heading 2
-#: site/how-to.md:224
+#: site/how-to.md:245
 msgid "Find things"
 msgstr "Как да намирате неща"
 
 #. paragraph
-#: site/how-to.md:226
+#: site/how-to.md:247
 msgid "The search box (top left, or `Ctrl+K`) searches all lectures."
 msgstr "Полето за търсене (горе вляво или `Ctrl+K`) търси във всички лекции."
 
 #. paragraph
-#: site/how-to.md:227
+#: site/how-to.md:248
 msgid "The list on the right side of a lecture (\"In this lecture\") jumps to a section."
 msgstr "Списъкът вдясно на лекцията (\"На тази страница\") прескача до раздел."
 
 #. paragraph
-#: site/how-to.md:228
+#: site/how-to.md:249
 msgid "The moon / sun switch at the top changes between dark and light mode."
 msgstr "Превключвателят луна / слънце най-горе сменя тъмния и светлия режим."
 
 #. paragraph
-#: site/how-to.md:229
+#: site/how-to.md:250
 msgid "The **EN / BG** button next to it opens the same page in English or in Bulgarian."
 msgstr "Бутонът **EN / BG** до него отваря същата страница на английски или на български."
 
 #. paragraph
-#: site/how-to.md:230
+#: site/how-to.md:251
 msgid "The navigation on the left and the \"In this lecture\" column on the right can be made narrower or wider: drag their inner edge. Double-click the edge to go back to the default width."
 msgstr "Навигацията вляво и колоната \"На тази страница\" вдясно могат да се стесняват или разширяват: плъзнете вътрешния им ръб. Двоен клик върху ръба връща ширината по подразбиране."
+
+#~ msgid "[Python](https://www.python.org/downloads/)"
+#~ msgstr "[Python](https://www.python.org/downloads/)"
+
+#~ msgid "On Windows, tick **Add python.exe to PATH** on the first screen of the Python installer. Check the tools in a terminal (in VS Code: **Terminal > New Terminal**):"
+#~ msgstr "На Windows сложете отметка **Add python.exe to PATH** на първия екран на инсталатора на Python. Проверете инструментите в терминал (във VS Code: **Terminal > New Terminal**):"
