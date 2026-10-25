@@ -1473,24 +1473,6 @@ print(math.pow(2, 3))                      # always a float (2 ** 3 is an int)
 print(math.log(100, 10), math.exp(1))
 ```
 
-On the portfolio: the PD of a rating from a score with the logistic function, and
-the expected loss `EL = PD * LGD * EAD`:
-
-```python run
-import math
-
-score = -4.2
-pd_value = 1 / (1 + math.exp(-score))     # the logistic function
-lgd = 0.45
-ead = 1044231.30
-
-expected_loss = pd_value * lgd * ead
-print(pd_value)
-print(round(expected_loss, 2))
-```
-
-(`pd` is the usual short name for pandas, so the variable is `pd_value`.)
-
 ## 12. Converting between types
 
 ### The functions
@@ -1503,8 +1485,6 @@ The name of a type is also a function that **converts** a value to it:
 | `float(x)` | a `float` | `float("8.83")` -> `8.83`, `float(5)` -> `5.0` |
 | `str(x)` | a `str` | `str(1044231.3)` -> `"1044231.3"` |
 | `bool(x)` | a `bool` | `bool(0)` -> `False`, `bool("no")` -> `True` |
-
-![The four basic types and the conversions between them, with examples and the conversions that fail](/diagrams/type-conversions.svg){.diagram}
 
 ### Text to numbers
 

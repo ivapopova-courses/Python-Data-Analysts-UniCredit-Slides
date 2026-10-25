@@ -199,63 +199,6 @@ def venv(t):
 
 
 # ---------------------------------------------------------------------------
-# type-conversions: int, float, str, bool and the conversion functions
-
-CONV = {
-    "en": {
-        "title": "Converting between the basic types",
-        "auto": "(automatic)", "cuts": "(cuts the fraction)", "rounds": "(rounds)",
-        "to_str": "to text, from any type:",
-        "false": "False for:", "true": "True for everything else - also",
-        "bool_int": "bool is an int:",
-    },
-    "bg": {
-        "title": "Преобразуване между основните типове",
-        "auto": "(автоматично)", "cuts": "(отрязва дробната част)", "rounds": "(закръгля)",
-        "to_str": "към текст, от всеки тип:",
-        "false": "False за:", "true": "True за всичко друго - също",
-        "bool_int": "bool е int:",
-    },
-}
-
-
-def type_conversions(t):
-    red = "#c4302b"
-    s = Svg(920, 470, t["title"])
-    # the nodes
-    s.box(380, 20, 160, 70, "orange", "str", [('"42", "8.83"', {"mono": True, "size": 13})], center=True, title_size=20)
-    s.box(60, 200, 160, 70, "green", "int", [("42", {"mono": True})], center=True, title_size=20)
-    s.box(700, 200, 160, 70, "blue", "float", [("8.83", {"mono": True})], center=True, title_size=20)
-    s.box(380, 380, 160, 70, "violet", "bool", [("True, False", {"mono": True, "size": 13})], center=True,
-          title_size=20)
-    # str -> int, str -> float
-    s.arrow(380, 70, 190, 198)
-    s.lines(40, 104, [('int("42")    -> 42', {"mono": True}), ('int(" 42 ")  -> 42', {"mono": True}),
-                      ('int("3.5")   -> ValueError', {"mono": True, "color": red})], size=13, gap=19)
-    s.arrow(540, 70, 730, 198)
-    s.lines(612, 104, [('float("8.83") -> 8.83', {"mono": True}),
-                       ('float("8,83") -> ValueError', {"mono": True, "color": red})], size=13, gap=19)
-    # int <-> float
-    s.arrow(222, 222, 698, 222)
-    s.lines(460, 212, [('float(5) -> 5.0      5 + 0.5 -> 5.5 ' + t["auto"], {"mono": True})], size=13, anchor="middle")
-    s.arrow(698, 252, 222, 252)
-    s.lines(460, 278, [("int(3.99) -> 3 " + t["cuts"], {"mono": True}),
-                       ("round(3.99) -> 4 " + t["rounds"], {"mono": True})], size=13, gap=19, anchor="middle")
-    # to str
-    s.text(560, 40, t["to_str"], size=13, color=MUTED)
-    s.text(560, 60, 'str(42) -> "42"   str(8.83) -> "8.83"', size=13, mono=True)
-    # to bool
-    s.arrow(150, 272, 378, 410)
-    s.arrow(780, 272, 542, 410)
-    s.lines(560, 420, [(t["false"] + ' 0, 0.0, "", None', {"mono": False}),
-                       (t["true"] + ' "0", "False"', {"color": red})], size=13, gap=19)
-    # bool -> int
-    s.text(40, 340, t["bool_int"], size=13, color=MUTED)
-    s.text(40, 360, "True + 1 -> 2", size=13, mono=True)
-    return s.render()
-
-
-# ---------------------------------------------------------------------------
 # if-elif-else: the conditions are tested in order, the first true one wins
 
 IFS = {
@@ -720,7 +663,7 @@ def nomenclature_diagram(t):
     return s.render()
 
 
-DIAGRAMS = {"run-python": (run_python, RUN), "venv": (venv, VENV), "type-conversions": (type_conversions, CONV),
+DIAGRAMS = {"run-python": (run_python, RUN), "venv": (venv, VENV),
             "if-elif-else": (if_elif_else, IFS), "loop-flow": (loop_flow, LOOP),
             "list-indexing": (list_indexing, INDEX), "set-operations": (set_operations, SETS),
             "scope-legb": (scope_legb, LEGB),

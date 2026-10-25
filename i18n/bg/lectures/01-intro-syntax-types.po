@@ -124,7 +124,7 @@ msgid "Sessions"
 msgstr "Занятия"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:56 site/lectures/01-intro-syntax-types.md:1878
+#: site/lectures/01-intro-syntax-types.md:56 site/lectures/01-intro-syntax-types.md:1858
 msgid "Topic"
 msgstr "Тема"
 
@@ -299,7 +299,7 @@ msgid "SAS"
 msgstr "SAS"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:111 site/lectures/01-intro-syntax-types.md:125 site/lectures/01-intro-syntax-types.md:256 site/lectures/01-intro-syntax-types.md:1356 site/lectures/01-intro-syntax-types.md:1880
+#: site/lectures/01-intro-syntax-types.md:111 site/lectures/01-intro-syntax-types.md:125 site/lectures/01-intro-syntax-types.md:256 site/lectures/01-intro-syntax-types.md:1356 site/lectures/01-intro-syntax-types.md:1860
 msgid "Python"
 msgstr "Python"
 
@@ -1979,7 +1979,7 @@ msgid "Sequence"
 msgstr "Последователност"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:938 site/lectures/01-intro-syntax-types.md:1275 site/lectures/01-intro-syntax-types.md:1653
+#: site/lectures/01-intro-syntax-types.md:938 site/lectures/01-intro-syntax-types.md:1275 site/lectures/01-intro-syntax-types.md:1633
 msgid "Result"
 msgstr "Резултат"
 
@@ -2464,7 +2464,7 @@ msgid "Priority"
 msgstr "Приоритет"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1323 site/lectures/01-intro-syntax-types.md:1887
+#: site/lectures/01-intro-syntax-types.md:1323 site/lectures/01-intro-syntax-types.md:1867
 msgid "Operators"
 msgstr "Оператори"
 
@@ -2623,605 +2623,599 @@ msgstr "Модулът `math`"
 msgid "More functions are in the [`math`](https://docs.python.org/3/library/math.html) module. Import it once, at the top of the file:"
 msgstr "Още функции има в модула [`math`](https://docs.python.org/3/library/math.html). Импортирайте го веднъж, в началото на файла:"
 
-#. paragraph
-#: site/lectures/01-intro-syntax-types.md:1476
-msgid "On the portfolio: the PD of a rating from a score with the logistic function, and the expected loss `EL = PD * LGD * EAD`:"
-msgstr "Върху портфейла: PD на един рейтинг от score с логистичната функция и очакваната загуба `EL = PD * LGD * EAD`:"
-
-#. paragraph
-#: site/lectures/01-intro-syntax-types.md:1492
-msgid "(`pd` is the usual short name for pandas, so the variable is `pd_value`.)"
-msgstr "(`pd` е обичайното кратко име на pandas, затова променливата е `pd_value`.)"
-
 #. heading 2
-#: site/lectures/01-intro-syntax-types.md:1494
+#: site/lectures/01-intro-syntax-types.md:1476
 msgid "12. Converting between types"
 msgstr "12. Преобразуване между типове"
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1496
+#: site/lectures/01-intro-syntax-types.md:1478
 msgid "The functions"
 msgstr "Функциите"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1498
+#: site/lectures/01-intro-syntax-types.md:1480
 msgid "The name of a type is also a function that **converts** a value to it:"
 msgstr "Името на един тип е и функция, която **преобразува** стойност към него:"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1500
+#: site/lectures/01-intro-syntax-types.md:1482
 msgid "Function"
 msgstr "Функция"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1500
+#: site/lectures/01-intro-syntax-types.md:1482
 msgid "Gives"
 msgstr "Дава"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1500
+#: site/lectures/01-intro-syntax-types.md:1482
 msgid "Examples"
 msgstr "Примери"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1502
+#: site/lectures/01-intro-syntax-types.md:1484
 msgid "an `int`"
 msgstr "`int`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1502
+#: site/lectures/01-intro-syntax-types.md:1484
 msgid "`int(\"42\")` -> `42`, `int(3.99)` -> `3` (cuts, does not round)"
 msgstr "`int(\"42\")` -> `42`, `int(3.99)` -> `3` (отрязва, не закръгля)"
 
-#. paragraph
-#: site/lectures/01-intro-syntax-types.md:1507
-msgid "![The four basic types and the conversions between them, with examples and the conversions that fail](/diagrams/type-conversions.svg){.diagram}"
-msgstr "![Четирите основни типа и преобразуванията между тях, с примери и с преобразуванията, които не успяват](/diagrams/type-conversions.svg){.diagram}"
-
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1509
+#: site/lectures/01-intro-syntax-types.md:1489
 msgid "Text to numbers"
 msgstr "Текст към числа"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1511
+#: site/lectures/01-intro-syntax-types.md:1491
 msgid "Data from files, `input()`, Excel exports and the web often comes as **text**. A row of `loans.csv`, before any conversion, is only a string:"
 msgstr "Данните от файлове, `input()`, експорти от Excel и уеб често идват като **текст**. Един ред от `loans.csv`, преди всяко преобразуване, е само string:"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1519
+#: site/lectures/01-intro-syntax-types.md:1499
 msgid "Each piece is a `str`. You cannot calculate with them before you convert them:"
 msgstr "Всяко парче е `str`. Не можете да смятате с тях, преди да ги преобразувате:"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1534
+#: site/lectures/01-intro-syntax-types.md:1514
 msgid "What `int()` and `float()` accept, and what not:"
 msgstr "Какво приемат `int()` и `float()` и какво не:"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1549
+#: site/lectures/01-intro-syntax-types.md:1529
 msgid "Numbers written the Bulgarian way - a space between the thousands, a comma for the fraction - must be cleaned first (more string methods in session 7):"
 msgstr "Числата, записани по българския начин - интервал между хилядите, запетая пред дробната част - трябва първо да се почистят (още методи на string в занятие 7):"
 
 #. box title
-#: site/lectures/01-intro-syntax-types.md:1558
+#: site/lectures/01-intro-syntax-types.md:1538
 msgid "SAS converts, Python does not"
 msgstr "SAS преобразува, Python - не"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1559
+#: site/lectures/01-intro-syntax-types.md:1539
 msgid "SAS converts `\"5\"` to `5` by itself and writes a NOTE to the log. Python never converts text to numbers by itself: `\"5\" + 5` is a `TypeError`. That is \"explicit is better than implicit\" - you will not get a silent wrong number."
 msgstr "SAS превръща `\"5\"` в `5` сам и пише NOTE в log-а. Python никога не превръща текст в числа сам: `\"5\" + 5` е `TypeError`. Това е \"явното е по-добро от неявното\" - няма да получите тихо грешно число."
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1564
+#: site/lectures/01-intro-syntax-types.md:1544
 msgid "Between numbers"
 msgstr "Между числа"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1574
+#: site/lectures/01-intro-syntax-types.md:1554
 msgid "Python converts automatically only where nothing is lost: `int` to `float` in an expression with a `float`, and `bool` to `int` (`True + 1` is `2`)."
 msgstr "Python преобразува автоматично само там, където нищо не се губи: `int` към `float` в израз с `float`, и `bool` към `int` (`True + 1` е `2`)."
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1577
+#: site/lectures/01-intro-syntax-types.md:1557
 msgid "Numbers to text"
 msgstr "Числа към текст"
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1586
+#: site/lectures/01-intro-syntax-types.md:1566
 msgid "To `bool`: truthy and falsy"
 msgstr "Към `bool`: truthy и falsy"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1588
+#: site/lectures/01-intro-syntax-types.md:1568
 msgid "`bool()` gives `False` for \"empty\" values and `True` for everything else:"
 msgstr "`bool()` дава `False` за \"празни\" стойности и `True` за всичко останало:"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1590
+#: site/lectures/01-intro-syntax-types.md:1570
 msgid "`False` (falsy)"
 msgstr "`False` (falsy)"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1590
+#: site/lectures/01-intro-syntax-types.md:1570
 msgid "`True` (truthy)"
 msgstr "`True` (truthy)"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1592
+#: site/lectures/01-intro-syntax-types.md:1572
 msgid "every other number, also `-1`"
 msgstr "всяко друго число, също и `-1`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1593
+#: site/lectures/01-intro-syntax-types.md:1573
 msgid "`\"\"` (an empty string)"
 msgstr "`\"\"` (празен string)"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1593
+#: site/lectures/01-intro-syntax-types.md:1573
 msgid "every non-empty string, also `\"0\"`, `\"False\"`, `\" \"`"
 msgstr "всеки непразен string, също и `\"0\"`, `\"False\"`, `\" \"`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1595
+#: site/lectures/01-intro-syntax-types.md:1575
 msgid "empty collections: `[]`, `{}`"
 msgstr "празни колекции: `[]`, `{}`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1595
+#: site/lectures/01-intro-syntax-types.md:1575
 msgid "non-empty collections"
 msgstr "непразни колекции"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1602
+#: site/lectures/01-intro-syntax-types.md:1582
 msgid "`bool(\"False\")` is `True`! To read \"yes\" / \"no\" or \"True\" / \"False\" from a file, compare the text:"
 msgstr "`bool(\"False\")` е `True`! За да прочетете \"yes\" / \"no\" или \"True\" / \"False\" от файл, сравнете текста:"
 
 #. heading 2
-#: site/lectures/01-intro-syntax-types.md:1611
+#: site/lectures/01-intro-syntax-types.md:1591
 msgid "13. Strings and f-strings"
 msgstr "13. Strings и f-strings"
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1613
+#: site/lectures/01-intro-syntax-types.md:1593
 msgid "Joining is hard to read"
 msgstr "Съединяването се чете трудно"
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1623 site/lectures/01-intro-syntax-types.md:1889
+#: site/lectures/01-intro-syntax-types.md:1603 site/lectures/01-intro-syntax-types.md:1869
 msgid "f-strings"
 msgstr "f-strings"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1625
+#: site/lectures/01-intro-syntax-types.md:1605
 msgid "An **f-string** has an `f` before the quotes. Inside it, `{ }` hold any Python expression; its value is put into the text:"
 msgstr "**f-string** има `f` преди кавичките. В него `{ }` съдържат произволен Python израз; стойността му се поставя в текста:"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1639
+#: site/lectures/01-intro-syntax-types.md:1619
 msgid "Several lines, with triple quotes:"
 msgstr "Няколко реда, с тройни кавички:"
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1649
+#: site/lectures/01-intro-syntax-types.md:1629
 msgid "Formatting the values"
 msgstr "Форматиране на стойностите"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1651
+#: site/lectures/01-intro-syntax-types.md:1631
 msgid "After a `:` inside the `{ }` comes a **format specification** - like a SAS format:"
 msgstr "След `:` в `{ }` идва **спецификация на формата** (format specification) - като SAS формат:"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1653
+#: site/lectures/01-intro-syntax-types.md:1633
 msgid "f-string"
 msgstr "f-string"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1653
+#: site/lectures/01-intro-syntax-types.md:1633
 msgid "SAS format"
 msgstr "SAS формат"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1660
+#: site/lectures/01-intro-syntax-types.md:1640
 msgid "`   1,044,231.30` (15 characters, right)"
 msgstr "`   1,044,231.30` (15 символа, вдясно)"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1660
+#: site/lectures/01-intro-syntax-types.md:1640
 msgid "width `15.`"
 msgstr "ширина `15.`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1661
+#: site/lectures/01-intro-syntax-types.md:1641
 msgid "`EUR   ` (6 characters, left)"
 msgstr "`EUR   ` (6 символа, вляво)"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1662
+#: site/lectures/01-intro-syntax-types.md:1642
 msgid "`   EUR   ` (centred)"
 msgstr "`   EUR   ` (центрирано)"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1663
+#: site/lectures/01-intro-syntax-types.md:1643
 msgid "`***EUR***` (filled with `*`)"
 msgstr "`***EUR***` (запълнено с `*`)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1682
+#: site/lectures/01-intro-syntax-types.md:1662
 msgid "The pattern is `{value:[fill][align][width][,][.precision][type]}`: align `<` left, `>` right, `^` centre; type `d` whole number, `f` fixed point, `%` percent, `e` scientific. All options: [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)."
 msgstr "Шаблонът е `{value:[fill][align][width][,][.precision][type]}`: подравняване `<` вляво, `>` вдясно, `^` в центъра; тип `d` цяло число, `f` с фиксирана запетая, `%` процент, `e` научен запис. Всички опции: [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1686
+#: site/lectures/01-intro-syntax-types.md:1666
 msgid "The Bulgarian way - a space between the thousands and a comma for the fraction - is two replacements away:"
 msgstr "Българският начин - интервал между хилядите и запетая пред дробната част - е на две замени разстояние:"
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1695
+#: site/lectures/01-intro-syntax-types.md:1675
 msgid "A small report"
 msgstr "Малък отчет"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1697
+#: site/lectures/01-intro-syntax-types.md:1677
 msgid "Fixed widths make columns:"
 msgstr "Фиксираните ширини правят колони:"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1707
+#: site/lectures/01-intro-syntax-types.md:1687
 msgid "The same with loans:"
 msgstr "Същото с кредити:"
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1717
+#: site/lectures/01-intro-syntax-types.md:1697
 msgid "Older ways you will meet"
 msgstr "По-стари начини, които ще срещнете"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1719
+#: site/lectures/01-intro-syntax-types.md:1699
 msgid "Code written before f-strings (Python 3.6, 2016) uses `str.format()` or `%`. Read them; write f-strings."
 msgstr "Кодът, писан преди f-strings (Python 3.6, 2016), използва `str.format()` или `%`. Четете ги; пишете f-strings."
 
 #. heading 2
-#: site/lectures/01-intro-syntax-types.md:1733
+#: site/lectures/01-intro-syntax-types.md:1713
 msgid "14. Floats, rounding and `Decimal`"
 msgstr "14. Float, закръгляне и `Decimal`"
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1735
+#: site/lectures/01-intro-syntax-types.md:1715
 msgid "Why `0.1 + 0.2` is not `0.3`"
 msgstr "Защо `0.1 + 0.2` не е `0.3`"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1743
+#: site/lectures/01-intro-syntax-types.md:1723
 msgid "A `float` is stored in **binary**. Like 1/3 = 0.333... in decimal, 1/10 has no end in binary: it is cut after 53 binary digits, so `0.1` in memory is a tiny bit more than 0.1. Usually you do not see it, because `print()` shows the shortest text that gives the same number. In sums of many values the small errors add up. Read more: [Floating Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html)."
 msgstr "`float` се пази в **двоичен** вид. Както 1/3 = 0.333... в десетичен вид, 1/10 няма край в двоичен вид: отрязва се след 53 двоични цифри, затова `0.1` в паметта е мъничко повече от 0.1. Обикновено не го виждате, защото `print()` показва най-краткия текст, който дава същото число. В суми на много стойности малките грешки се натрупват. Още за четене: [Floating Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html)."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1749
+#: site/lectures/01-intro-syntax-types.md:1729
 msgid "SAS has the same floats and the same effect - you may know it from comparisons that need `ROUND(x, 0.01)` or a \"fuzz\"."
 msgstr "SAS има същите float числа и същия ефект - може да го познавате от сравнения, при които трябва `ROUND(x, 0.01)` или \"fuzz\"."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1752
+#: site/lectures/01-intro-syntax-types.md:1732
 msgid "Compare floats with a tolerance, not with `==`:"
 msgstr "Сравнявайте float стойности с допуск, а не с `==`:"
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1761
+#: site/lectures/01-intro-syntax-types.md:1741
 msgid "`round()` rounds half to even"
 msgstr "`round()` закръгля половинките към четно"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1768
+#: site/lectures/01-intro-syntax-types.md:1748
 msgid "`round()` rounds a 5 to the **even** neighbour: `round(2.5)` is `2`. This is \"banker's rounding\" - it does not push sums up. SAS `ROUND`, and SQL `ROUND` on `DECIMAL` / `NUMERIC` values, round a 5 **away from zero** (`2.5` -> `3`)."
 msgstr "`round()` закръгля 5 към **четния** съсед: `round(2.5)` е `2`. Това е \"банкерското закръгляне\" (banker's rounding) - то не тласка сумите нагоре. SAS `ROUND` и SQL `ROUND` върху стойности `DECIMAL` / `NUMERIC` закръглят 5 **далеч от нулата** (`2.5` -> `3`)."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1771
+#: site/lectures/01-intro-syntax-types.md:1751
 msgid "`round(2.675, 2)` gives `2.67`, because `2.675` in binary is a tiny bit less than 2.675."
 msgstr "`round(2.675, 2)` дава `2.67`, защото `2.675` в двоичен вид е мъничко по-малко от 2.675."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1774
+#: site/lectures/01-intro-syntax-types.md:1754
 msgid "For results that must match SAS, SQL or the accounting system to the cent, use `Decimal`."
 msgstr "За резултати, които трябва да съвпадат до стотинка със SAS, SQL или счетоводната система, използвайте `Decimal`."
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1777
+#: site/lectures/01-intro-syntax-types.md:1757
 msgid "`Decimal`: exact decimal numbers"
 msgstr "`Decimal`: точни десетични числа"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1779
+#: site/lectures/01-intro-syntax-types.md:1759
 msgid "The [`decimal`](https://docs.python.org/3/library/decimal.html) module of the standard library calculates in **decimal**, like a person on paper - the same as `DECIMAL(18, 2)` / `NUMERIC` in SQL."
 msgstr "Модулът [`decimal`](https://docs.python.org/3/library/decimal.html) от стандартната библиотека смята в **десетичен** вид, като човек на хартия - също като `DECIMAL(18, 2)` / `NUMERIC` в SQL."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1791
+#: site/lectures/01-intro-syntax-types.md:1771
 msgid "Create a `Decimal` **from a string**. From a float, it takes over the float's error - and shows the exact value the float really has:"
 msgstr "Създавайте `Decimal` **от string**. От float той поема грешката на float - и показва точната стойност, която float всъщност има:"
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1801
+#: site/lectures/01-intro-syntax-types.md:1781
 msgid "Rounding money with `quantize`"
 msgstr "Закръгляне на пари с `quantize`"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1803
+#: site/lectures/01-intro-syntax-types.md:1783
 msgid "`quantize()` rounds to the places of the given value; `rounding` says how. `ROUND_HALF_UP` is the rounding of SAS, SQL and the schoolbook:"
 msgstr "`quantize()` закръгля до знаците на дадената стойност; `rounding` казва как. `ROUND_HALF_UP` е закръглянето на SAS, на SQL и от училище:"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1818
+#: site/lectures/01-intro-syntax-types.md:1798
 msgid "The yearly interest of three loans, to the cent:"
 msgstr "Годишната лихва на три кредита, до стотинка:"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1835
+#: site/lectures/01-intro-syntax-types.md:1815
 msgid "Rules for `Decimal`:"
 msgstr "Правила за `Decimal`:"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1837
+#: site/lectures/01-intro-syntax-types.md:1817
 msgid "`Decimal` with `int` works; `Decimal` with `float` is a `TypeError` - convert the float with `Decimal(str(x))`."
 msgstr "`Decimal` с `int` работи; `Decimal` с `float` е `TypeError` - преобразувайте float с `Decimal(str(x))`."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1839
+#: site/lectures/01-intro-syntax-types.md:1819
 msgid "The result of a division has up to 28 significant digits (the default *precision*); round it with `quantize()` when you need cents."
 msgstr "Резултатът от деление има до 28 значещи цифри (*precision* по подразбиране); закръглете го с `quantize()`, когато ви трябват стотинки."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1841
+#: site/lectures/01-intro-syntax-types.md:1821
 msgid "`Decimal` is slower than `float`. Use it for **money that must add up** to the cent: balances, interest, reconciliations with the general ledger. For rates, PDs, statistics and models, `float` is right."
 msgstr "`Decimal` е по-бавен от `float`. Използвайте го за **пари, които трябва да се съберат** до стотинка: салда, лихви, равнения с главната книга. За лихвени проценти, PD, статистика и модели `float` е правилният избор."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1844
+#: site/lectures/01-intro-syntax-types.md:1824
 msgid "pandas works with `float`: there, round the **results** (session 15)."
 msgstr "pandas работи с `float`: там закръглявайте **резултатите** (занятие 15)."
 
 #. heading 2
-#: site/lectures/01-intro-syntax-types.md:1853
+#: site/lectures/01-intro-syntax-types.md:1833
 msgid "15. Practice"
 msgstr "15. Упражнения"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1855
+#: site/lectures/01-intro-syntax-types.md:1835
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (first time: see [How to use these pages](/how-to#practice-and-homework); before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
 msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (първия път: вижте [Как да ползвате тези страници](/how-to#practice-and-homework); преди занятието: `git pull upstream main`) и пуснете задачите от терминала, в основната папка на repository-то:"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1861
+#: site/lectures/01-intro-syntax-types.md:1841
 msgid "Each file explains the task at the top. Write your code between the `your code` lines; the checks at the bottom print `OK` or `FAIL`."
 msgstr "Всеки файл обяснява задачата най-горе. Пишете кода си между редовете `your code`; проверките най-долу отпечатват `OK` или `FAIL`."
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1864
+#: site/lectures/01-intro-syntax-types.md:1844
 msgid "Task"
 msgstr "Задача"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1864
+#: site/lectures/01-intro-syntax-types.md:1844
 msgid "File"
 msgstr "Файл"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1864
+#: site/lectures/01-intro-syntax-types.md:1844
 msgid "What you do"
 msgstr "Какво правите"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1866
+#: site/lectures/01-intro-syntax-types.md:1846
 msgid "Variables and types for one loan"
 msgstr "Променливи и типове за един кредит"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1867
+#: site/lectures/01-intro-syntax-types.md:1847
 msgid "Predict the value and the type of 14 expressions, then check"
 msgstr "Предскажете стойността и типа на 14 израза, после проверете"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1868
+#: site/lectures/01-intro-syntax-types.md:1848
 msgid "The length of this course in hours; days past due in months and days; interest"
 msgstr "Продължителността на този курс в часове; дни просрочие в месеци и дни; лихва"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1869
+#: site/lectures/01-intro-syntax-types.md:1849
 msgid "Convert the text fields of a CSV row, also a number in Bulgarian format"
 msgstr "Преобразувайте текстовите полета на ред от CSV, също и число в български формат"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1870
+#: site/lectures/01-intro-syntax-types.md:1850
 msgid "Format amounts, percents and ids; a report line with fixed widths"
 msgstr "Форматирайте суми, проценти и идентификатори; ред от отчет с фиксирани ширини"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1871
+#: site/lectures/01-intro-syntax-types.md:1851
 msgid "Interest to the cent with `Decimal`, rounded the SAS way"
 msgstr "Лихва до стотинка с `Decimal`, закръглена по начина на SAS"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1873
+#: site/lectures/01-intro-syntax-types.md:1853
 msgid "In `task2-predict-types.py`, replace each `\"?\"` with your prediction **before** you run the file - the point is to think first."
 msgstr "В `task2-predict-types.py` заменете всяко `\"?\"` с вашата прогноза, **преди** да пуснете файла - смисълът е първо да помислите."
 
 #. heading 2
-#: site/lectures/01-intro-syntax-types.md:1876
+#: site/lectures/01-intro-syntax-types.md:1856
 msgid "Summary"
 msgstr "Обобщение"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1878
+#: site/lectures/01-intro-syntax-types.md:1858
 msgid "Remember"
 msgstr "Запомнете"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1880
+#: site/lectures/01-intro-syntax-types.md:1860
 msgid "a free, general-purpose language; CPython; a new version every October; you use 3.12 / 3.13"
 msgstr "безплатен език с общо предназначение; CPython; нова версия всеки октомври; използвате 3.12 / 3.13"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1881
+#: site/lectures/01-intro-syntax-types.md:1861
 msgid "How it runs"
 msgstr "Как се изпълнява"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1881
+#: site/lectures/01-intro-syntax-types.md:1861
 msgid "syntax check -> bytecode -> the Python virtual machine; a `SyntaxError` stops everything before the first line"
 msgstr "проверка на синтаксиса -> bytecode -> виртуалната машина на Python; `SyntaxError` спира всичко преди първия ред"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1882
+#: site/lectures/01-intro-syntax-types.md:1862
 msgid "Project setup"
 msgstr "Подготовка на проект"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1882
+#: site/lectures/01-intro-syntax-types.md:1862
 msgid "`py -m venv .venv`, activate, `pip install -r requirements.txt`; one venv per project"
 msgstr "`py -m venv .venv`, активиране, `pip install -r requirements.txt`; по един venv за проект"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1883
+#: site/lectures/01-intro-syntax-types.md:1863
 msgid "Running code"
 msgstr "Пускане на код"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1883
+#: site/lectures/01-intro-syntax-types.md:1863
 msgid "`python file.py` in the terminal; the REPL `>>>`; Jupyter notebooks (the kernel keeps the variables)"
 msgstr "`python file.py` в терминала; REPL `>>>`; Jupyter notebooks (kernel-ът пази променливите)"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1884
+#: site/lectures/01-intro-syntax-types.md:1864
 msgid "Syntax"
 msgstr "Синтаксис"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1884
+#: site/lectures/01-intro-syntax-types.md:1864
 msgid "one statement per line; blocks by indentation (4 spaces); comments with `#`"
 msgstr "един statement на ред; блокове чрез отстъп (4 интервала); коментари с `#`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1885
+#: site/lectures/01-intro-syntax-types.md:1865
 msgid "Types"
 msgstr "Типове"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1885
+#: site/lectures/01-intro-syntax-types.md:1865
 msgid "`int`, `float`, `str`, `bool`, `None`; `type(x)`; everything is an object"
 msgstr "`int`, `float`, `str`, `bool`, `None`; `type(x)`; всичко е обект"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1886
+#: site/lectures/01-intro-syntax-types.md:1866
 msgid "Variables"
 msgstr "Променливи"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1886
+#: site/lectures/01-intro-syntax-types.md:1866
 msgid "a name bound to an object; `=` binds; the type belongs to the object; `snake_case`"
 msgstr "име, свързано с обект; `=` свързва; типът принадлежи на обекта; `snake_case`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1887
+#: site/lectures/01-intro-syntax-types.md:1867
 msgid "`+ - * / // % **`; `/` gives a float; `== != < <= > >=`; `and or not`"
 msgstr "`+ - * / // % **`; `/` дава float; `== != < <= > >=`; `and or not`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1888
+#: site/lectures/01-intro-syntax-types.md:1868
 msgid "Conversions"
 msgstr "Преобразувания"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1888
+#: site/lectures/01-intro-syntax-types.md:1868
 msgid "`int()`, `float()`, `str()`, `bool()`; text never becomes a number by itself; `bool(\"False\")` is `True`"
 msgstr "`int()`, `float()`, `str()`, `bool()`; текстът никога не става число сам; `bool(\"False\")` е `True`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1890
+#: site/lectures/01-intro-syntax-types.md:1870
 msgid "Money"
 msgstr "Пари"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1890
+#: site/lectures/01-intro-syntax-types.md:1870
 msgid "floats are binary: `0.1 + 0.2 != 0.3`; `round()` rounds half to even; `Decimal(\"...\")` + `quantize(..., ROUND_HALF_UP)`"
 msgstr "float числата са двоични: `0.1 + 0.2 != 0.3`; `round()` закръгля половинките към четно; `Decimal(\"...\")` + `quantize(..., ROUND_HALF_UP)`"
 
 #. heading 2
-#: site/lectures/01-intro-syntax-types.md:1892
+#: site/lectures/01-intro-syntax-types.md:1872
 msgid "Homework"
 msgstr "Домашно"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1894
+#: site/lectures/01-intro-syntax-types.md:1874
 msgid "`01-intro-syntax-types/homework.py` (in the homework repository): a **loan card** - convert the text fields of one loan, calculate the repaid share, the interest and the monthly payment, and print the card. Every check must print `OK`."
 msgstr "`01-intro-syntax-types/homework.py` (в homework repository): **карта на кредит** - преобразувайте текстовите полета на един кредит, изчислете погасения дял, лихвата и месечната вноска и отпечатайте картата. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1897
+#: site/lectures/01-intro-syntax-types.md:1877
 msgid "The practice tasks you did not finish in class - recommended, the next tasks build on them."
 msgstr "Задачите за упражнение, които не довършихте в час - препоръчително, следващите задачи надграждат върху тях."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1899
+#: site/lectures/01-intro-syntax-types.md:1879
 msgid "Optional: write `payment.py`, which asks for the amount, the yearly rate in percent and the number of years with `input()`, and prints the monthly payment (the formula is in `homework.py`), formatted with two decimals and a thousands separator. Run it in the terminal."
 msgstr "По желание: напишете `payment.py`, който пита за сумата, годишния лихвен процент и броя години с `input()` и отпечатва месечната вноска (формулата е в `homework.py`), форматирана с два знака след запетаята и разделител на хилядите. Пуснете го в терминала."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1903
+#: site/lectures/01-intro-syntax-types.md:1883
 msgid "Optional: create a notebook `01-practice.ipynb` in your Homework folder, read `data/loans.csv` with pandas (as at the top of this page), and show `loans.head()` and `loans.describe()`."
 msgstr "По желание: създайте notebook `01-practice.ipynb` в папката си Homework, прочетете `data/loans.csv` с pandas (както в началото на тази страница) и покажете `loans.head()` и `loans.describe()`."
 
 #. heading 2
-#: site/lectures/01-intro-syntax-types.md:1907
+#: site/lectures/01-intro-syntax-types.md:1887
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1909
+#: site/lectures/01-intro-syntax-types.md:1889
 msgid "Python: [the official tutorial](https://docs.python.org/3/tutorial/), chapters 1 - 3; [Built-in types](https://docs.python.org/3/library/stdtypes.html); [Built-in functions](https://docs.python.org/3/library/functions.html)"
 msgstr "Python: [официалният tutorial](https://docs.python.org/3/tutorial/), глави 1 - 3; [Built-in types](https://docs.python.org/3/library/stdtypes.html); [Built-in functions](https://docs.python.org/3/library/functions.html)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1912
+#: site/lectures/01-intro-syntax-types.md:1892
 msgid "Style: [PEP 8](https://peps.python.org/pep-0008/)"
 msgstr "Стил: [PEP 8](https://peps.python.org/pep-0008/)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1913
+#: site/lectures/01-intro-syntax-types.md:1893
 msgid "Setup: [Virtual environments and packages](https://docs.python.org/3/tutorial/venv.html), [Installing packages](https://packaging.python.org/en/latest/tutorials/installing-packages/), [Using Python on Windows](https://docs.python.org/3/using/windows.html)"
 msgstr "Подготовка: [Virtual environments and packages](https://docs.python.org/3/tutorial/venv.html), [Installing packages](https://packaging.python.org/en/latest/tutorials/installing-packages/), [Using Python on Windows](https://docs.python.org/3/using/windows.html)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1916
+#: site/lectures/01-intro-syntax-types.md:1896
 msgid "VS Code: [Python in VS Code](https://code.visualstudio.com/docs/languages/python), [Jupyter notebooks in VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks), [Tips and tricks](https://code.visualstudio.com/docs/editing/getting-started/tips-and-tricks), [VS Code - setup and basics (video)](https://www.youtube.com/watch?v=SYRwSyjD8oI), [the default terminal: cmd instead of PowerShell](https://code.visualstudio.com/docs/terminal/profiles)"
 msgstr "VS Code: [Python in VS Code](https://code.visualstudio.com/docs/languages/python), [Jupyter notebooks in VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks), [Tips and tricks](https://code.visualstudio.com/docs/editing/getting-started/tips-and-tricks), [VS Code - setup and basics (видео)](https://www.youtube.com/watch?v=SYRwSyjD8oI), [терминалът по подразбиране: cmd вместо PowerShell](https://code.visualstudio.com/docs/terminal/profiles)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1921
+#: site/lectures/01-intro-syntax-types.md:1901
 msgid "Jupyter: [Project Jupyter](https://jupyter.org/), [Jupyter documentation](https://docs.jupyter.org/en/latest/), [JupyterLab documentation](https://jupyterlab.readthedocs.io/en/stable/)"
 msgstr "Jupyter: [Project Jupyter](https://jupyter.org/), [документацията на Jupyter](https://docs.jupyter.org/en/latest/), [документацията на JupyterLab](https://jupyterlab.readthedocs.io/en/stable/)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1924
+#: site/lectures/01-intro-syntax-types.md:1904
 msgid "Formatting: [f-strings in the tutorial](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals), [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)"
 msgstr "Форматиране: [f-strings в tutorial-а](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals), [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1926
+#: site/lectures/01-intro-syntax-types.md:1906
 msgid "Numbers: [Floating point arithmetic](https://docs.python.org/3/tutorial/floatingpoint.html), [decimal](https://docs.python.org/3/library/decimal.html), [math](https://docs.python.org/3/library/math.html)"
 msgstr "Числа: [Floating point arithmetic](https://docs.python.org/3/tutorial/floatingpoint.html), [decimal](https://docs.python.org/3/library/decimal.html), [math](https://docs.python.org/3/library/math.html)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1929
+#: site/lectures/01-intro-syntax-types.md:1909
 msgid "Videos for later: [NumPy for beginners (SciPy 2018)](https://www.youtube.com/watch?v=V0D2mhVt7NE), [JupyterLab - get started](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html) (the documentation)"
 msgstr "Видеа за по-късно: [NumPy for beginners (SciPy 2018)](https://www.youtube.com/watch?v=V0D2mhVt7NE), [JupyterLab - get started](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html) (документацията)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1933
+#: site/lectures/01-intro-syntax-types.md:1913
 msgid "**Next session:** conditional statements and loops - `if` / `elif` / `else`, the Python `CASE WHEN`, and `for` / `while` loops over the rows of a file."
 msgstr "**Следващото занятие:** условни конструкции и цикли - `if` / `elif` / `else`, `CASE WHEN` на Python и цикли `for` / `while` по редовете на файл."
+
+#~ msgid "![The four basic types and the conversions between them, with examples and the conversions that fail](/diagrams/type-conversions.svg){.diagram}"
+#~ msgstr "![Четирите основни типа и преобразуванията между тях, с примери и с преобразуванията, които не успяват](/diagrams/type-conversions.svg){.diagram}"
+
+#~ msgid "On the portfolio: the PD of a rating from a score with the logistic function, and the expected loss `EL = PD * LGD * EAD`:"
+#~ msgstr "Върху портфейла: PD на един рейтинг от score с логистичната функция и очакваната загуба `EL = PD * LGD * EAD`:"
+
+#~ msgid "(`pd` is the usual short name for pandas, so the variable is `pd_value`.)"
+#~ msgstr "(`pd` е обичайното кратко име на pandas, затова променливата е `pd_value`.)"
 
 #~ msgid "`Ctrl+Enter` - only in the Labs folder, which has this shortcut in `.vscode/keybindings.json`."
 #~ msgstr "`Ctrl+Enter` - само в папката Labs, която има тази клавишна комбинация в `.vscode/keybindings.json`."
