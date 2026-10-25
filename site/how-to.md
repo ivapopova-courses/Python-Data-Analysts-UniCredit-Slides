@@ -84,8 +84,9 @@ the Homework folder - see step 8 below.
 `.vscode/extensions.json`. When you open the Homework folder in VS Code (step 7
 below), VS Code asks *Do you want to install the recommended extensions...?* -
 click **Install**. Missed the question? Open the **Extensions** view
-(`Ctrl+Shift+X`), type `@recommended` in the search box and click the cloud icon
-(**Install Workspace Recommended Extensions**).
+(`Ctrl+Shift+X`) and type `@recommended` in the search box. Under **Workspace
+Recommendations**, hover over the header and click the cloud icon (**Install
+Workspace Recommended Extensions**).
 
 To get the same list in another project, create the file `.vscode/extensions.json`
 in its folder with this content:
