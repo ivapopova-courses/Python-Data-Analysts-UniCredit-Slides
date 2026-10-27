@@ -124,7 +124,7 @@ msgid "Sessions"
 msgstr "Занятия"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:56 site/lectures/01-intro-syntax-types.md:1861
+#: site/lectures/01-intro-syntax-types.md:56 site/lectures/01-intro-syntax-types.md:1862
 msgid "Topic"
 msgstr "Тема"
 
@@ -299,7 +299,7 @@ msgid "SAS"
 msgstr "SAS"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:111 site/lectures/01-intro-syntax-types.md:125 site/lectures/01-intro-syntax-types.md:256 site/lectures/01-intro-syntax-types.md:1356 site/lectures/01-intro-syntax-types.md:1863
+#: site/lectures/01-intro-syntax-types.md:111 site/lectures/01-intro-syntax-types.md:125 site/lectures/01-intro-syntax-types.md:256 site/lectures/01-intro-syntax-types.md:1356 site/lectures/01-intro-syntax-types.md:1864
 msgid "Python"
 msgstr "Python"
 
@@ -2464,7 +2464,7 @@ msgid "Priority"
 msgstr "Приоритет"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1323 site/lectures/01-intro-syntax-types.md:1870
+#: site/lectures/01-intro-syntax-types.md:1323 site/lectures/01-intro-syntax-types.md:1871
 msgid "Operators"
 msgstr "Оператори"
 
@@ -2774,7 +2774,7 @@ msgid "Joining is hard to read"
 msgstr "Съединяването се чете трудно"
 
 #. heading 3
-#: site/lectures/01-intro-syntax-types.md:1603 site/lectures/01-intro-syntax-types.md:1872
+#: site/lectures/01-intro-syntax-types.md:1603 site/lectures/01-intro-syntax-types.md:1873
 msgid "f-strings"
 msgstr "f-strings"
 
@@ -3005,233 +3005,236 @@ msgstr "Отворете своето копие на [Homework repository](http
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1844
-msgid "Each file explains the task at the top. Write your code between the `your code` lines; the checks at the bottom print `OK` or `FAIL`."
-msgstr "Всеки файл обяснява задачата най-горе. Пишете кода си между редовете `your code`; проверките най-долу отпечатват `OK` или `FAIL`."
+msgid "Each file is split into parts. A part has its description, then the `your code` lines - write your code between them - and right after them its checks, which print `OK` or `FAIL`."
+msgstr "Всеки файл е разделен на части. Всяка част има описание, след него редовете `your code` - пишете кода си между тях - и веднага след тях нейните проверки, които отпечатват `OK` или `FAIL`."
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1847
+#: site/lectures/01-intro-syntax-types.md:1848
 msgid "Task"
 msgstr "Задача"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1847
+#: site/lectures/01-intro-syntax-types.md:1848
 msgid "File"
 msgstr "Файл"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1847
+#: site/lectures/01-intro-syntax-types.md:1848
 msgid "What you do"
 msgstr "Какво правите"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1849
+#: site/lectures/01-intro-syntax-types.md:1850
 msgid "Variables and types for one loan"
 msgstr "Променливи и типове за един кредит"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1850
+#: site/lectures/01-intro-syntax-types.md:1851
 msgid "Predict the value and the type of 14 expressions, then check"
 msgstr "Предскажете стойността и типа на 14 израза, после проверете"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1851
+#: site/lectures/01-intro-syntax-types.md:1852
 msgid "The length of this course in hours; days past due in months and days; interest"
 msgstr "Продължителността на този курс в часове; дни просрочие в месеци и дни; лихва"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1852
+#: site/lectures/01-intro-syntax-types.md:1853
 msgid "Convert the text fields of a CSV row, also a number in Bulgarian format"
 msgstr "Преобразувайте текстовите полета на ред от CSV, също и число в български формат"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1853
+#: site/lectures/01-intro-syntax-types.md:1854
 msgid "Format amounts, percents and ids; a report line with fixed widths"
 msgstr "Форматирайте суми, проценти и идентификатори; ред от отчет с фиксирани ширини"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1854
+#: site/lectures/01-intro-syntax-types.md:1855
 msgid "Interest to the cent with `Decimal`, rounded the SAS way"
 msgstr "Лихва до стотинка с `Decimal`, закръглена по начина на SAS"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1856
+#: site/lectures/01-intro-syntax-types.md:1857
 msgid "In `task2-predict-types.py`, replace each `\"?\"` with your prediction **before** you run the file - the point is to think first."
 msgstr "В `task2-predict-types.py` заменете всяко `\"?\"` с вашата прогноза, **преди** да пуснете файла - смисълът е първо да помислите."
 
 #. heading 2
-#: site/lectures/01-intro-syntax-types.md:1859
+#: site/lectures/01-intro-syntax-types.md:1860
 msgid "Summary"
 msgstr "Обобщение"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1861
+#: site/lectures/01-intro-syntax-types.md:1862
 msgid "Remember"
 msgstr "Запомнете"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1863
+#: site/lectures/01-intro-syntax-types.md:1864
 msgid "a free, general-purpose language; CPython; a new version every October; you use 3.12 / 3.13"
 msgstr "безплатен език с общо предназначение; CPython; нова версия всеки октомври; използвате 3.12 / 3.13"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1864
+#: site/lectures/01-intro-syntax-types.md:1865
 msgid "How it runs"
 msgstr "Как се изпълнява"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1864
+#: site/lectures/01-intro-syntax-types.md:1865
 msgid "syntax check -> bytecode -> the Python virtual machine; a `SyntaxError` stops everything before the first line"
 msgstr "проверка на синтаксиса -> bytecode -> виртуалната машина на Python; `SyntaxError` спира всичко преди първия ред"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1865
+#: site/lectures/01-intro-syntax-types.md:1866
 msgid "Project setup"
 msgstr "Подготовка на проект"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1865
+#: site/lectures/01-intro-syntax-types.md:1866
 msgid "`py -m venv .venv`, activate, `pip install -r requirements.txt`; one venv per project"
 msgstr "`py -m venv .venv`, активиране, `pip install -r requirements.txt`; по един venv за проект"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1866
+#: site/lectures/01-intro-syntax-types.md:1867
 msgid "Running code"
 msgstr "Пускане на код"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1866
+#: site/lectures/01-intro-syntax-types.md:1867
 msgid "`python file.py` in the terminal; the REPL `>>>`; Jupyter notebooks (the kernel keeps the variables)"
 msgstr "`python file.py` в терминала; REPL `>>>`; Jupyter notebooks (kernel-ът пази променливите)"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1867
+#: site/lectures/01-intro-syntax-types.md:1868
 msgid "Syntax"
 msgstr "Синтаксис"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1867
+#: site/lectures/01-intro-syntax-types.md:1868
 msgid "one statement per line; blocks by indentation (4 spaces); comments with `#`"
 msgstr "един statement на ред; блокове чрез отстъп (4 интервала); коментари с `#`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1868
+#: site/lectures/01-intro-syntax-types.md:1869
 msgid "Types"
 msgstr "Типове"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1868
+#: site/lectures/01-intro-syntax-types.md:1869
 msgid "`int`, `float`, `str`, `bool`, `None`; `type(x)`; everything is an object"
 msgstr "`int`, `float`, `str`, `bool`, `None`; `type(x)`; всичко е обект"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1869
+#: site/lectures/01-intro-syntax-types.md:1870
 msgid "Variables"
 msgstr "Променливи"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1869
+#: site/lectures/01-intro-syntax-types.md:1870
 msgid "a name bound to an object; `=` binds; the type belongs to the object; `snake_case`"
 msgstr "име, свързано с обект; `=` свързва; типът принадлежи на обекта; `snake_case`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1870
+#: site/lectures/01-intro-syntax-types.md:1871
 msgid "`+ - * / // % **`; `/` gives a float; `== != < <= > >=`; `and or not`"
 msgstr "`+ - * / // % **`; `/` дава float; `== != < <= > >=`; `and or not`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1871
+#: site/lectures/01-intro-syntax-types.md:1872
 msgid "Conversions"
 msgstr "Преобразувания"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1871
+#: site/lectures/01-intro-syntax-types.md:1872
 msgid "`int()`, `float()`, `str()`, `bool()`; text never becomes a number by itself; `bool(\"False\")` is `True`"
 msgstr "`int()`, `float()`, `str()`, `bool()`; текстът никога не става число сам; `bool(\"False\")` е `True`"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1873
+#: site/lectures/01-intro-syntax-types.md:1874
 msgid "Money"
 msgstr "Пари"
 
 #. table cell
-#: site/lectures/01-intro-syntax-types.md:1873
+#: site/lectures/01-intro-syntax-types.md:1874
 msgid "floats are binary: `0.1 + 0.2 != 0.3`; `round()` rounds half to even; `Decimal(\"...\")` + `quantize(..., ROUND_HALF_UP)`"
 msgstr "float числата са двоични: `0.1 + 0.2 != 0.3`; `round()` закръгля половинките към четно; `Decimal(\"...\")` + `quantize(..., ROUND_HALF_UP)`"
 
 #. heading 2
-#: site/lectures/01-intro-syntax-types.md:1875
+#: site/lectures/01-intro-syntax-types.md:1876
 msgid "Homework"
 msgstr "Домашно"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1877
+#: site/lectures/01-intro-syntax-types.md:1878
 msgid "`01-intro-syntax-types/homework.py` (in the homework repository): a **loan card** - convert the text fields of one loan, calculate the repaid share, the interest and the monthly payment, and print the card. Every check must print `OK`."
 msgstr "`01-intro-syntax-types/homework.py` (в homework repository): **карта на кредит** - преобразувайте текстовите полета на един кредит, изчислете погасения дял, лихвата и месечната вноска и отпечатайте картата. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1880
+#: site/lectures/01-intro-syntax-types.md:1881
 msgid "The practice tasks you did not finish in class - recommended, the next tasks build on them."
 msgstr "Задачите за упражнение, които не довършихте в час - препоръчително, следващите задачи надграждат върху тях."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1882
+#: site/lectures/01-intro-syntax-types.md:1883
 msgid "Optional: write `payment.py`, which asks for the amount, the yearly rate in percent and the number of years with `input()`, and prints the monthly payment (the formula is in `homework.py`), formatted with two decimals and a thousands separator. Run it in the terminal."
 msgstr "По желание: напишете `payment.py`, който пита за сумата, годишния лихвен процент и броя години с `input()` и отпечатва месечната вноска (формулата е в `homework.py`), форматирана с два знака след запетаята и разделител на хилядите. Пуснете го в терминала."
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1886
+#: site/lectures/01-intro-syntax-types.md:1887
 msgid "Optional: create a notebook `01-practice.ipynb` in your Homework folder, read `data/loans.csv` with pandas (as at the top of this page), and show `loans.head()` and `loans.describe()`."
 msgstr "По желание: създайте notebook `01-practice.ipynb` в папката си Homework, прочетете `data/loans.csv` с pandas (както в началото на тази страница) и покажете `loans.head()` и `loans.describe()`."
 
 #. heading 2
-#: site/lectures/01-intro-syntax-types.md:1890
+#: site/lectures/01-intro-syntax-types.md:1891
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1892
+#: site/lectures/01-intro-syntax-types.md:1893
 msgid "Python: [the official tutorial](https://docs.python.org/3/tutorial/), chapters 1 - 3; [Built-in types](https://docs.python.org/3/library/stdtypes.html); [Built-in functions](https://docs.python.org/3/library/functions.html)"
 msgstr "Python: [официалният tutorial](https://docs.python.org/3/tutorial/), глави 1 - 3; [Built-in types](https://docs.python.org/3/library/stdtypes.html); [Built-in functions](https://docs.python.org/3/library/functions.html)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1895
+#: site/lectures/01-intro-syntax-types.md:1896
 msgid "Style: [PEP 8](https://peps.python.org/pep-0008/)"
 msgstr "Стил: [PEP 8](https://peps.python.org/pep-0008/)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1896
+#: site/lectures/01-intro-syntax-types.md:1897
 msgid "Setup: [Virtual environments and packages](https://docs.python.org/3/tutorial/venv.html), [Installing packages](https://packaging.python.org/en/latest/tutorials/installing-packages/), [Using Python on Windows](https://docs.python.org/3/using/windows.html)"
 msgstr "Подготовка: [Virtual environments and packages](https://docs.python.org/3/tutorial/venv.html), [Installing packages](https://packaging.python.org/en/latest/tutorials/installing-packages/), [Using Python on Windows](https://docs.python.org/3/using/windows.html)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1899
+#: site/lectures/01-intro-syntax-types.md:1900
 msgid "VS Code: [Python in VS Code](https://code.visualstudio.com/docs/languages/python), [Jupyter notebooks in VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks), [Tips and tricks](https://code.visualstudio.com/docs/editing/getting-started/tips-and-tricks), [VS Code - setup and basics (video)](https://www.youtube.com/watch?v=SYRwSyjD8oI), [the default terminal: cmd instead of PowerShell](https://code.visualstudio.com/docs/terminal/profiles)"
 msgstr "VS Code: [Python in VS Code](https://code.visualstudio.com/docs/languages/python), [Jupyter notebooks in VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks), [Tips and tricks](https://code.visualstudio.com/docs/editing/getting-started/tips-and-tricks), [VS Code - setup and basics (видео)](https://www.youtube.com/watch?v=SYRwSyjD8oI), [терминалът по подразбиране: cmd вместо PowerShell](https://code.visualstudio.com/docs/terminal/profiles)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1904
+#: site/lectures/01-intro-syntax-types.md:1905
 msgid "Jupyter: [Project Jupyter](https://jupyter.org/), [Jupyter documentation](https://docs.jupyter.org/en/latest/), [JupyterLab documentation](https://jupyterlab.readthedocs.io/en/stable/)"
 msgstr "Jupyter: [Project Jupyter](https://jupyter.org/), [документацията на Jupyter](https://docs.jupyter.org/en/latest/), [документацията на JupyterLab](https://jupyterlab.readthedocs.io/en/stable/)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1907
+#: site/lectures/01-intro-syntax-types.md:1908
 msgid "Formatting: [f-strings in the tutorial](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals), [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)"
 msgstr "Форматиране: [f-strings в tutorial-а](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals), [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1909
+#: site/lectures/01-intro-syntax-types.md:1910
 msgid "Numbers: [Floating point arithmetic](https://docs.python.org/3/tutorial/floatingpoint.html), [decimal](https://docs.python.org/3/library/decimal.html), [math](https://docs.python.org/3/library/math.html)"
 msgstr "Числа: [Floating point arithmetic](https://docs.python.org/3/tutorial/floatingpoint.html), [decimal](https://docs.python.org/3/library/decimal.html), [math](https://docs.python.org/3/library/math.html)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1912
+#: site/lectures/01-intro-syntax-types.md:1913
 msgid "Videos for later: [NumPy for beginners (SciPy 2018)](https://www.youtube.com/watch?v=V0D2mhVt7NE), [JupyterLab - get started](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html) (the documentation)"
 msgstr "Видеа за по-късно: [NumPy for beginners (SciPy 2018)](https://www.youtube.com/watch?v=V0D2mhVt7NE), [JupyterLab - get started](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html) (документацията)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1916
+#: site/lectures/01-intro-syntax-types.md:1917
 msgid "**Next session:** conditional statements and loops - `if` / `elif` / `else`, the Python `CASE WHEN`, and `for` / `while` loops over the rows of a file."
 msgstr "**Следващото занятие:** условни конструкции и цикли - `if` / `elif` / `else`, `CASE WHEN` на Python и цикли `for` / `while` по редовете на файл."
+
+#~ msgid "Each file explains the task at the top. Write your code between the `your code` lines; the checks at the bottom print `OK` or `FAIL`."
+#~ msgstr "Всеки файл обяснява задачата най-горе. Пишете кода си между редовете `your code`; проверките най-долу отпечатват `OK` или `FAIL`."
 
 #~ msgid "SAS format"
 #~ msgstr "SAS формат"

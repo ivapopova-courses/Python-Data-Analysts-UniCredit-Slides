@@ -1841,8 +1841,9 @@ Open your copy of the [Homework repository](https://github.com/ivapopova-courses
 python 01-intro-syntax-types/practice/task1-first-values.py
 ```
 
-Each file explains the task at the top. Write your code between the
-`your code` lines; the checks at the bottom print `OK` or `FAIL`.
+Each file is split into parts. A part has its description, then the `your code`
+lines - write your code between them - and right after them its checks, which
+print `OK` or `FAIL`.
 
 | Task | File | What you do |
 |------|------|-------------|
