@@ -8,28 +8,37 @@ nomenclature (the rating scale).
 
 | File | Rows | What it is |
 |---|---|---|
-| `data/clients.csv` | 150 | one row per client |
-| `data/loans.csv` | 400 | one row per loan; `client_id` points to `clients.csv` |
-| `data/rating_scale.csv` | 10 | the rating scale: one row per rating grade, with its PD band |
+| <DataFile file="clients.csv" /> | 150 | one row per client |
+| <DataFile file="loans.csv" /> | 400 | one row per loan; `client_id` points to `clients.csv` |
+| <DataFile file="rating_scale.csv" /> | 10 | the rating scale: one row per rating grade, with its PD band |
 
 From session 7 on, more files of the same made-up portfolio - with the problems of
 real data on purpose: messy text, several formats, bad rows, history over time.
 
 | File | Rows | What it is | Sessions |
 |---|---|---|---|
-| `data/client_register.csv` | 150 | the clients with their text fields as people typed them | 7, 8 |
-| `data/loan_comments.csv` | 231 | free-text comments of credit officers about loans | 8 |
-| `data/payments_2026-09.csv` | 280 | the payments of September 2026, with some bad rows | 9 |
-| `data/report_config.json` | - | the settings of a monthly report | 9 |
-| `data/fx_rates.xlsx` | 3 sheets | daily exchange rates, one sheet per month | 9, 14, 16 |
-| `data/regions_bg.csv` | 7 | the regions in Bulgarian and English - saved in **cp1251** | 7, 9 |
-| `data/ratings_history.csv` | 1800 | the rating of each client at 12 month ends | 12, 13, 16 |
-| `data/balances_monthly.csv` | 3992 | the outstanding amount of each loan at 12 month ends | 16 |
-| `data/loans_export.csv` | 406 | `loans.csv` as a local export: `;`, decimal comma, `dd.mm.yyyy`, missing values, duplicates | 14, 15 |
-| `data/portfolio.db` | 4 tables | an SQLite database: `clients`, `loans`, `rating_scale`, `ratings_history` | 13, 16 |
+| <DataFile file="client_register.csv" /> | 150 | the clients with their text fields as people typed them | 7, 8 |
+| <DataFile file="loan_comments.csv" /> | 231 | free-text comments of credit officers about loans | 8 |
+| <DataFile file="payments_2026-09.csv" /> | 280 | the payments of September 2026, with some bad rows | 9 |
+| <DataFile file="report_config.json" /> | - | the settings of a monthly report | 9 |
+| <DataFile file="fx_rates.xlsx" /> | 3 sheets | daily exchange rates, one sheet per month | 9, 14, 16 |
+| <DataFile file="regions_bg.csv" /> | 7 | the regions in Bulgarian and English - saved in **cp1251** | 7, 9 |
+| <DataFile file="ratings_history.csv" /> | 1800 | the rating of each client at 12 month ends | 12, 13, 16 |
+| <DataFile file="balances_monthly.csv" /> | 3992 | the outstanding amount of each loan at 12 month ends | 16 |
+| <DataFile file="loans_export.csv" /> | 406 | `loans.csv` as a local export: `;`, decimal comma, `dd.mm.yyyy`, missing values, duplicates | 14, 15 |
+| <DataFile file="portfolio.db" /> | 4 tables | an SQLite database: `clients`, `loans`, `rating_scale`, `ratings_history` | 13, 16 |
 
 The same files are in the `data/` folder of the Homework repository. On these
 pages they are in `data/` of every runnable example.
+
+::: tip See the files
+Click a file name in the tables to look inside the file. A CSV file, a sheet of the
+Excel file or a table of the database is shown as a table that you can filter; rows
+with a wrong number of fields and empty lines are marked. **Text** shows a CSV or
+JSON file as it is - with its separator, quotes and spaces - and **SQL** the tables
+of the database. **Download** saves the file. The preview finds the encoding of
+`regions_bg.csv` (cp1251) by itself; Python does not - see the file below.
+:::
 
 ## clients.csv
 

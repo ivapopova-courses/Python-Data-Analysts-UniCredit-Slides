@@ -10,11 +10,10 @@
 // - matplotlib figures are returned as PNG images.
 // - Runs are queued: one example runs at a time.
 
+import { dataFiles } from './dataFiles.js'   // the files of data/, by name
+
 export const PYODIDE_VERSION = '314.0.7'
 const INDEX_URL = `https://cdn.jsdelivr.net/pyodide/v${PYODIDE_VERSION}/full/`
-
-// the data files, as URLs of the built site (Vite copies them into the build)
-const dataFiles = import.meta.glob('../../../data/*', { query: '?url', import: 'default', eager: true })
 
 const DRIVER = `
 import base64, io, os, sys, traceback, warnings
@@ -100,7 +99,7 @@ async function startPython(onStatus) {
   for (const [file, url] of Object.entries(dataFiles)) {
     const response = await fetch(url)
     if (!response.ok) throw new Error(`cannot load ${url}: ${response.status}`)
-    py.FS.writeFile('/home/pyodide/data/' + file.split('/').pop(), new Uint8Array(await response.arrayBuffer()))
+    py.FS.writeFile('/home/pyodide/data/' + file, new Uint8Array(await response.arrayBuffer()))
   }
   py.FS.chdir('/home/pyodide')
   await py.runPythonAsync(DRIVER)

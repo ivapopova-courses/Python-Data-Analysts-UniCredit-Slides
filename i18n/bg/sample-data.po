@@ -128,222 +128,235 @@ msgstr "база данни SQLite: `clients`, `loans`, `rating_scale`, `ratings
 msgid "The same files are in the `data/` folder of the Homework repository. On these pages they are in `data/` of every runnable example."
 msgstr "Същите файлове са в папката `data/` на Homework repository. На тези страници те са в `data/` на всеки пример, който може да се пусне."
 
-#. heading 2
+#. box title
 #: site/sample-data.md:34
+msgid "See the files"
+msgstr "Разгледайте файловете"
+
+#. paragraph
+#: site/sample-data.md:35
+msgid "Click a file name in the tables to look inside the file. A CSV file, a sheet of the Excel file or a table of the database is shown as a table that you can filter; rows with a wrong number of fields and empty lines are marked. **Text** shows a CSV or JSON file as it is - with its separator, quotes and spaces - and **SQL** the tables of the database. **Download** saves the file. The preview finds the encoding of `regions_bg.csv` (cp1251) by itself; Python does not - see the file below."
+msgstr "Щракнете върху името на файл в таблиците, за да видите какво има в него. Файл CSV, лист от файла на Excel или таблица от базата данни се показва като таблица, която може да филтрирате; редовете с грешен брой полета и празните редове са отбелязани. **Текст** показва файл CSV или JSON такъв, какъвто е - с разделителя, кавичките и интервалите му, а **SQL** - таблиците на базата данни. **Изтегли** записва файла. Прегледът сам открива кодировката на `regions_bg.csv` (cp1251); Python не я открива - вижте описанието на файла по-долу."
+
+#. heading 2
+#: site/sample-data.md:43
 msgid "clients.csv"
 msgstr "clients.csv"
 
 #. table cell
-#: site/sample-data.md:36 site/sample-data.md:54 site/sample-data.md:79
+#: site/sample-data.md:45 site/sample-data.md:63 site/sample-data.md:88
 msgid "Column"
 msgstr "Колона"
 
 #. table cell
-#: site/sample-data.md:36 site/sample-data.md:54 site/sample-data.md:79
+#: site/sample-data.md:45 site/sample-data.md:63 site/sample-data.md:88
 msgid "Example"
 msgstr "Пример"
 
 #. table cell
-#: site/sample-data.md:36 site/sample-data.md:54 site/sample-data.md:79
+#: site/sample-data.md:45 site/sample-data.md:63 site/sample-data.md:88
 msgid "Meaning"
 msgstr "Значение"
 
 #. table cell
-#: site/sample-data.md:38
+#: site/sample-data.md:47
 msgid "the id of the client"
 msgstr "идентификаторът на клиента"
 
 #. table cell
-#: site/sample-data.md:39
+#: site/sample-data.md:48
 msgid "`retail`, `sme` or `corporate`"
 msgstr "`retail`, `sme` или `corporate`"
 
 #. table cell
-#: site/sample-data.md:40
+#: site/sample-data.md:49
 msgid "the region of the client"
 msgstr "регионът на клиента"
 
 #. table cell
-#: site/sample-data.md:41
+#: site/sample-data.md:50
 msgid "an industry code (a letter, like the sections of NACE); empty for retail clients"
 msgstr "код на икономическата дейност (буква, като секциите на NACE / КИД); празен за клиентите на дребно"
 
 #. table cell
-#: site/sample-data.md:42
+#: site/sample-data.md:51
 msgid "the internal rating, 1 (best) to 10 (default) - see `rating_scale.csv`"
 msgstr "вътрешният рейтинг, от 1 (най-добър) до 10 (неизпълнение) - вижте `rating_scale.csv`"
 
 #. table cell
-#: site/sample-data.md:43
+#: site/sample-data.md:52
 msgid "the start of the relationship (ISO date)"
 msgstr "началото на отношенията с клиента (дата във формат ISO)"
 
 #. heading 2
-#: site/sample-data.md:52
+#: site/sample-data.md:61
 msgid "loans.csv"
 msgstr "loans.csv"
 
 #. table cell
-#: site/sample-data.md:56
+#: site/sample-data.md:65
 msgid "the id of the loan"
 msgstr "идентификаторът на кредита"
 
 #. table cell
-#: site/sample-data.md:57
+#: site/sample-data.md:66
 msgid "the client (see `clients.csv`)"
 msgstr "клиентът (вижте `clients.csv`)"
 
 #. table cell
-#: site/sample-data.md:59
+#: site/sample-data.md:68
 msgid "`EUR` or `USD`"
 msgstr "`EUR` или `USD`"
 
 #. table cell
-#: site/sample-data.md:60
+#: site/sample-data.md:69
 msgid "ISO dates"
 msgstr "дати във формат ISO"
 
 #. table cell
-#: site/sample-data.md:61
+#: site/sample-data.md:70
 msgid "the original amount"
 msgstr "първоначалната сума"
 
 #. table cell
-#: site/sample-data.md:62
+#: site/sample-data.md:71
 msgid "the amount still to be paid on the report date (30.09.2026)"
 msgstr "сумата, която остава за плащане към отчетната дата (30.09.2026)"
 
 #. table cell
-#: site/sample-data.md:63
+#: site/sample-data.md:72
 msgid "in percent per year"
 msgstr "в проценти годишно"
 
 #. table cell
-#: site/sample-data.md:64
+#: site/sample-data.md:73
 msgid "days the payments are late"
 msgstr "дни, с които плащанията закъсняват"
 
 #. table cell
-#: site/sample-data.md:65
+#: site/sample-data.md:74
 msgid "1, 2 or 3 - stage 3 means more than 90 days past due or rating 10"
 msgstr "1, 2 или 3 - stage 3 означава повече от 90 дни просрочие или рейтинг 10"
 
 #. heading 2
-#: site/sample-data.md:74
+#: site/sample-data.md:83
 msgid "rating_scale.csv"
 msgstr "rating_scale.csv"
 
 #. paragraph
-#: site/sample-data.md:76
+#: site/sample-data.md:85
 msgid "A nomenclature: one row per rating, with its grade and the band of the probability of default (PD)."
 msgstr "Номенклатура: по един ред за всеки рейтинг, с неговия клас и интервала на вероятността от неизпълнение (PD)."
 
 #. table cell
-#: site/sample-data.md:81
+#: site/sample-data.md:90
 msgid "1 to 10"
 msgstr "от 1 до 10"
 
 #. table cell
-#: site/sample-data.md:82
+#: site/sample-data.md:91
 msgid "the letter grade"
 msgstr "буквеният клас"
 
 #. table cell
-#: site/sample-data.md:83
+#: site/sample-data.md:92
 msgid "the PD band of the grade (0.0025 = 0.25%)"
 msgstr "PD интервалът на класа (0.0025 = 0.25%)"
 
 #. heading 2
-#: site/sample-data.md:94
+#: site/sample-data.md:103
 msgid "The files of the later sessions"
 msgstr "Файловете за следващите занятия"
 
 #. heading 3
-#: site/sample-data.md:96
+#: site/sample-data.md:105
 msgid "client_register.csv"
 msgstr "client_register.csv"
 
 #. paragraph
-#: site/sample-data.md:98
+#: site/sample-data.md:107
 msgid "The same 150 clients as `clients.csv`, but the text fields as they were typed into an old system: `client_id` in many forms (`c0014`, `C 0009`, `C-0026`, `C17`), names in any case with extra spaces and quotes, legal forms written as `E.A.D.`, EIKs with spaces or a `BG` in front, IBANs in groups of four or in lower case, e-mails in upper case or with `\" at \"`, cities in Latin or Cyrillic, with `gr. ` in front, registration dates in five formats, and the turnover of companies in Bulgarian and English number formats. Columns: `client_id`, `name`, `eik`, `iban`, `email`, `city`, `registered`, `turnover`. The IBANs use made-up bank codes (`DEMO`, `TEST`, `XMPL`, `FAKE`) and the e-mails the reserved `example.*` domains."
 msgstr "Същите 150 клиента като в `clients.csv`, но текстовите полета са такива, каквито са въведени в стара система: `client_id` в много форми (`c0014`, `C 0009`, `C-0026`, `C17`), имена с произволни главни и малки букви, с излишни интервали и кавички, правни форми, написани като `E.A.D.`, ЕИК с интервали или с `BG` отпред, IBAN на групи по четири или с малки букви, e-mail адреси с главни букви или с `\" at \"`, градове на латиница или кирилица, с `gr. ` отпред, дати на регистрация в пет формата и оборотът на фирмите в български и английски формат на числата. Колони: `client_id`, `name`, `eik`, `iban`, `email`, `city`, `registered`, `turnover`. IBAN-ите използват измислени банкови кодове (`DEMO`, `TEST`, `XMPL`, `FAKE`), а e-mail адресите - запазените домейни `example.*`."
 
 #. heading 3
-#: site/sample-data.md:108
+#: site/sample-data.md:117
 msgid "loan_comments.csv"
 msgstr "loan_comments.csv"
 
 #. paragraph
-#: site/sample-data.md:110
+#: site/sample-data.md:119
 msgid "`loan_id`, `comment_date` (ISO), `comment`: short notes like *\"Payment of 1 250,00 EUR received on 15.09.2026.\"* or *\"Disbursement to IBAN BG71 DEMO ... confirmed\"* - amounts, dates, IBANs, EIKs, e-mails and loan ids inside free text."
 msgstr "`loan_id`, `comment_date` (ISO), `comment`: кратки бележки като *\"Payment of 1 250,00 EUR received on 15.09.2026.\"* или *\"Disbursement to IBAN BG71 DEMO ... confirmed\"* - суми, дати, IBAN, ЕИК, e-mail адреси и номера на кредити в свободен текст."
 
 #. heading 3
-#: site/sample-data.md:114
+#: site/sample-data.md:123
 msgid "payments_2026-09.csv"
 msgstr "payments_2026-09.csv"
 
 #. paragraph
-#: site/sample-data.md:116
+#: site/sample-data.md:125
 msgid "`payment_id`, `loan_id`, `pay_date`, `amount`, `currency`. Most rows are fine; some are not: a missing amount, `12O.50` (a letter O), `n/a`, a date that does not exist, an unknown loan, a negative amount, a field too few or too many, an empty line."
 msgstr "`payment_id`, `loan_id`, `pay_date`, `amount`, `currency`. Повечето редове са наред; някои не са: липсваща сума, `12O.50` (буква O), `n/a`, дата, която не съществува, непознат кредит, отрицателна сума, едно поле по-малко или повече, празен ред."
 
 #. heading 3
-#: site/sample-data.md:120
+#: site/sample-data.md:129
 msgid "report_config.json, fx_rates.xlsx, regions_bg.csv"
 msgstr "report_config.json, fx_rates.xlsx, regions_bg.csv"
 
 #. paragraph
-#: site/sample-data.md:122
+#: site/sample-data.md:131
 msgid "`report_config.json`: the report date, the LGD, the DPD buckets, the segments and the output settings of a monthly report."
 msgstr "`report_config.json`: датата на отчета, LGD, групите по DPD, сегментите и настройките за изхода на месечен отчет."
 
 #. paragraph
-#: site/sample-data.md:124
+#: site/sample-data.md:133
 msgid "`fx_rates.xlsx`: one sheet per month (`2026-07`, `2026-08`, `2026-09`); columns `date`, `USD`, `GBP`, `CHF` - how many units of the currency one euro buys."
 msgstr "`fx_rates.xlsx`: по един лист на месец (`2026-07`, `2026-08`, `2026-09`); колони `date`, `USD`, `GBP`, `CHF` - колко единици от валутата се купуват с едно евро."
 
 #. paragraph
-#: site/sample-data.md:126
+#: site/sample-data.md:135
 msgid "`regions_bg.csv`: `code`, `name_bg`, `name_en` - saved in the Windows Cyrillic encoding **cp1251**, like many old exports. Open it with `encoding=\"cp1251\"`."
 msgstr "`regions_bg.csv`: `code`, `name_bg`, `name_en` - записан в кодировката за кирилица на Windows **cp1251**, като много стари експорти. Отваряйте го с `encoding=\"cp1251\"`."
 
 #. heading 3
-#: site/sample-data.md:129
+#: site/sample-data.md:138
 msgid "ratings_history.csv and balances_monthly.csv"
 msgstr "ratings_history.csv и balances_monthly.csv"
 
 #. paragraph
-#: site/sample-data.md:131
+#: site/sample-data.md:140
 msgid "The history of 12 month ends, from 31.10.2025 to 30.09.2026; the last month agrees with `clients.csv` and `loans.csv`. A client or a loan appears only from the month it started."
 msgstr "Историята към края на 12 месеца, от 31.10.2025 до 30.09.2026; последният месец съвпада с `clients.csv` и `loans.csv`. Клиент или кредит се появява едва от месеца, в който е започнал."
 
 #. heading 3
-#: site/sample-data.md:138
+#: site/sample-data.md:147
 msgid "loans_export.csv"
 msgstr "loans_export.csv"
 
 #. paragraph
-#: site/sample-data.md:140
+#: site/sample-data.md:149
 msgid "The 400 loans as an export from a local system: the separator is `;`, the decimals have a comma (`651927,30`), dates are `dd.mm.yyyy`, the column names have spaces (`Loan ID`), the file starts with a BOM (Excel's \"CSV UTF-8\"). Some values are missing - empty, or `.` like a SAS missing value - and 6 rows are duplicated."
 msgstr "400-те кредита като експорт от локална система: разделителят е `;`, десетичните числа са със запетая (`651927,30`), датите са `dd.mm.yyyy`, имената на колоните имат интервали (`Loan ID`), файлът започва с BOM (\"CSV UTF-8\" на Excel). Някои стойности липсват - празни или `.` като липсваща стойност в SAS - а 6 реда са повторени."
 
 #. heading 3
-#: site/sample-data.md:145
+#: site/sample-data.md:154
 msgid "portfolio.db"
 msgstr "portfolio.db"
 
 #. paragraph
-#: site/sample-data.md:147
+#: site/sample-data.md:156
 msgid "An SQLite database with four tables: `clients`, `loans`, `rating_scale` and `ratings_history` - the same data as the CSV files, with primary and foreign keys."
 msgstr "База данни SQLite с четири таблици: `clients`, `loans`, `rating_scale` и `ratings_history` - същите данни като във файловете CSV, с първични и външни ключове."
 
 #. box title
-#: site/sample-data.md:160
+#: site/sample-data.md:169
 msgid "Without pandas"
 msgstr "Без pandas"
 
 #. paragraph
-#: site/sample-data.md:161
+#: site/sample-data.md:170
 msgid "The first lectures read the files with the standard library (`open`, `csv`), and pandas comes in session 14. Both ways read the same files."
 msgstr "Първите лекции четат файловете със стандартната библиотека (`open`, `csv`), а pandas идва в занятие 14. И двата начина четат едни и същи файлове."
+
+#~ msgid "Click a file name in the tables to open the file on GitHub, or see [all the files](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Slides/tree/main/data). A CSV file is shown there as a table that you can search, and every file has a download button. The `.xlsx` and `.db` files can only be downloaded. Two files look wrong on GitHub on purpose: `loans_export.csv` is shown as plain text (GitHub expects `,`, not `;`), and the Bulgarian names in `regions_bg.csv` are broken (GitHub does not read cp1251). The lectures that use them show how to read them right."
+#~ msgstr "Щракнете върху името на файл в таблиците, за да го отворите в GitHub, или вижте [всички файлове](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Slides/tree/main/data). Там файлът CSV се показва като таблица, в която може да търсите, а всеки файл има бутон за изтегляне. Файловете `.xlsx` и `.db` може само да се изтеглят. Два файла изглеждат грешно в GitHub нарочно: `loans_export.csv` се показва като обикновен текст (GitHub очаква `,`, а не `;`), а българските имена в `regions_bg.csv` са развалени (GitHub не чете cp1251). Лекциите, които ги използват, показват как да ги прочетете правилно."

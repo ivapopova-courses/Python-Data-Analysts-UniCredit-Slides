@@ -53,6 +53,7 @@ site/                          the course site (VitePress)
     .vitepress/config.mjs      sidebar, nav
     .vitepress/pythonRun.mjs   the "python run" code blocks (markdown)
     .vitepress/theme/          PyRunCode.vue + pyRunner.js (Run / Edit / Reset with Pyodide),
+                               DataFile.vue + dataPreview.js (the preview of a data file),
                                LangSwitch.vue (the EN / BG button), codeFold, scrollHash
     bg/                        GENERATED Bulgarian pages (git-ignored, see i18n/)
 i18n/                          translations: bg/*.po, the generator, translator guide, glossary
@@ -101,6 +102,11 @@ Workflow and details: [`i18n/README.md`](i18n/README.md).
 
 - **Callouts:** `::: tip`, `::: warning`, `::: danger`, `::: info`, and
   `::: details Answer` for answers to check-yourself questions.
+- **Data files:** `<DataFile file="loans.csv" />` shows `data/loans.csv` as a button
+  that opens a preview of the file: a table with a filter (CSV, the sheets of an
+  `.xlsx`, the tables of an SQLite `.db`), the file as text, and Download. The file
+  is read in the browser, without Python (`theme/dataPreview.js`). Used on
+  `sample-data.md`; works in a table cell and in lectures too.
 - **Diagrams:** `![Alt text](/diagrams/name.svg){.diagram}`; add the drawing and its
   English and Bulgarian texts to `tools/make-diagrams.py` and run it. In dark mode the
   site inverts them (`theme/diagram.css`).
