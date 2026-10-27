@@ -1630,17 +1630,20 @@ Late:  {stage > 1}""")
 
 After a `:` inside the `{ }` comes a **format specification** - like a SAS format:
 
-| f-string | Result | SAS format |
+| f-string | Result | What it means |
 |---|---|---|
-| `f"{1044231.3:.2f}"` | `1044231.30` | `12.2` |
-| `f"{1044231.3:,.2f}"` | `1,044,231.30` | `COMMA12.2` |
-| `f"{0.0883:.2%}"` | `8.83%` | `PERCENT8.2` |
-| `f"{7:03d}"` | `007` | `Z3.` |
-| `f"{0.00049:.2e}"` | `4.90e-04` | `E8.` |
-| `f"{1044231.3:>15,.2f}"` | `   1,044,231.30` (15 characters, right) | width `15.` |
-| `f"{'EUR':<6}"` | `EUR   ` (6 characters, left) | `$6.` |
-| `f"{'EUR':^9}"` | `   EUR   ` (centred) | |
-| `f"{'EUR':*^9}"` | `***EUR***` (filled with `*`) | |
+| `f"{1044231.3:.2f}"` | `1044231.30` | `f` = a number with a fixed point; `.2` = 2 digits after the point (rounded) |
+| `f"{1044231.3:,.2f}"` | `1,044,231.30` | the same, and `,` puts a comma between the thousands |
+| `f"{0.0883:.2%}"` | `8.83%` | `%` multiplies by 100 and adds the `%` sign; 2 digits after the point |
+| `f"{7:03d}"` | `007` | `d` = a whole number; `3` = at least 3 characters; `0` = fill with zeros in front |
+| `f"{0.00049:.2e}"` | `4.90e-04` | `e` = scientific notation: 4.90 x 10 to the power -4 |
+| `f"{1044231.3:>15,.2f}"` | `   1,044,231.30` | `15` = 15 characters wide; `>` = on the right (spaces in front) |
+| `f"{'EUR':<6}"` | `EUR   ` | 6 characters wide; `<` = on the left (spaces after) |
+| `f"{'EUR':^9}"` | `   EUR   ` | 9 characters wide; `^` = in the centre |
+| `f"{'EUR':*^9}"` | `***EUR***` | the same, but the free places are filled with `*`, not spaces |
+
+Without `<`, `>` or `^`, numbers go to the right and text to the left. A width
+that is too small does not cut the value - the value is just longer.
 
 ```python run
 outstanding = 1044231.3
