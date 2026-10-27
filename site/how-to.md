@@ -80,18 +80,20 @@ the Homework folder - see step 8 below.
 | **SQLite Viewer** | Florian Klampfer | open a SQLite `.db` file and look at its tables | lecture 13 |
 | **Spreadsheet Viewer** | MESCIUS | open `.xlsx` files in VS Code (its old name is *Excel Viewer*) | lectures 9, 14, 16 |
 
-**Install them all at once.** The Homework repository has this list in the file
-`.vscode/extensions.json`. When you open the Homework folder in VS Code (step 7
-below), VS Code asks *Do you want to install the recommended extensions...?* -
-click **Install**. Missed the question? Open the **Extensions** view
-(`Ctrl+Shift+X`) and type `@recommended` in the search box. Under **Workspace
-Recommendations**, hover over the header and click the cloud icon (**Install
-Workspace Recommended Extensions**).
+**Install them all at once.**
 
-To get the same list in another project, create the file `.vscode/extensions.json`
-in its folder with this content (or download
-[extensions.json](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Slides/blob/main/.vscode/extensions.json)
-and put it into the `.vscode` folder of your project):
+1. Download the list: [extensions.json](./extensions.json){download target="_self"}.
+2. In the folder of your project, create a folder named `.vscode` and put the
+   file into it (the file must be `.vscode/extensions.json`).
+3. Open the project folder in VS Code (**File > Open Folder...**). VS Code asks
+   *Do you want to install the recommended extensions...?* - click **Install**.
+
+Missed the question? Open the **Extensions** view (`Ctrl+Shift+X`) and type
+`@recommended` in the search box. Under **Workspace Recommendations**, hover over
+the header and click the cloud icon (**Install Workspace Recommended Extensions**).
+
+The Homework folder (step 7 below) already has this file, so there VS Code asks by
+itself. You can also create the file yourself and paste this content into it:
 
 ```json
 {
