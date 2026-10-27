@@ -4,7 +4,10 @@ import { withLocales } from '../../i18n/i18n.mjs'
 import { pythonRun } from './pythonRun.mjs'
 import { releasedUpTo } from './released.mjs'
 
-const footerMessage = 'Python for Data Analysts'
+// the footer (shown only on the home page - VitePress hides it next to the side
+// menu): "Created for" and the ProgressBG logo, in place of the course-kit's
+// "<course> - SciScend"; the text is translated in i18n/bg/_site.po
+const footerMessage = 'Created for'
 
 // all lectures are listed in the side menu; in `npm run build` (the public site)
 // only the released ones are links, the others plain text - see released.mjs
@@ -61,9 +64,13 @@ const course = defineCourse({
       text: 'Lectures',
       items: lectures
     }
-  ],
-  footerMessage
+  ]
 })
+
+course.themeConfig.footer = {
+  message: `${footerMessage} <a class="footer-logo" href="https://progressbg.net" target="_blank" rel="noopener">` +
+    `<img src="${course.base}images/progressbg-logo.png" alt="ProgressBG"></a>`
+}
 
 // unreleased lectures: no page (English and Bulgarian), and every link to them
 // (agenda, index, cross-references) is rendered as its plain text

@@ -8,11 +8,13 @@ import { setupOsTabs } from './osTabs.js'
 import './codeFold.css'
 import './diagram.css'
 import './sidebar.css'
+import './footer.css'
 
 // The course-kit theme, plus the runnable Python blocks (PyRunCode.vue, Pyodide),
 // folding of long code blocks (codeFold.js), the same Windows / Linux tab in all
 // command blocks (osTabs.js) and the #section of the page on screen
-// in the address bar (scrollHash.js). Taken from JS-Basics-Practical-IBM/Slides.
+// in the address bar (scrollHash.js), the ProgressBG logo in the footer (footer.css).
+// Taken from JS-Basics-Practical-IBM/Slides.
 export default {
   ...CourseTheme,
   enhanceApp(ctx) {

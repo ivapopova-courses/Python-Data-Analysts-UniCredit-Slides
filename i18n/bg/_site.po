@@ -23,6 +23,11 @@ msgstr "Python за анализатори на данни"
 msgid "From SQL and SAS to Python, pandas and NumPy"
 msgstr "От SQL и SAS към Python, pandas и NumPy"
 
+#. footer
+#: site/.vitepress/config.mjs
+msgid "Created for"
+msgstr "Създаден за"
+
 #. top menu
 #: site/.vitepress/config.mjs
 msgid "Agenda"
