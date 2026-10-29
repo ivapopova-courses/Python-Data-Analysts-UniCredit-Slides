@@ -1868,7 +1868,7 @@ print(Decimal("100.50") * 1.1)      # TypeError: Decimal and float
 
 ## 15. Practice
 
-Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (first time: see [How to use these pages](/how-to#practice-and-homework); before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:
+Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (first time: see [How to use these pages](/how-to#practice-and-homework); before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:
 
 ```bash
 python 01-intro-syntax-types/practice/task1-first-values.py

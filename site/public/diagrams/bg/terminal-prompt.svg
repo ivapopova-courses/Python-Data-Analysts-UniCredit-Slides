@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 290" width="920" height="290" role="img">
+<title>Терминалът: промптът и една команда</title>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b616b"/></marker></defs>
+<rect x="10" y="80" width="900" height="160" rx="8" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="24" y="120" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="400" fill="#4f8a45" textLength="73.6" lengthAdjust="spacingAndGlyphs" xml:space="preserve">(.venv) </text>
+<text x="97.6" y="120" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="400" fill="#3b6fc4" textLength="607.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">C:\Users\you\python-course\Python-Data-Analysts-UniCredit-Homework</text>
+<text x="704.8" y="120" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="400" fill="#1f2328" textLength="9.2" lengthAdjust="spacingAndGlyphs" xml:space="preserve">&gt;</text>
+<text x="714.0" y="120" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="700" fill="#1f2328" textLength="92.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">git status</text>
+<text x="24" y="148" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="400" fill="#5b616b" textLength="128.8" lengthAdjust="spacingAndGlyphs" xml:space="preserve">On branch main</text>
+<text x="24" y="170" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="400" fill="#5b616b" textLength="414.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">Your branch is up to date with 'origin/main'.</text>
+<text x="24" y="212" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="400" fill="#1f2328" textLength="690.0" lengthAdjust="spacingAndGlyphs" xml:space="preserve">(.venv) C:\Users\you\python-course\Python-Data-Analysts-UniCredit-Homework&gt;</text>
+<rect x="716.0" y="198" width="9" height="18" fill="#1f2328"/>
+<path d="M25.0,104 L25.0,98 L89.6,98 L89.6,104" fill="none" stroke="#5b616b" stroke-width="1.6"/>
+<path d="M57.3,98 L57.3,52" fill="none" stroke="#5b616b" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="25" y="22" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">(.venv): виртуалната</text>
+<text x="25" y="41" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">среда е активна</text>
+<path d="M98.6,104 L98.6,98 L703.8,98 L703.8,104" fill="none" stroke="#5b616b" stroke-width="1.6"/>
+<path d="M401.2,98 L401.2,52" fill="none" stroke="#5b616b" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="401.2" y="22" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">текущата папка:</text>
+<text x="401.2" y="41" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">командите работят тук</text>
+<path d="M715.0,104 L715.0,98 L805.0,98 L805.0,104" fill="none" stroke="#5b616b" stroke-width="1.6"/>
+<path d="M760.0,98 L760.0,52" fill="none" stroke="#5b616b" stroke-width="1.6" stroke-dasharray="3 3"/>
+<text x="805.0" y="22" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="end" xml:space="preserve">вашата команда;</text>
+<text x="805.0" y="41" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="end" xml:space="preserve">Enter я изпълнява</text>
+<path d="M453.2,166 L502.4,166" fill="none" stroke="#5b616b" stroke-width="1.6"/>
+<text x="510.4" y="171" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">отговорът на командата</text>
+<path d="M721.0,262 L721.0,222" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="710.0" y="278" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#1f2328" text-anchor="end" xml:space="preserve">промптът отново: готов за следващата команда</text>
+</svg>

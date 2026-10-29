@@ -107,9 +107,11 @@ Workflow and details: [`i18n/README.md`](i18n/README.md).
   `.xlsx`, the tables of an SQLite `.db`), the file as text, and Download. The file
   is read in the browser, without Python (`theme/dataPreview.js`). Used on
   `sample-data.md`; works in a table cell and in lectures too.
-- **Diagrams:** `![Alt text](/diagrams/name.svg){.diagram}`; add the drawing and its
-  English and Bulgarian texts to `tools/make-diagrams.py` and run it. In dark mode the
-  site inverts them (`theme/diagram.css`).
+- **Diagrams:** `![Alt text](/diagrams/name.svg){.diagram width=920 height=380}`
+  (the size of the SVG: then the page does not jump when the image loads, and a link
+  to a section below it lands in the right place); add the drawing and its English
+  and Bulgarian texts to `tools/make-diagrams.py` and run it. In dark mode the site
+  inverts them (`theme/diagram.css`).
 - **Animations:** a page in `site/public/animations/` that uses `anim.js` (see
   `namesAndObjects.html`); every text is a pair `[English, Bulgarian]`. Add a
   `bg/<page>.html` redirect (copy one) so that the Bulgarian pages link to it, and list

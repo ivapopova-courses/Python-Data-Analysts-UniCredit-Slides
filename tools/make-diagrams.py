@@ -663,6 +663,226 @@ def nomenclature_diagram(t):
     return s.render()
 
 
+# ---------------------------------------------------------------------------
+# homework-repos (how-to page): the course repository, your repository, your folder
+
+REPOS = {
+    "en": {
+        "title": "The three copies of the Homework repository",
+        "course": "The course repository (GitHub)",
+        "name": "name in Git:",
+        "course2": "only the trainer changes it",
+        "own": "Your own repository (GitHub)",
+        "own2": "private; only you change it",
+        "pc": "The folder on your computer",
+        "pc2": "you write and run the code here, in VS Code",
+        "clone": "git clone", "clone2": "once, at the start",
+        "pull": "git pull ... upstream main", "pull2": "the new tasks, every session",
+        "push": "git push", "push2": "your solutions",
+    },
+    "bg": {
+        "title": "Трите копия на Homework repository",
+        "course": "Repository-то на курса (GitHub)",
+        "name": "име в Git:",
+        "course2": "само преподавателят го променя",
+        "own": "Вашето repository (GitHub)",
+        "own2": "частно (private); само вие го променяте",
+        "pc": "Папката на вашия компютър",
+        "pc2": "тук пишете и пускате кода, във VS Code",
+        "clone": "git clone", "clone2": "веднъж, в началото",
+        "pull": "git pull ... upstream main", "pull2": "новите задачи, всяко занятие",
+        "push": "git push", "push2": "вашите решения",
+    },
+}
+
+
+def homework_repos(t):
+    s = Svg(920, 380, t["title"])
+    s.box(20, 16, 390, 116, "blue", t["course"], [
+        ("Python-Data-Analysts-UniCredit-Homework", {"mono": True, "size": 13}),
+        (t["name"] + " upstream", {"mono": False}),
+        (t["course2"], {"color": MUTED, "size": 13})])
+    s.box(510, 16, 390, 116, "green", t["own"], [
+        ("your-user/python-course-homework", {"mono": True, "size": 13}),
+        (t["name"] + " origin", {"mono": False}),
+        (t["own2"], {"color": MUTED, "size": 13})])
+    s.box(210, 252, 500, 112, "orange", t["pc"], [
+        ("C:\\Users\\you\\python-course\\", {"mono": True, "size": 13}),
+        ("    Python-Data-Analysts-UniCredit-Homework\\", {"mono": True, "size": 13}),
+        (t["pc2"], {"color": MUTED, "size": 13})])
+    s.arrow(110, 134, 270, 250, dash=True)
+    s.text(52, 178, t["clone"], size=14, mono=True, weight=700)
+    s.text(52, 197, t["clone2"], size=13, color=MUTED)
+    s.arrow(250, 134, 360, 250)
+    s.text(300, 166, t["pull"], size=14, mono=True, weight=700)
+    s.text(300, 185, t["pull2"], size=13, color=MUTED)
+    s.arrow(600, 250, 700, 134)
+    s.text(668, 196, t["push"], size=14, mono=True, weight=700)
+    s.text(668, 215, t["push2"], size=13, color=MUTED)
+    return s.render()
+
+
+# ---------------------------------------------------------------------------
+# terminal-prompt (how-to page): the parts of the prompt in the terminal
+
+PROMPT = {
+    "en": {
+        "title": "The terminal: the prompt and a command",
+        "venv": ["(.venv): the virtual", "environment is on"],
+        "folder": ["the current folder:", "the commands work here"],
+        "cmd": ["your command;", "Enter runs it"],
+        "out": "the answer of the command",
+        "again": "the prompt again: ready for the next command",
+    },
+    "bg": {
+        "title": "Терминалът: промптът и една команда",
+        "venv": ["(.venv): виртуалната", "среда е активна"],
+        "folder": ["текущата папка:", "командите работят тук"],
+        "cmd": ["вашата команда;", "Enter я изпълнява"],
+        "out": "отговорът на командата",
+        "again": "промптът отново: готов за следващата команда",
+    },
+}
+
+
+def terminal_prompt(t):
+    s = Svg(920, 290, t["title"])
+    s.rect(10, 80, 900, 160, "gray", radius=8)
+    cw, x0 = 9.2, 24        # the width of one character, forced with textLength
+    parts = [("(.venv) ", COLORS["green"][1], 400),
+             ("C:\\Users\\you\\python-course\\Python-Data-Analysts-UniCredit-Homework", COLORS["blue"][1], 400),
+             (">", INK, 400), ("git status", INK, 700)]
+
+    def mono_line(x, y, text, color=INK, weight=400):
+        s.raw(f'<text x="{x}" y="{y}" font-family="{MONO}" font-size="15" font-weight="{weight}" fill="{color}" '
+              f'textLength="{len(text) * cw:.1f}" lengthAdjust="spacingAndGlyphs" xml:space="preserve">{escape(text)}</text>')
+
+    spans, x = [], x0
+    for text, color, weight in parts:
+        mono_line(x, 120, text, color, weight)
+        spans.append((x, x + len(text) * cw))
+        x += len(text) * cw
+    mono_line(x0, 148, "On branch main", MUTED)
+    mono_line(x0, 170, "Your branch is up to date with 'origin/main'.", MUTED)
+    prompt = "(.venv) C:\\Users\\you\\python-course\\Python-Data-Analysts-UniCredit-Homework>"
+    mono_line(x0, 212, prompt)
+    cursor = x0 + len(prompt) * cw + 2
+    s.raw(f'<rect x="{cursor:.1f}" y="198" width="9" height="18" fill="{INK}"/>')
+    # brackets over the parts of the first line, and their labels above the terminal
+    for (a, b), label, anchor in zip((spans[0], spans[1], spans[3]), (t["venv"], t["folder"], t["cmd"]),
+                                     ("start", "middle", "end")):
+        a, b = a + 1, (b - 8 if label is t["venv"] else b - 1)
+        s.raw(f'<path d="M{a:.1f},104 L{a:.1f},98 L{b:.1f},98 L{b:.1f},104" fill="none" stroke="{MUTED}" '
+              f'stroke-width="1.6"/>')
+        mid = (a + b) / 2
+        s.raw(f'<path d="M{mid:.1f},98 L{mid:.1f},52" fill="none" stroke="{MUTED}" stroke-width="1.6" '
+              f'stroke-dasharray="3 3"/>')
+        tx = {"start": a, "middle": mid, "end": b}[anchor]
+        s.lines(tx, 22, label, size=14, gap=19, anchor=anchor)
+    s.raw(f'<path d="M{x0 + 46 * cw + 6:.1f},166 L{x0 + 52 * cw:.1f},166" fill="none" stroke="{MUTED}" '
+          f'stroke-width="1.6"/>')
+    s.text(x0 + 52 * cw + 8, 171, t["out"], size=14, color=MUTED)
+    s.arrow(cursor + 5, 262, cursor + 5, 222)
+    s.text(cursor - 6, 278, t["again"], size=14, anchor="end")
+    return s.render()
+
+
+# ---------------------------------------------------------------------------
+# vscode-window (how-to page): the parts of VS Code used for the tasks.
+# The texts are the English menus and files of VS Code, the same in both languages.
+
+VSCODE = {"en": {"title": "VS Code with the Homework folder"},
+          "bg": {"title": "VS Code с папката Homework"}}
+
+
+def vscode_window(t):
+    s = Svg(950, 560, t["title"])
+    white, side, bar = "#ffffff", "#f7f6f3", "#ebe8e1"
+    s.raw('<g transform="translate(30,0)">')      # room on the left for the number 4
+
+    def fill(x, y, w, h, color, stroke=None, radius=0):
+        line = f' stroke="{stroke}" stroke-width="1.5"' if stroke else ""
+        s.raw(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="{radius}" fill="{color}"{line}/>')
+
+    def mark(x, y, n):
+        s.raw(f'<circle cx="{x}" cy="{y}" r="12" fill="{COLORS["red"][1]}"/>')
+        s.text(x, y + 5, str(n), size=14, weight=700, color="#ffffff", anchor="middle")
+
+    # the window, the title bar with the menus and the command center
+    fill(10, 10, 900, 540, white, COLORS["gray"][1], radius=8)
+    fill(11, 11, 898, 30, bar, radius=7)
+    s.text(24, 31, "File   Edit   Selection   View   Go   Run   Terminal   Help", size=12)
+    fill(470, 17, 300, 18, white, COLORS["gray"][1], radius=5)
+    s.text(620, 30, "Python-Data-Analysts-UniCredit-Homework", size=11, color=MUTED, anchor="middle")
+    # the activity bar and its icons: Explorer, Search, Source Control, Run, Extensions
+    fill(11, 41, 44, 479, bar)
+    s.raw(f'<rect x="11" y="44" width="3" height="32" fill="{COLORS["blue"][1]}"/>')
+    ink = f'fill="none" stroke="{MUTED}" stroke-width="1.8"'
+    s.raw(f'<path d="M24,51 h11 l5,5 v15 h-16 z M29,51 v-3 h11 l5,5 v15 h-5" {ink}/>')
+    s.raw(f'<circle cx="31" cy="98" r="6" {ink}/><path d="M35,103 L41,109" {ink}/>')
+    s.raw(f'<circle cx="27" cy="134" r="3" {ink}/><circle cx="27" cy="152" r="3" {ink}/>'
+          f'<circle cx="39" cy="140" r="3" {ink}/><path d="M27,137 v12 M39,143 q0,6 -12,6" {ink}/>')
+    s.raw(f'<path d="M25,174 L39,182 L25,190 z" {ink}/>')
+    s.raw(f'<path d="M23,212 h7 v7 h-7 z M23,221 h7 v7 h-7 z M32,221 h7 v7 h-7 z M34,208 h7 v7 h-7 z" {ink}/>')
+    # the Explorer
+    fill(55, 41, 280, 479, side)
+    s.text(70, 62, "EXPLORER", size=11, weight=700, color=MUTED)
+    s.text(66, 86, "v PYTHON-DATA-ANALYSTS-UNICREDIT-HOMEWORK", size=10, weight=700)
+    tree = [(0, "> .venv"), (0, "> .vscode"), (0, "v 01-intro-syntax-types"), (1, "v practice"),
+            (2, "task1-first-values.py"), (2, "task2-predict-types.py"), (2, "..."), (1, "homework.py"),
+            (0, "> 02-conditions-and-loops"), (0, "> data"), (0, "check.py"), (0, "README.md"),
+            (0, "requirements.txt")]
+    for i, (level, name) in enumerate(tree):
+        y = 110 + i * 22
+        if name.startswith("task1"):
+            fill(56, y - 15, 278, 21, COLORS["blue"][0])
+        s.text(78 + level * 16, y, name, size=12.5)
+    # the editor: the tab, the Run button, the code
+    fill(335, 41, 574, 30, side)
+    fill(335, 41, 170, 30, white)
+    s.raw(f'<rect x="335" y="41" width="170" height="2" fill="{COLORS["blue"][1]}"/>')
+    s.text(349, 61, "task1-first-values.py", size=12)
+    s.raw(f'<path d="M846,49 L860,56 L846,63 z" fill="none" stroke="{COLORS["green"][1]}" stroke-width="2"/>')
+    s.raw(f'<path d="M868,54 l4,4 l4,-4" {ink}/>')
+    code = [("# == Part 1: the values of one row ==", MUTED), ("", INK),
+            ("# ---- your code: part 1 ----", MUTED), ('loan_id = "L000001"', INK), ("currency = None", INK),
+            ("outstanding = None", INK), ("# ---- end of your code ----", MUTED), ("", INK),
+            ('check("loan_id", loan_id, "L000001")', INK)]
+    fill(377, 147, 515, 64, COLORS["orange"][0])
+    for i, (line, color) in enumerate(code):
+        y = 98 + i * 21
+        s.text(365, y, str(10 + i), size=12, mono=True, color=MUTED, anchor="end")
+        s.text(385, y, line, size=12.5, mono=True, color=color)
+    # the panel with the terminal
+    s.raw(f'<path d="M335,300 H909" stroke="{COLORS["gray"][1]}" stroke-width="1.5"/>')
+    s.text(349, 322, "PROBLEMS     OUTPUT     DEBUG CONSOLE", size=11, color=MUTED)
+    s.text(605, 322, "TERMINAL", size=11, weight=700)
+    s.raw(f'<rect x="605" y="328" width="60" height="2" fill="{COLORS["blue"][1]}"/>')
+    s.text(752, 322, "cmd", size=12, color=MUTED)
+    s.text(790, 323, "+", size=17, weight=700, color=MUTED)
+    s.raw(f'<path d="M806,315 l4,4 l4,-4" {ink}/>')
+    s.raw(f'<path d="M828,312 h14 M831,312 v-2 h8 v2 M830,314 l1,12 h8 l1,-12" {ink}/>')
+    output = [("OK   loan_id", COLORS["green"][1]),
+              ("FAIL currency: got None (NoneType), expected 'EUR' (str)", COLORS["red"][1]),
+              ("...", INK), ("1 of 8 checks passed", INK), ("", INK),
+              ("(.venv) C:\\Users\\you\\python-course\\Python-Data-Analysts-UniCredit-Homework>", INK)]
+    for i, (line, color) in enumerate(output):
+        s.text(349, 356 + i * 20, line, size=11.5, mono=True, color=color)
+    # the status bar
+    fill(11, 520, 898, 29, COLORS["blue"][0], radius=0)
+    s.raw(f'<path d="M11,520 H909" stroke="{COLORS["blue"][1]}" stroke-width="1.5"/>')
+    s.text(24, 539, "main", size=12)
+    s.text(895, 539, "Python 3.13.9 (.venv)", size=12, anchor="end")
+    # the numbers, explained under the picture
+    mark(160, 57, 1)
+    mark(826, 56, 2)
+    mark(732, 318, 3)
+    mark(-14, 143, 4)
+    mark(740, 535, 5)
+    s.raw('</g>')
+    return s.render()
+
+
 DIAGRAMS = {"run-python": (run_python, RUN), "venv": (venv, VENV),
             "if-elif-else": (if_elif_else, IFS), "loop-flow": (loop_flow, LOOP),
             "list-indexing": (list_indexing, INDEX), "set-operations": (set_operations, SETS),
@@ -670,7 +890,10 @@ DIAGRAMS = {"run-python": (run_python, RUN), "venv": (venv, VENV),
             "table-rows": (table_rows, TABLE),
             "dict-lookup": (dict_lookup, LOOKUP),
             "class-objects": (class_objects, CLASSOBJ),
-            "nomenclature": (nomenclature_diagram, NOMEN)}
+            "nomenclature": (nomenclature_diagram, NOMEN),
+            "homework-repos": (homework_repos, REPOS),
+            "terminal-prompt": (terminal_prompt, PROMPT),
+            "vscode-window": (vscode_window, VSCODE)}
 
 if __name__ == "__main__":
     for name, (draw, texts) in DIAGRAMS.items():

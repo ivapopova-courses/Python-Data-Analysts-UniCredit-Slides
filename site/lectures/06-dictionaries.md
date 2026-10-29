@@ -1016,7 +1016,7 @@ and the number of corporate clients with a rating of 6 or worse.
 ## 8. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
-in VS Code (before the session: `git pull upstream main`) and run the tasks from the
+in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:
 
 ```bash

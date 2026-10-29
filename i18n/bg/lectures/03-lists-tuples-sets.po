@@ -1230,8 +1230,8 @@ msgstr "13. Упражнения"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1100
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: `git pull upstream main`) and run the tasks from the terminal, in the repository root:"
-msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: `git pull upstream main`) и пускайте задачите от терминала, в главната папка на repository-то:"
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
+msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и пускайте задачите от терминала, в главната папка на repository-то:"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1108
