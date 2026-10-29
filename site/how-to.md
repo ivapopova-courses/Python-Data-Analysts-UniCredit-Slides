@@ -143,6 +143,8 @@ keeps. In this course you work with three copies of the Homework repository:
 
 ![The course repository and your own repository on GitHub, and the folder on your computer: clone once and pull the new tasks from the course repository, push your solutions to your own repository](/diagrams/homework-repos.svg){.diagram width=920 height=380}
 
+Click a diagram (on a phone: tap it) to see it bigger, over the whole page.
+
 - **The course repository** on GitHub. Only the trainer changes it. You download
   it once (**clone**) and then get the new tasks from it (**pull**). In Git its
   name is **`upstream`**.
@@ -704,3 +706,6 @@ git pull
 - The navigation on the left and the "In this lecture" column on the right can
   be made narrower or wider: drag their inner edge. Double-click the edge to go
   back to the default width.
+- Click a diagram or a screenshot (on a phone: tap it) to see it bigger, over the
+  whole page. On a phone, swipe sideways to see all of it. Click anywhere or press
+  `Esc` to close it.
