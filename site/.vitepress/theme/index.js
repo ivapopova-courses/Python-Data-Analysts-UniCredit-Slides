@@ -9,6 +9,7 @@ import { setupOsTabs } from './osTabs.js'
 import './codeFold.css'
 import './diagram.css'
 import './sidebar.css'
+import './navbar.css'
 import './footer.css'
 
 // The course-kit theme, plus the runnable Python blocks (PyRunCode.vue, Pyodide),
