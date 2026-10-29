@@ -710,8 +710,8 @@ msgstr "Ако името го няма никъде, това е `NameError`."
 
 #. paragraph
 #: site/lectures/04-functions.md:812
-msgid "![Four nested boxes: Built-in around Global around Enclosing around Local, with example names; Python looks for a name from the inside out](/diagrams/scope-legb.svg){.diagram}"
-msgstr "![Четири вложени кутии: Built-in около Global около Enclosing около Local, с примерни имена; Python търси име отвътре навън](/diagrams/scope-legb.svg){.diagram}"
+msgid "![Four nested boxes: Built-in around Global around Enclosing around Local, with example names; Python looks for a name from the inside out](/diagrams/scope-legb.svg){.diagram width=920 height=400}"
+msgstr "![Четири вложени кутии: Built-in около Global около Enclosing около Local, с примерни имена; Python търси име отвътре навън](/diagrams/scope-legb.svg){.diagram width=920 height=400}"
 
 #. paragraph
 #: site/lectures/04-functions.md:814

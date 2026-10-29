@@ -710,8 +710,8 @@ msgstr "резултатите отиват на екрана, във файло
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:258
-msgid "![From your code to the result: a script, the REPL or a notebook cell go to the Python interpreter, which compiles them to bytecode and runs it](/diagrams/run-python.svg){.diagram}"
-msgstr "![От вашия код до резултата: скрипт, REPL или клетка в notebook отиват при интерпретатора на Python, който ги превежда до bytecode и го изпълнява](/diagrams/run-python.svg){.diagram}"
+msgid "![From your code to the result: a script, the REPL or a notebook cell go to the Python interpreter, which compiles them to bytecode and runs it](/diagrams/run-python.svg){.diagram width=920 height=340}"
+msgstr "![От вашия код до резултата: скрипт, REPL или клетка в notebook отиват при интерпретатора на Python, който ги превежда до bytecode и го изпълнява](/diagrams/run-python.svg){.diagram width=920 height=340}"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:260
@@ -875,8 +875,8 @@ msgstr "**Какво.** **Виртуалната среда** (venv) е папк
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:371
-msgid "![The system Python and two projects, each with its own .venv folder and its own versions of the packages](/diagrams/venv.svg){.diagram}"
-msgstr "![Системният Python и два проекта, всеки със своя папка .venv и свои версии на пакетите](/diagrams/venv.svg){.diagram}"
+msgid "![The system Python and two projects, each with its own .venv folder and its own versions of the packages](/diagrams/venv.svg){.diagram width=920 height=400}"
+msgstr "![Системният Python и два проекта, всеки със своя папка .venv и свои версии на пакетите](/diagrams/venv.svg){.diagram width=920 height=400}"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:373
@@ -1440,8 +1440,8 @@ msgstr "**Notebook** (файл `.ipynb`) е документ от **клетки
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:659
-msgid "![A notebook in JupyterLab: a Markdown cell with a heading, a code cell with a table as its output, and a code cell with a bar chart](/images/jupyterlab-notebook.png){.screenshot}"
-msgstr "![Notebook в JupyterLab: Markdown клетка със заглавие, клетка с код, чийто резултат е таблица, и клетка с код със стълбовидна графика](/images/jupyterlab-notebook.png){.screenshot}"
+msgid "![A notebook in JupyterLab: a Markdown cell with a heading, a code cell with a table as its output, and a code cell with a bar chart](/images/jupyterlab-notebook.png){.screenshot width=1500 height=1185}"
+msgstr "![Notebook в JupyterLab: Markdown клетка със заглавие, клетка с код, чийто резултат е таблица, и клетка с код със стълбовидна графика](/images/jupyterlab-notebook.png){.screenshot width=1500 height=1185}"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:661

@@ -845,7 +845,7 @@ print(rows[1][2])       # a cell: row 1, column 2
 print([row[2] for row in rows])     # a column
 ```
 
-![A table drawn as a grid; one row is rows[1], one column is the list [row[2] for row in rows], one cell is rows[1][2]](/diagrams/table-rows.svg){.diagram}
+![A table drawn as a grid; one row is rows[1], one column is the list [row[2] for row in rows], one cell is rows[1][2]](/diagrams/table-rows.svg){.diagram width=920 height=300}
 
 - **a row**: `rows[i]`;
 - **a cell**: `rows[i][j]` - first the row, then the column;

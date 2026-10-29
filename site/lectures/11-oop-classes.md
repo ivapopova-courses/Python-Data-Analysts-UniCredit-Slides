@@ -155,7 +155,7 @@ print(type(first), isinstance(first, Loan))
 - Each object has its own attributes: `first.outstanding` and `second.outstanding`
   are different.
 
-![A class Loan as a blueprint, and two objects made from it, each with its own loan_id, product, amount and outstanding](/diagrams/class-objects.svg){.diagram}
+![A class Loan as a blueprint, and two objects made from it, each with its own loan_id, product, amount and outstanding](/diagrams/class-objects.svg){.diagram width=920 height=330}
 
 ### Read and change attributes
 

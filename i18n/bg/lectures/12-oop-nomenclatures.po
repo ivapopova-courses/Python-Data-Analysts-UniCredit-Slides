@@ -280,7 +280,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:139
-msgid "![The four parts of the sentence of the client as the four parts of the Nomenclature class, and the classes built on it](/diagrams/nomenclature.svg){.diagram}"
+msgid "![The four parts of the sentence of the client as the four parts of the Nomenclature class, and the classes built on it](/diagrams/nomenclature.svg){.diagram width=920 height=360}"
 msgstr ""
 
 #. box title

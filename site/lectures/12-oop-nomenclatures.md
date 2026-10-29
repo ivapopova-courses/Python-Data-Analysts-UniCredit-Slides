@@ -136,7 +136,7 @@ The four parts of the sentence become the four parts of the class:
 | processing methods | `lookup()`, `apply()` to rows, the unmapped report | 4 |
 | consistently across datasets | one object, used for every dataset; a registry | 7 |
 
-![The four parts of the sentence of the client as the four parts of the Nomenclature class, and the classes built on it](/diagrams/nomenclature.svg){.diagram}
+![The four parts of the sentence of the client as the four parts of the Nomenclature class, and the classes built on it](/diagrams/nomenclature.svg){.diagram width=920 height=360}
 
 ::: tip Try it
 Name two nomenclatures from your own work that are copied into several programs. What

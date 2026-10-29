@@ -92,7 +92,7 @@ primary key:
 | `"BBB"` | `0.0043` |
 | `"B"` | `0.0275` |
 
-![A dictionary next to a SAS format and a SQL lookup table: the same key-value pairs in three forms](/diagrams/dict-lookup.svg){.diagram}
+![A dictionary next to a SAS format and a SQL lookup table: the same key-value pairs in three forms](/diagrams/dict-lookup.svg){.diagram width=920 height=330}
 
 | | SAS | SQL | Python |
 |---|---|---|---|

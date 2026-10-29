@@ -555,8 +555,8 @@ msgstr "`elif` означава \"else if\" (иначе ако). Частите 
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:463
-msgid "![The flow of if / elif / else: the conditions are tested in order, the first true one runs its block, and the program continues after the whole statement](/diagrams/if-elif-else.svg){.diagram}"
-msgstr "![Потокът на if / elif / else: условията се проверяват по ред, първото вярно изпълнява своя блок, а програмата продължава след цялата конструкция](/diagrams/if-elif-else.svg){.diagram}"
+msgid "![The flow of if / elif / else: the conditions are tested in order, the first true one runs its block, and the program continues after the whole statement](/diagrams/if-elif-else.svg){.diagram width=920 height=420}"
+msgstr "![Потокът на if / elif / else: условията се проверяват по ред, първото вярно изпълнява своя блок, а програмата продължава след цялата конструкция](/diagrams/if-elif-else.svg){.diagram width=920 height=420}"
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:479
@@ -860,8 +860,8 @@ msgstr "Вътре в блока нещо трябва да променя ус�
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:891
-msgid "![The flow of a loop: the condition is tested before each iteration; break leaves the loop, continue goes back to the test](/diagrams/loop-flow.svg){.diagram}"
-msgstr "![Потокът на цикъл: условието се проверява преди всяка итерация; break излиза от цикъла, continue се връща към проверката](/diagrams/loop-flow.svg){.diagram}"
+msgid "![The flow of a loop: the condition is tested before each iteration; break leaves the loop, continue goes back to the test](/diagrams/loop-flow.svg){.diagram width=920 height=480}"
+msgstr "![Потокът на цикъл: условието се проверява преди всяка итерация; break излиза от цикъла, continue се връща към проверката](/diagrams/loop-flow.svg){.diagram width=920 height=480}"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:900

@@ -181,7 +181,7 @@ print(fruits)
 - The last item has the index **-1**; counting back, each one is 1 less.
 - Only whole numbers are valid indexes.
 
-![A list of six loans with the indexes 0 to 5 above the items and -6 to -1 below them; the slice loans[1:4] is highlighted](/diagrams/list-indexing.svg){.diagram}
+![A list of six loans with the indexes 0 to 5 above the items and -6 to -1 below them; the slice loans[1:4] is highlighted](/diagrams/list-indexing.svg){.diagram width=920 height=330}
 
 ```python run
 numbers = [1, 2, 3, 4, 5]
@@ -1000,7 +1000,7 @@ print(frozenset({"USD", "EUR"}) in pairs)      # the order does not matter
 
 ### The four operations
 
-![Four Venn diagrams of two sets a and b: union, intersection, difference and symmetric difference, with the Python operator, the method and the SQL keyword of each](/diagrams/set-operations.svg){.diagram}
+![Four Venn diagrams of two sets a and b: union, intersection, difference and symmetric difference, with the Python operator, the method and the SQL keyword of each](/diagrams/set-operations.svg){.diagram width=920 height=330}
 
 | Operation | Operator | Method | Result | SQL |
 |---|---|---|---|---|

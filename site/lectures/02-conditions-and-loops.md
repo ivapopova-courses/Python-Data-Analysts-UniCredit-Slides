@@ -460,7 +460,7 @@ else:
 and runs **only the first block** whose condition is true; the rest are skipped.
 This is exactly how `CASE WHEN` works in SQL.
 
-![The flow of if / elif / else: the conditions are tested in order, the first true one runs its block, and the program continues after the whole statement](/diagrams/if-elif-else.svg){.diagram}
+![The flow of if / elif / else: the conditions are tested in order, the first true one runs its block, and the program continues after the whole statement](/diagrams/if-elif-else.svg){.diagram width=920 height=420}
 
 ```python run
 user_language = "it"
@@ -888,7 +888,7 @@ program continues after the block.
 Inside the block, something must change the condition - otherwise the loop never
 ends. (Or a `break` stops it, section 13.)
 
-![The flow of a loop: the condition is tested before each iteration; break leaves the loop, continue goes back to the test](/diagrams/loop-flow.svg){.diagram}
+![The flow of a loop: the condition is tested before each iteration; break leaves the loop, continue goes back to the test](/diagrams/loop-flow.svg){.diagram width=920 height=480}
 
 ```python run
 i = 1

@@ -330,8 +330,8 @@ msgstr "Валидни индекси са само цели числа."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:184
-msgid "![A list of six loans with the indexes 0 to 5 above the items and -6 to -1 below them; the slice loans[1:4] is highlighted](/diagrams/list-indexing.svg){.diagram}"
-msgstr "![List от шест кредита с индексите от 0 до 5 над елементите и от -6 до -1 под тях; slice-ът loans[1:4] е оцветен](/diagrams/list-indexing.svg){.diagram}"
+msgid "![A list of six loans with the indexes 0 to 5 above the items and -6 to -1 below them; the slice loans[1:4] is highlighted](/diagrams/list-indexing.svg){.diagram width=920 height=330}"
+msgstr "![List от шест кредита с индексите от 0 до 5 над елементите и от -6 до -1 под тях; slice-ът loans[1:4] е оцветен](/diagrams/list-indexing.svg){.diagram width=920 height=330}"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:192
@@ -1095,8 +1095,8 @@ msgstr "Четирите операции"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1003
-msgid "![Four Venn diagrams of two sets a and b: union, intersection, difference and symmetric difference, with the Python operator, the method and the SQL keyword of each](/diagrams/set-operations.svg){.diagram}"
-msgstr "![Четири диаграми на Вен за два sets a и b: обединение, сечение, разлика и симетрична разлика, с оператора на Python, метода и ключовата дума на SQL за всяка](/diagrams/set-operations.svg){.diagram}"
+msgid "![Four Venn diagrams of two sets a and b: union, intersection, difference and symmetric difference, with the Python operator, the method and the SQL keyword of each](/diagrams/set-operations.svg){.diagram width=920 height=330}"
+msgstr "![Четири диаграми на Вен за два sets a и b: обединение, сечение, разлика и симетрична разлика, с оператора на Python, метода и ключовата дума на SQL за всяка](/diagrams/set-operations.svg){.diagram width=920 height=330}"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1005 site/lectures/03-lists-tuples-sets.md:1067

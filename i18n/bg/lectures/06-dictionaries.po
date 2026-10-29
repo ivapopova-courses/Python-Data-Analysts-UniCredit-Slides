@@ -110,7 +110,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:95
-msgid "![A dictionary next to a SAS format and a SQL lookup table: the same key-value pairs in three forms](/diagrams/dict-lookup.svg){.diagram}"
+msgid "![A dictionary next to a SAS format and a SQL lookup table: the same key-value pairs in three forms](/diagrams/dict-lookup.svg){.diagram width=920 height=330}"
 msgstr ""
 
 #. table cell

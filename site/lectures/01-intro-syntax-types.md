@@ -255,7 +255,7 @@ Python is an **interpreted** language, with a small compiler inside:
 3. the **Python virtual machine** runs the bytecode, one instruction at a time;
 4. the results go to the screen, to files, to a database.
 
-![From your code to the result: a script, the REPL or a notebook cell go to the Python interpreter, which compiles them to bytecode and runs it](/diagrams/run-python.svg){.diagram}
+![From your code to the result: a script, the REPL or a notebook cell go to the Python interpreter, which compiles them to bytecode and runs it](/diagrams/run-python.svg){.diagram width=920 height=340}
 
 You can see the bytecode with the `dis` module (the instructions differ a little
 between Python versions):
@@ -368,7 +368,7 @@ called *dependency hell*).
 `.venv` - with its own copy of `python` and its own packages. Packages installed while
 it is active go there, and only there.
 
-![The system Python and two projects, each with its own .venv folder and its own versions of the packages](/diagrams/venv.svg){.diagram}
+![The system Python and two projects, each with its own .venv folder and its own versions of the packages](/diagrams/venv.svg){.diagram width=920 height=400}
 
 The `venv` module comes with Python. Once per project, in the project folder:
 
@@ -656,7 +656,7 @@ result - a number, a table, a chart - appears right under it. Text cells explain
 work. It is the closest thing in Python to an Enterprise Guide project or a SQL
 worksheet: ideal for exploring data and showing results.
 
-![A notebook in JupyterLab: a Markdown cell with a heading, a code cell with a table as its output, and a code cell with a bar chart](/images/jupyterlab-notebook.png){.screenshot}
+![A notebook in JupyterLab: a Markdown cell with a heading, a code cell with a table as its output, and a code cell with a bar chart](/images/jupyterlab-notebook.png){.screenshot width=1500 height=1185}
 
 In the picture (JupyterLab in the browser):
 

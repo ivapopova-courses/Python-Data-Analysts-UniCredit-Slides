@@ -809,7 +809,7 @@ the first one it finds:
 
 If the name is nowhere, it is a `NameError`.
 
-![Four nested boxes: Built-in around Global around Enclosing around Local, with example names; Python looks for a name from the inside out](/diagrams/scope-legb.svg){.diagram}
+![Four nested boxes: Built-in around Global around Enclosing around Local, with example names; Python looks for a name from the inside out](/diagrams/scope-legb.svg){.diagram width=920 height=400}
 
 This is also why you should not use built-in names for your variables: `sum = 0`
 **hides** the built-in `sum()` in that scope (a common habit from other languages):

@@ -680,7 +680,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/05-lists-advanced.md:848
-msgid "![A table drawn as a grid; one row is rows[1], one column is the list [row[2] for row in rows], one cell is rows[1][2]](/diagrams/table-rows.svg){.diagram}"
+msgid "![A table drawn as a grid; one row is rows[1], one column is the list [row[2] for row in rows], one cell is rows[1][2]](/diagrams/table-rows.svg){.diagram width=920 height=300}"
 msgstr ""
 
 #. paragraph
