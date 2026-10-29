@@ -585,8 +585,8 @@ msgstr "**2008:** Python 3.0 - несъвместим с Python 2. Python 2 пр
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:212
-msgid "Since 2019 a new version comes out **every October** (3.12 in 2023, 3.13 in 2024, 3.14 in 2025, 3.15 in 2026), and each version gets security fixes for 5 years. In this course you use **3.12 or 3.13**: they now get only security fixes, which is fine for the course."
-msgstr "От 2019 г. нова версия излиза **всеки октомври** (3.12 през 2023, 3.13 през 2024, 3.14 през 2025, 3.15 през 2026) и всяка версия получава поправки за сигурност в продължение на 5 години. В този курс използвате **3.12 или 3.13**: те вече получават само поправки за сигурност, което е достатъчно за курса."
+msgid "Since 2019 a new version comes out **every October** (3.12 in 2023, 3.13 in 2024, 3.14 in 2025, 3.15 in 2026), and each version gets security fixes for 5 years. In this course you use **3.12 or newer**: any version from 3.12 up to the newest works."
+msgstr "От 2019 г. нова версия излиза **всеки октомври** (3.12 през 2023, 3.13 през 2024, 3.14 през 2025, 3.15 през 2026) и всяка версия получава поправки за сигурност в продължение на 5 години. В този курс използвате **3.12 или по-нова**: става всяка версия от 3.12 до най-новата."
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:217
@@ -3140,8 +3140,8 @@ msgstr "Запомнете"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1897
-msgid "a free, general-purpose language; CPython; a new version every October; you use 3.12 / 3.13"
-msgstr "безплатен език с общо предназначение; CPython; нова версия всеки октомври; използвате 3.12 / 3.13"
+msgid "a free, general-purpose language; CPython; a new version every October; you use 3.12 or newer"
+msgstr "безплатен език с общо предназначение; CPython; нова версия всеки октомври; използвате 3.12 или по-нова"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1898
@@ -3302,6 +3302,12 @@ msgstr "Видеа за по-късно: [NumPy for beginners (SciPy 2018)](http
 #: site/lectures/01-intro-syntax-types.md:1950
 msgid "**Next session:** conditional statements and loops - `if` / `elif` / `else`, the Python `CASE WHEN`, and `for` / `while` loops over the rows of a file."
 msgstr "**Следващото занятие:** условни конструкции и цикли - `if` / `elif` / `else`, `CASE WHEN` на Python и цикли `for` / `while` по редовете на файл."
+
+#~ msgid "Since 2019 a new version comes out **every October** (3.12 in 2023, 3.13 in 2024, 3.14 in 2025, 3.15 in 2026), and each version gets security fixes for 5 years. In this course you use **3.12 or 3.13**: they now get only security fixes, which is fine for the course."
+#~ msgstr "От 2019 г. нова версия излиза **всеки октомври** (3.12 през 2023, 3.13 през 2024, 3.14 през 2025, 3.15 през 2026) и всяка версия получава поправки за сигурност в продължение на 5 години. В този курс използвате **3.12 или 3.13**: те вече получават само поправки за сигурност, което е достатъчно за курса."
+
+#~ msgid "a free, general-purpose language; CPython; a new version every October; you use 3.12 / 3.13"
+#~ msgstr "безплатен език с общо предназначение; CPython; нова версия всеки октомври; използвате 3.12 / 3.13"
 
 #~ msgid "Each file explains the task at the top. Write your code between the `your code` lines; the checks at the bottom print `OK` or `FAIL`."
 #~ msgstr "Всеки файл обяснява задачата най-горе. Пишете кода си между редовете `your code`; проверките най-долу отпечатват `OK` или `FAIL`."

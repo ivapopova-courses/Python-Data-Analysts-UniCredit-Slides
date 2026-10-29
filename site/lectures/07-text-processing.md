@@ -1088,9 +1088,10 @@ print(data.decode("utf-8"))          # UnicodeDecodeError
 ```
 
 That is why every `open()` in this course says `encoding="utf-8"`: without it, Python
-3.12 / 3.13 on Windows uses the Windows encoding of the computer (often cp1252 or
-cp1251), and the same script gives different results on different computers. (Python
-3.15 uses UTF-8 by default everywhere.)
+3.12 - 3.14 on Windows uses the Windows encoding of the computer (often cp1252 or
+cp1251), and the same script gives different results on different computers. (From
+Python 3.15 on, UTF-8 is the default everywhere. Still write it: the script may run
+on an older Python.)
 
 The file `regions_bg.csv` is saved in **cp1251**:
 

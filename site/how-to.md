@@ -44,20 +44,21 @@ the data of a bank. What is in each file: [Sample data](./sample-data).
 
 ## Set up Python on your computer {#setup}
 
-The tasks and the final project run on your own computer. You need:
+The tasks and the final project run on your own computer. The setup on this page
+is for **Windows**, with the Command Prompt (cmd) as the terminal. You need:
 
 | Program | Version | What for |
 |---|---|---|
-| [Python](https://www.python.org/downloads/windows/) | 3.12 or 3.13, 64-bit | the language |
+| [Python](https://www.python.org/downloads/windows/) | 3.12 or newer, 64-bit | the language |
 | [Visual Studio Code](https://code.visualstudio.com/) | latest | the editor, with the extensions below |
 | [Git](https://git-scm.com/downloads) | latest | versions of your code; the tasks come with it |
 | [GitHub](https://github.com/signup) account | free | your own copy of the tasks |
 
-Open the [Windows downloads page](https://www.python.org/downloads/windows/),
-find the newest **Python 3.13.x** under *Stable Releases* and take **Download Windows
-installer (64-bit)** - not the "Python install manager" and not the newest Python
-(3.15) at the top. On the first screen of the installer, tick **Add python.exe to
-PATH**. Check the tools in the Command Prompt (in VS Code: **Terminal > New
+Any Python from 3.12 on works: if you already have one, keep it. To install
+Python, open the [Windows downloads page](https://www.python.org/downloads/windows/),
+find the first version under *Stable Releases* that has a **Download Windows
+installer (64-bit)** link, and take it - not the "Python install manager". On the
+first screen of the installer, tick **Add python.exe to PATH**. Check the tools in the Command Prompt (in VS Code: **Terminal > New
 Terminal**, see [VS Code and the terminal](#terminal)):
 
 ```cmd
@@ -65,7 +66,7 @@ py --version
 git --version
 ```
 
-You see `Python 3.12.x` or `Python 3.13.x`, and `git version 2.x.x`.
+You see `Python 3.12.x` or a newer version, and `git version 2.x.x`.
 
 The libraries (pandas, NumPy, ...) are installed into a *virtual environment* in
 the Homework folder - see [step 9](#create-the-venv) below.
@@ -158,7 +159,7 @@ keeps. In this course you work with three copies of the Homework repository:
 
 Check these four things first:
 
-1. **The programs are installed:** Python 3.12 or 3.13, VS Code and Git for
+1. **The programs are installed:** Python 3.12 or newer, VS Code and Git for
    Windows (see [Set up Python on your computer](#setup)). Step 2 below checks
    them.
 2. **You have a GitHub account**, and you sent your GitHub user name to the
@@ -302,7 +303,7 @@ Run these two commands, one at a time:
 py --version
 ```
 
-You see: `Python 3.13.` (or higher) and a number.
+You see: `Python 3.12.` (or higher) and a number.
 
 ```cmd
 git --version

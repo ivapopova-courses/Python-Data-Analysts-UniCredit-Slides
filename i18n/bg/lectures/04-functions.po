@@ -855,8 +855,8 @@ msgstr "По-новите версии на Python"
 
 #. paragraph
 #: site/lectures/04-functions.md:943
-msgid "Python 3.12 added the `type` statement for type aliases: `type Amount = float`. Python 3.14 (the Python of this site) evaluates annotations only when they are needed, so a hint can name a class that is defined later in the file. Neither is needed in this course - the hints above work in 3.12 and 3.13."
-msgstr "Python 3.12 добави statement-а `type` за псевдоними на типове: `type Amount = float`. Python 3.14 (версията на този сайт) изчислява анотациите само когато потрябват, така че hint може да назове клас, дефиниран по-надолу във файла. Нито едното не ви трябва в този курс - hints по-горе работят в 3.12 и 3.13."
+msgid "Python 3.12 added the `type` statement for type aliases: `type Amount = float`. Python 3.14 (the Python of this site) evaluates annotations only when they are needed, so a hint can name a class that is defined later in the file. Neither is needed in this course - the hints above work in 3.12 and in every newer version."
+msgstr "Python 3.12 добави statement-а `type` за псевдоними на типове: `type Amount = float`. Python 3.14 (версията на този сайт) изчислява анотациите само когато потрябват, така че hint може да назове клас, дефиниран по-надолу във файла. Нито едното не ви трябва в този курс - hints по-горе работят в 3.12 и във всяка по-нова версия."
 
 #. heading 2
 #: site/lectures/04-functions.md:949
@@ -1317,3 +1317,6 @@ msgstr "Видеа: [Python tutorial for beginners 8: functions](https://www.you
 #: site/lectures/04-functions.md:1424
 msgid "**Next session:** lists, advanced - list comprehensions, sorting with `key`, `zip`, `enumerate`, `map` and `filter`, and a table as a list of rows."
 msgstr "**Следващото занятие:** lists за напреднали - list comprehensions, сортиране с `key`, `zip`, `enumerate`, `map` и `filter` и таблица като list от редове."
+
+#~ msgid "Python 3.12 added the `type` statement for type aliases: `type Amount = float`. Python 3.14 (the Python of this site) evaluates annotations only when they are needed, so a hint can name a class that is defined later in the file. Neither is needed in this course - the hints above work in 3.12 and 3.13."
+#~ msgstr "Python 3.12 добави statement-а `type` за псевдоними на типове: `type Amount = float`. Python 3.14 (версията на този сайт) изчислява анотациите само когато потрябват, така че hint може да назове клас, дефиниран по-надолу във файла. Нито едното не ви трябва в този курс - hints по-горе работят в 3.12 и 3.13."

@@ -79,8 +79,8 @@ Write ` ```python run ` instead of ` ```python ` (line highlighting works too:
 - `input()` does not work.
 
 The Pyodide version is set in `site/.vitepress/theme/pyRunner.js`
-(`PYODIDE_VERSION`). Pyodide runs a newer Python (3.14) than the students'
-3.12 / 3.13 - avoid features newer than 3.12 in the examples.
+(`PYODIDE_VERSION`). Pyodide runs Python 3.14; the students may have any Python
+from 3.12 on - avoid features newer than 3.12 in the examples.
 
 ## Two languages
 

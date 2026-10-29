@@ -943,7 +943,7 @@ call.
 Python 3.12 added the `type` statement for type aliases: `type Amount = float`. Python
 3.14 (the Python of this site) evaluates annotations only when they are needed, so a
 hint can name a class that is defined later in the file. Neither is needed in this
-course - the hints above work in 3.12 and 3.13.
+course - the hints above work in 3.12 and in every newer version.
 :::
 
 ## 9. Functions are values

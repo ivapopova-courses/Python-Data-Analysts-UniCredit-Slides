@@ -1115,105 +1115,105 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-processing.md:1090
-msgid "That is why every `open()` in this course says `encoding=\"utf-8\"`: without it, Python 3.12 / 3.13 on Windows uses the Windows encoding of the computer (often cp1252 or cp1251), and the same script gives different results on different computers. (Python 3.15 uses UTF-8 by default everywhere.)"
+msgid "That is why every `open()` in this course says `encoding=\"utf-8\"`: without it, Python 3.12 - 3.14 on Windows uses the Windows encoding of the computer (often cp1252 or cp1251), and the same script gives different results on different computers. (From Python 3.15 on, UTF-8 is the default everywhere. Still write it: the script may run on an older Python.)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1095
+#: site/lectures/07-text-processing.md:1096
 msgid "The file `regions_bg.csv` is saved in **cp1251**:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1105
+#: site/lectures/07-text-processing.md:1106
 msgid "`errors=\"replace\"` puts `?` (or `�`) instead of a byte that cannot be read, instead of stopping. Use it only to **look** at a file, never to load data."
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1108
+#: site/lectures/07-text-processing.md:1109
 msgid "One more detail: Excel saves \"CSV UTF-8\" with a **BOM** - three bytes `EF BB BF` at the start. Read such a file with `encoding=\"utf-8-sig\"`, or the first column name gets an invisible character in front:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1119
+#: site/lectures/07-text-processing.md:1120
 msgid "**Exercises**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1121
+#: site/lectures/07-text-processing.md:1122
 msgid "Read `regions_bg.csv` with `csv.DictReader` and the right encoding, and build a dictionary `name_bg -> name_en`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1123
+#: site/lectures/07-text-processing.md:1124
 msgid "Write the same rows into a new file `regions_utf8.csv` in UTF-8, and read it back."
 msgstr ""
 
 #. box title
-#: site/lectures/07-text-processing.md:1125 site/lectures/07-text-processing.md:1185
+#: site/lectures/07-text-processing.md:1126 site/lectures/07-text-processing.md:1186
 msgid "Answer"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1141
+#: site/lectures/07-text-processing.md:1142
 msgid "(Writing files with `csv`: session 9.)"
 msgstr ""
 
 #. heading 3
-#: site/lectures/07-text-processing.md:1144
+#: site/lectures/07-text-processing.md:1145
 msgid "Cyrillic names in Latin letters"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1146
+#: site/lectures/07-text-processing.md:1147
 msgid "Bulgaria has an official transliteration (the Transliteration Act of 2009): `ж` -> `zh`, `ц` -> `ts`, `ч` -> `ch`, `ш` -> `sh`, `щ` -> `sht`, `ъ` -> `a`, `ю` -> `yu`, `я` -> `ya`, ... A dictionary of single letters to strings, used with `translate`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1163
+#: site/lectures/07-text-processing.md:1164
 msgid "`str.maketrans` accepts a dictionary of **one character -> any string**, so one letter can become two or three. (The full rules have a few exceptions, for example `-ия` at the end of a word is `-ia`: `София` -> `Sofia`, not `Sofiya`.)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1167
+#: site/lectures/07-text-processing.md:1168
 msgid "Another trap of text from many sources: the same letter can be stored in two ways - `\"й\"` as one character, or `\"и\"` plus a combining mark. They look the same, but are not `==`. `unicodedata.normalize(\"NFC\", s)` brings both to the same form:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1180
+#: site/lectures/07-text-processing.md:1181
 msgid "**Exercise**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1182
+#: site/lectures/07-text-processing.md:1183
 msgid "Add the rule \"`ия` at the end of a word -> `ia`\" to the transliteration: first replace it, then `translate`. Check it with `София` and `Мария`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1197
+#: site/lectures/07-text-processing.md:1198
 msgid "(The ASCII letters `ia` pass through `translate` unchanged.)"
 msgstr ""
 
 #. heading 2
-#: site/lectures/07-text-processing.md:1200
+#: site/lectures/07-text-processing.md:1201
 msgid "Read more"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1202
+#: site/lectures/07-text-processing.md:1203
 msgid "Reference: [String methods](https://docs.python.org/3/library/stdtypes.html#string-methods), [`datetime`](https://docs.python.org/3/library/datetime.html) (the table of [format codes](https://docs.python.org/3/library/datetime.html#format-codes)), [`csv`](https://docs.python.org/3/library/csv.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1206
+#: site/lectures/07-text-processing.md:1207
 msgid "[Unicode HOWTO](https://docs.python.org/3/howto/unicode.html) (encodings, normalisation)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1207
+#: site/lectures/07-text-processing.md:1208
 msgid "Real Python: [Strings and character data](https://realpython.com/python-strings/), [Using Python datetime to work with dates and times](https://realpython.com/python-datetime/)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-processing.md:1210
+#: site/lectures/07-text-processing.md:1211
 msgid "**Next session:** regular expressions - patterns that find, check and extract IBANs, EIKs, e-mails, dates and amounts in free text; the Python `PRXMATCH`."
 msgstr ""

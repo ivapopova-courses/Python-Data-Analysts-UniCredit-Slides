@@ -211,8 +211,8 @@ The ones you will feel most in this course:
   if you find Python 2 code (`print "hello"` without brackets), it is old.
 - Since 2019 a new version comes out **every October** (3.12 in 2023, 3.13 in 2024,
   3.14 in 2025, 3.15 in 2026), and each version gets security fixes for 5 years. In
-  this course you use **3.12 or 3.13**: they now get only security fixes, which is fine
-  for the course.
+  this course you use **3.12 or newer**: any version from 3.12 up to the newest
+  works.
 
 ### Implementations
 
@@ -1894,7 +1894,7 @@ you run the file - the point is to think first.
 
 | Topic | Remember |
 |-------|----------|
-| Python | a free, general-purpose language; CPython; a new version every October; you use 3.12 / 3.13 |
+| Python | a free, general-purpose language; CPython; a new version every October; you use 3.12 or newer |
 | How it runs | syntax check -> bytecode -> the Python virtual machine; a `SyntaxError` stops everything before the first line |
 | Project setup | `py -m venv .venv`, activate, `pip install -r requirements.txt`; one venv per project |
 | Running code | `python file.py` in the terminal; the REPL `>>>`; Jupyter notebooks (the kernel keeps the variables) |
