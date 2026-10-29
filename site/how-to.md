@@ -53,23 +53,17 @@ The tasks and the final project run on your own computer. You need:
 | [Git](https://git-scm.com/downloads) | latest | versions of your code; the tasks come with it |
 | [GitHub](https://github.com/signup) account | free | your own copy of the tasks |
 
-On Windows, open the [Windows downloads page](https://www.python.org/downloads/windows/),
+Open the [Windows downloads page](https://www.python.org/downloads/windows/),
 find the newest **Python 3.13.x** under *Stable Releases* and take **Download Windows
 installer (64-bit)** - not the "Python install manager" and not the newest Python
 (3.15) at the top. On the first screen of the installer, tick **Add python.exe to
-PATH**. Check the tools in a terminal (in VS Code: **Terminal > New Terminal**; on
-Windows, the Command Prompt - see [VS Code and the terminal](#terminal)):
+PATH**. Check the tools in the Command Prompt (in VS Code: **Terminal > New
+Terminal**, see [VS Code and the terminal](#terminal)):
 
-::: code-group
-```cmd [Windows]
+```cmd
 py --version
 git --version
 ```
-```bash [Linux / macOS]
-python3 --version
-git --version
-```
-:::
 
 You see `Python 3.12.x` or `Python 3.13.x`, and `git version 2.x.x`.
 
@@ -132,8 +126,9 @@ Each lecture has a folder there (`01-intro-syntax-types/`, ...) with two kinds o
 tasks:
 
 - **Practice tasks** (`practice/task1-....py`, ...): short exercises, one topic
-  each, in the order of the lecture. We start them in class. Finish the rest at
-  home if you can - later tasks and the final project reuse them.
+  each, in the order of the lecture. We start them in class if time allows.
+  Finish the rest at home if you can - later tasks and the final project reuse
+  them.
 - **Homework** (`homework.py`): one larger task that puts the topics of the
   lecture together. Do it before the next session - we go through it together at
   the start.
@@ -307,7 +302,7 @@ Run these two commands, one at a time:
 py --version
 ```
 
-You see: `Python 3.13.` (or `3.12.`) and a number.
+You see: `Python 3.13.` (or higher) and a number.
 
 ```cmd
 git --version
@@ -356,9 +351,9 @@ In the browser:
    license. The repository must be **empty** - otherwise step 8 fails.
 6. Click **Create repository**.
 7. GitHub shows a page with *Quick setup* at the top. Check that **HTTPS** is
-   selected (not SSH), and copy the address next to it with its copy button. It
-   looks like `https://github.com/your-user/python-course-homework.git`. Paste it
-   into Notepad: you need it in step 7.
+   selected (not SSH). The address next to it looks like
+   `https://github.com/your-user/python-course-homework.git`. Leave this page open
+   in the browser: you copy the address from it in step 7.
 
 #### 5. Download the course repository (clone)
 
@@ -407,9 +402,11 @@ git remote rename origin upstream
 
 You see: nothing.
 
-Now add your own repository as `origin`. Type `git remote add origin ` (with a
-space at the end), paste your address from step 4 with `Ctrl+V`, and press
-`Enter`. The whole line looks like this:
+Now add your own repository as `origin`. On the GitHub page of step 4, copy your
+address with its copy button (closed the page? Open your repository on GitHub: it
+shows the same page). In the terminal, type `git remote add origin ` (with a space
+at the end), paste the address with `Ctrl+V`, and press `Enter`. The whole line
+looks like this:
 
 ```cmd
 git remote add origin https://github.com/your-user/python-course-homework.git
@@ -510,19 +507,6 @@ FAIL currency: got None (NoneType), expected 'EUR' (str)
 ```
 
 `FAIL` is right here: you have not written any code yet. **The setup is done.**
-
-::: details On Linux or macOS
-The steps are the same, except: the terminal of VS Code is fine as it is (no
-need to change it); the course folder goes into your home folder; sign in to
-GitHub when VS Code or Git asks in step 5; and step 9 is:
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-```
-:::
 
 ### Work on a task {#work-on-a-task}
 
