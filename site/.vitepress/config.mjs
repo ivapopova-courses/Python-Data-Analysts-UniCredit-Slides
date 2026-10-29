@@ -54,6 +54,7 @@ const course = defineCourse({
       items: [
         { text: 'Home', link: '/' },
         { text: 'Agenda', link: '/agenda' },
+        { text: 'Calendar', link: '/calendar' },
         { text: 'How to use these pages', link: '/how-to' },
         { text: 'Sample data', link: '/sample-data' },
         { text: 'Animations', link: '/under-the-hood' },

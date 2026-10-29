@@ -44,6 +44,7 @@ npm run build        # static site in site/.vitepress/dist (for GitHub Pages)
 site/                          the course site (VitePress)
     index.md                   home page: the 16 sessions
     agenda.md                  course agenda
+    calendar.md                the session calendar (Zoho, embedded) and its iCal address
     how-to.md, sample-data.md, project.md
     lectures/NN-topic.md       one page per lecture
     under-the-hood.md          the list of the animations
