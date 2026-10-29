@@ -6,17 +6,20 @@ import DataFile from './DataFile.vue'
 import { setupCodeFold } from './codeFold.js'
 import { setupScrollHash } from './scrollHash.js'
 import { setupOsTabs } from './osTabs.js'
+import { setupZoomImages } from './zoomImages.js'
 import './codeFold.css'
 import './diagram.css'
 import './sidebar.css'
 import './navbar.css'
 import './footer.css'
+import './zoomImages.css'
 
 // The course-kit theme, plus the runnable Python blocks (PyRunCode.vue, Pyodide),
 // the preview of a sample data file (<DataFile file="loans.csv" />, DataFile.vue),
 // folding of long code blocks (codeFold.js), the same Windows / Linux tab in all
-// command blocks (osTabs.js) and the #section of the page on screen
-// in the address bar (scrollHash.js), the ProgressBG logo in the footer (footer.css).
+// command blocks (osTabs.js), the #section of the page on screen
+// in the address bar (scrollHash.js), diagrams and screenshots that open bigger on a
+// click (zoomImages.js) and the ProgressBG logo in the footer (footer.css).
 // Taken from JS-Basics-Practical-IBM/Slides.
 export default {
   ...CourseTheme,
@@ -31,6 +34,7 @@ export default {
     // it; earlier changes made Vue duplicate the runnable blocks of long pages
     onMounted(setupCodeFold)
     onMounted(setupOsTabs)
+    onMounted(setupZoomImages)
     const data = useData()  // works only here, in setup
     onMounted(() => setupScrollHash(data))
   }

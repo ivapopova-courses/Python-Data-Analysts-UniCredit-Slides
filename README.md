@@ -54,7 +54,8 @@ site/                          the course site (VitePress)
     .vitepress/pythonRun.mjs   the "python run" code blocks (markdown)
     .vitepress/theme/          PyRunCode.vue + pyRunner.js (Run / Edit / Reset with Pyodide),
                                DataFile.vue + dataPreview.js (the preview of a data file),
-                               LangSwitch.vue (the EN / BG button), codeFold, scrollHash
+                               LangSwitch.vue (the EN / BG button), codeFold, scrollHash,
+                               zoomImages (a diagram opens bigger on a click), navbar.css
     bg/                        GENERATED Bulgarian pages (git-ignored, see i18n/)
 i18n/                          translations: bg/*.po, the generator, translator guide, glossary
 data/*.csv                     MADE-UP sample data (same files as in Homework/data/)
@@ -111,7 +112,8 @@ Workflow and details: [`i18n/README.md`](i18n/README.md).
   (the size of the SVG: then the page does not jump when the image loads, and a link
   to a section below it lands in the right place); add the drawing and its English
   and Bulgarian texts to `tools/make-diagrams.py` and run it. In dark mode the site
-  inverts them (`theme/diagram.css`).
+  inverts them (`theme/diagram.css`). A click on a diagram or a screenshot opens it
+  bigger, over the whole page (`theme/zoomImages.js`); nothing to add in the page.
 - **Animations:** a page in `site/public/animations/` that uses `anim.js` (see
   `namesAndObjects.html`); every text is a pair `[English, Bulgarian]`. Add a
   `bg/<page>.html` redirect (copy one) so that the Bulgarian pages link to it, and list
