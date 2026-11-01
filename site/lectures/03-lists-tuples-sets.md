@@ -173,6 +173,98 @@ del fruits[1]
 print(fruits)
 ```
 
+### Loop over a list
+
+A list is the natural thing to loop over: `for` takes its items one by one, in
+order. Everything of session 2 works here - accumulators, `break` with a flag, and
+`continue`.
+
+A sum, a count and the largest item in one loop - `SUM`, `COUNT` with a condition,
+and `MAX`:
+
+```python run
+amounts = [1044231.30, 651927.30, 644.25, 14286.75, 3200.00]
+
+total = 0.0
+count_small = 0
+largest = amounts[0]                 # start with the first item
+for amount in amounts:
+    total += amount
+    if amount < 10000:
+        count_small += 1
+    if amount > largest:
+        largest = amount
+
+print(f"total {total:,.2f}, average {total / len(amounts):,.2f}")
+print(count_small, "small loans; the largest is", largest)
+print(sum(amounts), max(amounts))    # the built-in functions do it too (section 4)
+```
+
+Find an item: stop at the first match with `break`, and remember with a flag
+whether it was found (session 2):
+
+```python run
+watch_list = ["L000012", "L000025", "L000059"]
+loan_id = "L000025"
+
+found = False
+for item in watch_list:
+    if item == loan_id:
+        found = True
+        break
+
+if found:
+    print(loan_id, "is on the watch list")
+else:
+    print(loan_id, "is not on the watch list")
+```
+
+::: tip Try it
+Change `loan_id` to `"L000099"` and predict the output before you run it. (For a
+plain "is it there?", `loan_id in watch_list` is shorter - section 4.)
+:::
+
+Skip the items you do not want with `continue` - here the missing values of a
+column read from a file, which are empty strings:
+
+```python run
+ratings = ["3", "", "7", "2", "", "10"]
+
+known = 0
+total = 0
+for rating in ratings:
+    if rating == "":                # a missing value: skip it
+        continue
+    known += 1
+    total += int(rating)
+
+print(known, "known ratings, the average is", total / known)
+```
+
+The loop gives the items, not their positions. If you need the position, count it
+yourself (session 5 shows `enumerate`, which does it for you):
+
+```python run
+amounts = [800.0, 0.0, 15900.0, 0.0]
+
+position = 0
+for amount in amounts:
+    if amount == 0:
+        print("a zero amount at index", position)
+    position += 1
+```
+
+Two lists, one loop inside the other - every pair, like a `CROSS JOIN`:
+
+```python run
+products = ["mortgage", "consumer"]
+currencies = ["EUR", "USD"]
+
+for product in products:
+    for currency in currencies:
+        print(product, currency)
+```
+
 ## 3. Indexes and slices
 
 ### Indexes from the start and from the end
@@ -181,7 +273,7 @@ print(fruits)
 - The last item has the index **-1**; counting back, each one is 1 less.
 - Only whole numbers are valid indexes.
 
-![A list of six loans with the indexes 0 to 5 above the items and -6 to -1 below them; the slice loans[1:4] is highlighted](/diagrams/list-indexing.svg){.diagram width=920 height=330}
+![A list of six loans with the indexes 0 to 5 above the items and -6 to -1 below them](/diagrams/list-indexing.svg){.diagram width=920 height=270}
 
 ```python run
 numbers = [1, 2, 3, 4, 5]
@@ -215,6 +307,11 @@ a[:]              all items - a copy of the whole sequence
 The rule "the stop is not included" is the same as in `range` (session 2). It has a
 nice side: `a[:3]` is the first 3 items, `a[3:]` the rest, and `a[2:5]` has 5 - 2 = 3
 items.
+
+An easy way to see it: think of the numbers of a slice as the **cuts between the
+items**, not as the items. `loans[1:4]` cuts at 1 and at 4 and takes what is between:
+
+![The same list with the cuts 0 to 6 between the items; loans[1:4] takes the items between cut 1 and cut 4](/diagrams/list-slicing.svg){.diagram width=920 height=340}
 
 ```python run
 numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -463,6 +560,32 @@ b.extend([3, 4])        # two items: 3 and 4
 print(b, len(b))
 ```
 
+### Do not remove items while you loop over the same list
+
+The loop goes through the list **by position**. When you remove an item, the next
+one moves into its place - and the loop skips it:
+
+```python run
+amounts = [0.0, 0.0, 500.0, 0.0]
+for amount in amounts:
+    if amount == 0:
+        amounts.remove(amount)
+print(amounts)             # [500.0, 0.0] - one zero is still there
+```
+
+Build a **new** list instead - the same as writing a new data set in SAS:
+
+```python run
+amounts = [0.0, 0.0, 500.0, 0.0]
+non_zero = []
+for amount in amounts:
+    if amount != 0:
+        non_zero.append(amount)
+print(non_zero)
+```
+
+(Session 5 does the same in one line, with a list comprehension.)
+
 ### The methods change the list - and return `None`
 
 `append`, `sort`, `reverse` and the others change the list **in place**. They return
@@ -503,8 +626,9 @@ print(sorted(["banana", "Cherry", "apple"]))
 print(sorted([3, "1", 2]))
 ```
 
-`PROC SORT` and `ORDER BY` can sort by a column, or by several. In Python that is
-`sorted(..., key=...)`: sessions 4 and 5.
+`PROC SORT` and `ORDER BY` can sort by a column, or by several. For records kept as
+tuples, put the column to sort by first (section 8, "Sort records"); the general
+way is `sorted(..., key=...)`: sessions 4 and 5.
 
 ## 7. A list is mutable: names and references
 
@@ -730,6 +854,46 @@ print(products)
 Tuples are also used for **several return values of a function** (session 4) and as
 **keys of a dictionary** (session 6), where a list is not allowed.
 
+### Sort records: tuples compare item by item
+
+Tuples are compared like words, item by item: the **first** items first; only when
+they are equal, the second items, and so on. So `sorted` on a list of tuples sorts
+by the first item, then by the second - like `ORDER BY col1, col2`:
+
+```python run
+print((2, "b") < (10, "a"))         # True: 2 < 10, the rest is not looked at
+print((5, "b") < (5, "c"))          # True: 5 == 5, so "b" < "c" decides
+
+pairs = [(5, "L000003"), (12, "L000001"), (5, "L000002")]
+print(sorted(pairs))                # by the number, then by the id
+print(sorted(pairs, reverse=True))  # from the largest
+```
+
+To sort records by another column, build new tuples with that column **first** - the
+largest exposures:
+
+```python run
+loans = [
+    ("L000001", "investment", 1044231.30),
+    ("L000002", "investment", 651927.30),
+    ("L000003", "credit_card", 644.25),
+    ("L000014", "consumer", 14286.75),
+]
+
+by_size = []
+for loan_id, product, outstanding in loans:
+    by_size.append((outstanding, loan_id))      # the amount first
+
+for outstanding, loan_id in sorted(by_size, reverse=True)[:2]:
+    print(loan_id, f"{outstanding:,.2f}")
+```
+
+::: warning Two pairs of brackets
+`by_size.append((outstanding, loan_id))`: the outer brackets belong to the call, the
+inner ones make the tuple. `append(outstanding, loan_id)` gives two values to
+`append` - a `TypeError`.
+:::
+
 ::: details Advanced: named tuples
 In a plain tuple, `loan[2]` does not say what the third column is. A **named tuple**
 gives the positions names - a lightweight record:
@@ -759,6 +923,7 @@ their data and have their own methods.
 | Use for | a collection that grows: the loans of a report, the values of a column | a fixed record: one row, a date, a pair |
 | Memory, speed | a little more, a little slower | a little less, a little faster |
 
+::: details Advanced: see the memory
 ```python run
 import sys
 
@@ -769,6 +934,7 @@ print(sys.getsizeof(as_tuple), "bytes for the tuple")
 ```
 
 (The exact numbers depend on the Python version; the tuple is always smaller.)
+:::
 
 Rule of thumb: a **list** for many values of the **same kind** (all loan ids), a
 **tuple** for a few values of **different kinds** that belong together (one loan).
@@ -817,28 +983,13 @@ print(list(range(-3, 4)))        # -3 ... 3
 print(list(range(9, -1, 1)))     # empty: you cannot go from 9 up to -1
 ```
 
-| SAS `DO` loop | Python |
-|---|---|
-| `do i = 1 to 12;` | `for i in range(1, 13):` |
-| `do i = 0 to 100 by 10;` | `for i in range(0, 101, 10):` |
-| `do i = 10 to 1 by -1;` | `for i in range(10, 0, -1):` |
+The SAS `DO` loops and their `range` are in the table of session 2, section 10.
+New today: a backwards range, `do i = 10 to 1 by -1;` is `range(10, 0, -1)`.
 
 ### A range does not keep its numbers
 
-- **Immutable**: a range cannot change.
-- **Small in memory**: a range keeps only `start`, `stop` and `step`, and calculates
-  each number when it is needed. A range of a billion numbers is as small as a range
-  of ten.
-- Used mostly in `for` loops, to repeat something a given number of times.
-
-```python run
-import sys
-
-print(sys.getsizeof(range(10)), sys.getsizeof(range(1_000_000_000)))
-print(sys.getsizeof(list(range(1000))))     # a list keeps every number
-```
-
-When you print a range, you see only the "formula". To see the numbers, make a list or
+A range keeps only `start`, `stop` and `step`, and calculates each number when it is
+needed. When you print a range, you see only the "formula". To see the numbers, make a list or
 a tuple of it - or loop over it:
 
 ```python run
@@ -849,13 +1000,25 @@ for i in r:
     print(i, end=" ")
 ```
 
-A range is a real sequence: `len`, indexes, slices and `in` work, and fast:
+::: details Advanced: a range is small, and a real sequence
+A range of a billion numbers is as small in memory as a range of ten - a list keeps
+every number:
+
+```python run
+import sys
+
+print(sys.getsizeof(range(10)), sys.getsizeof(range(1_000_000_000)))
+print(sys.getsizeof(list(range(1000))))     # a list keeps every number
+```
+
+`len`, indexes, slices and `in` work on a range, and fast:
 
 ```python run
 r = range(0, 1_000_000, 5)
 print(len(r), r[3], r[-1], 500 in r, 501 in r)
 print(range(10)[:3])
 ```
+:::
 
 ## 11. Sets
 
@@ -1114,6 +1277,20 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
 | 5 | `task5-sets.py` | The clients of two months: new, closed, stayed; a credit file |
 | 6 | `task6-from-file.py` | From `loans.csv` and `clients.csv`: distinct values, lists, set checks |
 
+::: tip Help for the tasks and the homework
+- **Reading a file** (task 6, the homework): as in session 2 - `file.readline()`
+  skips the header, then `fields = line.strip().split(",")` in the loop. The
+  columns are in the order of the header line (task 6 lists them; the
+  [sample data](../sample-data) page too): `fields[0]` is the first one.
+- **Homework, part 1:** convert while you append: `loans.append((fields[0], ...,
+  float(fields[7]), int(fields[10])))` - note the two pairs of brackets (section 8).
+- **Homework, part 2:** sorting tuples compares their first items first - section 8,
+  "Sort records: tuples compare item by item".
+- **Homework, part 5:** two loops, one per file: first collect the stage 3 clients
+  into a set, then read `clients.csv` and keep the region when the client is in
+  that set.
+:::
+
 ## Summary
 
 | Topic | Remember |
@@ -1133,8 +1310,9 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
 
 1. `03-lists-tuples-sets/homework.py` (in the homework repository): a **portfolio
    snapshot** from `loans.csv` - the loans as a list of tuples, the five largest
-   exposures, the distinct products, and the clients that have loans in both
-   currencies. Every check must print `OK`.
+   exposures, the distinct products, the clients with both a mortgage and a
+   consumer loan, and the regions of the stage 3 clients. Every check must print
+   `OK`.
 2. The practice tasks you did not finish in class.
 3. Optional: `names.py` asks how many names the user will enter, reads them with
    `input()` in a loop into a list, and prints them sorted, without duplicates, and

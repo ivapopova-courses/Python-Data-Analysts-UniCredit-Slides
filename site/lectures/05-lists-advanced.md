@@ -356,8 +356,9 @@ print("all amounts positive:          ", all(float(row[6]) > 0 for row in rows))
 print("any currency other than EUR/USD:", any(row[3] not in ("EUR", "USD") for row in rows))
 ```
 
-In SQL these are `EXISTS (SELECT ... WHERE ...)` and `NOT EXISTS (... WHERE NOT
-...)`. Both stop as soon as the answer is known: `any` at the first true value,
+`row[0].startswith("L")` is `True` when the text starts with `"L"` - a string
+method; session 7 has them all. In SQL these are `EXISTS (SELECT ... WHERE ...)` and
+`NOT EXISTS (... WHERE NOT ...)`. Both stop as soon as the answer is known: `any` at the first true value,
 `all` at the first false one.
 
 ::: warning Empty lists
@@ -451,8 +452,8 @@ columns, mixed directions, and the top N.
 
 ### Several columns: a tuple as the key
 
-A key that returns a **tuple** sorts by the first value, then by the second for equal
-first values, and so on - like `ORDER BY a, b`:
+A reminder of session 4: a key that returns a **tuple** sorts by the first value,
+then by the second for equal first values - like `ORDER BY a, b`:
 
 ```python run
 loans = [
@@ -508,8 +509,7 @@ for loan in result:
 
 `PROC SORT` is stable too (with the default `EQUALS` option), so this is familiar.
 
-### `operator.itemgetter`
-
+::: details Advanced: `operator.itemgetter`
 For keys that only pick columns, the module `operator` has a ready function:
 `itemgetter(2)` is the same as `lambda row: row[2]`, and `itemgetter(1, 2)` gives the
 tuple `(row[1], row[2])`. It is a bit faster and reads like a column list:
@@ -526,6 +526,7 @@ loans = [
 print(sorted(loans, key=itemgetter(2)))
 print(sorted(loans, key=itemgetter(1, 0)))
 ```
+:::
 
 ### The top N
 
@@ -683,8 +684,19 @@ print(list(zip(loan_ids, amounts, strict=True)))   # ValueError
 
 ### `enumerate`: the number of each item
 
-`enumerate` (session 2) gives pairs `(number, item)`. `start=1` numbers from 1 - a
-rank, or the line number of a file (the line 1 is the header):
+Sometimes you need the **position** of each item, not only the item. The C-style
+way loops over the indexes with `range(len(...))`:
+
+```python run
+products = ["mortgage", "consumer", "credit_card"]
+for index in range(len(products)):
+    print(f"{index}: {products[index]}")
+```
+
+The Python way is [`enumerate(iterable, start=0)`](https://docs.python.org/3/library/functions.html#enumerate):
+it gives pairs `(number, item)`, so the `for` takes the number and the item with two
+names. `start=1` numbers from 1 - a rank, or the line number of a file (the line 1 is
+the header):
 
 ```python run
 products = ["investment", "overdraft", "mortgage"]
@@ -695,7 +707,9 @@ for i, product in enumerate(products, start=1):
 print(list(enumerate(products)))
 ```
 
-The line numbers of the bad rows - in SAS: `_N_`:
+The line numbers of the bad rows - in SAS: `_N_`. (`"15900".isdigit()` is `True`
+when every character is a digit - a string method of session 7; `replace(".", "")`
+first removes the decimal point.)
 
 ```python run
 lines = ["L000001,800.00", "L000002,abc", "L000003,15900.00", "L000004,"]
@@ -747,6 +761,13 @@ print(list(enumerate(b, start=10)))
 :::
 
 ## 5. `map` and `filter`
+
+::: info Optional
+Not needed for the tasks, the homework or the next sessions - read it when you have time.
+:::
+
+A comprehension (section 1) does the same job, and most Python code uses it. Read
+this section so that you recognise `map` and `filter` in other people's code.
 
 ### `map`: one function, every item
 
@@ -850,6 +871,65 @@ print([row[2] for row in rows])     # a column
 - **a row**: `rows[i]`;
 - **a cell**: `rows[i][j]` - first the row, then the column;
 - **a column**: `[row[j] for row in rows]` - a comprehension over the rows.
+
+### Loop over the rows and the cells
+
+A table is read with **nested loops** (session 2): the outer loop takes the rows,
+the inner loop the cells of one row. The inner loop runs completely for each row:
+
+```python run
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+]
+for row in matrix:
+    for element in row:
+        print(element, end=" ")
+    print()             # a new line after each row
+```
+
+On the loans - the rows with names, and the cells with their column names, in
+pairs with `zip`:
+
+```python run
+header = ["loan_id", "product", "outstanding", "stage"]
+rows = [
+    ["L000001", "investment", 1044231.30, 1],
+    ["L000002", "investment", 651927.30, 2],
+]
+for number, row in enumerate(rows, start=1):
+    print(f"row {number}:")
+    for name, value in zip(header, row):
+        print(f"    {name:<12} {value}")
+```
+
+`break` in the inner loop leaves **only the inner loop** - the outer loop goes on
+with the next row:
+
+```python run
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+]
+search_value = 4
+
+for row in matrix:
+    print(f"Processing row: {row}")
+    for element in row:
+        print(element, end=",")
+        if element == search_value:
+            break               # leaves the inner loop only
+    print()
+```
+
+::: tip Try it
+Change `search_value` to `2`. Which rows are still printed in full? And how would
+you stop **both** loops at the first match? (One way: a flag variable that the
+outer loop tests after the inner loop; a cleaner one: put the loops into a function
+and `return`, session 4.)
+:::
 
 ### Read a CSV file into rows, with types
 
@@ -1108,7 +1188,7 @@ python 05-lists-advanced/practice/task1-comprehensions.py
 | Task | File | What you do |
 |------|------|-------------|
 | 1 | `task1-comprehensions.py` | Derived lists and filters on a list of loans |
-| 2 | `task2-predict-lists.py` | Predict: comprehension filters, `zip` length, a used-up `map`, `[[0] * 2] * 2` |
+| 2 | `task2-predict-lists.py` | Predict: comprehension filters, `zip` length, a used-up `zip`, `[[0] * 2] * 2` |
 | 3 | `task3-checks-extremes.py` | Data checks with `any` / `all`; `min` / `max` with `key` and `default` |
 | 4 | `task4-sort-top-n.py` | Several sort keys with mixed directions; the top 10 with a rank |
 | 5 | `task5-zip-columns.py` | Columns to rows and back; the change from month to month |
@@ -1128,7 +1208,7 @@ python 05-lists-advanced/practice/task1-comprehensions.py
 | `zip` | parallel lists -> tuples; `zip(*rows)` transposes; stops at the shortest - `strict=True` |
 | `enumerate` | `(number, item)`; `start=1` for a rank or a line number |
 | Iterators | `zip`, `map`, `filter`, `enumerate` give their values once |
-| `map` / `filter` | `map(float, fields)`; a comprehension is usually clearer |
+| `map` / `filter` | optional: `map(float, fields)`; a comprehension is usually clearer |
 | Table | a list of rows; cell `rows[i][j]`; column `[r[j] for r in rows]`; never `[[0] * n] * m` |
 | Copies | `rows.copy()` shares the rows; `copy.deepcopy` copies all; tuples cannot change |
 

@@ -255,6 +255,55 @@ def if_elif_else(t):
 
 
 # ---------------------------------------------------------------------------
+# loop-simple: the plain while and for loops, without break and continue
+
+LOOPS = {
+    "en": {
+        "title": "The flow of a while loop and a for loop",
+        "true": "True", "false": "False",
+        "next": "the next item", "none": "no more items",
+        "block": "block",
+        "again": ["the end of the block:", "test again"],
+        "after": "the code after the loop",
+        "note": "break and continue change this flow: sections 13 - 14.",
+    },
+    "bg": {
+        "title": "Как протичат цикълът while и цикълът for",
+        "true": "True", "false": "False",
+        "next": "следващият елемент", "none": "няма повече",
+        "block": "блок",
+        "again": ["краят на блока:", "провери отново"],
+        "after": "кодът след цикъла",
+        "note": "break и continue променят този ход: раздели 13 - 14.",
+    },
+}
+
+
+def loop_simple(t):
+    green = COLORS["green"][1]
+    red = COLORS["red"][1]
+    s = Svg(920, 330, t["title"])
+    for ox, label, yes, no in ((0, "while condition:", t["true"], t["false"]),
+                               (460, "for item in sequence:", t["next"], t["none"])):
+        cx = ox + 165
+        s.arrow(cx, 8, cx, 38)
+        s.diamond(cx, 72, 270, 64, "orange", label, size=13)
+        s.arrow(cx, 104, cx, 138, color=green)
+        s.text(cx + 10, 126, yes, size=12, weight=700, color=green)
+        s.box(cx - 80, 140, 160, 46, "green", t["block"], center=True)
+        # the end of the block: back to the test
+        s.poly([(cx - 80, 163), (ox + 15, 163), (ox + 15, 22), (cx, 22), (cx, 38)], color=MUTED)
+        s.lines(ox + 25, 212, t["again"], size=13, gap=18)
+        # the test is False / no more items: after the loop
+        s.poly([(cx + 135, 72), (cx + 205, 72), (cx + 205, 238)], color=red)
+        s.text(cx + 145, 64, no, size=12, weight=700, color=red)
+        s.rect(cx + 85, 240, 200, 46, "blue")
+        s.text(cx + 185, 268, t["after"], size=14, weight=700, anchor="middle")
+    s.text(460, 318, t["note"], size=13, color=MUTED, anchor="middle")
+    return s.render()
+
+
+# ---------------------------------------------------------------------------
 # loop-flow: a while loop with continue and break
 
 LOOP = {
@@ -329,49 +378,91 @@ def loop_flow(t):
 
 INDEX = {
     "en": {
-        "title": "Indexes and slices of a list",
+        "title": "The indexes of a list",
         "pos": "index from the start", "neg": "index from the end",
-        "slice": "loans[1:4] - from index 1 up to 4, without 4",
+        "examples": "Examples:",
+        "error": "loans[6]    -> IndexError", "error2": "there is no 7th item",
+    },
+    "bg": {
+        "title": "Индексите на един list",
+        "pos": "индекс от началото", "neg": "индекс от края",
+        "examples": "Примери:",
+        "error": "loans[6]    -> IndexError", "error2": "няма 7-ми елемент",
+    },
+}
+
+ITEMS = ["L01", "L02", "L03", "L04", "L05", "L06"]
+
+
+def list_indexing(t):
+    green = COLORS["green"][1]
+    blue = COLORS["blue"][1]
+    s = Svg(920, 270, t["title"])
+    x0, w, y = 190, 105, 82
+    s.text(20, 30, "loans = [\"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\"]", size=15, mono=True)
+    s.text(x0 - 14, y - 12, t["pos"], size=12, color=green, anchor="end")
+    s.text(x0 - 14, y + 92, t["neg"], size=12, color=blue, anchor="end")
+    for i, item in enumerate(ITEMS):
+        x = x0 + i * w
+        s.rect(x, y, w, 56, "orange" if i in (0, 2, 5) else "gray", radius=4)
+        s.text(x + w / 2, y + 35, f'"{item}"', size=16, mono=True, anchor="middle")
+        s.text(x + w / 2, y - 12, str(i), size=16, weight=700, mono=True, color=green, anchor="middle")
+        s.text(x + w / 2, y + 92, str(i - len(ITEMS)), size=16, weight=700, mono=True, color=blue, anchor="middle")
+    s.text(20, 205, t["examples"], size=13, weight=700, color=MUTED)
+    s.lines(20, 229, [('loans[0]    -> "L01"', {"mono": True}), ('loans[2]    -> "L03"', {"mono": True})],
+            size=14, gap=21)
+    s.lines(330, 229, [('loans[-1]   -> "L06"', {"mono": True}), ('loans[5]    -> "L06"', {"mono": True})],
+            size=14, gap=21)
+    s.text(620, 229, t["error"], size=14, mono=True, color=COLORS["red"][1])
+    s.text(620, 250, t["error2"], size=13, color=MUTED)
+    return s.render()
+
+
+SLICE = {
+    "en": {
+        "title": "Slices of a list: the numbers of a slice are the cuts between the items",
+        "cuts": "the cuts", "neg": "from the end",
+        "slice": "loans[1:4] - from cut 1 to cut 4: 3 items",
         "examples": "Examples:",
         "every2": "loans[::2]  -> every 2nd", "reversed": "loans[::-1] -> reversed", "copy": "loans[:]    -> a copy",
     },
     "bg": {
-        "title": "Индекси и срезове на списък",
-        "pos": "индекс от началото", "neg": "индекс от края",
-        "slice": "loans[1:4] - от индекс 1 до 4, без 4",
+        "title": "Срезове на list: числата на среза са разрезите между елементите",
+        "cuts": "разрезите", "neg": "от края",
+        "slice": "loans[1:4] - от разрез 1 до разрез 4: 3 елемента",
         "examples": "Примери:",
         "every2": "loans[::2]  -> всеки 2-ри", "reversed": "loans[::-1] -> обърнат", "copy": "loans[:]    -> копие",
     },
 }
 
 
-def list_indexing(t):
+def list_slicing(t):
     green = COLORS["green"][1]
     blue = COLORS["blue"][1]
     orange = COLORS["orange"][1]
-    s = Svg(920, 330, t["title"])
-    items = ["L01", "L02", "L03", "L04", "L05", "L06"]
+    s = Svg(920, 340, t["title"])
     x0, w, y = 190, 105, 82
     s.text(20, 30, "loans = [\"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\"]", size=15, mono=True)
-    s.text(x0 - 14, y - 12, t["pos"], size=12, color=green, anchor="end")
-    s.text(x0 - 14, y + 92, t["neg"], size=12, color=blue, anchor="end")
-    for i, item in enumerate(items):
+    s.text(x0 - 18, y - 16, t["cuts"], size=12, color=green, anchor="end")
+    s.text(x0 - 18, y + 84, t["neg"], size=12, color=blue, anchor="end")
+    for i, item in enumerate(ITEMS):
         x = x0 + i * w
         s.rect(x, y, w, 56, "orange" if 1 <= i <= 3 else "gray", radius=4)
         s.text(x + w / 2, y + 35, f'"{item}"', size=16, mono=True, anchor="middle")
-        s.text(x + w / 2, y - 12, str(i), size=16, weight=700, mono=True, color=green, anchor="middle")
-        s.text(x + w / 2, y + 92, str(i - len(items)), size=16, weight=700, mono=True, color=blue, anchor="middle")
-    # the slice bracket
-    s.poly([(x0 + w + 4, 180), (x0 + w + 4, 190), (x0 + 4 * w - 4, 190), (x0 + 4 * w - 4, 180)], color=orange,
-           head=False)
-    s.text(x0 + 2.5 * w, 210, t["slice"], size=14, weight=700, color=orange, anchor="middle")
-    s.text(20, 238, t["examples"], size=13, weight=700, color=MUTED)
-    s.lines(20, 262, [('loans[0]    -> "L01"', {"mono": True}), ('loans[-1]   -> "L06"', {"mono": True}),
-                      ('loans[2]    -> "L03"', {"mono": True})], size=14, gap=21)
-    s.lines(330, 262, [('loans[1:4]  -> ["L02", "L03", "L04"]', {"mono": True}),
-                       ('loans[:2]   -> ["L01", "L02"]', {"mono": True}),
-                       ('loans[-2:]  -> ["L05", "L06"]', {"mono": True})], size=14, gap=21)
-    s.lines(700, 262, [(t["every2"], {"mono": True}), (t["reversed"], {"mono": True}),
+    for i in range(len(ITEMS) + 1):
+        x = x0 + i * w
+        s.raw(f'<path d="M{x},{y - 10} L{x},{y + 66}" stroke="{green}" stroke-width="2.5"/>')
+        s.text(x, y - 16, str(i), size=16, weight=700, mono=True, color=green, anchor="middle")
+        if i < len(ITEMS):
+            s.text(x, y + 84, str(i - len(ITEMS)), size=15, weight=700, mono=True, color=blue, anchor="middle")
+    # the slice bracket, from cut 1 to cut 4
+    s.poly([(x0 + w, 186), (x0 + w, 196), (x0 + 4 * w, 196), (x0 + 4 * w, 186)], color=orange, head=False)
+    s.text(x0 + 2.5 * w, 218, t["slice"], size=14, weight=700, color=orange, anchor="middle")
+    s.text(20, 252, t["examples"], size=13, weight=700, color=MUTED)
+    s.lines(20, 276, [('loans[1:4]  -> ["L02", "L03", "L04"]', {"mono": True}),
+                      ('loans[:2]   -> ["L01", "L02"]', {"mono": True}),
+                      ('loans[-2:]  -> ["L05", "L06"]', {"mono": True})], size=14, gap=21)
+    s.lines(450, 276, [(t["every2"], {"mono": True}), (t["reversed"], {"mono": True}),
                        (t["copy"], {"mono": True})], size=14, gap=21)
     return s.render()
 
@@ -884,8 +975,8 @@ def vscode_window(t):
 
 
 DIAGRAMS = {"run-python": (run_python, RUN), "venv": (venv, VENV),
-            "if-elif-else": (if_elif_else, IFS), "loop-flow": (loop_flow, LOOP),
-            "list-indexing": (list_indexing, INDEX), "set-operations": (set_operations, SETS),
+            "if-elif-else": (if_elif_else, IFS), "loop-simple": (loop_simple, LOOPS), "loop-flow": (loop_flow, LOOP),
+            "list-indexing": (list_indexing, INDEX), "list-slicing": (list_slicing, SLICE), "set-operations": (set_operations, SETS),
             "scope-legb": (scope_legb, LEGB),
             "table-rows": (table_rows, TABLE),
             "dict-lookup": (dict_lookup, LOOKUP),
