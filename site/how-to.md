@@ -264,8 +264,8 @@ C:\Users\you\python-course\
   folder in VS Code when you work on them.
 - `.venv` - Python with pandas and the other libraries (step 9).
 - `practice` and `homework.py` - the practice tasks and the homework of each
-  lecture. `data` - the sample data. `check.py` prints `OK` / `FAIL`: do not
-  change it.
+  lecture. `data` - the sample data. `check.py` prints `OK` / `FAIL` / `TODO`:
+  do not change it.
 - `Python-Data-Analysts-UniCredit-Labs` - the code from the lessons (see
   [Code from the lessons](#code-from-the-lessons)).
 
@@ -501,13 +501,19 @@ Python, and a new terminal starts with `(.venv)` by itself.
 You see, in the terminal:
 
 ```text
-FAIL loan_id: got None (NoneType), expected 'L000001' (str)
-FAIL currency: got None (NoneType), expected 'EUR' (str)
+-- Part 1: the values of one row -------------------------------
+  TODO   loan_id
+  TODO   currency
 ...
-0 of 8 checks passed
+================================================================
+Part 1: the values of one row  not started
+Part 2: is the loan late?      not started
+Part 3: a summary line         not started
+
+0 of 8 checks passed.  Failed: 0.  Not started: 8.
 ```
 
-`FAIL` is right here: you have not written any code yet. **The setup is done.**
+`TODO` is right here: you have not written any code yet. **The setup is done.**
 
 ### Work on a task {#work-on-a-task}
 
@@ -518,17 +524,40 @@ Every time:
    **File > Open Recent**).
 2. In the Explorer, open the folder of the lecture and the task, for example
    `02-conditions-and-loops`, `practice`, `task1-predict-logic.py`.
-3. A task has parts. Read the description of the first part (the `#` comments
-   right before its code). Write your code between the lines
+3. A task has parts. Each part starts with a heading `# == Part 1: ... ==` (in
+   the newer tasks with a line `# =====...` above it). Read the description of
+   the first part (the `#` comments right after its heading). Write your code between the lines
    `# ---- your code ... ----` and `# ---- end of your code ----`. Change
    nothing else in the file.
 4. Run the file: `Ctrl+Shift+B`, or the triangle at the top right (**Run Python
    File**, 2 in the picture). Both save the file first.
-5. Read the result in the terminal: `OK` or `FAIL` for each check, and at the end
-   a line like `5 of 8 checks passed`. A `FAIL` line shows what your code gave
-   (`got ...`) and what the check expects (`expected ...`). Fix your code and run
-   the file again.
+5. Read the result in the terminal (the colours are explained below). A line
+   `-- Part N: ... ---` starts the checks of each part. Under a `FAIL` line you
+   see what your code gave (`got:`) and what the check expects (`expected:`). At
+   the end you see one line per part and a line like `5 of 8 checks passed`. Fix
+   your code and run the file again.
 6. Then go on with the next part: it starts right after the checks of this one.
+
+::: tip What the colours mean
+- `OK` (green) - your code gives the expected value.
+- `FAIL` (red) - it does not. Read `got:` and `expected:` under it.
+- `TODO` (yellow) - you have not written any code in this part yet. Not an
+  error: it changes to `OK` or `FAIL` when you start the part.
+- `WRONG` (red, only in predict tasks) - the prediction is not right.
+
+The summary at the end uses the same colours: a green part is done, a yellow
+one is not started, a red one has checks to fix.
+:::
+
+::: info Predict tasks
+In a predict task (`task1-predict-logic.py`) you do not write code. You replace
+each `"?"` with the value you think the expression gives, for example `True`,
+`3` or `"EUR"`, in the right type. The file prints `OK`, `WRONG` or `TODO` (not
+answered yet) for each prediction, but never the real result, so run it as
+often as you like. For a `WRONG`, read the lecture section again and change your
+prediction. Still `WRONG` after that? Write to the trainer, and we will discuss
+it in class.
+:::
 
 Another way to run a task: in the terminal, with `(.venv)` at the start of the
 prompt, type `python` and the path of the file:
