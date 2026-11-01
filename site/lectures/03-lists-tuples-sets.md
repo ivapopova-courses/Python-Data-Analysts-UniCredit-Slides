@@ -1141,6 +1141,9 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
    how many were duplicates.
 4. Optional: a word is a *palindrome* if it reads the same forwards and backwards,
    ignoring case (`"Racecar"`). Check it with a slice, for words typed by the user.
+5. Optional: `03-lists-tuples-sets/notebook.ipynb` - short extra tasks on the topics of
+   today in a Jupyter notebook, each with a check cell. Open it in VS Code and
+   select the `.venv` kernel.
 
 ## Read more
 

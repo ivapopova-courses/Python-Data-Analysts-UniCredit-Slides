@@ -993,248 +993,258 @@ msgstr "Задачи за предвиждане"
 msgid "In a predict task (`task1-predict-logic.py`) you do not write code. You replace each `\"?\"` with the value you think the expression gives, for example `True`, `3` or `\"EUR\"`, in the right type. The file prints `OK`, `WRONG` or `TODO` (not answered yet) for each prediction, but never the real result, so run it as often as you like. For a `WRONG`, read the lecture section again and change your prediction. Still `WRONG` after that? Write to the trainer, and we will discuss it in class."
 msgstr "В задача за предвиждане (`task1-predict-logic.py`) не пишете код. Заменяте всяко `\"?\"` със стойността, която според вас дава изразът, например `True`, `3` или `\"EUR\"`, в правилния тип. Файлът показва `OK`, `WRONG` или `TODO` (още без отговор) за всяко предвиждане, но никога истинския резултат, затова го пускайте колкото пъти искате. При `WRONG` прочетете раздела от лекцията отново и променете предвиждането си. Пак е `WRONG`? Пишете на преподавателя и ще го обсъдим в час."
 
-#. paragraph
+#. box title
 #: site/how-to.md:562
+msgid "Notebooks"
+msgstr "Notebooks"
+
+#. paragraph
+#: site/how-to.md:563
+msgid "Some lectures also have an optional notebook, for example `01-intro-syntax-types/notebook.ipynb`: short extra tasks on the same topics. Open it, choose the `.venv` kernel (**Select Kernel** > **Python Environments**), and run the cells from the top with `Shift+Enter`, the **Setup** cell first. Each part has a cell for your code (replace each `None`) and a check cell that prints `OK`, `FAIL` or `TODO`. The last cell counts the `OK` checks. Before you trust it: **Restart** the kernel and **Run All**."
+msgstr "Някои лекции имат и notebook по желание, например `01-intro-syntax-types/notebook.ipynb`: кратки допълнителни задачи по същите теми. Отворете го, изберете kernel-а `.venv` (**Select Kernel** > **Python Environments**) и изпълнете клетките отгоре надолу с `Shift+Enter`, първо клетката **Setup**. Всяка част има клетка за вашия код (заменете всяко `None`) и клетка за проверка, която отпечатва `OK`, `FAIL` или `TODO`. Последната клетка брои проверките с `OK`. Преди да ѝ се доверите: **Restart** на kernel-а и **Run All**."
+
+#. paragraph
+#: site/how-to.md:572
 msgid "Another way to run a task: in the terminal, with `(.venv)` at the start of the prompt, type `python` and the path of the file:"
 msgstr "Друг начин да пуснете задача: в терминала, с `(.venv)` в началото на промпта, напишете `python` и пътя до файла:"
 
 #. paragraph
-#: site/how-to.md:569
+#: site/how-to.md:579
 msgid "You do not have to type the path: right-click the file in the Explorer > **Copy Relative Path**, then type `python ` in the terminal (with a space) and paste with `Ctrl+V`."
 msgstr "Не е нужно да пишете пътя: десен бутон върху файла в Explorer > **Copy Relative Path**, после напишете `python ` в терминала (с интервал) и поставете с `Ctrl+V`."
 
 #. heading 3
-#: site/how-to.md:573
+#: site/how-to.md:583
 msgid "Save your work"
 msgstr "Запазване на работата"
 
 #. paragraph
-#: site/how-to.md:575
+#: site/how-to.md:585
 msgid "Save your solutions in your own repository at the end of each working day, and always before a session. Three commands, in the terminal of the Homework folder:"
 msgstr "Запазвайте решенията си във вашето repository в края на всеки работен ден и винаги преди занятие. Три команди, в терминала на папката Homework:"
 
 #. paragraph
-#: site/how-to.md:582
+#: site/how-to.md:592
 msgid "Chooses all changed files for the next version. Mind the dot at the end."
 msgstr "Избира всички променени файлове за следващата версия. Внимавайте за точката накрая."
 
 #. paragraph
-#: site/how-to.md:588
+#: site/how-to.md:598
 msgid "Saves a version on your computer, with a short message. Change the text between the quotes as you like."
 msgstr "Запазва версия на вашия компютър, с кратко съобщение. Сменете текста между кавичките, както искате."
 
 #. paragraph
-#: site/how-to.md:595
+#: site/how-to.md:605
 msgid "Sends the new versions to your repository on GitHub."
 msgstr "Изпраща новите версии във вашето repository в GitHub."
 
 #. paragraph
-#: site/how-to.md:597
+#: site/how-to.md:607
 msgid "You see: after `git push`, a few lines and at the end `main -> main`. Refresh your repository on GitHub: your changes are there. If `git commit` says `nothing to commit, working tree clean`, there is nothing new to save: did you save the file (`Ctrl+S`)?"
 msgstr "Виждате: след `git push` няколко реда и накрая `main -> main`. Обновете вашето repository в GitHub: промените ви са там. Ако `git commit` каже `nothing to commit, working tree clean`, няма нищо ново за запазване: запазихте ли файла (`Ctrl+S`)?"
 
 #. box title
-#: site/how-to.md:602
+#: site/how-to.md:612
 msgid "The same with buttons"
 msgstr "Същото с бутони"
 
 #. paragraph
-#: site/how-to.md:603
+#: site/how-to.md:613
 msgid "Open **Source Control** (4 in the picture, or `Ctrl+Shift+G`). Type a message in the box at the top and click **Commit**. If VS Code asks *Would you like to stage all your changes and commit them directly?*, click **Yes**. Then click **Sync Changes** (and **OK**, if VS Code asks)."
 msgstr "Отворете **Source Control** (4 на картинката или `Ctrl+Shift+G`). Напишете съобщение в полето най-горе и натиснете **Commit**. Ако VS Code попита *Would you like to stage all your changes and commit them directly?*, натиснете **Yes**. След това натиснете **Sync Changes** (и **OK**, ако VS Code попита)."
 
 #. heading 3
-#: site/how-to.md:609
+#: site/how-to.md:619
 msgid "Get the new tasks"
 msgstr "Получаване на новите задачи"
 
 #. paragraph
-#: site/how-to.md:611
+#: site/how-to.md:621
 msgid "The trainer adds the folder of each lecture on the morning of its session. To get it:"
 msgstr "Преподавателят добавя папката на всяка лекция сутринта в деня на занятието. За да я вземете:"
 
 #. paragraph
-#: site/how-to.md:614
+#: site/how-to.md:624
 msgid "Save your work first: the three commands of [Save your work](#save-your-work)."
 msgstr "Първо запазете работата си: трите команди от [Запазване на работата](#save-your-work)."
 
 #. paragraph
-#: site/how-to.md:615
+#: site/how-to.md:625
 msgid "Get the new tasks from the course repository:"
 msgstr "Вземете новите задачи от repository-то на курса:"
 
 #. paragraph
-#: site/how-to.md:621
+#: site/how-to.md:631
 msgid "Send them to your own repository too:"
 msgstr "Изпратете ги и във вашето repository:"
 
 #. paragraph
-#: site/how-to.md:627
+#: site/how-to.md:637
 msgid "You see: after the pull, a line like `Merge made by the 'ort' strategy.` (or `Fast-forward`) and the list of the new files. The new folder, for example `03-lists-tuples-sets`, appears in the Explorer. Your own files do not change."
 msgstr "Виждате: след pull ред като `Merge made by the 'ort' strategy.` (или `Fast-forward`) и списък на новите файлове. Новата папка, например `03-lists-tuples-sets`, се появява в Explorer. Вашите файлове не се променят."
 
 #. paragraph
-#: site/how-to.md:631
+#: site/how-to.md:641
 msgid "The parts of the pull command: `upstream main` - from the course repository; `--no-rebase` - join the new tasks with your work; `--no-edit` - do not ask for a message. Without them, Git stops with an error or opens an editor."
 msgstr "Частите на командата pull: `upstream main` - от repository-то на курса; `--no-rebase` - съединява новите задачи с вашата работа; `--no-edit` - не пита за съобщение. Без тях Git спира с грешка или отваря редактор."
 
 #. heading 3
-#: site/how-to.md:635
+#: site/how-to.md:645
 msgid "If something goes wrong"
 msgstr "Ако нещо не стане"
 
 #. paragraph
-#: site/how-to.md:637
+#: site/how-to.md:647
 msgid "Read the last lines in the terminal: the error is usually there. Find it below. Still stuck? Write to the trainer: the step, the command, and a screenshot of the terminal (`Win+Shift+S` takes a screenshot of a part of the screen)."
 msgstr "Прочетете последните редове в терминала: грешката обикновено е там. Намерете я по-долу. Пак не става? Пишете на преподавателя: стъпката, командата и снимка на екрана с терминала (`Win+Shift+S` снима част от екрана)."
 
 #. paragraph
-#: site/how-to.md:641
+#: site/how-to.md:651
 msgid "**`'git' is not recognized as an internal or external command`** - Git is not installed, or VS Code was open while you installed it. Install [Git for Windows](https://git-scm.com/downloads/win) with the default settings, then close VS Code completely and start it again."
 msgstr "**`'git' is not recognized as an internal or external command`** - Git не е инсталиран или VS Code е бил отворен, докато сте го инсталирали. Инсталирайте [Git for Windows](https://git-scm.com/downloads/win) с настройките по подразбиране, след това затворете VS Code напълно и го стартирайте отново."
 
 #. paragraph
-#: site/how-to.md:645
+#: site/how-to.md:655
 msgid "**`'py' is not recognized as an internal or external command`** - Python was installed without its launcher `py`. Use `python` instead of `py` (step 9: `python -m venv .venv`). If `python --version` does not work either, install Python again, with **Add python.exe to PATH** ticked (see [Set up Python on your computer](#setup))."
 msgstr "**`'py' is not recognized as an internal or external command`** - Python е инсталиран без своя launcher `py`. Използвайте `python` вместо `py` (стъпка 9: `python -m venv .venv`). Ако и `python --version` не работи, инсталирайте Python отново, с отметка на **Add python.exe to PATH** (вижте [Инсталиране на Python на вашия компютър](#setup))."
 
 #. paragraph
-#: site/how-to.md:650
+#: site/how-to.md:660
 msgid "**The prompt starts with `PS`**, or **`running scripts is disabled on this system`** after `.venv\\Scripts\\activate` - the terminal is PowerShell. Make the Command Prompt the default ([VS Code and the terminal](#terminal)), open a new terminal and run the command again."
 msgstr "**Промптът започва с `PS`** или **`running scripts is disabled on this system`** след `.venv\\Scripts\\activate` - терминалът е PowerShell. Направете Command Prompt терминал по подразбиране ([VS Code и терминалът](#terminal)), отворете нов терминал и изпълнете командата отново."
 
 #. paragraph
-#: site/how-to.md:654
+#: site/how-to.md:664
 msgid "**`remote: Repository not found.`** (step 5) - you have no access yet: accept the invitation ([Before you start](#before-you-start)). Already accepted? Then Git is probably signed in with another GitHub account. In the Windows Start menu, open **Credential Manager** > **Windows Credentials**, remove the entry `git:https://github.com`, and run the command again: Git asks you to sign in."
 msgstr "**`remote: Repository not found.`** (стъпка 5) - още нямате достъп: приемете поканата ([Преди да започнете](#before-you-start)). Вече сте я приели? Тогава Git вероятно е влязъл с друг акаунт в GitHub. От менюто Start на Windows отворете **Credential Manager** > **Windows Credentials**, премахнете записа `git:https://github.com` и изпълнете командата отново: Git ще ви поиска да влезете."
 
 #. paragraph
-#: site/how-to.md:659
+#: site/how-to.md:669
 msgid "**`fatal: destination path 'Python-Data-Analysts-UniCredit-Homework' already exists`** (step 5) - you have downloaded it before. Go on with step 6."
 msgstr "**`fatal: destination path 'Python-Data-Analysts-UniCredit-Homework' already exists`** (стъпка 5) - вече сте го свалили. Продължете със стъпка 6."
 
 #. paragraph
-#: site/how-to.md:661
+#: site/how-to.md:671
 msgid "**`fatal: not a git repository`** - the terminal is not in the Homework folder. Open the Homework folder (step 6) and a new terminal: the prompt must end with `\\Python-Data-Analysts-UniCredit-Homework>`."
 msgstr "**`fatal: not a git repository`** - терминалът не е в папката Homework. Отворете папката Homework (стъпка 6) и нов терминал: промптът трябва да завършва с `\\Python-Data-Analysts-UniCredit-Homework>`."
 
 #. paragraph
-#: site/how-to.md:664
+#: site/how-to.md:674
 msgid "**`error: remote origin already exists.`** (step 7) - run `git remote -v` and compare with step 7. Is `origin` the address of the course? Run the two commands of step 7 again, in their order. Is `origin` a wrong address of yours? Type `git remote set-url origin ` (with a space at the end), paste the right address and press `Enter`."
 msgstr "**`error: remote origin already exists.`** (стъпка 7) - изпълнете `git remote -v` и сравнете със стъпка 7. `origin` е адресът на курса? Изпълнете отново двете команди от стъпка 7, по реда им. `origin` е грешен ваш адрес? Напишете `git remote set-url origin ` (с интервал накрая), поставете правилния адрес и натиснете `Enter`."
 
 #. paragraph
-#: site/how-to.md:669
+#: site/how-to.md:679
 msgid "**`! [rejected] main -> main (fetch first)`** (step 8) - your repository on GitHub is not empty: it has a README. On GitHub, delete it (in the repository: **Settings**, at the bottom **Delete this repository**) and create it again, empty (step 4), with the same name. Then run step 8 again."
 msgstr "**`! [rejected] main -> main (fetch first)`** (стъпка 8) - вашето repository в GitHub не е празно: има README. В GitHub го изтрийте (в repository-то: **Settings**, най-долу **Delete this repository**) и го създайте отново, празно (стъпка 4), със същото име. След това изпълнете отново стъпка 8."
 
 #. paragraph
-#: site/how-to.md:673
+#: site/how-to.md:683
 msgid "**`Author identity unknown`** (commit) - Git does not know who you are. Do step 3, then run the commit again."
 msgstr "**`Author identity unknown`** (commit) - Git не знае кои сте. Направете стъпка 3, след това изпълнете commit отново."
 
 #. paragraph
-#: site/how-to.md:675
+#: site/how-to.md:685
 msgid "**`ERROR`** in step 9, with **`ProxyError`**, **`SSLError`** or **`CERTIFICATE_VERIFY_FAILED`** - the company network blocks or checks the connection to pypi.org, the site of the Python libraries. Ask your IT for the pip settings (a proxy or an internal mirror), as for the setup before the course."
 msgstr "**`ERROR`** в стъпка 9, с **`ProxyError`**, **`SSLError`** или **`CERTIFICATE_VERIFY_FAILED`** - мрежата на компанията блокира или проверява връзката до pypi.org, сайта на библиотеките на Python. Поискайте от IT настройките за pip (proxy или вътрешно огледало), както при настройката преди курса."
 
 #. paragraph
-#: site/how-to.md:679
+#: site/how-to.md:689
 msgid "**`ModuleNotFoundError: No module named 'pandas'`** (when you run a task) - the task runs with another Python, not the one in `.venv`. Do step 10. In the terminal, the prompt must start with `(.venv)`; if it does not, run `.venv\\Scripts\\activate`."
 msgstr "**`ModuleNotFoundError: No module named 'pandas'`** (когато пускате задача) - задачата се изпълнява с друг Python, не с този в `.venv`. Направете стъпка 10. В терминала промптът трябва да започва с `(.venv)`; ако не, изпълнете `.venv\\Scripts\\activate`."
 
 #. paragraph
-#: site/how-to.md:683
+#: site/how-to.md:693
 msgid "**`fatal: Need to specify how to reconcile divergent branches.`** (pull) - the two options are missing. Use the whole command of [Get the new tasks](#get-the-new-tasks)."
 msgstr "**`fatal: Need to specify how to reconcile divergent branches.`** (pull) - липсват двете опции. Използвайте цялата команда от [Получаване на новите задачи](#get-the-new-tasks)."
 
 #. paragraph
-#: site/how-to.md:686
+#: site/how-to.md:696
 msgid "**`Your local changes to the following files would be overwritten by merge`** (pull) - some changes are not saved in a version yet. Do the three commands of [Save your work](#save-your-work), then pull again."
 msgstr "**`Your local changes to the following files would be overwritten by merge`** (pull) - някои промени още не са запазени във версия. Изпълнете трите команди от [Запазване на работата](#save-your-work), след това pull отново."
 
 #. paragraph
-#: site/how-to.md:689
+#: site/how-to.md:699
 msgid "**`CONFLICT`** (pull) - rare: the same file was changed in both repositories. Run `git merge --abort` (everything is as before the pull) and write to the trainer."
 msgstr "**`CONFLICT`** (pull) - рядко: един и същ файл е променен и в двете repositories. Изпълнете `git merge --abort` (всичко е както преди pull) и пишете на преподавателя."
 
 #. paragraph
-#: site/how-to.md:692
+#: site/how-to.md:702
 msgid "**A strange editor fills the terminal** (lines that start with `~`, or `-- INSERT --` at the bottom) - Git asks for a message in the editor Vim. Press `Esc`, type `:wq` and press `Enter`. Next time, use the commands exactly as on this page (`git commit -m \"...\"`, `git pull --no-rebase --no-edit ...`)."
 msgstr "**Странен редактор запълва терминала** (редове, които започват с `~`, или `-- INSERT --` най-долу) - Git иска съобщение в редактора Vim. Натиснете `Esc`, напишете `:wq` и натиснете `Enter`. Следващия път използвайте командите точно както са на тази страница (`git commit -m \"...\"`, `git pull --no-rebase --no-edit ...`)."
 
 #. heading 2
-#: site/how-to.md:697
+#: site/how-to.md:707
 msgid "Code from the lessons"
 msgstr "Кодът от занятията"
 
 #. paragraph
-#: site/how-to.md:699
+#: site/how-to.md:709
 msgid "The code written during the lessons is in the **Labs repository**: https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Labs"
 msgstr "Кодът, написан по време на занятията, е в **Labs repository**: https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Labs"
 
 #. paragraph
-#: site/how-to.md:702
+#: site/how-to.md:712
 msgid "You only download it. Do not write your own code there - use the Homework folder for that."
 msgstr "Само го сваляте. Не пишете собствен код там - за това използвайте папката Homework."
 
 #. paragraph
-#: site/how-to.md:705
+#: site/how-to.md:715
 msgid "**Once** (after you accepted its invitation, see [Before you start](#before-you-start)):"
 msgstr "**Веднъж** (след като сте приели поканата за него, вижте [Преди да започнете](#before-you-start)):"
 
 #. paragraph
-#: site/how-to.md:707
+#: site/how-to.md:717
 msgid "Open the course folder `python-course` in VS Code (**File > Open Folder...**), **not** the Homework folder: the Labs folder must be next to the Homework folder, not inside it."
 msgstr "Отворете папката на курса `python-course` във VS Code (**File > Open Folder...**), **не** папката Homework: папката Labs трябва да е до папката Homework, не вътре в нея."
 
 #. paragraph
-#: site/how-to.md:710
+#: site/how-to.md:720
 msgid "**Terminal > New Terminal**. The prompt ends with `\\python-course>`."
 msgstr "**Terminal > New Terminal**. Промптът завършва с `\\python-course>`."
 
 #. paragraph
-#: site/how-to.md:711
+#: site/how-to.md:721
 msgid "Download it:"
 msgstr "Свалете го:"
 
 #. paragraph
-#: site/how-to.md:717
+#: site/how-to.md:727
 msgid "Did it land inside the Homework folder? Close VS Code and move the folder `Python-Data-Analysts-UniCredit-Labs` one level up, into `python-course`, in the File Explorer of Windows."
 msgstr "Попаднала е в папката Homework? Затворете VS Code и преместете папката `Python-Data-Analysts-UniCredit-Labs` едно ниво нагоре, в `python-course`, във File Explorer на Windows."
 
 #. paragraph
-#: site/how-to.md:721
+#: site/how-to.md:731
 msgid "**After each lesson:** open the Labs folder in VS Code (**File > Open Recent**), open a terminal and get the new code:"
 msgstr "**След всяко занятие:** отворете папката Labs във VS Code (**File > Open Recent**), отворете терминал и вземете новия код:"
 
 #. heading 2
-#: site/how-to.md:728
+#: site/how-to.md:738
 msgid "Find things"
 msgstr "Как да намирате неща"
 
 #. paragraph
-#: site/how-to.md:730
+#: site/how-to.md:740
 msgid "The search box (top left, or `Ctrl+K`) searches all lectures."
 msgstr "Полето за търсене (горе вляво или `Ctrl+K`) търси във всички лекции."
 
 #. paragraph
-#: site/how-to.md:731
+#: site/how-to.md:741
 msgid "The list on the right side of a lecture (\"In this lecture\") jumps to a section."
 msgstr "Списъкът вдясно на лекцията (\"На тази страница\") прескача до раздел."
 
 #. paragraph
-#: site/how-to.md:732
+#: site/how-to.md:742
 msgid "The moon / sun switch at the top changes between dark and light mode."
 msgstr "Превключвателят луна / слънце най-горе сменя тъмния и светлия режим."
 
 #. paragraph
-#: site/how-to.md:733
+#: site/how-to.md:743
 msgid "The **EN / BG** button next to it opens the same page in English or in Bulgarian."
 msgstr "Бутонът **EN / BG** до него отваря същата страница на английски или на български."
 
 #. paragraph
-#: site/how-to.md:734
+#: site/how-to.md:744
 msgid "The navigation on the left and the \"In this lecture\" column on the right can be made narrower or wider: drag their inner edge. Double-click the edge to go back to the default width."
 msgstr "Навигацията вляво и колоната \"На тази страница\" вдясно могат да се стесняват или разширяват: плъзнете вътрешния им ръб. Двоен клик върху ръба връща ширината по подразбиране."
 

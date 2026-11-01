@@ -1517,6 +1517,9 @@ run the file.
    until the user chooses 3.
 4. Optional: change the bisection example of section 15 so that it also prints each
    guess and "too high" / "too low", and stops after at most 30 tries.
+5. Optional: `02-conditions-and-loops/notebook.ipynb` - short extra tasks on the topics of
+   today in a Jupyter notebook, each with a check cell. Open it in VS Code and
+   select the `.venv` kernel.
 
 ## Read more
 

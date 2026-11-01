@@ -3253,53 +3253,58 @@ msgstr "По желание: напишете `payment.py`, който пита 
 msgid "Optional: create a notebook `01-practice.ipynb` in your Homework folder, read `data/loans.csv` with pandas (as at the top of this page), and show `loans.head()` and `loans.describe()`."
 msgstr "По желание: създайте notebook `01-practice.ipynb` в папката си Homework, прочетете `data/loans.csv` с pandas (както в началото на тази страница) и покажете `loans.head()` и `loans.describe()`."
 
+#. paragraph
+#: site/lectures/01-intro-syntax-types.md:1923
+msgid "Optional: `01-intro-syntax-types/notebook.ipynb` - short extra tasks on the topics of today in a Jupyter notebook, each with a check cell. Open it in VS Code and select the `.venv` kernel."
+msgstr "По желание: `01-intro-syntax-types/notebook.ipynb` - кратки допълнителни задачи по днешните теми в Jupyter notebook, всяка с клетка за проверка. Отворете го във VS Code и изберете kernel-а `.venv`."
+
 #. heading 2
-#: site/lectures/01-intro-syntax-types.md:1924
+#: site/lectures/01-intro-syntax-types.md:1927
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1926
+#: site/lectures/01-intro-syntax-types.md:1929
 msgid "Python: [the official tutorial](https://docs.python.org/3/tutorial/), chapters 1 - 3; [Built-in types](https://docs.python.org/3/library/stdtypes.html); [Built-in functions](https://docs.python.org/3/library/functions.html)"
 msgstr "Python: [официалният tutorial](https://docs.python.org/3/tutorial/), глави 1 - 3; [Built-in types](https://docs.python.org/3/library/stdtypes.html); [Built-in functions](https://docs.python.org/3/library/functions.html)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1929
+#: site/lectures/01-intro-syntax-types.md:1932
 msgid "Style: [PEP 8](https://peps.python.org/pep-0008/)"
 msgstr "Стил: [PEP 8](https://peps.python.org/pep-0008/)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1930
+#: site/lectures/01-intro-syntax-types.md:1933
 msgid "Setup: [Virtual environments and packages](https://docs.python.org/3/tutorial/venv.html), [Installing packages](https://packaging.python.org/en/latest/tutorials/installing-packages/), [Using Python on Windows](https://docs.python.org/3/using/windows.html)"
 msgstr "Подготовка: [Virtual environments and packages](https://docs.python.org/3/tutorial/venv.html), [Installing packages](https://packaging.python.org/en/latest/tutorials/installing-packages/), [Using Python on Windows](https://docs.python.org/3/using/windows.html)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1933
+#: site/lectures/01-intro-syntax-types.md:1936
 msgid "VS Code: [Python in VS Code](https://code.visualstudio.com/docs/languages/python), [Jupyter notebooks in VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks), [Tips and tricks](https://code.visualstudio.com/docs/editing/getting-started/tips-and-tricks), [VS Code - setup and basics (video)](https://www.youtube.com/watch?v=SYRwSyjD8oI), [the default terminal: cmd instead of PowerShell](https://code.visualstudio.com/docs/terminal/profiles)"
 msgstr "VS Code: [Python in VS Code](https://code.visualstudio.com/docs/languages/python), [Jupyter notebooks in VS Code](https://code.visualstudio.com/docs/datascience/jupyter-notebooks), [Tips and tricks](https://code.visualstudio.com/docs/editing/getting-started/tips-and-tricks), [VS Code - setup and basics (видео)](https://www.youtube.com/watch?v=SYRwSyjD8oI), [терминалът по подразбиране: cmd вместо PowerShell](https://code.visualstudio.com/docs/terminal/profiles)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1938
+#: site/lectures/01-intro-syntax-types.md:1941
 msgid "Jupyter: [Project Jupyter](https://jupyter.org/), [Jupyter documentation](https://docs.jupyter.org/en/latest/), [JupyterLab documentation](https://jupyterlab.readthedocs.io/en/stable/)"
 msgstr "Jupyter: [Project Jupyter](https://jupyter.org/), [документацията на Jupyter](https://docs.jupyter.org/en/latest/), [документацията на JupyterLab](https://jupyterlab.readthedocs.io/en/stable/)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1941
+#: site/lectures/01-intro-syntax-types.md:1944
 msgid "Formatting: [f-strings in the tutorial](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals), [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)"
 msgstr "Форматиране: [f-strings в tutorial-а](https://docs.python.org/3/tutorial/inputoutput.html#formatted-string-literals), [Format Specification Mini-Language](https://docs.python.org/3/library/string.html#formatspec)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1943
+#: site/lectures/01-intro-syntax-types.md:1946
 msgid "Numbers: [Floating point arithmetic](https://docs.python.org/3/tutorial/floatingpoint.html), [decimal](https://docs.python.org/3/library/decimal.html), [math](https://docs.python.org/3/library/math.html)"
 msgstr "Числа: [Floating point arithmetic](https://docs.python.org/3/tutorial/floatingpoint.html), [decimal](https://docs.python.org/3/library/decimal.html), [math](https://docs.python.org/3/library/math.html)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1946
+#: site/lectures/01-intro-syntax-types.md:1949
 msgid "Videos for later: [NumPy for beginners (SciPy 2018)](https://www.youtube.com/watch?v=V0D2mhVt7NE), [JupyterLab - get started](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html) (the documentation)"
 msgstr "Видеа за по-късно: [NumPy for beginners (SciPy 2018)](https://www.youtube.com/watch?v=V0D2mhVt7NE), [JupyterLab - get started](https://jupyterlab.readthedocs.io/en/stable/getting_started/overview.html) (документацията)"
 
 #. paragraph
-#: site/lectures/01-intro-syntax-types.md:1950
+#: site/lectures/01-intro-syntax-types.md:1953
 msgid "**Next session:** conditional statements and loops - `if` / `elif` / `else`, the Python `CASE WHEN`, and `for` / `while` loops over the rows of a file."
 msgstr "**Следващото занятие:** условни конструкции и цикли - `if` / `elif` / `else`, `CASE WHEN` на Python и цикли `for` / `while` по редовете на файл."
 

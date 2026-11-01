@@ -1413,27 +1413,32 @@ msgstr "По желание: `names.py` пита колко имена ще въ
 msgid "Optional: a word is a *palindrome* if it reads the same forwards and backwards, ignoring case (`\"Racecar\"`). Check it with a slice, for words typed by the user."
 msgstr "По желание: една дума е *палиндром*, ако се чете еднакво отпред назад и отзад напред, без значение главни или малки букви (`\"Racecar\"`). Проверете го със slice, за думи, въведени от потребителя."
 
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1144
+msgid "Optional: `03-lists-tuples-sets/notebook.ipynb` - short extra tasks on the topics of today in a Jupyter notebook, each with a check cell. Open it in VS Code and select the `.venv` kernel."
+msgstr "По желание: `03-lists-tuples-sets/notebook.ipynb` - кратки допълнителни задачи по днешните теми в Jupyter notebook, всяка с клетка за проверка. Отворете го във VS Code и изберете kernel-а `.venv`."
+
 #. heading 2
-#: site/lectures/03-lists-tuples-sets.md:1145
+#: site/lectures/03-lists-tuples-sets.md:1148
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1147
+#: site/lectures/03-lists-tuples-sets.md:1150
 msgid "Python tutorial: [Data structures](https://docs.python.org/3/tutorial/datastructures.html) (lists, `del`, tuples and sequences, sets)"
 msgstr "Python tutorial: [Data structures](https://docs.python.org/3/tutorial/datastructures.html) (lists, `del`, tuples и поредици, sets)"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1149
+#: site/lectures/03-lists-tuples-sets.md:1152
 msgid "Reference: [Sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range), [Set types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset), [`copy`](https://docs.python.org/3/library/copy.html)"
 msgstr "Reference: [Sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range), [Set types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset), [`copy`](https://docs.python.org/3/library/copy.html)"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1152
+#: site/lectures/03-lists-tuples-sets.md:1155
 msgid "Real Python: [Lists and tuples](https://realpython.com/python-lists-tuples/), [Sets](https://realpython.com/python-sets/)"
 msgstr "Real Python: [Lists and tuples](https://realpython.com/python-lists-tuples/), [Sets](https://realpython.com/python-sets/)"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1155
+#: site/lectures/03-lists-tuples-sets.md:1158
 msgid "**Next session:** functions - your own `def`, parameters and return values, and why a function is the Python version of a SAS macro."
 msgstr "**Следващото занятие:** функции - собствен `def`, параметри и върнати стойности и защо функцията е версията на SAS macro в Python."

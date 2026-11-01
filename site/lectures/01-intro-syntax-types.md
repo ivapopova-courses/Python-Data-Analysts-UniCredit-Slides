@@ -1920,6 +1920,9 @@ you run the file - the point is to think first.
 4. Optional: create a notebook `01-practice.ipynb` in your Homework folder, read
    `data/loans.csv` with pandas (as at the top of this page), and show
    `loans.head()` and `loans.describe()`.
+5. Optional: `01-intro-syntax-types/notebook.ipynb` - short extra tasks on the topics of
+   today in a Jupyter notebook, each with a check cell. Open it in VS Code and
+   select the `.venv` kernel.
 
 ## Read more
 

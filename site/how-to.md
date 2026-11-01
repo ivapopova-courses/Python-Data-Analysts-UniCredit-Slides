@@ -559,6 +559,16 @@ prediction. Still `WRONG` after that? Write to the trainer, and we will discuss
 it in class.
 :::
 
+::: info Notebooks
+Some lectures also have an optional notebook, for example
+`01-intro-syntax-types/notebook.ipynb`: short extra tasks on the same topics.
+Open it, choose the `.venv` kernel (**Select Kernel** > **Python Environments**),
+and run the cells from the top with `Shift+Enter`, the **Setup** cell first. Each
+part has a cell for your code (replace each `None`) and a check cell that prints
+`OK`, `FAIL` or `TODO`. The last cell counts the `OK` checks. Before you trust it:
+**Restart** the kernel and **Run All**.
+:::
+
 Another way to run a task: in the terminal, with `(.venv)` at the start of the
 prompt, type `python` and the path of the file:
 

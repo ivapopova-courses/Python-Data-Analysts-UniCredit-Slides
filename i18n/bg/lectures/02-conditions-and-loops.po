@@ -1348,32 +1348,37 @@ msgstr "По желание: **кредитен калкулатор** в тер
 msgid "Optional: change the bisection example of section 15 so that it also prints each guess and \"too high\" / \"too low\", and stops after at most 30 tries."
 msgstr "По желание: променете примера с бисекцията от раздел 15 така, че да отпечатва и всяко предположение и \"too high\" / \"too low\", и да спира след най-много 30 опита."
 
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1520
+msgid "Optional: `02-conditions-and-loops/notebook.ipynb` - short extra tasks on the topics of today in a Jupyter notebook, each with a check cell. Open it in VS Code and select the `.venv` kernel."
+msgstr "По желание: `02-conditions-and-loops/notebook.ipynb` - кратки допълнителни задачи по днешните теми в Jupyter notebook, всяка с клетка за проверка. Отворете го във VS Code и изберете kernel-а `.venv`."
+
 #. heading 2
-#: site/lectures/02-conditions-and-loops.md:1521
+#: site/lectures/02-conditions-and-loops.md:1524
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1523
+#: site/lectures/02-conditions-and-loops.md:1526
 msgid "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` on loops, `pass`, `match`)"
 msgstr "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` на цикли, `pass`, `match`)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1525
+#: site/lectures/02-conditions-and-loops.md:1528
 msgid "Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations), [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons), [Truth value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing), [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)"
 msgstr "Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations), [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons), [Truth value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing), [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1529
+#: site/lectures/02-conditions-and-loops.md:1532
 msgid "`match`: [PEP 636 - the pattern matching tutorial](https://peps.python.org/pep-0636/)"
 msgstr "`match`: [PEP 636 - ръководството за pattern matching](https://peps.python.org/pep-0636/)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1530
+#: site/lectures/02-conditions-and-loops.md:1533
 msgid "Real Python: [Conditional statements](https://realpython.com/python-conditional-statements/), [`for` loops](https://realpython.com/python-for-loop/), [`while` loops](https://realpython.com/python-while-loop/)"
 msgstr "Real Python: [Conditional statements](https://realpython.com/python-conditional-statements/), [`for` loops](https://realpython.com/python-for-loop/), [`while` loops](https://realpython.com/python-while-loop/)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1534
+#: site/lectures/02-conditions-and-loops.md:1537
 msgid "**Next session:** lists, tuples and sets - indexing from 0, slices, the methods of `list`, tuples as records, and `UNION` / `INTERSECT` / `EXCEPT` with sets."
 msgstr "**Следващото занятие:** lists, tuples и sets - индексиране от 0, slices, методите на `list`, tuples като записи и `UNION` / `INTERSECT` / `EXCEPT` със sets."
