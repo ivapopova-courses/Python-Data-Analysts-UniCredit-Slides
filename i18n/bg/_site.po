@@ -80,6 +80,11 @@ msgstr "Финален проект"
 
 #. side menu
 #: site/.vitepress/config.mjs
+msgid "The trainer"
+msgstr "Преподавателят"
+
+#. side menu
+#: site/.vitepress/config.mjs
 msgid "1. Introduction, syntax, types"
 msgstr "1. Въведение, синтаксис, типове"
 
