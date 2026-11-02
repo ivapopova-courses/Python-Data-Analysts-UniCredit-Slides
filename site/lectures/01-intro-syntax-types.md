@@ -42,36 +42,9 @@ pieces it is made of: values, types, variables and operators.
 
 ### The trainer
 
-**Iva Popova** - [LinkedIn](https://www.linkedin.com/in/ivapopova/)
-
-**Teaching experience**
-
-- 5 years as a teaching assistant at the Technical University of Sofia: "Programming
-  Languages", "Discrete Mathematics", "Expert Systems and Artificial Intelligence".
-- 7+ years at leading private training centres: "Databases (MySQL)", "Front-End
-  Development", "Python", "Machine Learning".
-- More than 650 students have finished these courses successfully.
-- Corporate courses for: A1 Bulgaria, Advanced Nutrients, Advent Group, BILLA
-  Bulgaria, BORICA, CDS Bulgaria, Debt Collection Agency (DCA), DIGITALL, IBM
-  Bulgaria, ICT Strypes, ISI Emerging Markets (EMIS), Javelin Group, KITT.bg,
-  National Social Security Institute (NSSI), Software AG, TAL Engineering, UniCredit
-  Bulbank, Vivacom, VMware.
-
-**Professional experience**
-
-- 7+ years as a software engineer (4 of them as a senior engineer and team lead) in
-  international IT companies: Comptel (now part of Nokia), Internet Securities,
-  Datamax, Experian.
-- 6+ years as a researcher and consultant in an artificial intelligence start-up:
-  sentiment analysis, ontologies, natural language processing (NLP) and large
-  language models (LLMs).
-
-**Education**
-
-- Secondary school: the National Vocational High School of Computer Technologies
-  and Systems, Pravets.
-- Master of Engineering in Computer Systems, Technical University of Sofia.
-- PhD student in Artificial Intelligence Systems, Technical University of Sofia.
+**Iva Popova** - [LinkedIn](https://www.linkedin.com/in/ivapopova/),
+e-mail [iva.popova@sciscend.com](mailto:iva.popova@sciscend.com). Her teaching and
+professional experience: [The trainer](/trainer) (also in the side menu).
 
 ### The goal
 
@@ -211,8 +184,8 @@ The ones you will feel most in this course:
   if you find Python 2 code (`print "hello"` without brackets), it is old.
 - Since 2019 a new version comes out **every October** (3.12 in 2023, 3.13 in 2024,
   3.14 in 2025, 3.15 in 2026), and each version gets security fixes for 5 years. In
-  this course you use **3.12 or 3.13**: they now get only security fixes, which is fine
-  for the course.
+  this course you use **3.12 or newer**: any version from 3.12 up to the newest
+  works.
 
 ### Implementations
 
@@ -1894,7 +1867,7 @@ you run the file - the point is to think first.
 
 | Topic | Remember |
 |-------|----------|
-| Python | a free, general-purpose language; CPython; a new version every October; you use 3.12 / 3.13 |
+| Python | a free, general-purpose language; CPython; a new version every October; you use 3.12 or newer |
 | How it runs | syntax check -> bytecode -> the Python virtual machine; a `SyntaxError` stops everything before the first line |
 | Project setup | `py -m venv .venv`, activate, `pip install -r requirements.txt`; one venv per project |
 | Running code | `python file.py` in the terminal; the REPL `>>>`; Jupyter notebooks (the kernel keeps the variables) |
@@ -1920,6 +1893,9 @@ you run the file - the point is to think first.
 4. Optional: create a notebook `01-practice.ipynb` in your Homework folder, read
    `data/loans.csv` with pandas (as at the top of this page), and show
    `loans.head()` and `loans.describe()`.
+5. Optional: `01-intro-syntax-types/notebook.ipynb` - short extra tasks on the topics of
+   today in a Jupyter notebook, each with a check cell. Open it in VS Code and
+   select the `.venv` kernel.
 
 ## Read more
 
@@ -1948,4 +1924,4 @@ you run the file - the point is to think first.
   (the documentation)
 
 **Next session:** conditional statements and loops - `if` / `elif` / `else`, the
-Python `CASE WHEN`, and `for` / `while` loops over the rows of a file.
+Python version of SQL `CASE WHEN`, and `for` / `while` loops over the rows of a file.

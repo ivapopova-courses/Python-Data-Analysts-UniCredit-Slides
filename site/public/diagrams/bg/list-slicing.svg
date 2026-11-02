@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 340" width="920" height="340" role="img">
+<title>Срезове на list: числата на среза са разрезите между елементите</title>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b616b"/></marker></defs>
+<text x="20" y="30" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">loans = ["L01", "L02", "L03", "L04", "L05", "L06"]</text>
+<text x="172" y="66" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#4f8a45" text-anchor="end" xml:space="preserve">разрезите</text>
+<text x="172" y="166" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" fill="#3b6fc4" text-anchor="end" xml:space="preserve">от края</text>
+<rect x="190" y="82" width="105" height="56" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="242.5" y="117" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">"L01"</text>
+<rect x="295" y="82" width="105" height="56" rx="4" fill="#fdebd3" stroke="#c97a1c" stroke-width="2"/>
+<text x="347.5" y="117" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">"L02"</text>
+<rect x="400" y="82" width="105" height="56" rx="4" fill="#fdebd3" stroke="#c97a1c" stroke-width="2"/>
+<text x="452.5" y="117" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">"L03"</text>
+<rect x="505" y="82" width="105" height="56" rx="4" fill="#fdebd3" stroke="#c97a1c" stroke-width="2"/>
+<text x="557.5" y="117" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">"L04"</text>
+<rect x="610" y="82" width="105" height="56" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="662.5" y="117" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">"L05"</text>
+<rect x="715" y="82" width="105" height="56" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="767.5" y="117" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">"L06"</text>
+<path d="M190,72 L190,148" stroke="#4f8a45" stroke-width="2.5"/>
+<text x="190" y="66" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="700" fill="#4f8a45" text-anchor="middle" xml:space="preserve">0</text>
+<text x="190" y="166" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="700" fill="#3b6fc4" text-anchor="middle" xml:space="preserve">-6</text>
+<path d="M295,72 L295,148" stroke="#4f8a45" stroke-width="2.5"/>
+<text x="295" y="66" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="700" fill="#4f8a45" text-anchor="middle" xml:space="preserve">1</text>
+<text x="295" y="166" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="700" fill="#3b6fc4" text-anchor="middle" xml:space="preserve">-5</text>
+<path d="M400,72 L400,148" stroke="#4f8a45" stroke-width="2.5"/>
+<text x="400" y="66" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="700" fill="#4f8a45" text-anchor="middle" xml:space="preserve">2</text>
+<text x="400" y="166" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="700" fill="#3b6fc4" text-anchor="middle" xml:space="preserve">-4</text>
+<path d="M505,72 L505,148" stroke="#4f8a45" stroke-width="2.5"/>
+<text x="505" y="66" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="700" fill="#4f8a45" text-anchor="middle" xml:space="preserve">3</text>
+<text x="505" y="166" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="700" fill="#3b6fc4" text-anchor="middle" xml:space="preserve">-3</text>
+<path d="M610,72 L610,148" stroke="#4f8a45" stroke-width="2.5"/>
+<text x="610" y="66" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="700" fill="#4f8a45" text-anchor="middle" xml:space="preserve">4</text>
+<text x="610" y="166" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="700" fill="#3b6fc4" text-anchor="middle" xml:space="preserve">-2</text>
+<path d="M715,72 L715,148" stroke="#4f8a45" stroke-width="2.5"/>
+<text x="715" y="66" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="700" fill="#4f8a45" text-anchor="middle" xml:space="preserve">5</text>
+<text x="715" y="166" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="15" font-weight="700" fill="#3b6fc4" text-anchor="middle" xml:space="preserve">-1</text>
+<path d="M820,72 L820,148" stroke="#4f8a45" stroke-width="2.5"/>
+<text x="820" y="66" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="700" fill="#4f8a45" text-anchor="middle" xml:space="preserve">6</text>
+<path d="M295,186 L295,196 L610,196 L610,186" fill="none" stroke="#c97a1c" stroke-width="2.2"/>
+<text x="452.5" y="218" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#c97a1c" text-anchor="middle" xml:space="preserve">loans[1:4] - от разрез 1 до разрез 4: 3 елемента</text>
+<text x="20" y="252" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="700" fill="#5b616b" text-anchor="start" xml:space="preserve">Примери:</text>
+<text x="20" y="276" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">loans[1:4]  -&gt; ["L02", "L03", "L04"]</text>
+<text x="20" y="297" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">loans[:2]   -&gt; ["L01", "L02"]</text>
+<text x="20" y="318" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">loans[-2:]  -&gt; ["L05", "L06"]</text>
+<text x="450" y="276" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">loans[::2]  -&gt; всеки 2-ри</text>
+<text x="450" y="297" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">loans[::-1] -&gt; обърнат</text>
+<text x="450" y="318" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">loans[:]    -&gt; копие</text>
+</svg>

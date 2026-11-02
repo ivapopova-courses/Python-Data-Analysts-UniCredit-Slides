@@ -80,8 +80,8 @@ dataset its meaning and its place:
 
 ### The problems without a class
 
-In most teams, the same mapping lives in **many** programs: a `PROC FORMAT` here, a
-`CASE WHEN` there, a lookup table in a third place. Then:
+In most teams, the same mapping lives in **many** programs: a SAS `PROC FORMAT` here,
+a SQL `CASE WHEN` there, a lookup table in a third place. Then:
 
 - the copies drift apart - one report has the new product, another does not;
 - nobody knows which **version** a report used, or who owns the list;
@@ -536,8 +536,8 @@ example and run it again. Then validate the `Product` column of `loans_export.cs
 ### `apply`: a new column for every row
 
 The main method: take rows (a list of dictionaries, session 6), and return **new** rows
-with one more column - the label of the code. Like `put(product, $product.)` in a DATA
-step, or a `LEFT JOIN` to a lookup table:
+with one more column - the label of the code. Like `put(product, $product.)` in a SAS
+DATA step, or a SQL `LEFT JOIN` to a lookup table:
 
 ```python run
 import csv
@@ -600,8 +600,8 @@ print(Counter(r["product_name"] for r in rows).most_common(3))
 print(Counter(r["group"] for r in rows))
 ```
 
-The new column, then a total per label - the outstanding per stage name, the `GROUP BY`
-of session 6:
+The new column, then a total per label - the outstanding per stage name, the SQL
+`GROUP BY` of session 6:
 
 ```python run
 import csv
@@ -786,7 +786,7 @@ Apply the stage nomenclature to `loans_export.csv` (column `Stage`) and to
 
 Nomenclatures live in files and databases. A **class method** is a method of the
 **class**, not of an object: its first parameter is the class itself (`cls`), and it is
-used as an **alternative constructor** - like `CNTLIN=` builds a format from a dataset:
+used as an **alternative constructor** - like `CNTLIN=` in SAS builds a format from a dataset:
 
 ```python run
 import csv

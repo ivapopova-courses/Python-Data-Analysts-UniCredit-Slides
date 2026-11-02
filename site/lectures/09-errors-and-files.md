@@ -1160,8 +1160,8 @@ for line_no, text, reason in rejected:
     print(f"line {line_no:>3}: {reason:<40} {text}")
 ```
 
-`reader.line_num` is the line number in the file - the `_N_` of the log, but for the
-file line (the header is line 1).
+`reader.line_num` is the line number in the file - like `_N_` in the SAS log, but for
+the file line (the header is line 1).
 
 ### The reject file and the summary
 

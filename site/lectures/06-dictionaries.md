@@ -134,7 +134,7 @@ print(pd_of_grade["CCC"])          # KeyError: 'CCC'
 ```
 
 `d.get(key)` gives `None` for a missing key, and `d.get(key, default)` gives the
-default - like `OTHER=` in a format:
+default - like `OTHER=` in a SAS format:
 
 ```python run
 pd_of_grade = {"AAA": 0.0003, "BBB": 0.0043}
@@ -188,16 +188,23 @@ print(dict.fromkeys(["retail", "sme", "corporate"], 0))
 ```
 
 ::: tip Try it
-Predict, then run:
+Predict, then run: how many keys has `{"a": 1, "A": 2}`, and how many has
+`{"EUR": 1, "EUR ": 2}`?
 
+```python run
+print(len({"a": 1, "A": 2}))
+print(len({"EUR": 1, "EUR ": 2}))
+```
+:::
+
+::: details Advanced: `1`, `True` and `1.0` are one key
 ```python run
 d = {1: "one", True: "yes", 1.0: "float"}
 print(d)
-print(len({"a": 1, "A": 2}))
 ```
 
-(`1`, `True` and `1.0` are equal and have the same hash, so they are **one** key: the
-first key stays, the last value wins.)
+`1`, `True` and `1.0` are equal and have the same hash, so they are **one** key: the
+first key stays, the last value wins.
 :::
 
 ## 2. Change a dictionary
@@ -268,7 +275,7 @@ for loan_id in balances:
         del balances[loan_id]       # RuntimeError: dictionary changed size during iteration
 ```
 
-Loop over a **copy of the keys**, or build a new dictionary (section 5):
+Loop over a **copy of the keys**, or build a new dictionary (section 4):
 
 ```python run
 balances = {"L000001": 1044231.30, "L000002": 0.0, "L000003": 644.25}
@@ -361,8 +368,7 @@ for rank, (segment, amount) in enumerate(ranked, start=1):
     print(f"{rank}. {segment:<10}{amount:>7.1f}{amount / total:>8.1%}")
 ```
 
-### The views are live
-
+::: details Advanced: the views are live
 `keys()`, `values()` and `items()` are **views**: they show the dictionary as it is
 **now**, also after a change:
 
@@ -374,6 +380,7 @@ print(keys)
 outstanding["sme"] = 39.5
 print(keys)                        # the view shows the new key too
 ```
+:::
 
 ::: details Advanced: keys behave like a set
 `keys()` supports the set operations of session 3 - handy to compare two
@@ -394,7 +401,60 @@ Print the segments of the example sorted by the **length** of their name. Then p
 only the segments with more than EUR 10 million.
 :::
 
-## 4. Lookup tables and nomenclatures
+## 4. Dict comprehensions
+
+### `{key: value for ...}`
+
+Like a list comprehension (session 5), with `key: value` and curly brackets:
+
+```python run
+grades = ["AAA", "AA", "A", "BBB"]
+pds = [0.0003, 0.0008, 0.0018, 0.0043]
+
+pd_of_grade = {g: p for g, p in zip(grades, pds)}
+in_bp = {g: round(p * 10000, 1) for g, p in pd_of_grade.items()}       # basis points
+low_risk = {g: p for g, p in pd_of_grade.items() if p < 0.001}         # a filter
+
+print(in_bp)
+print(low_risk)
+```
+
+In SQL terms: `SELECT key, expression FROM ... WHERE ...` into a lookup table. Common forms, on a
+small list of clients:
+
+```python run
+clients = [("C0001", "retail", "Sofia"), ("C0002", "sme", "Ruse"), ("C0003", "corporate", "Varna")]
+
+region_of = {client_id: region for client_id, segment, region in clients}          # id -> one column
+corporate = {client_id: region for client_id, segment, region in clients if segment == "corporate"}
+print(region_of["C0002"], corporate)
+
+# invert a dict whose values ARE unique
+grade_of_rating = {1: "AAA", 2: "AA", 3: "A"}
+rating_of_grade = {g: r for r, g in grade_of_rating.items()}
+print(rating_of_grade)
+```
+
+### Inverting a dictionary - a trap
+
+Value -> key: swap the pairs. But values are not unique; when two keys have the
+same value, one of them is lost:
+
+```python run
+group_of = {"mortgage": "retail", "consumer": "retail", "investment": "business"}
+
+inverted = {group: product for product, group in group_of.items()}
+print(inverted)              # {'retail': 'consumer', ...} - mortgage is gone
+```
+
+For "group -> all products" you need a dictionary of **lists** (section 6).
+
+::: tip Try it
+From `grades` and `pds` of the first example, build `{grade: pd}` only for the grades
+with a PD below 0.002, with the PD in basis points. Predict how many grades you get.
+:::
+
+## 5. Lookup tables and nomenclatures
 
 This is the main use of dictionaries in data work: a **code -> description** or
 **key -> attributes** table, used for every row of a dataset.
@@ -472,8 +532,8 @@ class with its own checks.
 
 ### The join: loans with the region of their client
 
-A `LEFT JOIN loans -> clients ON client_id` is: a dictionary of the clients, and a
-lookup for every loan.
+In Python, a SQL `LEFT JOIN loans -> clients ON client_id` is: a dictionary of the
+clients, and a lookup for every loan.
 
 ```sql
 SELECT l.loan_id, l.client_id, c.region, c.segment
@@ -506,42 +566,37 @@ Why it is fast: a dictionary finds a key in **one step**, however big it is -
 homework 4 needed up to 150 comparisons per loan. Section "How a dictionary works"
 in the Self-study explains why.
 
-### The expected loss of homework 4, again
+### A chain of lookups: loan -> client -> rating -> PD
 
-The same result as homework 4 - 1,140,106.56 - with two lookups per loan:
+The expected loss of homework 4 needs the PD of each loan, two tables away: the
+loan has a client, the client has a rating, the rating has a PD. With two
+dictionaries, that is two lookups in a row - like two `LEFT JOIN`s in SQL, or two
+`put()` with formats in a SAS DATA step. On small made-up tables:
 
 ```python run
-import csv
+rating_of = {"C0001": 3, "C0002": 7}              # client_id -> rating
+pd_of = {3: 0.0018, 7: 0.1}                       # rating -> PD
 
-with open("data/rating_scale.csv", encoding="utf-8") as file:
-    pd_of = {int(r["rating"]): (float(r["pd_min"]) + float(r["pd_max"])) / 2 for r in csv.DictReader(file)}
+loan = {"loan_id": "L000001", "client_id": "C0002", "outstanding": 250000.0}
 
-with open("data/clients.csv", encoding="utf-8") as file:
-    rating_of = {r["client_id"]: int(r["rating"]) for r in csv.DictReader(file)}
+rating = rating_of[loan["client_id"]]             # loan -> client -> rating
+pd_value = pd_of[rating]                          # rating -> PD
+print(rating, pd_value)
 
 LGD = 0.45
-total = 0.0
-with open("data/loans.csv", encoding="utf-8") as file:
-    for loan in csv.DictReader(file):
-        pd_value = pd_of[rating_of[loan["client_id"]]]          # loan -> client -> rating -> PD
-        total += pd_value * LGD * float(loan["outstanding"])
-
-print(f"{total:,.2f}")
+print(f"EL = {pd_value * LGD * loan['outstanding']:,.2f}")
+print(pd_of[rating_of[loan["client_id"]]])        # the same chain in one line
 ```
 
-### Inverting a dictionary - a trap
+Homework 6 builds the two dictionaries from the files and does this for the whole
+portfolio - the total must be the same as in homework 4, with 400 x 2 lookups
+instead of 400 x 150 comparisons.
 
-Value -> key: swap the pairs. But values are not unique; when two keys have the
-same value, one of them is lost:
-
-```python run
-group_of = {"mortgage": "retail", "consumer": "retail", "investment": "business"}
-
-inverted = {group: product for product, group in group_of.items()}
-print(inverted)              # {'retail': 'consumer', ...} - mortgage is gone
-```
-
-For "group -> all products" you need a dictionary of **lists** (section 6).
+::: tip Try it
+Change the loan to the client `C0001`. Predict the rating, the PD and the EL before
+you run it. What happens with a client that is not in `rating_of`, and how would
+`get` change that?
+:::
 
 ### Ranges are not keys
 
@@ -599,50 +654,11 @@ change one `client_id` in the loop to `"C9999"` (a client that does not exist): 
 does `client.get(...)` give, and what would `client[...]` do?
 :::
 
-## 5. Dict comprehensions
-
-Like a list comprehension (session 5), with `key: value` and curly brackets:
-
-```python run
-grades = ["AAA", "AA", "A", "BBB"]
-pds = [0.0003, 0.0008, 0.0018, 0.0043]
-
-pd_of_grade = {g: p for g, p in zip(grades, pds)}
-in_bp = {g: round(p * 10000, 1) for g, p in pd_of_grade.items()}       # basis points
-low_risk = {g: p for g, p in pd_of_grade.items() if p < 0.001}         # a filter
-
-print(in_bp)
-print(low_risk)
-```
-
-`SELECT key, expression FROM ... WHERE ...` into a lookup table. Common forms:
-
-```python run
-import csv
-
-with open("data/clients.csv", encoding="utf-8") as file:
-    clients = list(csv.DictReader(file))
-
-region_of = {c["client_id"]: c["region"] for c in clients}                 # id -> one column
-corporate = {c["client_id"]: c for c in clients if c["segment"] == "corporate"}
-print(region_of["C0002"], len(corporate))
-
-# invert a dict whose values ARE unique
-grade_of_rating = {1: "AAA", 2: "AA", 3: "A"}
-rating_of_grade = {g: r for r, g in grade_of_rating.items()}
-print(rating_of_grade)
-```
-
-::: tip Try it
-From `rating_scale.csv`, build `{grade: description}` with one comprehension over
-`csv.DictReader`. Then keep only the grades whose description contains `"risk"`.
-:::
-
 ## 6. Grouping by hand: `GROUP BY`
 
 ### Count by group: from `if` to `Counter`
 
-`SELECT region, COUNT(*) FROM clients GROUP BY region` - four ways, from the longest to
+The SQL `SELECT region, COUNT(*) FROM clients GROUP BY region` - four ways, from the longest to
 the shortest. All do the same: a dictionary **group -> count** that grows row by
 row.
 
@@ -713,8 +729,8 @@ print(counts["Sofia"], counts["Vidin"])      # a missing key counts 0 - no KeyEr
 
 ### Sum by group
 
-`SELECT segment, SUM(outstanding) ... GROUP BY segment` - the segment is in
-`clients.csv`, the amount in `loans.csv`: a lookup (section 4) and a sum:
+The SQL `SELECT segment, SUM(outstanding) ... GROUP BY segment` - the segment is in
+`clients.csv`, the amount in `loans.csv`: a lookup (section 5) and a sum:
 
 ```python run
 import csv
@@ -758,7 +774,7 @@ for product, (n, total, largest) in sorted(stats.items()):
     print(f"{product:<16}{n:>4}{total:>16,.0f}{total / n:>14,.0f}{largest:>14,.0f}")
 ```
 
-This is `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line
+This is SAS `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line
 (session 15) - but now you know what it does.
 
 The **share** of each group in the total - one more pass over the small result, not
@@ -823,8 +839,8 @@ for (segment, stage), total in sorted(totals.items()):
 
 ### `HAVING` and `ORDER BY` on the result
 
-The result is a dictionary - filter it with a comprehension (`HAVING`), sort its
-items (`ORDER BY`):
+The result is a dictionary - filter it with a comprehension (SQL `HAVING`), sort its
+items (SQL `ORDER BY`):
 
 ```python run
 import csv
@@ -839,8 +855,7 @@ for client_id, n in sorted(many.items(), key=lambda kv: (-kv[1], kv[0])):
     print(client_id, n)
 ```
 
-### `Counter` arithmetic: two months side by side
-
+::: details Advanced: `Counter` arithmetic - two months side by side
 Counters can be added and subtracted. The change of the number of loans per stage
 between two months:
 
@@ -855,6 +870,7 @@ september.subtract(august)             # all changes, also negative
 print(dict(september))
 print((august + Counter({3: 1})).total())       # total(): Python 3.10+
 ```
+:::
 
 ### A trap: the group key from dirty text
 
@@ -931,7 +947,7 @@ print(loans[1])
 print(sum(l["outstanding"] for l in loans if l["stage"] == 3))
 ```
 
-Sort a list of records by one or more fields - `ORDER BY` with column names:
+Sort a list of records by one or more fields - SQL `ORDER BY` with column names:
 
 ```python run
 import csv
@@ -973,6 +989,10 @@ print(clients["C9999"]["region"])               # KeyError: 'C9999'
 ```
 
 ### The shape of JSON
+
+::: info Optional
+Not needed for the tasks, the homework or the next sessions - read it when you have time.
+:::
 
 Nested dictionaries and lists are the shape of **JSON**, the text format of web
 APIs and of many configuration files. The module `json` turns one into the other
@@ -1026,7 +1046,7 @@ python 06-dictionaries/practice/task1-dict-basics.py
 | Task | File | What you do |
 |------|------|-------------|
 | 1 | `task1-dict-basics.py` | A product nomenclature: create, read with a default, add, change, remove |
-| 2 | `task2-predict-dicts.py` | Predict: duplicate keys, `True` / `1` keys, `get` vs `[]`, live views |
+| 2 | `task2-predict-dicts.py` | Predict: duplicate keys, `get` vs `[]`, `in`, `pop`, `setdefault`, `\|` |
 | 3 | `task3-lookups.py` | Rating -> grade / PD; codes -> names; loans with the region of their client |
 | 4 | `task4-count-and-sum.py` | Clients per region, outstanding per segment, `most_common` |
 | 5 | `task5-group-aggregates.py` | Count / sum / average / max per product, `HAVING`, a sorted report |
@@ -1040,13 +1060,13 @@ python 06-dictionaries/practice/task1-dict-basics.py
 | Read | `d[key]` (KeyError if missing); `d.get(key, default)`; `key in d` checks the keys |
 | Change | `d[key] = v` adds or changes; `update`, `\|`; `del`, `pop(key, default)`; `setdefault` |
 | Loop | `for k in d`; `d.values()`; `for k, v in d.items()`; sort with `sorted(d.items(), key=...)` |
+| Comprehension | `{k: v for ... if ...}` |
 | Lookups | a dict = a SAS format / hash object / lookup table; `get(code, "Other")` = `OTHER=` |
 | Join | a dict of the right table, `get` for every row of the left one = `LEFT JOIN` |
 | Ranges | not keys: a function with `if`, or `bisect` |
-| Comprehension | `{k: v for ... if ...}` |
 | `GROUP BY` | `d[k] = d.get(k, 0) + 1`; `defaultdict(int / float / list)`; `Counter(...)`; `most_common(n)` |
 | Several keys | a tuple as the key: `(segment, stage)` |
-| Records | `csv.DictReader`: rows as dicts; a dict of dicts keyed by id; `json.dumps` / `loads` |
+| Records | `csv.DictReader`: rows as dicts; a dict of dicts keyed by id; optional: `json.dumps` / `loads` |
 | Copies | `copy()` is shallow; `copy.deepcopy` for nested dicts |
 
 ## Homework
@@ -1093,7 +1113,7 @@ for region in sorted(table):
 `defaultdict(int)` - so `table[region][segment] += 1` works for any new pair.
 
 And back - from the cross table to rows (`region, segment, count`), the job of
-`PROC TRANSPOSE` or `melt` in pandas (session 16):
+SAS `PROC TRANSPOSE`, or of `melt` in pandas (session 16):
 
 ```python run
 table = {"Ruse": {"retail": 18, "sme": 7}, "Varna": {"retail": 13, "corporate": 3}}

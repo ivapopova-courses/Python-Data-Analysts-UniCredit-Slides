@@ -11,13 +11,14 @@ title: "15. pandas: selection, aggregation, joins"
 
 **Today you will learn to:**
 
-- select rows and columns with masks, `loc`, `iloc` and `query` - the `WHERE` of
+- select rows and columns with masks, `loc`, `iloc` and `query` - the SQL `WHERE` of
   pandas;
-- add new columns: formulas, `CASE WHEN` with `np.select`, bands with `pd.cut`, codes
-  with `map`;
+- add new columns: formulas, SQL `CASE WHEN` with `np.select`, bands with `pd.cut`,
+  codes with `map`;
 - sort and take the top N;
-- group and aggregate with `groupby` and `agg` - `GROUP BY` and `PROC MEANS`;
-- join tables with `merge` and stack them with `concat` - `JOIN`, `MERGE` and `SET`;
+- group and aggregate with `groupby` and `agg` - SQL `GROUP BY` and SAS `PROC MEANS`;
+- join tables with `merge` and stack them with `concat` - SQL `JOIN`, SAS `MERGE` and
+  `SET`;
 - handle missing values in all of these.
 
 From SQL to pandas - one query, two ways:
@@ -105,7 +106,7 @@ print(mask.sum(), "rows")
 print(loans.loc[mask, "outstanding"].sum().round(2))
 ```
 
-`IN (...)`, `BETWEEN` and `LIKE 'abc%'` have their own methods:
+SQL `IN (...)`, `BETWEEN` and `LIKE 'abc%'` have their own methods:
 
 ```python run
 import pandas as pd
@@ -118,7 +119,7 @@ print((~loans["currency"].isin(["EUR"])).sum())                        # NOT IN
 ```
 
 ::: info Compare with session 5
-`[row for row in loans if row["days_past_due"] > 90]` was the `WHERE` with a list.
+`[row for row in loans if row["days_past_due"] > 90]` was the SQL `WHERE` with a list.
 The mask does the same for a whole column at once, and keeps the table a table.
 :::
 
@@ -226,7 +227,7 @@ get the same number of rows? What is their total outstanding?
 
 ### From other columns
 
-A formula on columns works on all rows - the derived column of a DATA step:
+A formula on columns works on all rows - the derived column of a SAS DATA step:
 
 ```python run
 import pandas as pd
@@ -314,7 +315,7 @@ alphabetical), which is right for a report.
 ### Codes and descriptions: `map`
 
 `map` with a dictionary replaces each value by its description - `PUT(code, $fmt.)`
-with a format, or the dictionary lookup of session 6:
+with a SAS format, or the dictionary lookup of session 6:
 
 ```python run
 import pandas as pd
@@ -387,7 +388,7 @@ Add a column `pd_band` to `clients.csv` with `pd.cut` on the rating: 1 - 3 "low"
 
 ## 3. Sorting and the top N
 
-`sort_values` with several columns and directions - `ORDER BY a, b DESC`:
+`sort_values` with several columns and directions - SQL `ORDER BY a, b DESC`:
 
 ```python run
 import pandas as pd
@@ -406,7 +407,7 @@ loans = pd.read_csv("data/loans.csv")
 loans.nlargest(5, "outstanding")[["loan_id", "client_id", "product", "outstanding"]]
 ```
 
-`rank` gives the place of every row - `PROC RANK`, or `RANK() OVER (ORDER BY ...)`:
+`rank` gives the place of every row - SAS `PROC RANK`, or SQL `RANK() OVER (ORDER BY ...)`:
 
 ```python run
 import pandas as pd
@@ -469,7 +470,7 @@ print(by_pandas.round(2).to_dict())
 
 ### Several statistics: `agg`
 
-A list of functions - `PROC MEANS N SUM MEAN MAX`:
+A list of functions - SAS `PROC MEANS N SUM MEAN MAX`:
 
 ```python run
 import pandas as pd
@@ -478,7 +479,7 @@ loans = pd.read_csv("data/loans.csv")
 loans.groupby("product")["outstanding"].agg(["count", "sum", "mean", "max"]).round(2)
 ```
 
-**Named aggregation** gives every result column its name - `COUNT(*) AS loans`:
+**Named aggregation** gives every result column its name - SQL `COUNT(*) AS loans`:
 
 ```python run
 import pandas as pd
@@ -494,7 +495,7 @@ loans.groupby("product").agg(
 
 Each item is `new_name=(column, function)`. This is the form to use in reports.
 
-The full `PROC MEANS` output for every group - `describe` after `groupby`:
+The full SAS `PROC MEANS` output for every group - `describe` after `groupby`:
 
 ```python run
 import pandas as pd
@@ -544,8 +545,8 @@ table
 
 ### `size` and `count`
 
-`size()` counts the rows of each group (`COUNT(*)`); `count()` counts the values that
-are not missing (`COUNT(col)`):
+`size()` counts the rows of each group (SQL `COUNT(*)`); `count()` counts the values
+that are not missing (SQL `COUNT(col)`):
 
 ```python run
 import pandas as pd
@@ -627,9 +628,9 @@ loans.groupby("dpd_bucket", observed=True).agg(loans=("loan_id", "count"),
 ```
 
 ::: info `groupby` and SAS
-`PROC MEANS DATA=loans; CLASS segment stage; VAR outstanding; OUTPUT OUT=...` is
-`groupby(["segment", "stage"]).agg(...)`. There is no need to sort first (`BY`
-needs `PROC SORT`; `groupby` does not), and the groups come out sorted by the keys.
+SAS `PROC MEANS DATA=loans; CLASS segment stage; VAR outstanding; OUTPUT OUT=...` is
+`groupby(["segment", "stage"]).agg(...)`. There is no need to sort first (in SAS,
+`BY` needs `PROC SORT`; `groupby` does not), and the groups come out sorted by the keys.
 :::
 
 ::: tip Try it
@@ -660,7 +661,7 @@ with `NaN` becomes float (session 14: `5.0`, `3.0`).
 
 ### `IN=` of SAS: `indicator=True`
 
-The DATA step `MERGE a(in=a) b(in=b); BY id;` tells where each row came from.
+In SAS, the DATA step `MERGE a(in=a) b(in=b); BY id;` tells where each row came from.
 `indicator=True` adds the column `_merge` with `both`, `left_only`, `right_only`:
 
 ```python run
@@ -675,7 +676,7 @@ no_loans = check.loc[check["_merge"] == "left_only", "client_id"]
 print(no_loans.tolist())                                  # IF a AND NOT b
 ```
 
-The 7 clients without loans - the anti-join (`WHERE l.client_id IS NULL`). Simpler,
+The 7 clients without loans - the anti-join (in SQL: `WHERE l.client_id IS NULL`). Simpler,
 when you need only the ids: `~clients["client_id"].isin(loans["client_id"])`.
 
 ### The portfolio join and the EL
@@ -799,7 +800,7 @@ new = pd.DataFrame({"loan_id": ["L3"], "outstanding": [50.0], "stage": [2]})
 print(pd.concat([old, new], keys=["old_system", "new_system"]))
 ```
 
-(`UNION` without `ALL` = `concat` + `drop_duplicates()`.)
+(SQL `UNION` without `ALL` = `concat` + `drop_duplicates()`.)
 
 ::: tip Try it
 Join `loans.csv` with `client_register.csv` on `client_id` with `how="left"` and
@@ -828,7 +829,7 @@ print(s == np.nan)                         # all False: NaN is not equal to anyt
 ### Aggregates skip them
 
 Unlike NumPy (session 14), pandas skips `NaN` in `sum`, `mean`, `min`, `max` - like
-SQL and `PROC MEANS`:
+SQL and SAS `PROC MEANS`:
 
 ```python run
 import pandas as pd
@@ -1008,7 +1009,7 @@ one readable chain.
 
 ### SAS idioms in pandas
 
-**`FIRST.` and `LAST.`** - the first or last row of each `BY` group. Sort, then keep
+**SAS `FIRST.` and `LAST.`** - the first or last row of each `BY` group. Sort, then keep
 the first row per key:
 
 ```python run
@@ -1023,7 +1024,7 @@ largest[["client_id", "loan_id", "outstanding"]].head()
 ```
 
 `groupby("client_id").head(1)` does the same, and `.head(2)` keeps the first two of each
-group - not possible with `FIRST.` alone. `keep="last"` is `LAST.`.
+group - not possible with SAS `FIRST.` alone. `keep="last"` is SAS `LAST.`.
 
 **`NODUPKEY`** - `drop_duplicates(subset=[...])` (session 14); `duplicated(keep=False)`
 marks **all** copies, to look at them:
@@ -1037,7 +1038,7 @@ print(len(copies), "rows belong to duplicated ids")
 copies.sort_values("Loan ID").head(4)[["Loan ID", "Product", "Outstanding"]]
 ```
 
-**`LAG` and `RETAIN` by group** - the value of the previous row of the same client,
+**SAS `LAG` and `RETAIN` by group** - the value of the previous row of the same client,
 and a running total that restarts for each client:
 
 ```python run
@@ -1052,10 +1053,10 @@ history.loc[history["client_id"] == "C0002", ["month_end", "rating", "prev_ratin
 ```
 
 `shift(1)` inside the group gives `NaN` on the first row of each client - exactly
-what `LAG` with `IF FIRST.client_id THEN prev = .` does, without the trap of `LAG`
-in a condition.
+what SAS `LAG` with `IF FIRST.client_id THEN prev = .` does, without the trap of
+`LAG` in a condition.
 
-**A row counter per group** - `cumcount` (`IF FIRST. THEN n = 0; n + 1;`):
+**A row counter per group** - `cumcount` (in SAS: `IF FIRST. THEN n = 0; n + 1;`):
 
 ```python run
 import pandas as pd
@@ -1094,7 +1095,7 @@ print(changes.sort_values(ascending=False).head(3))
 ### Method chaining
 
 Many steps with temporary names (`df1`, `df2`, `df3`) are hard to read and easy to mix
-up. A chain reads top to bottom, like a SQL query or a DATA step - each line one
+up. A chain reads top to bottom, like a SQL query or a SAS DATA step - each line one
 step, in brackets so that it can span lines:
 
 ```python run
@@ -1157,6 +1158,6 @@ is needed.
   and [with SQL](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html)
   (the official tables)
 
-**Next session:** pandas for reports - pivot tables (`PROC TABULATE` /
+**Next session:** pandas for reports - pivot tables (SAS `PROC TABULATE` /
 `TRANSPOSE`), `melt`, dates and month ends, a rating migration matrix, an Excel file
 with several sheets, charts - and the start of the final project.

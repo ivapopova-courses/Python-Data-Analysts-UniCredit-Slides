@@ -683,7 +683,7 @@ print("stdev  ", round(st.stdev(rates), 3))          # the sample standard devia
 print("deciles", [round(q, 2) for q in st.quantiles(rates, n=10)])
 ```
 
-By group - `PROC MEANS ... CLASS stage` - with a dictionary of lists (session 6) and
+By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists (session 6) and
 `statistics` per group:
 
 ```python run

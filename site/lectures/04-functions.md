@@ -13,7 +13,7 @@ title: 4. Functions
 
 - define your own functions with `def`, and call them;
 - pass values to a function: by position, by name, with default values, and in any
-  number with `*args` and `**kwargs`;
+  number with `*args`;
 - return one or several results with `return` - and see why `print` is not `return`;
 - understand where a name is visible (scope), and why a function should get its
   data through parameters;
@@ -188,7 +188,7 @@ def greet():
 ```
 
 That is why a script puts its functions at the top and the main code at the bottom
-(section 12). (Inside a function body, you can call a function that is defined lower
+(section 11). (Inside a function body, you can call a function that is defined lower
 in the file - the body runs only later, when all `def`s are done.)
 
 ## 4. Parameters and arguments
@@ -416,8 +416,7 @@ print(count_over(0, 35, 120, 200, 5, limit=90))
 print(count_over(0, 35, 120, 200, 5, limit=30))
 ```
 
-### Any number of keyword arguments: `**kwargs`
-
+::: details Advanced: any number of keyword arguments, `**kwargs`
 Two stars `**` collect **all the extra keyword arguments** into a **dictionary**
 (dictionaries: session 6 - here, pairs of a name and a value):
 
@@ -455,10 +454,21 @@ The order of the parameters in a definition, when you use all kinds:
 def f(positional, with_default=1, *args, keyword_only, **kwargs):
 ```
 
-### Unpacking in a call: `*` and `**`
+In a **call**, `**` unpacks a dictionary into keyword arguments:
 
-The stars work the other way round in a **call**: `*` unpacks a list or a tuple into
-positional arguments, `**` unpacks a dictionary into keyword arguments:
+```python run
+def menu_print(fruit, price):
+    print(f"{fruit:.<20s}{price:.2f}")
+
+data = {"price": 2.5, "fruit": "apple"}
+menu_print(**data)              # the same as menu_print(fruit="apple", price=2.5)
+```
+:::
+
+### Unpacking in a call: `*`
+
+The star works the other way round in a **call**: `*` unpacks a list or a tuple into
+positional arguments:
 
 ```python run
 def my_func(p1, p2, p3):
@@ -467,14 +477,6 @@ def my_func(p1, p2, p3):
 data = [1, 2, 3]
 my_func(*data)                  # the same as my_func(data[0], data[1], data[2])
 my_func(data)                   # TypeError: the whole list goes to p1
-```
-
-```python run
-def menu_print(fruit, price):
-    print(f"{fruit:.<20s}{price:.2f}")
-
-data = {"price": 2.5, "fruit": "apple"}
-menu_print(**data)              # the same as menu_print(fruit="apple", price=2.5)
 ```
 
 A record from a file, straight into a function:
@@ -620,8 +622,10 @@ No `elif` is needed: after a `return`, the rest does not run.
 
 ## 6. Scope: where a name is visible
 
-### Namespaces and scopes
+The **scope** of a name is the part of the program where you can use it. A
+function has its own names, which the rest of the program does not see.
 
+::: details Advanced: namespaces and scopes, `locals()` and `globals()`
 - A **namespace** keeps the names and the objects they are bound to (inside, it is a
   dictionary). It exists while the program runs: the global namespace is created when
   a file is loaded; the local namespace of a function is created **at each call**, and
@@ -629,7 +633,20 @@ No `elif` is needed: after a `return`, the rest does not run.
 - A **scope** is the part of the code where a namespace is directly visible. Python
   decides scopes from the text of the code, before it runs.
 
-In simple words: the scope of a name is the part of the program where you can use it.
+```python run
+x = 10                    # a global name
+
+def foo():
+    x = 20                # a local name
+    print("local:", locals())
+    print("global x:", globals()["x"])
+
+foo()
+```
+
+(`globals()` shows many more names - the built-in ones of the module, like
+`__name__`.)
+:::
 
 ### Local names
 
@@ -659,22 +676,6 @@ def foo():
 foo()
 print(f"x = {x} outside foo()")
 ```
-
-### See the namespaces: `locals()` and `globals()`
-
-```python run
-x = 10                    # a global name
-
-def foo():
-    x = 20                # a local name
-    print("local:", locals())
-    print("global x:", globals()["x"])
-
-foo()
-```
-
-(`globals()` shows many more names - the built-in ones of the module, like
-`__name__`.)
 
 ### An assignment makes a local name
 
@@ -726,8 +727,39 @@ add(100)
 **Function calls step by step:** [3. `UnboundLocalError`](../animations/functionCalls.html#3){target="_blank"}
 :::
 
-### Nested functions
+### `global`: change a global name - rarely
 
+`global name` says: "in this function, `name` means the **global** name" - an
+assignment then changes the global variable:
+
+```python run
+count = 0
+
+def increment():
+    global count
+    count += 1              # changes the global count
+
+increment()
+increment()
+print(count)
+```
+
+Use it rarely. A function that changes global variables is hard to understand and to
+test: you cannot see from the call what it changes. Prefer: **values in through the
+parameters, results out through `return`**.
+
+```python run
+total = 0
+
+def add(total, amount):           # in: through the parameters
+    return total + amount         # out: through return
+
+total = add(total, 100)
+total = add(total, 250)
+print(total)
+```
+
+::: details Advanced: nested functions, `global` and `nonlocal`
 A function can be defined inside another one. Each has its own local names:
 
 ```python run
@@ -744,10 +776,7 @@ outer()
 print(f"x = {x} in global")
 ```
 
-### `global` and `nonlocal`
-
-`global name` says: "in this function, `name` means the **global** name" - an
-assignment changes the global variable:
+With `global x` in the inner function, the assignment changes the global `x`:
 
 ```python run
 def outer():
@@ -782,20 +811,7 @@ outer()
 print(f"x = {x} in global")
 ```
 
-Use them rarely. A function that changes global variables is hard to understand and to
-test: you cannot see from the call what it changes. Prefer: **values in through the
-parameters, results out through `return`**.
-
-```python run
-total = 0
-
-def add(total, amount):           # in: through the parameters
-    return total + amount         # out: through return
-
-total = add(total, 100)
-total = add(total, 250)
-print(total)
-```
+:::
 
 ### How Python finds a name: LEGB
 
@@ -943,7 +959,7 @@ call.
 Python 3.12 added the `type` statement for type aliases: `type Amount = float`. Python
 3.14 (the Python of this site) evaluates annotations only when they are needed, so a
 hint can name a class that is defined later in the file. Neither is needed in this
-course - the hints above work in 3.12 and 3.13.
+course - the hints above work in 3.12 and in every newer version.
 :::
 
 ## 9. Functions are values
@@ -952,7 +968,7 @@ course - the hints above work in 3.12 and 3.13.
 
 In Python a function is an **object**, like a number or a list. So a function can be:
 
-- bound to another name, or stored in a list or a dictionary;
+- bound to another name, or stored in a list;
 - passed as an argument to another function;
 - returned as a value from another function.
 
@@ -1002,8 +1018,7 @@ print(total(amounts, math.floor))
 print(total(amounts, math.ceil))
 ```
 
-### A function that returns a function
-
+::: details Advanced: a function that returns a function (a closure)
 ```python run
 def multiply_by(n):
     """Return a function that multiplies its input by n."""
@@ -1020,9 +1035,9 @@ print(round(to_bgn(100), 2))
 
 The inner function **remembers** `n` from the call that made it, even after that call
 has ended. Such a function is called a **closure**.
+:::
 
-### Functions in a dictionary
-
+::: details Advanced: functions in a dictionary (dictionaries: session 6)
 ```python run
 def add(x, y):
     return x + y
@@ -1037,6 +1052,7 @@ print(operations["sub"](4, 2))
 
 A dictionary of functions replaces a long `if` / `elif` chain: the key chooses the
 function (a *dispatch table*).
+:::
 
 ### Pure functions
 
@@ -1080,13 +1096,8 @@ print(double(5))
 greet = lambda: "Hello, World!"          # no parameters
 print(greet())
 
-calc = {
-    "add": lambda x, y: x + y,
-    "sub": lambda x, y: x - y,
-    "mul": lambda x, y: x * y,
-    "div": lambda x, y: x / y if y != 0 else "Error: division by zero",
-}
-print(calc["add"](4, 2), calc["sub"](4, 2), calc["mul"](4, 2), calc["div"](4, 2), calc["div"](4, 0))
+add = lambda x, y: x + y                 # two parameters
+print(add(4, 2))
 ```
 
 Do not give a lambda a name in real code (`double = lambda ...`) - that is what `def`
@@ -1097,7 +1108,7 @@ for a function you need **once, right here** - most often as the `key` of a sort
 ### Sorting by a key
 
 `sorted()` and `list.sort()` take a `key`: a function that is called for each item,
-and the items are sorted by its result. This is `ORDER BY` with any expression:
+and the items are sorted by its result. This is SQL `ORDER BY` with any expression:
 
 ```python run
 data = [(1, "Z"), (2, "Y"), (3, "X")]
@@ -1129,20 +1140,6 @@ print(max(loans, key=lambda loan: loan[1]))
 print(min(loans, key=lambda loan: loan[1]))
 ```
 
-A list of dictionaries (session 6), sorted by one key:
-
-```python run
-users = [
-    {"name": "Alice", "age": 30},
-    {"name": "Bob", "age": 25},
-    {"name": "Charlie", "age": 35},
-]
-print(sorted(users, key=lambda user: user["age"]))
-
-products = {"apple": 3, "coffee": 2.5, "beer": 4.20}
-print(sorted(products.items(), key=lambda item: item[1]))
-```
-
 A named function works as a key too - `key=len`, `key=str.lower`:
 
 ```python run
@@ -1154,90 +1151,7 @@ print(sorted(["cherry", "fig", "banana"], key=len))
 Sorting is covered in depth in session 5. Reference:
 [Sorting techniques](https://docs.python.org/3/howto/sorting.html).
 
-## 11. Decorators
-
-::: info Advanced
-Decorators are not needed for the tasks of this course, but you will meet them in
-libraries (`@property` and `@dataclass` in session 11, `@pytest.fixture`, `@app.get` in
-web frameworks). This section explains the `@` you will see.
-:::
-
-### The idea
-
-A **decorator** is a function that takes a function and returns a new, "decorated"
-function: it adds something **before and after** the original, without changing its
-code. `decorated = decorator(original)`:
-
-```python run
-def stars_decorator(f):
-    def wrapper():
-        print("*" * 30)
-        f()
-        print("*" * 30)
-    return wrapper
-
-def greet():
-    print("Howdy World!")
-
-greet = stars_decorator(greet)       # decorate
-greet()
-```
-
-### The `@` syntax
-
-`@decorator` above a `def` is a short way to write `name = decorator(name)`:
-
-```python run
-def stars_decorator(f):
-    def wrapper():
-        print("*" * 30)
-        f()
-        print("*" * 30)
-    return wrapper
-
-@stars_decorator
-def greet():
-    print("Howdy World!")
-
-greet()
-```
-
-### Arguments and the return value
-
-The wrapper must pass the arguments on, and return the result of the original.
-`*args, **kwargs` (section 4) take any arguments; `functools.wraps` keeps the name and
-the docstring of the original. A useful decorator - how long each step of a report
-takes:
-
-```python run
-import functools
-import time
-
-def timed(func):
-    @functools.wraps(func)
-    def wrapper(*args, **kwargs):
-        start = time.perf_counter()
-        result = func(*args, **kwargs)
-        print(f"{func.__name__} took {time.perf_counter() - start:.4f} s")
-        return result
-    return wrapper
-
-@timed
-def total_outstanding(path):
-    total = 0.0
-    with open(path, encoding="utf-8") as file:
-        file.readline()
-        for line in file:
-            total += float(line.split(",")[7])
-    return total
-
-print(f"{total_outstanding('data/loans.csv'):,.2f}")
-```
-
-Read more: [Primer on Python decorators](https://realpython.com/primer-on-python-decorators/)
-(Real Python).
-
-## 12. From macros to functions: a small library
+## 11. From macros to functions: a small library
 
 ### One task, many small functions
 
@@ -1352,7 +1266,7 @@ In a file that is run as a script, the main code is often put under
 without running the report. Modules and `import` of your own files are the topic of
 session 10.
 
-## 13. Practice
+## 12. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
@@ -1379,14 +1293,14 @@ values.
 | Topic | Remember |
 |-------|----------|
 | Define, call | `def name(params):` + an indented body; `name(args)` runs it - the brackets are required |
-| Parameters | positional; defaults after the others; `name=value` in the call; `*args` a tuple, `**kwargs` a dictionary |
+| Parameters | positional; defaults after the others; `name=value` in the call; `*args` a tuple |
 | Defaults | never a list or a dict as a default - use `None` |
 | `return` | ends the function and gives a value; no `return` -> `None`; `return a, b` gives a tuple |
 | `print` / `return` | `print` shows, `return` gives - calculating functions return |
-| Scope | names assigned in a function are local; LEGB: local, enclosing, global, built-in; avoid `global` |
+| Scope | names assigned in a function are local; LEGB: local, enclosing, global, built-in; avoid `global` - values in through parameters, out through `return` |
 | References | a list passed to a function can be changed by it - return a new list instead |
 | Documentation | a docstring in triple quotes; type hints `x: float -> float` are not checked at run time |
-| Functions as values | pass them, store them, return them; `lambda x: ...` for a short `key` |
+| Functions as values | pass a function as an argument; `lambda x: ...` for a short `key` |
 | Sorting | `sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` any expression |
 | SAS macros | a macro writes code; a function runs and returns a value |
 
@@ -1404,6 +1318,117 @@ values.
    rate, years)` returns the payment; `print_schedule(amount, rate, years)` prints the
    schedule. Write a separate function for each check: `is_valid_amount()`,
    `is_valid_rate()`, `is_valid_years()`, each returning `True` or `False`.
+
+## Self-study
+
+This part is not covered in class - it is for reading at home.
+
+### Decorators
+
+Decorators are not needed for the tasks of this course, but you will meet them in
+libraries (`@property` and `@dataclass` in session 11, `@pytest.fixture`, `@app.get` in
+web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs`
+and a function inside a function (the Advanced boxes of sections 4 and 6).
+
+#### The idea
+
+A **decorator** is a function that takes a function and returns a new, "decorated"
+function: it adds something **before and after** the original, without changing its
+code. `decorated = decorator(original)`:
+
+```python run
+def stars_decorator(f):
+    def wrapper():
+        print("*" * 30)
+        f()
+        print("*" * 30)
+    return wrapper
+
+def greet():
+    print("Howdy World!")
+
+greet = stars_decorator(greet)       # decorate
+greet()
+```
+
+#### The `@` syntax
+
+`@decorator` above a `def` is a short way to write `name = decorator(name)`:
+
+```python run
+def stars_decorator(f):
+    def wrapper():
+        print("*" * 30)
+        f()
+        print("*" * 30)
+    return wrapper
+
+@stars_decorator
+def greet():
+    print("Howdy World!")
+
+greet()
+```
+
+#### Arguments and the return value
+
+The wrapper must pass the arguments on, and return the result of the original.
+`*args, **kwargs` (section 4) take any arguments; `functools.wraps` keeps the name and
+the docstring of the original. A useful decorator - how long each step of a report
+takes:
+
+```python run
+import functools
+import time
+
+def timed(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        start = time.perf_counter()
+        result = func(*args, **kwargs)
+        print(f"{func.__name__} took {time.perf_counter() - start:.4f} s")
+        return result
+    return wrapper
+
+@timed
+def total_outstanding(path):
+    total = 0.0
+    with open(path, encoding="utf-8") as file:
+        file.readline()
+        for line in file:
+            total += float(line.split(",")[7])
+    return total
+
+print(f"{total_outstanding('data/loans.csv'):,.2f}")
+```
+
+**Exercise.** Write a decorator `announce` that prints `start: <name of the function>`
+before the call and `end` after it, and use it on a function `report()` that
+prints `the report`. (Hint: `func.__name__` is the name of the function.)
+
+::: details Answer
+```python run
+import functools
+
+def announce(func):
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        print(f"start: {func.__name__}")
+        result = func(*args, **kwargs)
+        print("end")
+        return result
+    return wrapper
+
+@announce
+def report():
+    print("the report")
+
+report()
+```
+:::
+
+Read more: [Primer on Python decorators](https://realpython.com/primer-on-python-decorators/)
+(Real Python).
 
 ## Read more
 

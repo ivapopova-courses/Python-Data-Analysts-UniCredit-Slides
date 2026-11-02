@@ -445,7 +445,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:686
-msgid "By group - `PROC MEANS ... CLASS stage` - with a dictionary of lists (session 6) and `statistics` per group:"
+msgid "By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists (session 6) and `statistics` per group:"
 msgstr ""
 
 #. paragraph

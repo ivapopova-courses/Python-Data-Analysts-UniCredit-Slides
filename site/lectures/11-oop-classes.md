@@ -877,9 +877,9 @@ defaulted = [l for l in loans if l.is_defaulted]
 print(len(defaulted), "defaulted loans,", f"{sum(l.outstanding for l in defaulted):,.2f} EUR")
 ```
 
-`@property` is a **decorator** (lecture 4, Advanced): it turns the method into a
+`@property` is a **decorator** (lecture 4, Self-study): it turns the method into a
 read-only attribute. A computed value never gets out of date, because it is computed
-each time it is read - like a computed column of an SQL view.
+each time it is read - like a computed column of a SQL view.
 
 ```python run
 class Loan:
@@ -991,7 +991,8 @@ equal). Methods and properties are written as in a normal class.
 hints, session 4). Check what matters in `__post_init__` (below).
 :::
 
-A row of `csv.DictReader` can go straight into a dataclass with `**` (session 4) - if
+A row of `csv.DictReader` can go straight into a dataclass with `**` (it unpacks a
+dictionary into keyword arguments: `Loan(**row)` is `Loan(loan_id=row["loan_id"], ...)`) - if
 the column names are the field names. Convert the types in `__post_init__` (below), or
 before:
 

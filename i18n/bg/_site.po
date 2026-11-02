@@ -55,6 +55,11 @@ msgstr "Начало"
 
 #. side menu
 #: site/.vitepress/config.mjs
+msgid "Calendar"
+msgstr "Календар"
+
+#. side menu
+#: site/.vitepress/config.mjs
 msgid "How to use these pages"
 msgstr "Как да ползвате тези страници"
 
@@ -72,6 +77,11 @@ msgstr "Анимации"
 #: site/.vitepress/config.mjs
 msgid "Final project"
 msgstr "Финален проект"
+
+#. side menu
+#: site/.vitepress/config.mjs
+msgid "The trainer"
+msgstr "Преподавателят"
 
 #. side menu
 #: site/.vitepress/config.mjs

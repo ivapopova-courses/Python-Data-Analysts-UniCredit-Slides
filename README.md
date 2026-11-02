@@ -44,6 +44,7 @@ npm run build        # static site in site/.vitepress/dist (for GitHub Pages)
 site/                          the course site (VitePress)
     index.md                   home page: the 16 sessions
     agenda.md                  course agenda
+    calendar.md                the session calendar (Zoho, embedded) and its iCal address
     how-to.md, sample-data.md, project.md
     lectures/NN-topic.md       one page per lecture
     under-the-hood.md          the list of the animations
@@ -79,8 +80,16 @@ Write ` ```python run ` instead of ` ```python ` (line highlighting works too:
 - `input()` does not work.
 
 The Pyodide version is set in `site/.vitepress/theme/pyRunner.js`
-(`PYODIDE_VERSION`). Pyodide runs a newer Python (3.14) than the students'
-3.12 / 3.13 - avoid features newer than 3.12 in the examples.
+(`PYODIDE_VERSION`). Pyodide runs Python 3.14; the students may have any Python
+from 3.12 on - avoid features newer than 3.12 in the examples. When you change the
+version, check that the file names in `START_FILES` (same file) still exist on the
+CDN.
+
+Company networks often block or change the CDN files (a proxy, a firewall). When
+Python cannot start, the runner checks the files and names the ones that do not
+arrive, in a message that says what to do (the texts are in `PyRunCode.vue`,
+`PROBLEMS`, in both languages). Python needs `cdn.jsdelivr.net/pyodide/`, and the
+Excel examples also `pypi.org` and `files.pythonhosted.org` (openpyxl).
 
 ## Two languages
 

@@ -13,10 +13,10 @@ title: 2. Conditional statements and loops
 
 - say what is "true" and "false" in Python, and compare values without surprises;
 - combine conditions with `and`, `or`, `not`;
-- write decisions with `if` / `elif` / `else` - the Python `CASE WHEN`;
+- write decisions with `if` / `elif` / `else` - the Python version of SQL `CASE WHEN`;
 - choose a value with a conditional expression, and a branch with `match`;
 - repeat work with `while` and `for`, and stop or skip with `break` and `continue`;
-- loop over the rows of a file, the way a DATA step reads a data set;
+- loop over the rows of a file, the way a SAS DATA step reads a data set;
 - build a small report and a repayment schedule with loops.
 
 From SQL to Python - the same question, two ways:
@@ -715,8 +715,10 @@ print(group)
 - `case _:` fits everything - the default, like `otherwise` and `ELSE`. Write it last.
 - Only one case runs; there is no "fall through" to the next case as in C.
 
-### Conditions in a case: guards
+`match` is best for **fixed values**: codes, products, menu choices. For ranges of
+numbers, use `if` / `elif`.
 
+::: details Advanced: conditions in a case (guards), and a trap with names
 After a pattern, `if` adds a condition (a *guard*). `case dpd if dpd > 90:` means
 "take the value, call it `dpd`, and fit only if `dpd > 90`":
 
@@ -736,12 +738,10 @@ match days_past_due:
 print(bucket)
 ```
 
-For ranges of numbers, `if` / `elif` is usually clearer. `match` is best for
-**fixed values**: codes, products, menu choices.
+For ranges of numbers, `if` / `elif` is clearer.
 
-::: warning A name in a case catches everything
-In a `case`, a plain name is not compared - it **captures** the value. This
-case fits every segment:
+**A name in a case catches everything.** In a `case`, a plain name is not
+compared - it **captures** the value. This case fits every segment:
 
 ```python run
 RETAIL = "retail"
@@ -817,6 +817,12 @@ in the tutorial, and the [pattern matching tutorial (PEP 636)](https://peps.pyth
 
 ## 9. Operator precedence
 
+::: info Optional
+Not needed for the tasks, the homework or the next sessions - read it when you have time.
+:::
+
+A recap of session 1, section 11, for conditions.
+
 The order in which the parts of an expression are calculated decides the result.
 Wrong assumptions about it lead to bugs:
 
@@ -888,7 +894,7 @@ program continues after the block.
 Inside the block, something must change the condition - otherwise the loop never
 ends. (Or a `break` stops it, section 13.)
 
-![The flow of a loop: the condition is tested before each iteration; break leaves the loop, continue goes back to the test](/diagrams/loop-flow.svg){.diagram width=920 height=480}
+![The flow of a while loop and a for loop: the test comes before each iteration; while it is true the block runs, then the test again; when it is false, the program continues after the loop](/diagrams/loop-simple.svg){.diagram width=920 height=330}
 
 ```python run
 i = 1
@@ -990,21 +996,20 @@ for letter in "ada":
 
 ### What `for` can loop over
 
-Anything that gives items one by one - an *iterable*: a string (the characters), a
-list, a tuple (session 3), a `range` of numbers, the lines of a file, a dictionary
-(session 6).
+Anything that gives items one by one - an *iterable*. Today: a string (its
+characters), a `range` of numbers, a few values in square brackets, and the lines
+of a file. The square brackets make a **list** - session 3 is all about lists; for
+now, read `[0, 35, 120]` simply as "these values, one by one". Tuples (session 3)
+and dictionaries (session 6) come later.
 
 ```python run
-for item in [1, 2, 3]:              # a list
-    print(item, end=",")
-print()
-for item in (10, "December", 1815): # a tuple
-    print(item, end=",")
-print()
 for item in "byron":                # a string
     print(item, end=",")
 print()
 for item in range(1, 3):            # a range: 1 and 2
+    print(item, end=",")
+print()
+for item in [10, 20, 30]:           # a few values: a list (session 3)
     print(item, end=",")
 ```
 
@@ -1060,10 +1065,10 @@ print(count_late, "late loans, the worst is", max_days, "days")
 **Loops step by step:** [1. `for` with an accumulator](../animations/loopTrace.html#1){target="_blank"}
 :::
 
-### Several names: unpacking
+### Two names at once
 
-When the items are pairs (or longer groups), the `for` can give each part its own
-name. The pairs here are tuples (session 3):
+When each item is a **pair** of values in round brackets - `(1, "one")`, a *tuple*
+(session 3) - the `for` can give each part its own name:
 
 ```python run
 pairs = [(1, "one"), (2, "two"), (3, "three")]
@@ -1071,40 +1076,8 @@ for number, name in pairs:
     print(f"{number} is {name}")
 ```
 
-```python run
-loans = [("L000001", 1044231.30, 8.83), ("L000002", 651927.30, 5.44), ("L000003", 644.25, 4.79)]
-
-for loan_id, outstanding, rate in loans:
-    print(f"{loan_id}: interest {outstanding * rate / 100:,.2f}")
-```
-
-A dictionary (session 6) gives its keys and values the same way, with `.items()`:
-
-```python run
-rates = {"mortgage": 3.9, "consumer": 9.5, "credit_card": 18.0}
-for product, rate in rates.items():
-    print(f"{product}: {rate}%")
-```
-
-### The position of the item: `enumerate`
-
-Sometimes you need the **index** (the position) of each item, not only the item. The
-C-style way loops over the indexes with `range(len(...))`:
-
-```python run
-colors = ["red", "green", "blue"]
-for index in range(len(colors)):
-    print(f"{index}: {colors[index]}")
-```
-
-The Python way is [`enumerate(iterable, start=0)`](https://docs.python.org/3/library/functions.html#enumerate):
-it gives the index and the item together.
-
-```python run
-products = ["mortgage", "consumer", "credit_card"]
-for number, product in enumerate(products, start=1):
-    print(f"{number}. {product}")
-```
+That is all you need today. Session 3 shows lists of records like this one, and
+session 6 loops over a dictionary the same way.
 
 ### Nested loops
 
@@ -1112,51 +1085,49 @@ A loop can be inside another loop. The inner loop runs completely in **each**
 iteration of the outer one:
 
 ```python run
-for i in [1, 2, 3]:
-    for j in "abv":
-        print(f"{i}:{j}", end=" ")
+for i in range(1, 4):
+    for letter in "abc":
+        print(f"{i}{letter}", end=" ")
     print()             # a new line after each row
 ```
 
-A table of rows of numbers (a *list of lists*, session 5) is read the same way:
+The quarters of two years (in SAS: two nested `do` loops):
 
 ```python run
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-]
-for row in matrix:
-    for element in row:
-        print(element, end=" ")
+for year in range(2025, 2027):
+    for quarter in range(1, 5):
+        print(f"{year}-Q{quarter}", end=" ")
     print()
 ```
 
 On the portfolio - the monthly payment for several amounts and terms, a grid like
-`PROC TABULATE` would print:
+the one SAS `PROC TABULATE` would print:
 
 ```python run
 yearly_rate = 6
 monthly_rate = yearly_rate / 12 / 100
 
 print(f"{'years':>6}", end="")
-for amount in [10000, 20000, 50000]:
+for amount in range(10000, 50001, 20000):     # 10000, 30000, 50000
     print(f"{amount:>12,}", end="")
 print()
 
-for years in [1, 3, 5, 10]:
+for years in range(1, 6):
     print(f"{years:>6}", end="")
     n = years * 12
-    for amount in [10000, 20000, 50000]:
+    for amount in range(10000, 50001, 20000):
         payment = amount * monthly_rate / (1 - (1 + monthly_rate) ** -n)
         print(f"{payment:>12,.2f}", end="")
     print()
 ```
 
+Tables kept in memory - a list of rows - and the loops over them come in
+session 5.
+
 ### The rows of a file
 
 A text file is a sequence of **lines**, so `for` can read it line by line - like a
-DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in
+SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in
 session 9):
 
 ```python run
@@ -1169,7 +1140,8 @@ with open("data/loans.csv", encoding="utf-8") as file:
         break                           # only the first loan for now (section 13)
 ```
 
-`split(",")` gives the fields as strings. The names on the left of `=` take them in
+`split(",")` cuts the line at the commas and gives the fields as strings, in square
+brackets: a list (session 3). The names on the left of `=` take them in
 order (as in "several names at once", session 1) - then convert the ones you need:
 
 ```python run
@@ -1227,10 +1199,11 @@ Finding something - stop as soon as it is found:
 ```python run
 days_past_due_values = [0, 35, 0, 120, 5, 200]
 
-for position, days in enumerate(days_past_due_values):
+for days in days_past_due_values:
     if days > 90:
-        print(f"the first non-performing loan is at position {position}: {days} days")
+        print(f"the first non-performing loan: {days} days past due")
         break
+    print(days, "- not yet")
 ```
 
 ::: info Animation
@@ -1242,20 +1215,13 @@ for position, days in enumerate(days_past_due_values):
 `break` leaves only the loop it is in - the outer loop goes on:
 
 ```python run
-matrix = [
-    [1, 2, 3],
-    [4, 5, 6],
-    [7, 8, 9],
-]
-search_value = 4
-
-for row in matrix:
-    print(f"Processing row: {row}")
-    for element in row:
-        print(element, end=",")
-        if element == search_value:
-            break               # leaves the inner loop only
-    print()
+for year in range(2025, 2028):
+    print(year, end=": ")
+    for month in range(1, 13):
+        if month > 3:
+            break               # leaves the inner loop only: the first quarter
+        print(month, end=",")
+    print()                     # the outer loop goes on with the next year
 ```
 
 ### `do until`: a loop that runs at least once
@@ -1281,7 +1247,7 @@ while True:
 print(f"Thank you, {user_name}!")
 ```
 
-The same in SAS:
+On the portfolio - repay a balance until it is 0. In SAS this is `do until`:
 
 ```sas
 do until (balance <= 0);
@@ -1303,11 +1269,28 @@ while True:                 # do ...
 print(months, balance)
 ```
 
-### `else` on a loop
+### "Not found": a flag
 
+After a search with `break`, how do you know if something was found? Set a
+**flag** before the loop - like `found = 0;` in a SAS DATA step:
+
+```python run
+days_past_due_values = [0, 35, 0, 5]
+
+found = False
+for days in days_past_due_values:
+    if days > 90:
+        found = True
+        print("found a non-performing loan:", days)
+        break
+
+if not found:
+    print("no loan is more than 90 days past due")
+```
+
+::: details Advanced: `else` on a loop
 A `for` or `while` loop can have an `else` block. It runs when the loop ends
-**normally** - and not when a `break` stopped it. It is the clean way to say "not
-found":
+**normally** - and not when a `break` stopped it. It replaces the flag:
 
 ```python run
 days_past_due_values = [0, 35, 0, 5]
@@ -1320,10 +1303,9 @@ else:
     print("no loan is more than 90 days past due")
 ```
 
-Read the `else` of a loop as "no break". It is not used often - a comment helps the
-reader.
+Read the `else` of a loop as "no break". It is rare and surprises many readers -
+the flag is clearer.
 
-::: info Animation
 **Loops step by step:** [6. `for` - `else` (advanced)](../animations/loopTrace.html#6){target="_blank"}
 :::
 
@@ -1361,8 +1343,10 @@ for letter in word:
     print(letter, end=",")
 ```
 
-In data work, `continue` skips the records you do not want - like a `WHERE`, a
-subsetting `IF` or `DELETE` in a DATA step. Count only the USD loans, and skip empty lines:
+In data work, `continue` skips the records you do not want - like `WHERE` in SQL,
+or a subsetting `IF` or `DELETE` in a SAS DATA step. Count only the USD loans, and skip empty
+lines. Here the line is kept as one list, `fields`, and `fields[3]` is its 4th field:
+the positions are counted from 0 (session 3 explains it).
 
 ```python run
 usd_count = 0
@@ -1374,7 +1358,7 @@ with open("data/loans.csv", encoding="utf-8") as file:
         if not line.strip():                # an empty line: skip it
             continue
         fields = line.strip().split(",")
-        if fields[3] != "USD":              # the 4th field: the currency
+        if fields[3] != "USD":              # the 4th field (the count starts at 0): currency
             continue
         usd_count += 1
         usd_total += float(fields[7])       # the 8th field: outstanding
@@ -1388,6 +1372,29 @@ better.
 
 ::: info Animation
 **Loops step by step:** [5. `continue`: skip a record](../animations/loopTrace.html#5){target="_blank"}
+:::
+
+### The whole picture
+
+`break` and `continue` in one flow (the `else` in the picture is the Advanced box
+of section 13):
+
+![The flow of a loop: the condition is tested before each iteration; break leaves the loop, continue goes back to the test](/diagrams/loop-flow.svg){.diagram width=920 height=480}
+
+Follow the flow without running the code: what does this loop print?
+
+```python
+for i in range(1, 6):
+    if i == 2:
+        continue
+    if i == 4:
+        break
+    print(i)
+```
+
+::: details Answer
+`1` and `3`. At 2, `continue` goes back to the test, so 2 is not printed. At 4,
+`break` leaves the loop: 4 and 5 are never printed.
 :::
 
 ## 15. Putting it together
@@ -1434,6 +1441,10 @@ print(f"total interest: {total_interest:,.2f}")
 session 1, section 14.)
 
 ### Find the rate: higher or lower?
+
+::: info Optional
+Not needed for the tasks, the homework or the next sessions - read it when you have time.
+:::
 
 The classic "guess the number" game - "too high", "too low", until it is right - is
 also a real method for finding a number that you cannot calculate directly. Which
@@ -1488,6 +1499,23 @@ python 02-conditions-and-loops/practice/task1-predict-logic.py
 In `task1-predict-logic.py`, replace each `"?"` with your prediction **before** you
 run the file.
 
+::: tip Help: what the tasks use from later sessions
+- **Tasks 2 - 4** give you ready loops like `for days_past_due in [0, 1, 30, ...]:`
+  or `for old, new in [(1000.0, 1200.0), ...]:` (section 12, "Two names at once").
+  They only try your code on a few values - write your code inside, do not change
+  the loop.
+- **Task 5, part 2:** copy the loop of part 1 - it gives each field a name - and
+  stop with `break` at the first `stage == "3"`. Or keep the line as one list,
+  `fields = line.strip().split(",")`: then `fields[0]` is the loan id and
+  `fields[10]` the stage (the positions are counted from 0, session 3).
+- **Task 6, part 3:** `stage_counts` holds pairs; loop over it with two names,
+  `for stage, count in stage_counts:`, and add one line to `chart` in each
+  iteration (`chart += ...`). `"#" * 5` is `"#####"` (session 1).
+- **Homework, part 4:** build `report` with `+=` and f-strings with widths, as in
+  section 15: `f"{'current':<8}{current_count:>6}"`, `:>18,.2f`, and `:>8.1%` for a
+  percent (session 1, section 13).
+:::
+
 ## Summary
 
 | Topic | Remember |
@@ -1500,7 +1528,7 @@ run the file.
 | `match` | one value against fixed cases; `\|` for "or", `case _:` for the rest; guards with `if` |
 | `while` | while a condition is true; something in the block must change it |
 | `for` | each item of a sequence: a string, a list, `range`, the lines of a file; `range(1, 13)` is 1 ... 12 |
-| `break` / `continue` | leave the loop / go to the next iteration; `while True` + `break` = `do until`; loop `else` = "no break" |
+| `break` / `continue` | leave the loop / go to the next iteration; `while True` + `break` = `do until`; a flag for "not found" |
 
 ## Homework
 
@@ -1517,6 +1545,9 @@ run the file.
    until the user chooses 3.
 4. Optional: change the bisection example of section 15 so that it also prints each
    guess and "too high" / "too low", and stops after at most 30 tries.
+5. Optional: `02-conditions-and-loops/notebook.ipynb` - short extra tasks on the topics of
+   today in a Jupyter notebook, each with a check cell. Open it in VS Code and
+   select the `.venv` kernel.
 
 ## Read more
 
@@ -1532,4 +1563,4 @@ run the file.
   [`while` loops](https://realpython.com/python-while-loop/)
 
 **Next session:** lists, tuples and sets - indexing from 0, slices, the methods of
-`list`, tuples as records, and `UNION` / `INTERSECT` / `EXCEPT` with sets.
+`list`, tuples as records, and the SQL `UNION` / `INTERSECT` / `EXCEPT` with sets.

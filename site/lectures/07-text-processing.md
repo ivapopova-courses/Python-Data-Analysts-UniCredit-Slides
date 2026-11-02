@@ -11,8 +11,8 @@ title: 7. Text processing
 
 **Today you will learn to:**
 
-- change the case of text and remove extra spaces - the Python `UPCASE`, `PROPCASE`,
-  `STRIP` and `COMPBL`;
+- change the case of text and remove extra spaces - the Python versions of the SAS
+  functions `UPCASE`, `PROPCASE`, `STRIP` and `COMPBL`;
 - find and test parts of a string, and check what kind of characters it has;
 - split a line into fields and join fields into a line - `SCAN` and `CATX`;
 - replace and remove characters - `TRANWRD` and `COMPRESS`;
@@ -53,7 +53,7 @@ problems in it are real ones.
 ## 1. Strings: a recap and the new data
 
 You know from session 1 and 3: a string is a **sequence** of characters; `len(s)`,
-`s[0]`, `s[-1]`, `s[2:5]` work like on a list; `s[2:5]` is `SUBSTR(s, 3, 3)`. And a
+`s[0]`, `s[-1]`, `s[2:5]` work like on a list; `s[2:5]` is `SUBSTR(s, 3, 3)` in SAS. And a
 string **cannot change** (it is immutable): every method returns a **new** string.
 
 ```python run
@@ -1088,9 +1088,10 @@ print(data.decode("utf-8"))          # UnicodeDecodeError
 ```
 
 That is why every `open()` in this course says `encoding="utf-8"`: without it, Python
-3.12 / 3.13 on Windows uses the Windows encoding of the computer (often cp1252 or
-cp1251), and the same script gives different results on different computers. (Python
-3.15 uses UTF-8 by default everywhere.)
+3.12 - 3.14 on Windows uses the Windows encoding of the computer (often cp1252 or
+cp1251), and the same script gives different results on different computers. (From
+Python 3.15 on, UTF-8 is the default everywhere. Still write it: the script may run
+on an older Python.)
 
 The file `regions_bg.csv` is saved in **cp1251**:
 
@@ -1208,4 +1209,4 @@ print(to_latin("София"), to_latin("Мария"))      # Sofia Maria
   [Using Python datetime to work with dates and times](https://realpython.com/python-datetime/)
 
 **Next session:** regular expressions - patterns that find, check and extract IBANs,
-EIKs, e-mails, dates and amounts in free text; the Python `PRXMATCH`.
+EIKs, e-mails, dates and amounts in free text; the Python version of SAS `PRXMATCH`.

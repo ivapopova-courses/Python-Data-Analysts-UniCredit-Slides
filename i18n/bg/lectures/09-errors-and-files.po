@@ -925,7 +925,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:1163
-msgid "`reader.line_num` is the line number in the file - the `_N_` of the log, but for the file line (the header is line 1)."
+msgid "`reader.line_num` is the line number in the file - like `_N_` in the SAS log, but for the file line (the header is line 1)."
 msgstr ""
 
 #. heading 3

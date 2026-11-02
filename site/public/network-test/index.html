@@ -1,0 +1,105 @@
+<!doctype html>
+<!-- Checks which files the network lets through: the small test files next to this
+     page (test.txt, test.zip, test.wasm) and the real Python files on the CDN.
+     Used once in class, on the bank's network: is the CDN blocked by its address
+     (then hosting Python on the course site helps) or are .zip / .wasm files blocked
+     everywhere (then it does not)? Not linked from the site. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Network test</title>
+<style>
+  :root { --bg: #fff; --fg: #1f2328; --muted: #59636e; --line: #d1d9e0; --ok: #1a7f37; --bad: #cf222e; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1b1b1f; --fg: #dfdfd6; --muted: #98989f; --line: #3c3f44; --ok: #3fb950; --bad: #f85149; }
+  }
+  body { background: var(--bg); color: var(--fg); font: 16px/1.5 system-ui, sans-serif; margin: 0; padding: 24px 16px; }
+  main { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 1.5rem; margin: 0 0 8px; }
+  p { margin: 8px 0; }
+  .muted { color: var(--muted); }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+  th, td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+  td.file { font-family: ui-monospace, monospace; font-size: 0.9rem; word-break: break-all; }
+  .ok { color: var(--ok); font-weight: 600; }
+  .bad { color: var(--bad); font-weight: 600; }
+  #verdict { border: 1px solid var(--line); border-radius: 6px; padding: 12px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Network test</h1>
+  <p>This page checks which files your network lets through. It takes a few seconds.
+     Show the result to your trainer.</p>
+  <p class="muted">Тази страница проверява кои файлове пропуска мрежата. Покажете резултата на преподавателя.</p>
+  <table>
+    <thead><tr><th>Where</th><th>File</th><th>Result</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+  <div id="verdict">Checking...</div>
+  <p class="muted" id="when"></p>
+</main>
+<script>
+const CDN = 'https://cdn.jsdelivr.net/pyodide/v314.0.7/full/'
+// [group, label, url, what a real file starts with (null: a PyPI page that lists openpyxl)]
+const TESTS = [
+  ['site', 'Course site', 'test.txt', 'Network test'],
+  ['site', 'Course site', 'test.zip', 'PK'],
+  ['site', 'Course site', 'test.wasm', '\0asm'],
+  ['cdn', 'cdn.jsdelivr.net', CDN + 'python_stdlib.zip', 'PK'],
+  ['cdn', 'cdn.jsdelivr.net', CDN + 'pyodide.asm.wasm', '\0asm'],
+  ['pypi', 'pypi.org', 'https://pypi.org/simple/openpyxl/', null]
+]
+
+/** null when the file arrives as it is, else why not */
+async function check(url, start) {
+  try {
+    const response = await fetch(url, { cache: 'no-store' })
+    if (!response.ok) return 'blocked (HTTP ' + response.status + ')'
+    if (start === null) return (await response.text()).includes('openpyxl-') ? null : 'replaced by something else'
+    const reader = response.body.getReader()
+    const { value = new Uint8Array() } = await reader.read()   // the first bytes are enough
+    reader.cancel().catch(() => {})
+    const first = String.fromCharCode(...value.subarray(0, start.length))
+    const type = response.headers.get('content-type') || ''
+    if (/html/i.test(type)) return 'replaced by a page of the network (' + type + ')'
+    if (first !== start) return 'replaced by something else'
+    return null
+  } catch (error) {
+    return 'blocked (no answer: ' + error.message + ')'
+  }
+}
+
+async function main() {
+  const rows = document.getElementById('rows')
+  const results = await Promise.all(TESTS.map(([, , url, start]) => check(url, start)))
+  const failed = group => TESTS.some((test, i) => test[0] === group && results[i])
+  TESTS.forEach(([, label, url], i) => {
+    const tr = document.createElement('tr')
+    const name = url.startsWith('https://') ? url.replace(/^https:\/\/[^/]+/, '') : 'network-test/' + url
+    tr.innerHTML = '<td></td><td class="file"></td><td></td>'
+    tr.children[0].textContent = label
+    tr.children[1].textContent = name
+    tr.children[2].textContent = results[i] ? results[i] : 'OK'
+    tr.children[2].className = results[i] ? 'bad' : 'ok'
+    rows.append(tr)
+  })
+  let verdict
+  if (failed('site')) {
+    verdict = 'The network blocks these file types on every site, also on the course site. ' +
+              'Hosting Python on the course site will not help.'
+  } else if (failed('cdn')) {
+    verdict = 'The course site works, but cdn.jsdelivr.net is blocked. ' +
+              'Hosting Python on the course site will help.'
+  } else {
+    verdict = 'Everything arrives. If Run still fails, press F12, open "Console" and show the red and yellow lines to your trainer.'
+  }
+  if (failed('pypi')) verdict += ' pypi.org is blocked too (Excel examples on the site; pip install on this computer).'
+  document.getElementById('verdict').textContent = verdict
+  document.getElementById('when').textContent = 'Checked: ' + new Date().toLocaleString() + ' - ' + navigator.userAgent
+}
+main()
+</script>
+</body>
+</html>
