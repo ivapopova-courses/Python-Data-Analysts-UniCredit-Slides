@@ -12,7 +12,7 @@ title: 14. NumPy and introduction to pandas
 **Today you will learn to:**
 
 - calculate on a whole column at once with **NumPy** arrays - no loops;
-- choose values with `np.where` and `np.select`, the vector `CASE WHEN`;
+- choose values with `np.where` and `np.select`, the vector version of SQL `CASE WHEN`;
 - work with the two objects of **pandas**: the `Series` (a column) and the
   `DataFrame` (a table);
 - read CSV and Excel files with the options real files need: separators, decimal
@@ -177,7 +177,7 @@ print(np.median(outstanding))
 `ddof=1` matters: NumPy's default `std()` is the **population** standard deviation,
 SAS and pandas use the sample one (`n - 1`).
 
-Running totals and differences - `RETAIN` and `LAG` of a DATA step, for a whole array:
+Running totals and differences - `RETAIN` and `LAG` of a SAS DATA step, for a whole array:
 
 ```python run
 import numpy as np
@@ -234,7 +234,7 @@ choices = ["current", "1-30", "31-90"]
 print(np.select(conditions, choices, default="90+"))
 ```
 
-The conditions are checked **in order** - the first true one wins, like `CASE WHEN`.
+The conditions are checked **in order** - the first true one wins, like SQL `CASE WHEN`.
 
 ### Broadcasting: different shapes together
 
@@ -386,7 +386,7 @@ pd.DataFrame(rows)
 ### Columns
 
 `df["name"]` gives one column as a **Series**; `df[["a", "b"]]` (a list inside) gives a
-**DataFrame** with those columns - `SELECT a, b`:
+**DataFrame** with those columns - SQL `SELECT a, b`:
 
 ```python run
 import pandas as pd
@@ -397,8 +397,8 @@ print(loans["outstanding"].sum().round(2))
 loans[["loan_id", "product", "outstanding"]].head(3)
 ```
 
-A new column from other columns - a derived variable of a DATA step, for all rows at
-once:
+A new column from other columns - a derived variable of a SAS DATA step, for all rows
+at once:
 
 ```python run
 import pandas as pd
@@ -409,7 +409,7 @@ loans["yearly_interest"] = (loans["outstanding"] * loans["interest_rate"] / 100)
 loans[["loan_id", "amount", "outstanding", "repaid_share", "yearly_interest"]].head()
 ```
 
-Remove and rename columns - `DROP=` and `RENAME=` of a DATA step:
+Remove and rename columns - `DROP=` and `RENAME=` of a SAS DATA step:
 
 ```python run
 import pandas as pd
@@ -432,7 +432,7 @@ print(loans.sample(3, random_state=1)[["loan_id", "product"]])   # random rows, 
 loans.sort_values("outstanding", ascending=False).head(3)[["loan_id", "product", "outstanding"]]
 ```
 
-`sort_values` is `PROC SORT` / `ORDER BY`; selection with conditions (`WHERE`) and
+`sort_values` is SAS `PROC SORT` / SQL `ORDER BY`; selection with conditions (SQL `WHERE`) and
 `loc` are session 15.
 
 ### The index
@@ -770,7 +770,7 @@ print(export["Loan ID"].duplicated().sum(), "loan ids appear more than once")
 `isna()` gives a DataFrame of `True` / `False`; `.sum()` counts the `True` per column -
 the masks of section 2, for a whole table.
 
-To remove the exact copies, `drop_duplicates()` - like `PROC SORT NODUPRECS`, but it
+To remove the exact copies, `drop_duplicates()` - like SAS `PROC SORT NODUPRECS`, but it
 keeps the order of the rows (the first copy stays):
 
 ```python run
@@ -1124,5 +1124,5 @@ print((pd.Timestamp("2026-09-30") - pd.Timestamp("1960-01-01")).days)     # 2437
   McKinney, the author of pandas - free online
 
 **Next session:** pandas - selection with `loc` and masks, new columns with
-`np.select` and `pd.cut`, `groupby` (the `GROUP BY` and `PROC MEANS` of pandas),
-`merge` (the `JOIN`), and missing values.
+`np.select` and `pd.cut`, `groupby` (the SQL `GROUP BY` and SAS `PROC MEANS` of
+pandas), `merge` (the SQL `JOIN`), and missing values.

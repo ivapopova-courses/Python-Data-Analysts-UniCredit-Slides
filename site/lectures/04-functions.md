@@ -1108,7 +1108,7 @@ for a function you need **once, right here** - most often as the `key` of a sort
 ### Sorting by a key
 
 `sorted()` and `list.sort()` take a `key`: a function that is called for each item,
-and the items are sorted by its result. This is `ORDER BY` with any expression:
+and the items are sorted by its result. This is SQL `ORDER BY` with any expression:
 
 ```python run
 data = [(1, "Z"), (2, "Y"), (3, "X")]

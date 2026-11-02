@@ -495,7 +495,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-classes.md:880
-msgid "`@property` is a **decorator** (lecture 4, Self-study): it turns the method into a read-only attribute. A computed value never gets out of date, because it is computed each time it is read - like a computed column of an SQL view."
+msgid "`@property` is a **decorator** (lecture 4, Self-study): it turns the method into a read-only attribute. A computed value never gets out of date, because it is computed each time it is read - like a computed column of a SQL view."
 msgstr ""
 
 #. paragraph

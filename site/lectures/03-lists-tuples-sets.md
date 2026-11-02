@@ -17,8 +17,8 @@ title: 3. Lists (basics), tuples and sets
 - understand why two names can show the same list - and how to make a copy;
 - use **tuples** as records that cannot change, and unpack them;
 - use `range` for sequences of numbers;
-- find unique values with **sets**, and compare groups with `UNION`, `INTERSECT` and
-  `EXCEPT` - the Python way.
+- find unique values with **sets**, and compare groups the way SQL `UNION`,
+  `INTERSECT` and `EXCEPT` do - the Python way.
 
 From SQL to Python - the same question, two ways. Which clients have no loans?
 
@@ -254,7 +254,7 @@ for amount in amounts:
     position += 1
 ```
 
-Two lists, one loop inside the other - every pair, like a `CROSS JOIN`:
+Two lists, one loop inside the other - every pair, like a `CROSS JOIN` in SQL:
 
 ```python run
 products = ["mortgage", "consumer"]
@@ -336,7 +336,7 @@ print(numbers[5:10])
 ### Slices of strings: `SUBSTR`
 
 A string is a sequence of characters, so the same indexes and slices work - this is
-the Python `SUBSTR`:
+the Python version of `SUBSTR` in SAS and SQL:
 
 | SAS / SQL | Python |
 |---|---|
@@ -470,8 +470,8 @@ print(text.split())              # without an argument: by spaces
 ### Collect values in a loop: `append`
 
 Start with an empty list and **append** a value in each iteration. It is the Python
-`OUTPUT` statement: the DATA step writes a row to the output data set, `append` adds an
-item to the list.
+version of the SAS `OUTPUT` statement: in SAS, `OUTPUT` writes a row of the DATA step
+to the output data set; in Python, `append` adds an item to the list.
 
 ```python run
 late_loans = []
@@ -626,7 +626,7 @@ print(sorted(["banana", "Cherry", "apple"]))
 print(sorted([3, "1", 2]))
 ```
 
-`PROC SORT` and `ORDER BY` can sort by a column, or by several. For records kept as
+SAS `PROC SORT` and SQL `ORDER BY` can sort by a column, or by several. For records kept as
 tuples, put the column to sort by first (section 8, "Sort records"); the general
 way is `sorted(..., key=...)`: sessions 4 and 5.
 
@@ -858,7 +858,7 @@ Tuples are also used for **several return values of a function** (session 4) and
 
 Tuples are compared like words, item by item: the **first** items first; only when
 they are equal, the second items, and so on. So `sorted` on a list of tuples sorts
-by the first item, then by the second - like `ORDER BY col1, col2`:
+by the first item, then by the second - like `ORDER BY col1, col2` in SQL:
 
 ```python run
 print((2, "b") < (10, "a"))         # True: 2 < 10, the rest is not looked at

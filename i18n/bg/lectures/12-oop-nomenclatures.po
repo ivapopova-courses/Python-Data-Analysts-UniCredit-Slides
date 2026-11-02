@@ -170,7 +170,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:83
-msgid "In most teams, the same mapping lives in **many** programs: a `PROC FORMAT` here, a `CASE WHEN` there, a lookup table in a third place. Then:"
+msgid "In most teams, the same mapping lives in **many** programs: a SAS `PROC FORMAT` here, a SQL `CASE WHEN` there, a lookup table in a third place. Then:"
 msgstr ""
 
 #. paragraph
@@ -460,7 +460,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:538
-msgid "The main method: take rows (a list of dictionaries, session 6), and return **new** rows with one more column - the label of the code. Like `put(product, $product.)` in a DATA step, or a `LEFT JOIN` to a lookup table:"
+msgid "The main method: take rows (a list of dictionaries, session 6), and return **new** rows with one more column - the label of the code. Like `put(product, $product.)` in a SAS DATA step, or a SQL `LEFT JOIN` to a lookup table:"
 msgstr ""
 
 #. paragraph
@@ -475,7 +475,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:603
-msgid "The new column, then a total per label - the outstanding per stage name, the `GROUP BY` of session 6:"
+msgid "The new column, then a total per label - the outstanding per stage name, the SQL `GROUP BY` of session 6:"
 msgstr ""
 
 #. box title
@@ -550,7 +550,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:787
-msgid "Nomenclatures live in files and databases. A **class method** is a method of the **class**, not of an object: its first parameter is the class itself (`cls`), and it is used as an **alternative constructor** - like `CNTLIN=` builds a format from a dataset:"
+msgid "Nomenclatures live in files and databases. A **class method** is a method of the **class**, not of an object: its first parameter is the class itself (`cls`), and it is used as an **alternative constructor** - like `CNTLIN=` in SAS builds a format from a dataset:"
 msgstr ""
 
 #. paragraph

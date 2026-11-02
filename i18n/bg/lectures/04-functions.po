@@ -980,8 +980,8 @@ msgstr "Сортиране по ключ"
 
 #. paragraph
 #: site/lectures/04-functions.md:1110
-msgid "`sorted()` and `list.sort()` take a `key`: a function that is called for each item, and the items are sorted by its result. This is `ORDER BY` with any expression:"
-msgstr "`sorted()` и `list.sort()` приемат `key`: функция, която се извиква за всеки елемент, и елементите се сортират по нейния резултат. Това е `ORDER BY` с произволен израз:"
+msgid "`sorted()` and `list.sort()` take a `key`: a function that is called for each item, and the items are sorted by its result. This is SQL `ORDER BY` with any expression:"
+msgstr "`sorted()` и `list.sort()` приемат `key`: функция, която се извиква за всеки елемент, и елементите се сортират по нейния резултат. Това е `ORDER BY` от SQL с произволен израз:"
 
 #. paragraph
 #: site/lectures/04-functions.md:1134
@@ -1332,6 +1332,9 @@ msgstr "Видеа: [Python tutorial for beginners 8: functions](https://www.you
 #: site/lectures/04-functions.md:1449
 msgid "**Next session:** lists, advanced - list comprehensions, sorting with `key`, `zip`, `enumerate`, `map` and `filter`, and a table as a list of rows."
 msgstr "**Следващото занятие:** lists за напреднали - list comprehensions, сортиране с `key`, `zip`, `enumerate`, `map` и `filter` и таблица като list от редове."
+
+#~ msgid "`sorted()` and `list.sort()` take a `key`: a function that is called for each item, and the items are sorted by its result. This is `ORDER BY` with any expression:"
+#~ msgstr "`sorted()` и `list.sort()` приемат `key`: функция, която се извиква за всеки елемент, и елементите се сортират по нейния резултат. Това е `ORDER BY` с произволен израз:"
 
 #~ msgid "pass values to a function: by position, by name, with default values, and in any number with `*args` and `**kwargs`;"
 #~ msgstr "подавате стойности на функция: по позиция, по име, със стойности по подразбиране и в произволен брой с `*args` и `**kwargs`;"

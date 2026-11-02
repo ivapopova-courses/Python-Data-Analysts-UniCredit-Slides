@@ -12,7 +12,7 @@ title: 5. Lists (advanced)
 **Today you will learn to:**
 
 - build a new list from an old one in one line, with a **list comprehension** - the
-  Python `SELECT expression ... WHERE condition`;
+  Python version of SQL `SELECT expression ... WHERE condition`;
 - check a whole list at once with `any` and `all`, and find extremes with `min` and
   `max`;
 - sort by several columns, in mixed directions, and take the top N;
@@ -45,7 +45,7 @@ for rank, (loan_id, product, outstanding) in enumerate(top10, start=1):
 ```
 
 Three lines do the work: a comprehension reads the table, a second one selects the
-columns, and `sorted(...)[:10]` is `ORDER BY ... FETCH FIRST 10`. By the end of today
+columns, and `sorted(...)[:10]` is SQL `ORDER BY ... FETCH FIRST 10`. By the end of today
 you can write each of them.
 
 ## 1. List comprehensions
@@ -84,7 +84,7 @@ Read it from the middle: "**for** each `amount` **in** `amounts`, take `amount /
 ```
 
 It is the same as `SELECT amount / 1000 FROM amounts` in SQL, and the same as a
-derived variable in a DATA step:
+derived variable in a SAS DATA step:
 
 ```sas
 data in_thousands;
@@ -146,7 +146,7 @@ print(very_late)
                                    WHERE
 ```
 
-`SELECT d FROM days WHERE d > 90`. With both parts - a new value **and** a filter:
+In SQL: `SELECT d FROM days WHERE d > 90`. With both parts - a new value **and** a filter:
 
 ```python run
 rates = [8.83, 5.44, 4.79, 8.35, 12.10]
@@ -239,7 +239,7 @@ This is a **generator expression**: it gives the values one by one to `sum`, and
 never builds a list in memory. It works with any function that takes many values:
 `sum`, `min`, `max`, `any`, `all`, `sorted`, `set`, `", ".join(...)`.
 
-`sum(1 for ... if ...)` is `COUNT(*) ... WHERE ...`. Another way to count: `True`
+`sum(1 for ... if ...)` is SQL `COUNT(*) ... WHERE ...`. Another way to count: `True`
 is `1` (session 2), so `sum(int(row[9]) > 0 for row in rows)` gives the same.
 
 ### Set comprehensions: `SELECT DISTINCT`
@@ -434,7 +434,7 @@ print("max    ", max(rates))
 print("average", round(sum(rates) / len(rates), 2))
 ```
 
-This is `PROC MEANS` for one variable. The module `statistics` (session 10) adds
+This is SAS `PROC MEANS` for one variable. The module `statistics` (session 10) adds
 `median`, `stdev` and more; pandas gives all of them in one `describe()` (session 14).
 
 ::: tip Try it
@@ -453,7 +453,7 @@ columns, mixed directions, and the top N.
 ### Several columns: a tuple as the key
 
 A reminder of session 4: a key that returns a **tuple** sorts by the first value,
-then by the second for equal first values - like `ORDER BY a, b`:
+then by the second for equal first values - like SQL `ORDER BY a, b`:
 
 ```python run
 loans = [
@@ -507,7 +507,7 @@ for loan in result:
     print(loan)
 ```
 
-`PROC SORT` is stable too (with the default `EQUALS` option), so this is familiar.
+SAS `PROC SORT` is stable too (with the default `EQUALS` option), so this is familiar.
 
 ::: details Advanced: `operator.itemgetter`
 For keys that only pick columns, the module `operator` has a ready function:
@@ -598,7 +598,7 @@ It also takes `key=`. For a few thousand rows `sorted(...)[:n]` is just as good.
 
 ::: tip Try it
 In the "ORDER BY product, outstanding DESC" example, sort by `product DESC,
-outstanding DESC` instead. Which of the two ways do you need? (Answer: `reverse=True`
+outstanding DESC` (in SQL terms) instead. Which of the two ways do you need? (Answer: `reverse=True`
 on the tuple key is enough - both columns go down.)
 :::
 
@@ -645,7 +645,7 @@ print(changes)
 ### `zip(*rows)`: transpose a table
 
 With the `*` of session 4, `zip(*rows)` turns a list of rows into a list of
-**columns** - a small `PROC TRANSPOSE`:
+**columns** - a small SAS `PROC TRANSPOSE`:
 
 ```python run
 rows = [
@@ -849,7 +849,7 @@ too. Can you do both with one `map`? (Hint: a `lambda`, or a comprehension:
 
 ### The shape of a table in Python
 
-A SAS dataset or an SQL table has rows and columns. In plain Python, the simplest
+A SAS dataset or a SQL table has rows and columns. In plain Python, the simplest
 form is a **list of rows**, where each row is a list or a tuple, and a separate list
 of column names:
 
@@ -1014,7 +1014,7 @@ the original row - section 7.
 
 ### Column totals by group, with a loop
 
-`GROUP BY stage` with a list: one total per stage, and the stage number as the index
+SQL `GROUP BY stage` with a list: one total per stage, and the stage number as the index
 (stage `1` at position `0`):
 
 ```python run
@@ -1045,8 +1045,8 @@ regions you need a dictionary - session 6.
 
 ### A cross table: a list of lists
 
-A table of counts: stages in the rows, currencies in the columns - `PROC FREQ` with
-`TABLES stage * currency`:
+A table of counts: stages in the rows, currencies in the columns - SAS `PROC FREQ`
+with `TABLES stage * currency`:
 
 ```python run
 with open("data/loans.csv", encoding="utf-8") as file:
@@ -1217,7 +1217,7 @@ python 05-lists-advanced/practice/task1-comprehensions.py
 1. `05-lists-advanced/homework.py` (in the homework repository): **the portfolio as a
    list of records** - read `loans.csv` into rows with types, find the ten largest
    exposures and their share of the portfolio (the concentration), build the stage x
-   product count table as a list of lists (a `PROC FREQ` cross table by hand), and
+   product count table as a list of lists (a SAS `PROC FREQ` cross table by hand), and
    check the data with `any` / `all`. Every check must print `OK`.
 2. The practice tasks you did not finish in class.
 3. Optional: print the cross table of the homework as a small report, with the
@@ -1232,7 +1232,7 @@ that do not fit in memory.
 ### `itertools`: running totals, `LAG` and BY groups
 
 The module `itertools` has building blocks for loops. Three of them replace common
-DATA step patterns.
+patterns of the SAS DATA step.
 
 **`accumulate` - a running total (`RETAIN`).** In SAS: `retain total 0; total + x;`.
 
@@ -1244,7 +1244,7 @@ print(list(accumulate(payments)))                  # running sum
 print(list(accumulate(payments, max)))             # running maximum
 ```
 
-**`pairwise` - the value and the one before (`LAG`).** Since Python 3.10:
+**`pairwise` - the value and the one before (SAS `LAG`).** Since Python 3.10:
 
 ```python run
 from itertools import pairwise
@@ -1256,8 +1256,8 @@ for before, now in pairwise(outstanding):
 
 It is the same as `zip(xs, xs[1:])` from section 4, without the copy of the list.
 
-**`groupby` - BY-group processing (`FIRST.` / `LAST.`).** `groupby` cuts a **sorted**
-list into groups of equal keys - like a DATA step with `BY product`:
+**`groupby` - BY-group processing (SAS `FIRST.` / `LAST.`).** `groupby` cuts a
+**sorted** list into groups of equal keys - like a SAS DATA step with `BY product`:
 
 ```python run
 from itertools import groupby
@@ -1279,8 +1279,9 @@ product appears in many small groups - exactly like a SAS `BY` without `PROC SOR
 except that Python does not stop with an error.
 :::
 
-Two more: `islice(iterable, n)` takes the first `n` items of any iterator (`OBS=n`),
-and `chain(a, b)` reads several lists one after another (`SET a b;`).
+Two more, again with their SAS names: `islice(iterable, n)` takes the first `n`
+items of any iterator (`OBS=n`), and `chain(a, b)` reads several lists one after
+another (`SET a b;`).
 
 ```python run
 from itertools import chain, islice
@@ -1386,4 +1387,4 @@ print(sum(1 for _ in late_loans("data/loans.csv", 90)))     # 17
   [Python's `zip()` function](https://realpython.com/python-zip-function/)
 
 **Next session:** dictionaries - a key and a value, the Python version of a SAS format
-and of a lookup table; counting and `GROUP BY` without pandas.
+and of a lookup table; counting and SQL `GROUP BY` without pandas.

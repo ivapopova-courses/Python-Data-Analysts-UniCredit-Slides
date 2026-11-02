@@ -3245,8 +3245,11 @@ msgstr "Видеа за по-късно: [NumPy for beginners (SciPy 2018)](http
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1926
-msgid "**Next session:** conditional statements and loops - `if` / `elif` / `else`, the Python `CASE WHEN`, and `for` / `while` loops over the rows of a file."
-msgstr "**Следващото занятие:** условни конструкции и цикли - `if` / `elif` / `else`, `CASE WHEN` на Python и цикли `for` / `while` по редовете на файл."
+msgid "**Next session:** conditional statements and loops - `if` / `elif` / `else`, the Python version of SQL `CASE WHEN`, and `for` / `while` loops over the rows of a file."
+msgstr "**Следващото занятие:** условни конструкции и цикли - `if` / `elif` / `else`, версията на Python на `CASE WHEN` от SQL, и цикли `for` / `while` по редовете на файл."
+
+#~ msgid "**Next session:** conditional statements and loops - `if` / `elif` / `else`, the Python `CASE WHEN`, and `for` / `while` loops over the rows of a file."
+#~ msgstr "**Следващото занятие:** условни конструкции и цикли - `if` / `elif` / `else`, `CASE WHEN` на Python и цикли `for` / `while` по редовете на файл."
 
 #~ msgid "**Iva Popova** - [LinkedIn](https://www.linkedin.com/in/ivapopova/)"
 #~ msgstr "**Ива Попова** - [LinkedIn](https://www.linkedin.com/in/ivapopova/)"

@@ -65,8 +65,8 @@ msgstr "използвате `range` за поредици от числа;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:20
-msgid "find unique values with **sets**, and compare groups with `UNION`, `INTERSECT` and `EXCEPT` - the Python way."
-msgstr "намирате уникалните стойности със **sets** и да сравнявате групи с `UNION`, `INTERSECT` и `EXCEPT` - по начина на Python."
+msgid "find unique values with **sets**, and compare groups the way SQL `UNION`, `INTERSECT` and `EXCEPT` do - the Python way."
+msgstr "намирате уникалните стойности със **sets** и да сравнявате групи като `UNION`, `INTERSECT` и `EXCEPT` в SQL - по начина на Python."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:23
@@ -345,8 +345,8 @@ msgstr "Цикълът дава елементите, не позициите и
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:257
-msgid "Two lists, one loop inside the other - every pair, like a `CROSS JOIN`:"
-msgstr "Два lists, един цикъл в друг - всяка двойка, като `CROSS JOIN`:"
+msgid "Two lists, one loop inside the other - every pair, like a `CROSS JOIN` in SQL:"
+msgstr "Два lists, един цикъл в друг - всяка двойка, като `CROSS JOIN` в SQL:"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:268
@@ -435,8 +435,8 @@ msgstr "Slices на strings: `SUBSTR`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:338
-msgid "A string is a sequence of characters, so the same indexes and slices work - this is the Python `SUBSTR`:"
-msgstr "String е поредица от символи, така че същите индекси и slices работят - това е `SUBSTR` на Python:"
+msgid "A string is a sequence of characters, so the same indexes and slices work - this is the Python version of `SUBSTR` in SAS and SQL:"
+msgstr "String е поредица от символи, така че същите индекси и slices работят - това е версията на Python на `SUBSTR` от SAS и SQL:"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:341
@@ -530,8 +530,8 @@ msgstr "Събиране на стойности в цикъл: `append`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:472
-msgid "Start with an empty list and **append** a value in each iteration. It is the Python `OUTPUT` statement: the DATA step writes a row to the output data set, `append` adds an item to the list."
-msgstr "Започнете с празен list и **добавяйте** (append) стойност във всяка итерация. Това е statement-ът `OUTPUT` на Python: DATA step-ът записва ред в изходния набор от данни, `append` добавя елемент в list-а."
+msgid "Start with an empty list and **append** a value in each iteration. It is the Python version of the SAS `OUTPUT` statement: in SAS, `OUTPUT` writes a row of the DATA step to the output data set; in Python, `append` adds an item to the list."
+msgstr "Започнете с празен list и **добавяйте** (append) стойност във всяка итерация. Това е версията на Python на statement-а `OUTPUT` от SAS: в SAS `OUTPUT` записва ред от DATA step-а в изходния набор от данни; в Python `append` добавя елемент в list-а."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:498
@@ -685,8 +685,8 @@ msgstr "Сортирането сравнява елементите с `<` (з�
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:629
-msgid "`PROC SORT` and `ORDER BY` can sort by a column, or by several. For records kept as tuples, put the column to sort by first (section 8, \"Sort records\"); the general way is `sorted(..., key=...)`: sessions 4 and 5."
-msgstr "`PROC SORT` и `ORDER BY` могат да сортират по колона или по няколко. За записи, пазени като tuples, сложете колоната за сортиране първа (раздел 8, \"Сортиране на записи\"); общият начин е `sorted(..., key=...)`: занятия 4 и 5."
+msgid "SAS `PROC SORT` and SQL `ORDER BY` can sort by a column, or by several. For records kept as tuples, put the column to sort by first (section 8, \"Sort records\"); the general way is `sorted(..., key=...)`: sessions 4 and 5."
+msgstr "`PROC SORT` в SAS и `ORDER BY` в SQL могат да сортират по колона или по няколко. За записи, пазени като tuples, сложете колоната за сортиране първа (раздел 8, \"Сортиране на записи\"); общият начин е `sorted(..., key=...)`: занятия 4 и 5."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:633
@@ -860,8 +860,8 @@ msgstr "Сортиране на записи: tuples се сравняват е�
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:859
-msgid "Tuples are compared like words, item by item: the **first** items first; only when they are equal, the second items, and so on. So `sorted` on a list of tuples sorts by the first item, then by the second - like `ORDER BY col1, col2`:"
-msgstr "Tuples се сравняват като думи, елемент по елемент: първо **първите** елементи; само когато са равни - вторите, и т.н. Затова `sorted` върху list от tuples сортира по първия елемент, после по втория - като `ORDER BY col1, col2`:"
+msgid "Tuples are compared like words, item by item: the **first** items first; only when they are equal, the second items, and so on. So `sorted` on a list of tuples sorts by the first item, then by the second - like `ORDER BY col1, col2` in SQL:"
+msgstr "Tuples се сравняват като думи, елемент по елемент: първо **първите** елементи; само когато са равни - вторите, и т.н. Затова `sorted` върху list от tuples сортира по първия елемент, после по втория - като `ORDER BY col1, col2` в SQL:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:872
@@ -1567,6 +1567,24 @@ msgstr "Real Python: [Lists and tuples](https://realpython.com/python-lists-tupl
 #: site/lectures/03-lists-tuples-sets.md:1336
 msgid "**Next session:** functions - your own `def`, parameters and return values, and why a function is the Python version of a SAS macro."
 msgstr "**Следващото занятие:** функции - собствен `def`, параметри и върнати стойности и защо функцията е версията на SAS macro в Python."
+
+#~ msgid "find unique values with **sets**, and compare groups with `UNION`, `INTERSECT` and `EXCEPT` - the Python way."
+#~ msgstr "намирате уникалните стойности със **sets** и да сравнявате групи с `UNION`, `INTERSECT` и `EXCEPT` - по начина на Python."
+
+#~ msgid "Two lists, one loop inside the other - every pair, like a `CROSS JOIN`:"
+#~ msgstr "Два lists, един цикъл в друг - всяка двойка, като `CROSS JOIN`:"
+
+#~ msgid "A string is a sequence of characters, so the same indexes and slices work - this is the Python `SUBSTR`:"
+#~ msgstr "String е поредица от символи, така че същите индекси и slices работят - това е `SUBSTR` на Python:"
+
+#~ msgid "Start with an empty list and **append** a value in each iteration. It is the Python `OUTPUT` statement: the DATA step writes a row to the output data set, `append` adds an item to the list."
+#~ msgstr "Започнете с празен list и **добавяйте** (append) стойност във всяка итерация. Това е statement-ът `OUTPUT` на Python: DATA step-ът записва ред в изходния набор от данни, `append` добавя елемент в list-а."
+
+#~ msgid "`PROC SORT` and `ORDER BY` can sort by a column, or by several. For records kept as tuples, put the column to sort by first (section 8, \"Sort records\"); the general way is `sorted(..., key=...)`: sessions 4 and 5."
+#~ msgstr "`PROC SORT` и `ORDER BY` могат да сортират по колона или по няколко. За записи, пазени като tuples, сложете колоната за сортиране първа (раздел 8, \"Сортиране на записи\"); общият начин е `sorted(..., key=...)`: занятия 4 и 5."
+
+#~ msgid "Tuples are compared like words, item by item: the **first** items first; only when they are equal, the second items, and so on. So `sorted` on a list of tuples sorts by the first item, then by the second - like `ORDER BY col1, col2`:"
+#~ msgstr "Tuples се сравняват като думи, елемент по елемент: първо **първите** елементи; само когато са равни - вторите, и т.н. Затова `sorted` върху list от tuples сортира по първия елемент, после по втория - като `ORDER BY col1, col2`:"
 
 #~ msgid "A list is the natural thing to loop over: `for` takes its items one by one, in order. Everything of session 2 works here - accumulators, `break`, `continue` and the `else` of a loop."
 #~ msgstr "List е естественото нещо за обхождане: `for` взема елементите му един по един, по ред. Всичко от занятие 2 работи и тук - акумулатори, `break`, `continue` и `else` на цикъла."

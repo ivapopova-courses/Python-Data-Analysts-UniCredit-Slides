@@ -839,7 +839,7 @@ print(worse, "clients downgraded,", better, "upgraded")
 ### Step by step: `WITH`
 
 A long query reads better in named steps - a **common table expression** (`WITH`), like
-a chain of `PROC SQL` steps that create temporary tables. The share of the 10 largest
+a chain of SAS `PROC SQL` steps that create temporary tables. The share of the 10 largest
 clients in the portfolio:
 
 ```python run
@@ -1326,7 +1326,7 @@ with sqlite3.connect("data/portfolio.db") as con:
         print(row)
 ```
 
-A running total per client - `RETAIN` with `BY`:
+A running total per client - in SAS, `RETAIN` with `BY`:
 
 ```python run
 import sqlite3
@@ -1343,10 +1343,10 @@ with sqlite3.connect("data/portfolio.db") as con:
 
 **Exercises**
 
-1. With `LAG`, find all (client, month) rows where the rating got **worse** by 2 or
+1. With `LAG` (the SQL window function), find all (client, month) rows where the rating got **worse** by 2 or
    more notches in one month.
 2. With `ROW_NUMBER() ... ORDER BY outstanding DESC`, keep only the largest loan of
-   each client (the `FIRST.` of a sorted BY group).
+   each client (the SAS `FIRST.` of a sorted BY group).
 
 ::: details Answer
 1.
@@ -1382,5 +1382,5 @@ Run them with `con.execute(...).fetchall()`.
 - SQLite: [Window functions](https://www.sqlite.org/windowfunctions.html)
 
 **Next session:** NumPy and pandas - arrays that calculate a whole column at once, and
-the DataFrame: read CSV and Excel files, and look at a dataset the way `PROC CONTENTS`,
-`PROC MEANS` and `PROC FREQ` do.
+the DataFrame: read CSV and Excel files, and look at a dataset the way SAS
+`PROC CONTENTS`, `PROC MEANS` and `PROC FREQ` do.

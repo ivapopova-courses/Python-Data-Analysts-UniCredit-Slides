@@ -185,7 +185,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:136
-msgid "`d.get(key)` gives `None` for a missing key, and `d.get(key, default)` gives the default - like `OTHER=` in a format:"
+msgid "`d.get(key)` gives `None` for a missing key, and `d.get(key, default)` gives the default - like `OTHER=` in a SAS format:"
 msgstr ""
 
 #. paragraph
@@ -400,7 +400,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:422
-msgid "`SELECT key, expression FROM ... WHERE ...` into a lookup table. Common forms, on a small list of clients:"
+msgid "In SQL terms: `SELECT key, expression FROM ... WHERE ...` into a lookup table. Common forms, on a small list of clients:"
 msgstr ""
 
 #. heading 3
@@ -485,7 +485,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:535
-msgid "A `LEFT JOIN loans -> clients ON client_id` is: a dictionary of the clients, and a lookup for every loan."
+msgid "In Python, a SQL `LEFT JOIN loans -> clients ON client_id` is: a dictionary of the clients, and a lookup for every loan."
 msgstr ""
 
 #. paragraph
@@ -510,7 +510,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:571
-msgid "The expected loss of homework 4 needs the PD of each loan, two tables away: the loan has a client, the client has a rating, the rating has a PD. With two dictionaries, that is two lookups in a row - like two `LEFT JOIN`s, or two `put()` with formats in a DATA step. On small made-up tables:"
+msgid "The expected loss of homework 4 needs the PD of each loan, two tables away: the loan has a client, the client has a rating, the rating has a PD. With two dictionaries, that is two lookups in a row - like two `LEFT JOIN`s in SQL, or two `put()` with formats in a SAS DATA step. On small made-up tables:"
 msgstr ""
 
 #. paragraph
@@ -575,7 +575,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:661
-msgid "`SELECT region, COUNT(*) FROM clients GROUP BY region` - four ways, from the longest to the shortest. All do the same: a dictionary **group -> count** that grows row by row."
+msgid "The SQL `SELECT region, COUNT(*) FROM clients GROUP BY region` - four ways, from the longest to the shortest. All do the same: a dictionary **group -> count** that grows row by row."
 msgstr ""
 
 #. paragraph
@@ -605,7 +605,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:732
-msgid "`SELECT segment, SUM(outstanding) ... GROUP BY segment` - the segment is in `clients.csv`, the amount in `loans.csv`: a lookup (section 5) and a sum:"
+msgid "The SQL `SELECT segment, SUM(outstanding) ... GROUP BY segment` - the segment is in `clients.csv`, the amount in `loans.csv`: a lookup (section 5) and a sum:"
 msgstr ""
 
 #. paragraph
@@ -625,7 +625,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:777
-msgid "This is `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line (session 15) - but now you know what it does."
+msgid "This is SAS `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line (session 15) - but now you know what it does."
 msgstr ""
 
 #. paragraph
@@ -665,7 +665,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:842
-msgid "The result is a dictionary - filter it with a comprehension (`HAVING`), sort its items (`ORDER BY`):"
+msgid "The result is a dictionary - filter it with a comprehension (SQL `HAVING`), sort its items (SQL `ORDER BY`):"
 msgstr ""
 
 #. box title
@@ -725,7 +725,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:950
-msgid "Sort a list of records by one or more fields - `ORDER BY` with column names:"
+msgid "Sort a list of records by one or more fields - SQL `ORDER BY` with column names:"
 msgstr ""
 
 #. heading 3
@@ -1010,7 +1010,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1115
-msgid "And back - from the cross table to rows (`region, segment, count`), the job of `PROC TRANSPOSE` or `melt` in pandas (session 16):"
+msgid "And back - from the cross table to rows (`region, segment, count`), the job of SAS `PROC TRANSPOSE`, or of `melt` in pandas (session 16):"
 msgstr ""
 
 #. paragraph

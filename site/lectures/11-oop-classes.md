@@ -879,7 +879,7 @@ print(len(defaulted), "defaulted loans,", f"{sum(l.outstanding for l in defaulte
 
 `@property` is a **decorator** (lecture 4, Self-study): it turns the method into a
 read-only attribute. A computed value never gets out of date, because it is computed
-each time it is read - like a computed column of an SQL view.
+each time it is read - like a computed column of a SQL view.
 
 ```python run
 class Loan:

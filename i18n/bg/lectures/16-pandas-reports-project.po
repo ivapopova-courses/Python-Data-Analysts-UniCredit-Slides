@@ -45,7 +45,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:17
-msgid "compare each month with the previous one - the `LAG` and `RETAIN` of a DATA step;"
+msgid "compare each month with the previous one - the `LAG` and `RETAIN` of a SAS DATA step;"
 msgstr ""
 
 #. paragraph
@@ -85,12 +85,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:49
-msgid "`pivot_table` is a `groupby` with two keys, where the second key goes into the columns - `PROC TABULATE`, or Excel's pivot table:"
+msgid "`pivot_table` is a `groupby` with two keys, where the second key goes into the columns - SAS `PROC TABULATE`, or Excel's pivot table:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:59
-msgid "Where a combination has no rows, the cell is `NaN`. `fill_value=0` writes 0 instead, and `margins=True` adds the totals (the `ALL` of `PROC TABULATE`):"
+msgid "Where a combination has no rows, the cell is `NaN`. `fill_value=0` writes 0 instead, and `margins=True` adds the totals (the `ALL` of SAS `PROC TABULATE`):"
 msgstr ""
 
 #. paragraph
@@ -105,7 +105,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:96
-msgid "A list of functions - the count and the sum side by side (`N` and `SUM` in `PROC TABULATE`):"
+msgid "A list of functions - the count and the sum side by side (`N` and `SUM` in SAS `PROC TABULATE`):"
 msgstr ""
 
 #. paragraph
@@ -130,7 +130,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:140
-msgid "`pivot` only reshapes: every (row, column) pair must appear **once**. It is the right tool for a monthly history - one row per client, one column per month (`PROC TRANSPOSE`):"
+msgid "`pivot` only reshapes: every (row, column) pair must appear **once**. It is the right tool for a monthly history - one row per client, one column per month (SAS `PROC TRANSPOSE`):"
 msgstr ""
 
 #. paragraph
@@ -145,7 +145,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:159
-msgid "`pd.crosstab` counts the combinations of two columns - `PROC FREQ; TABLES a * b;`:"
+msgid "`pd.crosstab` counts the combinations of two columns - SAS `PROC FREQ; TABLES a * b;`:"
 msgstr ""
 
 #. paragraph
@@ -190,7 +190,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:227
-msgid "`melt` is the opposite of `pivot`: columns become rows - `PROC TRANSPOSE` back, or SQL `UNPIVOT`. A budget in Excel often comes wide, one column per month:"
+msgid "`melt` is the opposite of `pivot`: columns become rows - SAS `PROC TRANSPOSE` back, or SQL `UNPIVOT`. A budget in Excel often comes wide, one column per month:"
 msgstr ""
 
 #. paragraph
@@ -235,7 +235,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:308
-msgid "Real files mix formats. `client_register.csv` has the registration date in four formats (session 7). Try one format after another, and keep the first that works - a `COALESCE` of the parsing attempts:"
+msgid "Real files mix formats. `client_register.csv` has the registration date in four formats (session 7). Try one format after another, and keep the first that works - a SQL `COALESCE` of the parsing attempts:"
 msgstr ""
 
 #. heading 3
@@ -245,7 +245,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:326
-msgid "`pd.offsets.MonthEnd` moves a date to a month end - `INTNX('month', date, n, 'end')`:"
+msgid "`pd.offsets.MonthEnd` moves a date to a month end - SAS `INTNX('month', date, n, 'end')`:"
 msgstr ""
 
 #. box title
@@ -345,7 +345,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:483
-msgid "For each loan, the value of the previous month: sort, then `shift` inside the group - `LAG` with `BY loan_id`, or `LAG() OVER (PARTITION BY loan_id ORDER BY month_end)`:"
+msgid "For each loan, the value of the previous month: sort, then `shift` inside the group - SAS `LAG` with `BY loan_id`, or SQL `LAG() OVER (PARTITION BY loan_id ORDER BY month_end)`:"
 msgstr ""
 
 #. box title
@@ -365,7 +365,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:516
-msgid "The last month of each loan - `LAST.loan_id` - and the month a loan first appears in the history (new loans per month):"
+msgid "The last month of each loan - SAS `LAST.loan_id` - and the month a loan first appears in the history (new loans per month):"
 msgstr ""
 
 #. heading 3
@@ -375,7 +375,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:531
-msgid "`cumsum`, `cummax`, `cumcount` inside a group - a `RETAIN` variable that restarts with each `BY` group:"
+msgid "`cumsum`, `cummax`, `cumcount` inside a group - a SAS `RETAIN` variable that restarts with each `BY` group:"
 msgstr ""
 
 #. paragraph
@@ -445,7 +445,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:690
-msgid "`SELECT s.rating, e.rating, COUNT(*) FROM history s JOIN history e ON ... GROUP BY 1, 2` gives the long form; `crosstab` gives the matrix directly. In SAS: `PROC FREQ; TABLES rating_start * rating_end / NOCOL NOPERCENT;`."
+msgid "In SQL, `SELECT s.rating, e.rating, COUNT(*) FROM history s JOIN history e ON ... GROUP BY 1, 2` gives the long form; `crosstab` gives the matrix directly. In SAS: `PROC FREQ; TABLES rating_start * rating_end / NOCOL NOPERCENT;`."
 msgstr ""
 
 #. paragraph
@@ -540,7 +540,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:904
-msgid "The distribution of one column - a histogram (`PROC UNIVARIATE` with `HISTOGRAM`):"
+msgid "The distribution of one column - a histogram (SAS `PROC UNIVARIATE` with `HISTOGRAM`):"
 msgstr ""
 
 #. paragraph

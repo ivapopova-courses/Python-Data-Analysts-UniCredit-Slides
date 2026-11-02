@@ -14,7 +14,7 @@ title: "16. pandas: reports and the final project"
 - turn a long table into a report table with `pivot_table` and `pd.crosstab` - and
   back with `melt`;
 - work with dates: month ends, months between two dates, periods;
-- compare each month with the previous one - the `LAG` and `RETAIN` of a DATA step;
+- compare each month with the previous one - the `LAG` and `RETAIN` of a SAS DATA step;
 - build a rating migration matrix;
 - write a report into one Excel file with several sheets, and draw charts;
 - organise the final project as a script that runs again every month.
@@ -47,7 +47,7 @@ Sessions 14 and 15 gave you the data and the numbers. Today they become a report
 ### `pivot_table`: groups in rows and columns
 
 `pivot_table` is a `groupby` with two keys, where the second key goes into the
-columns - `PROC TABULATE`, or Excel's pivot table:
+columns - SAS `PROC TABULATE`, or Excel's pivot table:
 
 ```python run
 import pandas as pd
@@ -57,7 +57,7 @@ loans.pivot_table(index="product", columns="currency", values="outstanding", agg
 ```
 
 Where a combination has no rows, the cell is `NaN`. `fill_value=0` writes 0 instead,
-and `margins=True` adds the totals (the `ALL` of `PROC TABULATE`):
+and `margins=True` adds the totals (the `ALL` of SAS `PROC TABULATE`):
 
 ```python run
 import pandas as pd
@@ -93,7 +93,7 @@ print(loans.pivot_table(index="currency", columns="stage", values="outstanding",
 pd.reset_option("display.float_format")                      # back to the default
 ```
 
-A list of functions - the count and the sum side by side (`N` and `SUM` in
+A list of functions - the count and the sum side by side (`N` and `SUM` in SAS
 `PROC TABULATE`):
 
 ```python run
@@ -138,7 +138,7 @@ wide
 ### `pivot` without aggregation
 
 `pivot` only reshapes: every (row, column) pair must appear **once**. It is the right
-tool for a monthly history - one row per client, one column per month (`PROC
+tool for a monthly history - one row per client, one column per month (SAS `PROC
 TRANSPOSE`):
 
 ```python run
@@ -156,7 +156,7 @@ default).
 
 ### `pd.crosstab`: counts and shares
 
-`pd.crosstab` counts the combinations of two columns - `PROC FREQ; TABLES a * b;`:
+`pd.crosstab` counts the combinations of two columns - SAS `PROC FREQ; TABLES a * b;`:
 
 ```python run
 import pandas as pd
@@ -224,7 +224,7 @@ Which region has the most corporate clients?
 
 ## 2. From wide to long: `melt`
 
-`melt` is the opposite of `pivot`: columns become rows - `PROC TRANSPOSE` back, or
+`melt` is the opposite of `pivot`: columns become rows - SAS `PROC TRANSPOSE` back, or
 SQL `UNPIVOT`. A budget in Excel often comes wide, one column per month:
 
 ```python run
@@ -307,7 +307,7 @@ parts.head()
 
 Real files mix formats. `client_register.csv` has the registration date in four
 formats (session 7). Try one format after another, and keep the first that works -
-a `COALESCE` of the parsing attempts:
+a SQL `COALESCE` of the parsing attempts:
 
 ```python run
 import pandas as pd
@@ -323,7 +323,7 @@ print(pd.DataFrame({"raw": raw, "parsed": parsed}).drop_duplicates("raw").head(6
 
 ### Month ends: `INTNX`
 
-`pd.offsets.MonthEnd` moves a date to a month end - `INTNX('month', date, n, 'end')`:
+`pd.offsets.MonthEnd` moves a date to a month end - SAS `INTNX('month', date, n, 'end')`:
 
 ```python run
 import pandas as pd
@@ -481,7 +481,7 @@ change. The first month has no previous one: `NaN`.
 ### LAG by loan
 
 For each loan, the value of the previous month: sort, then `shift` inside the group -
-`LAG` with `BY loan_id`, or `LAG() OVER (PARTITION BY loan_id ORDER BY month_end)`:
+SAS `LAG` with `BY loan_id`, or SQL `LAG() OVER (PARTITION BY loan_id ORDER BY month_end)`:
 
 ```python run
 import pandas as pd
@@ -513,7 +513,7 @@ print(len(new_late), "times a loan crossed 30 days past due")
 new_late.groupby("month_end").size()
 ```
 
-The last month of each loan - `LAST.loan_id` - and the month a loan first appears
+The last month of each loan - SAS `LAST.loan_id` - and the month a loan first appears
 in the history (new loans per month):
 
 ```python run
@@ -528,7 +528,7 @@ print(first_month.value_counts().sort_index().tail(4))
 
 ### Running totals: `RETAIN`
 
-`cumsum`, `cummax`, `cumcount` inside a group - a `RETAIN` variable that restarts
+`cumsum`, `cummax`, `cumcount` inside a group - a SAS `RETAIN` variable that restarts
 with each `BY` group:
 
 ```python run
@@ -687,7 +687,7 @@ pd.crosstab(pairs["rating_start"], pairs["rating_end"], values=pairs["exposure_m
 ```
 
 ::: info The same in SQL (session 13)
-`SELECT s.rating, e.rating, COUNT(*) FROM history s JOIN history e ON ... GROUP BY 1,
+In SQL, `SELECT s.rating, e.rating, COUNT(*) FROM history s JOIN history e ON ... GROUP BY 1,
 2` gives the long form; `crosstab` gives the matrix directly. In SAS: `PROC FREQ;
 TABLES rating_start * rating_end / NOCOL NOPERCENT;`.
 :::
@@ -901,7 +901,7 @@ plt.savefig("out/products.png", dpi=150)
 print(Path("out/products.png").stat().st_size > 0)
 ```
 
-The distribution of one column - a histogram (`PROC UNIVARIATE` with `HISTOGRAM`):
+The distribution of one column - a histogram (SAS `PROC UNIVARIATE` with `HISTOGRAM`):
 
 ```python run
 import matplotlib.pyplot as plt

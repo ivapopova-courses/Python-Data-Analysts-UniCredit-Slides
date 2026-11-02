@@ -13,10 +13,10 @@ title: 2. Conditional statements and loops
 
 - say what is "true" and "false" in Python, and compare values without surprises;
 - combine conditions with `and`, `or`, `not`;
-- write decisions with `if` / `elif` / `else` - the Python `CASE WHEN`;
+- write decisions with `if` / `elif` / `else` - the Python version of SQL `CASE WHEN`;
 - choose a value with a conditional expression, and a branch with `match`;
 - repeat work with `while` and `for`, and stop or skip with `break` and `continue`;
-- loop over the rows of a file, the way a DATA step reads a data set;
+- loop over the rows of a file, the way a SAS DATA step reads a data set;
 - build a small report and a repayment schedule with loops.
 
 From SQL to Python - the same question, two ways:
@@ -1101,7 +1101,7 @@ for year in range(2025, 2027):
 ```
 
 On the portfolio - the monthly payment for several amounts and terms, a grid like
-`PROC TABULATE` would print:
+the one SAS `PROC TABULATE` would print:
 
 ```python run
 yearly_rate = 6
@@ -1127,7 +1127,7 @@ session 5.
 ### The rows of a file
 
 A text file is a sequence of **lines**, so `for` can read it line by line - like a
-DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in
+SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in
 session 9):
 
 ```python run
@@ -1272,7 +1272,7 @@ print(months, balance)
 ### "Not found": a flag
 
 After a search with `break`, how do you know if something was found? Set a
-**flag** before the loop - like `found = 0;` in a DATA step:
+**flag** before the loop - like `found = 0;` in a SAS DATA step:
 
 ```python run
 days_past_due_values = [0, 35, 0, 5]
@@ -1343,8 +1343,8 @@ for letter in word:
     print(letter, end=",")
 ```
 
-In data work, `continue` skips the records you do not want - like a `WHERE`, a
-subsetting `IF` or `DELETE` in a DATA step. Count only the USD loans, and skip empty
+In data work, `continue` skips the records you do not want - like `WHERE` in SQL,
+or a subsetting `IF` or `DELETE` in a SAS DATA step. Count only the USD loans, and skip empty
 lines. Here the line is kept as one list, `fields`, and `fields[3]` is its 4th field:
 the positions are counted from 0 (session 3 explains it).
 
@@ -1563,4 +1563,4 @@ run the file.
   [`while` loops](https://realpython.com/python-while-loop/)
 
 **Next session:** lists, tuples and sets - indexing from 0, slices, the methods of
-`list`, tuples as records, and `UNION` / `INTERSECT` / `EXCEPT` with sets.
+`list`, tuples as records, and the SQL `UNION` / `INTERSECT` / `EXCEPT` with sets.

@@ -134,7 +134,7 @@ print(pd_of_grade["CCC"])          # KeyError: 'CCC'
 ```
 
 `d.get(key)` gives `None` for a missing key, and `d.get(key, default)` gives the
-default - like `OTHER=` in a format:
+default - like `OTHER=` in a SAS format:
 
 ```python run
 pd_of_grade = {"AAA": 0.0003, "BBB": 0.0043}
@@ -419,7 +419,7 @@ print(in_bp)
 print(low_risk)
 ```
 
-`SELECT key, expression FROM ... WHERE ...` into a lookup table. Common forms, on a
+In SQL terms: `SELECT key, expression FROM ... WHERE ...` into a lookup table. Common forms, on a
 small list of clients:
 
 ```python run
@@ -532,8 +532,8 @@ class with its own checks.
 
 ### The join: loans with the region of their client
 
-A `LEFT JOIN loans -> clients ON client_id` is: a dictionary of the clients, and a
-lookup for every loan.
+In Python, a SQL `LEFT JOIN loans -> clients ON client_id` is: a dictionary of the
+clients, and a lookup for every loan.
 
 ```sql
 SELECT l.loan_id, l.client_id, c.region, c.segment
@@ -570,8 +570,8 @@ in the Self-study explains why.
 
 The expected loss of homework 4 needs the PD of each loan, two tables away: the
 loan has a client, the client has a rating, the rating has a PD. With two
-dictionaries, that is two lookups in a row - like two `LEFT JOIN`s, or two `put()`
-with formats in a DATA step. On small made-up tables:
+dictionaries, that is two lookups in a row - like two `LEFT JOIN`s in SQL, or two
+`put()` with formats in a SAS DATA step. On small made-up tables:
 
 ```python run
 rating_of = {"C0001": 3, "C0002": 7}              # client_id -> rating
@@ -658,7 +658,7 @@ does `client.get(...)` give, and what would `client[...]` do?
 
 ### Count by group: from `if` to `Counter`
 
-`SELECT region, COUNT(*) FROM clients GROUP BY region` - four ways, from the longest to
+The SQL `SELECT region, COUNT(*) FROM clients GROUP BY region` - four ways, from the longest to
 the shortest. All do the same: a dictionary **group -> count** that grows row by
 row.
 
@@ -729,7 +729,7 @@ print(counts["Sofia"], counts["Vidin"])      # a missing key counts 0 - no KeyEr
 
 ### Sum by group
 
-`SELECT segment, SUM(outstanding) ... GROUP BY segment` - the segment is in
+The SQL `SELECT segment, SUM(outstanding) ... GROUP BY segment` - the segment is in
 `clients.csv`, the amount in `loans.csv`: a lookup (section 5) and a sum:
 
 ```python run
@@ -774,7 +774,7 @@ for product, (n, total, largest) in sorted(stats.items()):
     print(f"{product:<16}{n:>4}{total:>16,.0f}{total / n:>14,.0f}{largest:>14,.0f}")
 ```
 
-This is `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line
+This is SAS `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line
 (session 15) - but now you know what it does.
 
 The **share** of each group in the total - one more pass over the small result, not
@@ -839,8 +839,8 @@ for (segment, stage), total in sorted(totals.items()):
 
 ### `HAVING` and `ORDER BY` on the result
 
-The result is a dictionary - filter it with a comprehension (`HAVING`), sort its
-items (`ORDER BY`):
+The result is a dictionary - filter it with a comprehension (SQL `HAVING`), sort its
+items (SQL `ORDER BY`):
 
 ```python run
 import csv
@@ -947,7 +947,7 @@ print(loans[1])
 print(sum(l["outstanding"] for l in loans if l["stage"] == 3))
 ```
 
-Sort a list of records by one or more fields - `ORDER BY` with column names:
+Sort a list of records by one or more fields - SQL `ORDER BY` with column names:
 
 ```python run
 import csv
@@ -1113,7 +1113,7 @@ for region in sorted(table):
 `defaultdict(int)` - so `table[region][segment] += 1` works for any new pair.
 
 And back - from the cross table to rows (`region, segment, count`), the job of
-`PROC TRANSPOSE` or `melt` in pandas (session 16):
+SAS `PROC TRANSPOSE`, or of `melt` in pandas (session 16):
 
 ```python run
 table = {"Ruse": {"retail": 18, "sme": 7}, "Varna": {"retail": 13, "corporate": 3}}

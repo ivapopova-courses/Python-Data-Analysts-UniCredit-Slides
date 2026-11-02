@@ -45,8 +45,8 @@ msgstr "комбинирате условия с `and`, `or`, `not`;"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:16
-msgid "write decisions with `if` / `elif` / `else` - the Python `CASE WHEN`;"
-msgstr "пишете решения с `if` / `elif` / `else` - `CASE WHEN` на Python;"
+msgid "write decisions with `if` / `elif` / `else` - the Python version of SQL `CASE WHEN`;"
+msgstr "пишете решения с `if` / `elif` / `else` - версията на Python на `CASE WHEN` от SQL;"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:17
@@ -60,8 +60,8 @@ msgstr "повтаряте работа с `while` и `for` и спирате и
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:19
-msgid "loop over the rows of a file, the way a DATA step reads a data set;"
-msgstr "обхождате с цикъл редовете на файл, както DATA step чете набор от данни;"
+msgid "loop over the rows of a file, the way a SAS DATA step reads a data set;"
+msgstr "обхождате с цикъл редовете на файл, както DATA step в SAS чете набор от данни;"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:20
@@ -1020,8 +1020,8 @@ msgstr "Тримесечията на две години - два вложен�
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1103
-msgid "On the portfolio - the monthly payment for several amounts and terms, a grid like `PROC TABULATE` would print:"
-msgstr "Върху портфейла - месечната вноска за няколко суми и срока, мрежа, каквато би отпечатал `PROC TABULATE`:"
+msgid "On the portfolio - the monthly payment for several amounts and terms, a grid like the one SAS `PROC TABULATE` would print:"
+msgstr "Върху портфейла - месечната вноска за няколко суми и срока, мрежа като тази, която би отпечатал `PROC TABULATE` в SAS:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1124
@@ -1035,8 +1035,8 @@ msgstr "Редовете на файл"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1129
-msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in session 9):"
-msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в занятие 9):"
+msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in session 9):"
+msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step в SAS с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в занятие 9):"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1143
@@ -1110,8 +1110,8 @@ msgstr "\"Не е намерено\": флаг"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1274
-msgid "After a search with `break`, how do you know if something was found? Set a **flag** before the loop - like `found = 0;` in a DATA step:"
-msgstr "След търсене с `break` как разбирате дали нещо е намерено? Задайте **флаг** преди цикъла - като `found = 0;` в DATA step:"
+msgid "After a search with `break`, how do you know if something was found? Set a **flag** before the loop - like `found = 0;` in a SAS DATA step:"
+msgstr "След търсене с `break` как разбирате дали нещо е намерено? Задайте **флаг** преди цикъла - като `found = 0;` в DATA step в SAS:"
 
 #. box title
 #: site/lectures/02-conditions-and-loops.md:1291
@@ -1150,8 +1150,8 @@ msgstr "Отпечатайте дума без гласните:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1346
-msgid "In data work, `continue` skips the records you do not want - like a `WHERE`, a subsetting `IF` or `DELETE` in a DATA step. Count only the USD loans, and skip empty lines. Here the line is kept as one list, `fields`, and `fields[3]` is its 4th field: the positions are counted from 0 (session 3 explains it)."
-msgstr "В работата с данни `continue` прескача записите, които не искате - като `WHERE`, subsetting `IF` или `DELETE` в DATA step. Пребройте само кредитите в USD и прескочете празните редове. Тук редът е запазен като един list, `fields`, и `fields[3]` е четвъртото му поле: позициите се броят от 0 (занятие 3 обяснява защо)."
+msgid "In data work, `continue` skips the records you do not want - like `WHERE` in SQL, or a subsetting `IF` or `DELETE` in a SAS DATA step. Count only the USD loans, and skip empty lines. Here the line is kept as one list, `fields`, and `fields[3]` is its 4th field: the positions are counted from 0 (session 3 explains it)."
+msgstr "В работата с данни `continue` прескача записите, които не искате - като `WHERE` в SQL или subsetting `IF` или `DELETE` в DATA step в SAS. Пребройте само кредитите в USD и прескочете празните редове. Тук редът е запазен като един list, `fields`, и `fields[3]` е четвъртото му поле: позициите се броят от 0 (занятие 3 обяснява защо)."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1369
@@ -1445,8 +1445,29 @@ msgstr "Real Python: [Conditional statements](https://realpython.com/python-cond
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1565
-msgid "**Next session:** lists, tuples and sets - indexing from 0, slices, the methods of `list`, tuples as records, and `UNION` / `INTERSECT` / `EXCEPT` with sets."
-msgstr "**Следващото занятие:** lists, tuples и sets - индексиране от 0, slices, методите на `list`, tuples като записи и `UNION` / `INTERSECT` / `EXCEPT` със sets."
+msgid "**Next session:** lists, tuples and sets - indexing from 0, slices, the methods of `list`, tuples as records, and the SQL `UNION` / `INTERSECT` / `EXCEPT` with sets."
+msgstr "**Следващото занятие:** lists, tuples и sets - индексиране от 0, slices, методите на `list`, tuples като записи и `UNION` / `INTERSECT` / `EXCEPT` от SQL със sets."
+
+#~ msgid "write decisions with `if` / `elif` / `else` - the Python `CASE WHEN`;"
+#~ msgstr "пишете решения с `if` / `elif` / `else` - `CASE WHEN` на Python;"
+
+#~ msgid "loop over the rows of a file, the way a DATA step reads a data set;"
+#~ msgstr "обхождате с цикъл редовете на файл, както DATA step чете набор от данни;"
+
+#~ msgid "On the portfolio - the monthly payment for several amounts and terms, a grid like `PROC TABULATE` would print:"
+#~ msgstr "Върху портфейла - месечната вноска за няколко суми и срока, мрежа, каквато би отпечатал `PROC TABULATE`:"
+
+#~ msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in session 9):"
+#~ msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в занятие 9):"
+
+#~ msgid "After a search with `break`, how do you know if something was found? Set a **flag** before the loop - like `found = 0;` in a DATA step:"
+#~ msgstr "След търсене с `break` как разбирате дали нещо е намерено? Задайте **флаг** преди цикъла - като `found = 0;` в DATA step:"
+
+#~ msgid "In data work, `continue` skips the records you do not want - like a `WHERE`, a subsetting `IF` or `DELETE` in a DATA step. Count only the USD loans, and skip empty lines. Here the line is kept as one list, `fields`, and `fields[3]` is its 4th field: the positions are counted from 0 (session 3 explains it)."
+#~ msgstr "В работата с данни `continue` прескача записите, които не искате - като `WHERE`, subsetting `IF` или `DELETE` в DATA step. Пребройте само кредитите в USD и прескочете празните редове. Тук редът е запазен като един list, `fields`, и `fields[3]` е четвъртото му поле: позициите се броят от 0 (занятие 3 обяснява защо)."
+
+#~ msgid "**Next session:** lists, tuples and sets - indexing from 0, slices, the methods of `list`, tuples as records, and `UNION` / `INTERSECT` / `EXCEPT` with sets."
+#~ msgstr "**Следващото занятие:** lists, tuples и sets - индексиране от 0, slices, методите на `list`, tuples като записи и `UNION` / `INTERSECT` / `EXCEPT` със sets."
 
 #~ msgid "Conditions in a case: guards"
 #~ msgstr "Условия в case: guards"

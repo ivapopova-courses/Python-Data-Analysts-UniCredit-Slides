@@ -11,8 +11,8 @@ title: 7. Text processing
 
 **Today you will learn to:**
 
-- change the case of text and remove extra spaces - the Python `UPCASE`, `PROPCASE`,
-  `STRIP` and `COMPBL`;
+- change the case of text and remove extra spaces - the Python versions of the SAS
+  functions `UPCASE`, `PROPCASE`, `STRIP` and `COMPBL`;
 - find and test parts of a string, and check what kind of characters it has;
 - split a line into fields and join fields into a line - `SCAN` and `CATX`;
 - replace and remove characters - `TRANWRD` and `COMPRESS`;
@@ -53,7 +53,7 @@ problems in it are real ones.
 ## 1. Strings: a recap and the new data
 
 You know from session 1 and 3: a string is a **sequence** of characters; `len(s)`,
-`s[0]`, `s[-1]`, `s[2:5]` work like on a list; `s[2:5]` is `SUBSTR(s, 3, 3)`. And a
+`s[0]`, `s[-1]`, `s[2:5]` work like on a list; `s[2:5]` is `SUBSTR(s, 3, 3)` in SAS. And a
 string **cannot change** (it is immutable): every method returns a **new** string.
 
 ```python run
@@ -1209,4 +1209,4 @@ print(to_latin("София"), to_latin("Мария"))      # Sofia Maria
   [Using Python datetime to work with dates and times](https://realpython.com/python-datetime/)
 
 **Next session:** regular expressions - patterns that find, check and extract IBANs,
-EIKs, e-mails, dates and amounts in free text; the Python `PRXMATCH`.
+EIKs, e-mails, dates and amounts in free text; the Python version of SAS `PRXMATCH`.

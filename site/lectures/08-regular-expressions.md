@@ -13,13 +13,14 @@ title: 8. Regular expressions
 
 - describe the **shape** of a text with a pattern: "an L and six digits", "BG, two
   digits, four letters, ...";
-- find, check and extract with the `re` module - the Python `PRXMATCH`, `LIKE` and
-  `REGEXP_LIKE`;
+- find, check and extract with the `re` module - the Python version of SAS
+  `PRXMATCH` and of SQL `LIKE` and `REGEXP_LIKE`;
 - use groups to take a text apart: the day, the month and the year of a date; the
   amount and the currency of a payment;
 - validate a whole column of ids, IBANs, e-mails and dates;
 - pull amounts, dates, IBANs and loan ids out of free-text comments;
-- replace with patterns - the Python `PRXCHANGE` and `REGEXP_REPLACE`.
+- replace with patterns - the Python version of SAS `PRXCHANGE` and SQL
+  `REGEXP_REPLACE`.
 
 From SAS to Python - which comments mention an IBAN?
 
@@ -746,7 +747,7 @@ for c in comments[:6]:
 ```
 
 Classify every comment with a dictionary **type -> pattern**: the first pattern
-that matches gives the type - like a `CASE WHEN ... LIKE` chain:
+that matches gives the type - like a `CASE WHEN ... LIKE` chain in SQL:
 
 ```python run
 import csv

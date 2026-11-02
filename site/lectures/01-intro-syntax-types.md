@@ -1924,4 +1924,4 @@ you run the file - the point is to think first.
   (the documentation)
 
 **Next session:** conditional statements and loops - `if` / `elif` / `else`, the
-Python `CASE WHEN`, and `for` / `while` loops over the rows of a file.
+Python version of SQL `CASE WHEN`, and `for` / `while` loops over the rows of a file.

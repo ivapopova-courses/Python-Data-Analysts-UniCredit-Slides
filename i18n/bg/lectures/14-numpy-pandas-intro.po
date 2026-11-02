@@ -40,7 +40,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:15
-msgid "choose values with `np.where` and `np.select`, the vector `CASE WHEN`;"
+msgid "choose values with `np.where` and `np.select`, the vector version of SQL `CASE WHEN`;"
 msgstr ""
 
 #. paragraph
@@ -185,7 +185,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:180
-msgid "Running totals and differences - `RETAIN` and `LAG` of a DATA step, for a whole array:"
+msgid "Running totals and differences - `RETAIN` and `LAG` of a SAS DATA step, for a whole array:"
 msgstr ""
 
 #. paragraph
@@ -215,7 +215,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:237
-msgid "The conditions are checked **in order** - the first true one wins, like `CASE WHEN`."
+msgid "The conditions are checked **in order** - the first true one wins, like SQL `CASE WHEN`."
 msgstr ""
 
 #. heading 3
@@ -315,17 +315,17 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:388
-msgid "`df[\"name\"]` gives one column as a **Series**; `df[[\"a\", \"b\"]]` (a list inside) gives a **DataFrame** with those columns - `SELECT a, b`:"
+msgid "`df[\"name\"]` gives one column as a **Series**; `df[[\"a\", \"b\"]]` (a list inside) gives a **DataFrame** with those columns - SQL `SELECT a, b`:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:400
-msgid "A new column from other columns - a derived variable of a DATA step, for all rows at once:"
+msgid "A new column from other columns - a derived variable of a SAS DATA step, for all rows at once:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:412
-msgid "Remove and rename columns - `DROP=` and `RENAME=` of a DATA step:"
+msgid "Remove and rename columns - `DROP=` and `RENAME=` of a SAS DATA step:"
 msgstr ""
 
 #. heading 3
@@ -335,7 +335,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:435
-msgid "`sort_values` is `PROC SORT` / `ORDER BY`; selection with conditions (`WHERE`) and `loc` are session 15."
+msgid "`sort_values` is SAS `PROC SORT` / SQL `ORDER BY`; selection with conditions (SQL `WHERE`) and `loc` are session 15."
 msgstr ""
 
 #. heading 3
@@ -670,7 +670,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:773
-msgid "To remove the exact copies, `drop_duplicates()` - like `PROC SORT NODUPRECS`, but it keeps the order of the rows (the first copy stays):"
+msgid "To remove the exact copies, `drop_duplicates()` - like SAS `PROC SORT NODUPRECS`, but it keeps the order of the rows (the first copy stays):"
 msgstr ""
 
 #. paragraph
@@ -1170,5 +1170,5 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:1126
-msgid "**Next session:** pandas - selection with `loc` and masks, new columns with `np.select` and `pd.cut`, `groupby` (the `GROUP BY` and `PROC MEANS` of pandas), `merge` (the `JOIN`), and missing values."
+msgid "**Next session:** pandas - selection with `loc` and masks, new columns with `np.select` and `pd.cut`, `groupby` (the SQL `GROUP BY` and SAS `PROC MEANS` of pandas), `merge` (the SQL `JOIN`), and missing values."
 msgstr ""
