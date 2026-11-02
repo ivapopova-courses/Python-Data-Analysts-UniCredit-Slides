@@ -81,7 +81,15 @@ Write ` ```python run ` instead of ` ```python ` (line highlighting works too:
 
 The Pyodide version is set in `site/.vitepress/theme/pyRunner.js`
 (`PYODIDE_VERSION`). Pyodide runs Python 3.14; the students may have any Python
-from 3.12 on - avoid features newer than 3.12 in the examples.
+from 3.12 on - avoid features newer than 3.12 in the examples. When you change the
+version, check that the file names in `START_FILES` (same file) still exist on the
+CDN.
+
+Company networks often block or change the CDN files (a proxy, a firewall). When
+Python cannot start, the runner checks the files and names the ones that do not
+arrive, in a message that says what to do (the texts are in `PyRunCode.vue`,
+`PROBLEMS`, in both languages). Python needs `cdn.jsdelivr.net/pyodide/`, and the
+Excel examples also `pypi.org` and `files.pythonhosted.org` (openpyxl).
 
 ## Two languages
 
