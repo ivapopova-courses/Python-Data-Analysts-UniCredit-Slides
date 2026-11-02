@@ -1091,7 +1091,7 @@ for i in range(1, 4):
     print()             # a new line after each row
 ```
 
-The quarters of two years - two nested `do` loops in SAS:
+The quarters of two years (in SAS: two nested `do` loops):
 
 ```python run
 for year in range(2025, 2027):
@@ -1247,7 +1247,7 @@ while True:
 print(f"Thank you, {user_name}!")
 ```
 
-The same in SAS:
+On the portfolio - repay a balance until it is 0. In SAS this is `do until`:
 
 ```sas
 do until (balance <= 0);

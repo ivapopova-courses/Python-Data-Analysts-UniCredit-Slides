@@ -1015,8 +1015,8 @@ msgstr "Един цикъл може да е вътре в друг цикъл. 
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1094
-msgid "The quarters of two years - two nested `do` loops in SAS:"
-msgstr "Тримесечията на две години - два вложени цикъла `do` в SAS:"
+msgid "The quarters of two years (in SAS: two nested `do` loops):"
+msgstr "Тримесечията на две години (в SAS: два вложени цикъла `do`):"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1103
@@ -1100,8 +1100,8 @@ msgstr "Проверката на името от раздел 11, без да �
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1250
-msgid "The same in SAS:"
-msgstr "Същото в SAS:"
+msgid "On the portfolio - repay a balance until it is 0. In SAS this is `do until`:"
+msgstr "Върху портфейла - изплащаме остатък, докато стане 0. В SAS това е `do until`:"
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1272
@@ -1447,6 +1447,12 @@ msgstr "Real Python: [Conditional statements](https://realpython.com/python-cond
 #: site/lectures/02-conditions-and-loops.md:1565
 msgid "**Next session:** lists, tuples and sets - indexing from 0, slices, the methods of `list`, tuples as records, and the SQL `UNION` / `INTERSECT` / `EXCEPT` with sets."
 msgstr "**Следващото занятие:** lists, tuples и sets - индексиране от 0, slices, методите на `list`, tuples като записи и `UNION` / `INTERSECT` / `EXCEPT` от SQL със sets."
+
+#~ msgid "The quarters of two years - two nested `do` loops in SAS:"
+#~ msgstr "Тримесечията на две години - два вложени цикъла `do` в SAS:"
+
+#~ msgid "The same in SAS:"
+#~ msgstr "Същото в SAS:"
 
 #~ msgid "write decisions with `if` / `elif` / `else` - the Python `CASE WHEN`;"
 #~ msgstr "пишете решения с `if` / `elif` / `else` - `CASE WHEN` на Python;"

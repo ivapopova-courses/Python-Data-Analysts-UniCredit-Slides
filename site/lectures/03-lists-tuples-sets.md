@@ -384,15 +384,18 @@ print([0.0] * 12)                 # 12 months, all 0.0 - a common start value
 Only strings, lists and tuples can be joined and repeated. A `range` cannot (but you
 can make a list of it first: `list(range(3)) * 2`).
 
-`+` makes a **new** list. Joining lists of rows one under the other is `UNION ALL` in
-SQL, or `SET a b;` in a DATA step:
+`+` makes a **new** list. Joining two lists one under the other is `UNION ALL` in
+SQL, or `SET a b;` in a DATA step - for example, the late loans of two months:
 
 ```python run
-first_names = ["ivan", "maria", "petar"]
-sur_names = ["ivanov", "popova", "petrov"]
-names = first_names + sur_names
-print(names)
+late_august = ["L000002", "L000014", "L000025"]
+late_september = ["L000014", "L000059"]
+late_both = late_august + late_september    # UNION ALL: L000014 is there twice
+print(late_both)
+print(len(late_both))
 ```
+
+(Section 12 shows `UNION` without the duplicates.)
 
 ### Membership: `in`, `not in`
 
@@ -799,7 +802,23 @@ first, *middle, last = [1, 2, 3, 4, 5]
 print(first, middle, last)
 ```
 
-`_` is the usual name for a value you do not need: `loan_id, _, product = ...`.
+When you need only some of the values, you still need a name for each of the
+others - the counts must match. `_` is the usual name for a value you do not need.
+It is a normal name, but it tells the reader "ignored":
+
+```python run
+row = ("L000002", "C0132", "investment", "EUR", 651927.30)
+
+loan_id, _, product, _, outstanding = row       # skip client_id and currency
+print(loan_id, product, outstanding)
+
+loan_id, *_ = row                               # only the first value
+print(loan_id)
+```
+
+::: tip Try it
+Remove one `_` from the first unpacking and predict the error before you run it.
+:::
 
 ### Tuples as records
 
@@ -823,8 +842,8 @@ for loan_id, product, outstanding, days_past_due in loans:
         print(loan_id, product, outstanding)
 ```
 
-A common use of a list of tuples - coordinates, or a value with its label - and
-separating it into two lists again:
+A common use of a list of tuples - a label with its value - and splitting it into
+two lists again:
 
 ```python run
 distances = [("Bansko", 97), ("Szeged", 469), ("Palermo", 987), ("Dublin", 2479)]
@@ -1075,7 +1094,7 @@ print(len(set(products)))            # COUNT(DISTINCT product)
 print(sorted(set(products)))         # SELECT DISTINCT ... ORDER BY
 ```
 
-On the data - the distinct products and regions:
+On the data - the distinct products in `loans.csv`:
 
 ```python run
 products = set()
