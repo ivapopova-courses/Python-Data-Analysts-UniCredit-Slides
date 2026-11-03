@@ -723,6 +723,23 @@ def add(amount):
 add(100)
 ```
 
+::: details Advanced: why the error - compile first, then run
+To clear this up, it helps to understand that Python handles your code in two
+separate phases: **compilation** (it reads the whole code before running it) and
+**execution** (it runs the code line by line).
+
+When Python compiles the `add` function, it scans all the lines inside it. It sees
+`total = total + amount`. Because of that `=` sign, Python decides: "`total` is a
+local variable of this function" - for the **whole** function body.
+
+Because `total` is now marked as local, Python does not look for the global `total`
+outside the function at all. At execution, `total + amount` reads the **local**
+`total` - but it has no value yet, so Python raises `UnboundLocalError`.
+
+Other statements that bind a name make it local in the same way: `+=`, a `for`
+loop variable, `import`, `def`.
+:::
+
 ::: info Animation
 **Function calls step by step:** [3. `UnboundLocalError`](../animations/functionCalls.html#3){target="_blank"}
 :::
