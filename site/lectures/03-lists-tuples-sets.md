@@ -316,14 +316,25 @@ items**, not as the items. `loans[1:4]` cuts at 1 and at 4 and takes what is bet
 ```python run
 numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 print(numbers[2:5])      # [2, 3, 4]
-print(numbers[1:9:2])    # [1, 3, 5, 7]
+print(numbers[1:9:2])    # every 2nd item: [1, 3, 5, 7]
 print(numbers[:3])       # the first 3: [0, 1, 2]
 print(numbers[-3:])      # the last 3: [7, 8, 9]
-print(numbers[:-4:-1])   # the last 3, reversed: [9, 8, 7]
 print(numbers[::-1])     # all, reversed
 numbers_copy = numbers[:]
 print(numbers_copy)
 ```
+
+::: details Advanced: a negative step with a start or a stop
+With a negative step the slice goes backwards, so `start` must be the **larger**
+index. For data work, `[::-1]` (all, reversed) is the one you need.
+
+```python run
+numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(numbers[:-4:-1])   # the last 3, reversed: [9, 8, 7]
+print(numbers[7:2:-1])   # from index 7 down to index 3: [7, 6, 5, 4, 3]
+print(numbers[2:7:-1])   # [] - you cannot go down from 2 to 7
+```
+:::
 
 A slice never gives an `IndexError` - out of range, it simply takes what there is:
 
@@ -360,6 +371,20 @@ print(year, month, day)
 Strings cannot be changed: `loan_id[0] = "X"` is an error. String methods (session 7)
 make **new** strings.
 
+::: info The same in pandas
+pandas (session 14) uses the same rules. `iloc` takes rows and columns by
+position - from 0, without the stop; `.str[...]` takes the same slice of every text
+in a column:
+
+```python run
+import pandas as pd
+
+loans = pd.read_csv("data/loans.csv")
+print(loans.iloc[:3, :4])                     # the first 3 rows, the first 4 columns
+print(loans["start_date"].str[:4].head(3))    # SUBSTR(start_date, 1, 4) for every row
+```
+:::
+
 ## 4. More common operations
 
 ### Concatenation `+` and repetition `*`
@@ -372,9 +397,8 @@ num_list = [1, 2, 3]
 alpha_list = ["a", "b", "c"]
 print(num_list + alpha_list)      # a new list
 
-date1 = (31, "December", 2017)
-date2 = (10, "March", 1999)
-print(date1 + date2)              # a new tuple
+record = ("L000001", "investment")
+print(record + (1044231.30,))     # a new tuple, one item longer
 
 print(num_list * 3)
 print(alpha_list * 3)
@@ -563,8 +587,7 @@ b.extend([3, 4])        # two items: 3 and 4
 print(b, len(b))
 ```
 
-### Do not remove items while you loop over the same list
-
+::: details Advanced: do not remove items while you loop over the same list
 The loop goes through the list **by position**. When you remove an item, the next
 one moves into its place - and the loop skips it:
 
@@ -588,6 +611,7 @@ print(non_zero)
 ```
 
 (Session 5 does the same in one line, with a list comprehension.)
+:::
 
 ### The methods change the list - and return `None`
 
@@ -632,6 +656,20 @@ print(sorted([3, "1", 2]))
 SAS `PROC SORT` and SQL `ORDER BY` can sort by a column, or by several. For records kept as
 tuples, put the column to sort by first (section 8, "Sort records"); the general
 way is `sorted(..., key=...)`: sessions 4 and 5.
+
+::: info The same in pandas
+The methods of pandas work like `sorted()`: they return a **new** table and do not
+change the old one (session 14). Keep the result in a name:
+
+```python run
+import pandas as pd
+
+loans = pd.read_csv("data/loans.csv")
+by_size = loans.sort_values("outstanding", ascending=False)   # ORDER BY outstanding DESC
+print(loans["loan_id"].head(3).tolist())      # not changed
+print(by_size["loan_id"].head(3).tolist())    # a new, sorted table
+```
+:::
 
 ## 7. A list is mutable: names and references
 
@@ -682,6 +720,12 @@ print(original is copy1)
 These are **shallow** copies: the new list has the same items. When the items are
 lists themselves (a table as a list of rows), the rows are still shared - session 5
 explains shallow and deep copies.
+
+::: tip Try it
+In the first example of this section, write `new_list = original.copy()` instead of
+`new_list = original`. Predict what `print(original)` and `original is new_list`
+show now, then run it.
+:::
 
 ## 8. Tuples
 
@@ -746,8 +790,12 @@ record = record[:2] + (2,)          # a new tuple with stage 2
 print(record)
 ```
 
-### A list inside a tuple can change
+::: info Animation
+**Lists and references:**
+[5. A tuple cannot change](../animations/listsAndReferences.html#5){target="_blank"}
+:::
 
+::: details Advanced: a list inside a tuple can change
 A tuple cannot change **which objects** it holds. If one of them is a list, the list
 itself can still change:
 
@@ -767,10 +815,20 @@ print(users[0])
 users[0] = ["Petar", "Petrov", 45]   # the tuple itself: TypeError
 ```
 
-::: info Animation
-**Lists and references:**
-[5. A tuple cannot change](../animations/listsAndReferences.html#5){target="_blank"},
-[6. A list inside a tuple (advanced)](../animations/listsAndReferences.html#6){target="_blank"}
+The same holds for a **tuple of lists** - a fixed structure of groups that can
+change inside:
+
+```python run
+products = (
+    ["Shirt", "Pants"],      # the names
+    [20, 35],                # the quantities
+)
+products[1][0] = 100         # a quantity can change
+print(products)
+```
+
+Animation:
+[6. A list inside a tuple](../animations/listsAndReferences.html#6){target="_blank"}.
 :::
 
 ### Unpacking
@@ -791,17 +849,6 @@ print(outstanding)
 loan_id, product = ("L000002", "investment", 651927.30)     # 2 names, 3 items
 ```
 
-A name with a star `*` takes "the rest", as a list:
-
-```python run
-row = ("L000002", "C0132", "investment", "EUR", 651927.30)
-loan_id, client_id, *other = row
-print(loan_id, client_id, other)
-
-first, *middle, last = [1, 2, 3, 4, 5]
-print(first, middle, last)
-```
-
 When you need only some of the values, you still need a name for each of the
 others - the counts must match. `_` is the usual name for a value you do not need.
 It is a normal name, but it tells the reader "ignored":
@@ -811,13 +858,26 @@ row = ("L000002", "C0132", "investment", "EUR", 651927.30)
 
 loan_id, _, product, _, outstanding = row       # skip client_id and currency
 print(loan_id, product, outstanding)
+```
+
+::: tip Try it
+Remove one `_` from the unpacking and predict the error before you run it.
+:::
+
+::: details Advanced: a star takes "the rest"
+A name with a star `*` takes "the rest", as a list:
+
+```python run
+row = ("L000002", "C0132", "investment", "EUR", 651927.30)
+loan_id, client_id, *other = row
+print(loan_id, client_id, other)
+
+first, *middle, last = [1, 2, 3, 4, 5]
+print(first, middle, last)
 
 loan_id, *_ = row                               # only the first value
 print(loan_id)
 ```
-
-::: tip Try it
-Remove one `_` from the first unpacking and predict the error before you run it.
 :::
 
 ### Tuples as records
@@ -846,28 +906,15 @@ A common use of a list of tuples - a label with its value - and splitting it int
 two lists again:
 
 ```python run
-distances = [("Bansko", 97), ("Szeged", 469), ("Palermo", 987), ("Dublin", 2479)]
+exposures = [("L000001", 1044231.30), ("L000002", 651927.30), ("L000003", 644.25)]
 
-names = []
-km = []
-for name, distance in distances:
-    names.append(name)
-    km.append(distance)
-print(names)
-print(km)
-```
-
-The other way round - a **tuple of lists** - is a fixed structure of groups that can
-change inside:
-
-```python run
-products = (
-    ["Shirt", "Pants"],      # the names
-    [20, 35],                # the quantities
-)
-print(f"Product: {products[0][0]}, quantity: {products[1][0]}")
-products[1][0] = 100         # a quantity can change
-print(products)
+loan_ids = []
+amounts = []
+for loan_id, amount in exposures:
+    loan_ids.append(loan_id)
+    amounts.append(amount)
+print(loan_ids)
+print(amounts)
 ```
 
 Tuples are also used for **several return values of a function** (session 4) and as
@@ -1072,7 +1119,8 @@ set_of_mutables = {[1, 2, 3], ["a", "b"]}    # TypeError: a list is unhashable
 ```
 
 ::: warning `{}` is not an empty set
-`{}` is an empty **dictionary** (session 6). An empty set is `set()`:
+`{}` is an empty **dictionary** (session 6): a collection of `key: value` pairs,
+where a set has only values. An empty set is `set()`:
 
 ```python run
 print(type({}), type(set()))
@@ -1120,25 +1168,24 @@ my_set.add(4)
 print(my_set)
 my_set.add(2)               # already there: nothing changes
 print(my_set)
-
-my_set.remove(2)
+my_set.discard(3)           # remove a value (no error if it is not there)
 print(my_set)
-my_set.discard(5)           # discard: no error if it is not there
-print(my_set)
-my_set.remove(5)            # remove: KeyError if it is not there
 ```
 
-`pop()` removes and returns some item (which one is not defined), `clear()` empties the
-set. `len`, `in`, `min`, `max`, `sum` and `for` work as with lists.
+`len`, `in`, `min`, `max`, `sum` and `for` work as with lists.
 
-### Sets and dictionaries
+::: details Advanced: `remove`, `pop`, `clear`
+`remove(x)` removes `x` too, but stops with a `KeyError` when `x` is not in the
+set. `pop()` removes and returns some item (which one is not defined), `clear()`
+empties the set.
 
-- Both are **mutable**, and both use **curly brackets**. A set has no order; a
-  dictionary keeps the order in which the keys were added (session 6).
-- A dictionary is a collection of `key: value` **pairs**; a set is a collection of
-  **values** only - like the keys of a dictionary without the values.
-
-Dictionaries are the topic of session 6.
+```python run
+my_set = {1, 2, 3}
+my_set.remove(2)
+print(my_set)
+my_set.remove(5)            # KeyError: 5 is not there
+```
+:::
 
 ### Sets are fast for `in`
 
@@ -1147,6 +1194,10 @@ and looks only there. A list is searched item by item, from the start. For `in` 
 large collection, a set is much faster; for going through all items, and for access
 by index, a list is better.
 
+So when you check many values against a long list of allowed codes - a nomenclature -
+put the codes into a set first.
+
+::: details Advanced: measure it
 ```python run
 import time
 
@@ -1164,9 +1215,7 @@ set_time = time.perf_counter() - start
 print(f"in a list: {list_time:.6f} s")
 print(f"in a set:  {set_time:.6f} s")
 ```
-
-So when you check many values against a long list of allowed codes - a nomenclature -
-put the codes into a set first.
+:::
 
 ::: details Advanced: `frozenset`
 A `frozenset` is an immutable set. Because it cannot change, it can be an item of a
@@ -1203,17 +1252,21 @@ print(set1 - set2, set1.difference(set2))
 print(set1 ^ set2, set1.symmetric_difference(set2))
 ```
 
-The methods accept any sequence, the operators only sets:
+::: warning `UNION` or `UNION ALL`?
+SQL `UNION` removes duplicates - that is a set union, `a | b`. `UNION ALL` keeps every
+row - that is joining two lists, `list_a + list_b` (section 4).
+:::
+
+::: details Advanced: the methods accept any sequence
+The methods accept any sequence, the operators only sets. `a.isdisjoint(b)` is
+`True` when the two sets have no common items.
 
 ```python run
 regions = {"Sofia", "Varna"}
 print(regions.union(["Ruse", "Sofia"]))
+print(regions.isdisjoint({"Ruse", "Pleven"}))
 print(regions | ["Ruse", "Sofia"])          # TypeError
 ```
-
-::: warning `UNION` or `UNION ALL`?
-SQL `UNION` removes duplicates - that is a set union, `a | b`. `UNION ALL` keeps every
-row - that is joining two lists, `list_a + list_b` (section 4).
 :::
 
 ### Example: the clients of two months
@@ -1230,6 +1283,10 @@ print("stayed:  ", sorted(august & september))      # INTERSECT
 print("all:     ", len(august | september))         # UNION
 print("changed: ", sorted(august ^ september))      # new or closed
 ```
+
+::: tip Try it
+Add `"C0001"` to `september` and predict the five lines before you run the block.
+:::
 
 ### Example: what is missing from a credit file
 
@@ -1250,7 +1307,6 @@ print("Extra:   ", ", ".join(sorted(submitted - required)))
 |---|---|---|
 | every item of `a` is in `b` | `a <= b` | `a.issubset(b)` |
 | `b` has every item of `a` | `b >= a` | `b.issuperset(a)` |
-| no common items | - | `a.isdisjoint(b)` |
 
 These are quick checks of the data, like the checks you write in SQL before a join:
 
@@ -1277,6 +1333,21 @@ print("every loan has a known client:", loan_clients <= clients)
 print("loans of unknown clients:", loan_clients - clients)       # LEFT JOIN ... WHERE c.client_id IS NULL
 ```
 
+::: info The same in pandas
+The same check on two tables before a join - with `set()` of a column, or with
+`isin` (session 15; there `merge(..., indicator=True)` shows the rows without a
+match):
+
+```python run
+import pandas as pd
+
+loans = pd.read_csv("data/loans.csv")
+clients = pd.read_csv("data/clients.csv")
+print(set(loans["client_id"]) - set(clients["client_id"]))    # EXCEPT
+print(loans["client_id"].isin(clients["client_id"]).all())    # every loan has a known client
+```
+:::
+
 ## 13. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1297,6 +1368,25 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
 | 6 | `task6-from-file.py` | From `loans.csv` and `clients.csv`: distinct values, lists, set checks |
 
 ::: tip Help for the tasks and the homework
+- **What each task needs.** Tasks 1 - 2: sections 1 - 5 (in task 1, the lines with
+  `(99,)`, `sort` / `sorted` and the sets need sections 6, 8, 11 and 12). Task 3:
+  sections 6 - 7. Task 4: section 8. Tasks 5 - 6 and the homework: sections 8 - 12.
+  If a section was not covered in class yet, start with the tasks before it, or read
+  the section first. A part you have not started prints `TODO`, not `FAIL`.
+- **Task 1:** `type(x).__name__` is the name of the type, as text: `"tuple"`,
+  `"list"`.
+- **Task 3:** make `backup` first, with `watch.copy()` - `backup = watch` would only
+  give the same list a second name (section 7). `extend` adds several items with one
+  call; `pop()` removes the last item **and returns it**; `sort(reverse=True)` sorts
+  from the largest. The methods change `watch` and return `None`: write
+  `watch.sort()`, not `watch = watch.sort()` (section 6).
+- **Task 4, part 2:** `record[:-1]` is the record without its last item (a new
+  tuple), `(40,)` is a tuple with one item (section 8), and `+` joins the two.
+- **Task 4, part 4:** all four results in one loop - before it, `total = 0.0` and
+  three empty lists.
+- **Task 6, part 1:** `both_currencies` - in the loop, collect the clients of the EUR
+  loans in one set and of the USD loans in another; after the loop, intersect the
+  two sets with `&`.
 - **Reading a file** (task 6, the homework): as in session 2 - `file.readline()`
   skips the header, then `fields = line.strip().split(",")` in the loop. The
   columns are in the order of the header line (task 6 lists them; the
@@ -1320,7 +1410,7 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
 | Lists | `[...]`, mutable; `append`, `extend`, `insert`, `pop`, `remove`, `sort`; the methods return `None` |
 | Sorting | `lst.sort()` changes the list; `sorted(x)` returns a new list |
 | References | `b = a` is the same list with two names; a copy: `a[:]`, `a.copy()`, `list(a)` |
-| Tuples | `(...)`, immutable, the comma makes it: `(99,)`; unpacking `a, b, *rest = t`; records |
+| Tuples | `(...)`, immutable, the comma makes it: `(99,)`; unpacking `a, b, c = t`, `_` for a value you do not need; records |
 | `range` | `range(start, stop, step)`, stop not included; small in memory |
 | Sets | `{...}` / `set()`, unique, unordered; `add`, `discard`; fast `in`; print with `sorted()` |
 | Set operations | `\|` `UNION`, `&` `INTERSECT`, `-` `EXCEPT`, `^` symmetric difference; `<=` subset |

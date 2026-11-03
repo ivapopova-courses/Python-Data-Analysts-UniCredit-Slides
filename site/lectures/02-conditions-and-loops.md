@@ -1500,6 +1500,28 @@ In `task1-predict-logic.py`, replace each `"?"` with your prediction **before** 
 run the file.
 
 ::: tip Help: what the tasks use from later sessions
+- **A part you skip** prints `TODO`, not `FAIL` - and so does a `"?"` that you
+  leave in a predict task. The parts marked *optional* below show details of Python
+  that you will not need for your work with data.
+- **Task 1:** four predictions show how `and` and `or` work inside (section 3, "`and`
+  and `or` return one of their operands"): `0 or "n/a"`, `"" or None`, `5 and 0`
+  and `True or 1 / 0`. They are *optional* - in pandas you combine conditions with
+  `&` and `|` instead (sessions 14 - 15). And `"3" == 3` is `False`: `==` between a
+  string and a number is allowed, and different types are never equal; only `<`,
+  `>`, `<=`, `>=` stop with a `TypeError`.
+- **Task 3, part 2** (leap years) is *optional* - a classic exercise. Build the
+  condition from three tests: `year % 4 == 0`, `year % 100 != 0` and `year % 400 ==
+  0` - "divides by 4 and not by 100, or divides by 400". Put brackets around the
+  `and` part.
+- **Task 5, part 1 (`largest_loan_id`) and the homework, part 3:** section 12,
+  "Accumulators", keeps only the largest **value**. Here you need its loan id too:
+  before the loop, two names - `largest_outstanding = 0.0` and `largest_loan_id =
+  None`; in the loop, when a loan is larger, change **both** (in the homework also
+  the third one, the days past due).
+- **Task 6, part 1:** the loop is the one of section 11 ("How many months does it
+  take to repay..."). After the loop `balance` is negative - the last payment was
+  only `payment + balance`. So all the payments together are `payment * months +
+  balance`, and the interest is that minus `amount`.
 - **Tasks 2 - 4** give you ready loops like `for days_past_due in [0, 1, 30, ...]:`
   or `for old, new in [(1000.0, 1200.0), ...]:` (section 12, "Two names at once").
   They only try your code on a few values - write your code inside, do not change
@@ -1514,6 +1536,9 @@ run the file.
 - **Homework, part 4:** build `report` with `+=` and f-strings with widths, as in
   section 15: `f"{'current':<8}{current_count:>6}"`, `:>18,.2f`, and `:>8.1%` for a
   percent (session 1, section 13).
+- **Homework, part 4 - a `FAIL`:** the check compares the whole text, so one space
+  more or less is a `FAIL`. `print(report)`, then compare the `got:` and `expected:`
+  lines under the `FAIL` character by character - one line of the report at a time.
 :::
 
 ## Summary

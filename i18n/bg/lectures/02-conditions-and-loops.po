@@ -1290,161 +1290,191 @@ msgstr "Помощ: какво ползват задачите от следва
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1503
+msgid "**A part you skip** prints `TODO`, not `FAIL` - and so does a `\"?\"` that you leave in a predict task. The parts marked *optional* below show details of Python that you will not need for your work with data."
+msgstr "**Част, която пропуснете,** показва `TODO`, а не `FAIL` - също и `\"?\"`, който оставите в задача за предсказване. Частите, отбелязани по-долу като *по желание*, показват детайли на Python, които няма да ви трябват в работата с данни."
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1506
+msgid "**Task 1:** four predictions show how `and` and `or` work inside (section 3, \"`and` and `or` return one of their operands\"): `0 or \"n/a\"`, `\"\" or None`, `5 and 0` and `True or 1 / 0`. They are *optional* - in pandas you combine conditions with `&` and `|` instead (sessions 14 - 15). And `\"3\" == 3` is `False`: `==` between a string and a number is allowed, and different types are never equal; only `<`, `>`, `<=`, `>=` stop with a `TypeError`."
+msgstr "**Задача 1:** четири от предсказванията показват как работят `and` и `or` отвътре (раздел 3, \"`and` и `or` връщат един от операндите си\"): `0 or \"n/a\"`, `\"\" or None`, `5 and 0` и `True or 1 / 0`. Те са *по желание* - в pandas условията се съчетават с `&` и `|` (занятия 14 - 15). А `\"3\" == 3` е `False`: `==` между string и число е позволено и различните типове никога не са равни; само `<`, `>`, `<=`, `>=` спират с `TypeError`."
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1512
+msgid "**Task 3, part 2** (leap years) is *optional* - a classic exercise. Build the condition from three tests: `year % 4 == 0`, `year % 100 != 0` and `year % 400 == 0` - \"divides by 4 and not by 100, or divides by 400\". Put brackets around the `and` part."
+msgstr "**Задача 3, част 2** (високосни години) е *по желание* - класическо упражнение. Сглобете условието от три проверки: `year % 4 == 0`, `year % 100 != 0` и `year % 400 == 0` - \"дели се на 4 и не се дели на 100, или се дели на 400\". Сложете скоби около частта с `and`."
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1516
+msgid "**Task 5, part 1 (`largest_loan_id`) and the homework, part 3:** section 12, \"Accumulators\", keeps only the largest **value**. Here you need its loan id too: before the loop, two names - `largest_outstanding = 0.0` and `largest_loan_id = None`; in the loop, when a loan is larger, change **both** (in the homework also the third one, the days past due)."
+msgstr "**Задача 5, част 1 (`largest_loan_id`) и домашното, част 3:** в раздел 12, \"Акумулатори\", се пази само най-голямата **стойност**. Тук ви трябва и номерът на кредита: преди цикъла - две имена, `largest_outstanding = 0.0` и `largest_loan_id = None`; в цикъла, когато кредитът е по-голям, сменете **и двете** (в домашното и третото - дните просрочие)."
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1521
+msgid "**Task 6, part 1:** the loop is the one of section 11 (\"How many months does it take to repay...\"). After the loop `balance` is negative - the last payment was only `payment + balance`. So all the payments together are `payment * months + balance`, and the interest is that minus `amount`."
+msgstr "**Задача 6, част 1:** цикълът е като в раздел 11 (\"За колко месеца се погасяват...\"). След цикъла `balance` е отрицателен - последната вноска е била само `payment + balance`. Значи всички вноски заедно са `payment * months + balance`, а лихвата е това минус `amount`."
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1525
 msgid "**Tasks 2 - 4** give you ready loops like `for days_past_due in [0, 1, 30, ...]:` or `for old, new in [(1000.0, 1200.0), ...]:` (section 12, \"Two names at once\"). They only try your code on a few values - write your code inside, do not change the loop."
 msgstr "**Задачи 2 - 4** ви дават готови цикли като `for days_past_due in [0, 1, 30, ...]:` или `for old, new in [(1000.0, 1200.0), ...]:` (раздел 12, \"Две имена наведнъж\"). Те само пробват кода ви с няколко стойности - пишете кода си вътре, не променяйте цикъла."
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1507
+#: site/lectures/02-conditions-and-loops.md:1529
 msgid "**Task 5, part 2:** copy the loop of part 1 - it gives each field a name - and stop with `break` at the first `stage == \"3\"`. Or keep the line as one list, `fields = line.strip().split(\",\")`: then `fields[0]` is the loan id and `fields[10]` the stage (the positions are counted from 0, session 3)."
 msgstr "**Задача 5, част 2:** копирайте цикъла от част 1 - той дава име на всяко поле - и спрете с `break` при първото `stage == \"3\"`. Или запазете реда като един list, `fields = line.strip().split(\",\")`: тогава `fields[0]` е id на кредита, а `fields[10]` - stage (позициите се броят от 0, занятие 3)."
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1511
+#: site/lectures/02-conditions-and-loops.md:1533
 msgid "**Task 6, part 3:** `stage_counts` holds pairs; loop over it with two names, `for stage, count in stage_counts:`, and add one line to `chart` in each iteration (`chart += ...`). `\"#\" * 5` is `\"#####\"` (session 1)."
 msgstr "**Задача 6, част 3:** `stage_counts` съдържа двойки; обходете го с две имена, `for stage, count in stage_counts:`, и добавяйте по един ред към `chart` във всяка итерация (`chart += ...`). `\"#\" * 5` е `\"#####\"` (занятие 1)."
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1514
+#: site/lectures/02-conditions-and-loops.md:1536
 msgid "**Homework, part 4:** build `report` with `+=` and f-strings with widths, as in section 15: `f\"{'current':<8}{current_count:>6}\"`, `:>18,.2f`, and `:>8.1%` for a percent (session 1, section 13)."
 msgstr "**Домашно, част 4:** изградете `report` с `+=` и f-strings с ширини, както в раздел 15: `f\"{'current':<8}{current_count:>6}\"`, `:>18,.2f` и `:>8.1%` за процент (занятие 1, раздел 13)."
 
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1539
+msgid "**Homework, part 4 - a `FAIL`:** the check compares the whole text, so one space more or less is a `FAIL`. `print(report)`, then compare the `got:` and `expected:` lines under the `FAIL` character by character - one line of the report at a time."
+msgstr "**Домашно, част 4 - `FAIL`:** проверката сравнява целия текст, затова един интервал повече или по-малко дава `FAIL`. Направете `print(report)`, после сравнете редовете `got:` и `expected:` под `FAIL` знак по знак - по един ред от отчета."
+
 #. heading 2
-#: site/lectures/02-conditions-and-loops.md:1519
+#: site/lectures/02-conditions-and-loops.md:1544
 msgid "Summary"
 msgstr "Обобщение"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1521
+#: site/lectures/02-conditions-and-loops.md:1546
 msgid "Topic"
 msgstr "Тема"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1521
+#: site/lectures/02-conditions-and-loops.md:1546
 msgid "Remember"
 msgstr "Запомнете"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1523
+#: site/lectures/02-conditions-and-loops.md:1548
 msgid "Truth"
 msgstr "Истинност"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1523
+#: site/lectures/02-conditions-and-loops.md:1548
 msgid "`0`, `0.0`, `\"\"`, `None`, empty collections are false; everything else is true"
 msgstr "`0`, `0.0`, `\"\"`, `None`, празните колекции са falsy; всичко останало е truthy"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1524
+#: site/lectures/02-conditions-and-loops.md:1549
 msgid "Comparisons"
 msgstr "Сравнения"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1524
+#: site/lectures/02-conditions-and-loops.md:1549
 msgid "`< <= > >= == !=`, `in`, `is None`; never compare a `str` with a number - `\"3\" == 3` is `False`; strings compare letter by letter"
 msgstr "`< <= > >= == !=`, `in`, `is None`; никога не сравнявайте `str` с число - `\"3\" == 3` е `False`; strings се сравняват буква по буква"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1525
+#: site/lectures/02-conditions-and-loops.md:1550
 msgid "Logic"
 msgstr "Логика"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1525
+#: site/lectures/02-conditions-and-loops.md:1550
 msgid "`and`, `or`, `not`; Python stops as soon as it knows; `x or default` replaces also `0`"
 msgstr "`and`, `or`, `not`; Python спира, щом знае отговора; `x or default` заменя и `0`"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1526
+#: site/lectures/02-conditions-and-loops.md:1551
 msgid "`if` / `elif` / `else`: the first true condition wins - like `CASE WHEN`; test only one bound of each range"
 msgstr "`if` / `elif` / `else`: печели първото вярно условие - като `CASE WHEN`; проверявайте само едната граница на всеки интервал"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1527
+#: site/lectures/02-conditions-and-loops.md:1552
 msgid "Expressions"
 msgstr "Изрази"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1527
+#: site/lectures/02-conditions-and-loops.md:1552
 msgid "`a if condition else b`; statements do, expressions give a value"
 msgstr "`a if condition else b`; statements правят, изразите дават стойност"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1528
+#: site/lectures/02-conditions-and-loops.md:1553
 msgid "one value against fixed cases; `\\|` for \"or\", `case _:` for the rest; guards with `if`"
 msgstr "една стойност срещу фиксирани случаи; `\\|` за \"или\", `case _:` за останалото; guards с `if`"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1529
+#: site/lectures/02-conditions-and-loops.md:1554
 msgid "while a condition is true; something in the block must change it"
 msgstr "докато условие е вярно; нещо в блока трябва да го промени"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1530
+#: site/lectures/02-conditions-and-loops.md:1555
 msgid "each item of a sequence: a string, a list, `range`, the lines of a file; `range(1, 13)` is 1 ... 12"
 msgstr "всеки елемент на поредица: string, list, `range`, редовете на файл; `range(1, 13)` е 1 ... 12"
 
 #. table cell
-#: site/lectures/02-conditions-and-loops.md:1531
+#: site/lectures/02-conditions-and-loops.md:1556
 msgid "leave the loop / go to the next iteration; `while True` + `break` = `do until`; a flag for \"not found\""
 msgstr "излиза от цикъла / минава към следващата итерация; `while True` + `break` = `do until`; флаг за \"не е намерено\""
 
 #. heading 2
-#: site/lectures/02-conditions-and-loops.md:1533
+#: site/lectures/02-conditions-and-loops.md:1558
 msgid "Homework"
 msgstr "Домашно"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1535
+#: site/lectures/02-conditions-and-loops.md:1560
 msgid "`02-conditions-and-loops/homework.py` (in the homework repository): a **report of days past due** from `loans.csv` - the number of loans and the outstanding amount in each bucket, the shares, and the largest late loan. Every check must print `OK`."
 msgstr "`02-conditions-and-loops/homework.py` (в homework repository): **отчет за дните просрочие** от `loans.csv` - броят кредити и непогасената сума във всяка група, дяловете и най-големият просрочен кредит. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1539
+#: site/lectures/02-conditions-and-loops.md:1564
 msgid "The practice tasks you did not finish in class."
 msgstr "Задачите за упражнение, които не сте довършили в клас."
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1540
+#: site/lectures/02-conditions-and-loops.md:1565
 msgid "Optional: a **loan calculator** in the terminal - `calculator.py` asks for the amount, the yearly rate and the years with `input()`, asks **again** while a value is not valid (the amount must be more than 0, the rate between 0 and 50, the years between 1 and 30), and prints the repayment schedule of section 15. Add a menu with `match`: 1 - the schedule, 2 - only the total interest, 3 - quit; repeat until the user chooses 3."
 msgstr "По желание: **кредитен калкулатор** в терминала - `calculator.py` пита за сумата, годишната лихва и годините с `input()`, пита **отново**, докато стойността не е валидна (сумата трябва да е повече от 0, лихвата - между 0 и 50, годините - между 1 и 30), и отпечатва погасителния план от раздел 15. Добавете меню с `match`: 1 - планът, 2 - само общата лихва, 3 - изход; повтаряйте, докато потребителят не избере 3."
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1546
+#: site/lectures/02-conditions-and-loops.md:1571
 msgid "Optional: change the bisection example of section 15 so that it also prints each guess and \"too high\" / \"too low\", and stops after at most 30 tries."
 msgstr "По желание: променете примера с бисекцията от раздел 15 така, че да отпечатва и всяко предположение и \"too high\" / \"too low\", и да спира след най-много 30 опита."
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1548
+#: site/lectures/02-conditions-and-loops.md:1573
 msgid "Optional: `02-conditions-and-loops/notebook.ipynb` - short extra tasks on the topics of today in a Jupyter notebook, each with a check cell. Open it in VS Code and select the `.venv` kernel."
 msgstr "По желание: `02-conditions-and-loops/notebook.ipynb` - кратки допълнителни задачи по днешните теми в Jupyter notebook, всяка с клетка за проверка. Отворете го във VS Code и изберете kernel-а `.venv`."
 
 #. heading 2
-#: site/lectures/02-conditions-and-loops.md:1552
+#: site/lectures/02-conditions-and-loops.md:1577
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1554
+#: site/lectures/02-conditions-and-loops.md:1579
 msgid "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` on loops, `pass`, `match`)"
 msgstr "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` на цикли, `pass`, `match`)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1556
+#: site/lectures/02-conditions-and-loops.md:1581
 msgid "Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations), [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons), [Truth value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing), [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)"
 msgstr "Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations), [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons), [Truth value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing), [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1560
+#: site/lectures/02-conditions-and-loops.md:1585
 msgid "`match`: [PEP 636 - the pattern matching tutorial](https://peps.python.org/pep-0636/)"
 msgstr "`match`: [PEP 636 - ръководството за pattern matching](https://peps.python.org/pep-0636/)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1561
+#: site/lectures/02-conditions-and-loops.md:1586
 msgid "Real Python: [Conditional statements](https://realpython.com/python-conditional-statements/), [`for` loops](https://realpython.com/python-for-loop/), [`while` loops](https://realpython.com/python-while-loop/)"
 msgstr "Real Python: [Conditional statements](https://realpython.com/python-conditional-statements/), [`for` loops](https://realpython.com/python-for-loop/), [`while` loops](https://realpython.com/python-while-loop/)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1565
+#: site/lectures/02-conditions-and-loops.md:1590
 msgid "**Next session:** lists, tuples and sets - indexing from 0, slices, the methods of `list`, tuples as records, and the SQL `UNION` / `INTERSECT` / `EXCEPT` with sets."
 msgstr "**Следващото занятие:** lists, tuples и sets - индексиране от 0, slices, методите на `list`, tuples като записи и `UNION` / `INTERSECT` / `EXCEPT` от SQL със sets."
 
