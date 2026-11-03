@@ -16,47 +16,54 @@
 .stage { display: grid; grid-template-columns: minmax(0, 40fr) minmax(0, 60fr); gap: 1rem; }
 .left { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: .7rem; min-height: 0; }
 
-.mem { display: flex; flex-direction: column; }
-.mem-head { display: grid; grid-template-columns: 9rem 1fr 22rem 4rem; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
-.mem-grid { position: relative; display: grid; grid-template-columns: 9rem 1fr 22rem 4rem; flex: 1; min-height: 0; }
-.names, .objects { display: flex; flex-direction: column; gap: 1.1rem; position: relative; z-index: 1; }
+/* the diagram: all its sizes are in --u, so one number (--k) scales it (anim.css, --dia);
+   never wider than the panel: the diagram needs 29u across */
+.mem { display: flex; flex-direction: column; container-type: inline-size; --k: 1.6; --u: calc(var(--k) * var(--dia)); }
+@supports (width: 1cqw) { .mem { --u: min(calc(var(--k) * var(--dia)), calc(100cqw / 29)); } }
+.mem-head, .mem-grid { grid-template-columns: calc(7.5 * var(--u)) minmax(0, 1fr) calc(14 * var(--u)) calc(3 * var(--u)); }
+.mem-head { display: grid; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+.mem-grid { position: relative; display: grid; flex: 1; min-height: 0; font-size: var(--u); }
+.names, .objects { display: flex; flex-direction: column; gap: calc(1.1 * var(--u)); position: relative; z-index: 1; }
 .objects { grid-column: 3; }
 .namechip {
     align-self: flex-start;
-    padding: .45rem .8rem;
-    border: 2px solid var(--name-border); border-radius: .5rem;
+    padding: calc(.45 * var(--u)) calc(.8 * var(--u));
+    border: 2px solid var(--name-border); border-radius: calc(.5 * var(--u));
     background: var(--name-bg); color: var(--name-ink);
-    font-family: var(--mono); font-size: 1.15rem; font-weight: 700;
+    font-family: var(--mono); font-size: calc(1.15 * var(--u)); font-weight: 700;
     transition: box-shadow .25s;
 }
 .obj {
     position: relative; align-self: flex-start;
-    padding: 1.1rem .7rem .45rem;
-    border: 2px solid var(--obj-border); border-radius: .6rem;
+    padding: calc(.25 * var(--u)) calc(.7 * var(--u)) calc(.45 * var(--u));
+    border: 2px solid var(--obj-border); border-radius: calc(.6 * var(--u));
     background: var(--obj-bg);
     transition: box-shadow .25s, opacity .4s;
 }
-.obj .type { position: absolute; top: .2rem; left: .6rem; font-size: .66rem; font-weight: 700; letter-spacing: .04em; color: var(--muted); }
-.obj .oid { position: absolute; top: .2rem; right: .6rem; font-family: var(--mono); font-size: .66rem; color: var(--muted); }
-.obj .val { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; padding: 0 .3rem; }
-.cells { display: flex; gap: .3rem; }
-.cell { min-width: 2.6rem; padding: .3rem .5rem; border: 1.5px solid var(--obj-border); border-radius: .3rem; background: var(--panel); font-family: var(--mono); font-size: 1.1rem; font-weight: 700; text-align: center; }
-.cell small { display: block; font-size: .6rem; font-weight: 400; color: var(--muted); }
+/* type and id: a row of their own, so a small object (None) is still wide enough for both */
+.obj .ohead { display: flex; justify-content: space-between; gap: calc(1 * var(--u)); margin: 0 calc(-.1 * var(--u)) calc(.2 * var(--u)); font-size: calc(.66 * var(--u)); color: var(--muted); white-space: nowrap; }
+.obj .type { font-weight: 700; letter-spacing: .04em; }
+.obj .oid { font-family: var(--mono); }
+.obj .val { font-family: var(--mono); font-size: calc(1.2 * var(--u)); font-weight: 700; padding: 0 calc(.3 * var(--u)); }
+.cells { display: flex; gap: calc(.3 * var(--u)); }
+.cell { min-width: calc(2.6 * var(--u)); padding: calc(.3 * var(--u)) calc(.5 * var(--u)); border: 1.5px solid var(--obj-border); border-radius: calc(.3 * var(--u)); background: var(--panel); font-family: var(--mono); font-size: calc(1.1 * var(--u)); font-weight: 700; text-align: center; }
+.cell small { display: block; font-size: calc(.6 * var(--u)); font-weight: 400; color: var(--muted); }
 .cell.ref { color: var(--ref); }
 .cell.chg { box-shadow: 0 0 0 2px var(--write); background: var(--write-bg); }
 .obj.tuple .cell { border-style: dashed; }
 .obj.gone { background: var(--gone-bg); border-color: var(--gone-border); border-style: dashed; opacity: .55; }
-.obj.gone::after { content: attr(data-gc); position: absolute; right: .5rem; bottom: -1.1rem; font-size: .66rem; font-weight: 700; color: var(--err); }
+.obj.gone::after { content: attr(data-gc); position: absolute; right: calc(.5 * var(--u)); bottom: calc(-1.1 * var(--u)); font-size: calc(.66 * var(--u)); font-weight: 700; color: var(--err); white-space: nowrap; }
 .hl-new { animation: pop .45s ease-out; box-shadow: 0 0 0 3px var(--name-border); }
 .obj.hl-new { box-shadow: 0 0 0 3px var(--obj-border); }
 .hl-read { box-shadow: 0 0 0 3px var(--read), 0 0 0 7px var(--read-bg); }
 .hl-write { box-shadow: 0 0 0 3px var(--write), 0 0 0 7px var(--write-bg); }
 .hl-err { box-shadow: 0 0 0 3px var(--err), 0 0 0 7px var(--err-bg); animation: shake .35s; }
 .arrows { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.arrows path { fill: none; stroke: var(--ref); stroke-width: 2.4; }
-.arrows path.write { stroke: var(--write); stroke-width: 3; }
-.arrows path.read { stroke: var(--read); stroke-width: 3; }
-.arrows path.draw { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw .7s ease-out forwards; }
+.arrows path { fill: none; stroke: var(--ref); stroke-width: calc(.09 * var(--u)); }
+.arrows path.write { stroke: var(--write); stroke-width: calc(.11 * var(--u)); }
+.arrows path.read { stroke: var(--read); stroke-width: calc(.11 * var(--u)); }
+/* pathLength="1" on the path: the whole arrow is drawn, however long it is */
+.arrows path.draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw .7s ease-out forwards; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 </style>
 </head>
@@ -275,7 +282,7 @@ $('tObjects').textContent = tr(['Objects in memory', 'Обекти в памет
 const GC = tr(['garbage collector', 'garbage collector'])
 
 function objHtml(o, hl) {
-    const head = `<span class="type">${esc(o.type)}</span><span class="oid">id ${o.id}</span>`
+    const head = `<div class="ohead"><span class="type">${esc(o.type)}</span><span class="oid">id ${o.id}</span></div>`
     const body = o.cells
         ? `<div class="cells">${o.cells.map((c, i) => c.ref
             ? `<div class="cell ref" data-from="${o.key}-${i}" data-to="${c.ref}">&#8226;<small>${i}</small></div>`
@@ -300,6 +307,7 @@ function render(sc, s, prev) {
 
 function drawArrows(s, prev) {
     const grid = $('grid').getBoundingClientRect()
+    const u = parseFloat(getComputedStyle($('grid')).fontSize)   // --u in px
     const paths = []
     for (const n of s.names) {
         const a = document.querySelector(`.namechip[data-name="${CSS.escape(n.name)}"]`).getBoundingClientRect()
@@ -311,7 +319,7 @@ function drawArrows(s, prev) {
         const dx = (x2 - x1) / 2
         const changed = prev && (!prev.names.find(p => p.name === n.name) || prev.names.find(p => p.name === n.name).key !== n.key)
         const cls = [s.arrow[n.name] || '', changed ? 'draw' : ''].join(' ')
-        paths.push(`<path class="${cls}" marker-end="url(#ah-${s.arrow[n.name] || 'ref'})" d="M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}"/>`)
+        paths.push(`<path class="${cls}" pathLength="1" marker-end="url(#ah-${s.arrow[n.name] || 'ref'})" d="M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}"/>`)
     }
     // references from the cells of a tuple / list to other objects: out to the right and back
     for (const cell of document.querySelectorAll('.cell.ref')) {
@@ -321,7 +329,7 @@ function drawArrows(s, prev) {
         const y1 = a.top + a.height / 2 - grid.top
         const x2 = b.right - grid.left + 4
         const y2 = b.top + b.height / 2 - grid.top
-        const out = Math.max(x1, x2) + 50
+        const out = Math.max(x1, x2) + 2.3 * u
         paths.push(`<path marker-end="url(#ah-ref)" d="M${x1},${y1} C${out},${y1} ${out},${y2} ${x2},${y2}"/>`)
     }
     $('paths').innerHTML = paths.join('')

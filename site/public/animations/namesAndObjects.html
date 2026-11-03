@@ -17,41 +17,46 @@
 .evalbox .res { margin-left: .6rem; padding: .1rem .5rem; border-radius: .3rem; background: var(--write-bg); font-weight: 700; }
 .evalbox .src { padding: .1rem .5rem; border-radius: .3rem; background: var(--read-bg); }
 
-.mem { display: flex; flex-direction: column; }
-.mem-head { display: grid; grid-template-columns: 12rem 1fr 17rem; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+/* the diagram: all its sizes are in --u, so one number (--k) scales it (anim.css, --dia);
+   never wider than the panel: the diagram needs 30u across */
+.mem { display: flex; flex-direction: column; container-type: inline-size; --k: 1.6; --u: calc(var(--k) * var(--dia)); }
+@supports (width: 1cqw) { .mem { --u: min(calc(var(--k) * var(--dia)), calc(100cqw / 30)); } }
+.mem-head, .mem-grid { grid-template-columns: calc(10 * var(--u)) minmax(0, 1fr) calc(16.5 * var(--u)); }
+.mem-head { display: grid; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
 .mem-head span:last-child { text-align: left; }
-.mem-grid { position: relative; display: grid; grid-template-columns: 12rem 1fr 17rem; flex: 1; min-height: 0; }
-.names, .objects { display: flex; flex-direction: column; gap: .8rem; position: relative; z-index: 1; }
+.mem-grid { position: relative; display: grid; flex: 1; min-height: 0; font-size: var(--u); }
+.names, .objects { display: flex; flex-direction: column; gap: calc(.8 * var(--u)); position: relative; z-index: 1; }
 .objects { grid-column: 3; }
 .namechip {
     align-self: flex-start;
-    padding: .45rem .8rem;
-    border: 2px solid var(--name-border); border-radius: .5rem;
+    padding: calc(.45 * var(--u)) calc(.8 * var(--u));
+    border: 2px solid var(--name-border); border-radius: calc(.5 * var(--u));
     background: var(--name-bg); color: var(--name-ink);
-    font-family: var(--mono); font-size: 1.15rem; font-weight: 700;
+    font-family: var(--mono); font-size: calc(1.15 * var(--u)); font-weight: 700;
     transition: box-shadow .25s;
 }
 .obj {
     position: relative;
-    padding: .55rem .8rem .45rem;
-    border: 2px solid var(--obj-border); border-radius: .6rem;
+    padding: calc(.55 * var(--u)) calc(.8 * var(--u)) calc(.45 * var(--u));
+    border: 2px solid var(--obj-border); border-radius: calc(.6 * var(--u));
     background: var(--obj-bg);
     transition: box-shadow .25s, opacity .4s;
 }
-.obj .val { font-family: var(--mono); font-size: 1.2rem; font-weight: 700; }
-.obj .type { position: absolute; top: .2rem; right: .5rem; font-size: .66rem; font-weight: 700; letter-spacing: .04em; color: var(--muted); }
-.obj .oid { display: block; margin-top: .1rem; font-family: var(--mono); font-size: .66rem; color: var(--muted); }
+.obj .val { font-family: var(--mono); font-size: calc(1.2 * var(--u)); font-weight: 700; }
+.obj .type { position: absolute; top: calc(.2 * var(--u)); right: calc(.5 * var(--u)); font-size: calc(.66 * var(--u)); font-weight: 700; letter-spacing: .04em; color: var(--muted); }
+.obj .oid { display: block; margin-top: calc(.1 * var(--u)); font-family: var(--mono); font-size: calc(.66 * var(--u)); color: var(--muted); }
 .obj.gone { background: var(--gone-bg); border-color: var(--gone-border); border-style: dashed; opacity: .55; }
-.obj.gone::after { content: attr(data-gc); position: absolute; right: .5rem; bottom: .3rem; font-size: .66rem; font-weight: 700; color: var(--err); }
+.obj.gone::after { content: attr(data-gc); position: absolute; right: calc(.5 * var(--u)); bottom: calc(.3 * var(--u)); font-size: calc(.66 * var(--u)); font-weight: 700; color: var(--err); }
 .hl-new { animation: pop .45s ease-out; box-shadow: 0 0 0 3px var(--name-border); }
 .obj.hl-new { box-shadow: 0 0 0 3px var(--obj-border); }
 .hl-read { box-shadow: 0 0 0 3px var(--read), 0 0 0 7px var(--read-bg); }
 .hl-write { box-shadow: 0 0 0 3px var(--write), 0 0 0 7px var(--write-bg); }
 .arrows { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
-.arrows path { fill: none; stroke: var(--ref); stroke-width: 2.4; }
-.arrows path.write { stroke: var(--write); stroke-width: 3; }
-.arrows path.read { stroke: var(--read); stroke-width: 3; }
-.arrows path.draw { stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw .7s ease-out forwards; }
+.arrows path { fill: none; stroke: var(--ref); stroke-width: calc(.09 * var(--u)); }
+.arrows path.write { stroke: var(--write); stroke-width: calc(.11 * var(--u)); }
+.arrows path.read { stroke: var(--read); stroke-width: calc(.11 * var(--u)); }
+/* pathLength="1" on the path: the whole arrow is drawn, however long it is */
+.arrows path.draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw .7s ease-out forwards; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
 </style>
 </head>
@@ -333,7 +338,7 @@ function drawArrows(s, prev) {
         const dx = (x2 - x1) / 2
         const changed = prev && (!prev.names.find(p => p.name === n.name) || prev.names.find(p => p.name === n.name).key !== n.key)
         const cls = [s.arrow[n.name] || '', changed ? 'draw' : ''].join(' ')
-        paths.push(`<path class="${cls}" marker-end="url(#ah-${s.arrow[n.name] || 'ref'})" d="M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}"/>`)
+        paths.push(`<path class="${cls}" pathLength="1" marker-end="url(#ah-${s.arrow[n.name] || 'ref'})" d="M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}"/>`)
     }
     $('paths').innerHTML = paths.join('')
 }

@@ -16,38 +16,43 @@
 .stage { display: grid; grid-template-columns: minmax(0, 40fr) minmax(0, 60fr); gap: 1rem; }
 .left { display: grid; grid-template-rows: auto minmax(0, 1fr); gap: .7rem; min-height: 0; }
 
-.mem { display: flex; flex-direction: column; }
-.mem-head { display: grid; grid-template-columns: minmax(0, 1fr) 4rem 15rem 3rem; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
-.mem-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) 4rem 15rem 3rem; flex: 1; min-height: 0; }
-.frames, .objects { display: flex; flex-direction: column; gap: .8rem; position: relative; z-index: 1; }
+/* the diagram: all its sizes are in --u, so one number (--k) scales it (anim.css, --dia);
+   never wider than the panel: the diagram needs 35u across (the frames 14u) */
+.mem { display: flex; flex-direction: column; container-type: inline-size; --k: 1.35; --u: calc(var(--k) * var(--dia)); }
+@supports (width: 1cqw) { .mem { --u: min(calc(var(--k) * var(--dia)), calc(100cqw / 35)); } }
+.mem-head, .mem-grid { grid-template-columns: minmax(0, 1fr) calc(3 * var(--u)) calc(15 * var(--u)) calc(3 * var(--u)); }
+.mem-head { display: grid; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .5rem; }
+.mem-grid { position: relative; display: grid; flex: 1; min-height: 0; font-size: var(--u); }
+.frames, .objects { display: flex; flex-direction: column; gap: calc(.8 * var(--u)); position: relative; z-index: 1; }
 .objects { grid-column: 3; }
 
-.frame { border: 2px solid var(--line); border-radius: .6rem; background: var(--panel); padding: .4rem .6rem .55rem; transition: opacity .4s; }
+.frame { border: 2px solid var(--line); border-radius: calc(.6 * var(--u)); background: var(--panel); padding: calc(.4 * var(--u)) calc(.6 * var(--u)) calc(.55 * var(--u)); transition: opacity .4s; }
 .frame.call { border-color: var(--read); }
 .frame.new { animation: pop .45s ease-out; }
 .frame.gone { opacity: .35; border-style: dashed; }
-.frame-title { font-family: var(--mono); font-size: .85rem; font-weight: 700; color: var(--muted); margin-bottom: .35rem; }
+.frame-title { font-family: var(--mono); font-size: calc(.85 * var(--u)); font-weight: 700; color: var(--muted); margin-bottom: calc(.35 * var(--u)); }
 .frame.call .frame-title { color: var(--read); }
-.row { display: flex; align-items: center; gap: .5rem; margin-top: .3rem; }
+.row { display: flex; align-items: center; gap: calc(.5 * var(--u)); margin-top: calc(.3 * var(--u)); }
 .namechip {
-    padding: .3rem .65rem;
-    border: 2px solid var(--name-border); border-radius: .45rem;
+    padding: calc(.3 * var(--u)) calc(.65 * var(--u));
+    border: 2px solid var(--name-border); border-radius: calc(.45 * var(--u));
     background: var(--name-bg); color: var(--name-ink);
-    font-family: var(--mono); font-size: 1.05rem; font-weight: 700;
+    font-family: var(--mono); font-size: calc(1.05 * var(--u)); font-weight: 700;
     transition: box-shadow .25s;
 }
-.value { padding: .25rem .6rem; border: 2px solid var(--obj-border); border-radius: .45rem; background: var(--obj-bg); font-family: var(--mono); font-size: 1.05rem; font-weight: 700; transition: box-shadow .25s; }
+.value { padding: calc(.25 * var(--u)) calc(.6 * var(--u)); border: 2px solid var(--obj-border); border-radius: calc(.45 * var(--u)); background: var(--obj-bg); font-family: var(--mono); font-size: calc(1.05 * var(--u)); font-weight: 700; transition: box-shadow .25s; }
 .value.ref { color: var(--ref); }
 .value.unbound { border-style: dashed; color: var(--muted); background: none; font-weight: 400; }
 .row.ret .namechip { background: var(--write-bg); border-color: var(--write); color: var(--ink); }
 
-.obj { position: relative; padding: 1.1rem .7rem .45rem; border: 2px solid var(--obj-border); border-radius: .6rem; background: var(--obj-bg); transition: box-shadow .25s; }
-.obj .type { position: absolute; top: .2rem; left: .6rem; font-size: .66rem; font-weight: 700; letter-spacing: .04em; color: var(--muted); }
-.obj .val { font-family: var(--mono); font-size: 1rem; font-weight: 700; }
-.obj .defaults { font-size: .75rem; color: var(--muted); margin-top: .2rem; }
+.obj { position: relative; padding: calc(1.1 * var(--u)) calc(.7 * var(--u)) calc(.45 * var(--u)); border: 2px solid var(--obj-border); border-radius: calc(.6 * var(--u)); background: var(--obj-bg); transition: box-shadow .25s; }
+.obj .type { position: absolute; top: calc(.2 * var(--u)); left: calc(.6 * var(--u)); font-size: calc(.66 * var(--u)); font-weight: 700; letter-spacing: .04em; color: var(--muted); }
+.obj .val { font-family: var(--mono); font-size: calc(1 * var(--u)); font-weight: 700; }
+.obj .defaults { font-size: calc(.75 * var(--u)); color: var(--muted); margin-top: calc(.2 * var(--u)); }
 .obj .defaults span { color: var(--ref); font-weight: 700; }
-.cells { display: flex; gap: .3rem; flex-wrap: wrap; }
-.cell { min-width: 2.2rem; padding: .25rem .45rem; border: 1.5px solid var(--obj-border); border-radius: .3rem; background: var(--panel); font-family: var(--mono); font-size: 1rem; font-weight: 700; text-align: center; }
+.obj .empty { font-size: calc(.8 * var(--u)); }
+.cells { display: flex; gap: calc(.3 * var(--u)); flex-wrap: wrap; }
+.cell { min-width: calc(2.2 * var(--u)); padding: calc(.25 * var(--u)) calc(.45 * var(--u)); border: 1.5px solid var(--obj-border); border-radius: calc(.3 * var(--u)); background: var(--panel); font-family: var(--mono); font-size: calc(1 * var(--u)); font-weight: 700; text-align: center; }
 .cell.chg { box-shadow: 0 0 0 2px var(--write); background: var(--write-bg); }
 
 .hl-new { animation: pop .45s ease-out; box-shadow: 0 0 0 3px var(--name-border); }
@@ -55,7 +60,7 @@
 .hl-write { box-shadow: 0 0 0 3px var(--write), 0 0 0 6px var(--write-bg); }
 .hl-err { box-shadow: 0 0 0 3px var(--err), 0 0 0 6px var(--err-bg); animation: shake .35s; }
 .arrows { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 2; }
-.arrows path { fill: none; stroke: var(--ref); stroke-width: 2.2; }
+.arrows path { fill: none; stroke: var(--ref); stroke-width: calc(.09 * var(--u)); }
 </style>
 </head>
 <body>
@@ -302,6 +307,7 @@ function render(sc, s, prev) {
 
 function drawArrows() {
     const grid = $('grid').getBoundingClientRect()
+    const u = parseFloat(getComputedStyle($('grid')).fontSize)   // --u in px
     const paths = []
     for (const el of document.querySelectorAll('.frame:not(.gone) .value.ref')) {
         const a = el.getBoundingClientRect()
@@ -309,8 +315,8 @@ function drawArrows() {
         const x1 = a.right - grid.left
         const y1 = a.top + a.height / 2 - grid.top
         const x2 = b.left - grid.left - 4
-        const y2 = b.top + Math.min(b.height / 2, 22) - grid.top
-        const dx = Math.max(30, (x2 - x1) / 2)
+        const y2 = b.top + Math.min(b.height / 2, u) - grid.top
+        const dx = Math.max(1.4 * u, (x2 - x1) / 2)
         paths.push(`<path marker-end="url(#ah-ref)" d="M${x1},${y1} C${x1 + dx},${y1} ${x2 - dx},${y2} ${x2},${y2}"/>`)
     }
     for (const el of document.querySelectorAll('.defaults')) {
@@ -320,7 +326,7 @@ function drawArrows() {
         const y1 = a.top + a.height / 2 - grid.top
         const x2 = b.right - grid.left + 4
         const y2 = b.top + b.height / 2 - grid.top
-        const out = Math.max(x1, x2) + 40
+        const out = Math.max(x1, x2) + 1.8 * u
         paths.push(`<path marker-end="url(#ah-ref)" d="M${x1},${y1} C${out},${y1} ${out},${y2} ${x2},${y2}"/>`)
     }
     $('paths').innerHTML = paths.join('')

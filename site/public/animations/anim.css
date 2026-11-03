@@ -32,6 +32,11 @@
 
     --mono: "JetBrains Mono", "Fira Code", "Cascadia Code", Consolas, "DejaVu Sans Mono", monospace;
     --sans: "Segoe UI", "Noto Sans", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    /* The unit of a memory diagram (names, objects, frames, arrows): 1rem, but it
+       does not stop at 22px - on a big screen the diagram fills the same share of
+       its panel. A page scales it (--k) and caps it by the panel width (--u). */
+    --dia: max(1rem, min(1.15vw, 2.05vh));
 }
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
@@ -174,5 +179,12 @@ body {
     html { font-size: 13px; }
     .app { height: auto; }
     .top { flex-wrap: wrap; }
+    .top h1 { white-space: normal; }
+    /* a phone: the panels one below the other (body: stronger than the page's .stage),
+       and a long code line scrolls inside its panel, not the whole page */
+    body .stage { grid-template-columns: minmax(0, 1fr); }
+    .left, .col { grid-template-columns: minmax(0, 1fr); }
+    .code-panel { overflow-x: auto; }
+    .code { min-width: max-content; }
     .bottom { grid-template-columns: 1fr; }
 }
