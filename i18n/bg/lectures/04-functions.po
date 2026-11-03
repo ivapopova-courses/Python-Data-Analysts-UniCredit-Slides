@@ -1035,8 +1035,8 @@ msgstr "Една задача, много малки функции"
 
 #. paragraph
 #: site/lectures/04-functions.md:1175
-msgid "The portfolio rules of sessions 1 and 2, as functions. Each one does one thing, has a docstring, and returns its result:"
-msgstr "Правилата за портфейла от занятия 1 и 2, като функции. Всяка прави едно нещо, има docstring и връща резултата си:"
+msgid "An example of a small library of functions. Each one does one thing, has a docstring, and returns its result:"
+msgstr "Пример за малка библиотека от функции. Всяка прави едно нещо, има docstring и връща резултата си:"
 
 #. paragraph
 #: site/lectures/04-functions.md:1216
@@ -1357,6 +1357,9 @@ msgstr "Видеа: [Python tutorial for beginners 8: functions](https://www.you
 #: site/lectures/04-functions.md:1466
 msgid "**Next session:** lists, advanced - list comprehensions, sorting with `key`, `zip`, `enumerate`, `map` and `filter`, and a table as a list of rows."
 msgstr "**Следващото занятие:** lists за напреднали - list comprehensions, сортиране с `key`, `zip`, `enumerate`, `map` и `filter` и таблица като list от редове."
+
+#~ msgid "The portfolio rules of sessions 1 and 2, as functions. Each one does one thing, has a docstring, and returns its result:"
+#~ msgstr "Правилата за портфейла от занятия 1 и 2, като функции. Всяка прави едно нещо, има docstring и връща резултата си:"
 
 #~ msgid "`sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` any expression"
 #~ msgstr "`sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` по произволен израз"

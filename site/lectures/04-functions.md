@@ -1172,7 +1172,7 @@ Sorting is covered in depth in session 5. Reference:
 
 ### One task, many small functions
 
-The portfolio rules of sessions 1 and 2, as functions. Each one does one thing, has a
+An example of a small library of functions. Each one does one thing, has a
 docstring, and returns its result:
 
 ```python run
