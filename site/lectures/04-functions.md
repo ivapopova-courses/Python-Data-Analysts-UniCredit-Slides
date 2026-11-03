@@ -744,6 +744,27 @@ loop variable, `import`, `def`.
 **Function calls step by step:** [3. `UnboundLocalError`](../animations/functionCalls.html#3){target="_blank"}
 :::
 
+### A function calls a function
+
+A function can call other functions. Each call gets its own local names: below there
+are two names `rate`, one in `payment` and one in `monthly`, and they do not mix.
+When `monthly` returns, `payment` goes on from the line that called it:
+
+```python run
+def monthly(rate):
+    return rate / 12
+
+def payment(amount, rate):
+    r = monthly(rate)
+    return amount * r / 100
+
+print(payment(1200, 6))
+```
+
+::: info Animation
+**Function calls step by step:** [4. A function calls a function](../animations/functionCalls.html#4){target="_blank"}
+:::
+
 ### `global`: change a global name - rarely
 
 `global name` says: "in this function, `name` means the **global** name" - an
@@ -967,10 +988,19 @@ def is_late(days_past_due: int) -> bool:
 print(is_late(45.5))       # works: hints are not checked at run time
 ```
 
-But editors and tools do check them: **Pylance** in VS Code underlines a call with a
-wrong type before you run anything, and [mypy](https://mypy-lang.org/) checks a
-whole project. In data work, hints are most useful on the functions that other people
-call.
+But editors can check them before you run anything: **Pylance** in VS Code (it comes
+with the Python extension) underlines a call with a wrong type. Pylance works out of
+the box, but its static type checking is **turned off by default**. To turn it on, add
+this setting to your VS Code settings (`settings.json`; open it with `Ctrl+Shift+P` ->
+"Preferences: Open User Settings (JSON)"):
+
+```json
+{
+  "python.analysis.typeCheckingMode": "basic"
+}
+```
+
+In data work, hints are most useful on the functions that other people call.
 
 ::: info Newer Python versions
 Python 3.12 added the `type` statement for type aliases: `type Amount = float`. Python
@@ -1168,59 +1198,7 @@ print(sorted(["cherry", "fig", "banana"], key=len))
 Sorting is covered in depth in session 5. Reference:
 [Sorting techniques](https://docs.python.org/3/howto/sorting.html).
 
-## 11. From macros to functions: a small library
-
-### One task, many small functions
-
-An example of a small library of functions. Each one does one thing, has a
-docstring, and returns its result:
-
-```python run
-def annuity_payment(amount: float, yearly_rate: float, years: int) -> float:
-    """The monthly payment of an annuity loan, rounded to cents."""
-    r = yearly_rate / 12 / 100
-    n = years * 12
-    return round(amount * r / (1 - (1 + r) ** -n), 2)
-
-
-def expected_loss(pd_value: float, lgd: float, ead: float) -> float:
-    """EL = PD * LGD * EAD."""
-    return pd_value * lgd * ead
-
-
-def dpd_bucket(days_past_due: int) -> str:
-    """The bucket of days past due."""
-    if days_past_due == 0:
-        return "current"
-    if days_past_due <= 30:
-        return "1-30"
-    if days_past_due <= 90:
-        return "31-90"
-    return "90+"
-
-
-def stage(days_past_due: int, rating: int) -> int:
-    """The IFRS 9 stage of the sample data."""
-    if days_past_due > 90 or rating == 10:
-        return 3
-    if days_past_due > 30 or rating >= 7:
-        return 2
-    return 1
-
-
-print(annuity_payment(20000, 6, 5))
-print(expected_loss(0.02, 0.45, 100000))
-print(dpd_bucket(45), stage(45, 5), stage(0, 10))
-```
-
-A function can call other functions - each call gets its own local names, and
-returns to the line that called it:
-
-::: info Animation
-**Function calls step by step:** [4. A function calls a function](../animations/functionCalls.html#4){target="_blank"}
-:::
-
-### A script made of functions
+## 11. From macros to functions: a report script
 
 The structure of a script that you can run again every month: the imports and the
 constants at the top, then the functions, and the main code at the bottom.
