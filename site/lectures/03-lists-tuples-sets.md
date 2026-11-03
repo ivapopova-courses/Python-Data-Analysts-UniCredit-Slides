@@ -179,8 +179,8 @@ A list is the natural thing to loop over: `for` takes its items one by one, in
 order. Everything of session 2 works here - accumulators, `break` with a flag, and
 `continue`.
 
-A sum, a count and the largest item in one loop - `SUM`, `COUNT` with a condition,
-and `MAX`:
+A sum, a count and the largest item in one loop - like SQL `SUM`, `COUNT` with a
+condition, and `MAX`:
 
 ```python run
 amounts = [1044231.30, 651927.30, 644.25, 14286.75, 3200.00]
@@ -344,7 +344,7 @@ print(numbers[1:100])
 print(numbers[5:10])
 ```
 
-### Slices of strings: `SUBSTR`
+### Slices of strings: SAS / SQL `SUBSTR`
 
 A string is a sequence of characters, so the same indexes and slices work - this is
 the Python version of `SUBSTR` in SAS and SQL:
@@ -409,7 +409,7 @@ Only strings, lists and tuples can be joined and repeated. A `range` cannot (but
 can make a list of it first: `list(range(3)) * 2`).
 
 `+` makes a **new** list. Joining two lists one under the other is `UNION ALL` in
-SQL, or `SET a b;` in a DATA step - for example, the late loans of two months:
+SQL, or `SET a b;` in a SAS DATA step - for example, the late loans of two months:
 
 ```python run
 late_august = ["L000002", "L000014", "L000025"]
@@ -1127,9 +1127,22 @@ print(type({}), type(set()))
 ```
 :::
 
-### Unique values: `SELECT DISTINCT`
+### Unique values: SQL `SELECT DISTINCT`
 
-`set()` makes a set from any sequence - the duplicates disappear:
+In SQL, `SELECT DISTINCT` gives each value of a column once. In SAS, you write the
+same in `PROC SQL`, or use `PROC SORT` with `NODUPKEY`:
+
+```sql
+SELECT DISTINCT product FROM loans;
+```
+
+```sas
+proc sort data=loans(keep=product) out=products nodupkey;
+    by product;
+run;
+```
+
+In Python, `set()` makes a set from any sequence - the duplicates disappear:
 
 ```python run
 l1 = [1, 2, 1, 3, 2, 5, 3]
@@ -1227,13 +1240,13 @@ print(frozenset({"USD", "EUR"}) in pairs)      # the order does not matter
 ```
 :::
 
-## 12. Set operations: `UNION`, `INTERSECT`, `EXCEPT`
+## 12. Set operations: SQL `UNION`, `INTERSECT`, `EXCEPT`
 
 ### The four operations
 
 ![Four Venn diagrams of two sets a and b: union, intersection, difference and symmetric difference, with the Python operator, the method and the SQL keyword of each](/diagrams/set-operations.svg){.diagram width=920 height=330}
 
-| Operation | Operator | Method | Result | SQL |
+| Operation | Operator | Method | Result | SQL (also SAS `PROC SQL`) |
 |---|---|---|---|---|
 | union | `a \| b` | `a.union(b)` | in `a` or in `b` | `UNION` |
 | intersection | `a & b` | `a.intersection(b)` | in both | `INTERSECT` |
@@ -1413,7 +1426,7 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
 | Tuples | `(...)`, immutable, the comma makes it: `(99,)`; unpacking `a, b, c = t`, `_` for a value you do not need; records |
 | `range` | `range(start, stop, step)`, stop not included; small in memory |
 | Sets | `{...}` / `set()`, unique, unordered; `add`, `discard`; fast `in`; print with `sorted()` |
-| Set operations | `\|` `UNION`, `&` `INTERSECT`, `-` `EXCEPT`, `^` symmetric difference; `<=` subset |
+| Set operations | `\|` is SQL `UNION`, `&` is `INTERSECT`, `-` is `EXCEPT`; `^` symmetric difference; `<=` subset |
 
 ## Homework
 

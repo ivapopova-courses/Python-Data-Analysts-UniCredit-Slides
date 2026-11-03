@@ -605,7 +605,7 @@ function. Returning early for the special cases keeps the main logic flat:
 
 ```python run
 def dpd_bucket(days_past_due):
-    """The bucket of days past due, like CASE WHEN."""
+    """The bucket of days past due, like SQL CASE WHEN."""
     if days_past_due == 0:
         return "current"
     if days_past_due <= 30:
@@ -1301,7 +1301,7 @@ values.
 | References | a list passed to a function can be changed by it - return a new list instead |
 | Documentation | a docstring in triple quotes; type hints `x: float -> float` are not checked at run time |
 | Functions as values | pass a function as an argument; `lambda x: ...` for a short `key` |
-| Sorting | `sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` any expression |
+| Sorting | `sorted(items, key=lambda item: item[2], reverse=True)` - SQL `ORDER BY` any expression |
 | SAS macros | a macro writes code; a function runs and returns a value |
 
 ## Homework

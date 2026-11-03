@@ -1200,8 +1200,8 @@ msgstr "Сортиране"
 
 #. table cell
 #: site/lectures/04-functions.md:1304
-msgid "`sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` any expression"
-msgstr "`sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` по произволен израз"
+msgid "`sorted(items, key=lambda item: item[2], reverse=True)` - SQL `ORDER BY` any expression"
+msgstr "`sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` от SQL по произволен израз"
 
 #. table cell
 #: site/lectures/04-functions.md:1305
@@ -1332,6 +1332,9 @@ msgstr "Видеа: [Python tutorial for beginners 8: functions](https://www.you
 #: site/lectures/04-functions.md:1449
 msgid "**Next session:** lists, advanced - list comprehensions, sorting with `key`, `zip`, `enumerate`, `map` and `filter`, and a table as a list of rows."
 msgstr "**Следващото занятие:** lists за напреднали - list comprehensions, сортиране с `key`, `zip`, `enumerate`, `map` и `filter` и таблица като list от редове."
+
+#~ msgid "`sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` any expression"
+#~ msgstr "`sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` по произволен израз"
 
 #~ msgid "`sorted()` and `list.sort()` take a `key`: a function that is called for each item, and the items are sorted by its result. This is `ORDER BY` with any expression:"
 #~ msgstr "`sorted()` и `list.sort()` приемат `key`: функция, която се извиква за всеки елемент, и елементите се сортират по нейния резултат. Това е `ORDER BY` с произволен израз:"
