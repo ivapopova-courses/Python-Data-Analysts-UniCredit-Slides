@@ -109,7 +109,7 @@ print([round(rate / 100, 4) for rate in rates])
 print([(loan_id, loan_id[-3:]) for loan_id in ids])
 ```
 
-With your own function from session 4 - a `CASE WHEN` with many branches, written
+With your own function from [session 4](./04-functions.md) - a `CASE WHEN` with many branches, written
 once and used in one short line:
 
 ```python run
@@ -177,11 +177,11 @@ print(len(usd_k), usd_k[:5])
 ```
 
 The columns are still **text** - `row[10] == "3"`, not `== 3`. Convert where you need
-a number (`float(row[7])`), as in session 2.
+a number (`float(row[7])`), as in [session 2](./02-conditions-and-loops.md#the-rows-of-a-file).
 
 ### `CASE WHEN` inside: `a if condition else b`
 
-A conditional expression (session 2) can be the expression of a comprehension. Then
+A conditional expression ([session 2](./02-conditions-and-loops.md#_7-conditional-expressions)) can be the expression of a comprehension. Then
 every item goes into the list, with one of two values:
 
 ```python run
@@ -231,11 +231,11 @@ never builds a list in memory. It works with any function that takes many values
 `sum`, `min`, `max`, `any`, `all`, `sorted`, `set`, `", ".join(...)`.
 
 `sum(1 for ... if ...)` is SQL `COUNT(*) ... WHERE ...`. Another way to count: `True`
-is `1` (session 2), so `sum(int(row[9]) > 0 for row in rows)` gives the same.
+is `1` ([session 2](./02-conditions-and-loops.md#different-types)), so `sum(int(row[9]) > 0 for row in rows)` gives the same.
 
 ### Set comprehensions: `SELECT DISTINCT`
 
-Curly brackets make a **set** - the unique values (session 3):
+Curly brackets make a **set** - the unique values ([session 3](./03-lists-tuples-sets.md#unique-values-sql-select-distinct)):
 
 ```python run
 with open("data/loans.csv", encoding="utf-8") as file:
@@ -249,7 +249,7 @@ clients_with_usd = {row[1] for row in rows if row[3] == "USD"}
 print(len(clients_with_usd))
 ```
 
-Dictionary comprehensions, with `{key: value for ...}`, are in session 6.
+Dictionary comprehensions, with `{key: value for ...}`, are in [session 6](./06-dictionaries.md#_4-dict-comprehensions).
 
 ### When not to use a comprehension
 
@@ -305,7 +305,7 @@ built-in functions are clearer.
 :::
 
 ::: info The same in pandas
-In pandas (session 14) you do not loop at all - an operation on a column works on
+In pandas ([session 14](./14-numpy-pandas-intro.md#columns)) you do not loop at all - an operation on a column works on
 all its values:
 
 ```python run
@@ -356,7 +356,7 @@ print("any currency other than EUR/USD:", any(row[3] not in ("EUR", "USD") for r
 ```
 
 `row[0].startswith("L")` is `True` when the text starts with `"L"` - a string
-method; session 7 has them all. In SQL these are `EXISTS (SELECT ... WHERE ...)` and
+method; [session 7](./07-text-processing.md#_3-find-and-test) has them all. In SQL these are `EXISTS (SELECT ... WHERE ...)` and
 `NOT EXISTS (... WHERE NOT ...)`. Both stop as soon as the answer is known: `any` at the first true value,
 `all` at the first false one.
 
@@ -371,7 +371,7 @@ print(any([]), all([]))
 
 ### `min` and `max` with `key`
 
-Session 4 showed `key=` with `sorted`, `min` and `max`. With rows, `key` says which
+[Session 4](./04-functions.md#sorting-by-a-key) showed `key=` with `sorted`, `min` and `max`. With rows, `key` says which
 column to compare - and you get back the **whole row**, not only the value:
 
 ```python run
@@ -387,7 +387,7 @@ print(max(float(row[7]) for row in rows))       # only the largest amount, witho
 ```
 
 ::: warning A trap: numbers as text
-`max(["9", "10", "100"])` is `"9"`: strings compare letter by letter (session 2).
+`max(["9", "10", "100"])` is `"9"`: strings compare letter by letter ([session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)).
 Convert first - `key=float` or `float(...)` in the generator. Without `key`,
 `max(rows)` compares whole rows as text - the first column first - and gives the
 largest **id**, not the largest loan.
@@ -423,8 +423,8 @@ print("max    ", max(rates))
 print("average", round(sum(rates) / len(rates), 2))
 ```
 
-This is SAS `PROC MEANS` for one variable. The module `statistics` (session 10) adds
-`median`, `stdev` and more; pandas gives all of them in one `describe()` (session 14).
+This is SAS `PROC MEANS` for one variable. The module `statistics` ([session 10](./10-modules-and-git.md#statistics-proc-means-and-proc-univariate-for-a-list)) adds
+`median`, `stdev` and more; pandas gives all of them in one `describe()` ([session 14](./14-numpy-pandas-intro.md#describe-proc-means)).
 
 ::: tip Try it
 Change the checks block above: is there a loan with `outstanding` greater than
@@ -526,7 +526,7 @@ for line_no, line in enumerate(lines, start=2):          # line 1 is the header
 ```
 
 ::: details Advanced: more of `zip` - transpose, `strict=True`, used-up iterators
-**Transpose a table.** With the `*` of session 4, `zip(*rows)` turns a list of rows
+**Transpose a table.** With the `*` of [session 4](./04-functions.md#unpacking-in-a-call), `zip(*rows)` turns a list of rows
 into a list of **columns** - a small SAS `PROC TRANSPOSE`:
 
 ```python run
@@ -567,7 +567,7 @@ print(list(pairs))          # [] - already used up
 
 ::: info The same in pandas
 In a DataFrame, the columns are already side by side - no `zip` is needed. The
-month-to-month change is `shift` (session 16):
+month-to-month change is `shift` ([session 16](./16-pandas-reports-project.md#lag-by-loan)):
 
 ```python run
 import pandas as pd
@@ -593,13 +593,13 @@ print(list(enumerate(b, start=10)))
 
 ### A recap
 
-Session 3: `list.sort()` changes the list, `sorted(x)` returns a new list. Session 4:
+[Session 3](./03-lists-tuples-sets.md#sort-or-sorted): `list.sort()` changes the list, `sorted(x)` returns a new list. [Session 4](./04-functions.md#sorting-by-a-key):
 `key=` sorts by any expression, `reverse=True` sorts from the largest, and a key
 that returns a **tuple** sorts by several columns - like SQL `ORDER BY a, b`.
 
 ### The top N
 
-`sorted(...)[:n]` - sort, then take a slice (session 3). With `enumerate` (section 3)
+`sorted(...)[:n]` - sort, then take a slice ([session 3](./03-lists-tuples-sets.md#slices-start-stop-step)). With `enumerate` ([section 3](#_3-zip-and-enumerate))
 you get the rank:
 
 ```python run
@@ -632,7 +632,7 @@ for loan in sorted(loans, key=lambda loan: (loan[1], -loan[2])):
 
 This works only for numbers - you cannot negate a string. In pandas, every column
 gets its own direction: `sort_values(["product", "outstanding"], ascending=[True,
-False])` (session 15).
+False])` ([session 15](./15-pandas-select-aggregate-join.md#_3-sorting-and-the-top-n)).
 
 ::: details Advanced: `DESC` on a text column - two stable sorts
 Python's sort is **stable**: items with equal keys keep their order. So sort by the
@@ -675,7 +675,7 @@ print(sorted(amounts, key=lambda x: (x is None, x if x is not None else 0)))
 ```
 
 SAS sorts a missing value **first** (it is the smallest number); SQL puts `NULL`s first
-or last depending on the database. pandas has `na_position=` (session 15).
+or last depending on the database. pandas has `na_position=` ([session 15](./15-pandas-select-aggregate-join.md#_3-sorting-and-the-top-n)).
 :::
 
 ::: details Advanced: `operator.itemgetter`
@@ -745,7 +745,7 @@ print([row[2] for row in rows])     # a column
 - **a column**: `[row[j] for row in rows]` - a comprehension over the rows.
 
 ::: details Advanced: loop over the rows and the cells
-A table can be read with **nested loops** (session 2): the outer loop takes the
+A table can be read with **nested loops** ([session 2](./02-conditions-and-loops.md#nested-loops)): the outer loop takes the
 rows, the inner loop the cells of one row. Here the cells get their column names,
 in pairs with `zip`:
 
@@ -762,8 +762,8 @@ for number, row in enumerate(rows, start=1):
 ```
 
 `break` in the inner loop leaves **only the inner loop** - the outer loop goes on
-with the next row (session 2, "`break` in nested loops"). To stop both loops at
-the first match, put the loops into a function and `return` (session 4).
+with the next row ([session 2](./02-conditions-and-loops.md#break-in-nested-loops), "`break` in nested loops"). To stop both loops at
+the first match, put the loops into a function and `return` ([session 4](./04-functions.md#return-early)).
 :::
 
 ### Read a CSV file into rows, with types
@@ -801,7 +801,7 @@ STAGE = header.index("stage")
 print(OUT, STAGE)
 ```
 
-(Session 6 gives each row its column names, with dictionaries. pandas does it for
+([Session 6](./06-dictionaries.md#a-row-as-a-dictionary) gives each row its column names, with dictionaries. pandas does it for
 you.)
 
 ### SQL on a list of rows
@@ -871,8 +871,8 @@ for stage in sorted({r[10] for r in rows}):              # the groups
     print(stage, len(group), f"{sum(r[7] for r in group):,.2f}")
 ```
 
-This reads the rows once for each group - fine for a few groups. Session 6 does it
-in one pass, with a dictionary; pandas has `groupby` (session 15).
+This reads the rows once for each group - fine for a few groups. [Session 6](./06-dictionaries.md#_6-grouping-by-hand-group-by) does it
+in one pass, with a dictionary; pandas has `groupby` ([session 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means)).
 
 ::: details Advanced: totals and a cross table by list index
 When the groups are the numbers 1, 2, 3, the group number can be the **index** of
@@ -961,7 +961,7 @@ maturity" (hint: the year is `int(r[5][:4])`, the report year is 2026).
 
 ### A shallow copy shares the rows
 
-Session 3: `rows.copy()`, `rows[:]` and `list(rows)` make a **new list**. But the
+[Session 3](./03-lists-tuples-sets.md#make-a-copy): `rows.copy()`, `rows[:]` and `list(rows)` make a **new list**. But the
 items in it - here the rows - are the **same** objects. The copy is *shallow*:
 
 ```python run
@@ -1026,7 +1026,7 @@ r[2])` - so they never change the input. That is the safe default for data work.
 
 ::: info pandas and copies
 In pandas 3 (and in 2.2 with copy-on-write switched on), a selection behaves like a
-copy: changing it never changes the original DataFrame. Session 15 shows it.
+copy: changing it never changes the original DataFrame. [Session 15](./15-pandas-select-aggregate-join.md#change-a-filtered-table-make-a-copy) shows it.
 :::
 
 **Check yourself.** What does this print?
@@ -1089,7 +1089,7 @@ python 05-lists-advanced/practice/task1-comprehensions.py
    Every check must print `OK`.
 2. The practice tasks you did not finish in class.
 3. Optional: print the result of `stage_summary` of the homework as a small report,
-   with aligned columns (f-strings with widths, session 1) and a total row at the
+   with aligned columns (f-strings with widths, [session 1](./01-intro-syntax-types.md#formatting-the-values)) and a total row at the
    bottom.
 
 ## Self-study
