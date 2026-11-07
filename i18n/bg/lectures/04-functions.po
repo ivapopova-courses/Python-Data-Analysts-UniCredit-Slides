@@ -159,7 +159,7 @@ msgid "runs code, **returns a value**"
 msgstr "изпълнява код, **връща стойност**"
 
 #. table cell
-#: site/lectures/04-functions.md:92 site/lectures/04-functions.md:1291
+#: site/lectures/04-functions.md:92 site/lectures/04-functions.md:1305
 msgid "Parameters"
 msgstr "Параметри"
 
@@ -334,7 +334,7 @@ msgid "An **argument** is the value given in the call: `add(20, 22)`. At the cal
 msgstr "**Аргументът** е стойността, дадена при извикването: `add(20, 22)`. При извикването всеки параметър се свързва със своя аргумент."
 
 #. box title
-#: site/lectures/04-functions.md:225 site/lectures/04-functions.md:353 site/lectures/04-functions.md:709 site/lectures/04-functions.md:743 site/lectures/04-functions.md:764 site/lectures/04-functions.md:901
+#: site/lectures/04-functions.md:225 site/lectures/04-functions.md:353 site/lectures/04-functions.md:709 site/lectures/04-functions.md:757 site/lectures/04-functions.md:778 site/lectures/04-functions.md:915
 msgid "Animation"
 msgstr "Анимация"
 
@@ -638,720 +638,728 @@ msgstr "**Извиквания на функции стъпка по стъпк�
 msgid "And a trap: if a function **assigns** a name anywhere in its body, the name is local in the **whole** body - also on the lines before the assignment:"
 msgstr "И един капан: ако функцията **присвоява** на име някъде в тялото си, името е локално в **цялото** тяло - също и на редовете преди присвояването:"
 
-#. box title
+#. paragraph
 #: site/lectures/04-functions.md:726
+msgid "The fix: give the function the value through a parameter and return the new value. Then the function has no global names at all:"
+msgstr ""
+
+#. box title
+#: site/lectures/04-functions.md:740
 msgid "Advanced: why the error - compile first, then run"
 msgstr "За напреднали: защо грешката - първо компилация, после изпълнение"
 
 #. paragraph
-#: site/lectures/04-functions.md:727
+#: site/lectures/04-functions.md:741
 msgid "To clear this up, it helps to understand that Python handles your code in two separate phases: **compilation** (it reads the whole code before running it) and **execution** (it runs the code line by line)."
 msgstr "За да стане ясно, помага да знаем, че Python обработва кода на две отделни фази: **компилация** (прочита целия код, преди да го изпълни) и **изпълнение** (изпълнява кода ред по ред)."
 
 #. paragraph
-#: site/lectures/04-functions.md:731
+#: site/lectures/04-functions.md:745
 msgid "When Python compiles the `add` function, it scans all the lines inside it. It sees `total = total + amount`. Because of that `=` sign, Python decides: \"`total` is a local variable of this function\" - for the **whole** function body."
 msgstr "Когато Python компилира функцията `add`, той преглежда всички редове в нея. Вижда `total = total + amount`. Заради знака `=` Python решава: \"`total` е локална променлива на тази функция\" - за **цялото** тяло на функцията."
 
 #. paragraph
-#: site/lectures/04-functions.md:735
+#: site/lectures/04-functions.md:749
 msgid "Because `total` is now marked as local, Python does not look for the global `total` outside the function at all. At execution, `total + amount` reads the **local** `total` - but it has no value yet, so Python raises `UnboundLocalError`."
 msgstr "Тъй като `total` вече е отбелязано като локално, Python изобщо не търси глобалното `total` извън функцията. При изпълнението `total + amount` чете **локалното** `total` - но то още няма стойност, затова Python дава `UnboundLocalError`."
 
 #. paragraph
-#: site/lectures/04-functions.md:739
+#: site/lectures/04-functions.md:753
 msgid "Other statements that bind a name make it local in the same way: `+=`, a `for` loop variable, `import`, `def`."
 msgstr "Другите команди, които свързват име със стойност, също го правят локално: `+=`, променливата на цикъл `for`, `import`, `def`."
 
 #. paragraph
-#: site/lectures/04-functions.md:744
+#: site/lectures/04-functions.md:758
 msgid "**Function calls step by step:** [3. `UnboundLocalError`](../animations/functionCalls.html#3){target=\"_blank\"}"
 msgstr "**Извиквания на функции стъпка по стъпка:** [3. `UnboundLocalError`](../animations/functionCalls.html#3){target=\"_blank\"}"
 
 #. heading 3
-#: site/lectures/04-functions.md:747
+#: site/lectures/04-functions.md:761
 msgid "A function calls a function"
 msgstr "Функция извиква функция"
 
 #. paragraph
-#: site/lectures/04-functions.md:749
+#: site/lectures/04-functions.md:763
 msgid "A function can call other functions. Each call gets its own local names: below there are two names `rate`, one in `payment` and one in `monthly`, and they do not mix. When `monthly` returns, `payment` goes on from the line that called it:"
 msgstr "Функция може да извиква други функции. Всяко извикване получава свои локални имена: по-долу има две имена `rate`, едно в `payment` и едно в `monthly`, и те не се смесват. Когато `monthly` върне резултат, `payment` продължава от реда, който я е извикал:"
 
 #. paragraph
-#: site/lectures/04-functions.md:765
+#: site/lectures/04-functions.md:779
 msgid "**Function calls step by step:** [4. A function calls a function](../animations/functionCalls.html#4){target=\"_blank\"}"
 msgstr "**Извиквания на функции стъпка по стъпка:** [4. Функция извиква функция](../animations/functionCalls.html#4){target=\"_blank\"}"
 
 #. heading 3
-#: site/lectures/04-functions.md:768
+#: site/lectures/04-functions.md:782
 msgid "`global`: change a global name - rarely"
 msgstr "`global`: промяна на глобално име - рядко"
 
 #. paragraph
-#: site/lectures/04-functions.md:770
+#: site/lectures/04-functions.md:784
 msgid "`global name` says: \"in this function, `name` means the **global** name\" - an assignment then changes the global variable:"
 msgstr "`global name` казва: \"в тази функция `name` означава **глобалното** име\" - тогава присвояването променя глобалната променлива:"
 
 #. paragraph
-#: site/lectures/04-functions.md:785
-msgid "Use it rarely. A function that changes global variables is hard to understand and to test: you cannot see from the call what it changes. Prefer: **values in through the parameters, results out through `return`**."
-msgstr "Използвайте го рядко. Функция, която променя глобални променливи, е трудна за разбиране и за тестване: от извикването не се вижда какво променя. Предпочитайте: **стойностите влизат през параметрите, резултатите излизат през `return`**."
+#: site/lectures/04-functions.md:799
+msgid "Use it rarely. A function that changes global variables is hard to understand and to test: you cannot see from the call what it changes. Prefer: **values in through the parameters, results out through `return`**. The same `increment` without `global`:"
+msgstr "Използвайте го рядко. Функция, която променя глобални променливи, е трудна за разбиране и за тестване: от извикването не се вижда какво променя. Предпочитайте: **стойностите влизат през параметрите, резултатите излизат през `return`**. Същата `increment` без `global`:"
 
 #. box title
-#: site/lectures/04-functions.md:800
+#: site/lectures/04-functions.md:814
 msgid "Advanced: nested functions, `global` and `nonlocal`"
 msgstr "За напреднали: вложени функции, `global` и `nonlocal`"
 
 #. paragraph
-#: site/lectures/04-functions.md:801
+#: site/lectures/04-functions.md:815
 msgid "A function can be defined inside another one. Each has its own local names:"
 msgstr "Функция може да се дефинира вътре в друга. Всяка има свои локални имена:"
 
 #. paragraph
-#: site/lectures/04-functions.md:817
+#: site/lectures/04-functions.md:831
 msgid "With `global x` in the inner function, the assignment changes the global `x`:"
 msgstr "С `global x` във вътрешната функция присвояването променя глобалното `x`:"
 
 #. paragraph
-#: site/lectures/04-functions.md:834
+#: site/lectures/04-functions.md:848
 msgid "`nonlocal name` means the name of the **nearest enclosing function** (not the global one):"
 msgstr "`nonlocal name` означава името на **най-близката обхващаща функция** (не глобалното):"
 
 #. heading 3
-#: site/lectures/04-functions.md:854
+#: site/lectures/04-functions.md:868
 msgid "How Python finds a name: LEGB"
 msgstr "Как Python намира едно име: LEGB"
 
 #. paragraph
-#: site/lectures/04-functions.md:856
+#: site/lectures/04-functions.md:870
 msgid "When a name is used, Python looks for it in four places, **in this order**, and takes the first one it finds:"
 msgstr "Когато се използва име, Python го търси на четири места, **в този ред**, и взема първото, което намери:"
 
 #. paragraph
-#: site/lectures/04-functions.md:859
+#: site/lectures/04-functions.md:873
 msgid "**L**ocal - the function that runs now;"
 msgstr "**L**ocal - функцията, която се изпълнява сега;"
 
 #. paragraph
-#: site/lectures/04-functions.md:860
+#: site/lectures/04-functions.md:874
 msgid "**E**nclosing - the functions around it, from the nearest one out;"
 msgstr "**E**nclosing - обхващащите я функции, от най-близката навън;"
 
 #. paragraph
-#: site/lectures/04-functions.md:861
+#: site/lectures/04-functions.md:875
 msgid "**G**lobal - the top level of the file (module);"
 msgstr "**G**lobal - най-горното ниво на файла (модула);"
 
 #. paragraph
-#: site/lectures/04-functions.md:862
+#: site/lectures/04-functions.md:876
 msgid "**B**uilt-in - the names of Python itself: `print`, `len`, `sum`, ..."
 msgstr "**B**uilt-in - имената на самия Python: `print`, `len`, `sum`, ..."
 
 #. paragraph
-#: site/lectures/04-functions.md:864
+#: site/lectures/04-functions.md:878
 msgid "If the name is nowhere, it is a `NameError`."
 msgstr "Ако името го няма никъде, това е `NameError`."
 
 #. paragraph
-#: site/lectures/04-functions.md:866
+#: site/lectures/04-functions.md:880
 msgid "![Four nested boxes: Built-in around Global around Enclosing around Local, with example names; Python looks for a name from the inside out](/diagrams/scope-legb.svg){.diagram width=920 height=400}"
 msgstr "![Четири вложени кутии: Built-in около Global около Enclosing около Local, с примерни имена; Python търси име отвътре навън](/diagrams/scope-legb.svg){.diagram width=920 height=400}"
 
 #. paragraph
-#: site/lectures/04-functions.md:868
+#: site/lectures/04-functions.md:882
 msgid "This is also why you should not use built-in names for your variables: `sum = 0` **hides** the built-in `sum()` in that scope (a common habit from other languages):"
 msgstr "Затова не бива да използвате вградени имена за своите променливи: `sum = 0` **скрива** вградената `sum()` в този scope (чест навик от други езици):"
 
 #. table cell
-#: site/lectures/04-functions.md:879
+#: site/lectures/04-functions.md:893
 msgid "SAS"
 msgstr "SAS"
 
 #. table cell
-#: site/lectures/04-functions.md:879
+#: site/lectures/04-functions.md:893
 msgid "Python"
 msgstr "Python"
 
 #. table cell
-#: site/lectures/04-functions.md:881
+#: site/lectures/04-functions.md:895
 msgid "`%local x;` - a macro variable only in this macro"
 msgstr "`%local x;` - macro променлива само в това macro"
 
 #. table cell
-#: site/lectures/04-functions.md:881
+#: site/lectures/04-functions.md:895
 msgid "an assignment in a function (the default)"
 msgstr "присвояване във функция (по подразбиране)"
 
 #. table cell
-#: site/lectures/04-functions.md:882
+#: site/lectures/04-functions.md:896
 msgid "a name at the top level of the file; `global x` to assign it in a function"
 msgstr "име на най-горното ниво на файла; `global x`, за да му присвоите във функция"
 
 #. table cell
-#: site/lectures/04-functions.md:883
+#: site/lectures/04-functions.md:897
 msgid "`%let` outside macros"
 msgstr "`%let` извън macros"
 
 #. table cell
-#: site/lectures/04-functions.md:883
+#: site/lectures/04-functions.md:897
 msgid "a global variable - use it for constants only"
 msgstr "глобална променлива - използвайте я само за константи"
 
 #. heading 2
-#: site/lectures/04-functions.md:885
+#: site/lectures/04-functions.md:899
 msgid "7. Arguments are references"
 msgstr "7. Аргументите са референции"
 
 #. paragraph
-#: site/lectures/04-functions.md:887
+#: site/lectures/04-functions.md:901
 msgid "A parameter is bound to **the same object** as the argument - Python does not copy it (session 3: names and references). For numbers and strings it makes no difference, because they cannot change. A **list** passed to a function **can** be changed by the function - and the caller sees the change:"
 msgstr "Параметърът се свързва със **същия обект** като аргумента - Python не го копира (занятие 3: имена и референции). За числа и strings това няма значение, защото те не могат да се променят. **List**, подаден на функция, **може** да бъде променен от функцията - и извикващият вижда промяната:"
 
 #. paragraph
-#: site/lectures/04-functions.md:902
+#: site/lectures/04-functions.md:916
 msgid "**Function calls step by step:** [5. A list passed to a function](../animations/functionCalls.html#5){target=\"_blank\"}"
 msgstr "**Извиквания на функции стъпка по стъпка:** [5. List, подаден на функция](../animations/functionCalls.html#5){target=\"_blank\"}"
 
 #. paragraph
-#: site/lectures/04-functions.md:905
+#: site/lectures/04-functions.md:919
 msgid "Sometimes that is what you want (a function that fills a list). Usually it is a surprise. The safe default: do not change the arguments - build and **return a new list**:"
 msgstr "Понякога точно това искате (функция, която пълни list). Обикновено е изненада. Сигурният подход по подразбиране: не променяйте аргументите - изградете и **върнете нов list**:"
 
 #. heading 2
-#: site/lectures/04-functions.md:922
+#: site/lectures/04-functions.md:936
 msgid "8. Docstrings and type hints"
 msgstr "8. Docstrings и type hints"
 
 #. heading 3
-#: site/lectures/04-functions.md:924
+#: site/lectures/04-functions.md:938
 msgid "Docstrings"
 msgstr "Docstrings"
 
 #. paragraph
-#: site/lectures/04-functions.md:926
+#: site/lectures/04-functions.md:940
 msgid "A **docstring** is a string right after the `def` line, in triple quotes. It says what the function does, what it takes and what it returns - for the people who will use it (you, in three months). Tools show it: `help()`, and VS Code when you hover over the name."
 msgstr "**Docstring** е string точно след реда с `def`, в тройни кавички. Той казва какво прави функцията, какво приема и какво връща - за хората, които ще я използват (вие, след три месеца). Инструментите го показват: `help()`, и VS Code, когато задържите мишката над името."
 
 #. paragraph
-#: site/lectures/04-functions.md:945
+#: site/lectures/04-functions.md:959
 msgid "The conventions ([PEP 257](https://peps.python.org/pep-0257/)): the first line is a short sentence that says what the function does; then an empty line and the details."
 msgstr "Конвенциите ([PEP 257](https://peps.python.org/pep-0257/)): първият ред е кратко изречение, което казва какво прави функцията; после празен ред и подробностите."
 
 #. heading 3
-#: site/lectures/04-functions.md:948
+#: site/lectures/04-functions.md:962
 msgid "Type hints"
 msgstr "Type hints"
 
 #. paragraph
-#: site/lectures/04-functions.md:950
+#: site/lectures/04-functions.md:964
 msgid "**Type hints** document the types of the parameters and of the result:"
 msgstr "**Type hints** документират типовете на параметрите и на резултата:"
 
 #. table cell
-#: site/lectures/04-functions.md:974
+#: site/lectures/04-functions.md:988
 msgid "Hint"
 msgstr "Hint"
 
 #. table cell
-#: site/lectures/04-functions.md:974
+#: site/lectures/04-functions.md:988
 msgid "Means"
 msgstr "Означава"
 
 #. table cell
-#: site/lectures/04-functions.md:976
+#: site/lectures/04-functions.md:990
 msgid "one value of this type"
 msgstr "една стойност от този тип"
 
 #. table cell
-#: site/lectures/04-functions.md:977
+#: site/lectures/04-functions.md:991
 msgid "a list of floats"
 msgstr "list от floats"
 
 #. table cell
-#: site/lectures/04-functions.md:978
+#: site/lectures/04-functions.md:992
 msgid "a tuple of a string and a float"
 msgstr "tuple от string и float"
 
 #. table cell
-#: site/lectures/04-functions.md:979
+#: site/lectures/04-functions.md:993
 msgid "a string or `None` (since Python 3.10)"
 msgstr "string или `None` (от Python 3.10)"
 
 #. table cell
-#: site/lectures/04-functions.md:980
+#: site/lectures/04-functions.md:994
 msgid "the function returns nothing"
 msgstr "функцията не връща нищо"
 
 #. paragraph
-#: site/lectures/04-functions.md:982
+#: site/lectures/04-functions.md:996
 msgid "Python does **not check** type hints when the code runs - they are documentation:"
 msgstr "Python **не проверява** type hints, когато кодът се изпълнява - те са документация:"
 
 #. paragraph
-#: site/lectures/04-functions.md:991
+#: site/lectures/04-functions.md:1005
 msgid "But editors can check them before you run anything: **Pylance** in VS Code (it comes with the Python extension) underlines a call with a wrong type. Pylance works out of the box, but its static type checking is **turned off by default**. To turn it on, add this setting to your VS Code settings (`settings.json`; open it with `Ctrl+Shift+P` -> \"Preferences: Open User Settings (JSON)\"):"
 msgstr "Но редакторите могат да ги проверят, преди да сте пуснали каквото и да е: **Pylance** във VS Code (идва с разширението Python) подчертава извикване с грешен тип. Pylance работи веднага след инсталиране, но статичната проверка на типовете му е **изключена по подразбиране**. За да я включите, добавете тази настройка в настройките на VS Code (`settings.json`; отваря се с `Ctrl+Shift+P` -> \"Preferences: Open User Settings (JSON)\"):"
 
 #. paragraph
-#: site/lectures/04-functions.md:1003
+#: site/lectures/04-functions.md:1017
 msgid "In data work, hints are most useful on the functions that other people call."
 msgstr "В работата с данни hints са най-полезни при функциите, които други хора извикват."
 
 #. box title
-#: site/lectures/04-functions.md:1005
+#: site/lectures/04-functions.md:1019
 msgid "Newer Python versions"
 msgstr "По-новите версии на Python"
 
 #. paragraph
-#: site/lectures/04-functions.md:1006
+#: site/lectures/04-functions.md:1020
 msgid "Python 3.12 added the `type` statement for type aliases: `type Amount = float`. Python 3.14 (the Python of this site) evaluates annotations only when they are needed, so a hint can name a class that is defined later in the file. Neither is needed in this course - the hints above work in 3.12 and in every newer version."
 msgstr "Python 3.12 добави statement-а `type` за псевдоними на типове: `type Amount = float`. Python 3.14 (версията на този сайт) изчислява анотациите само когато потрябват, така че hint може да назове клас, дефиниран по-надолу във файла. Нито едното не ви трябва в този курс - hints по-горе работят в 3.12 и във всяка по-нова версия."
 
 #. heading 2
-#: site/lectures/04-functions.md:1012
+#: site/lectures/04-functions.md:1026
 msgid "9. Functions are values"
 msgstr "9. Функциите са стойности"
 
 #. heading 3
-#: site/lectures/04-functions.md:1014
+#: site/lectures/04-functions.md:1028
 msgid "First-class functions"
 msgstr "Функции от първи клас (first-class functions)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1016
+#: site/lectures/04-functions.md:1030
 msgid "In Python a function is an **object**, like a number or a list. So a function can be:"
 msgstr "В Python функцията е **обект**, като число или list. Затова една функция може да бъде:"
 
 #. paragraph
-#: site/lectures/04-functions.md:1018
+#: site/lectures/04-functions.md:1032
 msgid "bound to another name, or stored in a list;"
 msgstr "свързана с друго име или съхранена в list;"
 
 #. paragraph
-#: site/lectures/04-functions.md:1019
+#: site/lectures/04-functions.md:1033
 msgid "passed as an argument to another function;"
 msgstr "подадена като аргумент на друга функция;"
 
 #. paragraph
-#: site/lectures/04-functions.md:1020
+#: site/lectures/04-functions.md:1034
 msgid "returned as a value from another function."
 msgstr "върната като стойност от друга функция."
 
 #. heading 3
-#: site/lectures/04-functions.md:1032
+#: site/lectures/04-functions.md:1046
 msgid "A function as an argument"
 msgstr "Функция като аргумент"
 
 #. paragraph
-#: site/lectures/04-functions.md:1049
+#: site/lectures/04-functions.md:1063
 msgid "A function that takes or returns a function is a **higher-order function**. You already know some: `sorted`, `min` and `max` take a function as `key` (section 10). A report that can use any rounding rule:"
 msgstr "Функция, която приема или връща функция, е **функция от по-висок ред** (higher-order function). Вече познавате някои: `sorted`, `min` и `max` приемат функция като `key` (раздел 10). Отчет, който може да използва всяко правило за закръгляне:"
 
 #. box title
-#: site/lectures/04-functions.md:1068
+#: site/lectures/04-functions.md:1082
 msgid "Advanced: a function that returns a function (a closure)"
 msgstr "За напреднали: функция, която връща функция (closure)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1083
+#: site/lectures/04-functions.md:1097
 msgid "The inner function **remembers** `n` from the call that made it, even after that call has ended. Such a function is called a **closure**."
 msgstr "Вътрешната функция **помни** `n` от извикването, което я е създало, дори след като то е приключило. Такава функция се нарича **closure**."
 
 #. box title
-#: site/lectures/04-functions.md:1087
+#: site/lectures/04-functions.md:1101
 msgid "Advanced: functions in a dictionary (dictionaries: session 6)"
 msgstr "За напреднали: функции в dictionary (dictionaries: занятие 6)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1100
+#: site/lectures/04-functions.md:1114
 msgid "A dictionary of functions replaces a long `if` / `elif` chain: the key chooses the function (a *dispatch table*)."
 msgstr "Dictionary от функции заменя дълга верига `if` / `elif`: ключът избира функцията (*dispatch table*)."
 
 #. heading 3
-#: site/lectures/04-functions.md:1104
+#: site/lectures/04-functions.md:1118
 msgid "Pure functions"
 msgstr "Чисти функции"
 
 #. paragraph
-#: site/lectures/04-functions.md:1106
+#: site/lectures/04-functions.md:1120
 msgid "Ideas from **functional programming** that make code easier to trust:"
 msgstr "Идеи от **функционалното програмиране**, които правят кода по-надежден:"
 
 #. paragraph
-#: site/lectures/04-functions.md:1108
+#: site/lectures/04-functions.md:1122
 msgid "A **pure function** always returns the same result for the same arguments, and does nothing else: it does not print, does not change its arguments or global variables, does not write files. `expected_loss(pd, lgd, ead)` is pure."
 msgstr "**Чистата функция** (pure function) винаги връща един и същ резултат за едни и същи аргументи и не прави нищо друго: не отпечатва, не променя аргументите си или глобални променливи, не пише файлове. `expected_loss(pd, lgd, ead)` е чиста."
 
 #. paragraph
-#: site/lectures/04-functions.md:1111
+#: site/lectures/04-functions.md:1125
 msgid "Anything else a function does is a **side effect**: printing, writing a file, changing a list it got. A program needs side effects - but keep them in a few clear places."
 msgstr "Всичко друго, което прави една функция, е **страничен ефект** (side effect): отпечатване, запис във файл, промяна на list, който е получила. Програмата има нужда от странични ефекти - но ги дръжте на малко ясни места."
 
 #. paragraph
-#: site/lectures/04-functions.md:1114
+#: site/lectures/04-functions.md:1128
 msgid "**Immutable** data (tuples, strings) cannot be changed by mistake."
 msgstr "**Непроменимите** (immutable) данни (tuples, strings) не могат да бъдат променени по грешка."
 
 #. paragraph
-#: site/lectures/04-functions.md:1116
+#: site/lectures/04-functions.md:1130
 msgid "Pure functions are easy to test (call, compare the result), easy to reuse, and safe to run again on new data - exactly what a monthly report needs."
 msgstr "Чистите функции се тестват лесно (извикайте, сравнете резултата), лесно се преизползват и безопасно се пускат отново върху нови данни - точно това, което трябва на един месечен отчет."
 
 #. heading 3
-#: site/lectures/04-functions.md:1121
+#: site/lectures/04-functions.md:1135
 msgid "Small functions without a name"
 msgstr "Малки функции без име"
 
 #. paragraph
-#: site/lectures/04-functions.md:1123
+#: site/lectures/04-functions.md:1137
 msgid "A **lambda expression** creates a small function without a name, in one line:"
 msgstr "**Lambda изразът** създава малка функция без име, на един ред:"
 
 #. paragraph
-#: site/lectures/04-functions.md:1129
+#: site/lectures/04-functions.md:1143
 msgid "It can have any number of parameters, but only **one expression** - its value is the result. No `return`, no statements."
 msgstr "Може да има произволен брой параметри, но само **един израз** - неговата стойност е резултатът. Без `return`, без statements."
 
 #. paragraph
-#: site/lectures/04-functions.md:1150
+#: site/lectures/04-functions.md:1164
 msgid "Do not give a lambda a name in real code (`double = lambda ...`) - that is what `def` is for, and `def` gives the function a real name in error messages ([PEP 8](https://peps.python.org/pep-0008/#programming-recommendations)). A lambda is for a function you need **once, right here** - most often as the `key` of a sort."
 msgstr "Не давайте име на lambda в истински код (`double = lambda ...`) - за това е `def`, а `def` дава на функцията истинско име в съобщенията за грешки ([PEP 8](https://peps.python.org/pep-0008/#programming-recommendations)). Lambda е за функция, която ви трябва **веднъж, точно тук** - най-често като `key` на сортиране."
 
 #. heading 3
-#: site/lectures/04-functions.md:1155
+#: site/lectures/04-functions.md:1169
 msgid "Sorting by a key"
 msgstr "Сортиране по ключ"
 
 #. paragraph
-#: site/lectures/04-functions.md:1157
+#: site/lectures/04-functions.md:1171
 msgid "`sorted()` and `list.sort()` take a `key`: a function that is called for each item, and the items are sorted by its result. This is SQL `ORDER BY` with any expression:"
 msgstr "`sorted()` и `list.sort()` приемат `key`: функция, която се извиква за всеки елемент, и елементите се сортират по нейния резултат. Това е `ORDER BY` от SQL с произволен израз:"
 
 #. paragraph
-#: site/lectures/04-functions.md:1181
+#: site/lectures/04-functions.md:1195
 msgid "`key` also works with `min` and `max` - the loan with the largest outstanding amount, not only the amount:"
 msgstr "`key` работи и с `min` и `max` - кредитът с най-голяма непогасена сума, а не само сумата:"
 
 #. paragraph
-#: site/lectures/04-functions.md:1190
+#: site/lectures/04-functions.md:1204
 msgid "A named function works as a key too - `key=len`, `key=str.lower`:"
 msgstr "Именувана функция също работи като ключ - `key=len`, `key=str.lower`:"
 
 #. paragraph
-#: site/lectures/04-functions.md:1198
+#: site/lectures/04-functions.md:1212
 msgid "Sorting is covered in depth in session 5. Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
 msgstr "Сортирането е разгледано в дълбочина в занятие 5. Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
 
 #. heading 2
-#: site/lectures/04-functions.md:1201
+#: site/lectures/04-functions.md:1215
 msgid "11. From macros to functions: a report script"
 msgstr "11. От macros към функции: скрипт за отчет"
 
 #. paragraph
-#: site/lectures/04-functions.md:1203
+#: site/lectures/04-functions.md:1217
 msgid "The structure of a script that you can run again every month: the imports and the constants at the top, then the functions, and the main code at the bottom."
 msgstr "Структурата на скрипт, който можете да пускате отново всеки месец: най-горе imports и константите, после функциите, а най-долу - основният код."
 
 #. paragraph
-#: site/lectures/04-functions.md:1255
+#: site/lectures/04-functions.md:1269
 msgid "Compare it with the first example of session 2: the same result, but now each part has a name, can be tested alone, and can be reused - `read_loans` in the next report, `dpd_bucket` in a check of the data."
 msgstr "Сравнете го с първия пример от занятие 2: същият резултат, но сега всяка част има име, може да се тества сама и може да се преизползва - `read_loans` в следващия отчет, `dpd_bucket` в проверка на данните."
 
 #. paragraph
-#: site/lectures/04-functions.md:1259
+#: site/lectures/04-functions.md:1273
 msgid "In a file that is run as a script, the main code is often put under `if __name__ == \"__main__\":` - so that the functions can be imported by another file without running the report. Modules and `import` of your own files are the topic of session 10."
 msgstr "Във файл, който се пуска като скрипт, основният код често се слага под `if __name__ == \"__main__\":` - така функциите могат да се import-ват от друг файл, без да се пуска отчетът. Модулите и `import` на собствени файлове са темата на занятие 10."
 
 #. heading 2
-#: site/lectures/04-functions.md:1264
+#: site/lectures/04-functions.md:1278
 msgid "12. Practice"
 msgstr "12. Упражнения"
 
 #. paragraph
-#: site/lectures/04-functions.md:1266
+#: site/lectures/04-functions.md:1280
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
 msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и пускайте задачите от терминала, в главната папка на repository-то:"
 
 #. paragraph
-#: site/lectures/04-functions.md:1274
+#: site/lectures/04-functions.md:1288
 msgid "In these tasks you write **functions**; the checks call them with many different values."
 msgstr "В тези задачи пишете **функции**; проверките ги извикват с много различни стойности."
 
 #. table cell
-#: site/lectures/04-functions.md:1277
+#: site/lectures/04-functions.md:1291
 msgid "Task"
 msgstr "Задача"
 
 #. table cell
-#: site/lectures/04-functions.md:1277
+#: site/lectures/04-functions.md:1291
 msgid "File"
 msgstr "Файл"
 
 #. table cell
-#: site/lectures/04-functions.md:1277
+#: site/lectures/04-functions.md:1291
 msgid "What you do"
 msgstr "Какво правите"
 
 #. table cell
-#: site/lectures/04-functions.md:1279
+#: site/lectures/04-functions.md:1293
 msgid "Small functions: interest, repaid share, is late, monthly rate"
 msgstr "Малки функции: лихва, погасен дял, дали е просрочен, месечна лихва"
 
 #. table cell
-#: site/lectures/04-functions.md:1280
+#: site/lectures/04-functions.md:1294
 msgid "Default values and keyword arguments: payment, Bulgarian number format"
 msgstr "Стойности по подразбиране и именувани аргументи: вноска, български формат на числата"
 
 #. table cell
-#: site/lectures/04-functions.md:1281
+#: site/lectures/04-functions.md:1295
 msgid "`*args`, several return values: total, min / max / average, months and days"
 msgstr "`*args`, няколко върнати стойности: общо, min / max / средно, месеци и дни"
 
 #. table cell
-#: site/lectures/04-functions.md:1282
+#: site/lectures/04-functions.md:1296
 msgid "The rules of the portfolio as functions: bucket, stage, grade, product group"
 msgstr "Правилата за портфейла като функции: група, етап, клас, продуктова група"
 
 #. table cell
-#: site/lectures/04-functions.md:1283
+#: site/lectures/04-functions.md:1297
 msgid "Predict the values: local and global names, a list passed to a function"
 msgstr "Предвидете стойностите: локални и глобални имена, list, подаден на функция"
 
 #. table cell
-#: site/lectures/04-functions.md:1284
+#: site/lectures/04-functions.md:1298
 msgid "Sort and find with `key` and `lambda`; remove duplicates, keep the order"
 msgstr "Сортиране и търсене с `key` и `lambda`; премахване на повторения, като редът се запазва"
 
 #. heading 2
-#: site/lectures/04-functions.md:1286
+#: site/lectures/04-functions.md:1300
 msgid "Summary"
 msgstr "Обобщение"
 
 #. table cell
-#: site/lectures/04-functions.md:1288
+#: site/lectures/04-functions.md:1302
 msgid "Topic"
 msgstr "Тема"
 
 #. table cell
-#: site/lectures/04-functions.md:1288
+#: site/lectures/04-functions.md:1302
 msgid "Remember"
 msgstr "Запомнете"
 
 #. table cell
-#: site/lectures/04-functions.md:1290
+#: site/lectures/04-functions.md:1304
 msgid "Define, call"
 msgstr "Дефиниране, извикване"
 
 #. table cell
-#: site/lectures/04-functions.md:1290
+#: site/lectures/04-functions.md:1304
 msgid "`def name(params):` + an indented body; `name(args)` runs it - the brackets are required"
 msgstr "`def name(params):` + отместено навътре тяло; `name(args)` я изпълнява - скобите са задължителни"
 
 #. table cell
-#: site/lectures/04-functions.md:1291
+#: site/lectures/04-functions.md:1305
 msgid "positional; defaults after the others; `name=value` in the call; `*args` a tuple"
 msgstr "позиционни; стойностите по подразбиране - след останалите; `name=value` при извикване; `*args` е tuple"
 
 #. table cell
-#: site/lectures/04-functions.md:1292
+#: site/lectures/04-functions.md:1306
 msgid "Defaults"
 msgstr "Стойности по подразбиране"
 
 #. table cell
-#: site/lectures/04-functions.md:1292
+#: site/lectures/04-functions.md:1306
 msgid "never a list or a dict as a default - use `None`"
 msgstr "никога list или dict като стойност по подразбиране - използвайте `None`"
 
 #. table cell
-#: site/lectures/04-functions.md:1293
+#: site/lectures/04-functions.md:1307
 msgid "ends the function and gives a value; no `return` -> `None`; `return a, b` gives a tuple"
 msgstr "приключва функцията и дава стойност; без `return` -> `None`; `return a, b` дава tuple"
 
 #. table cell
-#: site/lectures/04-functions.md:1294
+#: site/lectures/04-functions.md:1308
 msgid "`print` shows, `return` gives - calculating functions return"
 msgstr "`print` показва, `return` дава - изчисляващите функции връщат"
 
 #. table cell
-#: site/lectures/04-functions.md:1295
+#: site/lectures/04-functions.md:1309
 msgid "Scope"
 msgstr "Scope"
 
 #. table cell
-#: site/lectures/04-functions.md:1295
+#: site/lectures/04-functions.md:1309
 msgid "names assigned in a function are local; LEGB: local, enclosing, global, built-in; avoid `global` - values in through parameters, out through `return`"
 msgstr "имената, на които се присвоява във функция, са локални; LEGB: local, enclosing, global, built-in; избягвайте `global` - стойностите влизат през параметрите, излизат през `return`"
 
 #. table cell
-#: site/lectures/04-functions.md:1296
+#: site/lectures/04-functions.md:1310
 msgid "References"
 msgstr "Референции"
 
 #. table cell
-#: site/lectures/04-functions.md:1296
+#: site/lectures/04-functions.md:1310
 msgid "a list passed to a function can be changed by it - return a new list instead"
 msgstr "list, подаден на функция, може да бъде променен от нея - вместо това връщайте нов list"
 
 #. table cell
-#: site/lectures/04-functions.md:1297
+#: site/lectures/04-functions.md:1311
 msgid "Documentation"
 msgstr "Документация"
 
 #. table cell
-#: site/lectures/04-functions.md:1297
+#: site/lectures/04-functions.md:1311
 msgid "a docstring in triple quotes; type hints `x: float -> float` are not checked at run time"
 msgstr "docstring в тройни кавички; type hints `x: float -> float` не се проверяват по време на изпълнение"
 
 #. table cell
-#: site/lectures/04-functions.md:1298
+#: site/lectures/04-functions.md:1312
 msgid "Functions as values"
 msgstr "Функциите като стойности"
 
 #. table cell
-#: site/lectures/04-functions.md:1298
+#: site/lectures/04-functions.md:1312
 msgid "pass a function as an argument; `lambda x: ...` for a short `key`"
 msgstr "подавайте функция като аргумент; `lambda x: ...` за кратък `key`"
 
 #. table cell
-#: site/lectures/04-functions.md:1299
+#: site/lectures/04-functions.md:1313
 msgid "Sorting"
 msgstr "Сортиране"
 
 #. table cell
-#: site/lectures/04-functions.md:1299
+#: site/lectures/04-functions.md:1313
 msgid "`sorted(items, key=lambda item: item[2], reverse=True)` - SQL `ORDER BY` any expression"
 msgstr "`sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` от SQL по произволен израз"
 
 #. table cell
-#: site/lectures/04-functions.md:1300
+#: site/lectures/04-functions.md:1314
 msgid "SAS macros"
 msgstr "SAS macros"
 
 #. table cell
-#: site/lectures/04-functions.md:1300
+#: site/lectures/04-functions.md:1314
 msgid "a macro writes code; a function runs and returns a value"
 msgstr "macro-то пише код; функцията се изпълнява и връща стойност"
 
 #. heading 2
-#: site/lectures/04-functions.md:1302
+#: site/lectures/04-functions.md:1316
 msgid "Homework"
 msgstr "Домашно"
 
 #. paragraph
-#: site/lectures/04-functions.md:1304
+#: site/lectures/04-functions.md:1318
 msgid "`04-functions/homework.py` (in the homework repository): **a library of portfolio functions** - read the loans and the rating scale from the files, find the PD of a rating, the expected loss of a loan, and the totals by stage. Every check must print `OK`."
 msgstr "`04-functions/homework.py` (в homework repository): **библиотека от функции за портфейла** - прочетете кредитите и рейтинговата скала от файловете, намерете PD на даден рейтинг, очакваната загуба на кредит и сумите по етапи. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/04-functions.md:1308
+#: site/lectures/04-functions.md:1322
 msgid "The practice tasks you did not finish in class."
 msgstr "Задачите за упражнение, които не сте довършили в клас."
 
 #. paragraph
-#: site/lectures/04-functions.md:1309
+#: site/lectures/04-functions.md:1323
 msgid "Optional: a **loan calculator** made of functions - the same program as the optional homework of session 2, but organised like this: `get_user_data()` reads and checks the input (amount > 0, rate 0 - 50, years 1 - 30; ask again while a value is wrong) and returns a tuple; `calc_payment(amount, rate, years)` returns the payment; `print_schedule(amount, rate, years)` prints the schedule. Write a separate function for each check: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, each returning `True` or `False`."
 msgstr "По желание: **кредитен калкулатор**, съставен от функции - същата програма като домашното по желание от занятие 2, но организирана така: `get_user_data()` чете и проверява входа (сума > 0, лихва 0 - 50, години 1 - 30; пита отново, докато стойността е грешна) и връща tuple; `calc_payment(amount, rate, years)` връща вноската; `print_schedule(amount, rate, years)` отпечатва плана. Напишете отделна функция за всяка проверка: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, всяка връща `True` или `False`."
 
 #. heading 2
-#: site/lectures/04-functions.md:1317
+#: site/lectures/04-functions.md:1331
 msgid "Self-study"
 msgstr "Самостоятелно изучаване"
 
 #. paragraph
-#: site/lectures/04-functions.md:1319
+#: site/lectures/04-functions.md:1333
 msgid "This part is not covered in class - it is for reading at home."
 msgstr "Тази част не се разглежда в час - тя е за четене вкъщи."
 
 #. heading 3
-#: site/lectures/04-functions.md:1321
+#: site/lectures/04-functions.md:1335
 msgid "Decorators"
 msgstr "Декоратори"
 
 #. paragraph
-#: site/lectures/04-functions.md:1323
+#: site/lectures/04-functions.md:1337
 msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in session 11, `@pytest.fixture`, `@app.get` in web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs` and a function inside a function (the Advanced boxes of sections 4 and 6)."
 msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в занятие 11, `@pytest.fixture`, `@app.get` в уеб frameworks). Тази част обяснява `@`, което ще виждате. Тя използва `*args, **kwargs` и функция във функция (каретата \"За напреднали\" в раздели 4 и 6)."
 
 #. heading 4
-#: site/lectures/04-functions.md:1328
+#: site/lectures/04-functions.md:1342
 msgid "The idea"
 msgstr "Идеята"
 
 #. paragraph
-#: site/lectures/04-functions.md:1330
+#: site/lectures/04-functions.md:1344
 msgid "A **decorator** is a function that takes a function and returns a new, \"decorated\" function: it adds something **before and after** the original, without changing its code. `decorated = decorator(original)`:"
 msgstr "**Декораторът** (decorator) е функция, която приема функция и връща нова, \"декорирана\" функция: добавя нещо **преди и след** оригинала, без да променя кода му. `decorated = decorator(original)`:"
 
 #. heading 4
-#: site/lectures/04-functions.md:1349
+#: site/lectures/04-functions.md:1363
 msgid "The `@` syntax"
 msgstr "Синтаксисът с `@`"
 
 #. paragraph
-#: site/lectures/04-functions.md:1351
+#: site/lectures/04-functions.md:1365
 msgid "`@decorator` above a `def` is a short way to write `name = decorator(name)`:"
 msgstr "`@decorator` над `def` е кратък начин да напишете `name = decorator(name)`:"
 
 #. heading 4
-#: site/lectures/04-functions.md:1368
+#: site/lectures/04-functions.md:1382
 msgid "Arguments and the return value"
 msgstr "Аргументите и върнатата стойност"
 
 #. paragraph
-#: site/lectures/04-functions.md:1370
+#: site/lectures/04-functions.md:1384
 msgid "The wrapper must pass the arguments on, and return the result of the original. `*args, **kwargs` (section 4) take any arguments; `functools.wraps` keeps the name and the docstring of the original. A useful decorator - how long each step of a report takes:"
 msgstr "Обвиващата функция (wrapper) трябва да предаде аргументите нататък и да върне резултата на оригинала. `*args, **kwargs` (раздел 4) приемат всякакви аргументи; `functools.wraps` запазва името и docstring-а на оригинала. Полезен декоратор - колко време отнема всяка стъпка на един отчет:"
 
 #. paragraph
-#: site/lectures/04-functions.md:1400
+#: site/lectures/04-functions.md:1414
 msgid "**Exercise.** Write a decorator `announce` that prints `start: <name of the function>` before the call and `end` after it, and use it on a function `report()` that prints `the report`. (Hint: `func.__name__` is the name of the function.)"
 msgstr "**Упражнение.** Напишете декоратор `announce`, който отпечатва `start: <name of the function>` преди извикването и `end` след него, и го използвайте върху функция `report()`, която отпечатва `the report`. (Подсказка: `func.__name__` е името на функцията.)"
 
 #. box title
-#: site/lectures/04-functions.md:1404
+#: site/lectures/04-functions.md:1418
 msgid "Answer"
 msgstr "Отговор"
 
 #. paragraph
-#: site/lectures/04-functions.md:1425
+#: site/lectures/04-functions.md:1439
 msgid "Read more: [Primer on Python decorators](https://realpython.com/primer-on-python-decorators/) (Real Python)."
 msgstr "Още за четене: [Primer on Python decorators](https://realpython.com/primer-on-python-decorators/) (Real Python)."
 
 #. heading 2
-#: site/lectures/04-functions.md:1428
+#: site/lectures/04-functions.md:1442
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/04-functions.md:1430
+#: site/lectures/04-functions.md:1444
 msgid "Python tutorial: [Defining functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions), [More on defining functions](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions) (defaults, keyword arguments, `*args`, `**kwargs`, `lambda`, docstrings, annotations)"
 msgstr "Python tutorial: [Defining functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions), [More on defining functions](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions) (стойности по подразбиране, именувани аргументи, `*args`, `**kwargs`, `lambda`, docstrings, анотации)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1433
+#: site/lectures/04-functions.md:1447
 msgid "[Scopes and namespaces](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces) in the tutorial; [Namespaces and scope in Python](https://realpython.com/python-namespaces-scope/) (Real Python)"
 msgstr "[Scopes and namespaces](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces) в tutorial-а; [Namespaces and scope in Python](https://realpython.com/python-namespaces-scope/) (Real Python)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1436
+#: site/lectures/04-functions.md:1450
 msgid "[Defining your own Python function](https://realpython.com/defining-your-own-python-function/) (Real Python)"
 msgstr "[Defining your own Python function](https://realpython.com/defining-your-own-python-function/) (Real Python)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1438
+#: site/lectures/04-functions.md:1452
 msgid "Type hints: [typing - the basics](https://docs.python.org/3/library/typing.html), [the mypy cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)"
 msgstr "Type hints: [typing - the basics](https://docs.python.org/3/library/typing.html), [the mypy cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1440
+#: site/lectures/04-functions.md:1454
 msgid "Videos: [Python tutorial for beginners 8: functions](https://www.youtube.com/watch?v=9Os0o3wzS_I) (Corey Schafer), [Python lambda functions](https://www.youtube.com/watch?v=j6FCewxjrBM) (Visually Explained)"
 msgstr "Видеа: [Python tutorial for beginners 8: functions](https://www.youtube.com/watch?v=9Os0o3wzS_I) (Corey Schafer), [Python lambda functions](https://www.youtube.com/watch?v=j6FCewxjrBM) (Visually Explained)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1444
+#: site/lectures/04-functions.md:1458
 msgid "**Next session:** lists, advanced - list comprehensions, sorting with `key`, `zip`, `enumerate`, `map` and `filter`, and a table as a list of rows."
 msgstr "**Следващото занятие:** lists за напреднали - list comprehensions, сортиране с `key`, `zip`, `enumerate`, `map` и `filter` и таблица като list от редове."
+
+#~ msgid "Use it rarely. A function that changes global variables is hard to understand and to test: you cannot see from the call what it changes. Prefer: **values in through the parameters, results out through `return`**."
+#~ msgstr "Използвайте го рядко. Функция, която променя глобални променливи, е трудна за разбиране и за тестване: от извикването не се вижда какво променя. Предпочитайте: **стойностите влизат през параметрите, резултатите излизат през `return`**."
 
 #~ msgid "11. From macros to functions: a small library"
 #~ msgstr "11. От macros към функции: малка библиотека"

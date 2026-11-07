@@ -723,6 +723,20 @@ def add(amount):
 add(100)
 ```
 
+The fix: give the function the value through a parameter and return the new value.
+Then the function has no global names at all:
+
+```python run
+total = 0
+
+def add(total, amount):           # in: through the parameters
+    return total + amount         # out: through return
+
+total = add(total, 100)
+total = add(total, 250)
+print(total)
+```
+
 ::: details Advanced: why the error - compile first, then run
 To clear this up, it helps to understand that Python handles your code in two
 separate phases: **compilation** (it reads the whole code before running it) and
@@ -784,17 +798,17 @@ print(count)
 
 Use it rarely. A function that changes global variables is hard to understand and to
 test: you cannot see from the call what it changes. Prefer: **values in through the
-parameters, results out through `return`**.
+parameters, results out through `return`**. The same `increment` without `global`:
 
 ```python run
-total = 0
+count = 0
 
-def add(total, amount):           # in: through the parameters
-    return total + amount         # out: through return
+def increment(count):             # in: through the parameter
+    return count + 1              # out: through return
 
-total = add(total, 100)
-total = add(total, 250)
-print(total)
+count = increment(count)
+count = increment(count)
+print(count)
 ```
 
 ::: details Advanced: nested functions, `global` and `nonlocal`
