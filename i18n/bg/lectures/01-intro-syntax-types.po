@@ -430,8 +430,8 @@ msgstr "макроси, `%LET`"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:139
-msgid "functions (session 4), variables"
-msgstr "функции (занятие 4), променливи"
+msgid "functions ([session 4](./04-functions.md)), variables"
+msgstr "функции ([занятие 4](./04-functions.md)), променливи"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:140
@@ -1330,8 +1330,8 @@ msgstr "Git във VS Code"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:585
-msgid "The **Source Control** view (`Ctrl+Shift+G`) shows the changed files; type a message, **Commit**, then **Sync** (push). The commands for the Homework repository are in [How to use these pages](/how-to#practice-and-homework); Git itself is the topic of session 10."
-msgstr "Изгледът **Source Control** (`Ctrl+Shift+G`) показва променените файлове; напишете съобщение, **Commit**, след това **Sync** (push). Командите за Homework repository са в [Как да ползвате тези страници](/how-to#practice-and-homework); самият Git е темата на занятие 10."
+msgid "The **Source Control** view (`Ctrl+Shift+G`) shows the changed files; type a message, **Commit**, then **Sync** (push). The commands for the Homework repository are in [How to use these pages](/how-to#practice-and-homework); Git itself is the topic of [session 10](./10-modules-and-git.md#_6-git-versions-of-your-code)."
+msgstr "Изгледът **Source Control** (`Ctrl+Shift+G`) показва променените файлове; напишете съобщение, **Commit**, след това **Sync** (push). Командите за Homework repository са в [Как да ползвате тези страници](/how-to#practice-and-homework); самият Git е темата на [занятие 10](./10-modules-and-git.md#_6-git-versions-of-your-code)."
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:590
@@ -1865,8 +1865,8 @@ msgstr "Една и съща задача - сумата и произведен
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:839
-msgid "(Loops are the topic of session 2.) More side-by-side examples of languages: [rosettacode.org](https://rosettacode.org/wiki/Category:Programming_Tasks)."
-msgstr "(Циклите са темата на занятие 2.) Още примери на различни езици един до друг: [rosettacode.org](https://rosettacode.org/wiki/Category:Programming_Tasks)."
+msgid "(Loops are the topic of [session 2](./02-conditions-and-loops.md#_10-loops).) More side-by-side examples of languages: [rosettacode.org](https://rosettacode.org/wiki/Category:Programming_Tasks)."
+msgstr "(Циклите са темата на [занятие 2](./02-conditions-and-loops.md#_10-loops).) Още примери на различни езици един до друг: [rosettacode.org](https://rosettacode.org/wiki/Category:Programming_Tasks)."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:842
@@ -1945,8 +1945,8 @@ msgstr "за да изключите редове, докато търсите �
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:899
-msgid "SAS has `/* ... */` and `* ... ;`, SQL has `--` and `/* ... */`. Python has only `#` (a text in triple quotes is sometimes used for longer notes - more in session 4). Style: [PEP 8 - Comments](https://peps.python.org/pep-0008/#comments)."
-msgstr "SAS има `/* ... */` и `* ... ;`, SQL има `--` и `/* ... */`. Python има само `#` (текст в тройни кавички понякога се използва за по-дълги бележки - повече в занятие 4). Стил: [PEP 8 - Comments](https://peps.python.org/pep-0008/#comments)."
+msgid "SAS has `/* ... */` and `* ... ;`, SQL has `--` and `/* ... */`. Python has only `#` (a text in triple quotes is sometimes used for longer notes - more in [session 4](./04-functions.md#docstrings)). Style: [PEP 8 - Comments](https://peps.python.org/pep-0008/#comments)."
+msgstr "SAS има `/* ... */` и `* ... ;`, SQL има `--` и `/* ... */`. Python има само `#` (текст в тройни кавички понякога се използва за по-дълги бележки - повече в [занятие 4](./04-functions.md#docstrings)). Стил: [PEP 8 - Comments](https://peps.python.org/pep-0008/#comments)."
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:903
@@ -2170,8 +2170,8 @@ msgstr "`None` не е `NULL`"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1103
-msgid "In SQL, `NULL = NULL` is not true, and you must write `IS NULL`. In SAS, a missing `.` is smaller than every number, so `if x < 0` is true for missing values. In Python, `None == None` is `True`, and `None < 0` is an error. Test with `x is None`. (pandas has its own missing values, `NaN` and `NA` - session 14.)"
-msgstr "В SQL `NULL = NULL` не е истина и трябва да пишете `IS NULL`. В SAS липсващото `.` е по-малко от всяко число, затова `if x < 0` е истина за липсващи стойности. В Python `None == None` е `True`, а `None < 0` е грешка. Проверявайте с `x is None`. (pandas има свои липсващи стойности, `NaN` и `NA` - занятие 14.)"
+msgid "In SQL, `NULL = NULL` is not true, and you must write `IS NULL`. In SAS, a missing `.` is smaller than every number, so `if x < 0` is true for missing values. In Python, `None == None` is `True`, and `None < 0` is an error. Test with `x is None`. (pandas has its own missing values, `NaN` and `NA` - [session 14](./14-numpy-pandas-intro.md#missing-values-in-numpy-nan).)"
+msgstr "В SQL `NULL = NULL` не е истина и трябва да пишете `IS NULL`. В SAS липсващото `.` е по-малко от всяко число, затова `if x < 0` е истина за липсващи стойности. В Python `None == None` е `True`, а `None < 0` е грешка. Проверявайте с `x is None`. (pandas има свои липсващи стойности, `NaN` и `NA` - [занятие 14](./14-numpy-pandas-intro.md#missing-values-in-numpy-nan).)"
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:1109
@@ -2235,8 +2235,8 @@ msgstr "**Типът принадлежи на обекта**, а не на им
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1174
-msgid "In SAS, the type of a variable is fixed in the DATA step; in SQL, the type of a column is fixed in the table. Python checks types only when the code runs - a mistake shows up as a `TypeError` at that line. Keep one type per name: it makes the code easier to read. (*Type hints*, like `rate: float = 8.83`, document the intended type - session 4.)"
-msgstr "В SAS типът на променливата се фиксира в DATA step; в SQL типът на колоната се фиксира в таблицата. Python проверява типовете едва когато кодът се изпълнява - грешката се появява като `TypeError` на този ред. Дръжте един тип за едно име: така кодът се чете по-лесно. (*Type hints*, като `rate: float = 8.83`, документират очаквания тип - занятие 4.)"
+msgid "In SAS, the type of a variable is fixed in the DATA step; in SQL, the type of a column is fixed in the table. Python checks types only when the code runs - a mistake shows up as a `TypeError` at that line. Keep one type per name: it makes the code easier to read. (*Type hints*, like `rate: float = 8.83`, document the intended type - [session 4](./04-functions.md#type-hints).)"
+msgstr "В SAS типът на променливата се фиксира в DATA step; в SQL типът на колоната се фиксира в таблицата. Python проверява типовете едва когато кодът се изпълнява - грешката се появява като `TypeError` на този ред. Дръжте един тип за едно име: така кодът се чете по-лесно. (*Type hints*, като `rate: float = 8.83`, документират очаквания тип - [занятие 4](./04-functions.md#type-hints).)"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1181
@@ -2310,8 +2310,8 @@ msgstr "константи (стойности, които не се проме�
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1218
-msgid "classes (session 11)"
-msgstr "класове (занятие 11)"
+msgid "classes ([session 11](./11-oop-classes.md))"
+msgstr ""
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1220
@@ -2555,13 +2555,13 @@ msgstr "`&` и `|` не са `and` и `or`"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1393
-msgid "In SAS, `&` and `|` mean AND and OR. In Python they are different (bit) operators. pandas uses them for conditions on whole columns (session 15) - but for single values, write `and`, `or`, `not`."
-msgstr "В SAS `&` и `|` означават AND и OR. В Python те са други (побитови) оператори. pandas ги използва за условия върху цели колони (занятие 15) - но за отделни стойности пишете `and`, `or`, `not`."
+msgid "In SAS, `&` and `|` mean AND and OR. In Python they are different (bit) operators. pandas uses them for conditions on whole columns ([session 15](./15-pandas-select-aggregate-join.md#rows-a-mask-is-the-where)) - but for single values, write `and`, `or`, `not`."
+msgstr "В SAS `&` и `|` означават AND и OR. В Python те са други (побитови) оператори. pandas ги използва за условия върху цели колони ([занятие 15](./15-pandas-select-aggregate-join.md#rows-a-mask-is-the-where)) - но за отделни стойности пишете `and`, `or`, `not`."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1398
-msgid "`if` with conditions, and the details of `and` / `or`, come in session 2."
-msgstr "`if` с условия и подробностите за `and` / `or` идват в занятие 2."
+msgid "`if` with conditions, and the details of `and` / `or`, come in [session 2](./02-conditions-and-loops.md#_3-logical-operators)."
+msgstr "`if` с условия и подробностите за `and` / `or` идват в [занятие 2](./02-conditions-and-loops.md#_3-logical-operators)."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1401
@@ -2600,8 +2600,8 @@ msgstr "Първи поглед към методите на string"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1436
-msgid "Strings have many **methods** - functions you call with a dot after the value. A few, for a first look (session 7 has them all):"
-msgstr "Strings имат много **методи** - функции, които извиквате с точка след стойността. Няколко, за първи поглед (в занятие 7 са всички):"
+msgid "Strings have many **methods** - functions you call with a dot after the value. A few, for a first look ([session 7](./07-text-processing.md) has them all):"
+msgstr "Strings имат много **методи** - функции, които извиквате с точка след стойността. Няколко, за първи поглед (в [занятие 7](./07-text-processing.md) са всички):"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1449
@@ -2695,8 +2695,8 @@ msgstr "Какво приемат `int()` и `float()` и какво не:"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1535
-msgid "Numbers written the Bulgarian way - a space between the thousands, a comma for the fraction - must be cleaned first (more string methods in session 7):"
-msgstr "Числата, записани по българския начин - интервал между хилядите, запетая пред дробната част - трябва първо да се почистят (още методи на string в занятие 7):"
+msgid "Numbers written the Bulgarian way - a space between the thousands, a comma for the fraction - must be cleaned first (more string methods in [session 7](./07-text-processing.md#_8-numbers-from-text)):"
+msgstr "Числата, записани по българския начин - интервал между хилядите, запетая пред дробната част - трябва първо да се почистят (още методи на string в [занятие 7](./07-text-processing.md#_8-numbers-from-text)):"
 
 #. box title
 #: site/lectures/01-intro-syntax-types.md:1544
@@ -3000,8 +3000,8 @@ msgstr "`Decimal` е по-бавен от `float`. Използвайте го �
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1833
-msgid "pandas works with `float`: there, round the **results** (session 15)."
-msgstr "pandas работи с `float`: там закръглявайте **резултатите** (занятие 15)."
+msgid "pandas works with `float`: there, round the **results** ([session 15](./15-pandas-select-aggregate-join.md))."
+msgstr "pandas работи с `float`: там закръглявайте **резултатите** ([занятие 15](./15-pandas-select-aggregate-join.md))."
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:1842

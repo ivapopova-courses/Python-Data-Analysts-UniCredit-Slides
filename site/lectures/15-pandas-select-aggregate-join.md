@@ -58,7 +58,7 @@ one.
 
 ### Columns: `KEEP` and `DROP`
 
-You know `df["col"]` (a Series) and `df[["a", "b"]]` (a DataFrame) from session 14.
+You know `df["col"]` (a Series) and `df[["a", "b"]]` (a DataFrame) from [session 14](./14-numpy-pandas-intro.md#columns).
 `drop` removes columns - SAS `DROP=`:
 
 ```python run
@@ -95,7 +95,7 @@ loans[late][["loan_id", "product", "outstanding", "days_past_due"]].head()
 ```
 
 Several conditions: `&` (and), `|` (or), `~` (not), each comparison in brackets -
-the rule of session 14:
+the rule of [session 14](./14-numpy-pandas-intro.md):
 
 ```python run
 import pandas as pd
@@ -134,7 +134,7 @@ loans = pd.read_csv("data/loans.csv")
 loans.loc[loans["stage"] == 3, ["loan_id", "client_id", "outstanding"]].head()
 ```
 
-With an index of ids (session 14), `loc` takes the labels - like a lookup in a
+With an index of ids ([session 14](./14-numpy-pandas-intro.md#the-index)), `loc` takes the labels - like a lookup in a
 dictionary:
 
 ```python run
@@ -254,12 +254,12 @@ print(small.head(3))
 print(loans.columns.size, small.columns.size)
 ```
 
-`lambda d:` gets the DataFrame at that step of the chain (session 4: a small
+`lambda d:` gets the DataFrame at that step of the chain ([session 4](./04-functions.md#_10-lambda): a small
 function without a name).
 
 ### `CASE WHEN`: `np.where` and `np.select`
 
-The tools of session 14 work on columns too:
+The tools of [session 14](./14-numpy-pandas-intro.md) work on columns too:
 
 ```python run
 import numpy as np
@@ -309,13 +309,13 @@ print(pd.cut(amounts, bins=[0, 100_000, 1_000_000, float("inf")], right=False,
              labels=["< 100k", "100k - 1m", "1m +"]))
 ```
 
-The result is a **category** column (session 14): the labels keep their order (not
+The result is a **category** column ([session 14](./14-numpy-pandas-intro.md)): the labels keep their order (not
 alphabetical), which is right for a report.
 
 ### Codes and descriptions: `map`
 
 `map` with a dictionary replaces each value by its description - `PUT(code, $fmt.)`
-with a SAS format, or the dictionary lookup of session 6:
+with a SAS format, or the dictionary lookup of [session 6](./06-dictionaries.md#_5-lookup-tables-and-nomenclatures):
 
 ```python run
 import pandas as pd
@@ -328,7 +328,7 @@ print(loans["group"].value_counts(dropna=False))     # working_capital is not in
 ```
 
 A value that is not a key gives `NaN` - check for it, like the "unknown code" of a
-nomenclature (session 12). The lookup can come from a table: a Series with the codes
+nomenclature ([session 12](./12-oop-nomenclatures.md)). The lookup can come from a table: a Series with the codes
 as its index:
 
 ```python run
@@ -343,7 +343,7 @@ clients[["client_id", "rating", "grade"]].head()
 
 ### Text and dates in a column
 
-The `.str` methods of session 7 and the `.dt` date parts work on a whole column:
+The `.str` methods of [session 7](./07-text-processing.md) and the `.dt` date parts work on a whole column:
 
 ```python run
 import pandas as pd
@@ -451,8 +451,8 @@ loans = pd.read_csv("data/loans.csv")
 loans.groupby("stage")["outstanding"].sum()
 ```
 
-The stage totals of session 6 (`110184825.28`, `16884527.04`, `4301356.28`) - in one
-line. The result is a Series with the groups as its index. Compare with session 6:
+The stage totals of [session 6](./06-dictionaries.md#sum-by-group) (`110184825.28`, `16884527.04`, `4301356.28`) - in one
+line. The result is a Series with the groups as its index. Compare with [session 6](./06-dictionaries.md#sum-by-group):
 
 ```python run
 import pandas as pd
@@ -541,7 +541,7 @@ table["share_in_segment"] = (table["outstanding"] / table.groupby("segment")["ou
 table
 ```
 
-(The same table with the stages as columns is a **pivot** - session 16.)
+(The same table with the stages as columns is a **pivot** - [session 16](./16-pandas-reports-project.md#_1-pivot-tables).)
 
 ### `size` and `count`
 
@@ -580,7 +580,7 @@ print(clients.value_counts(["segment", "region"]).head(6))
 print(clients.groupby("segment")["region"].value_counts(normalize=True).round(3).head(7))
 ```
 
-(`pd.crosstab` - the two-way table with rows and columns - is session 16.)
+(`pd.crosstab` - the two-way table with rows and columns - is [session 16](./16-pandas-reports-project.md#pd-crosstab-counts-and-shares).)
 
 ### The share inside a group: `transform`
 
@@ -657,7 +657,7 @@ print(left.merge(right, on="client_id", how="outer"))     # FULL OUTER JOIN
 ```
 
 `how="right"` exists too. The rows without a partner get `NaN` - and an int column
-with `NaN` becomes float (session 14: `5.0`, `3.0`).
+with `NaN` becomes float ([session 14](./14-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64): `5.0`, `3.0`).
 
 ### `IN=` of SAS: `indicator=True`
 
@@ -681,8 +681,8 @@ when you need only the ids: `~clients["client_id"].isin(loans["client_id"])`.
 
 ### The portfolio join and the EL
 
-Loans + clients + the rating scale - the join of homework 4 (session 4, with loops;
-session 6, with dicts; session 13, in SQL). Now in pandas:
+Loans + clients + the rating scale - the join of homework 4 ([session 4](./04-functions.md), with loops;
+[session 6](./06-dictionaries.md#the-join-loans-with-the-region-of-their-client), with dicts; [session 13](./13-databases.md#a-join-in-sql), in SQL). Now in pandas:
 
 ```python run
 import pandas as pd
@@ -708,7 +708,7 @@ The same number as with loops, dicts and SQL: the tools agree.
 
 `left_on` / `right_on` when the key has another name; `suffixes` when both tables have
 a column with the same name. The rating of each client in August and September from
-`ratings_history.csv` (a self join, as in session 13):
+`ratings_history.csv` (a self join, as in [session 13](./13-databases.md#the-rating-migration-a-self-join)):
 
 ```python run
 import pandas as pd
@@ -805,7 +805,7 @@ print(pd.concat([old, new], keys=["old_system", "new_system"]))
 ::: tip Try it
 Join `loans.csv` with `client_register.csv` on `client_id` with `how="left"` and
 `indicator=True`. Do all loans find their client? (Look at the ids in the register -
-session 7.) How would you fix the key before the join?
+[session 7](./07-text-processing.md#client-ids).) How would you fix the key before the join?
 :::
 
 ## 6. Missing values
@@ -814,7 +814,7 @@ session 7.) How would you fix the key before the join?
 
 pandas marks a missing value with `NaN` in number columns, and with `NaN` or `None`
 in text columns (pandas 3: `NaN` in the `str` type). Nullable types (`Int64`,
-session 14) use `pd.NA`. Do not compare with them - use `isna()` / `notna()`:
+[session 14](./14-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64)) use `pd.NA`. Do not compare with them - use `isna()` / `notna()`:
 
 ```python run
 import pandas as pd
@@ -828,7 +828,7 @@ print(s == np.nan)                         # all False: NaN is not equal to anyt
 
 ### Aggregates skip them
 
-Unlike NumPy (session 14), pandas skips `NaN` in `sum`, `mean`, `min`, `max` - like
+Unlike NumPy ([session 14](./14-numpy-pandas-intro.md#missing-values-in-numpy-nan)), pandas skips `NaN` in `sum`, `mean`, `min`, `max` - like
 SQL and SAS `PROC MEANS`:
 
 ```python run
@@ -947,9 +947,9 @@ rates with the mean rate of the same product (hint:
 ## 7. The final project
 
 The [final project](../project) is a monthly portfolio report from end to end: load
-(files and the database), validate (the nomenclatures of session 12), clean,
-aggregate, report (Excel and a chart - session 16), and keep it in Git. Read the brief
-today; session 16 adds the last tools (pivot tables, dates, Excel output) and the time
+(files and the database), validate (the nomenclatures of [session 12](./12-oop-nomenclatures.md)), clean,
+aggregate, report (Excel and a chart - [session 16](./16-pandas-reports-project.md#_6-an-excel-report-with-several-sheets)), and keep it in Git. Read the brief
+today; [session 16](./16-pandas-reports-project.md) adds the last tools (pivot tables, dates, Excel output) and the time
 to start.
 
 ## 8. Practice
@@ -1026,7 +1026,7 @@ largest[["client_id", "loan_id", "outstanding"]].head()
 `groupby("client_id").head(1)` does the same, and `.head(2)` keeps the first two of each
 group - not possible with SAS `FIRST.` alone. `keep="last"` is SAS `LAST.`.
 
-**`NODUPKEY`** - `drop_duplicates(subset=[...])` (session 14); `duplicated(keep=False)`
+**`NODUPKEY`** - `drop_duplicates(subset=[...])` ([session 14](./14-numpy-pandas-intro.md#distinct-values-missing-values-duplicates)); `duplicated(keep=False)`
 marks **all** copies, to look at them:
 
 ```python run

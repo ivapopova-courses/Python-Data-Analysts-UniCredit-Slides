@@ -51,7 +51,7 @@ letters. By the end of today you will read and write such patterns.
 
 ### A pattern for many strings
 
-The string methods of session 7 look for **one** exact text: `"EUR" in s`. A
+The string methods of [session 7](./07-text-processing.md#_3-find-and-test) look for **one** exact text: `"EUR" in s`. A
 **regular expression** (*regex*) describes a **set** of texts by their shape: "a
 date like 30.09.2026" covers every date in that format.
 
@@ -548,7 +548,7 @@ print(re.findall(r"(\d[\d ]*,\d{2}) (?:EUR|USD)", text))
 returned.
 
 A list of records from a text - `finditer` with named groups and `groupdict()`, one
-dictionary per match (session 6):
+dictionary per match ([session 6](./06-dictionaries.md)):
 
 ```python run
 import re
@@ -668,7 +668,7 @@ for s in ["yana.koleva@example.org", "OFFICE.NORTHHOTELS@EXAMPLE.ORG",
 
 A regex checks the **form**. `31.09.2026` has the right shape, but there is no 31st
 of September; `BG00TEST...` has the right shape, but wrong check digits. So: the
-regex first, then the real check - `strptime` for a date (session 7), the check
+regex first, then the real check - `strptime` for a date ([session 7](./07-text-processing.md#any-format-strptime-and-strftime)), the check
 digits for an IBAN (Self-study):
 
 ```python run
@@ -685,11 +685,11 @@ def valid_date_bg(s):
 print([valid_date_bg(s) for s in ["30.09.2026", "31.09.2026", "29.02.2028", "2026-09-30"]])
 ```
 
-(Session 9 shows a shorter way: try `strptime` and catch the error.)
+([Session 9](./09-errors-and-files.md#try-the-formats-one-by-one) shows a shorter way: try `strptime` and catch the error.)
 
 ### A whole column
 
-The IBANs of the register: clean them with the function of session 7, then check
+The IBANs of the register: clean them with the function of [session 7](./07-text-processing.md#eik-and-iban), then check
 the shape:
 
 ```python run
@@ -710,7 +710,7 @@ print(f"{ok} valid shape, {empty} empty, {len(ibans) - ok - empty} wrong")
 ::: info The same in pandas and SQL
 pandas: `df["iban"].str.fullmatch(pattern)` gives a column of `True` / `False`;
 `str.contains`, `str.extract` and `str.replace(..., regex=True)` use patterns too
-(session 15). Most databases have regex functions: `REGEXP_LIKE` (Oracle, MySQL),
+([session 15](./15-pandas-select-aggregate-join.md#text-and-dates-in-a-column)). Most databases have regex functions: `REGEXP_LIKE` (Oracle, MySQL),
 `~` (PostgreSQL); MS SQL Server only since version 2025.
 
 ```python run
@@ -780,7 +780,7 @@ with open("data/loan_comments.csv", encoding="utf-8") as file:
 
 Amounts are written in different styles: `2 069,77 EUR`, `20,960.03 EUR`, `99,400
 EUR`. One pattern for "digits with spaces, commas and points, then a currency", and
-the `parse_amount` of session 7 for the number:
+the `parse_amount` of [session 7](./07-text-processing.md#_8-numbers-from-text) for the number:
 
 ```python run
 import re
@@ -866,7 +866,7 @@ for text in ["Disbursement to IBAN BG64 FAKE 2979 3117 0461 39 confirmed on 22/0
 ### Does the comment agree with the register?
 
 A real check: the IBAN in a disbursement comment must be the IBAN of the client of
-the loan. Three files, a dictionary for each lookup (session 6):
+the loan. Three files, a dictionary for each lookup ([session 6](./06-dictionaries.md#_5-lookup-tables-and-nomenclatures)):
 
 ```python run
 import csv

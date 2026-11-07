@@ -80,7 +80,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:48
-msgid "You have used `import` since session 1. The four forms:"
+msgid "You have used `import` since [session 1](./01-intro-syntax-types.md). The four forms:"
 msgstr ""
 
 #. table cell
@@ -240,7 +240,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:314
-msgid "The buckets of the whole portfolio, counted with the function of the module and a `Counter` (session 6):"
+msgid "The buckets of the whole portfolio, counted with the function of the module and a `Counter` ([session 6](./06-dictionaries.md#count-by-group-from-if-to-counter)):"
 msgstr ""
 
 #. box title
@@ -300,7 +300,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:427
-msgid "Add a function `stage(days_past_due, rating)` (session 4) to `portfolio_utils.py` with `write_text`, reload the module, and call it for `(45, 5)` and `(0, 10)`."
+msgid "Add a function `stage(days_past_due, rating)` ([session 4](./04-functions.md)) to `portfolio_utils.py` with `write_text`, reload the module, and call it for `(45, 5)` and `(0, 10)`."
 msgstr ""
 
 #. heading 2
@@ -390,7 +390,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:584
-msgid "Add a module `cleaning.py` with `squeeze(s)` (session 7) to the `portfolio` package of the example above, and import it with `from portfolio.cleaning import squeeze`."
+msgid "Add a module `cleaning.py` with `squeeze(s)` ([session 7](./07-text-processing.md#spaces-inside-compbl)) to the `portfolio` package of the example above, and import it with `from portfolio.cleaning import squeeze`."
 msgstr ""
 
 #. heading 2
@@ -400,7 +400,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:590
-msgid "\"Batteries included\" (session 1): Python comes with modules for most daily needs. The ones an analyst uses most:"
+msgid "\"Batteries included\" ([session 1](./01-intro-syntax-types.md#batteries-included)): Python comes with modules for most daily needs. The ones an analyst uses most:"
 msgstr ""
 
 #. heading 3
@@ -410,7 +410,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:595
-msgid "Session 7 introduced `date`, `datetime` and `timedelta`. Month ends - the report dates - need the number of days of a month: `calendar.monthrange(year, month)` gives the weekday of the 1st and the number of days:"
+msgid "[Session 7](./07-text-processing.md#_9-dates-from-text) introduced `date`, `datetime` and `timedelta`. Month ends - the report dates - need the number of days of a month: `calendar.monthrange(year, month)` gives the weekday of the 1st and the number of days:"
 msgstr ""
 
 #. paragraph
@@ -435,7 +435,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:668
-msgid "(pandas has all of this built in - `pd.offsets.MonthEnd`, `Period` - session 16.)"
+msgid "(pandas has all of this built in - `pd.offsets.MonthEnd`, `Period` - [session 16](./16-pandas-reports-project.md#_3-dates-and-month-ends).)"
 msgstr ""
 
 #. heading 3
@@ -445,7 +445,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:686
-msgid "By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists (session 6) and `statistics` per group:"
+msgid "By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists ([session 6](./06-dictionaries.md#group-into-lists)) and `statistics` per group:"
 msgstr ""
 
 #. paragraph
@@ -465,12 +465,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:722
-msgid "You know `Counter` and `defaultdict` (session 6). Two more:"
+msgid "You know `Counter` and `defaultdict` ([session 6](./06-dictionaries.md#count-by-group-from-if-to-counter)). Two more:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:737
-msgid "A `namedtuple` is a tuple with names for its positions - a light record (session 3, Advanced). Classes (session 11) do the same with more power. Rows of a CSV file as named tuples:"
+msgid "A `namedtuple` is a tuple with names for its positions - a light record ([session 3](./03-lists-tuples-sets.md#tuples-as-records), Advanced). Classes ([session 11](./11-oop-classes.md)) do the same with more power. Rows of a CSV file as named tuples:"
 msgstr ""
 
 #. paragraph
@@ -565,7 +565,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:929
-msgid "Session 13 reads the password of a database this way - never write a password into a script or a notebook that goes into Git."
+msgid "[Session 13](./13-databases.md#never-a-password-in-the-code) reads the password of a database this way - never write a password into a script or a notebook that goes into Git."
 msgstr ""
 
 #. paragraph
@@ -595,7 +595,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:986
-msgid "Session 1 set up the environment of the Homework repository. The rules, once more, now that you will make projects of your own:"
+msgid "[Session 1](./01-intro-syntax-types.md#virtual-environments) set up the environment of the Homework repository. The rules, once more, now that you will make projects of your own:"
 msgstr ""
 
 #. paragraph
@@ -700,7 +700,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:1105
-msgid "Git runs on your computer (you installed it for session 1). **GitHub**, GitLab and Azure DevOps are websites that keep a copy of a repository, for sharing and backup (section 8)."
+msgid "Git runs on your computer (you installed it for [session 1](./01-intro-syntax-types.md)). **GitHub**, GitLab and Azure DevOps are websites that keep a copy of a repository, for sharing and backup (section 8)."
 msgstr ""
 
 #. heading 3
@@ -780,7 +780,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-modules-and-git.md:1236
-msgid "The patterns of `.gitignore` are the same kind as `glob` (session 9). The module `fnmatch` tests a name against them - which files of a project would Git ignore?"
+msgid "The patterns of `.gitignore` are the same kind as `glob` ([session 9](./09-errors-and-files.md#find-files-glob)). The module `fnmatch` tests a name against them - which files of a project would Git ignore?"
 msgstr ""
 
 #. heading 3

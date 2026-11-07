@@ -45,7 +45,7 @@ becomes a library you use every month.
 
 ### The forms of `import`
 
-You have used `import` since session 1. The four forms:
+You have used `import` since [session 1](./01-intro-syntax-types.md). The four forms:
 
 ```python run
 import math                              # the module; use it with its name
@@ -312,7 +312,7 @@ print({s: round(v, 2) for s, v in sorted(el_by_stage.items())})
 ```
 
 The buckets of the whole portfolio, counted with the function of the module and a
-`Counter` (session 6):
+`Counter` ([session 6](./06-dictionaries.md#count-by-group-from-if-to-counter)):
 
 ```python run
 import csv
@@ -424,7 +424,7 @@ print(portfolio_utils.LGD)                  # the new value
 ```
 
 ::: tip Try it
-Add a function `stage(days_past_due, rating)` (session 4) to `portfolio_utils.py`
+Add a function `stage(days_past_due, rating)` ([session 4](./04-functions.md)) to `portfolio_utils.py`
 with `write_text`, reload the module, and call it for `(45, 5)` and `(0, 10)`.
 :::
 
@@ -581,18 +581,18 @@ notebook there is no `__file__`; start Jupyter in the project folder.)
 | `LIBNAME in "/data"` | `DATA = Path("data")` at the top of `report.py` |
 
 ::: tip Try it
-Add a module `cleaning.py` with `squeeze(s)` (session 7) to the `portfolio` package
+Add a module `cleaning.py` with `squeeze(s)` ([session 7](./07-text-processing.md#spaces-inside-compbl)) to the `portfolio` package
 of the example above, and import it with `from portfolio.cleaning import squeeze`.
 :::
 
 ## 4. A tour of the standard library
 
-"Batteries included" (session 1): Python comes with modules for most daily needs.
+"Batteries included" ([session 1](./01-intro-syntax-types.md#batteries-included)): Python comes with modules for most daily needs.
 The ones an analyst uses most:
 
 ### `datetime` and `calendar`: report dates
 
-Session 7 introduced `date`, `datetime` and `timedelta`. Month ends - the report dates -
+[Session 7](./07-text-processing.md#_9-dates-from-text) introduced `date`, `datetime` and `timedelta`. Month ends - the report dates -
 need the number of days of a month: `calendar.monthrange(year, month)` gives the
 weekday of the 1st and the number of days:
 
@@ -665,7 +665,7 @@ import calendar
 print(calendar.month(2026, 9))
 ```
 
-(pandas has all of this built in - `pd.offsets.MonthEnd`, `Period` - session 16.)
+(pandas has all of this built in - `pd.offsets.MonthEnd`, `Period` - [session 16](./16-pandas-reports-project.md#_3-dates-and-month-ends).)
 
 ### `statistics`: `PROC MEANS` and `PROC UNIVARIATE` for a list
 
@@ -683,7 +683,7 @@ print("stdev  ", round(st.stdev(rates), 3))          # the sample standard devia
 print("deciles", [round(q, 2) for q in st.quantiles(rates, n=10)])
 ```
 
-By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists (session 6) and
+By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists ([session 6](./06-dictionaries.md#group-into-lists)) and
 `statistics` per group:
 
 ```python run
@@ -719,7 +719,7 @@ quantiles differ a little between SAS, SQL and Python.
 
 ### `collections`: more containers
 
-You know `Counter` and `defaultdict` (session 6). Two more:
+You know `Counter` and `defaultdict` ([session 6](./06-dictionaries.md#count-by-group-from-if-to-counter)). Two more:
 
 ```python run
 from collections import namedtuple, deque
@@ -734,8 +734,8 @@ for month_total in [128.4, 129.1, 130.2, 129.6, 131.4]:
 print(list(last_three), round(sum(last_three) / 3, 2))  # a 3-month moving average
 ```
 
-A `namedtuple` is a tuple with names for its positions - a light record (session 3,
-Advanced). Classes (session 11) do the same with more power. Rows of a CSV file as
+A `namedtuple` is a tuple with names for its positions - a light record ([session 3](./03-lists-tuples-sets.md#tuples-as-records),
+Advanced). Classes ([session 11](./11-oop-classes.md)) do the same with more power. Rows of a CSV file as
 named tuples:
 
 ```python run
@@ -926,7 +926,7 @@ print(os.getenv("REPORT_FOLDER"))
 print(sys.version.split()[0], sys.platform)
 ```
 
-Session 13 reads the password of a database this way - never write a password into a
+[Session 13](./13-databases.md#never-a-password-in-the-code) reads the password of a database this way - never write a password into a
 script or a notebook that goes into Git.
 
 ::: code-group
@@ -983,7 +983,7 @@ that are late at all.
 
 ## 5. `pip` and virtual environments, again
 
-Session 1 set up the environment of the Homework repository. The rules, once more,
+[Session 1](./01-intro-syntax-types.md#virtual-environments) set up the environment of the Homework repository. The rules, once more,
 now that you will make projects of your own:
 
 - **one virtual environment per project**, in the project folder (`.venv`), never
@@ -1102,7 +1102,7 @@ last month's numbers? What changed between them?
 - the way back to any earlier version;
 - parallel lines of work (**branches**) that can be merged.
 
-Git runs on your computer (you installed it for session 1). **GitHub**, GitLab and
+Git runs on your computer (you installed it for [session 1](./01-intro-syntax-types.md)). **GitHub**, GitLab and
 Azure DevOps are websites that keep a copy of a repository, for sharing and backup
 (section 8).
 
@@ -1233,7 +1233,7 @@ Path("out/.gitignore").write_text(rules, encoding="utf-8")
 print(Path("out/.gitignore").read_text(encoding="utf-8").splitlines())
 ```
 
-The patterns of `.gitignore` are the same kind as `glob` (session 9). The module
+The patterns of `.gitignore` are the same kind as `glob` ([session 9](./09-errors-and-files.md#find-files-glob)). The module
 `fnmatch` tests a name against them - which files of a project would Git ignore?
 
 ```python run

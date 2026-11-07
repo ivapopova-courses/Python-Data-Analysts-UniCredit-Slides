@@ -81,7 +81,7 @@ print(pd_of_grade)
 ```
 
 The syntax: curly brackets, pairs `key: value`, separated by commas. The same curly
-brackets as a set (session 3) - but a set has only values, a dictionary has pairs.
+brackets as a set ([session 3](./03-lists-tuples-sets.md#_11-sets)) - but a set has only values, a dictionary has pairs.
 
 Think of it as a two-column table with a **unique key**, like a SQL table with a
 primary key:
@@ -111,7 +111,7 @@ from_pairs = dict([("EUR", "Euro"), ("USD", "US dollar")])
 print(type(empty), currencies == same == from_pairs)
 ```
 
-From two lists - the keys and the values - with `zip` (session 5):
+From two lists - the keys and the values - with `zip` ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):
 
 ```python run
 grades = ["AAA", "AA", "A", "BBB"]
@@ -357,7 +357,7 @@ print(max(outstanding, key=outstanding.get))
 (`key=outstanding.get` - the method itself, without brackets: `max` calls it for
 each key.)
 
-A ranked report: `enumerate` over the sorted items (session 5):
+A ranked report: `enumerate` over the sorted items ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)):
 
 ```python run
 outstanding = {"sme": 39.5, "corporate": 85.0, "retail": 6.9}
@@ -383,7 +383,7 @@ print(keys)                        # the view shows the new key too
 :::
 
 ::: details Advanced: keys behave like a set
-`keys()` supports the set operations of session 3 - handy to compare two
+`keys()` supports the set operations of [session 3](./03-lists-tuples-sets.md#_12-set-operations-sql-union-intersect-except) - handy to compare two
 nomenclatures:
 
 ```python run
@@ -405,7 +405,7 @@ only the segments with more than EUR 10 million.
 
 ### `{key: value for ...}`
 
-Like a list comprehension (session 5), with `key: value` and curly brackets:
+Like a list comprehension ([session 5](./05-lists-advanced.md#_1-list-comprehensions)), with `key: value` and curly brackets:
 
 ```python run
 grades = ["AAA", "AA", "A", "BBB"]
@@ -498,7 +498,7 @@ print(grade, pd_value)
 
 `csv.DictReader` (the module `csv` comes with Python) reads a CSV file row by row,
 and gives each row as a dictionary: the column name is the key. No more `row[7]` -
-`row["outstanding"]`. Files and `csv` in depth: session 9.
+`row["outstanding"]`. Files and `csv` in depth: [session 9](./09-errors-and-files.md#_7-csv-files).
 
 ```python run
 import csv
@@ -527,7 +527,7 @@ print([stage_name(s) for s in [1, 3, 2, 4]])
 ```
 
 Keep the nomenclature (the dictionary) as a **constant** at the top of the script,
-in capitals: one place to change it. Session 12 turns such a nomenclature into a
+in capitals: one place to change it. [Session 12](./12-oop-nomenclatures.md) turns such a nomenclature into a
 class with its own checks.
 
 ### The join: loans with the region of their client
@@ -632,7 +632,7 @@ def grade_of_pd(pd_value):
 print([grade_of_pd(p) for p in [0.0003, 0.0043, 0.02, 0.5, 1.0]])
 ```
 
-In pandas, `pd.cut` does the same for a whole column (session 15).
+In pandas, `pd.cut` does the same for a whole column ([session 15](./15-pandas-select-aggregate-join.md#bands-pd-cut)).
 :::
 
 ::: info The same in pandas
@@ -775,7 +775,7 @@ for product, (n, total, largest) in sorted(stats.items()):
 ```
 
 This is SAS `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line
-(session 15) - but now you know what it does.
+([session 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means)) - but now you know what it does.
 
 The **share** of each group in the total - one more pass over the small result, not
 over the data:
@@ -875,7 +875,7 @@ print((august + Counter({3: 1})).total())       # total(): Python 3.10+
 ### A trap: the group key from dirty text
 
 `"Sofia"`, `"sofia"` and `"Sofia "` are three different keys. Clean the key before
-you group (text cleaning: session 7):
+you group (text cleaning: [session 7](./07-text-processing.md#_7-cleaning-identifiers-and-names)):
 
 ```python run
 from collections import Counter
@@ -922,7 +922,7 @@ usd = [loan["loan_id"] for loan in loans if loan["currency"] == "USD"]
 print(usd[:5])
 ```
 
-Compare with session 5: `row[3] == "USD"` vs `loan["currency"] == "USD"`. The name
+Compare with [session 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows): `row[3] == "USD"` vs `loan["currency"] == "USD"`. The name
 says what the column is, and adding a column to the file does not break the code.
 
 The values are still **text**. Convert them once, into a new record:
@@ -996,7 +996,7 @@ Not needed for the tasks, the homework or the next sessions - read it when you h
 
 Nested dictionaries and lists are the shape of **JSON**, the text format of web
 APIs and of many configuration files. The module `json` turns one into the other
-(JSON files: session 9):
+(JSON files: [session 9](./09-errors-and-files.md#_8-json-files)):
 
 ```python run
 import json
@@ -1013,7 +1013,7 @@ print(json.loads(text)["segments"]["sme"]["loans"])
 
 ### Copies of nested dictionaries
 
-The same rule as for nested lists (session 5): `d.copy()` and `dict(d)` are
+The same rule as for nested lists ([session 5](./05-lists-advanced.md#_6-copies-of-a-table)): `d.copy()` and `dict(d)` are
 **shallow** - the inner dictionaries are shared. `copy.deepcopy` copies all levels:
 
 ```python run
@@ -1113,7 +1113,7 @@ for region in sorted(table):
 `defaultdict(int)` - so `table[region][segment] += 1` works for any new pair.
 
 And back - from the cross table to rows (`region, segment, count`), the job of
-SAS `PROC TRANSPOSE`, or of `melt` in pandas (session 16):
+SAS `PROC TRANSPOSE`, or of `melt` in pandas ([session 16](./16-pandas-reports-project.md#_2-from-wide-to-long-melt)):
 
 ```python run
 table = {"Ruse": {"retail": 18, "sme": 7}, "Varna": {"retail": 13, "corporate": 3}}

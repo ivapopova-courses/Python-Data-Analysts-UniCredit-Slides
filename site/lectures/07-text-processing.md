@@ -52,7 +52,7 @@ problems in it are real ones.
 
 ## 1. Strings: a recap and the new data
 
-You know from session 1 and 3: a string is a **sequence** of characters; `len(s)`,
+You know from [session 1](./01-intro-syntax-types.md#str-text) and 3: a string is a **sequence** of characters; `len(s)`,
 `s[0]`, `s[-1]`, `s[2:5]` work like on a list; `s[2:5]` is `SUBSTR(s, 3, 3)` in SAS. And a
 string **cannot change** (it is immutable): every method returns a **new** string.
 
@@ -235,7 +235,7 @@ start = comment.find(" on ") + len(" on ")
 print(comment[start:start + 10])
 ```
 
-(Session 8 does this kind of extraction with regular expressions - shorter and
+([Session 8](./08-regular-expressions.md#_7-extraction-from-free-text) does this kind of extraction with regular expressions - shorter and
 safer.)
 
 ### What kind of characters?
@@ -369,13 +369,13 @@ print(line.split(","))                 # 4 fields - wrong
 print(next(csv.reader([line])))        # 3 fields - right
 ```
 
-That is why the examples since session 6 read files with `csv.DictReader`. Session
+That is why the examples since [session 6](./06-dictionaries.md#a-row-as-a-dictionary) read files with `csv.DictReader`. Session
 9 covers the `csv` module.
 
 ::: info The same in pandas
 In pandas, every string method works on a whole column with `.str`:
 `loans["product"].str.upper()`, `names.str.split()`, `ids.str.startswith("L")`
-(session 15):
+([session 15](./15-pandas-select-aggregate-join.md#text-and-dates-in-a-column)):
 
 ```python run
 import pandas as pd
@@ -493,7 +493,7 @@ print(repr("EUR".ljust(6)), repr("EUR".rjust(6)), repr("EUR".center(7, "*")))
 ```
 
 A fixed-width line - some old systems still want them. The f-string format spec of
-session 1 does the same, and is easier to read:
+[session 1](./01-intro-syntax-types.md#formatting-the-values) does the same, and is easier to read:
 
 ```python run
 rows = [("L000001", "investment", 1044231.30), ("L000003", "credit_card", 644.25)]
@@ -626,7 +626,7 @@ print(clean_iban(""))
 ```
 
 Both checks are only the **shape**. A real EIK and a real IBAN also have **check
-digits** that catch typing errors - the Self-study of session 8 computes them.
+digits** that catch typing errors - the Self-study of [session 8](./08-regular-expressions.md#check-digits-iban-and-eik) computes them.
 
 ### E-mails
 
@@ -646,12 +646,12 @@ for raw in ["OFFICE.NORTHHOTELS@EXAMPLE.ORG", " yana.koleva@example.org",
     print(f"{raw!r:<38} -> {clean_email(raw)}")
 ```
 
-(Session 8 checks e-mails with a regular expression.)
+([Session 8](./08-regular-expressions.md#e-mails) checks e-mails with a regular expression.)
 
 ### Cities: a mapping of variants
 
 Some variants are only case and spaces; some are a prefix; some are in Cyrillic.
-Clean what string methods can clean, then a **dictionary** (session 6) maps the
+Clean what string methods can clean, then a **dictionary** ([session 6](./06-dictionaries.md#_5-lookup-tables-and-nomenclatures)) maps the
 Cyrillic names:
 
 ```python run
@@ -700,7 +700,7 @@ than any amount of looking at the data.
 
 ::: info The same in pandas
 The same functions work on a column with `.map(function)`, or with the `.str`
-methods (session 15):
+methods ([session 15](./15-pandas-select-aggregate-join.md#text-and-dates-in-a-column)):
 
 ```python run
 import pandas as pd
@@ -854,7 +854,7 @@ print(start.isoformat())               # and back to text
 ```
 
 ISO dates have one more advantage: as **text**, they sort in the right order
-(session 2). `"16.04.2019"` does not.
+([session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)). `"16.04.2019"` does not.
 
 ### Any format: `strptime` and `strftime`
 
@@ -894,14 +894,14 @@ from datetime import datetime
 print(datetime.strptime("31.09.2026", "%d.%m.%Y"))     # ValueError: there is no 31 September
 ```
 
-(How to catch such an error and go on with the next row: session 9.)
+(How to catch such an error and go on with the next row: [session 9](./09-errors-and-files.md#_2-try-except).)
 
 ::: details Advanced: month names and the language
 `%b` and `%B` follow the **locale**. By default Python uses English month names, but
 if a program (or a library) switches the locale with `locale.setlocale`, `%b` expects
 the month names of that language, and `strptime("8 Jun 2014", "%d %b %Y")` can fail.
 For data, prefer numeric formats. If a source has English month names, a small
-dictionary `{"Jan": 1, ...}` (session 6) is the safe way.
+dictionary `{"Jan": 1, ...}` ([session 6](./06-dictionaries.md)) is the safe way.
 :::
 
 ### Several formats in one column
@@ -967,8 +967,8 @@ last = next_first - timedelta(days=1)                          # INTNX('month', 
 print(first, last)
 ```
 
-(Adding **months** is not in `datetime`: a month has no fixed length. Session 16
-does it with pandas; session 10 shows the standard library.)
+(Adding **months** is not in `datetime`: a month has no fixed length. [Session 16](./16-pandas-reports-project.md#month-ends-intnx)
+does it with pandas; [session 10](./10-modules-and-git.md#datetime-and-calendar-report-dates) shows the standard library.)
 
 ### On the file: years as a client
 
@@ -1139,7 +1139,7 @@ with open("regions_utf8.csv", "w", encoding="utf-8", newline="") as file:
 with open("regions_utf8.csv", encoding="utf-8") as file:
     print(file.read())
 ```
-(Writing files with `csv`: session 9.)
+(Writing files with `csv`: [session 9](./09-errors-and-files.md#write-csv-writer-and-csv-dictwriter).)
 :::
 
 ### Cyrillic names in Latin letters

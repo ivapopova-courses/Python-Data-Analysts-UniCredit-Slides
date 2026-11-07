@@ -189,7 +189,7 @@ it. With other drivers, use `con.cursor()` first.
 
 ### Loop over the rows
 
-A cursor is iterable - loop over it like over a file (session 2): one row at a time,
+A cursor is iterable - loop over it like over a file ([session 2](./02-conditions-and-loops.md#the-rows-of-a-file)): one row at a time,
 little memory:
 
 ```python run
@@ -221,7 +221,7 @@ print(cur.fetchone())
 con.close()
 ```
 
-A mistake in the SQL is an exception like any other (session 9) - in SQLite an
+A mistake in the SQL is an exception like any other ([session 9](./09-errors-and-files.md#_1-errors-and-exceptions)) - in SQLite an
 `OperationalError`, with the message of the database:
 
 ```python run
@@ -235,7 +235,7 @@ except sqlite3.OperationalError as error:
 con.close()
 ```
 
-Rows straight into the dataclasses of session 11 - `*row` unpacks the tuple into the
+Rows straight into the dataclasses of [session 11](./11-oop-classes.md#_7-dataclasses) - `*row` unpacks the tuple into the
 fields:
 
 ```python run
@@ -291,7 +291,7 @@ con.close()
 ### Close the connection - always
 
 A connection holds resources on the database server (and a lock on an SQLite file).
-Close it also when the query fails: `try` / `finally` (session 9), or
+Close it also when the query fails: `try` / `finally` ([session 9](./09-errors-and-files.md#_3-else-and-finally)), or
 `contextlib.closing` in a `with`:
 
 ```python run
@@ -313,7 +313,7 @@ when the example ends. In a script that runs for a long time, close it yourself.
 ### Types in SQLite
 
 SQLite has few types: `INTEGER`, `REAL`, `TEXT`, `BLOB` and `NULL`. **Dates are text**
-(ISO, `2026-09-30`) - they sort and compare correctly as text (session 2), and you
+(ISO, `2026-09-30`) - they sort and compare correctly as text ([session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)), and you
 convert them in Python when you need dates:
 
 ```python run
@@ -398,7 +398,7 @@ print(n_old, n_month, len(first_ids))
 ```
 
 A query with parameters inside a function is a reusable report - the function of
-session 4, the SQL of today:
+[session 4](./04-functions.md), the SQL of today:
 
 ```python run
 import sqlite3
@@ -491,7 +491,7 @@ with sqlite3.connect("data/portfolio.db") as con:
 ```
 
 The f-string builds only the **placeholders** - the values still go as parameters.
-(For thousands of values, `itertools.batched` of session 10 cuts the list into
+(For thousands of values, `itertools.batched` of [session 10](./10-modules-and-git.md) cuts the list into
 pieces.)
 
 ### The same query, many values: `executemany`
@@ -637,7 +637,7 @@ con.close()
 ```
 
 `executemany` also takes **dictionaries** with named parameters - the rows of
-`csv.DictReader` (session 6) go straight into a table:
+`csv.DictReader` ([session 6](./06-dictionaries.md#a-row-as-a-dictionary)) go straight into a table:
 
 ```python run
 import csv
@@ -747,7 +747,7 @@ print(in_sql)
 print([(s, n, round(t, 2)) for s, (n, t) in sorted(totals.items())])
 ```
 
-`HAVING` and `CASE WHEN` - the SQL of session 2 and 6, run by the database:
+`HAVING` and `CASE WHEN` - the SQL of [session 2](./02-conditions-and-loops.md#case-when-in-python) and 6, run by the database:
 
 ```python run
 import sqlite3
@@ -834,7 +834,7 @@ print(moves)
 print(worse, "clients downgraded,", better, "upgraded")
 ```
 
-(Session 16 turns this into a full **migration matrix** with pandas.)
+([Session 16](./16-pandas-reports-project.md#_5-the-rating-migration-matrix) turns this into a full **migration matrix** with pandas.)
 
 ### Step by step: `WITH`
 
@@ -870,7 +870,7 @@ A common pattern: SQL for the **data** (filter, join, aggregate), Python for the
 **rules** and the **report**.
 
 Two sources together: the exposure per client from the database, the names from the
-register file of session 7 - joined in Python with a dictionary:
+register file of [session 7](./07-text-processing.md#_7-cleaning-identifiers-and-names) - joined in Python with a dictionary:
 
 ```python run
 import csv
@@ -887,7 +887,7 @@ for client_id, exposure in top:
     print(f"{client_id} {name_of.get(client_id, '?'):<28}{exposure:>16,.2f}")
 ```
 
-The names are as they were typed into the register - the `clean_name` of session 7
+The names are as they were typed into the register - the `clean_name` of [session 7](./07-text-processing.md#company-and-person-names)
 would fix them. That is the Python part of the job.
 
 ::: tip Try it
@@ -945,10 +945,10 @@ print(df["maturity_date"].max())
 ```
 
 (pandas 3 shows text columns as `str` and dates as `datetime64[us]`; pandas 2.2 shows
-`object` and `datetime64[ns]`. The data is the same - session 14 explains the types.)
+`object` and `datetime64[ns]`. The data is the same - [session 14](./14-numpy-pandas-intro.md#_8-the-types-of-the-columns) explains the types.)
 
 A DataFrame goes back to Python rows when you need them - `to_dict("records")` gives
-a list of dictionaries (session 6):
+a list of dictionaries ([session 6](./06-dictionaries.md#a-row-as-a-dictionary)):
 
 ```python run
 import sqlite3
@@ -1070,7 +1070,7 @@ engine - use one.
 
 ::: tip Try it
 Read `ratings_history` for `2026-09-30` into a DataFrame with a parameter, and print
-its `shape`. Then `df["rating"].value_counts()` - a preview of session 14.
+its `shape`. Then `df["rating"].value_counts()` - a preview of [session 14](./14-numpy-pandas-intro.md#value-counts-proc-freq).
 :::
 
 ## 7. Your database: drivers and passwords
@@ -1119,11 +1119,11 @@ df = pd.read_sql("SELECT TOP 10 * FROM dbo.loans", engine)
 ### Never a password in the code
 
 A password in a script, a notebook or a config file ends up in Git, in e-mails and in
-backups (session 10). Ways to keep it out:
+backups ([session 10](./10-modules-and-git.md#_6-git-versions-of-your-code)). Ways to keep it out:
 
 - **Windows login** (trusted connection, Kerberos) - no password at all, if your
   database supports it; the best option.
-- **environment variables** (session 10) - set per user, read with `os.environ`.
+- **environment variables** ([session 10](./10-modules-and-git.md#os-and-sys-the-environment)) - set per user, read with `os.environ`.
 - the **keyring** package - stores the password in the Windows Credential Manager.
 - a `.env` file **listed in `.gitignore`**, read with the `python-dotenv` package.
 
@@ -1236,7 +1236,7 @@ The tasks read `data/portfolio.db`; the ones that write work on a copy in memory
    database. Every check must print `OK`.
 2. The practice tasks you did not finish in class.
 3. Optional: find out which database your team uses, which Python driver it needs,
-   and whether you can get a read-only account - we use the answer in session 16.
+   and whether you can get a read-only account - we use the answer in [session 16](./16-pandas-reports-project.md).
 
 ## Self-study
 

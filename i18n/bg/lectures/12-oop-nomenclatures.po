@@ -305,22 +305,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:150
-msgid "A dataclass (session 11) with the codes and the facts about them:"
+msgid "A dataclass ([session 11](./11-oop-classes.md#_7-dataclasses)) with the codes and the facts about them:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:176
-msgid "`date | None` means \"a date, or `None`\" (session 4; Python 3.10+). The metadata does not change how the codes work - but it is printed with every report that uses them, so anybody can see **which** list was used:"
+msgid "`date | None` means \"a date, or `None`\" ([session 4](./04-functions.md#type-hints); Python 3.10+). The metadata does not change how the codes work - but it is printed with every report that uses them, so anybody can see **which** list was used:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:201
-msgid "Two nomenclatures are **equal** when all their fields are equal - the dataclass `__eq__` of session 11. The same codes with another version are **not** the same nomenclature:"
+msgid "Two nomenclatures are **equal** when all their fields are equal - the dataclass `__eq__` of [session 11](./11-oop-classes.md). The same codes with another version are **not** the same nomenclature:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:221
-msgid "A trap of dataclasses: an empty dictionary as a default is refused - it would be one dictionary for all objects (session 11):"
+msgid "A trap of dataclasses: an empty dictionary as a default is refused - it would be one dictionary for all objects ([session 11](./11-oop-classes.md#_5-class-attributes)):"
 msgstr ""
 
 #. heading 3
@@ -330,7 +330,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:236
-msgid "Three special methods (session 11, Self-study) make the object work with `len()`, `in` and `for` - like the dictionary inside it:"
+msgid "Three special methods ([session 11](./11-oop-classes.md#special-methods-objects-that-work-with-python-s-operators), Self-study) make the object work with `len()`, `in` and `for` - like the dictionary inside it:"
 msgstr ""
 
 #. heading 3
@@ -355,7 +355,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:292
-msgid "The dictionary of codes is **shared** with whoever passed it in - a change outside changes the nomenclature (references, session 3). Take a **copy** in `__post_init__`:"
+msgid "The dictionary of codes is **shared** with whoever passed it in - a change outside changes the nomenclature (references, [session 3](./03-lists-tuples-sets.md#_7-a-list-is-mutable-names-and-references)). Take a **copy** in `__post_init__`:"
 msgstr ""
 
 #. paragraph
@@ -380,7 +380,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:334
-msgid "A nomenclature with a duplicate code, an empty label or a malformed code must not exist at all. `__post_init__` checks it, and raises a clear error (session 9):"
+msgid "A nomenclature with a duplicate code, an empty label or a malformed code must not exist at all. `__post_init__` checks it, and raises a clear error ([session 9](./09-errors-and-files.md#raise-stop-with-a-clear-message)):"
 msgstr ""
 
 #. paragraph
@@ -395,7 +395,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:395
-msgid "A dictionary cannot **have** duplicate keys - the last one wins silently (session 6). So the duplicates must be caught **before** the dictionary is built - when the codes come as pairs, for example from a file:"
+msgid "A dictionary cannot **have** duplicate keys - the last one wins silently ([session 6](./06-dictionaries.md#rules-for-keys)). So the duplicates must be caught **before** the dictionary is built - when the codes come as pairs, for example from a file:"
 msgstr ""
 
 #. paragraph
@@ -420,7 +420,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:447
-msgid "The register of session 7 against a nomenclature of the region names - first the raw city column, then after the cleaning function of session 7:"
+msgid "The register of [session 7](./07-text-processing.md#cities-a-mapping-of-variants) against a nomenclature of the region names - first the raw city column, then after the cleaning function of [session 7](./07-text-processing.md#cities-a-mapping-of-variants):"
 msgstr ""
 
 #. box title
@@ -460,12 +460,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:538
-msgid "The main method: take rows (a list of dictionaries, session 6), and return **new** rows with one more column - the label of the code. Like `put(product, $product.)` in a SAS DATA step, or a SQL `LEFT JOIN` to a lookup table:"
+msgid "The main method: take rows (a list of dictionaries, [session 6](./06-dictionaries.md#a-row-as-a-dictionary)), and return **new** rows with one more column - the label of the code. Like `put(product, $product.)` in a SAS DATA step, or a SQL `LEFT JOIN` to a lookup table:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:568
-msgid "`row | {...}` (session 6) makes a **new** dictionary - the input stays as it was."
+msgid "`row | {...}` ([session 6](./06-dictionaries.md#several-at-once-update-and)) makes a **new** dictionary - the input stays as it was."
 msgstr ""
 
 #. paragraph
@@ -475,7 +475,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:603
-msgid "The new column, then a total per label - the outstanding per stage name, the SQL `GROUP BY` of session 6:"
+msgid "The new column, then a total per label - the outstanding per stage name, the SQL `GROUP BY` of [session 6](./06-dictionaries.md#_6-grouping-by-hand-group-by):"
 msgstr ""
 
 #. box title
@@ -505,7 +505,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:688
-msgid "For some reports, an unknown code is acceptable (show it as \"unknown\"); for others it must **stop** the process (session 9: when to stop, when to go on). One parameter decides:"
+msgid "For some reports, an unknown code is acceptable (show it as \"unknown\"); for others it must **stop** the process ([session 9](./09-errors-and-files.md#when-to-stop-when-to-go-on): when to stop, when to go on). One parameter decides:"
 msgstr ""
 
 #. heading 3
@@ -530,7 +530,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:765
-msgid "A nomenclature's dictionary works directly with `Series.map` (session 15); the unknown values become `NaN` and are easy to count:"
+msgid "A nomenclature's dictionary works directly with `Series.map` ([session 15](./15-pandas-select-aggregate-join.md#codes-and-descriptions-map)); the unknown values become `NaN` and are easy to count:"
 msgstr ""
 
 #. paragraph
@@ -590,7 +590,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:931
-msgid "A **static method** has neither `self` nor `cls` - it is a plain function that lives in the class because it belongs to its job. For example, the cleaning of a code before the lookup (session 7):"
+msgid "A **static method** has neither `self` nor `cls` - it is a plain function that lives in the class because it belongs to its job. For example, the cleaning of a code before the lookup ([session 7](./07-text-processing.md#_7-cleaning-identifiers-and-names)):"
 msgstr ""
 
 #. table cell
@@ -680,7 +680,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:1001
-msgid "All the pieces of sections 2 - 5 together, in a module `nomenclature.py` (session 10) that the next sections import. (On this page: run this example first.)"
+msgid "All the pieces of sections 2 - 5 together, in a module `nomenclature.py` ([session 10](./10-modules-and-git.md#_2-your-own-module)) that the next sections import. (On this page: run this example first.)"
 msgstr ""
 
 #. paragraph
@@ -1225,7 +1225,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-oop-nomenclatures.md:1981
-msgid "(The rows with rating 5 from April 2026 on.) 2. Yes for a report: a date without a valid version means the report would use an    unknown mapping, which is worse than stopping (session 9: wrong settings stop the    report)."
+msgid "(The rows with rating 5 from April 2026 on.) 2. Yes for a report: a date without a valid version means the report would use an    unknown mapping, which is worse than stopping ([session 9](./09-errors-and-files.md#when-to-stop-when-to-go-on): wrong settings stop the    report)."
 msgstr ""
 
 #. heading 2

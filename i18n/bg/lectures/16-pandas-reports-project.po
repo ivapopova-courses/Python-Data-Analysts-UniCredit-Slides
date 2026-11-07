@@ -120,7 +120,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:125
-msgid "A `groupby` with two keys (session 15) gives a long Series; `unstack` moves the last key into the columns - the same table:"
+msgid "A `groupby` with two keys ([session 15](./15-pandas-select-aggregate-join.md#several-keys)) gives a long Series; `unstack` moves the last key into the columns - the same table:"
 msgstr ""
 
 #. heading 3
@@ -225,17 +225,17 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:278
-msgid "Session 7 parsed dates one by one with `datetime.strptime`. `pd.to_datetime` does the whole column; `format=` says how, `errors=\"coerce\"` turns a bad date into `NaT` (the `NaN` of dates):"
+msgid "[Session 7](./07-text-processing.md#any-format-strptime-and-strftime) parsed dates one by one with `datetime.strptime`. `pd.to_datetime` does the whole column; `format=` says how, `errors=\"coerce\"` turns a bad date into `NaT` (the `NaN` of dates):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:291
-msgid "`read_csv(parse_dates=...)` (session 14) does the same while reading. A date column has the `.dt` methods:"
+msgid "`read_csv(parse_dates=...)` ([session 14](./14-numpy-pandas-intro.md)) does the same while reading. A date column has the `.dt` methods:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:308
-msgid "Real files mix formats. `client_register.csv` has the registration date in four formats (session 7). Try one format after another, and keep the first that works - a SQL `COALESCE` of the parsing attempts:"
+msgid "Real files mix formats. `client_register.csv` has the registration date in four formats ([session 7](./07-text-processing.md#several-formats-in-one-column)). Try one format after another, and keep the first that works - a SQL `COALESCE` of the parsing attempts:"
 msgstr ""
 
 #. heading 3
@@ -290,7 +290,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:403
-msgid "Bands of the loan age - `pd.cut` (session 15) on the months:"
+msgid "Bands of the loan age - `pd.cut` ([session 15](./15-pandas-select-aggregate-join.md#bands-pd-cut)) on the months:"
 msgstr ""
 
 #. paragraph
@@ -465,7 +465,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:731
-msgid "`with` closes the file at the end (session 9) - only then is it a valid Excel file. `index=False` leaves out the row numbers; keep the index when it holds the labels (the segments of the pivot)."
+msgid "`with` closes the file at the end ([session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)) - only then is it a valid Excel file. `index=False` leaves out the row numbers; keep the index when it holds the labels (the segments of the pivot)."
 msgstr ""
 
 #. heading 3
@@ -475,7 +475,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:737
-msgid "`startrow` leaves room for a title; then `writer.sheets[...]` gives the openpyxl worksheet (session 9) to write the title, set the widths and the number format:"
+msgid "`startrow` leaves room for a title; then `writer.sheets[...]` gives the openpyxl worksheet ([session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)) to write the title, set the widths and the number format:"
 msgstr ""
 
 #. paragraph
@@ -500,7 +500,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:820
-msgid "For a system that wants CSV - the export side of session 14: `;`, decimal comma, a BOM so that Excel shows the Cyrillic right:"
+msgid "For a system that wants CSV - the export side of [session 14](./14-numpy-pandas-intro.md): `;`, decimal comma, a BOM so that Excel shows the Cyrillic right:"
 msgstr ""
 
 #. box title
@@ -580,7 +580,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:974
-msgid "`report.py` - every step a function that can be tested alone, the report date as a parameter (session 10):"
+msgid "`report.py` - every step a function that can be tested alone, the report date as a parameter ([session 10](./10-modules-and-git.md)):"
 msgstr ""
 
 #. paragraph
@@ -615,7 +615,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:1072
-msgid "**Commit** after each step that works (session 10)."
+msgid "**Commit** after each step that works ([session 10](./10-modules-and-git.md#good-commits))."
 msgstr ""
 
 #. heading 2
@@ -770,7 +770,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/16-pandas-reports-project.md:1130
-msgid "openpyxl (session 9) can style everything after pandas has written the data: fonts, fills, number formats, frozen panes, filters, conditional colours - and a native Excel chart:"
+msgid "openpyxl ([session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)) can style everything after pandas has written the data: fonts, fills, number formats, frozen panes, filters, conditional colours - and a native Excel chart:"
 msgstr ""
 
 #. paragraph

@@ -90,7 +90,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:60
-msgid "A **syntax error**: the code is not valid Python. Nothing runs - Python checks the whole file first (session 1)."
+msgid "A **syntax error**: the code is not valid Python. Nothing runs - Python checks the whole file first ([session 1](./01-intro-syntax-types.md#_3-how-python-runs-your-code))."
 msgstr ""
 
 #. paragraph
@@ -320,7 +320,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:232
-msgid "Session 7 detected the date format by the shape of the text. With `try`, there is a shorter way: try each format, and take the first that works:"
+msgid "[Session 7](./07-text-processing.md#several-formats-in-one-column) detected the date format by the shape of the text. With `try`, there is a shorter way: try each format, and take the first that works:"
 msgstr ""
 
 #. heading 3
@@ -370,7 +370,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:309
-msgid "`else` keeps the `try` block small: only the risky line is inside, the code that **uses** the result is in `else`. `finally` is for clean-up that must happen whatever comes - closing a connection (session 13), writing the last log line."
+msgid "`else` keeps the `try` block small: only the risky line is inside, the code that **uses** the result is in `else`. `finally` is for clean-up that must happen whatever comes - closing a connection ([session 13](./13-databases.md#close-the-connection-always)), writing the last log line."
 msgstr ""
 
 #. paragraph
@@ -435,7 +435,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:423
-msgid "A one-line class (classes: session 11) makes a new kind of exception. Then the loader can catch **your** data errors, and let real bugs (a `NameError`, a `TypeError` in your code) stop the script:"
+msgid "A one-line class (classes: [session 11](./11-oop-classes.md)) makes a new kind of exception. Then the loader can catch **your** data errors, and let real bugs (a `NameError`, a `TypeError` in your code) stop the script:"
 msgstr ""
 
 #. paragraph
@@ -555,7 +555,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:545
-msgid "A Windows path in a normal string has backslashes - and `\"\\n\"`, `\"\\t\"` are special characters (session 8). Use a raw string, or forward slashes, which Windows also accepts:"
+msgid "A Windows path in a normal string has backslashes - and `\"\\n\"`, `\"\\t\"` are special characters ([session 8](./08-regular-expressions.md#raw-strings-r)). Use a raw string, or forward slashes, which Windows also accepts:"
 msgstr ""
 
 #. heading 3
@@ -610,7 +610,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:633
-msgid "Since session 2 you open files with `with open(...) as file:`. `with` **closes** the file at the end of the block - also when an exception happens inside. Without `with`, an error can leave the file open (and on Windows, locked)."
+msgid "Since [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) you open files with `with open(...) as file:`. `with` **closes** the file at the end of the block - also when an exception happens inside. Without `with`, an error can leave the file open (and on Windows, locked)."
 msgstr ""
 
 #. paragraph
@@ -650,7 +650,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:646
-msgid "Always give the `encoding` (session 7):"
+msgid "Always give the `encoding` ([session 7](./07-text-processing.md)):"
 msgstr ""
 
 #. box title
@@ -700,12 +700,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:738
-msgid "You know `csv.DictReader` (session 6). `csv.reader` gives each row as a **list**. Both understand quotes, and both take a `delimiter` for files that are not comma-separated - like `;` in a Bulgarian Excel export:"
+msgid "You know `csv.DictReader` ([session 6](./06-dictionaries.md)). `csv.reader` gives each row as a **list**. Both understand quotes, and both take a `delimiter` for files that are not comma-separated - like `;` in a Bulgarian Excel export:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:754
-msgid "(`utf-8-sig` removes the BOM that Excel writes at the start - session 7, Self-study.)"
+msgid "(`utf-8-sig` removes the BOM that Excel writes at the start - [session 7](./07-text-processing.md#encodings-utf-8-cp1251-and-cyrillic), Self-study.)"
 msgstr ""
 
 #. paragraph
@@ -765,7 +765,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:870
-msgid "JSON (session 6) is the format of configuration files and of web APIs. `json.load` reads a file into dictionaries and lists; `json.dump` writes one:"
+msgid "JSON ([session 6](./06-dictionaries.md#the-shape-of-json)) is the format of configuration files and of web APIs. `json.load` reads a file into dictionaries and lists; `json.dump` writes one:"
 msgstr ""
 
 #. paragraph
@@ -780,7 +780,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:910
-msgid "A summary made from the portfolio - counted with a dictionary (session 6), written with `sort_keys=True` so that the file looks the same in every run (easy to compare in Git, session 10):"
+msgid "A summary made from the portfolio - counted with a dictionary ([session 6](./06-dictionaries.md#_6-grouping-by-hand-group-by)), written with `sort_keys=True` so that the file looks the same in every run (easy to compare in Git, [session 10](./10-modules-and-git.md#_6-git-versions-of-your-code)):"
 msgstr ""
 
 #. box title
@@ -840,7 +840,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:1049
-msgid "In SAS: `PROC IMPORT DBMS=XLSX`, `LIBNAME x XLSX`, `ODS EXCEL`. pandas reads and writes whole sheets in one line (`read_excel`, sessions 14 and 16; `to_excel` with several sheets, session 16) - with openpyxl working inside."
+msgid "In SAS: `PROC IMPORT DBMS=XLSX`, `LIBNAME x XLSX`, `ODS EXCEL`. pandas reads and writes whole sheets in one line (`read_excel`, sessions 14 and 16; `to_excel` with several sheets, [session 16](./16-pandas-reports-project.md#_6-an-excel-report-with-several-sheets)) - with openpyxl working inside."
 msgstr ""
 
 #. box title
@@ -955,7 +955,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:1248
-msgid "pandas has options for bad lines (`pd.read_csv(..., on_bad_lines=\"skip\")`) and turns bad numbers into `NaN` with `pd.to_numeric(..., errors=\"coerce\")` (session 15). They are faster - but they do not tell you **why** a row is bad. For an input you must explain to someone, the loader of this section is the better tool."
+msgid "pandas has options for bad lines (`pd.read_csv(..., on_bad_lines=\"skip\")`) and turns bad numbers into `NaN` with `pd.to_numeric(..., errors=\"coerce\")` ([session 15](./15-pandas-select-aggregate-join.md)). They are faster - but they do not tell you **why** a row is bad. For an input you must explain to someone, the loader of this section is the better tool."
 msgstr ""
 
 #. paragraph
@@ -1205,7 +1205,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-errors-and-files.md:1379
-msgid "A monthly process often reads **all** files of a folder: one per month, one per branch. `glob` finds them, a regex (session 8) takes the month from the name, and the loader reads each - one bad file must not stop the others:"
+msgid "A monthly process often reads **all** files of a folder: one per month, one per branch. `glob` finds them, a regex ([session 8](./08-regular-expressions.md)) takes the month from the name, and the loader reads each - one bad file must not stop the others:"
 msgstr ""
 
 #. paragraph

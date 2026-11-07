@@ -122,7 +122,7 @@ print(table.reindex(["retail", "sme", "corporate"]))                     # the o
 
 ### `unstack`: a pivot from a `groupby`
 
-A `groupby` with two keys (session 15) gives a long Series; `unstack` moves the last
+A `groupby` with two keys ([session 15](./15-pandas-select-aggregate-join.md#several-keys)) gives a long Series; `unstack` moves the last
 key into the columns - the same table:
 
 ```python run
@@ -275,7 +275,7 @@ print(q3.sort_values(["client_id", "month_end"]).head(4))
 
 ### Text to dates
 
-Session 7 parsed dates one by one with `datetime.strptime`. `pd.to_datetime` does the
+[Session 7](./07-text-processing.md#any-format-strptime-and-strftime) parsed dates one by one with `datetime.strptime`. `pd.to_datetime` does the
 whole column; `format=` says how, `errors="coerce"` turns a bad date into `NaT` (the
 `NaN` of dates):
 
@@ -288,7 +288,7 @@ print(dates)
 print(dates.isna().sum(), "bad or missing")
 ```
 
-`read_csv(parse_dates=...)` (session 14) does the same while reading. A date column
+`read_csv(parse_dates=...)` ([session 14](./14-numpy-pandas-intro.md)) does the same while reading. A date column
 has the `.dt` methods:
 
 ```python run
@@ -306,7 +306,7 @@ parts.head()
 ```
 
 Real files mix formats. `client_register.csv` has the registration date in four
-formats (session 7). Try one format after another, and keep the first that works -
+formats ([session 7](./07-text-processing.md#several-formats-in-one-column)). Try one format after another, and keep the first that works -
 a SQL `COALESCE` of the parsing attempts:
 
 ```python run
@@ -400,7 +400,7 @@ loans["left_months"] = months_between(report_date, loans["maturity_date"].dt)
 loans[["loan_id", "start_date", "maturity_date", "age_months", "left_months"]].head()
 ```
 
-Bands of the loan age - `pd.cut` (session 15) on the months:
+Bands of the loan age - `pd.cut` ([session 15](./15-pandas-select-aggregate-join.md#bands-pd-cut)) on the months:
 
 ```python run
 import pandas as pd
@@ -728,14 +728,14 @@ check = pd.read_excel("out/portfolio_2026-09.xlsx", sheet_name=None)     # read 
 {name: df.shape for name, df in check.items()}
 ```
 
-`with` closes the file at the end (session 9) - only then is it a valid Excel file.
+`with` closes the file at the end ([session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)) - only then is it a valid Excel file.
 `index=False` leaves out the row numbers; keep the index when it holds the labels
 (the segments of the pivot).
 
 ### A title above the table, widths and number formats
 
 `startrow` leaves room for a title; then `writer.sheets[...]` gives the openpyxl
-worksheet (session 9) to write the title, set the widths and the number format:
+worksheet ([session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)) to write the title, set the widths and the number format:
 
 ```python run
 from pathlib import Path
@@ -817,7 +817,7 @@ with pd.ExcelWriter("out/report_loop.xlsx") as writer:
 list(pd.read_excel("out/report_loop.xlsx", sheet_name=None))
 ```
 
-For a system that wants CSV - the export side of session 14: `;`, decimal comma, a
+For a system that wants CSV - the export side of [session 14](./14-numpy-pandas-intro.md): `;`, decimal comma, a
 BOM so that Excel shows the Cyrillic right:
 
 ```python run
@@ -972,7 +972,7 @@ portfolio-report/
 ```
 
 `report.py` - every step a function that can be tested alone, the report date as a
-parameter (session 10):
+parameter ([session 10](./10-modules-and-git.md)):
 
 ```python
 """Monthly portfolio report.  Run:  python report.py 2026-09-30"""
@@ -1069,7 +1069,7 @@ Rules that make a report reliable:
 - **Rejects are part of the output**: the rows that failed the validation, with the
   reason, in their own sheet - never silently dropped.
 - **Run it twice**: the second run gives the same file. Then run it for 31.08.2026.
-- **Commit** after each step that works (session 10).
+- **Commit** after each step that works ([session 10](./10-modules-and-git.md#good-commits)).
 
 ## 9. Practice
 
@@ -1127,7 +1127,7 @@ finished, charts with more control, and where to go after the course.
 
 ### A formatted Excel report
 
-openpyxl (session 9) can style everything after pandas has written the data: fonts,
+openpyxl ([session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)) can style everything after pandas has written the data: fonts,
 fills, number formats, frozen panes, filters, conditional colours - and a native Excel
 chart:
 

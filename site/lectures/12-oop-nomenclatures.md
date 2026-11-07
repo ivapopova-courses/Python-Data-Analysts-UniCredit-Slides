@@ -147,7 +147,7 @@ would their metadata be (who owns them, how often do they change)?
 
 ### The data and the metadata in one object
 
-A dataclass (session 11) with the codes and the facts about them:
+A dataclass ([session 11](./11-oop-classes.md#_7-dataclasses)) with the codes and the facts about them:
 
 ```python run
 from dataclasses import dataclass
@@ -173,7 +173,7 @@ print(stages)
 print(stages.lookup(3), stages.lookup(4, "unknown"))
 ```
 
-`date | None` means "a date, or `None`" (session 4; Python 3.10+). The metadata does
+`date | None` means "a date, or `None`" ([session 4](./04-functions.md#type-hints); Python 3.10+). The metadata does
 not change how the codes work - but it is printed with every report that uses them,
 so anybody can see **which** list was used:
 
@@ -199,7 +199,7 @@ for code, label in stages.codes.items():
 ```
 
 Two nomenclatures are **equal** when all their fields are equal - the dataclass
-`__eq__` of session 11. The same codes with another version are **not** the same
+`__eq__` of [session 11](./11-oop-classes.md). The same codes with another version are **not** the same
 nomenclature:
 
 ```python run
@@ -219,7 +219,7 @@ print(a == b, a == c, a.codes == c.codes)
 ```
 
 A trap of dataclasses: an empty dictionary as a default is refused - it would be one
-dictionary for all objects (session 11):
+dictionary for all objects ([session 11](./11-oop-classes.md#_5-class-attributes)):
 
 ```python run
 from dataclasses import dataclass
@@ -233,7 +233,7 @@ class Nomenclature:
 
 ### Behave like a container: `len`, `in`, `for`
 
-Three special methods (session 11, Self-study) make the object work with `len()`,
+Three special methods ([session 11](./11-oop-classes.md#special-methods-objects-that-work-with-python-s-operators), Self-study) make the object work with `len()`,
 `in` and `for` - like the dictionary inside it:
 
 ```python run
@@ -290,7 +290,7 @@ print(Nomenclature("product", {"mortgage": "Mortgage loan", "overdraft": "Overdr
 ### Protect the codes
 
 The dictionary of codes is **shared** with whoever passed it in - a change outside
-changes the nomenclature (references, session 3). Take a **copy** in `__post_init__`:
+changes the nomenclature (references, [session 3](./03-lists-tuples-sets.md#_7-a-list-is-mutable-names-and-references)). Take a **copy** in `__post_init__`:
 
 ```python run
 from dataclasses import dataclass
@@ -332,7 +332,7 @@ the owner `"Treasury"` and the version `"2026.2"`. Print it, and the label of `U
 ### Rules when the nomenclature is created
 
 A nomenclature with a duplicate code, an empty label or a malformed code must not
-exist at all. `__post_init__` checks it, and raises a clear error (session 9):
+exist at all. `__post_init__` checks it, and raises a clear error ([session 9](./09-errors-and-files.md#raise-stop-with-a-clear-message)):
 
 ```python run
 import re
@@ -392,7 +392,7 @@ except ValueError as error:
 
 ### Duplicate codes
 
-A dictionary cannot **have** duplicate keys - the last one wins silently (session 6).
+A dictionary cannot **have** duplicate keys - the last one wins silently ([session 6](./06-dictionaries.md#rules-for-keys)).
 So the duplicates must be caught **before** the dictionary is built - when the codes
 come as pairs, for example from a file:
 
@@ -444,8 +444,8 @@ The check found a gap in the **nomenclature**, not in the data: `project_finance
 real product that the list does not know. Without the check, 21 loans - the largest of
 the portfolio - would get no product name in the report.
 
-The register of session 7 against a nomenclature of the region names - first the raw
-city column, then after the cleaning function of session 7:
+The register of [session 7](./07-text-processing.md#cities-a-mapping-of-variants) against a nomenclature of the region names - first the raw
+city column, then after the cleaning function of [session 7](./07-text-processing.md#cities-a-mapping-of-variants):
 
 ```python run
 import csv
@@ -535,7 +535,7 @@ example and run it again. Then validate the `Product` column of `loans_export.cs
 
 ### `apply`: a new column for every row
 
-The main method: take rows (a list of dictionaries, session 6), and return **new** rows
+The main method: take rows (a list of dictionaries, [session 6](./06-dictionaries.md#a-row-as-a-dictionary)), and return **new** rows
 with one more column - the label of the code. Like `put(product, $product.)` in a SAS
 DATA step, or a SQL `LEFT JOIN` to a lookup table:
 
@@ -565,7 +565,7 @@ print(result[1]["loan_id"], result[1]["stage"], result[1]["stage_name"])
 print("stage_name" in loans[1])                 # the input rows are not changed
 ```
 
-`row | {...}` (session 6) makes a **new** dictionary - the input stays as it was.
+`row | {...}` ([session 6](./06-dictionaries.md#several-at-once-update-and)) makes a **new** dictionary - the input stays as it was.
 
 The new column is ready for the usual reports - the number of loans per product
 **name**, and two nomenclatures one after the other (name, then group):
@@ -601,7 +601,7 @@ print(Counter(r["group"] for r in rows))
 ```
 
 The new column, then a total per label - the outstanding per stage name, the SQL
-`GROUP BY` of session 6:
+`GROUP BY` of [session 6](./06-dictionaries.md#_6-grouping-by-hand-group-by):
 
 ```python run
 import csv
@@ -686,7 +686,7 @@ print(len(rows), "rows; unmapped:", dict(unmapped))
 ### Strict or lenient?
 
 For some reports, an unknown code is acceptable (show it as "unknown"); for others it
-must **stop** the process (session 9: when to stop, when to go on). One parameter
+must **stop** the process ([session 9](./09-errors-and-files.md#when-to-stop-when-to-go-on): when to stop, when to go on). One parameter
 decides:
 
 ```python run
@@ -762,7 +762,7 @@ This is "apply consistently across datasets": one definition, many inputs, and t
 same report of what did not fit.
 
 ::: info The same in pandas
-A nomenclature's dictionary works directly with `Series.map` (session 15); the unknown
+A nomenclature's dictionary works directly with `Series.map` ([session 15](./15-pandas-select-aggregate-join.md#codes-and-descriptions-map)); the unknown
 values become `NaN` and are easy to count:
 
 ```python run
@@ -930,7 +930,7 @@ Nomenclature.lookup("1")
 
 A **static method** has neither `self` nor `cls` - it is a plain function that lives in
 the class because it belongs to its job. For example, the cleaning of a code before the
-lookup (session 7):
+lookup ([session 7](./07-text-processing.md#_7-cleaning-identifiers-and-names)):
 
 ```python run
 from dataclasses import dataclass
@@ -998,7 +998,7 @@ print(type(currencies).__name__, isinstance(currencies, Nomenclature))
 
 ### The class so far, as a module
 
-All the pieces of sections 2 - 5 together, in a module `nomenclature.py` (session 10)
+All the pieces of sections 2 - 5 together, in a module `nomenclature.py` ([session 10](./10-modules-and-git.md#_2-your-own-module))
 that the next sections import. (On this page: run this example first.)
 
 ```python run
@@ -1980,7 +1980,7 @@ print(sum(1 for r in rows if grades.lookup(int(r["rating"]), date.fromisoformat(
 ```
 (The rows with rating 5 from April 2026 on.)
 2. Yes for a report: a date without a valid version means the report would use an
-   unknown mapping, which is worse than stopping (session 9: wrong settings stop the
+   unknown mapping, which is worse than stopping ([session 9](./09-errors-and-files.md#when-to-stop-when-to-go-on): wrong settings stop the
    report).
 :::
 

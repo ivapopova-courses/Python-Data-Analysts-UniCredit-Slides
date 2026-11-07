@@ -58,7 +58,7 @@ writes the bad rows into their own file.
 ### Two kinds of errors
 
 - A **syntax error**: the code is not valid Python. Nothing runs - Python checks the
-  whole file first (session 1).
+  whole file first ([session 1](./01-intro-syntax-types.md#_3-how-python-runs-your-code)).
 - An **exception**: the code is valid, but something goes wrong **while it runs**: a
   text that is not a number, a missing file, a missing key. The script stops at that
   line - unless the exception is **caught**.
@@ -229,7 +229,7 @@ print(f"total of the known values: {sum(v for v in values if v is not None):,.2f
 
 ### Try the formats one by one
 
-Session 7 detected the date format by the shape of the text. With `try`, there is a
+[Session 7](./07-text-processing.md#several-formats-in-one-column) detected the date format by the shape of the text. With `try`, there is a
 shorter way: try each format, and take the first that works:
 
 ```python run
@@ -308,7 +308,7 @@ for text in ["12.50", "abc"]:
 
 `else` keeps the `try` block small: only the risky line is inside, the code that
 **uses** the result is in `else`. `finally` is for clean-up that must happen
-whatever comes - closing a connection (session 13), writing the last log line.
+whatever comes - closing a connection ([session 13](./13-databases.md#close-the-connection-always)), writing the last log line.
 
 A monthly file that may not be there yet - the error is expected, the work on the
 file is in `else`:
@@ -420,7 +420,7 @@ print(check_report_date("2026-09-29"))
 
 ### Your own exception type
 
-A one-line class (classes: session 11) makes a new kind of exception. Then the
+A one-line class (classes: [session 11](./11-oop-classes.md)) makes a new kind of exception. Then the
 loader can catch **your** data errors, and let real bugs (a `NameError`, a
 `TypeError` in your code) stop the script:
 
@@ -543,7 +543,7 @@ print(loans_file.name, "|", loans_file.stem, "|", loans_file.suffix, "|", loans_
 
 ::: warning Windows paths in Python code
 A Windows path in a normal string has backslashes - and `"\n"`, `"\t"` are special
-characters (session 8). Use a raw string, or forward slashes, which Windows also
+characters ([session 8](./08-regular-expressions.md#raw-strings-r)). Use a raw string, or forward slashes, which Windows also
 accepts:
 
 ```python
@@ -630,7 +630,7 @@ by size.
 
 ### Open, read, close: `with`
 
-Since session 2 you open files with `with open(...) as file:`. `with` **closes** the
+Since [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) you open files with `with open(...) as file:`. `with` **closes** the
 file at the end of the block - also when an exception happens inside. Without
 `with`, an error can leave the file open (and on Windows, locked).
 
@@ -643,7 +643,7 @@ The **mode** says what you want to do:
 | `"a"` | append at the end |
 | `"x"` | write a new file - an error if it exists |
 
-Always give the `encoding` (session 7):
+Always give the `encoding` ([session 7](./07-text-processing.md)):
 
 ```python run
 from pathlib import Path
@@ -735,7 +735,7 @@ then read the file back and print the number of lines.
 
 ### Read: `csv.reader` and `csv.DictReader`
 
-You know `csv.DictReader` (session 6). `csv.reader` gives each row as a **list**.
+You know `csv.DictReader` ([session 6](./06-dictionaries.md)). `csv.reader` gives each row as a **list**.
 Both understand quotes, and both take a `delimiter` for files that are not
 comma-separated - like `;` in a Bulgarian Excel export:
 
@@ -751,7 +751,7 @@ print(header)
 print(first)
 ```
 
-(`utf-8-sig` removes the BOM that Excel writes at the start - session 7, Self-study.)
+(`utf-8-sig` removes the BOM that Excel writes at the start - [session 7](./07-text-processing.md#encodings-utf-8-cp1251-and-cyrillic), Self-study.)
 
 A file **without** a header line: give the column names with `fieldnames`:
 
@@ -867,7 +867,7 @@ with `;` as the separator. Open the result with `read_text` to check it.
 
 ## 8. JSON files
 
-JSON (session 6) is the format of configuration files and of web APIs. `json.load`
+JSON ([session 6](./06-dictionaries.md#the-shape-of-json)) is the format of configuration files and of web APIs. `json.load`
 reads a file into dictionaries and lists; `json.dump` writes one:
 
 ```python run
@@ -907,9 +907,9 @@ with open("out/summary.json", "w", encoding="utf-8") as file:
 print(Path("out/summary.json").read_text(encoding="utf-8"))
 ```
 
-A summary made from the portfolio - counted with a dictionary (session 6), written
+A summary made from the portfolio - counted with a dictionary ([session 6](./06-dictionaries.md#_6-grouping-by-hand-group-by)), written
 with `sort_keys=True` so that the file looks the same in every run (easy to compare in
-Git, session 10):
+Git, [session 10](./10-modules-and-git.md#_6-git-versions-of-your-code)):
 
 ```python run
 import csv
@@ -1048,7 +1048,7 @@ print(ws["B2"].value, type(ws["B2"].value).__name__, ws["B2"].number_format)
 
 In SAS: `PROC IMPORT DBMS=XLSX`, `LIBNAME x XLSX`, `ODS EXCEL`. pandas reads and
 writes whole sheets in one line (`read_excel`, sessions 14 and 16; `to_excel` with
-several sheets, session 16) - with openpyxl working inside.
+several sheets, [session 16](./16-pandas-reports-project.md#_6-an-excel-report-with-several-sheets)) - with openpyxl working inside.
 
 ::: info Excel on this site
 The site installs `openpyxl` the first time an example uses Excel - the first run of
@@ -1246,7 +1246,7 @@ else:
 
 ::: info The same in pandas
 pandas has options for bad lines (`pd.read_csv(..., on_bad_lines="skip")`) and turns
-bad numbers into `NaN` with `pd.to_numeric(..., errors="coerce")` (session 15). They
+bad numbers into `NaN` with `pd.to_numeric(..., errors="coerce")` ([session 15](./15-pandas-select-aggregate-join.md)). They
 are faster - but they do not tell you **why** a row is bad. For an input you must
 explain to someone, the loader of this section is the better tool.
 :::
@@ -1377,7 +1377,7 @@ logging.getLogger().addHandler(screen)
 ### A folder of monthly files
 
 A monthly process often reads **all** files of a folder: one per month, one per
-branch. `glob` finds them, a regex (session 8) takes the month from the name, and
+branch. `glob` finds them, a regex ([session 8](./08-regular-expressions.md)) takes the month from the name, and
 the loader reads each - one bad file must not stop the others:
 
 ```python run

@@ -85,8 +85,8 @@ msgstr "Какво е поредица (sequence)?"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:53
-msgid "Session 2 used `for` on strings, lists and ranges. They are all **sequences**: containers that keep an **ordered** collection of values. The main sequence types:"
-msgstr "В занятие 2 използвахме `for` върху strings, lists и ranges. Всички те са **поредици** (sequences): контейнери, които пазят **подредена** колекция от стойности. Основните типове поредици:"
+msgid "[Session 2](./02-conditions-and-loops.md#_12-the-for-loop) used `for` on strings, lists and ranges. They are all **sequences**: containers that keep an **ordered** collection of values. The main sequence types:"
+msgstr "В [занятие 2](./02-conditions-and-loops.md#_12-the-for-loop) използвахме `for` върху strings, lists и ranges. Всички те са **поредици** (sequences): контейнери, които пазят **подредена** колекция от стойности. Основните типове поредици:"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:56
@@ -310,8 +310,8 @@ msgstr "Цикъл по list"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:178
-msgid "A list is the natural thing to loop over: `for` takes its items one by one, in order. Everything of session 2 works here - accumulators, `break` with a flag, and `continue`."
-msgstr "List е естественото нещо за обхождане: `for` взема елементите му един по един, по ред. Всичко от занятие 2 работи и тук - акумулатори, `break` с флаг и `continue`."
+msgid "A list is the natural thing to loop over: `for` takes its items one by one, in order. Everything of [session 2](./02-conditions-and-loops.md#_12-the-for-loop) works here - accumulators, `break` with a flag, and `continue`."
+msgstr "List е естественото нещо за обхождане: `for` взема елементите му един по един, по ред. Всичко от [занятие 2](./02-conditions-and-loops.md#_12-the-for-loop) работи и тук - акумулатори, `break` с флаг и `continue`."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:182
@@ -320,8 +320,8 @@ msgstr "Сума, брой и най-големият елемент в един
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:203
-msgid "Find an item: stop at the first match with `break`, and remember with a flag whether it was found (session 2):"
-msgstr "Намерете елемент: спрете при първото съвпадение с `break` и запомнете с флаг дали е намерен (занятие 2):"
+msgid "Find an item: stop at the first match with `break`, and remember with a flag whether it was found ([session 2](./02-conditions-and-loops.md#not-found-a-flag)):"
+msgstr "Намерете елемент: спрете при първото съвпадение с `break` и запомнете с флаг дали е намерен ([занятие 2](./02-conditions-and-loops.md#not-found-a-flag)):"
 
 #. box title
 #: site/lectures/03-lists-tuples-sets.md:222 site/lectures/03-lists-tuples-sets.md:724 site/lectures/03-lists-tuples-sets.md:863 site/lectures/03-lists-tuples-sets.md:1300
@@ -340,8 +340,8 @@ msgstr "Прескочете елементите, които не искате,
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:244
-msgid "The loop gives the items, not their positions. If you need the position, count it yourself (session 5 shows `enumerate`, which does it for you):"
-msgstr "Цикълът дава елементите, не позициите им. Ако ви трябва позицията, бройте я сами (занятие 5 показва `enumerate`, който го прави вместо вас):"
+msgid "The loop gives the items, not their positions. If you need the position, count it yourself ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item) shows `enumerate`, which does it for you):"
+msgstr "Цикълът дава елементите, не позициите им. Ако ви трябва позицията, бройте я сами ([занятие 5](./05-lists-advanced.md#enumerate-the-number-of-each-item) показва `enumerate`, който го прави вместо вас):"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:257
@@ -410,8 +410,8 @@ msgstr "`step` - взема всеки n-ти елемент; празно = 1. 
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:307
-msgid "The rule \"the stop is not included\" is the same as in `range` (session 2). It has a nice side: `a[:3]` is the first 3 items, `a[3:]` the rest, and `a[2:5]` has 5 - 2 = 3 items."
-msgstr "Правилото \"stop не е включен\" е същото като в `range` (занятие 2). То има хубава страна: `a[:3]` са първите 3 елемента, `a[3:]` - останалите, а `a[2:5]` има 5 - 2 = 3 елемента."
+msgid "The rule \"the stop is not included\" is the same as in `range` ([session 2](./02-conditions-and-loops.md#range-a-sequence-of-numbers)). It has a nice side: `a[:3]` is the first 3 items, `a[3:]` the rest, and `a[2:5]` has 5 - 2 = 3 items."
+msgstr "Правилото \"stop не е включен\" е същото като в `range` ([занятие 2](./02-conditions-and-loops.md#range-a-sequence-of-numbers)). То има хубава страна: `a[:3]` са първите 3 елемента, `a[3:]` - останалите, а `a[2:5]` има 5 - 2 = 3 елемента."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:311
@@ -460,8 +460,8 @@ msgstr "Python"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:371
-msgid "Strings cannot be changed: `loan_id[0] = \"X\"` is an error. String methods (session 7) make **new** strings."
-msgstr "Strings не могат да се променят: `loan_id[0] = \"X\"` е грешка. Методите на strings (занятие 7) правят **нови** strings."
+msgid "Strings cannot be changed: `loan_id[0] = \"X\"` is an error. String methods ([session 7](./07-text-processing.md)) make **new** strings."
+msgstr "Strings не могат да се променят: `loan_id[0] = \"X\"` е грешка. Методите на strings ([занятие 7](./07-text-processing.md)) правят **нови** strings."
 
 #. box title
 #: site/lectures/03-lists-tuples-sets.md:374 site/lectures/03-lists-tuples-sets.md:660 site/lectures/03-lists-tuples-sets.md:1349
@@ -470,8 +470,8 @@ msgstr "Същото в pandas"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:375
-msgid "pandas (session 14) uses the same rules. `iloc` takes rows and columns by position - from 0, without the stop; `.str[...]` takes the same slice of every text in a column:"
-msgstr "pandas (занятие 14) използва същите правила. `iloc` взима редове и колони по позиция - от 0, без stop; `.str[...]` взима един и същ slice от всеки текст в колоната:"
+msgid "pandas ([session 14](./14-numpy-pandas-intro.md)) uses the same rules. `iloc` takes rows and columns by position - from 0, without the stop; `.str[...]` takes the same slice of every text in a column:"
+msgstr "pandas ([занятие 14](./14-numpy-pandas-intro.md)) използва същите правила. `iloc` взима редове и колони по позиция - от 0, без stop; `.str[...]` взима един и същ slice от всеки текст в колоната:"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:388
@@ -520,8 +520,8 @@ msgstr "При strings `in` търси част от string-а: `\"USD\" in \"EU
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:460
-msgid "`min` and `max` work on strings too (alphabetically, session 2). `sum` only on numbers. `index` gives a `ValueError` when the value is not in the list - test with `in` first."
-msgstr "`min` и `max` работят и върху strings (по азбучен ред, занятие 2). `sum` - само върху числа. `index` дава `ValueError`, когато стойността не е в list-а - първо проверете с `in`."
+msgid "`min` and `max` work on strings too (alphabetically, [session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)). `sum` only on numbers. `index` gives a `ValueError` when the value is not in the list - test with `in` first."
+msgstr "`min` и `max` работят и върху strings (по азбучен ред, [занятие 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)). `sum` - само върху числа. `index` дава `ValueError`, когато стойността не е в list-а - първо проверете с `in`."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:464
@@ -545,8 +545,8 @@ msgstr "От текст: `split`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:486
-msgid "`split()` (session 1) cuts a string into a list of strings:"
-msgstr "`split()` (занятие 1) нарязва string на list от strings:"
+msgid "`split()` ([session 1](./01-intro-syntax-types.md#a-first-look-at-string-methods)) cuts a string into a list of strings:"
+msgstr "`split()` ([занятие 1](./01-intro-syntax-types.md#a-first-look-at-string-methods)) нарязва string на list от strings:"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:497
@@ -665,8 +665,8 @@ msgstr "Вместо това изградете **нов** list - същото 
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:613
-msgid "(Session 5 does the same in one line, with a list comprehension.)"
-msgstr "(Занятие 5 прави същото на един ред, с list comprehension.)"
+msgid "([Session 5](./05-lists-advanced.md#from-a-loop-to-one-line) does the same in one line, with a list comprehension.)"
+msgstr "([Занятие 5](./05-lists-advanced.md#from-a-loop-to-one-line) прави същото на един ред, с list comprehension.)"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:616
@@ -705,8 +705,8 @@ msgstr "`sorted(x)` връща **нов**, сортиран list и не про�
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:648
-msgid "Sorting compares the items with `<` (session 2): strings alphabetically - capital letters before small ones - and a mix of numbers and strings is an error:"
-msgstr "Сортирането сравнява елементите с `<` (занятие 2): strings - по азбучен ред, главните букви преди малките, а смесица от числа и strings е грешка:"
+msgid "Sorting compares the items with `<` ([session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)): strings alphabetically - capital letters before small ones - and a mix of numbers and strings is an error:"
+msgstr "Сортирането сравнява елементите с `<` ([занятие 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)): strings - по азбучен ред, главните букви преди малките, а смесица от числа и strings е грешка:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:656
@@ -715,8 +715,8 @@ msgstr "`PROC SORT` в SAS и `ORDER BY` в SQL могат да сортират
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:661
-msgid "The methods of pandas work like `sorted()`: they return a **new** table and do not change the old one (session 14). Keep the result in a name:"
-msgstr "Методите на pandas работят като `sorted()`: връщат **нова** таблица и не променят старата (занятие 14). Запазете резултата в име:"
+msgid "The methods of pandas work like `sorted()`: they return a **new** table and do not change the old one ([session 14](./14-numpy-pandas-intro.md)). Keep the result in a name:"
+msgstr "Методите на pandas работят като `sorted()`: връщат **нова** таблица и не променят старата ([занятие 14](./14-numpy-pandas-intro.md)). Запазете резултата в име:"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:674
@@ -730,8 +730,8 @@ msgstr "Две имена, един list"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:678
-msgid "Session 1 showed that a variable is a **name** bound to an **object**. With numbers and strings this hardly matters, because they cannot change. A list **can** change - and then it matters a lot:"
-msgstr "Занятие 1 показа, че променливата е **име**, свързано с **обект**. При числа и strings това почти няма значение, защото те не могат да се променят. List **може** да се променя - и тогава това има голямо значение:"
+msgid "[Session 1](./01-intro-syntax-types.md#names-not-boxes) showed that a variable is a **name** bound to an **object**. With numbers and strings this hardly matters, because they cannot change. A list **can** change - and then it matters a lot:"
+msgstr "[Занятие 1](./01-intro-syntax-types.md#names-not-boxes) показа, че променливата е **име**, свързано с **обект**. При числа и strings това почти няма значение, защото те не могат да се променят. List **може** да се променя - и тогава това има голямо значение:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:692
@@ -760,8 +760,8 @@ msgstr "Когато ви трябва независим list, направет
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:720
-msgid "These are **shallow** copies: the new list has the same items. When the items are lists themselves (a table as a list of rows), the rows are still shared - session 5 explains shallow and deep copies."
-msgstr "Това са **плитки** (shallow) копия: новият list има същите елементи. Когато елементите сами са lists (таблица като list от редове), редовете пак са общи - занятие 5 обяснява плитките и дълбоките копия."
+msgid "These are **shallow** copies: the new list has the same items. When the items are lists themselves (a table as a list of rows), the rows are still shared - [session 5](./05-lists-advanced.md#_6-copies-of-a-table) explains shallow and deep copies."
+msgstr "Това са **плитки** (shallow) копия: новият list има същите елементи. Когато елементите сами са lists (таблица като list от редове), редовете пак са общи - [занятие 5](./05-lists-advanced.md#_6-copies-of-a-table) обяснява плитките и дълбоките копия."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:725
@@ -810,8 +810,8 @@ msgstr "Tuple се пише в **кръгли скоби**, с елементи,
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:763
-msgid "It is the **comma** that makes a tuple, not the brackets. That is why `x, y = 1, 2` (session 1) works: the right side is a tuple."
-msgstr "**Запетаята** прави tuple, а не скобите. Затова `x, y = 1, 2` (занятие 1) работи: дясната страна е tuple."
+msgid "It is the **comma** that makes a tuple, not the brackets. That is why `x, y = 1, 2` ([session 1](./01-intro-syntax-types.md#assignment-in-more-forms)) works: the right side is a tuple."
+msgstr "**Запетаята** прави tuple, а не скобите. Затова `x, y = 1, 2` ([занятие 1](./01-intro-syntax-types.md#assignment-in-more-forms)) работи: дясната страна е tuple."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:766
@@ -890,8 +890,8 @@ msgstr "Tuples като записи"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:885
-msgid "A list of tuples is a small **table**: each tuple is a row, each position a column. `for` with unpacking (session 2) reads it row by row:"
-msgstr "List от tuples е малка **таблица**: всеки tuple е ред, всяка позиция - колона. `for` с разопаковане (занятие 2) я чете ред по ред:"
+msgid "A list of tuples is a small **table**: each tuple is a row, each position a column. `for` with unpacking ([session 2](./02-conditions-and-loops.md#two-names-at-once)) reads it row by row:"
+msgstr "List от tuples е малка **таблица**: всеки tuple е ред, всяка позиция - колона. `for` с разопаковане ([занятие 2](./02-conditions-and-loops.md#two-names-at-once)) я чете ред по ред:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:905
@@ -900,8 +900,8 @@ msgstr "Често използване на list от tuples - етикет с�
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:920
-msgid "Tuples are also used for **several return values of a function** (session 4) and as **keys of a dictionary** (session 6), where a list is not allowed."
-msgstr "Tuples се използват и за **няколко върнати стойности на функция** (занятие 4) и като **ключове на dictionary** (занятие 6), където list не е позволен."
+msgid "Tuples are also used for **several return values of a function** ([session 4](./04-functions.md#several-values-a-tuple)) and as **keys of a dictionary** ([session 6](./06-dictionaries.md#rules-for-keys)), where a list is not allowed."
+msgstr "Tuples се използват и за **няколко върнати стойности на функция** ([занятие 4](./04-functions.md#several-values-a-tuple)) и като **ключове на dictionary** ([занятие 6](./06-dictionaries.md#rules-for-keys)), където list не е позволен."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:923
@@ -1065,8 +1065,8 @@ msgstr "Reference: [Ranges](https://docs.python.org/3/library/stdtypes.html#rang
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1052
-msgid "The SAS `DO` loops and their `range` are in the table of session 2, section 10. New today: a backwards range, `do i = 10 to 1 by -1;` is `range(10, 0, -1)`."
-msgstr "Циклите `DO` на SAS и техните `range` са в таблицата на занятие 2, раздел 10. Ново днес: range назад - `do i = 10 to 1 by -1;` е `range(10, 0, -1)`."
+msgid "The SAS `DO` loops and their `range` are in the table of [session 2, section 10](./02-conditions-and-loops.md#_10-loops). New today: a backwards range, `do i = 10 to 1 by -1;` is `range(10, 0, -1)`."
+msgstr "Циклите `DO` на SAS и техните `range` са в таблицата на [занятие 2, раздел 10](./02-conditions-and-loops.md#_10-loops). Ново днес: range назад - `do i = 10 to 1 by -1;` е `range(10, 0, -1)`."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1055
@@ -1150,8 +1150,8 @@ msgstr "`{}` не е празен set"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1122
-msgid "`{}` is an empty **dictionary** (session 6): a collection of `key: value` pairs, where a set has only values. An empty set is `set()`:"
-msgstr "`{}` е празен **dictionary** (занятие 6): колекция от двойки `key: value`, докато set има само стойности. Празният set е `set()`:"
+msgid "`{}` is an empty **dictionary** ([session 6](./06-dictionaries.md#_1-what-is-a-dictionary)): a collection of `key: value` pairs, where a set has only values. An empty set is `set()`:"
+msgstr "`{}` е празен **dictionary** ([занятие 6](./06-dictionaries.md#_1-what-is-a-dictionary)): колекция от двойки `key: value`, докато set има само стойности. Празният set е `set()`:"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1130
@@ -1180,8 +1180,8 @@ msgstr "Редът на set не се запазва"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1170
-msgid "A set does not remember the order in which values came. Print the same set of strings in two runs of a program, and the order can be different. When the order matters - in a report, in a test - use `sorted(the_set)`. (To remove duplicates **and** keep the first order: `list(dict.fromkeys(items))`, session 6.)"
-msgstr "Set не помни реда, в който са дошли стойностите. Отпечатайте един и същ set от strings при две пускания на програмата и редът може да е различен. Когато редът има значение - в отчет, в тест - използвайте `sorted(the_set)`. (За да премахнете повторенията **и** да запазите първоначалния ред: `list(dict.fromkeys(items))`, занятие 6.)"
+msgid "A set does not remember the order in which values came. Print the same set of strings in two runs of a program, and the order can be different. When the order matters - in a report, in a test - use `sorted(the_set)`. (To remove duplicates **and** keep the first order: `list(dict.fromkeys(items))`, [session 6](./06-dictionaries.md).)"
+msgstr "Set не помни реда, в който са дошли стойностите. Отпечатайте един и същ set от strings при две пускания на програмата и редът може да е различен. Когато редът има значение - в отчет, в тест - използвайте `sorted(the_set)`. (За да премахнете повторенията **и** да запазите първоначалния ред: `list(dict.fromkeys(items))`, [занятие 6](./06-dictionaries.md).)"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1176
@@ -1350,8 +1350,8 @@ msgstr "Пример: какво липсва в кредитно досие"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1315
-msgid "`\", \".join(...)` makes one string of the items, with `\", \"` between them (session 7)."
-msgstr "`\", \".join(...)` прави един string от елементите, с `\", \"` между тях (занятие 7)."
+msgid "`\", \".join(...)` makes one string of the items, with `\", \"` between them ([session 7](./07-text-processing.md#join-fields-into-a-line))."
+msgstr "`\", \".join(...)` прави един string от елементите, с `\", \"` между тях ([занятие 7](./07-text-processing.md#join-fields-into-a-line))."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1317
@@ -1380,8 +1380,8 @@ msgstr "Това са бързи проверки на данните, като 
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1350
-msgid "The same check on two tables before a join - with `set()` of a column, or with `isin` (session 15; there `merge(..., indicator=True)` shows the rows without a match):"
-msgstr "Същата проверка на две таблици преди JOIN - със `set()` от колона или с `isin` (занятие 15; там `merge(..., indicator=True)` показва редовете без съвпадение):"
+msgid "The same check on two tables before a join - with `set()` of a column, or with `isin` ([session 15](./15-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there `merge(..., indicator=True)` shows the rows without a match):"
+msgstr "Същата проверка на две таблици преди JOIN - със `set()` от колона или с `isin` ([занятие 15](./15-pandas-select-aggregate-join.md#in-of-sas-indicator-true); там `merge(..., indicator=True)` показва редовете без съвпадение):"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:1364
@@ -1475,8 +1475,8 @@ msgstr "**Задача 6, част 1:** `both_currencies` - в цикъла съ
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1403
-msgid "**Reading a file** (task 6, the homework): as in session 2 - `file.readline()` skips the header, then `fields = line.strip().split(\",\")` in the loop. The columns are in the order of the header line (task 6 lists them; the [sample data](../sample-data) page too): `fields[0]` is the first one."
-msgstr "**Четене на файл** (задача 6, домашното): както в занятие 2 - `file.readline()` прескача заглавния ред, после `fields = line.strip().split(\",\")` в цикъла. Колоните са в реда на заглавния ред (задача 6 ги изброява; страницата [примерни данни](../sample-data) също): `fields[0]` е първата."
+msgid "**Reading a file** (task 6, the homework): as in [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()` skips the header, then `fields = line.strip().split(\",\")` in the loop. The columns are in the order of the header line (task 6 lists them; the [sample data](../sample-data) page too): `fields[0]` is the first one."
+msgstr "**Четене на файл** (задача 6, домашното): както в [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()` прескача заглавния ред, после `fields = line.strip().split(\",\")` в цикъла. Колоните са в реда на заглавния ред (задача 6 ги изброява; страницата [примерни данни](../sample-data) също): `fields[0]` е първата."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1407
@@ -1657,6 +1657,75 @@ msgstr "Real Python: [Lists and tuples](https://realpython.com/python-lists-tupl
 #: site/lectures/03-lists-tuples-sets.md:1458
 msgid "**Next session:** functions - your own `def`, parameters and return values, and why a function is the Python version of a SAS macro."
 msgstr "**Следващото занятие:** функции - собствен `def`, параметри и върнати стойности и защо функцията е версията на SAS macro в Python."
+
+#~ msgid "Session 2 used `for` on strings, lists and ranges. They are all **sequences**: containers that keep an **ordered** collection of values. The main sequence types:"
+#~ msgstr "В занятие 2 използвахме `for` върху strings, lists и ranges. Всички те са **поредици** (sequences): контейнери, които пазят **подредена** колекция от стойности. Основните типове поредици:"
+
+#~ msgid "A list is the natural thing to loop over: `for` takes its items one by one, in order. Everything of session 2 works here - accumulators, `break` with a flag, and `continue`."
+#~ msgstr "List е естественото нещо за обхождане: `for` взема елементите му един по един, по ред. Всичко от занятие 2 работи и тук - акумулатори, `break` с флаг и `continue`."
+
+#~ msgid "Find an item: stop at the first match with `break`, and remember with a flag whether it was found (session 2):"
+#~ msgstr "Намерете елемент: спрете при първото съвпадение с `break` и запомнете с флаг дали е намерен (занятие 2):"
+
+#~ msgid "The loop gives the items, not their positions. If you need the position, count it yourself (session 5 shows `enumerate`, which does it for you):"
+#~ msgstr "Цикълът дава елементите, не позициите им. Ако ви трябва позицията, бройте я сами (занятие 5 показва `enumerate`, който го прави вместо вас):"
+
+#~ msgid "The rule \"the stop is not included\" is the same as in `range` (session 2). It has a nice side: `a[:3]` is the first 3 items, `a[3:]` the rest, and `a[2:5]` has 5 - 2 = 3 items."
+#~ msgstr "Правилото \"stop не е включен\" е същото като в `range` (занятие 2). То има хубава страна: `a[:3]` са първите 3 елемента, `a[3:]` - останалите, а `a[2:5]` има 5 - 2 = 3 елемента."
+
+#~ msgid "Strings cannot be changed: `loan_id[0] = \"X\"` is an error. String methods (session 7) make **new** strings."
+#~ msgstr "Strings не могат да се променят: `loan_id[0] = \"X\"` е грешка. Методите на strings (занятие 7) правят **нови** strings."
+
+#~ msgid "pandas (session 14) uses the same rules. `iloc` takes rows and columns by position - from 0, without the stop; `.str[...]` takes the same slice of every text in a column:"
+#~ msgstr "pandas (занятие 14) използва същите правила. `iloc` взима редове и колони по позиция - от 0, без stop; `.str[...]` взима един и същ slice от всеки текст в колоната:"
+
+#~ msgid "`min` and `max` work on strings too (alphabetically, session 2). `sum` only on numbers. `index` gives a `ValueError` when the value is not in the list - test with `in` first."
+#~ msgstr "`min` и `max` работят и върху strings (по азбучен ред, занятие 2). `sum` - само върху числа. `index` дава `ValueError`, когато стойността не е в list-а - първо проверете с `in`."
+
+#~ msgid "`split()` (session 1) cuts a string into a list of strings:"
+#~ msgstr "`split()` (занятие 1) нарязва string на list от strings:"
+
+#~ msgid "(Session 5 does the same in one line, with a list comprehension.)"
+#~ msgstr "(Занятие 5 прави същото на един ред, с list comprehension.)"
+
+#~ msgid "Sorting compares the items with `<` (session 2): strings alphabetically - capital letters before small ones - and a mix of numbers and strings is an error:"
+#~ msgstr "Сортирането сравнява елементите с `<` (занятие 2): strings - по азбучен ред, главните букви преди малките, а смесица от числа и strings е грешка:"
+
+#~ msgid "The methods of pandas work like `sorted()`: they return a **new** table and do not change the old one (session 14). Keep the result in a name:"
+#~ msgstr "Методите на pandas работят като `sorted()`: връщат **нова** таблица и не променят старата (занятие 14). Запазете резултата в име:"
+
+#~ msgid "Session 1 showed that a variable is a **name** bound to an **object**. With numbers and strings this hardly matters, because they cannot change. A list **can** change - and then it matters a lot:"
+#~ msgstr "Занятие 1 показа, че променливата е **име**, свързано с **обект**. При числа и strings това почти няма значение, защото те не могат да се променят. List **може** да се променя - и тогава това има голямо значение:"
+
+#~ msgid "These are **shallow** copies: the new list has the same items. When the items are lists themselves (a table as a list of rows), the rows are still shared - session 5 explains shallow and deep copies."
+#~ msgstr "Това са **плитки** (shallow) копия: новият list има същите елементи. Когато елементите сами са lists (таблица като list от редове), редовете пак са общи - занятие 5 обяснява плитките и дълбоките копия."
+
+#~ msgid "It is the **comma** that makes a tuple, not the brackets. That is why `x, y = 1, 2` (session 1) works: the right side is a tuple."
+#~ msgstr "**Запетаята** прави tuple, а не скобите. Затова `x, y = 1, 2` (занятие 1) работи: дясната страна е tuple."
+
+#~ msgid "A list of tuples is a small **table**: each tuple is a row, each position a column. `for` with unpacking (session 2) reads it row by row:"
+#~ msgstr "List от tuples е малка **таблица**: всеки tuple е ред, всяка позиция - колона. `for` с разопаковане (занятие 2) я чете ред по ред:"
+
+#~ msgid "Tuples are also used for **several return values of a function** (session 4) and as **keys of a dictionary** (session 6), where a list is not allowed."
+#~ msgstr "Tuples се използват и за **няколко върнати стойности на функция** (занятие 4) и като **ключове на dictionary** (занятие 6), където list не е позволен."
+
+#~ msgid "The SAS `DO` loops and their `range` are in the table of session 2, section 10. New today: a backwards range, `do i = 10 to 1 by -1;` is `range(10, 0, -1)`."
+#~ msgstr "Циклите `DO` на SAS и техните `range` са в таблицата на занятие 2, раздел 10. Ново днес: range назад - `do i = 10 to 1 by -1;` е `range(10, 0, -1)`."
+
+#~ msgid "`{}` is an empty **dictionary** (session 6): a collection of `key: value` pairs, where a set has only values. An empty set is `set()`:"
+#~ msgstr "`{}` е празен **dictionary** (занятие 6): колекция от двойки `key: value`, докато set има само стойности. Празният set е `set()`:"
+
+#~ msgid "A set does not remember the order in which values came. Print the same set of strings in two runs of a program, and the order can be different. When the order matters - in a report, in a test - use `sorted(the_set)`. (To remove duplicates **and** keep the first order: `list(dict.fromkeys(items))`, session 6.)"
+#~ msgstr "Set не помни реда, в който са дошли стойностите. Отпечатайте един и същ set от strings при две пускания на програмата и редът може да е различен. Когато редът има значение - в отчет, в тест - използвайте `sorted(the_set)`. (За да премахнете повторенията **и** да запазите първоначалния ред: `list(dict.fromkeys(items))`, занятие 6.)"
+
+#~ msgid "`\", \".join(...)` makes one string of the items, with `\", \"` between them (session 7)."
+#~ msgstr "`\", \".join(...)` прави един string от елементите, с `\", \"` между тях (занятие 7)."
+
+#~ msgid "The same check on two tables before a join - with `set()` of a column, or with `isin` (session 15; there `merge(..., indicator=True)` shows the rows without a match):"
+#~ msgstr "Същата проверка на две таблици преди JOIN - със `set()` от колона или с `isin` (занятие 15; там `merge(..., indicator=True)` показва редовете без съвпадение):"
+
+#~ msgid "**Reading a file** (task 6, the homework): as in session 2 - `file.readline()` skips the header, then `fields = line.strip().split(\",\")` in the loop. The columns are in the order of the header line (task 6 lists them; the [sample data](../sample-data) page too): `fields[0]` is the first one."
+#~ msgstr "**Четене на файл** (задача 6, домашното): както в занятие 2 - `file.readline()` прескача заглавния ред, после `fields = line.strip().split(\",\")` в цикъла. Колоните са в реда на заглавния ред (задача 6 ги изброява; страницата [примерни данни](../sample-data) също): `fields[0]` е първата."
 
 #~ msgid "A sum, a count and the largest item in one loop - `SUM`, `COUNT` with a condition, and `MAX`:"
 #~ msgstr "Сума, брой и най-големият елемент в един цикъл - `SUM`, `COUNT` с условие и `MAX`:"

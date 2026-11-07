@@ -136,7 +136,7 @@ How SAS ideas map to Python (most of them come in the later sessions):
 | `PROC FREQ` | `collections.Counter`, `value_counts()`, `pd.crosstab()` |
 | `PROC TRANSPOSE` | `DataFrame.pivot()`, `melt()` |
 | formats (`COMMA12.2`, `PERCENT8.2`) | f-strings: `f"{x:,.2f}"`, `f"{x:.2%}"` - section 13 |
-| macros, `%LET` | functions (session 4), variables |
+| macros, `%LET` | functions ([session 4](./04-functions.md)), variables |
 | `LIBNAME` | file paths, database connections |
 | the SAS log | the output in the terminal; error messages (*tracebacks*) |
 | an Enterprise Guide project | a Jupyter notebook - section 7 |
@@ -585,7 +585,7 @@ In the terminal, `cls` (cmd) or `clear` clears the screen. All shortcuts:
 The **Source Control** view (`Ctrl+Shift+G`) shows the changed files; type a message,
 **Commit**, then **Sync** (push). The commands for the Homework repository are in
 [How to use these pages](/how-to#practice-and-homework); Git itself is the topic of
-session 10.
+[session 10](./10-modules-and-git.md#_6-git-versions-of-your-code).
 
 ## 6. The terminal and the REPL
 
@@ -836,7 +836,7 @@ total = sum(numbers)
 print(total, product)
 ```
 
-(Loops are the topic of session 2.) More side-by-side examples of languages:
+(Loops are the topic of [session 2](./02-conditions-and-loops.md#_10-loops).) More side-by-side examples of languages:
 [rosettacode.org](https://rosettacode.org/wiki/Category:Programming_Tasks).
 
 Rules:
@@ -897,7 +897,7 @@ Comments are for people:
 - to switch off lines while you look for a bug (`Ctrl+/` in VS Code).
 
 SAS has `/* ... */` and `* ... ;`, SQL has `--` and `/* ... */`. Python has only `#`
-(a text in triple quotes is sometimes used for longer notes - more in session 4).
+(a text in triple quotes is sometimes used for longer notes - more in [session 4](./04-functions.md#docstrings)).
 Style: [PEP 8 - Comments](https://peps.python.org/pep-0008/#comments).
 
 ### `print()`: show values
@@ -1103,7 +1103,7 @@ print(type(industry))
 In SQL, `NULL = NULL` is not true, and you must write `IS NULL`. In SAS, a missing
 `.` is smaller than every number, so `if x < 0` is true for missing values. In
 Python, `None == None` is `True`, and `None < 0` is an error. Test with
-`x is None`. (pandas has its own missing values, `NaN` and `NA` - session 14.)
+`x is None`. (pandas has its own missing values, `NaN` and `NA` - [session 14](./14-numpy-pandas-intro.md#missing-values-in-numpy-nan).)
 :::
 
 ## 10. Variables
@@ -1175,7 +1175,7 @@ In SAS, the type of a variable is fixed in the DATA step; in SQL, the type of a
 column is fixed in the table. Python checks types only when the code runs - a
 mistake shows up as a `TypeError` at that line. Keep one type per name: it makes the
 code easier to read. (*Type hints*, like `rate: float = 8.83`, document the intended
-type - session 4.)
+type - [session 4](./04-functions.md#type-hints).)
 
 ::: info Animation
 **Names and objects:** [5. Types belong to objects](../animations/namesAndObjects.html#5){target="_blank"}
@@ -1215,7 +1215,7 @@ Python. For names:
 |---|---|---|
 | variables, functions | `snake_case`: small letters, words joined with `_` | `days_past_due`, `client_since` |
 | constants (values that do not change) | `UPPER_SNAKE_CASE` | `REPORT_DATE = "2026-09-30"` |
-| classes (session 11) | `CapWords` | `Loan`, `RatingScale` |
+| classes ([session 11](./11-oop-classes.md)) | `CapWords` | `Loan`, `RatingScale` |
 
 - Names that say what is inside: `outstanding`, not `x` or `data2`.
 - Booleans as a question: `is_late`, `has_collateral`.
@@ -1391,11 +1391,11 @@ print(not days_past_due > 90)
 
 ::: warning `&` and `|` are not `and` and `or`
 In SAS, `&` and `|` mean AND and OR. In Python they are different (bit) operators.
-pandas uses them for conditions on whole columns (session 15) - but for single
+pandas uses them for conditions on whole columns ([session 15](./15-pandas-select-aggregate-join.md#rows-a-mask-is-the-where)) - but for single
 values, write `and`, `or`, `not`.
 :::
 
-`if` with conditions, and the details of `and` / `or`, come in session 2.
+`if` with conditions, and the details of `and` / `or`, come in [session 2](./02-conditions-and-loops.md#_3-logical-operators).
 
 ::: info Animation
 **How an expression is evaluated:**
@@ -1434,7 +1434,7 @@ The fix is an explicit conversion, `"Stage " + str(3)` (section 12), or an f-str
 ### A first look at string methods
 
 Strings have many **methods** - functions you call with a dot after the value.
-A few, for a first look (session 7 has them all):
+A few, for a first look ([session 7](./07-text-processing.md) has them all):
 
 ```python run
 print("ada".capitalize())
@@ -1533,7 +1533,7 @@ print(float("1 044 231,30"))     # ValueError: Bulgarian format
 ```
 
 Numbers written the Bulgarian way - a space between the thousands, a comma for the
-fraction - must be cleaned first (more string methods in session 7):
+fraction - must be cleaned first (more string methods in [session 7](./07-text-processing.md#_8-numbers-from-text)):
 
 ```python run
 text = "1 044 231,30"
@@ -1830,7 +1830,7 @@ Rules for `Decimal`:
 - `Decimal` is slower than `float`. Use it for **money that must add up** to the
   cent: balances, interest, reconciliations with the general ledger. For rates, PDs,
   statistics and models, `float` is right.
-- pandas works with `float`: there, round the **results** (session 15).
+- pandas works with `float`: there, round the **results** ([session 15](./15-pandas-select-aggregate-join.md)).
 
 ```python run
 from decimal import Decimal

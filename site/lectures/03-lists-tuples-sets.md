@@ -50,7 +50,7 @@ print(sorted(without_loans))
 
 ### What is a sequence?
 
-Session 2 used `for` on strings, lists and ranges. They are all **sequences**:
+[Session 2](./02-conditions-and-loops.md#_12-the-for-loop) used `for` on strings, lists and ranges. They are all **sequences**:
 containers that keep an **ordered** collection of values. The main sequence types:
 
 | Type | Example | Can it change? |
@@ -176,7 +176,7 @@ print(fruits)
 ### Loop over a list
 
 A list is the natural thing to loop over: `for` takes its items one by one, in
-order. Everything of session 2 works here - accumulators, `break` with a flag, and
+order. Everything of [session 2](./02-conditions-and-loops.md#_12-the-for-loop) works here - accumulators, `break` with a flag, and
 `continue`.
 
 A sum, a count and the largest item in one loop - like SQL `SUM`, `COUNT` with a
@@ -201,7 +201,7 @@ print(sum(amounts), max(amounts))    # the built-in functions do it too (section
 ```
 
 Find an item: stop at the first match with `break`, and remember with a flag
-whether it was found (session 2):
+whether it was found ([session 2](./02-conditions-and-loops.md#not-found-a-flag)):
 
 ```python run
 watch_list = ["L000012", "L000025", "L000059"]
@@ -242,7 +242,7 @@ print(known, "known ratings, the average is", total / known)
 ```
 
 The loop gives the items, not their positions. If you need the position, count it
-yourself (session 5 shows `enumerate`, which does it for you):
+yourself ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item) shows `enumerate`, which does it for you):
 
 ```python run
 amounts = [800.0, 0.0, 15900.0, 0.0]
@@ -304,7 +304,7 @@ a[:stop]          items from the beginning up to stop - 1
 a[:]              all items - a copy of the whole sequence
 ```
 
-The rule "the stop is not included" is the same as in `range` (session 2). It has a
+The rule "the stop is not included" is the same as in `range` ([session 2](./02-conditions-and-loops.md#range-a-sequence-of-numbers)). It has a
 nice side: `a[:3]` is the first 3 items, `a[3:]` the rest, and `a[2:5]` has 5 - 2 = 3
 items.
 
@@ -368,11 +368,11 @@ year, month, day = report_date[:4], report_date[5:7], report_date[8:]
 print(year, month, day)
 ```
 
-Strings cannot be changed: `loan_id[0] = "X"` is an error. String methods (session 7)
+Strings cannot be changed: `loan_id[0] = "X"` is an error. String methods ([session 7](./07-text-processing.md))
 make **new** strings.
 
 ::: info The same in pandas
-pandas (session 14) uses the same rules. `iloc` takes rows and columns by
+pandas ([session 14](./14-numpy-pandas-intro.md)) uses the same rules. `iloc` takes rows and columns by
 position - from 0, without the stop; `.str[...]` takes the same slice of every text
 in a column:
 
@@ -457,7 +457,7 @@ print(stages.count(1))          # how many times 1 is in the list
 print(stages.index(3))          # the index of the first 3
 ```
 
-`min` and `max` work on strings too (alphabetically, session 2). `sum` only on
+`min` and `max` work on strings too (alphabetically, [session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)). `sum` only on
 numbers. `index` gives a `ValueError` when the value is not in the list - test with
 `in` first.
 
@@ -483,7 +483,7 @@ print(list(user_name))           # from a string: one item per character
 
 ### From text: `split`
 
-`split()` (session 1) cuts a string into a list of strings:
+`split()` ([session 1](./01-intro-syntax-types.md#a-first-look-at-string-methods)) cuts a string into a list of strings:
 
 ```python run
 row = "L000002,C0132,investment,EUR,2019-04-16,2029-04-16,1977400.00,651927.30,5.44,35,2"
@@ -610,7 +610,7 @@ for amount in amounts:
 print(non_zero)
 ```
 
-(Session 5 does the same in one line, with a list comprehension.)
+([Session 5](./05-lists-advanced.md#from-a-loop-to-one-line) does the same in one line, with a list comprehension.)
 :::
 
 ### The methods change the list - and return `None`
@@ -645,7 +645,7 @@ print(sorted("python"))    # the characters of a string, sorted
 print(sorted(names, reverse=True))
 ```
 
-Sorting compares the items with `<` (session 2): strings alphabetically - capital
+Sorting compares the items with `<` ([session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)): strings alphabetically - capital
 letters before small ones - and a mix of numbers and strings is an error:
 
 ```python run
@@ -659,7 +659,7 @@ way is `sorted(..., key=...)`: sessions 4 and 5.
 
 ::: info The same in pandas
 The methods of pandas work like `sorted()`: they return a **new** table and do not
-change the old one (session 14). Keep the result in a name:
+change the old one ([session 14](./14-numpy-pandas-intro.md)). Keep the result in a name:
 
 ```python run
 import pandas as pd
@@ -675,7 +675,7 @@ print(by_size["loan_id"].head(3).tolist())    # a new, sorted table
 
 ### Two names, one list
 
-Session 1 showed that a variable is a **name** bound to an **object**. With numbers
+[Session 1](./01-intro-syntax-types.md#names-not-boxes) showed that a variable is a **name** bound to an **object**. With numbers
 and strings this hardly matters, because they cannot change. A list **can** change -
 and then it matters a lot:
 
@@ -718,7 +718,7 @@ print(original is copy1)
 ```
 
 These are **shallow** copies: the new list has the same items. When the items are
-lists themselves (a table as a list of rows), the rows are still shared - session 5
+lists themselves (a table as a list of rows), the rows are still shared - [session 5](./05-lists-advanced.md#_6-copies-of-a-table)
 explains shallow and deep copies.
 
 ::: tip Try it
@@ -761,7 +761,7 @@ print(point3d)
 ```
 
 It is the **comma** that makes a tuple, not the brackets. That is why `x, y = 1, 2`
-(session 1) works: the right side is a tuple.
+([session 1](./01-intro-syntax-types.md#assignment-in-more-forms)) works: the right side is a tuple.
 
 ### Read the items
 
@@ -883,7 +883,7 @@ print(loan_id)
 ### Tuples as records
 
 A list of tuples is a small **table**: each tuple is a row, each position a column.
-`for` with unpacking (session 2) reads it row by row:
+`for` with unpacking ([session 2](./02-conditions-and-loops.md#two-names-at-once)) reads it row by row:
 
 ```python run
 loans = [
@@ -917,8 +917,8 @@ print(loan_ids)
 print(amounts)
 ```
 
-Tuples are also used for **several return values of a function** (session 4) and as
-**keys of a dictionary** (session 6), where a list is not allowed.
+Tuples are also used for **several return values of a function** ([session 4](./04-functions.md#several-values-a-tuple)) and as
+**keys of a dictionary** ([session 6](./06-dictionaries.md#rules-for-keys)), where a list is not allowed.
 
 ### Sort records: tuples compare item by item
 
@@ -1049,7 +1049,7 @@ print(list(range(-3, 4)))        # -3 ... 3
 print(list(range(9, -1, 1)))     # empty: you cannot go from 9 up to -1
 ```
 
-The SAS `DO` loops and their `range` are in the table of session 2, section 10.
+The SAS `DO` loops and their `range` are in the table of [session 2, section 10](./02-conditions-and-loops.md#_10-loops).
 New today: a backwards range, `do i = 10 to 1 by -1;` is `range(10, 0, -1)`.
 
 ### A range does not keep its numbers
@@ -1119,7 +1119,7 @@ set_of_mutables = {[1, 2, 3], ["a", "b"]}    # TypeError: a list is unhashable
 ```
 
 ::: warning `{}` is not an empty set
-`{}` is an empty **dictionary** (session 6): a collection of `key: value` pairs,
+`{}` is an empty **dictionary** ([session 6](./06-dictionaries.md#_1-what-is-a-dictionary)): a collection of `key: value` pairs,
 where a set has only values. An empty set is `set()`:
 
 ```python run
@@ -1170,7 +1170,7 @@ print(len(products), sorted(products))
 A set does not remember the order in which values came. Print the same set of strings
 in two runs of a program, and the order can be different. When the order matters -
 in a report, in a test - use `sorted(the_set)`. (To remove duplicates **and** keep the
-first order: `list(dict.fromkeys(items))`, session 6.)
+first order: `list(dict.fromkeys(items))`, [session 6](./06-dictionaries.md).)
 :::
 
 ### Add and remove
@@ -1312,7 +1312,7 @@ print("Missing: ", ", ".join(sorted(required - submitted)))
 print("Extra:   ", ", ".join(sorted(submitted - required)))
 ```
 
-`", ".join(...)` makes one string of the items, with `", "` between them (session 7).
+`", ".join(...)` makes one string of the items, with `", "` between them ([session 7](./07-text-processing.md#join-fields-into-a-line)).
 
 ### Subsets and checks of the data
 
@@ -1348,7 +1348,7 @@ print("loans of unknown clients:", loan_clients - clients)       # LEFT JOIN ...
 
 ::: info The same in pandas
 The same check on two tables before a join - with `set()` of a column, or with
-`isin` (session 15; there `merge(..., indicator=True)` shows the rows without a
+`isin` ([session 15](./15-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there `merge(..., indicator=True)` shows the rows without a
 match):
 
 ```python run
@@ -1400,7 +1400,7 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
 - **Task 6, part 1:** `both_currencies` - in the loop, collect the clients of the EUR
   loans in one set and of the USD loans in another; after the loop, intersect the
   two sets with `&`.
-- **Reading a file** (task 6, the homework): as in session 2 - `file.readline()`
+- **Reading a file** (task 6, the homework): as in [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()`
   skips the header, then `fields = line.strip().split(",")` in the loop. The
   columns are in the order of the header line (task 6 lists them; the
   [sample data](../sample-data) page too): `fields[0]` is the first one.

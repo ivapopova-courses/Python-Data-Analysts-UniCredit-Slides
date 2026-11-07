@@ -70,7 +70,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:42
-msgid "Since session 1 you have done this kind of work with loops over rows. pandas does it on whole **columns** - with the same ideas inside (sessions 5 and 6), in C, and in one line each."
+msgid "Since [session 1](./01-intro-syntax-types.md) you have done this kind of work with loops over rows. pandas does it on whole **columns** - with the same ideas inside (sessions 5 and 6), in C, and in one line each."
 msgstr ""
 
 #. heading 2
@@ -105,7 +105,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:76
-msgid "`pip install -r requirements.txt` installs pandas 3 today (session 1); this site runs pandas 3 too. Where pandas 2.2 behaves differently, these pages say so - mostly the type of text columns (`str` in 3, `object` in 2.2) and copies of a DataFrame (session 15). Check your version: `pd.__version__`."
+msgid "`pip install -r requirements.txt` installs pandas 3 today ([session 1](./01-intro-syntax-types.md#packages-and-pip)); this site runs pandas 3 too. Where pandas 2.2 behaves differently, these pages say so - mostly the type of text columns (`str` in 3, `object` in 2.2) and copies of a DataFrame (session 15). Check your version: `pd.__version__`."
 msgstr ""
 
 #. box title
@@ -150,7 +150,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:135
-msgid "Compare with session 5: `[o * r / 100 for o, r in zip(outstanding, rates)]`. NumPy writes it as the formula itself."
+msgid "Compare with [session 5](./05-lists-advanced.md#zip-several-lists-side-by-side): `[o * r / 100 for o, r in zip(outstanding, rates)]`. NumPy writes it as the formula itself."
 msgstr ""
 
 #. heading 3
@@ -190,7 +190,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:190
-msgid "Sort, and the positions of the largest - the top N of session 5:"
+msgid "Sort, and the positions of the largest - the top N of [session 5](./05-lists-advanced.md#the-top-n):"
 msgstr ""
 
 #. paragraph
@@ -305,7 +305,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:376
-msgid "From a list of dictionaries (the rows of session 6):"
+msgid "From a list of dictionaries (the rows of [session 6](./06-dictionaries.md#a-row-as-a-dictionary)):"
 msgstr ""
 
 #. heading 3
@@ -335,7 +335,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:435
-msgid "`sort_values` is SAS `PROC SORT` / SQL `ORDER BY`; selection with conditions (SQL `WHERE`) and `loc` are session 15."
+msgid "`sort_values` is SAS `PROC SORT` / SQL `ORDER BY`; selection with conditions (SQL `WHERE`) and `loc` are [session 15](./15-pandas-select-aggregate-join.md#loc-rows-and-columns-by-label)."
 msgstr ""
 
 #. heading 3
@@ -400,7 +400,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/14-numpy-pandas-intro.md:470
-msgid "the encoding (session 7)"
+msgid "the encoding ([session 7](./07-text-processing.md#encodings-utf-8-cp1251-and-cyrillic))"
 msgstr ""
 
 #. table cell
@@ -470,7 +470,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:529
-msgid "`loans.columns.str` gives the string methods of session 7 for all names at once."
+msgid "`loans.columns.str` gives the string methods of [session 7](./07-text-processing.md) for all names at once."
 msgstr ""
 
 #. paragraph
@@ -495,7 +495,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:575
-msgid "(`io.StringIO` makes a string behave like a file - session 9.)"
+msgid "(`io.StringIO` makes a string behave like a file - [session 9](./09-errors-and-files.md).)"
 msgstr ""
 
 #. heading 3
@@ -510,12 +510,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:591
-msgid "The export and `loans.csv` should hold the same loans. A quick check of the totals - the habit of session 7:"
+msgid "The export and `loans.csv` should hold the same loans. A quick check of the totals - the habit of [session 7](./07-text-processing.md):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:605
-msgid "The export has 6 rows more (duplicates) and 8 missing amounts - session 15 cleans them."
+msgid "The export has 6 rows more (duplicates) and 8 missing amounts - [session 15](./15-pandas-select-aggregate-join.md#_6-missing-values) cleans them."
 msgstr ""
 
 #. paragraph
@@ -530,7 +530,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:616
-msgid "`pd.read_excel` reads a sheet of an `.xlsx` file (with openpyxl underneath, session 9):"
+msgid "`pd.read_excel` reads a sheet of an `.xlsx` file (with openpyxl underneath, [session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)):"
 msgstr ""
 
 #. paragraph
@@ -540,7 +540,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:637
-msgid "To put the sheets under each other in one table, `pd.concat` (session 15 explains it):"
+msgid "To put the sheets under each other in one table, `pd.concat` ([session 15](./15-pandas-select-aggregate-join.md#concat-one-table-under-another) explains it):"
 msgstr ""
 
 #. paragraph
@@ -655,7 +655,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:748
-msgid "Two variables - `TABLES stage * currency` - is `pd.crosstab` (session 16):"
+msgid "Two variables - `TABLES stage * currency` - is `pd.crosstab` ([session 16](./16-pandas-reports-project.md#pd-crosstab-counts-and-shares)):"
 msgstr ""
 
 #. heading 3
@@ -685,7 +685,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:798
-msgid "`.dt` gives the date parts of a whole column (session 16 uses it a lot)."
+msgid "`.dt` gives the date parts of a whole column ([session 16](./16-pandas-reports-project.md#_3-dates-and-month-ends) uses it a lot)."
 msgstr ""
 
 #. heading 3
@@ -695,12 +695,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:802
-msgid "The same questions for every new file - write them once, as a function (session 4):"
+msgid "The same questions for every new file - write them once, as a function ([session 4](./04-functions.md)):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:821
-msgid "Profile `client_register.csv` with the function. Which columns have missing values, and how many distinct cities does it see (compare with session 7)?"
+msgid "Profile `client_register.csv` with the function. Which columns have missing values, and how many distinct cities does it see (compare with [session 7](./07-text-processing.md#cities-a-mapping-of-variants))?"
 msgstr ""
 
 #. heading 2
@@ -810,12 +810,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:885
-msgid "`astype(float)` stops at the first bad value. `pd.to_numeric(..., errors=\"coerce\")` turns bad values into `NaN` - the `??` informat of SAS (session 9) - so you can count them:"
+msgid "`astype(float)` stops at the first bad value. `pd.to_numeric(..., errors=\"coerce\")` turns bad values into `NaN` - the `??` informat of SAS ([session 9](./09-errors-and-files.md)) - so you can count them:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:898
-msgid "`pd.to_datetime` with a `format` reads dates - for a whole column, much faster than `strptime` in a loop (session 7):"
+msgid "`pd.to_datetime` with a `format` reads dates - for a whole column, much faster than `strptime` in a loop ([session 7](./07-text-processing.md#any-format-strptime-and-strftime)):"
 msgstr ""
 
 #. heading 3
@@ -840,7 +840,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:939
-msgid "Read `payments_2026-09.csv` and convert `amount` with `pd.to_numeric(..., errors=\"coerce\")` and `pay_date` with `pd.to_datetime(..., format=\"%Y-%m-%d\", errors=\"coerce\")`. How many values of each could not be read? (Compare with the loader of session 9.)"
+msgid "Read `payments_2026-09.csv` and convert `amount` with `pd.to_numeric(..., errors=\"coerce\")` and `pay_date` with `pd.to_datetime(..., format=\"%Y-%m-%d\", errors=\"coerce\")`. How many values of each could not be read? (Compare with the loader of [session 9](./09-errors-and-files.md#_10-loading-data-with-bad-records).)"
 msgstr ""
 
 #. heading 2
@@ -1060,7 +1060,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:1040
-msgid "A histogram (charts: session 16):"
+msgid "A histogram (charts: [session 16](./16-pandas-reports-project.md#_7-charts)):"
 msgstr ""
 
 #. paragraph
@@ -1120,7 +1120,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-numpy-pandas-intro.md:1088
-msgid "**Big files:** `chunksize=` gives pieces (session 13, Self-study)."
+msgid "**Big files:** `chunksize=` gives pieces ([session 13](./13-databases.md#big-tables-in-pieces), Self-study)."
 msgstr ""
 
 #. paragraph

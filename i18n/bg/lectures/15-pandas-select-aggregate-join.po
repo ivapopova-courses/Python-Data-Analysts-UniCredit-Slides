@@ -85,7 +85,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:61
-msgid "You know `df[\"col\"]` (a Series) and `df[[\"a\", \"b\"]]` (a DataFrame) from session 14. `drop` removes columns - SAS `DROP=`:"
+msgid "You know `df[\"col\"]` (a Series) and `df[[\"a\", \"b\"]]` (a DataFrame) from [session 14](./14-numpy-pandas-intro.md#columns). `drop` removes columns - SAS `DROP=`:"
 msgstr ""
 
 #. paragraph
@@ -105,7 +105,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:97
-msgid "Several conditions: `&` (and), `|` (or), `~` (not), each comparison in brackets - the rule of session 14:"
+msgid "Several conditions: `&` (and), `|` (or), `~` (not), each comparison in brackets - the rule of [session 14](./14-numpy-pandas-intro.md):"
 msgstr ""
 
 #. paragraph
@@ -135,7 +135,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:137
-msgid "With an index of ids (session 14), `loc` takes the labels - like a lookup in a dictionary:"
+msgid "With an index of ids ([session 14](./14-numpy-pandas-intro.md#the-index)), `loc` takes the labels - like a lookup in a dictionary:"
 msgstr ""
 
 #. heading 3
@@ -235,7 +235,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:257
-msgid "`lambda d:` gets the DataFrame at that step of the chain (session 4: a small function without a name)."
+msgid "`lambda d:` gets the DataFrame at that step of the chain ([session 4](./04-functions.md#_10-lambda): a small function without a name)."
 msgstr ""
 
 #. heading 3
@@ -245,7 +245,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:262
-msgid "The tools of session 14 work on columns too:"
+msgid "The tools of [session 14](./14-numpy-pandas-intro.md) work on columns too:"
 msgstr ""
 
 #. heading 3
@@ -270,7 +270,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:312
-msgid "The result is a **category** column (session 14): the labels keep their order (not alphabetical), which is right for a report."
+msgid "The result is a **category** column ([session 14](./14-numpy-pandas-intro.md)): the labels keep their order (not alphabetical), which is right for a report."
 msgstr ""
 
 #. heading 3
@@ -280,12 +280,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:317
-msgid "`map` with a dictionary replaces each value by its description - `PUT(code, $fmt.)` with a SAS format, or the dictionary lookup of session 6:"
+msgid "`map` with a dictionary replaces each value by its description - `PUT(code, $fmt.)` with a SAS format, or the dictionary lookup of [session 6](./06-dictionaries.md#_5-lookup-tables-and-nomenclatures):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:330
-msgid "A value that is not a key gives `NaN` - check for it, like the \"unknown code\" of a nomenclature (session 12). The lookup can come from a table: a Series with the codes as its index:"
+msgid "A value that is not a key gives `NaN` - check for it, like the \"unknown code\" of a nomenclature ([session 12](./12-oop-nomenclatures.md)). The lookup can come from a table: a Series with the codes as its index:"
 msgstr ""
 
 #. heading 3
@@ -295,7 +295,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:346
-msgid "The `.str` methods of session 7 and the `.dt` date parts work on a whole column:"
+msgid "The `.str` methods of [session 7](./07-text-processing.md) and the `.dt` date parts work on a whole column:"
 msgstr ""
 
 #. heading 3
@@ -375,7 +375,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:454
-msgid "The stage totals of session 6 (`110184825.28`, `16884527.04`, `4301356.28`) - in one line. The result is a Series with the groups as its index. Compare with session 6:"
+msgid "The stage totals of [session 6](./06-dictionaries.md#sum-by-group) (`110184825.28`, `16884527.04`, `4301356.28`) - in one line. The result is a Series with the groups as its index. Compare with [session 6](./06-dictionaries.md#sum-by-group):"
 msgstr ""
 
 #. heading 3
@@ -420,7 +420,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:544
-msgid "(The same table with the stages as columns is a **pivot** - session 16.)"
+msgid "(The same table with the stages as columns is a **pivot** - [session 16](./16-pandas-reports-project.md#_1-pivot-tables).)"
 msgstr ""
 
 #. heading 3
@@ -450,7 +450,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:583
-msgid "(`pd.crosstab` - the two-way table with rows and columns - is session 16.)"
+msgid "(`pd.crosstab` - the two-way table with rows and columns - is [session 16](./16-pandas-reports-project.md#pd-crosstab-counts-and-shares).)"
 msgstr ""
 
 #. heading 3
@@ -510,7 +510,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:659
-msgid "`how=\"right\"` exists too. The rows without a partner get `NaN` - and an int column with `NaN` becomes float (session 14: `5.0`, `3.0`)."
+msgid "`how=\"right\"` exists too. The rows without a partner get `NaN` - and an int column with `NaN` becomes float ([session 14](./14-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64): `5.0`, `3.0`)."
 msgstr ""
 
 #. heading 3
@@ -535,7 +535,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:684
-msgid "Loans + clients + the rating scale - the join of homework 4 (session 4, with loops; session 6, with dicts; session 13, in SQL). Now in pandas:"
+msgid "Loans + clients + the rating scale - the join of homework 4 ([session 4](./04-functions.md), with loops; [session 6](./06-dictionaries.md#the-join-loans-with-the-region-of-their-client), with dicts; [session 13](./13-databases.md#a-join-in-sql), in SQL). Now in pandas:"
 msgstr ""
 
 #. paragraph
@@ -550,7 +550,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:709
-msgid "`left_on` / `right_on` when the key has another name; `suffixes` when both tables have a column with the same name. The rating of each client in August and September from `ratings_history.csv` (a self join, as in session 13):"
+msgid "`left_on` / `right_on` when the key has another name; `suffixes` when both tables have a column with the same name. The rating of each client in August and September from `ratings_history.csv` (a self join, as in [session 13](./13-databases.md#the-rating-migration-a-self-join)):"
 msgstr ""
 
 #. paragraph
@@ -595,7 +595,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:806
-msgid "Join `loans.csv` with `client_register.csv` on `client_id` with `how=\"left\"` and `indicator=True`. Do all loans find their client? (Look at the ids in the register - session 7.) How would you fix the key before the join?"
+msgid "Join `loans.csv` with `client_register.csv` on `client_id` with `how=\"left\"` and `indicator=True`. Do all loans find their client? (Look at the ids in the register - [session 7](./07-text-processing.md#client-ids).) How would you fix the key before the join?"
 msgstr ""
 
 #. heading 2
@@ -605,7 +605,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:815
-msgid "pandas marks a missing value with `NaN` in number columns, and with `NaN` or `None` in text columns (pandas 3: `NaN` in the `str` type). Nullable types (`Int64`, session 14) use `pd.NA`. Do not compare with them - use `isna()` / `notna()`:"
+msgid "pandas marks a missing value with `NaN` in number columns, and with `NaN` or `None` in text columns (pandas 3: `NaN` in the `str` type). Nullable types (`Int64`, [session 14](./14-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64)) use `pd.NA`. Do not compare with them - use `isna()` / `notna()`:"
 msgstr ""
 
 #. heading 3
@@ -615,7 +615,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:831
-msgid "Unlike NumPy (session 14), pandas skips `NaN` in `sum`, `mean`, `min`, `max` - like SQL and SAS `PROC MEANS`:"
+msgid "Unlike NumPy ([session 14](./14-numpy-pandas-intro.md#missing-values-in-numpy-nan)), pandas skips `NaN` in `sum`, `mean`, `min`, `max` - like SQL and SAS `PROC MEANS`:"
 msgstr ""
 
 #. box title
@@ -690,7 +690,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:949
-msgid "The [final project](../project) is a monthly portfolio report from end to end: load (files and the database), validate (the nomenclatures of session 12), clean, aggregate, report (Excel and a chart - session 16), and keep it in Git. Read the brief today; session 16 adds the last tools (pivot tables, dates, Excel output) and the time to start."
+msgid "The [final project](../project) is a monthly portfolio report from end to end: load (files and the database), validate (the nomenclatures of [session 12](./12-oop-nomenclatures.md)), clean, aggregate, report (Excel and a chart - [session 16](./16-pandas-reports-project.md#_6-an-excel-report-with-several-sheets)), and keep it in Git. Read the brief today; [session 16](./16-pandas-reports-project.md) adds the last tools (pivot tables, dates, Excel output) and the time to start."
 msgstr ""
 
 #. heading 2
@@ -850,7 +850,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-select-aggregate-join.md:1029
-msgid "**`NODUPKEY`** - `drop_duplicates(subset=[...])` (session 14); `duplicated(keep=False)` marks **all** copies, to look at them:"
+msgid "**`NODUPKEY`** - `drop_duplicates(subset=[...])` ([session 14](./14-numpy-pandas-intro.md#distinct-values-missing-values-duplicates)); `duplicated(keep=False)` marks **all** copies, to look at them:"
 msgstr ""
 
 #. paragraph

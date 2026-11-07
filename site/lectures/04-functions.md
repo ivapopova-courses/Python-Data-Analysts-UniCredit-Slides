@@ -113,7 +113,7 @@ def function_name(parameters):
 ```
 
 - `def` - the keyword that starts the definition.
-- `function_name` - a valid name (session 1): `snake_case`, a verb that says what
+- `function_name` - a valid name ([session 1](./01-intro-syntax-types.md#rules-for-names)): `snake_case`, a verb that says what
   the function does - `calculate_interest`, `read_loans`, `is_late`.
 - `parameters` - optional: the names that will get the input values. The **brackets
   are required**, even when there are no parameters.
@@ -128,7 +128,7 @@ def calculate_sum():
     pass
 ```
 
-`pass` (session 2) is a body that does nothing - for a function you will write
+`pass` ([session 2](./02-conditions-and-loops.md#pass-a-block-that-does-nothing)) is a body that does nothing - for a function you will write
 later. A full definition:
 
 ```python run
@@ -418,7 +418,7 @@ print(count_over(0, 35, 120, 200, 5, limit=30))
 
 ::: details Advanced: any number of keyword arguments, `**kwargs`
 Two stars `**` collect **all the extra keyword arguments** into a **dictionary**
-(dictionaries: session 6 - here, pairs of a name and a value):
+(dictionaries: [session 6](./06-dictionaries.md) - here, pairs of a name and a value):
 
 ```python run
 def foo(**kwargs):
@@ -576,7 +576,7 @@ function can be used in a report, in a file, in a test.
 
 ### Several values: a tuple
 
-`return a, b` returns a **tuple** (session 3) - and the caller can unpack it:
+`return a, b` returns a **tuple** ([session 3](./03-lists-tuples-sets.md#_8-tuples)) - and the caller can unpack it:
 
 ```python run
 def split_days(days_past_due):
@@ -899,7 +899,7 @@ print(sum([1, 2, 3]))        # TypeError: 'int' object is not callable
 ## 7. Arguments are references
 
 A parameter is bound to **the same object** as the argument - Python does not copy
-it (session 3: names and references). For numbers and strings it makes no
+it ([session 3](./03-lists-tuples-sets.md#_7-a-list-is-mutable-names-and-references): names and references). For numbers and strings it makes no
 difference, because they cannot change. A **list** passed to a function **can** be
 changed by the function - and the caller sees the change:
 
@@ -1209,7 +1209,7 @@ print(sorted(["banana", "Cherry", "apple"], key=str.lower))    # ignore the case
 print(sorted(["cherry", "fig", "banana"], key=len))
 ```
 
-Sorting is covered in depth in session 5. Reference:
+Sorting is covered in depth in [session 5](./05-lists-advanced.md#_4-sorting-and-the-top-n). Reference:
 [Sorting techniques](https://docs.python.org/3/howto/sorting.html).
 
 ## 11. From macros to functions: a report script
@@ -1266,14 +1266,14 @@ loans = read_loans(LOANS_FILE)
 print_report(loans)
 ```
 
-Compare it with the first example of session 2: the same result, but now each part
+Compare it with the first example of [session 2](./02-conditions-and-loops.md): the same result, but now each part
 has a name, can be tested alone, and can be reused - `read_loans` in the next report,
 `dpd_bucket` in a check of the data.
 
 In a file that is run as a script, the main code is often put under
 `if __name__ == "__main__":` - so that the functions can be imported by another file
 without running the report. Modules and `import` of your own files are the topic of
-session 10.
+[session 10](./10-modules-and-git.md#_2-your-own-module).
 
 ## 12. Practice
 
@@ -1321,7 +1321,7 @@ values.
    `OK`.
 2. The practice tasks you did not finish in class.
 3. Optional: a **loan calculator** made of functions - the same program as the
-   optional homework of session 2, but organised like this:
+   optional homework of [session 2](./02-conditions-and-loops.md#homework), but organised like this:
    `get_user_data()` reads and checks the input (amount > 0, rate 0 - 50, years 1 -
    30; ask again while a value is wrong) and returns a tuple; `calc_payment(amount,
    rate, years)` returns the payment; `print_schedule(amount, rate, years)` prints the
@@ -1335,7 +1335,7 @@ This part is not covered in class - it is for reading at home.
 ### Decorators
 
 Decorators are not needed for the tasks of this course, but you will meet them in
-libraries (`@property` and `@dataclass` in session 11, `@pytest.fixture`, `@app.get` in
+libraries (`@property` and `@dataclass` in [session 11](./11-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` in
 web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs`
 and a function inside a function (the Advanced boxes of sections 4 and 6).
 

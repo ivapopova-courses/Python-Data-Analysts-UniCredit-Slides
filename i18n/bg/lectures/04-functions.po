@@ -240,8 +240,8 @@ msgstr "`def` - ключовата дума, с която започва деф
 
 #. paragraph
 #: site/lectures/04-functions.md:116
-msgid "`function_name` - a valid name (session 1): `snake_case`, a verb that says what the function does - `calculate_interest`, `read_loans`, `is_late`."
-msgstr "`function_name` - валидно име (занятие 1): `snake_case`, глагол, който казва какво прави функцията - `calculate_interest`, `read_loans`, `is_late`."
+msgid "`function_name` - a valid name ([session 1](./01-intro-syntax-types.md#rules-for-names)): `snake_case`, a verb that says what the function does - `calculate_interest`, `read_loans`, `is_late`."
+msgstr "`function_name` - валидно име ([занятие 1](./01-intro-syntax-types.md#rules-for-names)): `snake_case`, глагол, който казва какво прави функцията - `calculate_interest`, `read_loans`, `is_late`."
 
 #. paragraph
 #: site/lectures/04-functions.md:118
@@ -270,8 +270,8 @@ msgstr "Най-простата дефиниция:"
 
 #. paragraph
 #: site/lectures/04-functions.md:131
-msgid "`pass` (session 2) is a body that does nothing - for a function you will write later. A full definition:"
-msgstr "`pass` (занятие 2) е тяло, което не прави нищо - за функция, която ще напишете по-късно. Пълна дефиниция:"
+msgid "`pass` ([session 2](./02-conditions-and-loops.md#pass-a-block-that-does-nothing)) is a body that does nothing - for a function you will write later. A full definition:"
+msgstr "`pass` ([занятие 2](./02-conditions-and-loops.md#pass-a-block-that-does-nothing)) е тяло, което не прави нищо - за функция, която ще напишете по-късно. Пълна дефиниция:"
 
 #. heading 3
 #: site/lectures/04-functions.md:151
@@ -450,8 +450,8 @@ msgstr "За напреднали: произволен брой именува�
 
 #. paragraph
 #: site/lectures/04-functions.md:420
-msgid "Two stars `**` collect **all the extra keyword arguments** into a **dictionary** (dictionaries: session 6 - here, pairs of a name and a value):"
-msgstr "Две звездички `**` събират **всички допълнителни именувани аргументи** в **dictionary** (dictionaries: занятие 6 - тук двойки от име и стойност):"
+msgid "Two stars `**` collect **all the extra keyword arguments** into a **dictionary** (dictionaries: [session 6](./06-dictionaries.md) - here, pairs of a name and a value):"
+msgstr "Две звездички `**` събират **всички допълнителни именувани аргументи** в **dictionary** (dictionaries: [занятие 6](./06-dictionaries.md) - тук двойки от име и стойност):"
 
 #. paragraph
 #: site/lectures/04-functions.md:440
@@ -545,8 +545,8 @@ msgstr "Няколко стойности: tuple"
 
 #. paragraph
 #: site/lectures/04-functions.md:579
-msgid "`return a, b` returns a **tuple** (session 3) - and the caller can unpack it:"
-msgstr "`return a, b` връща **tuple** (занятие 3) - и извикващият може да го разопакова:"
+msgid "`return a, b` returns a **tuple** ([session 3](./03-lists-tuples-sets.md#_8-tuples)) - and the caller can unpack it:"
+msgstr "`return a, b` връща **tuple** ([занятие 3](./03-lists-tuples-sets.md#_8-tuples)) - и извикващият може да го разопакова:"
 
 #. heading 3
 #: site/lectures/04-functions.md:601
@@ -810,8 +810,8 @@ msgstr "7. Аргументите са референции"
 
 #. paragraph
 #: site/lectures/04-functions.md:901
-msgid "A parameter is bound to **the same object** as the argument - Python does not copy it (session 3: names and references). For numbers and strings it makes no difference, because they cannot change. A **list** passed to a function **can** be changed by the function - and the caller sees the change:"
-msgstr "Параметърът се свързва със **същия обект** като аргумента - Python не го копира (занятие 3: имена и референции). За числа и strings това няма значение, защото те не могат да се променят. **List**, подаден на функция, **може** да бъде променен от функцията - и извикващият вижда промяната:"
+msgid "A parameter is bound to **the same object** as the argument - Python does not copy it ([session 3](./03-lists-tuples-sets.md#_7-a-list-is-mutable-names-and-references): names and references). For numbers and strings it makes no difference, because they cannot change. A **list** passed to a function **can** be changed by the function - and the caller sees the change:"
+msgstr "Параметърът се свързва със **същия обект** като аргумента - Python не го копира ([занятие 3](./03-lists-tuples-sets.md#_7-a-list-is-mutable-names-and-references): имена и референции). За числа и strings това няма значение, защото те не могат да се променят. **List**, подаден на функция, **може** да бъде променен от функцията - и извикващият вижда промяната:"
 
 #. paragraph
 #: site/lectures/04-functions.md:916
@@ -1045,8 +1045,8 @@ msgstr "Именувана функция също работи като клю�
 
 #. paragraph
 #: site/lectures/04-functions.md:1212
-msgid "Sorting is covered in depth in session 5. Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
-msgstr "Сортирането е разгледано в дълбочина в занятие 5. Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
+msgid "Sorting is covered in depth in [session 5](./05-lists-advanced.md#_4-sorting-and-the-top-n). Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
+msgstr "Сортирането е разгледано в дълбочина в [занятие 5](./05-lists-advanced.md#_4-sorting-and-the-top-n). Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
 
 #. heading 2
 #: site/lectures/04-functions.md:1215
@@ -1060,13 +1060,13 @@ msgstr "Структурата на скрипт, който можете да �
 
 #. paragraph
 #: site/lectures/04-functions.md:1269
-msgid "Compare it with the first example of session 2: the same result, but now each part has a name, can be tested alone, and can be reused - `read_loans` in the next report, `dpd_bucket` in a check of the data."
-msgstr "Сравнете го с първия пример от занятие 2: същият резултат, но сега всяка част има име, може да се тества сама и може да се преизползва - `read_loans` в следващия отчет, `dpd_bucket` в проверка на данните."
+msgid "Compare it with the first example of [session 2](./02-conditions-and-loops.md): the same result, but now each part has a name, can be tested alone, and can be reused - `read_loans` in the next report, `dpd_bucket` in a check of the data."
+msgstr "Сравнете го с първия пример от [занятие 2](./02-conditions-and-loops.md): същият резултат, но сега всяка част има име, може да се тества сама и може да се преизползва - `read_loans` в следващия отчет, `dpd_bucket` в проверка на данните."
 
 #. paragraph
 #: site/lectures/04-functions.md:1273
-msgid "In a file that is run as a script, the main code is often put under `if __name__ == \"__main__\":` - so that the functions can be imported by another file without running the report. Modules and `import` of your own files are the topic of session 10."
-msgstr "Във файл, който се пуска като скрипт, основният код често се слага под `if __name__ == \"__main__\":` - така функциите могат да се import-ват от друг файл, без да се пуска отчетът. Модулите и `import` на собствени файлове са темата на занятие 10."
+msgid "In a file that is run as a script, the main code is often put under `if __name__ == \"__main__\":` - so that the functions can be imported by another file without running the report. Modules and `import` of your own files are the topic of [session 10](./10-modules-and-git.md#_2-your-own-module)."
+msgstr "Във файл, който се пуска като скрипт, основният код често се слага под `if __name__ == \"__main__\":` - така функциите могат да се import-ват от друг файл, без да се пуска отчетът. Модулите и `import` на собствени файлове са темата на [занятие 10](./10-modules-and-git.md#_2-your-own-module)."
 
 #. heading 2
 #: site/lectures/04-functions.md:1278
@@ -1255,8 +1255,8 @@ msgstr "Задачите за упражнение, които не сте до�
 
 #. paragraph
 #: site/lectures/04-functions.md:1323
-msgid "Optional: a **loan calculator** made of functions - the same program as the optional homework of session 2, but organised like this: `get_user_data()` reads and checks the input (amount > 0, rate 0 - 50, years 1 - 30; ask again while a value is wrong) and returns a tuple; `calc_payment(amount, rate, years)` returns the payment; `print_schedule(amount, rate, years)` prints the schedule. Write a separate function for each check: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, each returning `True` or `False`."
-msgstr "По желание: **кредитен калкулатор**, съставен от функции - същата програма като домашното по желание от занятие 2, но организирана така: `get_user_data()` чете и проверява входа (сума > 0, лихва 0 - 50, години 1 - 30; пита отново, докато стойността е грешна) и връща tuple; `calc_payment(amount, rate, years)` връща вноската; `print_schedule(amount, rate, years)` отпечатва плана. Напишете отделна функция за всяка проверка: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, всяка връща `True` или `False`."
+msgid "Optional: a **loan calculator** made of functions - the same program as the optional homework of [session 2](./02-conditions-and-loops.md#homework), but organised like this: `get_user_data()` reads and checks the input (amount > 0, rate 0 - 50, years 1 - 30; ask again while a value is wrong) and returns a tuple; `calc_payment(amount, rate, years)` returns the payment; `print_schedule(amount, rate, years)` prints the schedule. Write a separate function for each check: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, each returning `True` or `False`."
+msgstr "По желание: **кредитен калкулатор**, съставен от функции - същата програма като домашното по желание от [занятие 2](./02-conditions-and-loops.md#homework), но организирана така: `get_user_data()` чете и проверява входа (сума > 0, лихва 0 - 50, години 1 - 30; пита отново, докато стойността е грешна) и връща tuple; `calc_payment(amount, rate, years)` връща вноската; `print_schedule(amount, rate, years)` отпечатва плана. Напишете отделна функция за всяка проверка: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, всяка връща `True` или `False`."
 
 #. heading 2
 #: site/lectures/04-functions.md:1331
@@ -1275,8 +1275,8 @@ msgstr "Декоратори"
 
 #. paragraph
 #: site/lectures/04-functions.md:1337
-msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in session 11, `@pytest.fixture`, `@app.get` in web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs` and a function inside a function (the Advanced boxes of sections 4 and 6)."
-msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в занятие 11, `@pytest.fixture`, `@app.get` в уеб frameworks). Тази част обяснява `@`, което ще виждате. Тя използва `*args, **kwargs` и функция във функция (каретата \"За напреднали\" в раздели 4 и 6)."
+msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in [session 11](./11-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` in web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs` and a function inside a function (the Advanced boxes of sections 4 and 6)."
+msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в [занятие 11](./11-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` в уеб frameworks). Тази част обяснява `@`, което ще виждате. Тя използва `*args, **kwargs` и функция във функция (каретата \"За напреднали\" в раздели 4 и 6)."
 
 #. heading 4
 #: site/lectures/04-functions.md:1342
@@ -1357,6 +1357,36 @@ msgstr "Видеа: [Python tutorial for beginners 8: functions](https://www.you
 #: site/lectures/04-functions.md:1458
 msgid "**Next session:** lists, advanced - list comprehensions, sorting with `key`, `zip`, `enumerate`, `map` and `filter`, and a table as a list of rows."
 msgstr "**Следващото занятие:** lists за напреднали - list comprehensions, сортиране с `key`, `zip`, `enumerate`, `map` и `filter` и таблица като list от редове."
+
+#~ msgid "`function_name` - a valid name (session 1): `snake_case`, a verb that says what the function does - `calculate_interest`, `read_loans`, `is_late`."
+#~ msgstr "`function_name` - валидно име (занятие 1): `snake_case`, глагол, който казва какво прави функцията - `calculate_interest`, `read_loans`, `is_late`."
+
+#~ msgid "`pass` (session 2) is a body that does nothing - for a function you will write later. A full definition:"
+#~ msgstr "`pass` (занятие 2) е тяло, което не прави нищо - за функция, която ще напишете по-късно. Пълна дефиниция:"
+
+#~ msgid "Two stars `**` collect **all the extra keyword arguments** into a **dictionary** (dictionaries: session 6 - here, pairs of a name and a value):"
+#~ msgstr "Две звездички `**` събират **всички допълнителни именувани аргументи** в **dictionary** (dictionaries: занятие 6 - тук двойки от име и стойност):"
+
+#~ msgid "`return a, b` returns a **tuple** (session 3) - and the caller can unpack it:"
+#~ msgstr "`return a, b` връща **tuple** (занятие 3) - и извикващият може да го разопакова:"
+
+#~ msgid "A parameter is bound to **the same object** as the argument - Python does not copy it (session 3: names and references). For numbers and strings it makes no difference, because they cannot change. A **list** passed to a function **can** be changed by the function - and the caller sees the change:"
+#~ msgstr "Параметърът се свързва със **същия обект** като аргумента - Python не го копира (занятие 3: имена и референции). За числа и strings това няма значение, защото те не могат да се променят. **List**, подаден на функция, **може** да бъде променен от функцията - и извикващият вижда промяната:"
+
+#~ msgid "Sorting is covered in depth in session 5. Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
+#~ msgstr "Сортирането е разгледано в дълбочина в занятие 5. Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
+
+#~ msgid "Compare it with the first example of session 2: the same result, but now each part has a name, can be tested alone, and can be reused - `read_loans` in the next report, `dpd_bucket` in a check of the data."
+#~ msgstr "Сравнете го с първия пример от занятие 2: същият резултат, но сега всяка част има име, може да се тества сама и може да се преизползва - `read_loans` в следващия отчет, `dpd_bucket` в проверка на данните."
+
+#~ msgid "In a file that is run as a script, the main code is often put under `if __name__ == \"__main__\":` - so that the functions can be imported by another file without running the report. Modules and `import` of your own files are the topic of session 10."
+#~ msgstr "Във файл, който се пуска като скрипт, основният код често се слага под `if __name__ == \"__main__\":` - така функциите могат да се import-ват от друг файл, без да се пуска отчетът. Модулите и `import` на собствени файлове са темата на занятие 10."
+
+#~ msgid "Optional: a **loan calculator** made of functions - the same program as the optional homework of session 2, but organised like this: `get_user_data()` reads and checks the input (amount > 0, rate 0 - 50, years 1 - 30; ask again while a value is wrong) and returns a tuple; `calc_payment(amount, rate, years)` returns the payment; `print_schedule(amount, rate, years)` prints the schedule. Write a separate function for each check: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, each returning `True` or `False`."
+#~ msgstr "По желание: **кредитен калкулатор**, съставен от функции - същата програма като домашното по желание от занятие 2, но организирана така: `get_user_data()` чете и проверява входа (сума > 0, лихва 0 - 50, години 1 - 30; пита отново, докато стойността е грешна) и връща tuple; `calc_payment(amount, rate, years)` връща вноската; `print_schedule(amount, rate, years)` отпечатва плана. Напишете отделна функция за всяка проверка: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, всяка връща `True` или `False`."
+
+#~ msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in session 11, `@pytest.fixture`, `@app.get` in web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs` and a function inside a function (the Advanced boxes of sections 4 and 6)."
+#~ msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в занятие 11, `@pytest.fixture`, `@app.get` в уеб frameworks). Тази част обяснява `@`, което ще виждате. Тя използва `*args, **kwargs` и функция във функция (каретата \"За напреднали\" в раздели 4 и 6)."
 
 #~ msgid "Use it rarely. A function that changes global variables is hard to understand and to test: you cannot see from the call what it changes. Prefer: **values in through the parameters, results out through `return`**."
 #~ msgstr "Използвайте го рядко. Функция, която променя глобални променливи, е трудна за разбиране и за тестване: от извикването не се вижда какво променя. Предпочитайте: **стойностите влизат през параметрите, резултатите излизат през `return`**."

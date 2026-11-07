@@ -54,7 +54,7 @@ print("90+    ", over_90)
 ```
 
 By the end of today you will be able to read every line of this example. In
-session 15 pandas does the same in two lines - but it does exactly this inside.
+[session 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means) pandas does the same in two lines - but it does exactly this inside.
 
 ## 1. True and False
 
@@ -76,7 +76,7 @@ decision (sections 4 - 8) and of every `while` loop (section 11).
 ### What is true and what is false
 
 `if` and `while` accept **any value**, not only `True` and `False`. Python decides by
-the rules you met in session 1 (*truthy* and *falsy*):
+the rules you met in [session 1](./01-intro-syntax-types.md#to-bool-truthy-and-falsy) (*truthy* and *falsy*):
 
 | Type | False | True |
 |---|---|---|
@@ -139,7 +139,7 @@ print(product in ("mortgage", "consumer"))     # like SQL: product IN ('mortgage
 print("age" in "mortgage")                     # in a string: is it a part of it?
 ```
 
-`is` compares **objects**, not values (session 1, animation "Names and objects").
+`is` compares **objects**, not values ([session 1](./01-intro-syntax-types.md#names-not-boxes), animation "Names and objects").
 Use it only with `None`: `x is None`, `x is not None`.
 
 ### Different types
@@ -165,7 +165,7 @@ Numbers of different types compare as you expect: `1 == 1.0` is `True`, and
 
 ::: tip Best practice
 Make sure you compare values of the **same type**. Convert the data first -
-`int()`, `float()`, `str()` (session 1) - and then compare.
+`int()`, `float()`, `str()` ([session 1](./01-intro-syntax-types.md#_12-converting-between-types)) - and then compare.
 
 ```python run
 print("2" == str(2))
@@ -206,11 +206,11 @@ print("2026-01-15" < "2026-09-30")      # True - right
 print("15.01.2026" < "30.09.2025")      # True - wrong: "1" < "3"
 ```
 
-Real dates (`datetime`) come in session 7.
+Real dates (`datetime`) come in [session 7](./07-text-processing.md#_9-dates-from-text).
 
 ### Chained comparisons
 
-Comparisons can be chained, like `BETWEEN` in SQL (session 1):
+Comparisons can be chained, like `BETWEEN` in SQL ([session 1](./01-intro-syntax-types.md#comparison-operators)):
 
 ```python run
 days_past_due = 45
@@ -221,7 +221,7 @@ print(0 < x < 10)
 
 ### Floats
 
-Two floats that "should" be equal may not be (session 1, section 14). Compare them
+Two floats that "should" be equal may not be ([session 1, section 14](./01-intro-syntax-types.md#_14-floats-rounding-and-decimal)). Compare them
 with a tolerance:
 
 ```python run
@@ -307,7 +307,7 @@ print(rate if rate is not None else 5.0)    # 0.0 - right (section 7)
 ### Order: `not`, then `and`, then `or`
 
 Like `*` before `+`: `not` is applied first, then `and`, then `or` (the full table
-is in session 1, section 11). Use brackets when you mix `and` and `or`:
+is in [session 1, section 11](./01-intro-syntax-types.md#_11-numbers-and-operators)). Use brackets when you mix `and` and `or`:
 
 ```python run
 days_past_due, rating, restructured = 10, 8, False
@@ -323,7 +323,7 @@ missing value in a condition counts as false. In Python, `None` is simply falsy:
 :::
 
 ::: info Animation
-**How an expression is evaluated** (session 1):
+**How an expression is evaluated** ([session 1](./01-intro-syntax-types.md#order-of-operations)):
 [5. Chained comparisons](../animations/expressionEvaluation.html#5){target="_blank"},
 [6. `and` / `or`](../animations/expressionEvaluation.html#6){target="_blank"}
 :::
@@ -346,7 +346,7 @@ if condition:
 - After `if` comes the condition, then a colon `:`.
 - The **block** is the lines indented under it (4 spaces). It runs only if the
   condition is true (truthy). There are no braces and no `end` - the indentation
-  says where the block ends (session 1, section 8).
+  says where the block ends ([session 1, section 8](./01-intro-syntax-types.md#_8-the-structure-of-a-program)).
 - The condition can be any expression: Python takes its truth value (section 1).
 
 ```python run
@@ -396,7 +396,7 @@ if rating <= 4:
 print("done")
 ```
 
-`pass` works in every block: `if`, `for`, `while`, functions (session 4).
+`pass` works in every block: `if`, `for`, `while`, functions ([session 4](./04-functions.md#_2-defining-a-function)).
 
 ## 5. `if` - `else`
 
@@ -756,7 +756,7 @@ print(RETAIL)                    # corporate - the constant is lost too
 
 With a `case _:` after it, Python even refuses to run the code: `SyntaxError: name
 capture 'RETAIL' makes remaining patterns unreachable`. Write the values themselves
-(`case "retail":`), or dotted names (`case Segment.RETAIL:`, session 11).
+(`case "retail":`), or dotted names (`case Segment.RETAIL:`, [session 11](./11-oop-classes.md#enum-named-codes)).
 :::
 
 ### Before Python 3.10: `if` - `elif` chains
@@ -796,7 +796,7 @@ match input("Enter a number [1-3]: "):
 ```
 
 ::: details Advanced: patterns with several values
-A pattern can also take a tuple apart (tuples: session 3). Each name in the pattern
+A pattern can also take a tuple apart (tuples: [session 3](./03-lists-tuples-sets.md#_8-tuples)). Each name in the pattern
 gets its part of the value:
 
 ```python run
@@ -821,7 +821,7 @@ in the tutorial, and the [pattern matching tutorial (PEP 636)](https://peps.pyth
 Not needed for the tasks, the homework or the next sessions - read it when you have time.
 :::
 
-A recap of session 1, section 11, for conditions.
+A recap of [session 1, section 11](./01-intro-syntax-types.md#_11-numbers-and-operators), for conditions.
 
 The order in which the parts of an expression are calculated decides the result.
 Wrong assumptions about it lead to bugs:
@@ -831,7 +831,7 @@ print(2 + 3 * 4)        # 14, not 20
 print((2 + 3) * 4)      # 20
 ```
 
-The short version of the table (the full one in session 1, section 11, and in the
+The short version of the table (the full one in [session 1, section 11](./01-intro-syntax-types.md#_11-numbers-and-operators), and in the
 [Python reference](https://docs.python.org/3/reference/expressions.html#operator-precedence)):
 arithmetic, then comparisons (`<`, `==`, `in`, `is`, ...), then `not`, then `and`,
 then `or`, and the conditional expression `... if ... else ...` last of all.
@@ -865,7 +865,7 @@ A **loop** runs a block of code **many times**. Each run of the block is an
 
 You already use loops in SAS: the **DATA step is a loop** - it runs once for each
 row of the input data set, without you writing it. In Python you write the loop
-yourself (and in pandas, again, you do not - session 14).
+yourself (and in pandas, again, you do not - [session 14](./14-numpy-pandas-intro.md#operations-on-the-whole-array)).
 
 | SAS | Python |
 |---|---|
@@ -998,9 +998,9 @@ for letter in "ada":
 
 Anything that gives items one by one - an *iterable*. Today: a string (its
 characters), a `range` of numbers, a few values in square brackets, and the lines
-of a file. The square brackets make a **list** - session 3 is all about lists; for
-now, read `[0, 35, 120]` simply as "these values, one by one". Tuples (session 3)
-and dictionaries (session 6) come later.
+of a file. The square brackets make a **list** - [session 3](./03-lists-tuples-sets.md#_2-lists) is all about lists; for
+now, read `[0, 35, 120]` simply as "these values, one by one". Tuples ([session 3](./03-lists-tuples-sets.md#_8-tuples))
+and dictionaries ([session 6](./06-dictionaries.md)) come later.
 
 ```python run
 for item in "byron":                # a string
@@ -1017,7 +1017,7 @@ for item in [10, 20, 30]:           # a few values: a list (session 3)
 
 `range(stop)`, `range(start, stop)` and `range(start, stop, step)` give whole numbers
 from `start` (0 if not given) up to **`stop - 1`** - the stop itself is **not**
-included. Session 3 has the details.
+included. [Session 3](./03-lists-tuples-sets.md#_10-range) has the details.
 
 ```python run
 for n in range(1, 6):
@@ -1068,7 +1068,7 @@ print(count_late, "late loans, the worst is", max_days, "days")
 ### Two names at once
 
 When each item is a **pair** of values in round brackets - `(1, "one")`, a *tuple*
-(session 3) - the `for` can give each part its own name:
+([session 3](./03-lists-tuples-sets.md#unpacking)) - the `for` can give each part its own name:
 
 ```python run
 pairs = [(1, "one"), (2, "two"), (3, "three")]
@@ -1076,8 +1076,8 @@ for number, name in pairs:
     print(f"{number} is {name}")
 ```
 
-That is all you need today. Session 3 shows lists of records like this one, and
-session 6 loops over a dictionary the same way.
+That is all you need today. [Session 3](./03-lists-tuples-sets.md#tuples-as-records) shows lists of records like this one, and
+[session 6](./06-dictionaries.md#keys-values-items) loops over a dictionary the same way.
 
 ### Nested loops
 
@@ -1122,13 +1122,13 @@ for years in range(1, 6):
 ```
 
 Tables kept in memory - a list of rows - and the loops over them come in
-session 5.
+[session 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows).
 
 ### The rows of a file
 
 A text file is a sequence of **lines**, so `for` can read it line by line - like a
 SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in
-session 9):
+[session 9](./09-errors-and-files.md#open-read-close-with)):
 
 ```python run
 with open("data/loans.csv", encoding="utf-8") as file:
@@ -1141,8 +1141,8 @@ with open("data/loans.csv", encoding="utf-8") as file:
 ```
 
 `split(",")` cuts the line at the commas and gives the fields as strings, in square
-brackets: a list (session 3). The names on the left of `=` take them in
-order (as in "several names at once", session 1) - then convert the ones you need:
+brackets: a list ([session 3](./03-lists-tuples-sets.md#from-text-split)). The names on the left of `=` take them in
+order (as in "several names at once", [session 1](./01-intro-syntax-types.md#assignment-in-more-forms)) - then convert the ones you need:
 
 ```python run
 total = 0.0
@@ -1346,7 +1346,7 @@ for letter in word:
 In data work, `continue` skips the records you do not want - like `WHERE` in SQL,
 or a subsetting `IF` or `DELETE` in a SAS DATA step. Count only the USD loans, and skip empty
 lines. Here the line is kept as one list, `fields`, and `fields[3]` is its 4th field:
-the positions are counted from 0 (session 3 explains it).
+the positions are counted from 0 ([session 3](./03-lists-tuples-sets.md#indexes-from-the-start-and-from-the-end) explains it).
 
 ```python run
 usd_count = 0
@@ -1401,7 +1401,7 @@ for i in range(1, 6):
 
 ### A repayment schedule
 
-An annuity loan (session 1): the same payment every month. Each month, the interest
+An annuity loan ([session 1](./01-intro-syntax-types.md)): the same payment every month. Each month, the interest
 is calculated on the balance, and the rest of the payment repays the principal.
 
 ```sas
@@ -1438,7 +1438,7 @@ print(f"total interest: {total_interest:,.2f}")
 ```
 
 (The last balance can show `-0.00`: a float rounding error of a fraction of a cent,
-session 1, section 14.)
+[session 1, section 14](./01-intro-syntax-types.md#_14-floats-rounding-and-decimal).)
 
 ### Find the rate: higher or lower?
 
@@ -1529,13 +1529,13 @@ run the file.
 - **Task 5, part 2:** copy the loop of part 1 - it gives each field a name - and
   stop with `break` at the first `stage == "3"`. Or keep the line as one list,
   `fields = line.strip().split(",")`: then `fields[0]` is the loan id and
-  `fields[10]` the stage (the positions are counted from 0, session 3).
+  `fields[10]` the stage (the positions are counted from 0, [session 3](./03-lists-tuples-sets.md#indexes-from-the-start-and-from-the-end)).
 - **Task 6, part 3:** `stage_counts` holds pairs; loop over it with two names,
   `for stage, count in stage_counts:`, and add one line to `chart` in each
-  iteration (`chart += ...`). `"#" * 5` is `"#####"` (session 1).
+  iteration (`chart += ...`). `"#" * 5` is `"#####"` ([session 1](./01-intro-syntax-types.md#operators-on-strings)).
 - **Homework, part 4:** build `report` with `+=` and f-strings with widths, as in
   section 15: `f"{'current':<8}{current_count:>6}"`, `:>18,.2f`, and `:>8.1%` for a
-  percent (session 1, section 13).
+  percent ([session 1, section 13](./01-intro-syntax-types.md#_13-strings-and-f-strings)).
 - **Homework, part 4 - a `FAIL`:** the check compares the whole text, so one space
   more or less is a `FAIL`. `print(report)`, then compare the `got:` and `expected:`
   lines under the `FAIL` character by character - one line of the report at a time.

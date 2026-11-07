@@ -75,8 +75,8 @@ msgstr "От SQL към Python - един и същ въпрос, по два н
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:56
-msgid "By the end of today you will be able to read every line of this example. In session 15 pandas does the same in two lines - but it does exactly this inside."
-msgstr "До края на днешното занятие ще можете да прочетете всеки ред от този пример. В занятие 15 pandas прави същото с два реда - но отвътре прави точно това."
+msgid "By the end of today you will be able to read every line of this example. In [session 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means) pandas does the same in two lines - but it does exactly this inside."
+msgstr "До края на днешното занятие ще можете да прочетете всеки ред от този пример. В [занятие 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means) pandas прави същото с два реда - но отвътре прави точно това."
 
 #. heading 2
 #: site/lectures/02-conditions-and-loops.md:59
@@ -105,8 +105,8 @@ msgstr "Кое е вярно и кое невярно"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:78
-msgid "`if` and `while` accept **any value**, not only `True` and `False`. Python decides by the rules you met in session 1 (*truthy* and *falsy*):"
-msgstr "`if` и `while` приемат **всяка стойност**, не само `True` и `False`. Python решава по правилата, които видяхте в занятие 1 (*truthy* и *falsy*):"
+msgid "`if` and `while` accept **any value**, not only `True` and `False`. Python decides by the rules you met in [session 1](./01-intro-syntax-types.md#to-bool-truthy-and-falsy) (*truthy* and *falsy*):"
+msgstr "`if` и `while` приемат **всяка стойност**, не само `True` и `False`. Python решава по правилата, които видяхте в [занятие 1](./01-intro-syntax-types.md#to-bool-truthy-and-falsy) (*truthy* и *falsy*):"
 
 #. table cell
 #: site/lectures/02-conditions-and-loops.md:81
@@ -270,8 +270,8 @@ msgstr "е елемент на"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:142
-msgid "`is` compares **objects**, not values (session 1, animation \"Names and objects\"). Use it only with `None`: `x is None`, `x is not None`."
-msgstr "`is` сравнява **обекти**, а не стойности (занятие 1, анимацията \"Names and objects\"). Използвайте го само с `None`: `x is None`, `x is not None`."
+msgid "`is` compares **objects**, not values ([session 1](./01-intro-syntax-types.md#names-not-boxes), animation \"Names and objects\"). Use it only with `None`: `x is None`, `x is not None`."
+msgstr "`is` сравнява **обекти**, а не стойности ([занятие 1](./01-intro-syntax-types.md#names-not-boxes), анимацията \"Names and objects\"). Използвайте го само с `None`: `x is None`, `x is not None`."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:145
@@ -300,8 +300,8 @@ msgstr "Добра практика"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:167
-msgid "Make sure you compare values of the **same type**. Convert the data first - `int()`, `float()`, `str()` (session 1) - and then compare."
-msgstr "Уверете се, че сравнявате стойности от **един и същ тип**. Първо преобразувайте данните - `int()`, `float()`, `str()` (занятие 1) - и после сравнявайте."
+msgid "Make sure you compare values of the **same type**. Convert the data first - `int()`, `float()`, `str()` ([session 1](./01-intro-syntax-types.md#_12-converting-between-types)) - and then compare."
+msgstr "Уверете се, че сравнявате стойности от **един и същ тип**. Първо преобразувайте данните - `int()`, `float()`, `str()` ([занятие 1](./01-intro-syntax-types.md#_12-converting-between-types)) - и после сравнявайте."
 
 #. box title
 #: site/lectures/02-conditions-and-loops.md:177
@@ -335,8 +335,8 @@ msgstr "Датите във формат ISO `YYYY-MM-DD` (форматът на
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:209
-msgid "Real dates (`datetime`) come in session 7."
-msgstr "Истинските дати (`datetime`) идват в занятие 7."
+msgid "Real dates (`datetime`) come in [session 7](./07-text-processing.md#_9-dates-from-text)."
+msgstr "Истинските дати (`datetime`) идват в [занятие 7](./07-text-processing.md#_9-dates-from-text)."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:211
@@ -345,8 +345,8 @@ msgstr "Верижни сравнения"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:213
-msgid "Comparisons can be chained, like `BETWEEN` in SQL (session 1):"
-msgstr "Сравненията могат да се свързват във верига, като `BETWEEN` в SQL (занятие 1):"
+msgid "Comparisons can be chained, like `BETWEEN` in SQL ([session 1](./01-intro-syntax-types.md#comparison-operators)):"
+msgstr "Сравненията могат да се свързват във верига, като `BETWEEN` в SQL ([занятие 1](./01-intro-syntax-types.md#comparison-operators)):"
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:222
@@ -355,8 +355,8 @@ msgstr "Floats"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:224
-msgid "Two floats that \"should\" be equal may not be (session 1, section 14). Compare them with a tolerance:"
-msgstr "Два float, които \"би трябвало\" да са равни, може да не са (занятие 1, раздел 14). Сравнявайте ги с толеранс:"
+msgid "Two floats that \"should\" be equal may not be ([session 1, section 14](./01-intro-syntax-types.md#_14-floats-rounding-and-decimal)). Compare them with a tolerance:"
+msgstr "Два float, които \"би трябвало\" да са равни, може да не са ([занятие 1, раздел 14](./01-intro-syntax-types.md#_14-floats-rounding-and-decimal)). Сравнявайте ги с толеранс:"
 
 #. heading 2
 #: site/lectures/02-conditions-and-loops.md:235
@@ -450,8 +450,8 @@ msgstr "Ред: `not`, после `and`, после `or`"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:309
-msgid "Like `*` before `+`: `not` is applied first, then `and`, then `or` (the full table is in session 1, section 11). Use brackets when you mix `and` and `or`:"
-msgstr "Като `*` преди `+`: първо се прилага `not`, после `and`, после `or` (пълната таблица е в занятие 1, раздел 11). Използвайте скоби, когато смесвате `and` и `or`:"
+msgid "Like `*` before `+`: `not` is applied first, then `and`, then `or` (the full table is in [session 1, section 11](./01-intro-syntax-types.md#_11-numbers-and-operators)). Use brackets when you mix `and` and `or`:"
+msgstr "Като `*` преди `+`: първо се прилага `not`, после `and`, после `or` (пълната таблица е в [занятие 1, раздел 11](./01-intro-syntax-types.md#_11-numbers-and-operators)). Използвайте скоби, когато смесвате `and` и `or`:"
 
 #. box title
 #: site/lectures/02-conditions-and-loops.md:319
@@ -470,8 +470,8 @@ msgstr "Анимация"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:326
-msgid "**How an expression is evaluated** (session 1): [5. Chained comparisons](../animations/expressionEvaluation.html#5){target=\"_blank\"}, [6. `and` / `or`](../animations/expressionEvaluation.html#6){target=\"_blank\"}"
-msgstr "**Как се изчислява един израз** (занятие 1): [5. Верижни сравнения](../animations/expressionEvaluation.html#5){target=\"_blank\"}, [6. `and` / `or`](../animations/expressionEvaluation.html#6){target=\"_blank\"}"
+msgid "**How an expression is evaluated** ([session 1](./01-intro-syntax-types.md#order-of-operations)): [5. Chained comparisons](../animations/expressionEvaluation.html#5){target=\"_blank\"}, [6. `and` / `or`](../animations/expressionEvaluation.html#6){target=\"_blank\"}"
+msgstr "**Как се изчислява един израз** ([занятие 1](./01-intro-syntax-types.md#order-of-operations)): [5. Верижни сравнения](../animations/expressionEvaluation.html#5){target=\"_blank\"}, [6. `and` / `or`](../animations/expressionEvaluation.html#6){target=\"_blank\"}"
 
 #. heading 2
 #: site/lectures/02-conditions-and-loops.md:331
@@ -500,8 +500,8 @@ msgstr "След `if` идва условието, после двоеточие
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:347
-msgid "The **block** is the lines indented under it (4 spaces). It runs only if the condition is true (truthy). There are no braces and no `end` - the indentation says where the block ends (session 1, section 8)."
-msgstr "**Блокът** са редовете, отместени навътре под него (4 интервала). Той се изпълнява само ако условието е вярно (truthy). Няма къдрави скоби и няма `end` - отстъпът казва къде свършва блокът (занятие 1, раздел 8)."
+msgid "The **block** is the lines indented under it (4 spaces). It runs only if the condition is true (truthy). There are no braces and no `end` - the indentation says where the block ends ([session 1, section 8](./01-intro-syntax-types.md#_8-the-structure-of-a-program))."
+msgstr "**Блокът** са редовете, отместени навътре под него (4 интервала). Той се изпълнява само ако условието е вярно (truthy). Няма къдрави скоби и няма `end` - отстъпът казва къде свършва блокът ([занятие 1, раздел 8](./01-intro-syntax-types.md#_8-the-structure-of-a-program))."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:350
@@ -535,8 +535,8 @@ msgstr "Python не позволява празен блок. Когато ви 
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:399
-msgid "`pass` works in every block: `if`, `for`, `while`, functions (session 4)."
-msgstr "`pass` работи във всеки блок: `if`, `for`, `while`, функции (занятие 4)."
+msgid "`pass` works in every block: `if`, `for`, `while`, functions ([session 4](./04-functions.md#_2-defining-a-function))."
+msgstr "`pass` работи във всеки блок: `if`, `for`, `while`, функции ([занятие 4](./04-functions.md#_2-defining-a-function))."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:410
@@ -735,8 +735,8 @@ msgstr "**Име в case хваща всичко.** В `case` обикновен
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:757
-msgid "With a `case _:` after it, Python even refuses to run the code: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Write the values themselves (`case \"retail\":`), or dotted names (`case Segment.RETAIL:`, session 11)."
-msgstr "С `case _:` след него Python дори отказва да изпълни кода: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Пишете самите стойности (`case \"retail\":`) или имена с точка (`case Segment.RETAIL:`, занятие 11)."
+msgid "With a `case _:` after it, Python even refuses to run the code: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Write the values themselves (`case \"retail\":`), or dotted names (`case Segment.RETAIL:`, [session 11](./11-oop-classes.md#enum-named-codes))."
+msgstr "С `case _:` след него Python дори отказва да изпълни кода: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Пишете самите стойности (`case \"retail\":`) или имена с точка (`case Segment.RETAIL:`, [занятие 11](./11-oop-classes.md#enum-named-codes))."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:762
@@ -760,8 +760,8 @@ msgstr "За напреднали: patterns с няколко стойности
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:799
-msgid "A pattern can also take a tuple apart (tuples: session 3). Each name in the pattern gets its part of the value:"
-msgstr "Pattern може и да разглоби tuple (tuples: занятие 3). Всяко име в pattern получава своята част от стойността:"
+msgid "A pattern can also take a tuple apart (tuples: [session 3](./03-lists-tuples-sets.md#_8-tuples)). Each name in the pattern gets its part of the value:"
+msgstr "Pattern може и да разглоби tuple (tuples: [занятие 3](./03-lists-tuples-sets.md#_8-tuples)). Всяко име в pattern получава своята част от стойността:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:814
@@ -785,8 +785,8 @@ msgstr "Не е нужно за задачите, домашното или сл
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:824
-msgid "A recap of session 1, section 11, for conditions."
-msgstr "Преговор на занятие 1, раздел 11, за условията."
+msgid "A recap of [session 1, section 11](./01-intro-syntax-types.md#_11-numbers-and-operators), for conditions."
+msgstr "Преговор на [занятие 1, раздел 11](./01-intro-syntax-types.md#_11-numbers-and-operators), за условията."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:826
@@ -795,8 +795,8 @@ msgstr "Редът, в който се изчисляват частите на 
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:834
-msgid "The short version of the table (the full one in session 1, section 11, and in the [Python reference](https://docs.python.org/3/reference/expressions.html#operator-precedence)): arithmetic, then comparisons (`<`, `==`, `in`, `is`, ...), then `not`, then `and`, then `or`, and the conditional expression `... if ... else ...` last of all."
-msgstr "Кратката версия на таблицата (пълната е в занятие 1, раздел 11, и в [Python reference](https://docs.python.org/3/reference/expressions.html#operator-precedence)): аритметика, после сравнения (`<`, `==`, `in`, `is`, ...), после `not`, после `and`, после `or`, а условният израз `... if ... else ...` - най-накрая."
+msgid "The short version of the table (the full one in [session 1, section 11](./01-intro-syntax-types.md#_11-numbers-and-operators), and in the [Python reference](https://docs.python.org/3/reference/expressions.html#operator-precedence)): arithmetic, then comparisons (`<`, `==`, `in`, `is`, ...), then `not`, then `and`, then `or`, and the conditional expression `... if ... else ...` last of all."
+msgstr "Кратката версия на таблицата (пълната е в [занятие 1, раздел 11](./01-intro-syntax-types.md#_11-numbers-and-operators), и в [Python reference](https://docs.python.org/3/reference/expressions.html#operator-precedence)): аритметика, после сравнения (`<`, `==`, `in`, `is`, ...), после `not`, после `and`, после `or`, а условният израз `... if ... else ...` - най-накрая."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:839
@@ -830,8 +830,8 @@ msgstr "`for` повтаря **за всеки елемент** на поред�
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:866
-msgid "You already use loops in SAS: the **DATA step is a loop** - it runs once for each row of the input data set, without you writing it. In Python you write the loop yourself (and in pandas, again, you do not - session 14)."
-msgstr "В SAS вече използвате цикли: **DATA step-ът е цикъл** - той се изпълнява веднъж за всеки ред на входния набор от данни, без да го пишете. В Python пишете цикъла сами (а в pandas - пак не, занятие 14)."
+msgid "You already use loops in SAS: the **DATA step is a loop** - it runs once for each row of the input data set, without you writing it. In Python you write the loop yourself (and in pandas, again, you do not - [session 14](./14-numpy-pandas-intro.md#operations-on-the-whole-array))."
+msgstr "В SAS вече използвате цикли: **DATA step-ът е цикъл** - той се изпълнява веднъж за всеки ред на входния набор от данни, без да го пишете. В Python пишете цикъла сами (а в pandas - пак не, [занятие 14](./14-numpy-pandas-intro.md#operations-on-the-whole-array))."
 
 #. table cell
 #: site/lectures/02-conditions-and-loops.md:872
@@ -945,8 +945,8 @@ msgstr "Какво може да обхожда `for`"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:999
-msgid "Anything that gives items one by one - an *iterable*. Today: a string (its characters), a `range` of numbers, a few values in square brackets, and the lines of a file. The square brackets make a **list** - session 3 is all about lists; for now, read `[0, 35, 120]` simply as \"these values, one by one\". Tuples (session 3) and dictionaries (session 6) come later."
-msgstr "Всичко, което дава елементи един по един - *iterable*. Днес: string (символите му), `range` от числа, няколко стойности в квадратни скоби и редовете на файл. Квадратните скоби правят **list** - занятие 3 е изцяло за lists; засега четете `[0, 35, 120]` просто като \"тези стойности, една по една\". Tuples (занятие 3) и dictionaries (занятие 6) идват по-късно."
+msgid "Anything that gives items one by one - an *iterable*. Today: a string (its characters), a `range` of numbers, a few values in square brackets, and the lines of a file. The square brackets make a **list** - [session 3](./03-lists-tuples-sets.md#_2-lists) is all about lists; for now, read `[0, 35, 120]` simply as \"these values, one by one\". Tuples ([session 3](./03-lists-tuples-sets.md#_8-tuples)) and dictionaries ([session 6](./06-dictionaries.md)) come later."
+msgstr "Всичко, което дава елементи един по един - *iterable*. Днес: string (символите му), `range` от числа, няколко стойности в квадратни скоби и редовете на файл. Квадратните скоби правят **list** - [занятие 3](./03-lists-tuples-sets.md#_2-lists) е изцяло за lists; засега четете `[0, 35, 120]` просто като \"тези стойности, една по една\". Tuples ([занятие 3](./03-lists-tuples-sets.md#_8-tuples)) и dictionaries ([занятие 6](./06-dictionaries.md)) идват по-късно."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1016
@@ -955,8 +955,8 @@ msgstr "`range`: поредица от числа"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1018
-msgid "`range(stop)`, `range(start, stop)` and `range(start, stop, step)` give whole numbers from `start` (0 if not given) up to **`stop - 1`** - the stop itself is **not** included. Session 3 has the details."
-msgstr "`range(stop)`, `range(start, stop)` и `range(start, stop, step)` дават цели числа от `start` (0, ако не е даден) до **`stop - 1`** - самият stop **не** е включен. Подробностите са в занятие 3."
+msgid "`range(stop)`, `range(start, stop)` and `range(start, stop, step)` give whole numbers from `start` (0 if not given) up to **`stop - 1`** - the stop itself is **not** included. [Session 3](./03-lists-tuples-sets.md#_10-range) has the details."
+msgstr "`range(stop)`, `range(start, stop)` и `range(start, stop, step)` дават цели числа от `start` (0, ако не е даден) до **`stop - 1`** - самият stop **не** е включен. Подробностите са в [занятие 3](./03-lists-tuples-sets.md#_10-range)."
 
 #. box title
 #: site/lectures/02-conditions-and-loops.md:1030
@@ -995,13 +995,13 @@ msgstr "Две имена наведнъж"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1070
-msgid "When each item is a **pair** of values in round brackets - `(1, \"one\")`, a *tuple* (session 3) - the `for` can give each part its own name:"
-msgstr "Когато всеки елемент е **двойка** стойности в кръгли скоби - `(1, \"one\")`, *tuple* (занятие 3) - `for` може да даде на всяка част собствено име:"
+msgid "When each item is a **pair** of values in round brackets - `(1, \"one\")`, a *tuple* ([session 3](./03-lists-tuples-sets.md#unpacking)) - the `for` can give each part its own name:"
+msgstr "Когато всеки елемент е **двойка** стойности в кръгли скоби - `(1, \"one\")`, *tuple* ([занятие 3](./03-lists-tuples-sets.md#unpacking)) - `for` може да даде на всяка част собствено име:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1079
-msgid "That is all you need today. Session 3 shows lists of records like this one, and session 6 loops over a dictionary the same way."
-msgstr "Днес ви трябва само това. Занятие 3 показва lists от записи като този, а занятие 6 обхожда dictionary по същия начин."
+msgid "That is all you need today. [Session 3](./03-lists-tuples-sets.md#tuples-as-records) shows lists of records like this one, and [session 6](./06-dictionaries.md#keys-values-items) loops over a dictionary the same way."
+msgstr "Днес ви трябва само това. [Занятие 3](./03-lists-tuples-sets.md#tuples-as-records) показва lists от записи като този, а [занятие 6](./06-dictionaries.md#keys-values-items) обхожда dictionary по същия начин."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1082
@@ -1025,8 +1025,8 @@ msgstr "Върху портфейла - месечната вноска за н�
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1124
-msgid "Tables kept in memory - a list of rows - and the loops over them come in session 5."
-msgstr "Таблиците в паметта - list от редове - и циклите по тях идват в занятие 5."
+msgid "Tables kept in memory - a list of rows - and the loops over them come in [session 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows)."
+msgstr "Таблиците в паметта - list от редове - и циклите по тях идват в [занятие 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows)."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1127
@@ -1035,13 +1035,13 @@ msgstr "Редовете на файл"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1129
-msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in session 9):"
-msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step в SAS с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в занятие 9):"
+msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in [session 9](./09-errors-and-files.md#open-read-close-with)):"
+msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step в SAS с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в [занятие 9](./09-errors-and-files.md#open-read-close-with)):"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1143
-msgid "`split(\",\")` cuts the line at the commas and gives the fields as strings, in square brackets: a list (session 3). The names on the left of `=` take them in order (as in \"several names at once\", session 1) - then convert the ones you need:"
-msgstr "`split(\",\")` разрязва реда при запетаите и дава полетата като strings, в квадратни скоби: list (занятие 3). Имената вляво от `=` ги вземат по ред (както при \"няколко имена наведнъж\", занятие 1) - после преобразувайте тези, които ви трябват:"
+msgid "`split(\",\")` cuts the line at the commas and gives the fields as strings, in square brackets: a list ([session 3](./03-lists-tuples-sets.md#from-text-split)). The names on the left of `=` take them in order (as in \"several names at once\", [session 1](./01-intro-syntax-types.md#assignment-in-more-forms)) - then convert the ones you need:"
+msgstr "`split(\",\")` разрязва реда при запетаите и дава полетата като strings, в квадратни скоби: list ([занятие 3](./03-lists-tuples-sets.md#from-text-split)). Имената вляво от `=` ги вземат по ред (както при \"няколко имена наведнъж\", [занятие 1](./01-intro-syntax-types.md#assignment-in-more-forms)) - после преобразувайте тези, които ви трябват:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1170
@@ -1150,8 +1150,8 @@ msgstr "Отпечатайте дума без гласните:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1346
-msgid "In data work, `continue` skips the records you do not want - like `WHERE` in SQL, or a subsetting `IF` or `DELETE` in a SAS DATA step. Count only the USD loans, and skip empty lines. Here the line is kept as one list, `fields`, and `fields[3]` is its 4th field: the positions are counted from 0 (session 3 explains it)."
-msgstr "В работата с данни `continue` прескача записите, които не искате - като `WHERE` в SQL или subsetting `IF` или `DELETE` в DATA step в SAS. Пребройте само кредитите в USD и прескочете празните редове. Тук редът е запазен като един list, `fields`, и `fields[3]` е четвъртото му поле: позициите се броят от 0 (занятие 3 обяснява защо)."
+msgid "In data work, `continue` skips the records you do not want - like `WHERE` in SQL, or a subsetting `IF` or `DELETE` in a SAS DATA step. Count only the USD loans, and skip empty lines. Here the line is kept as one list, `fields`, and `fields[3]` is its 4th field: the positions are counted from 0 ([session 3](./03-lists-tuples-sets.md#indexes-from-the-start-and-from-the-end) explains it)."
+msgstr "В работата с данни `continue` прескача записите, които не искате - като `WHERE` в SQL или subsetting `IF` или `DELETE` в DATA step в SAS. Пребройте само кредитите в USD и прескочете празните редове. Тук редът е запазен като един list, `fields`, и `fields[3]` е четвъртото му поле: позициите се броят от 0 ([занятие 3](./03-lists-tuples-sets.md#indexes-from-the-start-and-from-the-end) обяснява защо)."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1369
@@ -1200,13 +1200,13 @@ msgstr "Погасителен план"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1404
-msgid "An annuity loan (session 1): the same payment every month. Each month, the interest is calculated on the balance, and the rest of the payment repays the principal."
-msgstr "Анюитетен кредит (занятие 1): една и съща вноска всеки месец. Всеки месец лихвата се изчислява върху остатъка, а останалата част от вноската погасява главницата."
+msgid "An annuity loan ([session 1](./01-intro-syntax-types.md)): the same payment every month. Each month, the interest is calculated on the balance, and the rest of the payment repays the principal."
+msgstr "Анюитетен кредит ([занятие 1](./01-intro-syntax-types.md)): една и съща вноска всеки месец. Всеки месец лихвата се изчислява върху остатъка, а останалата част от вноската погасява главницата."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1440
-msgid "(The last balance can show `-0.00`: a float rounding error of a fraction of a cent, session 1, section 14.)"
-msgstr "(Последният остатък може да показва `-0.00`: грешка от закръгляне на float от част от цента, занятие 1, раздел 14.)"
+msgid "(The last balance can show `-0.00`: a float rounding error of a fraction of a cent, [session 1, section 14](./01-intro-syntax-types.md#_14-floats-rounding-and-decimal).)"
+msgstr "(Последният остатък може да показва `-0.00`: грешка от закръгляне на float от част от цента, [занятие 1, раздел 14](./01-intro-syntax-types.md#_14-floats-rounding-and-decimal).)"
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1443
@@ -1320,18 +1320,18 @@ msgstr "**Задачи 2 - 4** ви дават готови цикли като 
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1529
-msgid "**Task 5, part 2:** copy the loop of part 1 - it gives each field a name - and stop with `break` at the first `stage == \"3\"`. Or keep the line as one list, `fields = line.strip().split(\",\")`: then `fields[0]` is the loan id and `fields[10]` the stage (the positions are counted from 0, session 3)."
-msgstr "**Задача 5, част 2:** копирайте цикъла от част 1 - той дава име на всяко поле - и спрете с `break` при първото `stage == \"3\"`. Или запазете реда като един list, `fields = line.strip().split(\",\")`: тогава `fields[0]` е id на кредита, а `fields[10]` - stage (позициите се броят от 0, занятие 3)."
+msgid "**Task 5, part 2:** copy the loop of part 1 - it gives each field a name - and stop with `break` at the first `stage == \"3\"`. Or keep the line as one list, `fields = line.strip().split(\",\")`: then `fields[0]` is the loan id and `fields[10]` the stage (the positions are counted from 0, [session 3](./03-lists-tuples-sets.md#indexes-from-the-start-and-from-the-end))."
+msgstr "**Задача 5, част 2:** копирайте цикъла от част 1 - той дава име на всяко поле - и спрете с `break` при първото `stage == \"3\"`. Или запазете реда като един list, `fields = line.strip().split(\",\")`: тогава `fields[0]` е id на кредита, а `fields[10]` - stage (позициите се броят от 0, [занятие 3](./03-lists-tuples-sets.md#indexes-from-the-start-and-from-the-end))."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1533
-msgid "**Task 6, part 3:** `stage_counts` holds pairs; loop over it with two names, `for stage, count in stage_counts:`, and add one line to `chart` in each iteration (`chart += ...`). `\"#\" * 5` is `\"#####\"` (session 1)."
-msgstr "**Задача 6, част 3:** `stage_counts` съдържа двойки; обходете го с две имена, `for stage, count in stage_counts:`, и добавяйте по един ред към `chart` във всяка итерация (`chart += ...`). `\"#\" * 5` е `\"#####\"` (занятие 1)."
+msgid "**Task 6, part 3:** `stage_counts` holds pairs; loop over it with two names, `for stage, count in stage_counts:`, and add one line to `chart` in each iteration (`chart += ...`). `\"#\" * 5` is `\"#####\"` ([session 1](./01-intro-syntax-types.md#operators-on-strings))."
+msgstr "**Задача 6, част 3:** `stage_counts` съдържа двойки; обходете го с две имена, `for stage, count in stage_counts:`, и добавяйте по един ред към `chart` във всяка итерация (`chart += ...`). `\"#\" * 5` е `\"#####\"` ([занятие 1](./01-intro-syntax-types.md#operators-on-strings))."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1536
-msgid "**Homework, part 4:** build `report` with `+=` and f-strings with widths, as in section 15: `f\"{'current':<8}{current_count:>6}\"`, `:>18,.2f`, and `:>8.1%` for a percent (session 1, section 13)."
-msgstr "**Домашно, част 4:** изградете `report` с `+=` и f-strings с ширини, както в раздел 15: `f\"{'current':<8}{current_count:>6}\"`, `:>18,.2f` и `:>8.1%` за процент (занятие 1, раздел 13)."
+msgid "**Homework, part 4:** build `report` with `+=` and f-strings with widths, as in section 15: `f\"{'current':<8}{current_count:>6}\"`, `:>18,.2f`, and `:>8.1%` for a percent ([session 1, section 13](./01-intro-syntax-types.md#_13-strings-and-f-strings))."
+msgstr "**Домашно, част 4:** изградете `report` с `+=` и f-strings с ширини, както в раздел 15: `f\"{'current':<8}{current_count:>6}\"`, `:>18,.2f` и `:>8.1%` за процент ([занятие 1, раздел 13](./01-intro-syntax-types.md#_13-strings-and-f-strings))."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1539
@@ -1477,6 +1477,93 @@ msgstr "Real Python: [Conditional statements](https://realpython.com/python-cond
 #: site/lectures/02-conditions-and-loops.md:1590
 msgid "**Next session:** lists, tuples and sets - indexing from 0, slices, the methods of `list`, tuples as records, and the SQL `UNION` / `INTERSECT` / `EXCEPT` with sets."
 msgstr "**Следващото занятие:** lists, tuples и sets - индексиране от 0, slices, методите на `list`, tuples като записи и `UNION` / `INTERSECT` / `EXCEPT` от SQL със sets."
+
+#~ msgid "By the end of today you will be able to read every line of this example. In session 15 pandas does the same in two lines - but it does exactly this inside."
+#~ msgstr "До края на днешното занятие ще можете да прочетете всеки ред от този пример. В занятие 15 pandas прави същото с два реда - но отвътре прави точно това."
+
+#~ msgid "`if` and `while` accept **any value**, not only `True` and `False`. Python decides by the rules you met in session 1 (*truthy* and *falsy*):"
+#~ msgstr "`if` и `while` приемат **всяка стойност**, не само `True` и `False`. Python решава по правилата, които видяхте в занятие 1 (*truthy* и *falsy*):"
+
+#~ msgid "`is` compares **objects**, not values (session 1, animation \"Names and objects\"). Use it only with `None`: `x is None`, `x is not None`."
+#~ msgstr "`is` сравнява **обекти**, а не стойности (занятие 1, анимацията \"Names and objects\"). Използвайте го само с `None`: `x is None`, `x is not None`."
+
+#~ msgid "Make sure you compare values of the **same type**. Convert the data first - `int()`, `float()`, `str()` (session 1) - and then compare."
+#~ msgstr "Уверете се, че сравнявате стойности от **един и същ тип**. Първо преобразувайте данните - `int()`, `float()`, `str()` (занятие 1) - и после сравнявайте."
+
+#~ msgid "Real dates (`datetime`) come in session 7."
+#~ msgstr "Истинските дати (`datetime`) идват в занятие 7."
+
+#~ msgid "Comparisons can be chained, like `BETWEEN` in SQL (session 1):"
+#~ msgstr "Сравненията могат да се свързват във верига, като `BETWEEN` в SQL (занятие 1):"
+
+#~ msgid "Two floats that \"should\" be equal may not be (session 1, section 14). Compare them with a tolerance:"
+#~ msgstr "Два float, които \"би трябвало\" да са равни, може да не са (занятие 1, раздел 14). Сравнявайте ги с толеранс:"
+
+#~ msgid "Like `*` before `+`: `not` is applied first, then `and`, then `or` (the full table is in session 1, section 11). Use brackets when you mix `and` and `or`:"
+#~ msgstr "Като `*` преди `+`: първо се прилага `not`, после `and`, после `or` (пълната таблица е в занятие 1, раздел 11). Използвайте скоби, когато смесвате `and` и `or`:"
+
+#~ msgid "**How an expression is evaluated** (session 1): [5. Chained comparisons](../animations/expressionEvaluation.html#5){target=\"_blank\"}, [6. `and` / `or`](../animations/expressionEvaluation.html#6){target=\"_blank\"}"
+#~ msgstr "**Как се изчислява един израз** (занятие 1): [5. Верижни сравнения](../animations/expressionEvaluation.html#5){target=\"_blank\"}, [6. `and` / `or`](../animations/expressionEvaluation.html#6){target=\"_blank\"}"
+
+#~ msgid "The **block** is the lines indented under it (4 spaces). It runs only if the condition is true (truthy). There are no braces and no `end` - the indentation says where the block ends (session 1, section 8)."
+#~ msgstr "**Блокът** са редовете, отместени навътре под него (4 интервала). Той се изпълнява само ако условието е вярно (truthy). Няма къдрави скоби и няма `end` - отстъпът казва къде свършва блокът (занятие 1, раздел 8)."
+
+#~ msgid "`pass` works in every block: `if`, `for`, `while`, functions (session 4)."
+#~ msgstr "`pass` работи във всеки блок: `if`, `for`, `while`, функции (занятие 4)."
+
+#~ msgid "With a `case _:` after it, Python even refuses to run the code: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Write the values themselves (`case \"retail\":`), or dotted names (`case Segment.RETAIL:`, session 11)."
+#~ msgstr "С `case _:` след него Python дори отказва да изпълни кода: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Пишете самите стойности (`case \"retail\":`) или имена с точка (`case Segment.RETAIL:`, занятие 11)."
+
+#~ msgid "A pattern can also take a tuple apart (tuples: session 3). Each name in the pattern gets its part of the value:"
+#~ msgstr "Pattern може и да разглоби tuple (tuples: занятие 3). Всяко име в pattern получава своята част от стойността:"
+
+#~ msgid "A recap of session 1, section 11, for conditions."
+#~ msgstr "Преговор на занятие 1, раздел 11, за условията."
+
+#~ msgid "The short version of the table (the full one in session 1, section 11, and in the [Python reference](https://docs.python.org/3/reference/expressions.html#operator-precedence)): arithmetic, then comparisons (`<`, `==`, `in`, `is`, ...), then `not`, then `and`, then `or`, and the conditional expression `... if ... else ...` last of all."
+#~ msgstr "Кратката версия на таблицата (пълната е в занятие 1, раздел 11, и в [Python reference](https://docs.python.org/3/reference/expressions.html#operator-precedence)): аритметика, после сравнения (`<`, `==`, `in`, `is`, ...), после `not`, после `and`, после `or`, а условният израз `... if ... else ...` - най-накрая."
+
+#~ msgid "You already use loops in SAS: the **DATA step is a loop** - it runs once for each row of the input data set, without you writing it. In Python you write the loop yourself (and in pandas, again, you do not - session 14)."
+#~ msgstr "В SAS вече използвате цикли: **DATA step-ът е цикъл** - той се изпълнява веднъж за всеки ред на входния набор от данни, без да го пишете. В Python пишете цикъла сами (а в pandas - пак не, занятие 14)."
+
+#~ msgid "Anything that gives items one by one - an *iterable*. Today: a string (its characters), a `range` of numbers, a few values in square brackets, and the lines of a file. The square brackets make a **list** - session 3 is all about lists; for now, read `[0, 35, 120]` simply as \"these values, one by one\". Tuples (session 3) and dictionaries (session 6) come later."
+#~ msgstr "Всичко, което дава елементи един по един - *iterable*. Днес: string (символите му), `range` от числа, няколко стойности в квадратни скоби и редовете на файл. Квадратните скоби правят **list** - занятие 3 е изцяло за lists; засега четете `[0, 35, 120]` просто като \"тези стойности, една по една\". Tuples (занятие 3) и dictionaries (занятие 6) идват по-късно."
+
+#~ msgid "`range(stop)`, `range(start, stop)` and `range(start, stop, step)` give whole numbers from `start` (0 if not given) up to **`stop - 1`** - the stop itself is **not** included. Session 3 has the details."
+#~ msgstr "`range(stop)`, `range(start, stop)` и `range(start, stop, step)` дават цели числа от `start` (0, ако не е даден) до **`stop - 1`** - самият stop **не** е включен. Подробностите са в занятие 3."
+
+#~ msgid "When each item is a **pair** of values in round brackets - `(1, \"one\")`, a *tuple* (session 3) - the `for` can give each part its own name:"
+#~ msgstr "Когато всеки елемент е **двойка** стойности в кръгли скоби - `(1, \"one\")`, *tuple* (занятие 3) - `for` може да даде на всяка част собствено име:"
+
+#~ msgid "That is all you need today. Session 3 shows lists of records like this one, and session 6 loops over a dictionary the same way."
+#~ msgstr "Днес ви трябва само това. Занятие 3 показва lists от записи като този, а занятие 6 обхожда dictionary по същия начин."
+
+#~ msgid "Tables kept in memory - a list of rows - and the loops over them come in session 5."
+#~ msgstr "Таблиците в паметта - list от редове - и циклите по тях идват в занятие 5."
+
+#~ msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in session 9):"
+#~ msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step в SAS с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в занятие 9):"
+
+#~ msgid "`split(\",\")` cuts the line at the commas and gives the fields as strings, in square brackets: a list (session 3). The names on the left of `=` take them in order (as in \"several names at once\", session 1) - then convert the ones you need:"
+#~ msgstr "`split(\",\")` разрязва реда при запетаите и дава полетата като strings, в квадратни скоби: list (занятие 3). Имената вляво от `=` ги вземат по ред (както при \"няколко имена наведнъж\", занятие 1) - после преобразувайте тези, които ви трябват:"
+
+#~ msgid "In data work, `continue` skips the records you do not want - like `WHERE` in SQL, or a subsetting `IF` or `DELETE` in a SAS DATA step. Count only the USD loans, and skip empty lines. Here the line is kept as one list, `fields`, and `fields[3]` is its 4th field: the positions are counted from 0 (session 3 explains it)."
+#~ msgstr "В работата с данни `continue` прескача записите, които не искате - като `WHERE` в SQL или subsetting `IF` или `DELETE` в DATA step в SAS. Пребройте само кредитите в USD и прескочете празните редове. Тук редът е запазен като един list, `fields`, и `fields[3]` е четвъртото му поле: позициите се броят от 0 (занятие 3 обяснява защо)."
+
+#~ msgid "An annuity loan (session 1): the same payment every month. Each month, the interest is calculated on the balance, and the rest of the payment repays the principal."
+#~ msgstr "Анюитетен кредит (занятие 1): една и съща вноска всеки месец. Всеки месец лихвата се изчислява върху остатъка, а останалата част от вноската погасява главницата."
+
+#~ msgid "(The last balance can show `-0.00`: a float rounding error of a fraction of a cent, session 1, section 14.)"
+#~ msgstr "(Последният остатък може да показва `-0.00`: грешка от закръгляне на float от част от цента, занятие 1, раздел 14.)"
+
+#~ msgid "**Task 5, part 2:** copy the loop of part 1 - it gives each field a name - and stop with `break` at the first `stage == \"3\"`. Or keep the line as one list, `fields = line.strip().split(\",\")`: then `fields[0]` is the loan id and `fields[10]` the stage (the positions are counted from 0, session 3)."
+#~ msgstr "**Задача 5, част 2:** копирайте цикъла от част 1 - той дава име на всяко поле - и спрете с `break` при първото `stage == \"3\"`. Или запазете реда като един list, `fields = line.strip().split(\",\")`: тогава `fields[0]` е id на кредита, а `fields[10]` - stage (позициите се броят от 0, занятие 3)."
+
+#~ msgid "**Task 6, part 3:** `stage_counts` holds pairs; loop over it with two names, `for stage, count in stage_counts:`, and add one line to `chart` in each iteration (`chart += ...`). `\"#\" * 5` is `\"#####\"` (session 1)."
+#~ msgstr "**Задача 6, част 3:** `stage_counts` съдържа двойки; обходете го с две имена, `for stage, count in stage_counts:`, и добавяйте по един ред към `chart` във всяка итерация (`chart += ...`). `\"#\" * 5` е `\"#####\"` (занятие 1)."
+
+#~ msgid "**Homework, part 4:** build `report` with `+=` and f-strings with widths, as in section 15: `f\"{'current':<8}{current_count:>6}\"`, `:>18,.2f`, and `:>8.1%` for a percent (session 1, section 13)."
+#~ msgstr "**Домашно, част 4:** изградете `report` с `+=` и f-strings с ширини, както в раздел 15: `f\"{'current':<8}{current_count:>6}\"`, `:>18,.2f` и `:>8.1%` за процент (занятие 1, раздел 13)."
 
 #~ msgid "The quarters of two years - two nested `do` loops in SAS:"
 #~ msgstr "Тримесечията на две години - два вложени цикъла `do` в SAS:"

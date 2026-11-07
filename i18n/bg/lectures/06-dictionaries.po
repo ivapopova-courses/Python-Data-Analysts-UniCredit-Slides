@@ -90,7 +90,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:83
-msgid "The syntax: curly brackets, pairs `key: value`, separated by commas. The same curly brackets as a set (session 3) - but a set has only values, a dictionary has pairs."
+msgid "The syntax: curly brackets, pairs `key: value`, separated by commas. The same curly brackets as a set ([session 3](./03-lists-tuples-sets.md#_11-sets)) - but a set has only values, a dictionary has pairs."
 msgstr ""
 
 #. paragraph
@@ -170,7 +170,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:114
-msgid "From two lists - the keys and the values - with `zip` (session 5):"
+msgid "From two lists - the keys and the values - with `zip` ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):"
 msgstr ""
 
 #. heading 3
@@ -360,7 +360,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:360
-msgid "A ranked report: `enumerate` over the sorted items (session 5):"
+msgid "A ranked report: `enumerate` over the sorted items ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)):"
 msgstr ""
 
 #. box title
@@ -380,7 +380,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:386
-msgid "`keys()` supports the set operations of session 3 - handy to compare two nomenclatures:"
+msgid "`keys()` supports the set operations of [session 3](./03-lists-tuples-sets.md#_12-set-operations-sql-union-intersect-except) - handy to compare two nomenclatures:"
 msgstr ""
 
 #. paragraph
@@ -395,7 +395,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:408
-msgid "Like a list comprehension (session 5), with `key: value` and curly brackets:"
+msgid "Like a list comprehension ([session 5](./05-lists-advanced.md#_1-list-comprehensions)), with `key: value` and curly brackets:"
 msgstr ""
 
 #. paragraph
@@ -460,7 +460,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:499
-msgid "`csv.DictReader` (the module `csv` comes with Python) reads a CSV file row by row, and gives each row as a dictionary: the column name is the key. No more `row[7]` - `row[\"outstanding\"]`. Files and `csv` in depth: session 9."
+msgid "`csv.DictReader` (the module `csv` comes with Python) reads a CSV file row by row, and gives each row as a dictionary: the column name is the key. No more `row[7]` - `row[\"outstanding\"]`. Files and `csv` in depth: [session 9](./09-errors-and-files.md#_7-csv-files)."
 msgstr ""
 
 #. heading 3
@@ -475,7 +475,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:529
-msgid "Keep the nomenclature (the dictionary) as a **constant** at the top of the script, in capitals: one place to change it. Session 12 turns such a nomenclature into a class with its own checks."
+msgid "Keep the nomenclature (the dictionary) as a **constant** at the top of the script, in capitals: one place to change it. [Session 12](./12-oop-nomenclatures.md) turns such a nomenclature into a class with its own checks."
 msgstr ""
 
 #. heading 3
@@ -545,7 +545,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:635
-msgid "In pandas, `pd.cut` does the same for a whole column (session 15)."
+msgid "In pandas, `pd.cut` does the same for a whole column ([session 15](./15-pandas-select-aggregate-join.md#bands-pd-cut))."
 msgstr ""
 
 #. box title
@@ -625,7 +625,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:777
-msgid "This is SAS `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line (session 15) - but now you know what it does."
+msgid "This is SAS `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line ([session 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means)) - but now you know what it does."
 msgstr ""
 
 #. paragraph
@@ -685,7 +685,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:877
-msgid "`\"Sofia\"`, `\"sofia\"` and `\"Sofia \"` are three different keys. Clean the key before you group (text cleaning: session 7):"
+msgid "`\"Sofia\"`, `\"sofia\"` and `\"Sofia \"` are three different keys. Clean the key before you group (text cleaning: [session 7](./07-text-processing.md#_7-cleaning-identifiers-and-names)):"
 msgstr ""
 
 #. paragraph
@@ -715,7 +715,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:925
-msgid "Compare with session 5: `row[3] == \"USD\"` vs `loan[\"currency\"] == \"USD\"`. The name says what the column is, and adding a column to the file does not break the code."
+msgid "Compare with [session 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows): `row[3] == \"USD\"` vs `loan[\"currency\"] == \"USD\"`. The name says what the column is, and adding a column to the file does not break the code."
 msgstr ""
 
 #. paragraph
@@ -765,7 +765,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:997
-msgid "Nested dictionaries and lists are the shape of **JSON**, the text format of web APIs and of many configuration files. The module `json` turns one into the other (JSON files: session 9):"
+msgid "Nested dictionaries and lists are the shape of **JSON**, the text format of web APIs and of many configuration files. The module `json` turns one into the other (JSON files: [session 9](./09-errors-and-files.md#_8-json-files)):"
 msgstr ""
 
 #. heading 3
@@ -775,7 +775,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1016
-msgid "The same rule as for nested lists (session 5): `d.copy()` and `dict(d)` are **shallow** - the inner dictionaries are shared. `copy.deepcopy` copies all levels:"
+msgid "The same rule as for nested lists ([session 5](./05-lists-advanced.md#_6-copies-of-a-table)): `d.copy()` and `dict(d)` are **shallow** - the inner dictionaries are shared. `copy.deepcopy` copies all levels:"
 msgstr ""
 
 #. paragraph
@@ -1010,7 +1010,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1115
-msgid "And back - from the cross table to rows (`region, segment, count`), the job of SAS `PROC TRANSPOSE`, or of `melt` in pandas (session 16):"
+msgid "And back - from the cross table to rows (`region, segment, count`), the job of SAS `PROC TRANSPOSE`, or of `melt` in pandas ([session 16](./16-pandas-reports-project.md#_2-from-wide-to-long-melt)):"
 msgstr ""
 
 #. paragraph
