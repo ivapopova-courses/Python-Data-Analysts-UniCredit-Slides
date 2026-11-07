@@ -1175,6 +1175,10 @@ print(isinstance(dpd, BandedNomenclature), isinstance(dpd, Nomenclature))
   class - uses it. This is the power of inheritance.
 - `super().__post_init__()` runs the checks of the base class first, then the new
   checks. Without it, the base checks would be lost.
+- `zip(self.bands, self.bands[1:])` gives each band with the next one: the list
+  side by side with itself, one step later ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)).
+  Each pair of bands is unpacked at once: `(_, high, _)` from the first band,
+  `(low, _, _)` from the next.
 
 The checks of the subclass find a gap between two bands - a value in the gap would get
 no bucket:

@@ -1025,8 +1025,8 @@ msgstr "Върху портфейла - месечната вноска за н�
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1124
-msgid "Tables kept in memory - a list of rows - and the loops over them come in [session 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows)."
-msgstr "Таблиците в паметта - list от редове - и циклите по тях идват в [занятие 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows)."
+msgid "Tables kept in memory come with pandas, in [session 14](./14-numpy-pandas-intro.md)."
+msgstr "Таблиците в паметта идват с pandas, в [занятие 14](./14-numpy-pandas-intro.md)."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1127
@@ -1477,6 +1477,9 @@ msgstr "Real Python: [Conditional statements](https://realpython.com/python-cond
 #: site/lectures/02-conditions-and-loops.md:1590
 msgid "**Next session:** lists, tuples and sets - indexing from 0, slices, the methods of `list`, tuples as records, and the SQL `UNION` / `INTERSECT` / `EXCEPT` with sets."
 msgstr "**Следващото занятие:** lists, tuples и sets - индексиране от 0, slices, методите на `list`, tuples като записи и `UNION` / `INTERSECT` / `EXCEPT` от SQL със sets."
+
+#~ msgid "Tables kept in memory - a list of rows - and the loops over them come in [session 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows)."
+#~ msgstr "Таблиците в паметта - list от редове - и циклите по тях идват в [занятие 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows)."
 
 #~ msgid "By the end of today you will be able to read every line of this example. In session 15 pandas does the same in two lines - but it does exactly this inside."
 #~ msgstr "До края на днешното занятие ще можете да прочетете всеки ред от този пример. В занятие 15 pandas прави същото с два реда - но отвътре прави точно това."

@@ -1209,7 +1209,7 @@ print(sorted(["banana", "Cherry", "apple"], key=str.lower))    # ignore the case
 print(sorted(["cherry", "fig", "banana"], key=len))
 ```
 
-Sorting is covered in depth in [session 5](./05-lists-advanced.md#_4-sorting-and-the-top-n). Reference:
+The top N with `sorted` is in [session 5](./05-lists-advanced.md#the-top-n). Reference:
 [Sorting techniques](https://docs.python.org/3/howto/sorting.html).
 
 ## 11. From macros to functions: a report script
@@ -1455,5 +1455,5 @@ Read more: [Primer on Python decorators](https://realpython.com/primer-on-python
   (Corey Schafer), [Python lambda functions](https://www.youtube.com/watch?v=j6FCewxjrBM)
   (Visually Explained)
 
-**Next session:** lists, advanced - list comprehensions, sorting with `key`, `zip`,
-`enumerate`, `map` and `filter`, and a table as a list of rows.
+**Next session:** lists, advanced - more list methods (remove, find, sort), list
+comprehensions, generator expressions, `zip` and `enumerate`.

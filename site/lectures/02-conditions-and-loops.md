@@ -1121,8 +1121,8 @@ for years in range(1, 6):
     print()
 ```
 
-Tables kept in memory - a list of rows - and the loops over them come in
-[session 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows).
+Tables kept in memory come with pandas, in
+[session 14](./14-numpy-pandas-intro.md).
 
 ### The rows of a file
 

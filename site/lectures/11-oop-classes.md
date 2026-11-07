@@ -1254,6 +1254,9 @@ client.add_loan(Loan("L000241", 4263650.04, 15))
 print(client.exposure, client.max_days_past_due, len(client.loans))
 ```
 
+`max(..., default=0)` gives `0` when the client has no loans. Without `default=`,
+`max` of an empty sequence stops with a `ValueError`.
+
 All clients and loans from the two files - a dictionary of clients by id ([session 6](./06-dictionaries.md#a-dictionary-of-dictionaries-a-table-keyed-by-id)),
 then each loan is added to its client:
 

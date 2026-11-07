@@ -284,7 +284,7 @@ msgid "![The four parts of the sentence of the client as the four parts of the N
 msgstr ""
 
 #. box title
-#: site/lectures/12-oop-nomenclatures.md:141 site/lectures/12-oop-nomenclatures.md:325 site/lectures/12-oop-nomenclatures.md:528 site/lectures/12-oop-nomenclatures.md:778 site/lectures/12-oop-nomenclatures.md:1105 site/lectures/12-oop-nomenclatures.md:1470 site/lectures/12-oop-nomenclatures.md:1675 site/lectures/12-oop-nomenclatures.md:1793
+#: site/lectures/12-oop-nomenclatures.md:141 site/lectures/12-oop-nomenclatures.md:325 site/lectures/12-oop-nomenclatures.md:528 site/lectures/12-oop-nomenclatures.md:778 site/lectures/12-oop-nomenclatures.md:1105 site/lectures/12-oop-nomenclatures.md:1474 site/lectures/12-oop-nomenclatures.md:1679 site/lectures/12-oop-nomenclatures.md:1797
 msgid "Try it"
 msgstr ""
 
@@ -724,531 +724,536 @@ msgid "`super().__post_init__()` runs the checks of the base class first, then t
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1179
+#: site/lectures/12-oop-nomenclatures.md:1178
+msgid "`zip(self.bands, self.bands[1:])` gives each band with the next one: the list side by side with itself, one step later ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)). Each pair of bands is unpacked at once: `(_, high, _)` from the first band, `(low, _, _)` from the next."
+msgstr ""
+
+#. paragraph
+#: site/lectures/12-oop-nomenclatures.md:1183
 msgid "The checks of the subclass find a gap between two bands - a value in the gap would get no bucket:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1208
+#: site/lectures/12-oop-nomenclatures.md:1212
 msgid "Python looks for a method first in the class of the object, then in its base classes, in an order called the **MRO** (method resolution order):"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1231
+#: site/lectures/12-oop-nomenclatures.md:1235
 msgid "`lookup` is found in `BandedNomenclature` itself; `apply` is not there, so Python takes it from `Nomenclature`. (`object` is the base of every class in Python.)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1234
+#: site/lectures/12-oop-nomenclatures.md:1238
 msgid "`apply` was never written for bands - it comes from the base class and works:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-oop-nomenclatures.md:1267
+#: site/lectures/12-oop-nomenclatures.md:1271
 msgid "The rating scale as bands of PD"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1269
+#: site/lectures/12-oop-nomenclatures.md:1273
 msgid "`rating_scale.csv` is a banded nomenclature: each grade has a PD band. A class method of the subclass builds it from the file:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1310
+#: site/lectures/12-oop-nomenclatures.md:1314
 msgid "`cls(...)` in the class method makes a `BandedNomenclature` - the class it was called on."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1313
+#: site/lectures/12-oop-nomenclatures.md:1317
 msgid "A consistency check of the data: the PD of each client's rating (the middle of its band) must map back to the client's own grade:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1334
+#: site/lectures/12-oop-nomenclatures.md:1338
 msgid "An override can also **extend** the method of the base class with `super()` - here the `repr` gets the number of bands:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-oop-nomenclatures.md:1358
+#: site/lectures/12-oop-nomenclatures.md:1362
 msgid "A hierarchy: products and their groups"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1360
+#: site/lectures/12-oop-nomenclatures.md:1364
 msgid "Another kind: each code has a **parent** - a product belongs to a group, a region to a country, an industry to a sector. A subclass adds the parents and two methods:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1401
+#: site/lectures/12-oop-nomenclatures.md:1405
 msgid "Here nothing is overridden except `__post_init__` (with `super()`); the subclass only **adds**. Both are normal uses of inheritance."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1404
+#: site/lectures/12-oop-nomenclatures.md:1408
 msgid "On the portfolio: the outstanding per product **group**, through `parent`:"
 msgstr ""
 
 #. box title
-#: site/lectures/12-oop-nomenclatures.md:1435
+#: site/lectures/12-oop-nomenclatures.md:1439
 msgid "Forget `super()`, lose the checks"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1436
+#: site/lectures/12-oop-nomenclatures.md:1440
 msgid "A subclass with its own `__post_init__` **replaces** the one of the base class. Without `super().__post_init__()`, the checks of the base class do not run - an empty nomenclature is created without a word:"
 msgstr ""
 
 #. box title
-#: site/lectures/12-oop-nomenclatures.md:1463
+#: site/lectures/12-oop-nomenclatures.md:1467
 msgid "Inheritance or a new field?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1464
+#: site/lectures/12-oop-nomenclatures.md:1468
 msgid "Inherit when the new kind **is a** nomenclature that works differently (bands) or has more (parents). Do not inherit just to reuse two lines of code - a function or a module does that. Deep chains of subclasses are hard to follow; one level is usually enough."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1471
+#: site/lectures/12-oop-nomenclatures.md:1475
 msgid "Make a `BandedNomenclature` for the size of a loan: `small` below 50,000, `medium` below 1,000,000, `large` from 1,000,000. Apply it to the outstanding amounts of `loans.csv` and count the loans per size."
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-oop-nomenclatures.md:1476
+#: site/lectures/12-oop-nomenclatures.md:1480
 msgid "7. Composition: a registry, many datasets"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-oop-nomenclatures.md:1478
+#: site/lectures/12-oop-nomenclatures.md:1482
 msgid "A registry \"has\" nomenclatures"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1480
+#: site/lectures/12-oop-nomenclatures.md:1484
 msgid "A report uses many nomenclatures. A **registry** keeps them in one place, by name, and applies several at once. It does not inherit from `Nomenclature` - it **has** nomenclatures inside: this is **composition**."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1529
+#: site/lectures/12-oop-nomenclatures.md:1533
 msgid "Ask the registry what it knows - `in` and a list of the names, with special methods of the registry itself:"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1554 site/lectures/12-oop-nomenclatures.md:1829
+#: site/lectures/12-oop-nomenclatures.md:1558 site/lectures/12-oop-nomenclatures.md:1833
 msgid "Inheritance"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1554 site/lectures/12-oop-nomenclatures.md:1830
+#: site/lectures/12-oop-nomenclatures.md:1558 site/lectures/12-oop-nomenclatures.md:1834
 msgid "Composition"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1556
+#: site/lectures/12-oop-nomenclatures.md:1560
 msgid "relation"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1556
+#: site/lectures/12-oop-nomenclatures.md:1560
 msgid "`BandedNomenclature` **is a** `Nomenclature`"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1556
+#: site/lectures/12-oop-nomenclatures.md:1560
 msgid "a `Registry` **has** nomenclatures"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1557
+#: site/lectures/12-oop-nomenclatures.md:1561
 msgid "in the code"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1557
+#: site/lectures/12-oop-nomenclatures.md:1561
 msgid "an attribute that holds objects"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1558
+#: site/lectures/12-oop-nomenclatures.md:1562
 msgid "use it when"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1558
+#: site/lectures/12-oop-nomenclatures.md:1562
 msgid "the new thing is a special kind of the old"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1558
+#: site/lectures/12-oop-nomenclatures.md:1562
 msgid "the new thing uses or collects the old"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1560
+#: site/lectures/12-oop-nomenclatures.md:1564
 msgid "The registry holds the **objects**, not copies. Change a nomenclature once - a new code - and every dataset that the registry maps sees the change:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-oop-nomenclatures.md:1586
+#: site/lectures/12-oop-nomenclatures.md:1590
 msgid "One registry, three datasets"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1588
+#: site/lectures/12-oop-nomenclatures.md:1592
 msgid "The point of the client's sentence: the **same** nomenclatures applied in the **same** way to different datasets - loans, clients, and the rating history:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1618
+#: site/lectures/12-oop-nomenclatures.md:1622
 msgid "`grades` maps the ratings of `clients.csv` **and** of `ratings_history.csv` - one definition, one version, one place to change it."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1621
+#: site/lectures/12-oop-nomenclatures.md:1625
 msgid "With a registry and a plan per dataset, the check of the two loan files becomes one loop - and the report for the data owner lists every column that did not map:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1652
+#: site/lectures/12-oop-nomenclatures.md:1656
 msgid "And the product nomenclature with `case=\"lower\"` maps the export of another system as well, where a code could come in capitals - the normalisation is part of the nomenclature, not of each report:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1676
+#: site/lectures/12-oop-nomenclatures.md:1680
 msgid "Add the hierarchical product nomenclature (section 6) to the plan of `loans`, and a second step that maps the product group. (Hint: `apply` with `lookup` gives the name; for the group, a second `Nomenclature` built from `products.parents`.)"
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-oop-nomenclatures.md:1681
+#: site/lectures/12-oop-nomenclatures.md:1685
 msgid "8. Versions: what changed?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1683
+#: site/lectures/12-oop-nomenclatures.md:1687
 msgid "Nomenclatures change: a new product, a renamed region, a new rating scale. The metadata says **which** version a report used; a `diff` says **what** changed between two versions - the report a data owner signs:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1712
+#: site/lectures/12-oop-nomenclatures.md:1716
 msgid "The rating scale of the file against a recalibrated copy - what would the owner sign?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1728
+#: site/lectures/12-oop-nomenclatures.md:1732
 msgid "Before a new version goes live: which **loans** change their label? The impact on the data, not only on the list:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1748
+#: site/lectures/12-oop-nomenclatures.md:1752
 msgid "And a code **removed** in the new version, but still used by the data, must stop the release - `validate` of the new version on the current data finds it:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1766
+#: site/lectures/12-oop-nomenclatures.md:1770
 msgid "A nomenclature can also be **saved** with its metadata - a small CSV with the version in the file name, read back with `from_csv`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1790
+#: site/lectures/12-oop-nomenclatures.md:1794
 msgid "In the class, `diff` would be a method: `v1.diff(v2)`. The Self-study goes one step further: several versions in one object, and the right one for a report date."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1794
+#: site/lectures/12-oop-nomenclatures.md:1798
 msgid "Make `diff` a method of a subclass `VersionedNomenclature(Nomenclature)`, and print a one-line summary: `\"v1 -> v2: 1 added, 1 removed, 1 changed\"`."
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-oop-nomenclatures.md:1798
+#: site/lectures/12-oop-nomenclatures.md:1802
 msgid "9. Practice"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1800
+#: site/lectures/12-oop-nomenclatures.md:1804
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1808
+#: site/lectures/12-oop-nomenclatures.md:1812
 msgid "Task"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1808
+#: site/lectures/12-oop-nomenclatures.md:1812
 msgid "File"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1808
+#: site/lectures/12-oop-nomenclatures.md:1812
 msgid "What you do"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1810
+#: site/lectures/12-oop-nomenclatures.md:1814
 msgid "A `Nomenclature` dataclass with metadata, `lookup`, `len`, `in`"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1811
+#: site/lectures/12-oop-nomenclatures.md:1815
 msgid "Predict: `classmethod`, `staticmethod`, overriding, `super()`, `isinstance`"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1812
+#: site/lectures/12-oop-nomenclatures.md:1816
 msgid "The rules at creation, duplicate codes, `validate(values)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1813
+#: site/lectures/12-oop-nomenclatures.md:1817
 msgid "`apply` to a list of rows, the unmapped report, `strict`"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1814
+#: site/lectures/12-oop-nomenclatures.md:1818
 msgid "`BandedNomenclature`: DPD buckets, PD -> grade, size classes"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1815
+#: site/lectures/12-oop-nomenclatures.md:1819
 msgid "`task6-registry.py` (Optional)"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1815
+#: site/lectures/12-oop-nomenclatures.md:1819
 msgid "A registry applied to two datasets"
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-oop-nomenclatures.md:1817
+#: site/lectures/12-oop-nomenclatures.md:1821
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1819
+#: site/lectures/12-oop-nomenclatures.md:1823
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1819
+#: site/lectures/12-oop-nomenclatures.md:1823
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1821
+#: site/lectures/12-oop-nomenclatures.md:1825
 msgid "The use case"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1821
+#: site/lectures/12-oop-nomenclatures.md:1825
 msgid "one class for a nomenclature: data, metadata, validation rules, processing methods"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1822
+#: site/lectures/12-oop-nomenclatures.md:1826
 msgid "Data and metadata"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1822
+#: site/lectures/12-oop-nomenclatures.md:1826
 msgid "`codes` + `name`, `version`, `valid_from`, `owner`; a short `__repr__`; a copy of the codes"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1823
+#: site/lectures/12-oop-nomenclatures.md:1827
 msgid "Container"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1824
+#: site/lectures/12-oop-nomenclatures.md:1828
 msgid "Rules"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1824
+#: site/lectures/12-oop-nomenclatures.md:1828
 msgid "at creation in `__post_init__` (no codes, bad codes, empty labels); duplicates before the dict is built"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1825
+#: site/lectures/12-oop-nomenclatures.md:1829
 msgid "Dataset checks"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1825
+#: site/lectures/12-oop-nomenclatures.md:1829
 msgid "`validate(values)` -> a `Counter` of the unknown values; a check report"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1826
+#: site/lectures/12-oop-nomenclatures.md:1830
 msgid "Processing"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1826
+#: site/lectures/12-oop-nomenclatures.md:1830
 msgid "`apply(rows, column, new_column)` -> new rows + the unmapped values; `strict=True` stops"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1827
+#: site/lectures/12-oop-nomenclatures.md:1831
 msgid "`cls` as the first parameter; alternative constructors: `from_csv`, `from_pairs`"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1828
+#: site/lectures/12-oop-nomenclatures.md:1832
 msgid "no `self`, no `cls`: a helper that belongs to the class"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1829
+#: site/lectures/12-oop-nomenclatures.md:1833
 msgid "`class Banded(Nomenclature)`; override `lookup`; `super().__post_init__()`; \"is a\""
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1830
+#: site/lectures/12-oop-nomenclatures.md:1834
 msgid "a `Registry` has nomenclatures; \"has a\""
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1831
+#: site/lectures/12-oop-nomenclatures.md:1835
 msgid "Consistency"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1831
+#: site/lectures/12-oop-nomenclatures.md:1835
 msgid "one object for every dataset; the same report of what does not fit"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1832
+#: site/lectures/12-oop-nomenclatures.md:1836
 msgid "Versions"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1832
+#: site/lectures/12-oop-nomenclatures.md:1836
 msgid "the metadata says which; a `diff` says what changed"
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-oop-nomenclatures.md:1834
+#: site/lectures/12-oop-nomenclatures.md:1838
 msgid "Homework"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1836
+#: site/lectures/12-oop-nomenclatures.md:1840
 msgid "`12-oop-nomenclatures/homework.py` and `12-oop-nomenclatures/homework_nomenclature.py` (in the homework repository): **the nomenclature module of the project** - the classes `Nomenclature`, `BandedNomenclature` and `Registry` in a module, three nomenclatures built from the files (products with their groups, the rating scale with its PD bands, the regions from the cp1251 file), applied to `loans.csv`, `clients.csv` and the cleaned cities of `client_register.csv`, and a data quality report of the unmapped values. Every check must print `OK`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1843
+#: site/lectures/12-oop-nomenclatures.md:1847
 msgid "The practice tasks you did not finish in class."
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-oop-nomenclatures.md:1845
+#: site/lectures/12-oop-nomenclatures.md:1849
 msgid "Self-study"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1847
+#: site/lectures/12-oop-nomenclatures.md:1851
 msgid "This part is not covered in class. It is for reading at home: an interface that every nomenclature must follow, and nomenclatures with several versions in time."
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-oop-nomenclatures.md:1850
+#: site/lectures/12-oop-nomenclatures.md:1854
 msgid "Abstract base classes: an interface"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1852
+#: site/lectures/12-oop-nomenclatures.md:1856
 msgid "`Nomenclature` and `BandedNomenclature` both have `lookup`, `apply`, `validate`. A report can use **any** nomenclature - as long as it has these methods. An **abstract base class** writes this promise down: it cannot be used directly, and every subclass **must** implement the abstract methods:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1904
+#: site/lectures/12-oop-nomenclatures.md:1908
 msgid "The error comes when the object is **created**, not later in the middle of a report."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1906 site/lectures/12-oop-nomenclatures.md:1965
+#: site/lectures/12-oop-nomenclatures.md:1910 site/lectures/12-oop-nomenclatures.md:1969
 msgid "**Exercises**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1908
+#: site/lectures/12-oop-nomenclatures.md:1912
 msgid "Add an abstract method `describe()` that returns one line about the nomenclature, and implement it in `CodeList`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1910
+#: site/lectures/12-oop-nomenclatures.md:1914
 msgid "Can you create a `BaseNomenclature(\"x\")` directly? Try it, and explain the message."
 msgstr ""
 
 #. box title
-#: site/lectures/12-oop-nomenclatures.md:1912 site/lectures/12-oop-nomenclatures.md:1972
+#: site/lectures/12-oop-nomenclatures.md:1916 site/lectures/12-oop-nomenclatures.md:1976
 msgid "Answer"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1913
+#: site/lectures/12-oop-nomenclatures.md:1917
 msgid "In `BaseNomenclature`: `@abstractmethod def describe(self): ...`; in `CodeList`: `def describe(self): return f\"{self.name}: {len(self.codes)} codes\"`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1915
+#: site/lectures/12-oop-nomenclatures.md:1919
 msgid "No: `TypeError: Can't instantiate abstract class BaseNomenclature without an implementation for abstract method 'lookup'` (the exact text depends on the Python version). An abstract class is only a base for others."
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-oop-nomenclatures.md:1920
+#: site/lectures/12-oop-nomenclatures.md:1924
 msgid "Versioned nomenclatures"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1922
+#: site/lectures/12-oop-nomenclatures.md:1926
 msgid "A rating scale can be recalibrated; a product list changes in July. A report for **March** must use the version valid in March. A class that keeps several versions, each with its `valid_from`, and picks the right one for a date:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1962
+#: site/lectures/12-oop-nomenclatures.md:1966
 msgid "With `ratings_history.csv`, each month end is mapped with the version of **that** month - a report for any past month gives the same result as when it was first made."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1967
+#: site/lectures/12-oop-nomenclatures.md:1971
 msgid "Map the ratings of `ratings_history.csv` with `grades` above, using the `month_end` of each row. How many rows get `\"BBB-\"`?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1969
+#: site/lectures/12-oop-nomenclatures.md:1973
 msgid "What should `version_at` do for a date before the first version? Is raising an error the right choice for a report?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1981
+#: site/lectures/12-oop-nomenclatures.md:1985
 msgid "(The rows with rating 5 from April 2026 on.) 2. Yes for a report: a date without a valid version means the report would use an    unknown mapping, which is worse than stopping ([session 9](./09-errors-and-files.md#when-to-stop-when-to-go-on): wrong settings stop the    report)."
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-oop-nomenclatures.md:1987
+#: site/lectures/12-oop-nomenclatures.md:1991
 msgid "Read more"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1989
+#: site/lectures/12-oop-nomenclatures.md:1993
 msgid "Python tutorial: [Classes - inheritance](https://docs.python.org/3/tutorial/classes.html#inheritance)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1990
+#: site/lectures/12-oop-nomenclatures.md:1994
 msgid "Reference: [`classmethod`](https://docs.python.org/3/library/functions.html#classmethod), [`staticmethod`](https://docs.python.org/3/library/functions.html#staticmethod), [`super`](https://docs.python.org/3/library/functions.html#super), [`abc`](https://docs.python.org/3/library/abc.html), [dataclasses - inheritance](https://docs.python.org/3/library/dataclasses.html#inheritance)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1995
+#: site/lectures/12-oop-nomenclatures.md:1999
 msgid "Real Python: [Inheritance and composition: a Python OOP guide](https://realpython.com/inheritance-composition-python/), [Python's instance, class, and static methods demystified](https://realpython.com/instance-class-and-static-methods-demystified/)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1998
+#: site/lectures/12-oop-nomenclatures.md:2002
 msgid "**Next session:** databases - SQL from Python: connect, query with parameters, transactions, and the result of a query straight into a DataFrame."
 msgstr ""

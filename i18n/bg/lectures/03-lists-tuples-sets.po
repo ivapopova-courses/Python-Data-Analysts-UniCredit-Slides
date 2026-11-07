@@ -760,8 +760,8 @@ msgstr "Когато ви трябва независим list, направет
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:720
-msgid "These are **shallow** copies: the new list has the same items. When the items are lists themselves (a table as a list of rows), the rows are still shared - [session 5](./05-lists-advanced.md#_6-copies-of-a-table) explains shallow and deep copies."
-msgstr "Това са **плитки** (shallow) копия: новият list има същите елементи. Когато елементите сами са lists (таблица като list от редове), редовете пак са общи - [занятие 5](./05-lists-advanced.md#_6-copies-of-a-table) обяснява плитките и дълбоките копия."
+msgid "These are **shallow** copies: the new list has the same items. When the items are lists themselves (a table as a list of rows), the rows are still shared - [session 6](./06-dictionaries.md#copies-of-nested-dictionaries) shows shallow and deep copies, with dictionaries."
+msgstr "Това са **плитки** (shallow) копия: новият list има същите елементи. Когато елементите сами са lists (таблица като list от редове), редовете пак са общи - [занятие 6](./06-dictionaries.md#copies-of-nested-dictionaries) показва плитките и дълбоките копия, с dictionaries."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:725
@@ -1657,6 +1657,9 @@ msgstr "Real Python: [Lists and tuples](https://realpython.com/python-lists-tupl
 #: site/lectures/03-lists-tuples-sets.md:1458
 msgid "**Next session:** functions - your own `def`, parameters and return values, and why a function is the Python version of a SAS macro."
 msgstr "**Следващото занятие:** функции - собствен `def`, параметри и върнати стойности и защо функцията е версията на SAS macro в Python."
+
+#~ msgid "These are **shallow** copies: the new list has the same items. When the items are lists themselves (a table as a list of rows), the rows are still shared - [session 5](./05-lists-advanced.md#_6-copies-of-a-table) explains shallow and deep copies."
+#~ msgstr "Това са **плитки** (shallow) копия: новият list има същите елементи. Когато елементите сами са lists (таблица като list от редове), редовете пак са общи - [занятие 5](./05-lists-advanced.md#_6-copies-of-a-table) обяснява плитките и дълбоките копия."
 
 #~ msgid "Session 2 used `for` on strings, lists and ranges. They are all **sequences**: containers that keep an **ordered** collection of values. The main sequence types:"
 #~ msgstr "В занятие 2 използвахме `for` върху strings, lists и ranges. Всички те са **поредици** (sequences): контейнери, които пазят **подредена** колекция от стойности. Основните типове поредици:"

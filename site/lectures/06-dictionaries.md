@@ -405,7 +405,7 @@ only the segments with more than EUR 10 million.
 
 ### `{key: value for ...}`
 
-Like a list comprehension ([session 5](./05-lists-advanced.md#_1-list-comprehensions)), with `key: value` and curly brackets:
+Like a list comprehension ([session 5](./05-lists-advanced.md#_2-list-comprehensions)), with `key: value` and curly brackets:
 
 ```python run
 grades = ["AAA", "AA", "A", "BBB"]
@@ -855,6 +855,10 @@ for client_id, n in sorted(many.items(), key=lambda kv: (-kv[1], kv[0])):
     print(client_id, n)
 ```
 
+The key is a tuple - two columns, like `ORDER BY a, b` ([session 4](./04-functions.md#sorting-by-a-key)).
+`-kv[1]` is the count with a minus: the largest count gives the smallest key, so it
+comes first (`DESC`) while the client ids stay A - Z.
+
 ::: details Advanced: `Counter` arithmetic - two months side by side
 Counters can be added and subtracted. The change of the number of loans per stage
 between two months:
@@ -922,7 +926,7 @@ usd = [loan["loan_id"] for loan in loans if loan["currency"] == "USD"]
 print(usd[:5])
 ```
 
-Compare with [session 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows): `row[3] == "USD"` vs `loan["currency"] == "USD"`. The name
+Compare with [session 5](./05-lists-advanced.md#on-the-portfolio): `row[3] == "USD"` vs `loan["currency"] == "USD"`. The name
 says what the column is, and adding a column to the file does not break the code.
 
 The values are still **text**. Convert them once, into a new record:
@@ -1013,7 +1017,7 @@ print(json.loads(text)["segments"]["sme"]["loans"])
 
 ### Copies of nested dictionaries
 
-The same rule as for nested lists ([session 5](./05-lists-advanced.md#_6-copies-of-a-table)): `d.copy()` and `dict(d)` are
+The same rule as for the copies of lists ([session 3](./03-lists-tuples-sets.md#make-a-copy)): `d.copy()` and `dict(d)` are
 **shallow** - the inner dictionaries are shared. `copy.deepcopy` copies all levels:
 
 ```python run

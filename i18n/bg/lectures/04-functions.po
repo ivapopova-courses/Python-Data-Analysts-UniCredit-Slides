@@ -641,7 +641,7 @@ msgstr "И един капан: ако функцията **присвоява**
 #. paragraph
 #: site/lectures/04-functions.md:726
 msgid "The fix: give the function the value through a parameter and return the new value. Then the function has no global names at all:"
-msgstr ""
+msgstr "Поправката: подайте стойността на функцията чрез параметър и върнете новата стойност. Тогава функцията изобщо няма глобални имена:"
 
 #. box title
 #: site/lectures/04-functions.md:740
@@ -1045,8 +1045,8 @@ msgstr "Именувана функция също работи като клю�
 
 #. paragraph
 #: site/lectures/04-functions.md:1212
-msgid "Sorting is covered in depth in [session 5](./05-lists-advanced.md#_4-sorting-and-the-top-n). Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
-msgstr "Сортирането е разгледано в дълбочина в [занятие 5](./05-lists-advanced.md#_4-sorting-and-the-top-n). Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
+msgid "The top N with `sorted` is in [session 5](./05-lists-advanced.md#the-top-n). Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
+msgstr "Първите N със `sorted` са в [занятие 5](./05-lists-advanced.md#the-top-n). Справка: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
 
 #. heading 2
 #: site/lectures/04-functions.md:1215
@@ -1355,8 +1355,14 @@ msgstr "Видеа: [Python tutorial for beginners 8: functions](https://www.you
 
 #. paragraph
 #: site/lectures/04-functions.md:1458
-msgid "**Next session:** lists, advanced - list comprehensions, sorting with `key`, `zip`, `enumerate`, `map` and `filter`, and a table as a list of rows."
-msgstr "**Следващото занятие:** lists за напреднали - list comprehensions, сортиране с `key`, `zip`, `enumerate`, `map` и `filter` и таблица като list от редове."
+msgid "**Next session:** lists, advanced - more list methods (remove, find, sort), list comprehensions, generator expressions, `zip` and `enumerate`."
+msgstr "**Следващото занятие:** lists за напреднали - още методи на list (премахване, търсене, сортиране), list comprehensions, generator expressions, `zip` и `enumerate`."
+
+#~ msgid "Sorting is covered in depth in [session 5](./05-lists-advanced.md#_4-sorting-and-the-top-n). Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
+#~ msgstr "Сортирането е разгледано в дълбочина в [занятие 5](./05-lists-advanced.md#_4-sorting-and-the-top-n). Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
+
+#~ msgid "**Next session:** lists, advanced - list comprehensions, sorting with `key`, `zip`, `enumerate`, `map` and `filter`, and a table as a list of rows."
+#~ msgstr "**Следващото занятие:** lists за напреднали - list comprehensions, сортиране с `key`, `zip`, `enumerate`, `map` и `filter` и таблица като list от редове."
 
 #~ msgid "`function_name` - a valid name (session 1): `snake_case`, a verb that says what the function does - `calculate_interest`, `read_loans`, `is_late`."
 #~ msgstr "`function_name` - валидно име (занятие 1): `snake_case`, глагол, който казва какво прави функцията - `calculate_interest`, `read_loans`, `is_late`."

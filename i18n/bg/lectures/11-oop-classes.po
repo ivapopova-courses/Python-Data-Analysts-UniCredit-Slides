@@ -164,7 +164,7 @@ msgid "In SAS terms: a row of a dataset has its variables, but the rules (stage,
 msgstr ""
 
 #. box title
-#: site/lectures/11-oop-classes.md:121 site/lectures/11-oop-classes.md:266 site/lectures/11-oop-classes.md:493 site/lectures/11-oop-classes.md:607 site/lectures/11-oop-classes.md:746 site/lectures/11-oop-classes.md:952 site/lectures/11-oop-classes.md:1212 site/lectures/11-oop-classes.md:1407
+#: site/lectures/11-oop-classes.md:121 site/lectures/11-oop-classes.md:266 site/lectures/11-oop-classes.md:493 site/lectures/11-oop-classes.md:607 site/lectures/11-oop-classes.md:746 site/lectures/11-oop-classes.md:952 site/lectures/11-oop-classes.md:1212 site/lectures/11-oop-classes.md:1410
 msgid "Try it"
 msgstr ""
 
@@ -715,340 +715,345 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-classes.md:1257
+msgid "`max(..., default=0)` gives `0` when the client has no loans. Without `default=`, `max` of an empty sequence stops with a `ValueError`."
+msgstr ""
+
+#. paragraph
+#: site/lectures/11-oop-classes.md:1260
 msgid "All clients and loans from the two files - a dictionary of clients by id ([session 6](./06-dictionaries.md#a-dictionary-of-dictionaries-a-table-keyed-by-id)), then each loan is added to its client:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1299
+#: site/lectures/11-oop-classes.md:1302
 msgid "From the objects, the usual reports - exposure per segment, and the share of the largest client in each segment:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1334
+#: site/lectures/11-oop-classes.md:1337
 msgid "The link can go both ways: each loan keeps its **client object**, so `loan.client.rating` reads the rating through the link - like a join that is done once. The EL of homework 4 again, 1,140,106.56:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1369
+#: site/lectures/11-oop-classes.md:1372
 msgid "The trap: a loan whose client is not in the clients file. `clients[r[\"client_id\"]]` stops the whole load with a `KeyError`; `get` and a list of rejects ([session 9](./09-errors-and-files.md#the-reject-file-and-the-summary)) keep going and report it:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1397
+#: site/lectures/11-oop-classes.md:1400
 msgid "This is the shape of the final project: objects that hold the data and know their rules. In [session 12](./12-oop-nomenclatures.md) the rules themselves - the nomenclatures - become objects."
 msgstr ""
 
 #. box title
-#: site/lectures/11-oop-classes.md:1400
+#: site/lectures/11-oop-classes.md:1403
 msgid "The same in pandas"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1401
+#: site/lectures/11-oop-classes.md:1404
 msgid "In pandas you do not create one object per row: the DataFrame is **one** object for the whole table, and its methods work on all rows ([session 14](./14-numpy-pandas-intro.md#operations-on-the-whole-array)). Classes are for the **rules** around the data - nomenclatures, checks, report settings - not for millions of rows."
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1408
+#: site/lectures/11-oop-classes.md:1411
 msgid "Add a property `share_late` to `Client`: the share of its outstanding that is in loans of stage 2 or 3. Print it for the five largest clients."
 msgstr ""
 
 #. heading 2
-#: site/lectures/11-oop-classes.md:1412
+#: site/lectures/11-oop-classes.md:1415
 msgid "9. Practice"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1414
+#: site/lectures/11-oop-classes.md:1417
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1422
+#: site/lectures/11-oop-classes.md:1425
 msgid "Task"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1422
+#: site/lectures/11-oop-classes.md:1425
 msgid "File"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1422
+#: site/lectures/11-oop-classes.md:1425
 msgid "What you do"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1424
+#: site/lectures/11-oop-classes.md:1427
 msgid "A `RatingGrade` class: attributes, a method, `__repr__`"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1425
+#: site/lectures/11-oop-classes.md:1428
 msgid "Predict: attributes, class and object attributes, two names for one object"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1426
+#: site/lectures/11-oop-classes.md:1429
 msgid "`Loan` with methods: repaid share, interest, is late, EL, pay"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1427
+#: site/lectures/11-oop-classes.md:1430
 msgid "Checks in `__init__`, properties, a setter that validates"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1428
+#: site/lectures/11-oop-classes.md:1431
 msgid "The same with `@dataclass`: defaults, `frozen`, `order`, `__post_init__`"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1429
+#: site/lectures/11-oop-classes.md:1432
 msgid "`task6-client-loans.py` (Optional)"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1429
+#: site/lectures/11-oop-classes.md:1432
 msgid "`Client` with its loans, built from the two files"
 msgstr ""
 
 #. heading 2
-#: site/lectures/11-oop-classes.md:1431
+#: site/lectures/11-oop-classes.md:1434
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1433
+#: site/lectures/11-oop-classes.md:1436
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1433
+#: site/lectures/11-oop-classes.md:1436
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1435
+#: site/lectures/11-oop-classes.md:1438
 msgid "Objects"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1435
+#: site/lectures/11-oop-classes.md:1438
 msgid "every value is an object of a class; a class is a blueprint, an object one thing made from it"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1436
+#: site/lectures/11-oop-classes.md:1439
 msgid "Class"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1436
+#: site/lectures/11-oop-classes.md:1439
 msgid "`class Loan:` (CamelCase); `__init__(self, ...)` runs at creation"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1437
+#: site/lectures/11-oop-classes.md:1440
 msgid "Attributes"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1437
+#: site/lectures/11-oop-classes.md:1440
 msgid "`self.x = x` stores per object; read with `obj.x`; `vars(obj)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1438
+#: site/lectures/11-oop-classes.md:1441
 msgid "Methods"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1438
+#: site/lectures/11-oop-classes.md:1441
 msgid "functions in the class, first parameter `self`; call `obj.method()`; inside: `self.other()`"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1439
+#: site/lectures/11-oop-classes.md:1442
 msgid "Text form"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1439
+#: site/lectures/11-oop-classes.md:1442
 msgid "`__repr__` for developers (like code), `__str__` for people; write `__repr__` always"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1440
+#: site/lectures/11-oop-classes.md:1443
 msgid "Class attributes"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1440
+#: site/lectures/11-oop-classes.md:1443
 msgid "in the class body, shared by all objects; never a list or a dict there"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1441
+#: site/lectures/11-oop-classes.md:1444
 msgid "Validation"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1441
+#: site/lectures/11-oop-classes.md:1444
 msgid "check in `__init__` (or `__post_init__`) and raise `ValueError`"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1442
+#: site/lectures/11-oop-classes.md:1445
 msgid "`@property` - a computed, read-only attribute; `@x.setter` checks every assignment"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1443
+#: site/lectures/11-oop-classes.md:1446
 msgid "Dataclass"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1443
+#: site/lectures/11-oop-classes.md:1446
 msgid "`@dataclass` + fields with types; `field(default_factory=list)`; `frozen=True`; `order=True`"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1444
+#: site/lectures/11-oop-classes.md:1447
 msgid "Together"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1444
+#: site/lectures/11-oop-classes.md:1447
 msgid "a `Client` with a list of `Loan` objects; build from files with a dict by id"
 msgstr ""
 
 #. heading 2
-#: site/lectures/11-oop-classes.md:1446
+#: site/lectures/11-oop-classes.md:1449
 msgid "Homework"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1448
+#: site/lectures/11-oop-classes.md:1451
 msgid "`11-oop-classes/homework.py` (in the homework repository): **the portfolio as objects** - `Loan` and `Client` dataclasses with validation, built from `loans.csv`, `clients.csv` and `rating_scale.csv`; the EL of each loan with a method (the total must be 1,140,106.56 again), the exposure and the EL per client and per segment, and the 10 largest clients. Every check must print `OK`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1453
+#: site/lectures/11-oop-classes.md:1456
 msgid "The practice tasks you did not finish in class."
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1454
+#: site/lectures/11-oop-classes.md:1457
 msgid "Show your Git history of homework 10 at the start of the next session."
 msgstr ""
 
 #. heading 2
-#: site/lectures/11-oop-classes.md:1456
+#: site/lectures/11-oop-classes.md:1459
 msgid "Self-study"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1458
+#: site/lectures/11-oop-classes.md:1461
 msgid "This part is not covered in class. It is for reading at home: objects that work with `sorted`, `len`, `in` and `for`, and named codes with `enum`."
 msgstr ""
 
 #. heading 3
-#: site/lectures/11-oop-classes.md:1461
+#: site/lectures/11-oop-classes.md:1464
 msgid "Special methods: objects that work with Python's operators"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1463
+#: site/lectures/11-oop-classes.md:1466
 msgid "The methods with two underscores on each side - `__init__`, `__repr__`, `__str__` - are **special methods**: Python calls them for you. There are many more. With them, a class works with the built-in functions and operators:"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1467
+#: site/lectures/11-oop-classes.md:1470
 msgid "You write"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1467
+#: site/lectures/11-oop-classes.md:1470
 msgid "Python calls"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1475
+#: site/lectures/11-oop-classes.md:1478
 msgid "A portfolio that behaves like a container of loans:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1509
+#: site/lectures/11-oop-classes.md:1512
 msgid "To compare objects of a normal class, write `__eq__` and `__lt__`; `functools.total_ordering` writes `<=`, `>`, `>=` from those two:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1536 site/lectures/11-oop-classes.md:1581
+#: site/lectures/11-oop-classes.md:1539 site/lectures/11-oop-classes.md:1584
 msgid "**Exercises**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1538
+#: site/lectures/11-oop-classes.md:1541
 msgid "Add `__getitem__(self, loan_id)` to `Portfolio`, so that `p[\"L2\"]` gives the loan."
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1539
+#: site/lectures/11-oop-classes.md:1542
 msgid "Give `Portfolio` a `__add__` that returns a new portfolio with the loans of both."
 msgstr ""
 
 #. box title
-#: site/lectures/11-oop-classes.md:1541 site/lectures/11-oop-classes.md:1588
+#: site/lectures/11-oop-classes.md:1544 site/lectures/11-oop-classes.md:1591
 msgid "Answer"
 msgstr ""
 
 #. heading 3
-#: site/lectures/11-oop-classes.md:1551
+#: site/lectures/11-oop-classes.md:1554
 msgid "`enum`: named codes"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1553
+#: site/lectures/11-oop-classes.md:1556
 msgid "Codes like the stage (1, 2, 3) or the segment (`\"retail\"`, ...) appear all over the code as bare numbers and strings - a typo (`\"retial\"`) is not an error, just a wrong result. An **enumeration** gives each code a name, and only the defined values exist:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1577
+#: site/lectures/11-oop-classes.md:1580
 msgid "The data still has `\"sme\"` and `3`; convert when you read it (`Segment(row[\"segment\"])`) and the rest of the code uses the names. In SAS terms: a format with a fixed list of values, that refuses everything else."
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1583
+#: site/lectures/11-oop-classes.md:1586
 msgid "Make an `IntEnum` `Bucket` for the DPD buckets (`CURRENT = 0`, `UP_TO_30 = 1`, `UP_TO_90 = 2`, `OVER_90 = 3`) and a function that returns the bucket of a number of days."
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1586
+#: site/lectures/11-oop-classes.md:1589
 msgid "Count the loans of `loans.csv` per `Stage` member with a `Counter`."
 msgstr ""
 
 #. heading 2
-#: site/lectures/11-oop-classes.md:1609
+#: site/lectures/11-oop-classes.md:1612
 msgid "Read more"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1611
+#: site/lectures/11-oop-classes.md:1614
 msgid "Python tutorial: [Classes](https://docs.python.org/3/tutorial/classes.html) (sections 9.1 - 9.4 for today)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1613
+#: site/lectures/11-oop-classes.md:1616
 msgid "Reference: [`dataclasses`](https://docs.python.org/3/library/dataclasses.html), [`property`](https://docs.python.org/3/library/functions.html#property), [`enum` HOWTO](https://docs.python.org/3/howto/enum.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1616
+#: site/lectures/11-oop-classes.md:1619
 msgid "Real Python: [Object-oriented programming in Python](https://realpython.com/python3-object-oriented-programming/), [Data classes in Python](https://realpython.com/python-data-classes/)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-classes.md:1619
+#: site/lectures/11-oop-classes.md:1622
 msgid "**Next session:** OOP in practice - a nomenclature as a class: its codes, its metadata, its validation rules and its methods, applied in the same way to different datasets."
 msgstr ""

@@ -256,6 +256,11 @@ for s in ["131234567", "12O.50", "EUR", "BG80", "", "  "]:
 | `NOTALPHA(s) = 0` | `s.isalpha()` |
 | `COUNTC(s, '0')` | `s.count("0")` |
 
+`any(...)` is `True` when **at least one** value is true, and `all(...)` when
+**every** value is true. With a generator expression ([session 5](./05-lists-advanced.md#_3-generator-expressions-no-list-in-memory)), `any(c.isdigit()
+for c in s)` asks "is at least one character a digit?". For example, `all(c.isdigit()
+for c in "123")` is `True`.
+
 Check an id by its parts - "an L and six digits":
 
 ```python run

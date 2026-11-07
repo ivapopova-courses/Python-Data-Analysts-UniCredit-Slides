@@ -11,43 +11,275 @@ title: 5. Lists (advanced)
 
 **Today you will learn to:**
 
+- remove items from a list, find the position of an item, and sort a list - the
+  methods of a list that session 3 did not show in class;
 - build a new list from an old one in one line, with a **list comprehension** - the
   Python version of SQL `SELECT expression ... WHERE condition`;
-- count and sum with a condition, and check a whole list at once with `any` and
-  `all`;
+- sum and count with a condition without building a list, with a **generator
+  expression** - and see why it saves memory;
 - walk over several lists together with `zip`, and number the items with
-  `enumerate`;
-- take the top N, sorted by one or several columns;
-- keep a whole table in memory as a **list of rows**, and do `WHERE`, derived
-  columns, `ORDER BY` and `GROUP BY` on it;
-- copy a table safely, so that a change of the copy does not change the original.
+  `enumerate`.
 
-From SQL to Python - the same question, two ways. The ten largest exposures:
+From SQL to Python - the same question, two ways. The loans more than 30 days past
+due, in EUR thousands, the largest first:
 
 ```sql
-SELECT loan_id, product, outstanding
+SELECT loan_id, ROUND(outstanding / 1000, 1) AS outstanding_k
 FROM loans
-ORDER BY outstanding DESC
-FETCH FIRST 10 ROWS ONLY;
+WHERE days_past_due > 30
+ORDER BY outstanding_k DESC;
 ```
 
 ```python run
-with open("data/loans.csv", encoding="utf-8") as file:
-    file.readline()                                           # skip the header
-    rows = [line.strip().split(",") for line in file]         # a list of rows
+# (loan_id, outstanding, days_past_due)
+loans = [
+    ("L000001", 1044231.30, 0),
+    ("L000002", 651927.30, 35),
+    ("L000005", 3127.40, 120),
+    ("L000007", 12400.00, 60),
+]
 
-loans = [(row[0], row[2], float(row[7])) for row in rows]     # SELECT loan_id, product, outstanding
-top10 = sorted(loans, key=lambda loan: loan[2], reverse=True)[:10]
-
-for rank, (loan_id, product, outstanding) in enumerate(top10, start=1):
-    print(f"{rank:>2}. {loan_id}  {product:<16}{outstanding:>15,.2f}")
+late = [(loan[0], round(loan[1] / 1000, 1)) for loan in loans if loan[2] > 30]   # SELECT ... WHERE
+late.sort(key=lambda loan: loan[1], reverse=True)                      # ORDER BY ... DESC
+print(late)
 ```
 
-Three lines do the work: a comprehension reads the table, a second one selects the
-columns, and `sorted(...)[:10]` is SQL `ORDER BY ... FETCH FIRST 10`. By the end of today
-you can write each of them.
+Two lines do the work: a comprehension is the `SELECT ... WHERE`, and `sort` is the
+`ORDER BY`. By the end of today you can write both.
 
-## 1. List comprehensions
+## 1. More list methods
+
+[Session 3](./03-lists-tuples-sets.md#_6-the-methods-of-a-list) has the table of all
+list methods. In class we used `append` and `extend`. Here are the others you need
+most: remove items, find an item, sort.
+
+### Remove items: `remove`, `pop`, `del`
+
+```python run
+ids = ["L000001", "L000002", "L000003", "L000004", "L000005"]
+
+ids.remove("L000003")        # remove by value
+print(ids)
+
+last = ids.pop()             # remove the last item, and get it back
+print(last, ids)
+
+first = ids.pop(0)           # remove the item at index 0
+print(first, ids)
+
+del ids[0]                   # remove by index, nothing comes back
+print(ids)
+```
+
+| You know | Use |
+|---|---|
+| the value | `lst.remove(value)` |
+| the index, and you need the item | `item = lst.pop(index)` (`lst.pop()`: the last one) |
+| the index, or a slice | `del lst[index]`, `del lst[start:stop]` |
+
+These change the list **in place** - there is no new list. In SQL it is a `DELETE`
+on the table itself; in SAS you would write a new data set without the rows.
+
+### `remove`: only the first one, and an error if it is not there
+
+`remove` removes **one** item - the first one equal to the value. When the value is
+not in the list, it stops with a `ValueError`. Test with `in` first
+([session 3](./03-lists-tuples-sets.md#membership-in-not-in)):
+
+```python run
+products = ["mortgage", "overdraft", "consumer", "overdraft"]
+
+products.remove("overdraft")
+print(products)              # the second "overdraft" is still there
+
+if "leasing" in products:
+    products.remove("leasing")
+print(products)
+
+products.remove("leasing")   # ValueError: list.remove(x): x not in list
+```
+
+To remove **all** items with one value, build a new list without them - the list
+comprehension of [section 2](#_2-list-comprehensions).
+
+### `clear`: empty the list
+
+```python run
+batch = ["L000001", "L000002", "L000003"]
+print(len(batch))
+
+batch.clear()                # the same list, now empty
+print(batch, len(batch))
+```
+
+A common use: collect items in a loop, process them in groups, and empty the list
+after each group.
+
+### `index`: the position of an item
+
+`lst.index(value)` gives the index of the **first** item equal to the value - and,
+like `remove`, a `ValueError` when there is none:
+
+```python run
+months = ["Jul", "Aug", "Sep", "Oct"]
+outstanding = [128.4, 129.1, 130.2, 129.6]       # EUR million
+
+i = months.index("Sep")
+print(i, outstanding[i])          # the outstanding in September
+
+print("Dec" in months)            # False - so do not call months.index("Dec")
+```
+
+With two lists in the same order, `index` finds the position in one list, and the
+same position reads the other. (Section 4 shows `zip`, which walks over both lists
+together.)
+
+`lst.count(value)` ([session 3](./03-lists-tuples-sets.md#len-min-max-sum-count-index))
+says how many times the value is there; `count(x) > 0` is the same as `x in lst`.
+
+::: tip Try it
+In the `index` example, find the outstanding of `"Oct"`. Then add `"Sep"` once more
+at the end of `months` (and a value at the end of `outstanding`): which September
+does `index` find?
+:::
+
+### Sort a list: `sort()` and `sorted()`
+
+- `lst.sort()` sorts **this** list, in place. Only lists have it.
+- `sorted(x)` returns a **new**, sorted list and does not change `x`. It works on any
+  sequence: a list, a tuple, a set, a string.
+- Both take `reverse=True`: from the largest.
+
+```python run
+amounts = [5875.11, 651927.30, 644.25, 1044231.30]
+
+print(sorted(amounts))              # a new list
+print(amounts)                      # not changed
+
+amounts.sort(reverse=True)          # this list, from the largest
+print(amounts)
+```
+
+Text sorts alphabetically, capital letters before small ones
+([session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)):
+
+```python run
+print(sorted(["overdraft", "Mortgage", "consumer"]))
+```
+
+In SAS this is `PROC SORT` (it sorts the data set in place, like `sort()`, unless you
+give `OUT=`); in SQL `ORDER BY` (it returns new rows, like `sorted()`).
+
+::: warning The methods return `None`
+`sort`, `append`, `remove`, `clear` and the other methods change the list and return
+`None`, not the list. A classic bug:
+
+```python run
+amounts = [3.0, 1.0, 2.0]
+amounts = amounts.sort()        # wrong!
+print(amounts)
+```
+
+`amounts.sort()` sorts the list and returns `None`, and `amounts = ...` keeps that
+`None` - the list is lost. Write only `amounts.sort()`, or `amounts =
+sorted(amounts)`.
+:::
+
+### Sort by a key
+
+[Session 4](./04-functions.md#sorting-by-a-key) showed `key=`: a function that says
+**what** to compare. With records - tuples or lists - the key picks the column:
+
+```python run
+# (loan_id, product, outstanding)
+loans = [
+    ("L000004", "overdraft", 5875.11),
+    ("L000002", "investment", 651927.30),
+    ("L000003", "credit_card", 644.25),
+    ("L000001", "investment", 1044231.30),
+]
+
+by_amount = sorted(loans, key=lambda loan: loan[2], reverse=True)   # ORDER BY outstanding DESC
+for loan in by_amount:
+    print(loan)
+
+loans.sort(key=lambda loan: loan[1])                                # ORDER BY product
+print([loan[1] for loan in loans])
+```
+
+`max` and `min` take the same `key=`, and give back the **whole record**:
+
+```python run
+loans = [
+    ("L000004", "overdraft", 5875.11),
+    ("L000002", "investment", 651927.30),
+    ("L000003", "credit_card", 644.25),
+]
+
+print(max(loans, key=lambda loan: loan[2]))      # the largest loan
+print(min(loans, key=lambda loan: loan[2]))      # the smallest loan
+```
+
+### The top N
+
+Sort from the largest, then take a slice ([session 3](./03-lists-tuples-sets.md#slices-start-stop-step)):
+`sorted(...)[:n]` is SQL `ORDER BY ... DESC FETCH FIRST n ROWS ONLY`, or in SAS
+`PROC SORT` with `BY DESCENDING`, then `SET sorted(OBS=n)`.
+
+```python run
+with open("data/loans.csv", encoding="utf-8") as file:
+    file.readline()                                     # skip the header
+    rows = [line.strip().split(",") for line in file]   # a list of rows (section 2)
+
+top3 = sorted(rows, key=lambda row: float(row[7]), reverse=True)[:3]
+for row in top3:
+    print(row[0], row[2], row[7])
+```
+
+The fields of a file are text: `float(row[7])` in the key compares the amounts as
+numbers. Without it, `"9"` would be larger than `"10"`.
+
+::: info The same in pandas
+In pandas ([session 15](./15-pandas-select-aggregate-join.md#_3-sorting-and-the-top-n))
+a table is sorted by the name of a column:
+
+```python run
+import pandas as pd
+
+loans = pd.read_csv("data/loans.csv")
+print(loans.sort_values("outstanding", ascending=False).head(3)[["loan_id", "product", "outstanding"]])
+print(loans.nlargest(3, "outstanding")["loan_id"].tolist())     # the same top 3
+```
+:::
+
+::: warning Do not remove items while you loop over the same list
+The loop goes through the list **by position**. When you remove an item, the next
+one moves into its place - and the loop skips it:
+
+```python run
+amounts = [0.0, 0.0, 500.0, 0.0]
+for amount in amounts:
+    if amount == 0:
+        amounts.remove(amount)
+print(amounts)             # [500.0, 0.0] - one zero is still there
+```
+
+Build a **new** list with the items you keep. The next section does it in one line.
+:::
+
+**Check yourself.** What does this print?
+
+```python
+stages = [2, 1, 3, 1]
+result = stages.sort()
+print(result, stages)
+```
+
+::: details Answer
+`None [1, 1, 2, 3]`. `sort()` sorted the list `stages` in place and returned `None`.
+:::
+
+## 2. List comprehensions
 
 ### From a loop to one line
 
@@ -145,13 +377,23 @@ print(very_late)
                                    WHERE
 ```
 
-In SQL: `SELECT d FROM days WHERE d > 90`. With both parts - a new value **and** a filter:
+In SQL: `SELECT d FROM days WHERE d > 90`; in SAS: a subsetting `IF` in a DATA step.
+With both parts - a new value **and** a filter:
 
 ```python run
 rates = [8.83, 5.44, 4.79, 8.35, 12.10]
 
 # SELECT rate / 100 FROM rates WHERE rate > 8
 print([rate / 100 for rate in rates if rate > 8])
+```
+
+This is also the safe way to "remove" items (the warning of section 1): keep the
+ones you want, in a new list.
+
+```python run
+amounts = [0.0, 0.0, 500.0, 0.0]
+amounts = [a for a in amounts if a != 0]
+print(amounts)
 ```
 
 ### On the portfolio
@@ -178,6 +420,7 @@ print(len(usd_k), usd_k[:5])
 
 The columns are still **text** - `row[10] == "3"`, not `== 3`. Convert where you need
 a number (`float(row[7])`), as in [session 2](./02-conditions-and-loops.md#the-rows-of-a-file).
+The position of a column is `header.index("stage")` (section 1).
 
 ### `CASE WHEN` inside: `a if condition else b`
 
@@ -209,100 +452,19 @@ print([d for d in days if d > 30 else 0])       # SyntaxError
 ```
 :::
 
-### Generator expressions: `sum(... for ...)`
-
-When you only need the **total**, you do not need the list. Write the comprehension
-without the square brackets, inside the call:
-
-```python run
-with open("data/loans.csv", encoding="utf-8") as file:
-    file.readline()
-    rows = [line.strip().split(",") for line in file]
-
-total = sum(float(row[7]) for row in rows)
-stage3_total = sum(float(row[7]) for row in rows if row[10] == "3")
-late_count = sum(1 for row in rows if int(row[9]) > 0)
-
-print(f"{total:,.2f}  {stage3_total:,.2f}  {late_count}")
-```
-
-This is a **generator expression**: it gives the values one by one to `sum`, and
-never builds a list in memory. It works with any function that takes many values:
-`sum`, `min`, `max`, `any`, `all`, `sorted`, `set`, `", ".join(...)`.
-
-`sum(1 for ... if ...)` is SQL `COUNT(*) ... WHERE ...`. Another way to count: `True`
-is `1` ([session 2](./02-conditions-and-loops.md#different-types)), so `sum(int(row[9]) > 0 for row in rows)` gives the same.
-
-### Set comprehensions: `SELECT DISTINCT`
-
-Curly brackets make a **set** - the unique values ([session 3](./03-lists-tuples-sets.md#unique-values-sql-select-distinct)):
-
-```python run
-with open("data/loans.csv", encoding="utf-8") as file:
-    file.readline()
-    rows = [line.strip().split(",") for line in file]
-
-products = {row[2] for row in rows}
-print(sorted(products))
-
-clients_with_usd = {row[1] for row in rows if row[3] == "USD"}
-print(len(clients_with_usd))
-```
-
-Dictionary comprehensions, with `{key: value for ...}`, are in [session 6](./06-dictionaries.md#_4-dict-comprehensions).
+With curly brackets instead of square ones, you get a **set** - the distinct values
+([session 3](./03-lists-tuples-sets.md#unique-values-sql-select-distinct)):
+`{row[2] for row in rows}` is `SELECT DISTINCT product`.
 
 ### When not to use a comprehension
 
 A comprehension is for **building a new list**. Use a normal loop when:
 
-- you only want an effect, not a list - for example printing:
-  `[print(x) for x in items]` works, but builds a useless list of `None`;
+- you only want an effect, not a list - for example printing;
 - the logic needs several steps or several `if` / `elif` branches - put it into a
   function and call the function in the comprehension, as with `dpd_bucket` above,
   or write the loop;
 - the line becomes too long to read in one look (more than about 80 characters).
-
-::: details Advanced: two `for` in one comprehension
-Several `for` parts run like nested loops, the first one outside:
-
-```python run
-regions = ["Sofia", "Varna"]
-segments = ["retail", "sme"]
-
-# every combination, like a CROSS JOIN
-print([(r, s) for r in regions for s in segments])
-
-# a list of lists made flat
-monthly = [[100, 120], [90], [130, 110, 95]]
-print([x for month in monthly for x in month])
-```
-
-Read it as the loops it replaces: `for month in monthly:` then `for x in month:`.
-More than two `for` parts are hard to read - write the loops.
-:::
-
-::: details Advanced: `map` and `filter`
-You will meet them in other people's code. `map(function, items)` calls the
-function for every item; `filter(function, items)` keeps the items for which the
-function returns something true. Both give their values one by one - wrap them in
-`list()` to see them. A comprehension does the same job and reads better:
-
-```python run
-fields = ["1156900.00", "1044231.30", "8.83"]
-days = [0, 35, 0, 120, 15]
-
-print(list(map(float, fields)), [float(f) for f in fields])
-print(list(filter(lambda d: d > 30, days)), [d for d in days if d > 30])
-
-row = " L000001 , C0080 ,investment , EUR "
-print(list(map(str.strip, row.split(","))))     # nice when the function has a name
-```
-
-In pandas, `map` comes back: `series.map(function)` or `series.map(dictionary)` -
-the Python version of a SAS format (sessions 6 and 15). `functools.reduce` combines
-the items into one value, two at a time; for sums, minimums and maximums the
-built-in functions are clearer.
-:::
 
 ::: info The same in pandas
 In pandas ([session 14](./14-numpy-pandas-intro.md#columns)) you do not loop at all - an operation on a column works on
@@ -328,110 +490,126 @@ days = [0, 35, 0, 120, 15]
 print([d // 30 for d in days])
 print([d for d in days if d])
 print(["yes" if d else "no" for d in days])
-print(sum(d > 0 for d in days))
 ```
 
 Then change the second line to keep only the values between 10 and 100.
 :::
 
-## 2. Checks and extremes: `any`, `all`, `min`, `max`
+## 3. Generator expressions: no list in memory
 
-### `any` and `all`: questions about the whole list
+### `sum(... for ...)`: SUM and COUNT with a condition
 
-- `any(values)` is `True` if **at least one** value is true.
-- `all(values)` is `True` if **every** value is true.
-
-With a generator expression, they ask a question about every row - the checks you
-run on data before a report:
+When you only need the **total**, you do not need the list. Write the comprehension
+without the square brackets, inside the call:
 
 ```python run
 with open("data/loans.csv", encoding="utf-8") as file:
     file.readline()
     rows = [line.strip().split(",") for line in file]
 
-print("any loan over 90 days past due:", any(int(row[9]) > 90 for row in rows))
-print("all ids start with L:          ", all(row[0].startswith("L") for row in rows))
-print("all amounts positive:          ", all(float(row[6]) > 0 for row in rows))
-print("any currency other than EUR/USD:", any(row[3] not in ("EUR", "USD") for row in rows))
+total = sum(float(row[7]) for row in rows)
+stage3_total = sum(float(row[7]) for row in rows if row[10] == "3")
+late_count = sum(1 for row in rows if int(row[9]) > 0)
+
+print(f"{total:,.2f}  {stage3_total:,.2f}  {late_count}")
 ```
 
-`row[0].startswith("L")` is `True` when the text starts with `"L"` - a string
-method; [session 7](./07-text-processing.md#_3-find-and-test) has them all. In SQL these are `EXISTS (SELECT ... WHERE ...)` and
-`NOT EXISTS (... WHERE NOT ...)`. Both stop as soon as the answer is known: `any` at the first true value,
-`all` at the first false one.
+- `sum(x for ... if ...)` is SQL `SUM(x) ... WHERE ...`;
+- `sum(1 for ... if ...)` is SQL `COUNT(*) ... WHERE ...`: one `1` for each row
+  that passes.
 
-::: warning Empty lists
-`any([])` is `False` - nothing is true. `all([])` is `True` - nothing is false. A
-check with `all` on an empty file "passes". Check the number of rows too.
+This is a **generator expression**. It works inside any function that takes many
+values: `sum`, `min`, `max`, `sorted`, `list`, `", ".join(...)`.
+
+### Why: a generator does not keep the values
+
+A list comprehension builds the **whole list** first, and keeps all its values in
+memory. A generator expression keeps **none** of them: it makes the next value only
+when `sum` asks for it, gives it, and forgets it.
 
 ```python run
-print(any([]), all([]))
+import sys
+
+as_list = [x * 2 for x in range(1_000_000)]     # a million values in memory
+as_generator = (x * 2 for x in range(1_000_000))  # a recipe for the values
+
+print(sys.getsizeof(as_list))         # millions of bytes - and the numbers come on top
+print(sys.getsizeof(as_generator))    # about a hundred bytes, for any number of values
+print(sum(as_list), sum(as_generator))
+```
+
+The result is the same; the memory is not. (On your computer the list takes
+about 8 MB; in the browser of this site about 4 MB. The numbers inside it take more
+memory again.) It is the idea of `range` in
+[session 3](./03-lists-tuples-sets.md#a-range-does-not-keep-its-numbers): a range of a
+billion numbers is small, because it does not keep them. A SAS DATA step works this
+way too: it reads one observation, processes it, and goes to the next.
+
+(The round brackets make a generator on its own line. Inside a call - `sum(x for x
+in ...)` - the brackets of the call are enough.)
+
+### A file, one line at a time
+
+A file works the same way: `for line in file` reads **one line at a time**. A
+generator over the file gives the total of a file of any size, and only one line is
+in memory at a time:
+
+```python run
+with open("data/loans.csv", encoding="utf-8") as file:
+    file.readline()                                           # skip the header
+    total = sum(float(line.split(",")[7]) for line in file)   # one line at a time
+
+print(f"{total:,.2f}")
+```
+
+The list of rows of section 2 (`rows = [... for line in file]`) keeps the whole file
+in memory. For `loans.csv` (400 rows) both are fine. For a file of 10 million rows,
+the generator still works on a laptop.
+
+::: info The same in pandas
+`pd.read_csv` reads the **whole** file into memory. For a file larger than the
+memory, `chunksize=` reads it in pieces, and you add up the pieces - the same idea:
+
+```python run
+import pandas as pd
+
+total = 0
+for chunk in pd.read_csv("data/loans.csv", chunksize=100):    # 100 rows at a time
+    total += chunk["outstanding"].sum()
+print(f"{total:,.2f}")
 ```
 :::
 
-### `min` and `max` with `key`
+### A trap: a generator is used once
 
-[Session 4](./04-functions.md#sorting-by-a-key) showed `key=` with `sorted`, `min` and `max`. With rows, `key` says which
-column to compare - and you get back the **whole row**, not only the value:
-
-```python run
-with open("data/loans.csv", encoding="utf-8") as file:
-    file.readline()
-    rows = [line.strip().split(",") for line in file]
-
-largest = max(rows, key=lambda row: float(row[7]))
-cheapest = min(rows, key=lambda row: float(row[8]))
-print(largest[0], largest[2], largest[7])
-print(cheapest[0], cheapest[2], cheapest[8])
-print(max(float(row[7]) for row in rows))       # only the largest amount, without the row
-```
-
-::: warning A trap: numbers as text
-`max(["9", "10", "100"])` is `"9"`: strings compare letter by letter ([session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)).
-Convert first - `key=float` or `float(...)` in the generator. Without `key`,
-`max(rows)` compares whole rows as text - the first column first - and gives the
-largest **id**, not the largest loan.
+A generator gives its values **once**. After that it is empty - there is nothing
+kept to give again:
 
 ```python run
-print(max(["9", "10", "100"]))
-print(max(["9", "10", "100"], key=float))
-```
-:::
+late = (d for d in [0, 35, 120, 15] if d > 0)
 
-### `default=`: when the list can be empty
-
-`max([])` is a `ValueError`. When a filter may leave nothing, give a `default`:
-
-```python run
-days = [0, 0, 15]
-
-print(max((d for d in days if d > 90), default=0))
-print(max(d for d in days if d > 90))           # ValueError: the sequence is empty
+print(sum(late))        # 170
+print(sum(late))        # 0 - already used up
 ```
 
-### `sum`, `len` and the average
-
-```python run
-with open("data/loans.csv", encoding="utf-8") as file:
-    file.readline()
-    rows = [line.strip().split(",") for line in file]
-
-rates = [float(row[8]) for row in rows]
-print("count  ", len(rates))
-print("min    ", min(rates))
-print("max    ", max(rates))
-print("average", round(sum(rates) / len(rates), 2))
-```
-
-This is SAS `PROC MEANS` for one variable. The module `statistics` ([session 10](./10-modules-and-git.md#statistics-proc-means-and-proc-univariate-for-a-list)) adds
-`median`, `stdev` and more; pandas gives all of them in one `describe()` ([session 14](./14-numpy-pandas-intro.md#describe-proc-means)).
+It also has no `len()` and no index (`late[0]` is an error). When you need the
+values more than once, or their number, make a **list** - that is what lists are
+for.
 
 ::: tip Try it
-Change the checks block above: is there a loan with `outstanding` greater than
-`amount`? Is every `stage` one of `"1"`, `"2"`, `"3"`? Predict the answers first.
+Predict, then press **Run**:
+
+```python run
+days = [0, 35, 0, 120, 15]
+print(sum(1 for d in days if d > 30))
+print(sum(d for d in days if d > 30))
+print(max(d for d in days if d < 100))
+g = (d for d in days)
+print(list(g), list(g))
+```
 :::
 
-## 3. `zip` and `enumerate`
+## 4. `zip` and `enumerate`
 
 ### `zip`: several lists side by side
 
@@ -449,6 +627,11 @@ for loan_id, product, amount in zip(loan_ids, products, amounts):
 print(list(zip(loan_ids, amounts)))
 ```
 
+Each item of `zip` is a tuple, and `for loan_id, product, amount in ...` takes it
+apart into three names - the **unpacking** of [session 3](./03-lists-tuples-sets.md#unpacking),
+`loan_id, product, amount = ("L000001", "investment", 1044231.30)`, done for every
+item.
+
 Columns become rows. A common use: two lists of the same months, compared month by
 month:
 
@@ -461,18 +644,19 @@ for month, before, now in zip(months, outstanding_2025, outstanding_2026):
     print(f"{month}: {now - before:+.1f} million ({(now / before - 1):+.2%})")
 ```
 
-And a list with itself, one step apart - the change from month to month (in SAS:
-`LAG`):
+And in a comprehension - a new list from two lists, item by item:
 
 ```python run
-outstanding = [128.4, 129.1, 130.2, 129.6, 131.4]
+outstanding = [1044231.30, 651927.30, 644.25]
+rates = [8.83, 5.44, 4.79]
 
-changes = [round(now - before, 1) for before, now in zip(outstanding, outstanding[1:])]
-print(changes)
+interest = [round(o * r / 100, 2) for o, r in zip(outstanding, rates)]
+print(interest)
 ```
 
-`outstanding[1:]` starts one month later, so each pair is (the month before, this
-month).
+`zip` gives its pairs one by one, like a generator: `list(zip(...))` shows them all.
+Two lists - the keys and the values - become a dictionary with `dict(zip(keys,
+values))` in [session 6](./06-dictionaries.md).
 
 ### A trap: the shortest list wins
 
@@ -491,89 +675,48 @@ Check the lengths first when the lists come from different places:
 
 ### `enumerate`: the number of each item
 
-Sometimes you need the **position** of each item, not only the item. The C-style
-way loops over the indexes with `range(len(...))`:
-
-```python run
-products = ["mortgage", "consumer", "credit_card"]
-for index in range(len(products)):
-    print(f"{index}: {products[index]}")
-```
-
-The Python way is [`enumerate(iterable, start=0)`](https://docs.python.org/3/library/functions.html#enumerate):
-it gives pairs `(number, item)`, so the `for` takes the number and the item with two
-names. `start=1` numbers from 1 - a rank, or the line number of a file (the line 1 is
-the header):
+Sometimes you need the **position** of each item, not only the item.
+[`enumerate(items, start=0)`](https://docs.python.org/3/library/functions.html#enumerate)
+gives pairs `(number, item)` - it is a `zip` of the numbers 0, 1, 2, ... and the
+items:
 
 ```python run
 products = ["investment", "overdraft", "mortgage"]
 
-for i, product in enumerate(products, start=1):
+for i, product in enumerate(products):
     print(i, product)
 
-print(list(enumerate(products)))
+print(list(enumerate(products, start=1)))
 ```
 
-The line numbers of the rows with a missing amount - in SAS: `_N_`:
+With `start=1` the number is a **rank** - here for the top N of section 1:
 
 ```python run
-lines = ["L000001,800.00", "L000002,", "L000003,15900.00", "L000004,"]
-
-for line_no, line in enumerate(lines, start=2):          # line 1 is the header
-    amount = line.split(",")[1]
-    if amount == "":
-        print(f"line {line_no}: the amount is missing")
-```
-
-::: details Advanced: more of `zip` - transpose, `strict=True`, used-up iterators
-**Transpose a table.** With the `*` of [session 4](./04-functions.md#unpacking-in-a-call), `zip(*rows)` turns a list of rows
-into a list of **columns** - a small SAS `PROC TRANSPOSE`:
-
-```python run
-rows = [
-    ("L000001", "investment", 1044231.30),
-    ("L000002", "investment", 651927.30),
-    ("L000003", "credit_card", 644.25),
+loans = [
+    ("L000004", 5875.11),
+    ("L000002", 651927.30),
+    ("L000003", 644.25),
+    ("L000001", 1044231.30),
 ]
 
-ids, products, amounts = zip(*rows)
-print(ids)
-print(amounts)
-print(sum(amounts))
+top3 = sorted(loans, key=lambda loan: loan[1], reverse=True)[:3]
+for rank, loan in enumerate(top3, start=1):
+    print(f"{rank}. {loan[0]} {loan[1]:>15,.2f}")
 ```
 
-**`strict=True`.** Since Python 3.10, `strict=True` turns "the shortest list wins"
-into an error:
-
-```python run
-loan_ids = ["L000001", "L000002", "L000003"]
-amounts = [1044231.30, 651927.30]
-
-print(list(zip(loan_ids, amounts, strict=True)))   # ValueError
-```
-
-**Used-up iterators.** `zip`, `enumerate`, `map` and `filter` do not build a list.
-They are **iterators**: they give the values one by one, **once**. The second time
-they are empty - if you need the values twice, keep a list: `pairs =
-list(zip(...))`.
-
-```python run
-pairs = zip(["a", "b"], [1, 2])
-
-print(list(pairs))
-print(list(pairs))          # [] - already used up
-```
-:::
+In SAS, the number of the current row in a DATA step is `_N_`; in SQL, a rank is
+`ROW_NUMBER() OVER (ORDER BY outstanding DESC)`.
 
 ::: info The same in pandas
-In a DataFrame, the columns are already side by side - no `zip` is needed. The
-month-to-month change is `shift` ([session 16](./16-pandas-reports-project.md#lag-by-loan)):
+In a DataFrame, the columns are already side by side - no `zip` is needed. A new
+column from two columns is one line:
 
 ```python run
 import pandas as pd
 
-s = pd.Series([128.4, 129.1, 130.2, 129.6, 131.4])
-print((s - s.shift(1)).round(1).tolist())
+loans = pd.read_csv("data/loans.csv")
+loans["interest"] = (loans["outstanding"] * loans["interest_rate"] / 100).round(2)
+print(loans[["loan_id", "outstanding", "interest_rate", "interest"]].head(3))
 ```
 :::
 
@@ -584,674 +727,60 @@ Predict the output, then run it:
 a = [1, 2, 3, 4]
 b = ["x", "y"]
 print(list(zip(a, b)))
-print(list(zip(a, a[1:])))
+print([n * 10 for n, letter in zip(a, b)])
 print(list(enumerate(b, start=10)))
 ```
 :::
 
-## 4. Sorting and the top N
-
-### A recap
-
-[Session 3](./03-lists-tuples-sets.md#sort-or-sorted): `list.sort()` changes the list, `sorted(x)` returns a new list. [Session 4](./04-functions.md#sorting-by-a-key):
-`key=` sorts by any expression, `reverse=True` sorts from the largest, and a key
-that returns a **tuple** sorts by several columns - like SQL `ORDER BY a, b`.
-
-### The top N
-
-`sorted(...)[:n]` - sort, then take a slice ([session 3](./03-lists-tuples-sets.md#slices-start-stop-step)). With `enumerate` ([section 3](#_3-zip-and-enumerate))
-you get the rank:
-
-```python run
-with open("data/loans.csv", encoding="utf-8") as file:
-    file.readline()
-    rows = [line.strip().split(",") for line in file]
-
-top5 = sorted(rows, key=lambda row: float(row[7]), reverse=True)[:5]
-for rank, row in enumerate(top5, start=1):
-    print(rank, row[0], row[1], row[7])
-```
-
-### Mixed directions: `ORDER BY product, outstanding DESC`
-
-`reverse=True` reverses **all** columns. For a number, there is a simple way to
-sort only that column from the largest: **negate** it. `-outstanding` puts the
-largest first inside an ascending sort:
-
-```python run
-loans = [
-    ("L000004", "overdraft", 5875.11),
-    ("L000002", "investment", 651927.30),
-    ("L000003", "credit_card", 644.25),
-    ("L000001", "investment", 1044231.30),
-]
-
-for loan in sorted(loans, key=lambda loan: (loan[1], -loan[2])):
-    print(loan)
-```
-
-This works only for numbers - you cannot negate a string. In pandas, every column
-gets its own direction: `sort_values(["product", "outstanding"], ascending=[True,
-False])` ([session 15](./15-pandas-select-aggregate-join.md#_3-sorting-and-the-top-n)).
-
-::: details Advanced: `DESC` on a text column - two stable sorts
-Python's sort is **stable**: items with equal keys keep their order. So sort by the
-**last** column first, then by the first one:
-
-```python run
-loans = [
-    ("L000004", "overdraft", 5875.11),
-    ("L000002", "investment", 651927.30),
-    ("L000003", "credit_card", 644.25),
-    ("L000001", "investment", 1044231.30),
-]
-
-# ORDER BY product DESC, loan_id
-result = sorted(loans, key=lambda loan: loan[0])                    # the second column first
-result = sorted(result, key=lambda loan: loan[1], reverse=True)     # then the first column
-for loan in result:
-    print(loan)
-```
-
-SAS `PROC SORT` is stable too (with the default `EQUALS` option), so this is familiar.
-:::
-
-::: details Advanced: missing values in a sort
-`sorted` compares the keys with `<`. Two values that cannot be compared - a number
-and `None`, a number and a string - stop the sort with a `TypeError`:
-
-```python run
-amounts = [100.0, None, 50.0]
-print(sorted(amounts))          # TypeError: '<' not supported between instances of 'NoneType' and 'float'
-```
-
-Decide where the missing values go, and say it in the key:
-
-```python run
-amounts = [100.0, None, 50.0]
-
-# missing values last: (True/False, value) - False sorts before True
-print(sorted(amounts, key=lambda x: (x is None, x if x is not None else 0)))
-```
-
-SAS sorts a missing value **first** (it is the smallest number); SQL puts `NULL`s first
-or last depending on the database. pandas has `na_position=` ([session 15](./15-pandas-select-aggregate-join.md#_3-sorting-and-the-top-n)).
-:::
-
-::: details Advanced: `operator.itemgetter`
-For keys that only pick columns, the module `operator` has a ready function:
-`itemgetter(2)` is the same as `lambda row: row[2]`, and `itemgetter(1, 2)` gives the
-tuple `(row[1], row[2])`. It is a bit faster and reads like a column list:
-
-```python run
-from operator import itemgetter
-
-loans = [
-    ("L000004", "overdraft", 5875.11),
-    ("L000002", "investment", 651927.30),
-    ("L000003", "credit_card", 644.25),
-]
-
-print(sorted(loans, key=itemgetter(2)))
-print(sorted(loans, key=itemgetter(1, 0)))
-```
-:::
-
-::: details Advanced: `heapq.nlargest`
-For the top N of a very long list, the module `heapq` does not sort the whole list:
-
-```python run
-import heapq
-
-amounts = [5875.11, 651927.30, 644.25, 1044231.30, 15900.0]
-print(heapq.nlargest(3, amounts))
-print(heapq.nsmallest(2, amounts))
-```
-
-It also takes `key=`. For a few thousand rows `sorted(...)[:n]` is just as good.
-:::
-
-::: tip Try it
-In the "ORDER BY product, outstanding DESC" example, sort by `product DESC,
-outstanding DESC` (in SQL terms) instead. Do you still need the minus? (Answer:
-no - `reverse=True` on the tuple key is enough, both columns go down.)
-:::
-
-## 5. A table as a list of rows
-
-### The shape of a table in Python
-
-A SAS dataset or a SQL table has rows and columns. In plain Python, the simplest
-form is a **list of rows**, where each row is a list or a tuple, and a separate list
-of column names:
-
-```python run
-header = ["loan_id", "product", "outstanding", "stage"]
-rows = [
-    ["L000001", "investment", 1044231.30, 1],
-    ["L000002", "investment", 651927.30, 2],
-    ["L000003", "credit_card", 644.25, 2],
-]
-
-print(rows[1])          # a row
-print(rows[1][2])       # a cell: row 1, column 2
-print([row[2] for row in rows])     # a column
-```
-
-![A table drawn as a grid; one row is rows[1], one column is the list [row[2] for row in rows], one cell is rows[1][2]](/diagrams/table-rows.svg){.diagram width=920 height=300}
-
-- **a row**: `rows[i]`;
-- **a cell**: `rows[i][j]` - first the row, then the column;
-- **a column**: `[row[j] for row in rows]` - a comprehension over the rows.
-
-::: details Advanced: loop over the rows and the cells
-A table can be read with **nested loops** ([session 2](./02-conditions-and-loops.md#nested-loops)): the outer loop takes the
-rows, the inner loop the cells of one row. Here the cells get their column names,
-in pairs with `zip`:
-
-```python run
-header = ["loan_id", "product", "outstanding", "stage"]
-rows = [
-    ["L000001", "investment", 1044231.30, 1],
-    ["L000002", "investment", 651927.30, 2],
-]
-for number, row in enumerate(rows, start=1):
-    print(f"row {number}:")
-    for name, value in zip(header, row):
-        print(f"    {name:<12} {value}")
-```
-
-`break` in the inner loop leaves **only the inner loop** - the outer loop goes on
-with the next row ([session 2](./02-conditions-and-loops.md#break-in-nested-loops), "`break` in nested loops"). To stop both loops at
-the first match, put the loops into a function and `return` ([session 4](./04-functions.md#return-early)).
-:::
-
-### Read a CSV file into rows, with types
-
-The fields of a file are text. A function that reads the file and converts each
-column once, at the start:
-
-```python run
-def read_loans(path):
-    """loans.csv as (header, rows); rows: lists with numbers converted."""
-    with open(path, encoding="utf-8") as file:
-        header = file.readline().strip().split(",")
-        rows = []
-        for line in file:
-            f = line.strip().split(",")
-            rows.append([f[0], f[1], f[2], f[3], f[4], f[5],
-                         float(f[6]), float(f[7]), float(f[8]), int(f[9]), int(f[10])])
-    return header, rows
-
-
-header, rows = read_loans("data/loans.csv")
-print(len(rows), "rows")
-print(rows[0])
-```
-
-Column numbers like `7` are hard to remember. Find them by name with
-`header.index`:
-
-```python run
-with open("data/loans.csv", encoding="utf-8") as file:
-    header = file.readline().strip().split(",")
-
-OUT = header.index("outstanding")
-STAGE = header.index("stage")
-print(OUT, STAGE)
-```
-
-([Session 6](./06-dictionaries.md#a-row-as-a-dictionary) gives each row its column names, with dictionaries. pandas does it for
-you.)
-
-### SQL on a list of rows
-
-The usual SQL operations, one line each. Read the file once, then:
-
-```python run
-def read_loans(path):
-    with open(path, encoding="utf-8") as file:
-        header = file.readline().strip().split(",")
-        rows = []
-        for line in file:
-            f = line.strip().split(",")
-            rows.append([f[0], f[1], f[2], f[3], f[4], f[5],
-                         float(f[6]), float(f[7]), float(f[8]), int(f[9]), int(f[10])])
-    return header, rows
-
-header, rows = read_loans("data/loans.csv")
-
-# SELECT loan_id, product, outstanding FROM loans
-selected = [(r[0], r[2], r[7]) for r in rows]
-
-# ... WHERE currency = 'USD' AND stage > 1
-usd_risky = [r for r in rows if r[3] == "USD" and r[10] > 1]
-
-# derived column: repaid share = 1 - outstanding / amount
-with_share = [r + [round(1 - r[7] / r[6], 4)] for r in rows]
-
-# ORDER BY outstanding DESC, FETCH FIRST 3
-top3 = sorted(rows, key=lambda r: r[7], reverse=True)[:3]
-
-# SUM(outstanding), COUNT(*), AVG(interest_rate)
-total = sum(r[7] for r in rows)
-average_rate = sum(r[8] for r in rows) / len(rows)
-
-print(selected[0])
-print(len(usd_risky), "USD loans in stage 2 or 3")
-print(with_share[0][-1])
-print([r[0] for r in top3])
-print(f"{total:,.2f}  {len(rows)}  {average_rate:.2f}")
-```
-
-Note `r + [value]`: a new row, longer by one column. `r.append(value)` would change
-the original row - section 6.
-
-### `GROUP BY` with comprehensions
-
-A `GROUP BY` in two steps: the groups are the distinct values of the column (a set
-comprehension); for each group, filter the rows and aggregate them:
-
-```python run
-def read_loans(path):
-    with open(path, encoding="utf-8") as file:
-        file.readline()
-        rows = []
-        for line in file:
-            f = line.strip().split(",")
-            rows.append([f[0], f[1], f[2], f[3], f[4], f[5],
-                         float(f[6]), float(f[7]), float(f[8]), int(f[9]), int(f[10])])
-    return rows
-
-rows = read_loans("data/loans.csv")
-
-# SELECT stage, COUNT(*), SUM(outstanding) FROM loans GROUP BY stage ORDER BY stage
-for stage in sorted({r[10] for r in rows}):              # the groups
-    group = [r for r in rows if r[10] == stage]          # WHERE stage = ...
-    print(stage, len(group), f"{sum(r[7] for r in group):,.2f}")
-```
-
-This reads the rows once for each group - fine for a few groups. [Session 6](./06-dictionaries.md#_6-grouping-by-hand-group-by) does it
-in one pass, with a dictionary; pandas has `groupby` ([session 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means)).
-
-::: details Advanced: totals and a cross table by list index
-When the groups are the numbers 1, 2, 3, the group number can be the **index** of
-a list of totals (stage `1` at position `0`) - like a SAS array:
-
-```python run
-def read_loans(path):
-    with open(path, encoding="utf-8") as file:
-        file.readline()
-        rows = []
-        for line in file:
-            f = line.strip().split(",")
-            rows.append([f[0], f[1], f[2], f[3], f[4], f[5],
-                         float(f[6]), float(f[7]), float(f[8]), int(f[9]), int(f[10])])
-    return rows
-
-rows = read_loans("data/loans.csv")
-
-totals = [0.0, 0.0, 0.0]
-counts = [0, 0, 0]
-for r in rows:
-    totals[r[10] - 1] += r[7]
-    counts[r[10] - 1] += 1
-
-for stage, (count, total) in enumerate(zip(counts, totals), start=1):
-    print(f"stage {stage}: {count:>4} loans {total:>18,.2f}")
-```
-
-A table of counts - stages in the rows, currencies in the columns, SAS `PROC FREQ`
-with `TABLES stage * currency` - is a list of lists with two indexes:
-
-```python run
-with open("data/loans.csv", encoding="utf-8") as file:
-    file.readline()
-    rows = [line.strip().split(",") for line in file]
-
-currencies = ["EUR", "USD"]
-table = [[0, 0] for stage in range(3)]           # 3 rows, 2 columns - all zeros
-
-for r in rows:
-    table[int(r[10]) - 1][currencies.index(r[3])] += 1
-
-print("stage   EUR  USD")
-for stage, counts in enumerate(table, start=1):
-    print(f"{stage:>5} {counts[0]:>5} {counts[1]:>4}")
-```
-
-Why `[[0, 0] for stage in range(3)]`, and not the shorter `[[0, 0]] * 3`? The `*`
-repeats the **reference**, not the list: all three rows are **one** list.
-
-```python run
-table = [[0, 0]] * 3
-table[0][0] = 99
-print(table)                    # [[99, 0], [99, 0], [99, 0]] - all rows changed!
-
-table = [[0, 0] for _ in range(3)]
-table[0][0] = 99
-print(table)                    # [[99, 0], [0, 0], [0, 0]]
-```
-
-The comprehension runs `[0, 0]` three times - three new lists. (The name `_` is the
-custom for a loop variable that is not used.)
-:::
-
-::: info The same in pandas
-A DataFrame is a table with names for the columns, and the operations of this section
-are one call each (sessions 14 - 15):
-
-```python run
-import pandas as pd
-
-loans = pd.read_csv("data/loans.csv")
-print(loans.nlargest(3, "outstanding")[["loan_id", "product", "outstanding"]])
-print(loans.groupby("stage")["outstanding"].agg(["count", "sum"]).round(0))   # GROUP BY stage
-print(pd.crosstab(loans["stage"], loans["currency"]))
-```
-:::
-
-::: tip Try it
-In the "SQL on a list of rows" block, add a line for `WHERE product = 'mortgage'
-AND interest_rate > 6` - how many loans? Then add the derived column "years to
-maturity" (hint: the year is `int(r[5][:4])`, the report year is 2026).
-:::
-
-## 6. Copies of a table
-
-### A shallow copy shares the rows
-
-[Session 3](./03-lists-tuples-sets.md#make-a-copy): `rows.copy()`, `rows[:]` and `list(rows)` make a **new list**. But the
-items in it - here the rows - are the **same** objects. The copy is *shallow*:
-
-```python run
-rows = [["L000001", 1044231.30], ["L000002", 651927.30]]
-backup = rows.copy()
-
-rows[0][1] = 0.0                   # change a cell of the original
-print(backup[0])                   # the "backup" changed too!
-
-rows.append(["L000003", 644.25])   # add a row to the original
-print(len(rows), len(backup))      # this does not touch the copy
-```
-
-The outer list is copied; the inner lists are shared. Changing a **cell** shows in
-both; adding or removing a **row** does not.
-
-### Copy the rows too
-
-A copy that is safe to change copies every row - a comprehension again:
-
-```python run
-rows = [["L000001", 1044231.30], ["L000002", 651927.30]]
-backup = [row.copy() for row in rows]
-
-rows[0][1] = 0.0
-print(rows[0], backup[0])          # the backup keeps the old value
-```
-
-Make it before you change cells of a table that you still need in its original
-form - like `data backup; set loans; run;` before an update in SAS.
-
-::: details Advanced: `copy.deepcopy`
-`copy.deepcopy` copies the list **and** every list inside it, at every level - also
-lists inside the rows:
-
-```python run
-import copy
-
-rows = [["L000001", 1044231.30], ["L000002", 651927.30]]
-backup = copy.deepcopy(rows)
-
-rows[0][1] = 0.0
-print(rows[0], backup[0])
-```
-:::
-
-### Better: rows that cannot change
-
-If the rows are **tuples**, nobody can change a cell - not by mistake, not through a
-shared reference. To change a value, you build a new row:
-
-```python run
-rows = [("L000001", 1044231.30), ("L000002", 651927.30)]
-backup = rows.copy()               # a shallow copy is enough now
-
-rows[0] = (rows[0][0], 0.0)        # a new tuple in the original list
-print(rows[0], backup[0])
-```
-
-The comprehensions of this lecture always build new rows - `r + [value]`, `(r[0],
-r[2])` - so they never change the input. That is the safe default for data work.
-
-::: info pandas and copies
-In pandas 3 (and in 2.2 with copy-on-write switched on), a selection behaves like a
-copy: changing it never changes the original DataFrame. [Session 15](./15-pandas-select-aggregate-join.md#change-a-filtered-table-make-a-copy) shows it.
-:::
-
-**Check yourself.** What does this print?
-
-```python
-a = [[1, 2], [3, 4]]
-b = a[:]
-b[0] = [9, 9]
-b[1][0] = 7
-print(a)
-```
-
-::: details Answer
-`[[1, 2], [7, 4]]`. `b[0] = [9, 9]` puts a new list into `b` only (the outer lists are
-different). `b[1][0] = 7` changes the inner list that `a` and `b` share.
-:::
-
-## 7. Practice
+## 5. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:
 
 ```bash
-python 05-lists-advanced/practice/task1-comprehensions.py
+python 05-lists-advanced/practice/task1-list-methods.py
 ```
 
 | Task | File | What you do |
 |------|------|-------------|
-| 1 | `task1-comprehensions.py` | Derived lists and filters on a list of loans |
-| 2 | `task2-predict-lists.py` | Predict: comprehension filters, checks, `zip`, sorting, a shallow copy |
-| 3 | `task3-checks-extremes.py` | Data checks with `any` / `all`; `min` / `max` with `key` and `default` |
-| 4 | `task4-sort-top-n.py` | Several sort keys, a descending number; the top 3 with a rank |
-| 5 | `task5-zip-columns.py` | Rows from columns; the change from month to month; line numbers |
-| 6 | `task6-table-of-rows.py` (Optional) | `loans.csv` as a list of rows: convert, select, filter, sort, totals, a safe copy |
+| 1 | `task1-list-methods.py` | Remove, find and sort with the list methods; the top 3 |
+| 2 | `task2-comprehensions.py` | Derived lists, filters and `CASE WHEN` with comprehensions |
+| 3 | `task3-predict-lists.py` | Predict: `sort()` and `None`, the position of `if`, a used generator, `zip` |
+| 4 | `task4-generators.py` | Sums and counts with a condition, without a list; a file line by line |
+| 5 | `task5-zip.py` | Two lists side by side; a rank with `enumerate` |
+| 6 | `task6-clean-a-list.py` (Optional) | Clean a list of loans step by step, then report on it |
 
 ## Summary
 
 | Topic | Remember |
 |-------|----------|
+| Remove | `remove(value)` - the first one, `ValueError` if missing; `pop(i)` gives the item back; `del lst[i]`; `clear()` empties |
+| Find | `index(value)` - the first position, `ValueError` if missing: test with `in` first |
+| Sort | `lst.sort()` changes the list; `sorted(x)` gives a new one; `key=`, `reverse=True`; top N: `sorted(...)[:n]` |
+| `None` | the methods change the list and return `None`: never `x = x.sort()` |
 | Comprehension | `[expr for x in items if cond]` = `SELECT expr ... WHERE cond`; always a new list |
 | `if` position | `if` at the end filters; `a if c else b` at the start chooses a value (CASE) |
-| Generator expression | `sum(x for x in items)` - no list in memory; `sum(1 for ... if ...)` = `COUNT(*) ... WHERE` |
-| Set comprehension | `{x for x in items}` = `SELECT DISTINCT` |
-| Checks | `any(...)` = `EXISTS`; `all(...)` - every row; `all([])` is `True` |
-| Extremes | `max(rows, key=...)` gives the whole row; `default=` for empty input; convert text first |
-| `zip` | parallel lists -> tuples; `zip(xs, xs[1:])` = `LAG`; stops at the shortest list |
-| `enumerate` | `(number, item)`; `start=1` for a rank or a line number |
-| Sorting | a tuple key = `ORDER BY a, b`; `-x` for a descending number; top N: `sorted(...)[:n]` |
-| Table | a list of rows; cell `rows[i][j]`; column `[r[j] for r in rows]`; GROUP BY: for each distinct value, filter and aggregate |
-| Copies | `rows.copy()` shares the rows; `[row.copy() for row in rows]` copies them; tuples cannot change |
+| Generator expression | `sum(x for x in items)` - no list in memory; `sum(1 for ... if ...)` = `COUNT(*) ... WHERE`; used once |
+| `zip` | parallel lists -> tuples; stops at the shortest list |
+| `enumerate` | `(number, item)`; `start=1` for a rank |
 
 ## Homework
 
-1. `05-lists-advanced/homework.py` (in the homework repository): **the portfolio as a
-   list of records** - read `loans.csv` into tuples, find the ten largest exposures
-   and their share of the portfolio (the concentration), the distinct products, the
-   number of loans and the outstanding per stage (`GROUP BY stage`), the number of
-   loans per product from the most common, and check the data with `any` / `all`.
-   Every check must print `OK`.
+1. `05-lists-advanced/homework.py` (in the homework repository): **a small list of
+   loans** - clean it with the list methods, find the five largest exposures with a
+   rank and their share of the total, sum and count with a condition, and compare
+   two years month by month with `zip`. Every check must print `OK`.
 2. The practice tasks you did not finish in class.
-3. Optional: print the result of `stage_summary` of the homework as a small report,
-   with aligned columns (f-strings with widths, [session 1](./01-intro-syntax-types.md#formatting-the-values)) and a total row at the
-   bottom.
-
-## Self-study
-
-This part is not covered in class. It is for reading at home: two tools that SAS
-users miss in plain Python - `RETAIN`, `LAG` and BY groups - and a way to read files
-that do not fit in memory.
-
-### `itertools`: running totals, `LAG` and BY groups
-
-The module `itertools` has building blocks for loops. Three of them replace common
-patterns of the SAS DATA step.
-
-**`accumulate` - a running total (`RETAIN`).** In SAS: `retain total 0; total + x;`.
-
-```python run
-from itertools import accumulate
-
-payments = [1200.0, 800.0, 1500.0, 900.0]
-print(list(accumulate(payments)))                  # running sum
-print(list(accumulate(payments, max)))             # running maximum
-```
-
-**`pairwise` - the value and the one before (SAS `LAG`).** Since Python 3.10:
-
-```python run
-from itertools import pairwise
-
-outstanding = [128.4, 129.1, 130.2, 129.6]
-for before, now in pairwise(outstanding):
-    print(before, "->", now, round(now - before, 1))
-```
-
-It is the same as `zip(xs, xs[1:])` from section 3, without the copy of the list.
-
-**`groupby` - BY-group processing (SAS `FIRST.` / `LAST.`).** `groupby` cuts a
-**sorted** list into groups of equal keys - like a SAS DATA step with `BY product`:
-
-```python run
-from itertools import groupby
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    file.readline()
-    rows = [line.strip().split(",") for line in file]
-
-rows.sort(key=lambda r: r[2])                       # PROC SORT; BY product
-for product, group in groupby(rows, key=lambda r: r[2]):
-    group = list(group)                             # the rows of one product
-    total = sum(float(r[7]) for r in group)
-    print(f"{product:<16}{len(group):>4}{total:>18,.2f}")
-```
-
-::: warning Sort first
-`groupby` starts a new group every time the key **changes**. On unsorted data the same
-product appears in many small groups - exactly like a SAS `BY` without `PROC SORT`,
-except that Python does not stop with an error.
-:::
-
-Two more, again with their SAS names: `islice(iterable, n)` takes the first `n`
-items of any iterator (`OBS=n`), and `chain(a, b)` reads several lists one after
-another (`SET a b;`).
-
-```python run
-from itertools import chain, islice
-
-print(list(islice(range(1000), 3)))
-print(list(chain(["L000001", "L000002"], ["L000400"])))
-```
-
-**Exercises**
-
-1. With `accumulate`, find the first month in which the running total of
-   `[1200, 800, 1500, 900, 1100]` goes over 3000.
-2. With `groupby`, count the loans per currency in `loans.csv`. Why must you sort
-   first?
-
-::: details Answer
-1.
-```python
-from itertools import accumulate
-payments = [1200, 800, 1500, 900, 1100]
-for month, total in enumerate(accumulate(payments), start=1):
-    if total > 3000:
-        print(month, total)      # 3 3500
-        break
-```
-2. Sort by currency, then `groupby(rows, key=lambda r: r[3])` and `len(list(group))`:
-EUR 361, USD 39. Without sorting, EUR and USD rows alternate, and you get many small
-groups instead of two.
-:::
-
-### Generator functions: `yield`
-
-A function with `yield` instead of `return` is a **generator function**. Each call of
-`next` runs it until the next `yield`, and the function **waits** there, with its local
-variables, until the next value is asked for:
-
-```python run
-def months(n):
-    for i in range(1, n + 1):
-        print("  (making month", i, ")")
-        yield i
-
-for m in months(3):
-    print("got", m)
-```
-
-This is useful for big files: a generator that reads one row at a time, converts it
-and gives it on. The whole file is never in memory - only the current row:
-
-```python run
-def loan_rows(path):
-    """The rows of loans.csv, one at a time, with the numbers converted."""
-    with open(path, encoding="utf-8") as file:
-        file.readline()
-        for line in file:
-            f = line.strip().split(",")
-            yield f[0], f[2], float(f[7]), int(f[10])
-
-total = sum(outstanding for loan_id, product, outstanding, stage in loan_rows("data/loans.csv"))
-largest = max(loan_rows("data/loans.csv"), key=lambda row: row[2])
-print(f"{total:,.2f}", largest)
-```
-
-A generator, like `zip` or `map`, is used up after one pass - here each line calls
-`loan_rows(...)` again, which opens the file again. A SAS DATA step works this way
-too: it reads one observation at a time.
-
-**Exercises**
-
-1. Write a generator `late_loans(path, limit)` that yields only the `loan_id` of the
-   loans with `days_past_due` greater than `limit`. Count them for `limit=90`.
-2. What does `list(g)` print the second time, for `g = loan_rows("data/loans.csv")`?
-
-::: details Answer
-1.
-```python
-def late_loans(path, limit):
-    with open(path, encoding="utf-8") as file:
-        file.readline()
-        for line in file:
-            f = line.strip().split(",")
-            if int(f[9]) > limit:
-                yield f[0]
-
-print(sum(1 for _ in late_loans("data/loans.csv", 90)))     # 17
-```
-2. `[]` - the generator is used up after the first `list(g)`.
-:::
 
 ## Read more
 
-- Python tutorial: [List comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions),
-  [Nested list comprehensions](https://docs.python.org/3/tutorial/datastructures.html#nested-list-comprehensions)
-- [Sorting techniques](https://docs.python.org/3/howto/sorting.html) (keys, stability,
-  `operator.itemgetter`)
-- Reference: [`zip`](https://docs.python.org/3/library/functions.html#zip),
-  [`enumerate`](https://docs.python.org/3/library/functions.html#enumerate),
-  [`map`](https://docs.python.org/3/library/functions.html#map),
-  [`filter`](https://docs.python.org/3/library/functions.html#filter),
-  [`copy`](https://docs.python.org/3/library/copy.html),
-  [`itertools`](https://docs.python.org/3/library/itertools.html)
+- Python tutorial: [More on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists),
+  [List comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)
+- [Sorting techniques](https://docs.python.org/3/howto/sorting.html)
+- Reference: [generator expressions](https://docs.python.org/3/reference/expressions.html#generator-expressions),
+  [`zip`](https://docs.python.org/3/library/functions.html#zip),
+  [`enumerate`](https://docs.python.org/3/library/functions.html#enumerate)
 - Real Python: [When to use a list comprehension](https://realpython.com/list-comprehension-python/),
   [Python's `zip()` function](https://realpython.com/python-zip-function/)
 

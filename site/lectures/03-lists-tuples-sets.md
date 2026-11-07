@@ -718,8 +718,8 @@ print(original is copy1)
 ```
 
 These are **shallow** copies: the new list has the same items. When the items are
-lists themselves (a table as a list of rows), the rows are still shared - [session 5](./05-lists-advanced.md#_6-copies-of-a-table)
-explains shallow and deep copies.
+lists themselves (a table as a list of rows), the rows are still shared - [session 6](./06-dictionaries.md#copies-of-nested-dictionaries)
+shows shallow and deep copies, with dictionaries.
 
 ::: tip Try it
 In the first example of this section, write `new_list = original.copy()` instead of
