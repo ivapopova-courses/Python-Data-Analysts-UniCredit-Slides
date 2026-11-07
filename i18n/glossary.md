@@ -56,6 +56,7 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | closure, dispatch table | |
 | higher-order function | "функция от по-висок ред (higher-order function)" at first use |
 | Pylance, mypy, PEP | tools and documents |
+| generator, generator expression | "generator-ът"; lecture 5 (2026-11-08) |
 
 ## Translated
 
@@ -117,6 +118,7 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | accumulator | акумулатор |
 | to unpack, unpacking | разопаковам, разопаковане (unpacking) |
 | sequence | поредица |
+| the top N | първите N (lecture 5) |
 | union, intersection, difference | обединение, сечение, разлика |
 | shallow copy, deep copy | плитко копие, дълбоко копие |
 | control flow statements | конструкции за управление |
