@@ -81,6 +81,7 @@ the Homework folder - see [step 9](#create-the-venv) below.
 | **Rainbow CSV** | mechatroner | each column of a CSV file in its own colour; SQL-like queries on a CSV file | from lecture 9 |
 | **SQLite Viewer** | Florian Klampfer | open a SQLite `.db` file and look at its tables | lecture 13 |
 | **Spreadsheet Viewer** | MESCIUS | open `.xlsx` files in VS Code (its old name is *Excel Viewer*) | lectures 9, 14, 16 |
+| **Ruff** | Astral | linter and formatter: finds mistakes and fixes the layout of your code - see [below](#ruff) | recommended |
 
 **Install them all at once.**
 
@@ -105,7 +106,8 @@ itself. You can also create the file yourself and paste this content into it:
     "ms-toolsai.datawrangler",
     "mechatroner.rainbow-csv",
     "qwtel.sqlite-viewer",
-    "GrapeCity.gc-excelviewer"
+    "GrapeCity.gc-excelviewer",
+    "charliermarsh.ruff"
   ]
 }
 ```
@@ -116,6 +118,206 @@ One at a time: search for the name in the **Extensions** view and click
 ::: info On a company laptop
 Some companies block the extension Marketplace or allow only approved extensions.
 If **Install** does not work, ask your IT for the extensions in the table.
+:::
+
+### Linter and formatter: Ruff {#ruff}
+
+Two tools help you write clean code:
+
+- A **linter** reads your code without running it and finds mistakes and style
+  problems: an import or a variable you never use, a name that does not exist (a
+  typo), a comparison that is always true.
+- A **formatter** rewrites the layout of your code: spaces, quotes, empty lines,
+  long lines. The result follows [PEP 8](https://peps.python.org/pep-0008/), the
+  style guide of Python ([lecture 1](/lectures/01-intro-syntax-types#naming-conventions-pep-8)
+  showed its rules for names). The formatter never changes what the code does.
+
+In SAS terms: the linter is like the NOTEs and WARNINGs in the log (`NOTE:
+Variable x is uninitialized`), but you see them while you type, before you run
+the program. The formatter is like **Format Code** in the SAS editor.
+
+[Ruff](https://docs.astral.sh/ruff/) does both, and it is very fast. It is a
+free tool from Astral, the company that makes uv.
+
+#### Install
+
+Install the VS Code extension **Ruff** by Astral (id `charliermarsh.ruff`). It is
+in the table and in `extensions.json` above, so **Install** there installs it too.
+The extension comes with its own copy of Ruff: you do not need `pip` for it.
+
+::: info If the Marketplace is blocked
+If you cannot install the extension on a company laptop, you can still use Ruff
+in the terminal. Install it into the virtual environment of your Homework folder
+(with `(.venv)` at the start of the prompt, see [step 9](#create-the-venv)):
+
+```cmd
+python -m pip install ruff
+```
+
+Then use the commands under [In the terminal](#ruff-in-the-terminal) below.
+:::
+
+#### In VS Code
+
+Open any `.py` file. Ruff checks it while you type:
+
+- A problem gets a wavy line under it (a *squiggle*). Hover over it: you see the
+  message and the code of the rule, for example `` `os` imported but unused
+  Ruff(F401) ``.
+- **View > Problems** (`Ctrl+Shift+M`) lists the problems of all open files. Click
+  a line to go to the code.
+- **Quick Fix** (`Ctrl+.` on the line, or the light bulb) offers a fix when Ruff
+  has one, for example *Remove unused import*.
+- **Format Document** (`Shift+Alt+F`, or right-click > **Format Document**)
+  rewrites the layout of the whole file. The first time, VS Code may ask which
+  formatter to use: choose **Ruff**.
+- **Organize Imports** (`Shift+Alt+O`, or right-click > **Source Action...**)
+  sorts the imports at the top of the file and puts them into groups.
+
+It works in Jupyter notebooks (`.ipynb`) in VS Code too: the squiggles appear in
+each cell, and **Format Notebook** (`Shift+Alt+F`) formats all the cells.
+
+::: warning Unused imports in the task files
+The task files often import something for you to use in your solution, for example
+`from decimal import Decimal, ROUND_HALF_UP`. Before you write your code, Ruff marks
+these imports as unused. This is fine: the warning goes away when you use them. Do
+not remove them with a Quick Fix or `ruff check --fix` - your solution needs them.
+:::
+
+**Format on save** is your choice. With it, VS Code runs **Format Document** every
+time you save a file. To turn it on: press `Ctrl+Shift+P`, choose **Preferences:
+Open User Settings (JSON)** and add these lines inside the outer `{ }` (put a comma
+after the line before them):
+
+```json
+"[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true
+}
+```
+
+::: warning Format on save changes the given code too
+Format on save rewrites the whole file, also the code that came with the task. Then
+`git diff` and the **Source Control** view show many changed lines that are not
+your work, and it is harder to see your own changes. If you turn it on, do it
+before you start a task, or save the formatted file as a separate commit.
+:::
+
+#### In the terminal {#ruff-in-the-terminal}
+
+The extension's copy of Ruff is not available in the terminal. To use Ruff there,
+install it into the `.venv` of the folder (`python -m pip install ruff`, see the
+box above). Then, with `(.venv)` at the start of the prompt:
+
+| Command | What it does |
+|---|---|
+| `ruff check .` | lists the problems in all `.py` files of the folder and its subfolders |
+| `ruff check --fix` | lists the problems and fixes the ones that have a safe fix |
+| `ruff format --diff` | shows what the formatter would change, without changing anything |
+| `ruff format` | formats all `.py` files of the folder |
+
+Without a file or folder name, Ruff works on the current folder (`.`). You can give
+one file instead: `ruff check 01-intro-syntax-types\homework.py`.
+
+::: warning Commit first
+`ruff check --fix` and `ruff format` change your files. Commit your work before you
+run them, so you can see their changes with `git diff` and undo them if needed.
+:::
+
+#### An example
+
+A script that adds up the outstanding amount of one product, written in a hurry:
+
+```python
+import os
+import csv
+
+def total_by_product(loans,product) :
+    count=0
+    total=0
+    for loan in loans :
+        if loan['product']==product : total+=float(loan['outstanding'])
+    return totl
+
+with open('data/loans.csv',encoding='utf-8') as file:
+    loans=list(csv.DictReader(file))
+print(total_by_product(loans,'mortgage'))
+```
+
+`ruff check` finds four problems (the line and the column, the rule, the message):
+
+```text
+report.py:1:1: I001 [*] Import block is un-sorted or un-formatted
+report.py:1:8: F401 [*] `os` imported but unused
+report.py:5:5: F841 Local variable `count` is assigned to but never used
+report.py:9:12: F821 Undefined name `totl`
+Found 4 errors.
+[*] 2 fixable with `--fix` (1 unsafe fix available with `--fix --unsafe-fixes`).
+```
+
+- `F821` is a real bug: the script would stop with a `NameError` at the end. Ruff
+  finds it before you run the script.
+- `F841`: `count` is never used - a leftover, or a sign that something is missing.
+- `F401` and `I001` have a fix (`[*]`): `ruff check --fix` (or Quick Fix in VS
+  Code) removes `import os` and sorts the imports.
+
+After you fix `totl` and remove `count` yourself, `ruff check --fix` and
+`ruff format` give:
+
+```python
+import csv
+
+
+def total_by_product(loans, product):
+    total = 0
+    for loan in loans:
+        if loan["product"] == product:
+            total += float(loan["outstanding"])
+    return total
+
+
+with open("data/loans.csv", encoding="utf-8") as file:
+    loans = list(csv.DictReader(file))
+print(total_by_product(loans, "mortgage"))
+```
+
+The formatter added spaces around `=` and `==` and after `,`, removed the space
+before `:`, put the `if` body on its own line, changed `'...'` to `"..."`, and put
+two empty lines around the function - all PEP 8 rules.
+
+The examples on this site run in your browser, which has no Ruff: try it in VS Code.
+
+::: details Advanced: settings in ruff.toml or pyproject.toml
+Without settings, Ruff uses its defaults: lines up to 88 characters and a set of
+rules chosen by Astral. To change them for one project, create a file `ruff.toml`
+in the project folder:
+
+```toml
+line-length = 100
+
+[lint]
+select = ["E", "F", "I"]
+```
+
+- `line-length`: the longest line, for the formatter and for the check `E501`.
+- `select`: the groups of rules to check, by the first letters of their codes.
+  `E` is pycodestyle (the PEP 8 layout), `F` is Pyflakes (unused and undefined
+  names), `I` is the order of the imports. All rules:
+  [Ruff rules](https://docs.astral.sh/ruff/rules/).
+
+If the project already has a `pyproject.toml`, the same settings can go there,
+under `[tool.ruff]` and `[tool.ruff.lint]`:
+
+```toml
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+```
+
+Both the VS Code extension and `ruff` in the terminal read these files. More:
+[Configuring Ruff](https://docs.astral.sh/ruff/configuration/).
 :::
 
 ## Practice and homework in VS Code {#practice-and-homework}

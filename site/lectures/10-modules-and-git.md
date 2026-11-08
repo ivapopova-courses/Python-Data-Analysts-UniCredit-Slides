@@ -1082,6 +1082,12 @@ requirements.txt`. It is free and popular, but `venv` + `pip` come with Python a
 enough for this course.
 :::
 
+A project of your own also deserves a linter. **Ruff** finds unused imports,
+undefined names and other mistakes, and formats the code to PEP 8. In VS Code it is
+an extension; in the terminal, install it into the `.venv` (`python -m pip install
+ruff`) and run `ruff check .` in the project folder. How to set it up and use it:
+[Linter and formatter: Ruff](/how-to#ruff).
+
 ::: tip Try it
 In your Homework folder, run `python -m pip list` and find the versions of pandas and
 numpy. Then `python -m pip show openpyxl`: which packages does it need?

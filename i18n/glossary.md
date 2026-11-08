@@ -57,6 +57,7 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | higher-order function | "функция от по-висок ред (higher-order function)" at first use |
 | Pylance, mypy, PEP | tools and documents |
 | generator, generator expression | "generator-ът"; lecture 5 (2026-11-08) |
+| linter, formatter, Ruff | "linter-ът", "formatter-ът" (how-to page, 2026-11-04) |
 
 ## Translated
 

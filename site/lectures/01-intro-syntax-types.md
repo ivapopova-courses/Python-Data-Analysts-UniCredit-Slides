@@ -1224,6 +1224,10 @@ Python. For names:
   this".
 - Python allows Cyrillic letters in names, but write names in English.
 
+PEP 8 has rules for the layout of the code too: spaces, empty lines, long lines.
+Ruff, a linter and formatter for VS Code, checks and fixes them for you:
+[How to use these pages](/how-to#ruff).
+
 ### Assignment, in more forms
 
 ```python run
