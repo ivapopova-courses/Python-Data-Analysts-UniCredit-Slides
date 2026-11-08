@@ -875,192 +875,192 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/07-text-processing.md:1011
-msgid "10. Practice"
-msgstr ""
-
-#. paragraph
-#: site/lectures/07-text-processing.md:1013
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
-msgstr ""
-
-#. table cell
-#: site/lectures/07-text-processing.md:1021
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/07-text-processing.md:1021
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/07-text-processing.md:1021
-msgid "What you do"
-msgstr ""
-
-#. table cell
-#: site/lectures/07-text-processing.md:1023
-msgid "Normalise names, cities and codes: case, spaces, prefixes"
-msgstr ""
-
-#. table cell
-#: site/lectures/07-text-processing.md:1024
-msgid "Predict: `split`, `strip`, `find`, `join`, `replace`, slices"
-msgstr ""
-
-#. table cell
-#: site/lectures/07-text-processing.md:1025
-msgid "Settings `key=value;...` into a dict and back; `SCAN`; a CSV line"
-msgstr ""
-
-#. table cell
-#: site/lectures/07-text-processing.md:1026
-msgid "Clean client ids, EIKs, IBANs and e-mails"
-msgstr ""
-
-#. table cell
-#: site/lectures/07-text-processing.md:1027
-msgid "Numbers in four formats to `float`; the Bulgarian format back"
-msgstr ""
-
-#. table cell
-#: site/lectures/07-text-processing.md:1028
-msgid "`task6-dates.py` (Optional)"
-msgstr ""
-
-#. table cell
-#: site/lectures/07-text-processing.md:1028
-msgid "Dates in five formats; days between; month ends; years as a client"
-msgstr ""
-
-#. heading 2
-#: site/lectures/07-text-processing.md:1030
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1032
+#: site/lectures/07-text-processing.md:1013
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1032
+#: site/lectures/07-text-processing.md:1013
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1034
+#: site/lectures/07-text-processing.md:1015
 msgid "Immutable"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1034
+#: site/lectures/07-text-processing.md:1015
 msgid "every method returns a new string: `s = s.strip()`"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1035
+#: site/lectures/07-text-processing.md:1016
 msgid "Case"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1035
+#: site/lectures/07-text-processing.md:1016
 msgid "`upper`, `lower`, `title` (fix legal forms after it); compare with `.lower()` on both sides"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1036
+#: site/lectures/07-text-processing.md:1017
 msgid "Spaces"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1036
+#: site/lectures/07-text-processing.md:1017
 msgid "`strip` / `lstrip` / `rstrip` at the ends; `\" \".join(s.split())` = `COMPBL`"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1037
+#: site/lectures/07-text-processing.md:1018
 msgid "Find"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1037
+#: site/lectures/07-text-processing.md:1018
 msgid "`in`; `startswith((...))`; `find` gives -1, `index` raises; `count`"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1038
+#: site/lectures/07-text-processing.md:1019
 msgid "Test"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1038
+#: site/lectures/07-text-processing.md:1019
 msgid "`isdigit`, `isalpha`, `isalnum`, `isspace` - all characters, non-empty"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1039
+#: site/lectures/07-text-processing.md:1020
 msgid "Split"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1039
+#: site/lectures/07-text-processing.md:1020
 msgid "`split(\",\")` keeps empty fields; `split()` splits on any spaces; `rsplit`, `partition`, `splitlines`"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1040
+#: site/lectures/07-text-processing.md:1021
 msgid "Join"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1040
+#: site/lectures/07-text-processing.md:1021
 msgid "`\", \".join(strings)` - only strings; CSV with quotes: the `csv` module"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1041
+#: site/lectures/07-text-processing.md:1022
 msgid "Replace"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1042
+#: site/lectures/07-text-processing.md:1023
 msgid "Pad"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1042
+#: site/lectures/07-text-processing.md:1023
 msgid "`zfill`, `rjust`, `ljust`; f-string `:>10`, `:06d`"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1043
+#: site/lectures/07-text-processing.md:1024
 msgid "Cleaning"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1043
+#: site/lectures/07-text-processing.md:1024
 msgid "one function per column, `None` for what cannot be fixed; check against a trusted source"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1044
+#: site/lectures/07-text-processing.md:1025
 msgid "Numbers"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1044
+#: site/lectures/07-text-processing.md:1025
 msgid "the last `,` or `.` with 1 - 2 digits after it is the decimal separator; know the source"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1045
+#: site/lectures/07-text-processing.md:1026
 msgid "Dates"
 msgstr ""
 
 #. table cell
-#: site/lectures/07-text-processing.md:1045
+#: site/lectures/07-text-processing.md:1026
 msgid "`date.fromisoformat`; `datetime.strptime(s, \"%d.%m.%Y\").date()`; `strftime`; `b - a` gives a `timedelta`"
+msgstr ""
+
+#. heading 2
+#: site/lectures/07-text-processing.md:1028
+msgid "10. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/07-text-processing.md:1030
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1038
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1038
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1038
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1040
+msgid "Normalise names, cities and codes: case, spaces, prefixes"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1041
+msgid "Predict: `split`, `strip`, `find`, `join`, `replace`, slices"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1042
+msgid "Settings `key=value;...` into a dict and back; `SCAN`; a CSV line"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1043
+msgid "Clean client ids, EIKs, IBANs and e-mails"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1044
+msgid "Numbers in four formats to `float`; the Bulgarian format back"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1045
+msgid "`task6-dates.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/07-text-processing.md:1045
+msgid "Dates in five formats; days between; month ends; years as a client"
 msgstr ""
 
 #. heading 2

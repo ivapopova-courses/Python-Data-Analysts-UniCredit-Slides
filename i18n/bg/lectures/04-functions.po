@@ -159,7 +159,7 @@ msgid "runs code, **returns a value**"
 msgstr "изпълнява код, **връща стойност**"
 
 #. table cell
-#: site/lectures/04-functions.md:92 site/lectures/04-functions.md:1305
+#: site/lectures/04-functions.md:92 site/lectures/04-functions.md:1283
 msgid "Parameters"
 msgstr "Параметри"
 
@@ -1070,291 +1070,396 @@ msgstr "Във файл, който се пуска като скрипт, ос�
 
 #. heading 2
 #: site/lectures/04-functions.md:1278
-msgid "12. Practice"
-msgstr "12. Упражнения"
-
-#. paragraph
-#: site/lectures/04-functions.md:1280
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
-msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и пускайте задачите от терминала, в главната папка на repository-то:"
-
-#. paragraph
-#: site/lectures/04-functions.md:1288
-msgid "In these tasks you write **functions**; the checks call them with many different values."
-msgstr "В тези задачи пишете **функции**; проверките ги извикват с много различни стойности."
-
-#. table cell
-#: site/lectures/04-functions.md:1291
-msgid "Task"
-msgstr "Задача"
-
-#. table cell
-#: site/lectures/04-functions.md:1291
-msgid "File"
-msgstr "Файл"
-
-#. table cell
-#: site/lectures/04-functions.md:1291
-msgid "What you do"
-msgstr "Какво правите"
-
-#. table cell
-#: site/lectures/04-functions.md:1293
-msgid "Small functions: interest, repaid share, is late, monthly rate"
-msgstr "Малки функции: лихва, погасен дял, дали е просрочен, месечна лихва"
-
-#. table cell
-#: site/lectures/04-functions.md:1294
-msgid "Default values and keyword arguments: payment, Bulgarian number format"
-msgstr "Стойности по подразбиране и именувани аргументи: вноска, български формат на числата"
-
-#. table cell
-#: site/lectures/04-functions.md:1295
-msgid "`*args`, several return values: total, min / max / average, months and days"
-msgstr "`*args`, няколко върнати стойности: общо, min / max / средно, месеци и дни"
-
-#. table cell
-#: site/lectures/04-functions.md:1296
-msgid "The rules of the portfolio as functions: bucket, stage, grade, product group"
-msgstr "Правилата за портфейла като функции: група, етап, клас, продуктова група"
-
-#. table cell
-#: site/lectures/04-functions.md:1297
-msgid "Predict the values: local and global names, a list passed to a function"
-msgstr "Предвидете стойностите: локални и глобални имена, list, подаден на функция"
-
-#. table cell
-#: site/lectures/04-functions.md:1298
-msgid "Sort and find with `key` and `lambda`; remove duplicates, keep the order"
-msgstr "Сортиране и търсене с `key` и `lambda`; премахване на повторения, като редът се запазва"
-
-#. heading 2
-#: site/lectures/04-functions.md:1300
 msgid "Summary"
 msgstr "Обобщение"
 
 #. table cell
-#: site/lectures/04-functions.md:1302
+#: site/lectures/04-functions.md:1280
 msgid "Topic"
 msgstr "Тема"
 
 #. table cell
-#: site/lectures/04-functions.md:1302
+#: site/lectures/04-functions.md:1280
 msgid "Remember"
 msgstr "Запомнете"
 
 #. table cell
-#: site/lectures/04-functions.md:1304
+#: site/lectures/04-functions.md:1282
 msgid "Define, call"
 msgstr "Дефиниране, извикване"
 
 #. table cell
-#: site/lectures/04-functions.md:1304
+#: site/lectures/04-functions.md:1282
 msgid "`def name(params):` + an indented body; `name(args)` runs it - the brackets are required"
 msgstr "`def name(params):` + отместено навътре тяло; `name(args)` я изпълнява - скобите са задължителни"
 
 #. table cell
-#: site/lectures/04-functions.md:1305
+#: site/lectures/04-functions.md:1283
 msgid "positional; defaults after the others; `name=value` in the call; `*args` a tuple"
 msgstr "позиционни; стойностите по подразбиране - след останалите; `name=value` при извикване; `*args` е tuple"
 
 #. table cell
-#: site/lectures/04-functions.md:1306
+#: site/lectures/04-functions.md:1284
 msgid "Defaults"
 msgstr "Стойности по подразбиране"
 
 #. table cell
-#: site/lectures/04-functions.md:1306
+#: site/lectures/04-functions.md:1284
 msgid "never a list or a dict as a default - use `None`"
 msgstr "никога list или dict като стойност по подразбиране - използвайте `None`"
 
 #. table cell
-#: site/lectures/04-functions.md:1307
+#: site/lectures/04-functions.md:1285
 msgid "ends the function and gives a value; no `return` -> `None`; `return a, b` gives a tuple"
 msgstr "приключва функцията и дава стойност; без `return` -> `None`; `return a, b` дава tuple"
 
 #. table cell
-#: site/lectures/04-functions.md:1308
+#: site/lectures/04-functions.md:1286
 msgid "`print` shows, `return` gives - calculating functions return"
 msgstr "`print` показва, `return` дава - изчисляващите функции връщат"
 
 #. table cell
-#: site/lectures/04-functions.md:1309
+#: site/lectures/04-functions.md:1287
 msgid "Scope"
 msgstr "Scope"
 
 #. table cell
-#: site/lectures/04-functions.md:1309
+#: site/lectures/04-functions.md:1287
 msgid "names assigned in a function are local; LEGB: local, enclosing, global, built-in; avoid `global` - values in through parameters, out through `return`"
 msgstr "имената, на които се присвоява във функция, са локални; LEGB: local, enclosing, global, built-in; избягвайте `global` - стойностите влизат през параметрите, излизат през `return`"
 
 #. table cell
-#: site/lectures/04-functions.md:1310
+#: site/lectures/04-functions.md:1288
 msgid "References"
 msgstr "Референции"
 
 #. table cell
-#: site/lectures/04-functions.md:1310
+#: site/lectures/04-functions.md:1288
 msgid "a list passed to a function can be changed by it - return a new list instead"
 msgstr "list, подаден на функция, може да бъде променен от нея - вместо това връщайте нов list"
 
 #. table cell
-#: site/lectures/04-functions.md:1311
+#: site/lectures/04-functions.md:1289
 msgid "Documentation"
 msgstr "Документация"
 
 #. table cell
-#: site/lectures/04-functions.md:1311
+#: site/lectures/04-functions.md:1289
 msgid "a docstring in triple quotes; type hints `x: float -> float` are not checked at run time"
 msgstr "docstring в тройни кавички; type hints `x: float -> float` не се проверяват по време на изпълнение"
 
 #. table cell
-#: site/lectures/04-functions.md:1312
+#: site/lectures/04-functions.md:1290
 msgid "Functions as values"
 msgstr "Функциите като стойности"
 
 #. table cell
-#: site/lectures/04-functions.md:1312
+#: site/lectures/04-functions.md:1290
 msgid "pass a function as an argument; `lambda x: ...` for a short `key`"
 msgstr "подавайте функция като аргумент; `lambda x: ...` за кратък `key`"
 
 #. table cell
-#: site/lectures/04-functions.md:1313
+#: site/lectures/04-functions.md:1291
 msgid "Sorting"
 msgstr "Сортиране"
 
 #. table cell
-#: site/lectures/04-functions.md:1313
+#: site/lectures/04-functions.md:1291
 msgid "`sorted(items, key=lambda item: item[2], reverse=True)` - SQL `ORDER BY` any expression"
 msgstr "`sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` от SQL по произволен израз"
 
 #. table cell
-#: site/lectures/04-functions.md:1314
+#: site/lectures/04-functions.md:1292
 msgid "SAS macros"
 msgstr "SAS macros"
 
 #. table cell
-#: site/lectures/04-functions.md:1314
+#: site/lectures/04-functions.md:1292
 msgid "a macro writes code; a function runs and returns a value"
 msgstr "macro-то пише код; функцията се изпълнява и връща стойност"
 
 #. heading 2
+#: site/lectures/04-functions.md:1294
+msgid "12. Practice"
+msgstr "12. Упражнения"
+
+#. paragraph
+#: site/lectures/04-functions.md:1296
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
+msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и пускайте задачите от терминала, в главната папка на repository-то:"
+
+#. paragraph
+#: site/lectures/04-functions.md:1304
+msgid "In these tasks you write **functions**; the checks call them with many different values."
+msgstr "В тези задачи пишете **функции**; проверките ги извикват с много различни стойности."
+
+#. table cell
+#: site/lectures/04-functions.md:1307
+msgid "Task"
+msgstr "Задача"
+
+#. table cell
+#: site/lectures/04-functions.md:1307
+msgid "File"
+msgstr "Файл"
+
+#. table cell
+#: site/lectures/04-functions.md:1307
+msgid "What you do"
+msgstr "Какво правите"
+
+#. table cell
+#: site/lectures/04-functions.md:1309
+msgid "Small functions: interest, repaid share, is late, monthly rate"
+msgstr "Малки функции: лихва, погасен дял, дали е просрочен, месечна лихва"
+
+#. table cell
+#: site/lectures/04-functions.md:1310
+msgid "Default values and keyword arguments: payment, Bulgarian number format"
+msgstr "Стойности по подразбиране и именувани аргументи: вноска, български формат на числата"
+
+#. table cell
+#: site/lectures/04-functions.md:1311
+msgid "`*args`, several return values: total, min / max / average, months and days"
+msgstr "`*args`, няколко върнати стойности: общо, min / max / средно, месеци и дни"
+
+#. table cell
+#: site/lectures/04-functions.md:1312
+msgid "The rules of the portfolio as functions: bucket, stage, grade, product group"
+msgstr "Правилата за портфейла като функции: група, етап, клас, продуктова група"
+
+#. table cell
+#: site/lectures/04-functions.md:1313
+msgid "Predict the values: local and global names, a list passed to a function"
+msgstr "Предвидете стойностите: локални и глобални имена, list, подаден на функция"
+
+#. table cell
+#: site/lectures/04-functions.md:1314
+msgid "Sort and find with `key` and `lambda`; remove duplicates, keep the order"
+msgstr "Сортиране и търсене с `key` и `lambda`; премахване на повторения, като редът се запазва"
+
+#. heading 3
 #: site/lectures/04-functions.md:1316
+msgid "Notes on the tasks"
+msgstr "Бележки към задачите"
+
+#. paragraph
+#: site/lectures/04-functions.md:1318
+msgid "Some parts of the tasks are not clear enough. Here they are, written more clearly."
+msgstr "Някои части от задачите не са достатъчно ясни. Ето ги тук, написани по-ясно."
+
+#. paragraph
+#: site/lectures/04-functions.md:1320
+msgid "**Parts that use an earlier part.** Some parts call a function that you write in an earlier part: task 2 Part 4 uses Parts 1 and 2, task 3 Part 4 uses Part 3, task 4 Part 4 uses Part 3. Do the earlier part first. If it is not done yet, the later part shows FAIL (often `got: None (no value - a missing return?)`), even when your code in the later part is right."
+msgstr "**Части, които използват по-ранна част.** Някои части извикват функция, която пишете в по-ранна част: задача 2, част 4 използва части 1 и 2; задача 3, част 4 използва част 3; задача 4, част 4 използва част 3. Първо направете по-ранната част. Докато тя не е готова, по-късната част показва FAIL (често `got: None (no value - a missing return?)`), дори когато кодът ви в по-късната част е верен."
+
+#. paragraph
+#: site/lectures/04-functions.md:1326
+msgid "**Task 2, Part 4: call with keyword arguments.** \"Your functions\" are `annuity_payment` (Part 1) and `expected_loss` (Part 2). \"The comments\" are the two `#` lines inside the \"your code\" block. Replace each `None` with a call of the function:"
+msgstr "**Задача 2, част 4: извикване с именувани аргументи.** \"Your functions\" (вашите функции) са `annuity_payment` (част 1) и `expected_loss` (част 2). \"The comments\" (коментарите) са двата реда с `#` вътре в блока \"your code\". Заменете всяко `None` с извикване на функцията:"
+
+#. paragraph
+#: site/lectures/04-functions.md:1331
+msgid "`mortgage_payment`: call `annuity_payment` for 50000 at 4.5% for 20 years. Give all three arguments by name: `amount=...`, `yearly_rate=...`, `years=...`."
+msgstr "`mortgage_payment`: извикайте `annuity_payment` за 50000 при 4.5% за 20 години. Дайте и трите аргумента с име: `amount=...`, `yearly_rate=...`, `years=...`."
+
+#. paragraph
+#: site/lectures/04-functions.md:1333
+msgid "`secured_el`: call `expected_loss` for PD 0.03 and EAD 200000. Give PD and EAD by position (without names), and only the LGD by name: `lgd=0.25`."
+msgstr "`secured_el`: извикайте `expected_loss` за PD 0.03 и EAD 200000. Дайте PD и EAD по позиция (без имена), а само LGD с име: `lgd=0.25`."
+
+#. paragraph
+#: site/lectures/04-functions.md:1336
+msgid "The checks test only the result. A call without names gives the same result, so check yourself that you used the names."
+msgstr "Проверките проверяват само резултата. Извикване без имена дава същия резултат, затова сами проверете, че сте използвали имената."
+
+#. paragraph
+#: site/lectures/04-functions.md:1339
+msgid "**Task 3, Part 1: a total.** Start the sum from `0` (an int), not from `0.0`. The checks compare the type too: `total(100)` must give `100`, not `100.0`."
+msgstr "**Задача 3, част 1: сума.** Започнете сумата от `0` (int), а не от `0.0`. Проверките сравняват и типа: `total(100)` трябва да даде `100`, а не `100.0`."
+
+#. paragraph
+#: site/lectures/04-functions.md:1342
+msgid "**Task 3, Part 4: unpack the result.** Replace the whole line `lowest = highest = average = None` with ONE line: the three names on the left, separated by commas, and the call `min_max_average(5.44, 8.83, 4.79, 8.35)` on the right."
+msgstr "**Задача 3, част 4: разопаковане на резултата.** Заменете целия ред `lowest = highest = average = None` с ЕДИН ред: трите имена отляво, разделени със запетаи, и извикването `min_max_average(5.44, 8.83, 4.79, 8.35)` отдясно."
+
+#. paragraph
+#: site/lectures/04-functions.md:1347
+msgid "**Task 4, Part 1: the days past due bucket.** The buckets are the same as in session 2:"
+msgstr "**Задача 4, част 1: групата по дни просрочие.** Групите са същите като в сесия 2:"
+
+#. table cell
+#: site/lectures/04-functions.md:1350
+msgid "days_past_due"
+msgstr "days_past_due"
+
+#. table cell
+#: site/lectures/04-functions.md:1350
+msgid "bucket"
+msgstr "група"
+
+#. table cell
+#: site/lectures/04-functions.md:1353
+msgid "1 to 30"
+msgstr "от 1 до 30"
+
+#. table cell
+#: site/lectures/04-functions.md:1354
+msgid "31 to 90 (90 too)"
+msgstr "от 31 до 90 (и 90)"
+
+#. table cell
+#: site/lectures/04-functions.md:1355
+msgid "more than 90"
+msgstr "над 90"
+
+#. paragraph
+#: site/lectures/04-functions.md:1357
+msgid "So `dpd_bucket(90)` is `\"31-90\"`. The checks do not test 90, so check it yourself."
+msgstr "Значи `dpd_bucket(90)` е `\"31-90\"`. Проверките не проверяват 90, затова го проверете сами."
+
+#. paragraph
+#: site/lectures/04-functions.md:1359
+msgid "**Task 4, Part 2: the stage.** \"Rating 7 or worse\" means the ratings 7, 8, 9 and 10. A higher number is a worse rating (1 is the best, 10 is default)."
+msgstr "**Задача 4, част 2: етапът.** \"Rating 7 or worse\" (рейтинг 7 или по-лош) означава рейтингите 7, 8, 9 и 10. По-голямото число е по-лош рейтинг (1 е най-добрият, 10 е неизпълнение)."
+
+#. paragraph
+#: site/lectures/04-functions.md:1362
+msgid "**Task 6, Part 1: the largest first.** Two steps. First sort the loans (the whole tuples) with `sorted()`, `key=lambda ...` and `reverse=True`. Then make the list of the ids: a loop over the sorted loans that appends the `loan_id` of each one to a new list."
+msgstr "**Задача 6, част 1: първо най-големите.** Две стъпки. Първо сортирайте кредитите (целите tuples) със `sorted()`, `key=lambda ...` и `reverse=True`. После направете списъка с идентификаторите: цикъл по сортираните кредити, който добавя `loan_id` на всеки от тях в нов списък."
+
+#. heading 2
+#: site/lectures/04-functions.md:1367
 msgid "Homework"
 msgstr "Домашно"
 
 #. paragraph
-#: site/lectures/04-functions.md:1318
+#: site/lectures/04-functions.md:1369
 msgid "`04-functions/homework.py` (in the homework repository): **a library of portfolio functions** - read the loans and the rating scale from the files, find the PD of a rating, the expected loss of a loan, and the totals by stage. Every check must print `OK`."
 msgstr "`04-functions/homework.py` (в homework repository): **библиотека от функции за портфейла** - прочетете кредитите и рейтинговата скала от файловете, намерете PD на даден рейтинг, очакваната загуба на кредит и сумите по етапи. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/04-functions.md:1322
+#: site/lectures/04-functions.md:1374
+msgid "Notes on the homework:"
+msgstr "Бележки към домашното:"
+
+#. paragraph
+#: site/lectures/04-functions.md:1375
+msgid "**Part 1:** `loans.csv` has 11 columns. Take only these 6, in this order: `(loan_id, client_id, product, outstanding, days_past_due, stage)`. Skip the other columns (`currency`, `start_date`, `maturity_date`, `amount`, `interest_rate`). Convert the numbers: `outstanding` with `float()`, `days_past_due` and `stage` with `int()`. The first line of the file is the header, not a loan: skip it. You should get 400 tuples."
+msgstr "**Част 1:** `loans.csv` има 11 колони. Вземете само тези 6, в този ред: `(loan_id, client_id, product, outstanding, days_past_due, stage)`. Пропуснете другите колони (`currency`, `start_date`, `maturity_date`, `amount`, `interest_rate`). Преобразувайте числата: `outstanding` с `float()`, `days_past_due` и `stage` с `int()`. Първият ред на файла е заглавният ред, а не кредит: пропуснете го. Трябва да получите 400 tuples."
+
+#. paragraph
+#: site/lectures/04-functions.md:1381
+msgid "**Parts that use an earlier part:** Part 4 uses Part 3, Part 5 uses Part 2, Part 7 uses Parts 1 - 6, Part 8 uses Part 1. Do the earlier part first."
+msgstr "**Части, които използват по-ранна част:** част 4 използва част 3, част 5 използва част 2, част 7 използва части 1 - 6, част 8 използва част 1. Първо направете по-ранната част."
+
+#. paragraph
+#: site/lectures/04-functions.md:1383
 msgid "The practice tasks you did not finish in class."
 msgstr "Задачите за упражнение, които не сте довършили в клас."
 
 #. paragraph
-#: site/lectures/04-functions.md:1323
+#: site/lectures/04-functions.md:1384
 msgid "Optional: a **loan calculator** made of functions - the same program as the optional homework of [session 2](./02-conditions-and-loops.md#homework), but organised like this: `get_user_data()` reads and checks the input (amount > 0, rate 0 - 50, years 1 - 30; ask again while a value is wrong) and returns a tuple; `calc_payment(amount, rate, years)` returns the payment; `print_schedule(amount, rate, years)` prints the schedule. Write a separate function for each check: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, each returning `True` or `False`."
 msgstr "По желание: **кредитен калкулатор**, съставен от функции - същата програма като домашното по желание от [занятие 2](./02-conditions-and-loops.md#homework), но организирана така: `get_user_data()` чете и проверява входа (сума > 0, лихва 0 - 50, години 1 - 30; пита отново, докато стойността е грешна) и връща tuple; `calc_payment(amount, rate, years)` връща вноската; `print_schedule(amount, rate, years)` отпечатва плана. Напишете отделна функция за всяка проверка: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, всяка връща `True` или `False`."
 
 #. heading 2
-#: site/lectures/04-functions.md:1331
+#: site/lectures/04-functions.md:1392
 msgid "Self-study"
 msgstr "Самостоятелно изучаване"
 
 #. paragraph
-#: site/lectures/04-functions.md:1333
+#: site/lectures/04-functions.md:1394
 msgid "This part is not covered in class - it is for reading at home."
 msgstr "Тази част не се разглежда в час - тя е за четене вкъщи."
 
 #. heading 3
-#: site/lectures/04-functions.md:1335
+#: site/lectures/04-functions.md:1396
 msgid "Decorators"
 msgstr "Декоратори"
 
 #. paragraph
-#: site/lectures/04-functions.md:1337
+#: site/lectures/04-functions.md:1398
 msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in [session 11](./11-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` in web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs` and a function inside a function (the Advanced boxes of sections 4 and 6)."
 msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в [занятие 11](./11-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` в уеб frameworks). Тази част обяснява `@`, което ще виждате. Тя използва `*args, **kwargs` и функция във функция (каретата \"За напреднали\" в раздели 4 и 6)."
 
 #. heading 4
-#: site/lectures/04-functions.md:1342
+#: site/lectures/04-functions.md:1403
 msgid "The idea"
 msgstr "Идеята"
 
 #. paragraph
-#: site/lectures/04-functions.md:1344
+#: site/lectures/04-functions.md:1405
 msgid "A **decorator** is a function that takes a function and returns a new, \"decorated\" function: it adds something **before and after** the original, without changing its code. `decorated = decorator(original)`:"
 msgstr "**Декораторът** (decorator) е функция, която приема функция и връща нова, \"декорирана\" функция: добавя нещо **преди и след** оригинала, без да променя кода му. `decorated = decorator(original)`:"
 
 #. heading 4
-#: site/lectures/04-functions.md:1363
+#: site/lectures/04-functions.md:1424
 msgid "The `@` syntax"
 msgstr "Синтаксисът с `@`"
 
 #. paragraph
-#: site/lectures/04-functions.md:1365
+#: site/lectures/04-functions.md:1426
 msgid "`@decorator` above a `def` is a short way to write `name = decorator(name)`:"
 msgstr "`@decorator` над `def` е кратък начин да напишете `name = decorator(name)`:"
 
 #. heading 4
-#: site/lectures/04-functions.md:1382
+#: site/lectures/04-functions.md:1443
 msgid "Arguments and the return value"
 msgstr "Аргументите и върнатата стойност"
 
 #. paragraph
-#: site/lectures/04-functions.md:1384
+#: site/lectures/04-functions.md:1445
 msgid "The wrapper must pass the arguments on, and return the result of the original. `*args, **kwargs` (section 4) take any arguments; `functools.wraps` keeps the name and the docstring of the original. A useful decorator - how long each step of a report takes:"
 msgstr "Обвиващата функция (wrapper) трябва да предаде аргументите нататък и да върне резултата на оригинала. `*args, **kwargs` (раздел 4) приемат всякакви аргументи; `functools.wraps` запазва името и docstring-а на оригинала. Полезен декоратор - колко време отнема всяка стъпка на един отчет:"
 
 #. paragraph
-#: site/lectures/04-functions.md:1414
+#: site/lectures/04-functions.md:1475
 msgid "**Exercise.** Write a decorator `announce` that prints `start: <name of the function>` before the call and `end` after it, and use it on a function `report()` that prints `the report`. (Hint: `func.__name__` is the name of the function.)"
 msgstr "**Упражнение.** Напишете декоратор `announce`, който отпечатва `start: <name of the function>` преди извикването и `end` след него, и го използвайте върху функция `report()`, която отпечатва `the report`. (Подсказка: `func.__name__` е името на функцията.)"
 
 #. box title
-#: site/lectures/04-functions.md:1418
+#: site/lectures/04-functions.md:1479
 msgid "Answer"
 msgstr "Отговор"
 
 #. paragraph
-#: site/lectures/04-functions.md:1439
+#: site/lectures/04-functions.md:1500
 msgid "Read more: [Primer on Python decorators](https://realpython.com/primer-on-python-decorators/) (Real Python)."
 msgstr "Още за четене: [Primer on Python decorators](https://realpython.com/primer-on-python-decorators/) (Real Python)."
 
 #. heading 2
-#: site/lectures/04-functions.md:1442
+#: site/lectures/04-functions.md:1503
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/04-functions.md:1444
+#: site/lectures/04-functions.md:1505
 msgid "Python tutorial: [Defining functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions), [More on defining functions](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions) (defaults, keyword arguments, `*args`, `**kwargs`, `lambda`, docstrings, annotations)"
 msgstr "Python tutorial: [Defining functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions), [More on defining functions](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions) (стойности по подразбиране, именувани аргументи, `*args`, `**kwargs`, `lambda`, docstrings, анотации)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1447
+#: site/lectures/04-functions.md:1508
 msgid "[Scopes and namespaces](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces) in the tutorial; [Namespaces and scope in Python](https://realpython.com/python-namespaces-scope/) (Real Python)"
 msgstr "[Scopes and namespaces](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces) в tutorial-а; [Namespaces and scope in Python](https://realpython.com/python-namespaces-scope/) (Real Python)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1450
+#: site/lectures/04-functions.md:1511
 msgid "[Defining your own Python function](https://realpython.com/defining-your-own-python-function/) (Real Python)"
 msgstr "[Defining your own Python function](https://realpython.com/defining-your-own-python-function/) (Real Python)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1452
+#: site/lectures/04-functions.md:1513
 msgid "Type hints: [typing - the basics](https://docs.python.org/3/library/typing.html), [the mypy cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)"
 msgstr "Type hints: [typing - the basics](https://docs.python.org/3/library/typing.html), [the mypy cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1454
+#: site/lectures/04-functions.md:1515
 msgid "Videos: [Python tutorial for beginners 8: functions](https://www.youtube.com/watch?v=9Os0o3wzS_I) (Corey Schafer), [Python lambda functions](https://www.youtube.com/watch?v=j6FCewxjrBM) (Visually Explained)"
 msgstr "Видеа: [Python tutorial for beginners 8: functions](https://www.youtube.com/watch?v=9Os0o3wzS_I) (Corey Schafer), [Python lambda functions](https://www.youtube.com/watch?v=j6FCewxjrBM) (Visually Explained)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1458
+#: site/lectures/04-functions.md:1519
 msgid "**Next session:** lists, advanced - more list methods (remove, find, sort), list comprehensions, generator expressions, `zip` and `enumerate`."
 msgstr "**Следващото занятие:** lists за напреднали - още методи на list (премахване, търсене, сортиране), list comprehensions, generator expressions, `zip` и `enumerate`."
 

@@ -695,112 +695,112 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/15-pandas-select-aggregate-join.md:955
-msgid "8. Practice"
-msgstr ""
-
-#. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:957
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root (with the virtual environment active):"
-msgstr ""
-
-#. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:965
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:965
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:965
-msgid "What you do"
-msgstr ""
-
-#. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:967
-msgid "Rows and columns: masks, `loc`, `iloc`, `isin`, `between`, `query`"
-msgstr ""
-
-#. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:968
-msgid "Predict: masks, groups, joins, missing values"
-msgstr ""
-
-#. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:969
-msgid "New columns with `np.select`, `pd.cut`, `map` and `assign`"
-msgstr ""
-
-#. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:970
-msgid "Totals by group, named aggregation, `HAVING`, shares with `transform`"
-msgstr ""
-
-#. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:971
-msgid "Joins with clients and the rating scale, the anti-join, the EL"
-msgstr ""
-
-#. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:972
-msgid "`task6-missing.py` (Optional)"
-msgstr ""
-
-#. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:972
-msgid "Missing values in the export: count, fill, drop, repair"
-msgstr ""
-
-#. heading 2
-#: site/lectures/15-pandas-select-aggregate-join.md:974
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:976
+#: site/lectures/15-pandas-select-aggregate-join.md:957
 msgid "SQL / SAS"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:976
+#: site/lectures/15-pandas-select-aggregate-join.md:957
 msgid "pandas"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:979
+#: site/lectures/15-pandas-select-aggregate-join.md:960
 msgid "`df[mask]`, `df.loc[mask, cols]`, `df.query(\"...\")`; `&`, `\\|`, `~` with brackets"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:981
+#: site/lectures/15-pandas-select-aggregate-join.md:962
 msgid "`df.loc[mask, \"col\"] = value` (one `loc`, never two brackets)"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:982
+#: site/lectures/15-pandas-select-aggregate-join.md:963
 msgid "derived column, `CASE WHEN`"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:983
+#: site/lectures/15-pandas-select-aggregate-join.md:964
 msgid "`PROC FORMAT` ranges / values"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:984
+#: site/lectures/15-pandas-select-aggregate-join.md:965
 msgid "`ORDER BY`, top N, `RANK`"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:987
+#: site/lectures/15-pandas-select-aggregate-join.md:968
 msgid "a mask on the grouped result"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:991
+#: site/lectures/15-pandas-select-aggregate-join.md:972
 msgid "`NaN`; `isna`; aggregates skip it; `fillna`, `dropna(subset=...)`"
+msgstr ""
+
+#. heading 2
+#: site/lectures/15-pandas-select-aggregate-join.md:974
+msgid "8. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/15-pandas-select-aggregate-join.md:976
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root (with the virtual environment active):"
+msgstr ""
+
+#. table cell
+#: site/lectures/15-pandas-select-aggregate-join.md:984
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/15-pandas-select-aggregate-join.md:984
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/15-pandas-select-aggregate-join.md:984
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/15-pandas-select-aggregate-join.md:986
+msgid "Rows and columns: masks, `loc`, `iloc`, `isin`, `between`, `query`"
+msgstr ""
+
+#. table cell
+#: site/lectures/15-pandas-select-aggregate-join.md:987
+msgid "Predict: masks, groups, joins, missing values"
+msgstr ""
+
+#. table cell
+#: site/lectures/15-pandas-select-aggregate-join.md:988
+msgid "New columns with `np.select`, `pd.cut`, `map` and `assign`"
+msgstr ""
+
+#. table cell
+#: site/lectures/15-pandas-select-aggregate-join.md:989
+msgid "Totals by group, named aggregation, `HAVING`, shares with `transform`"
+msgstr ""
+
+#. table cell
+#: site/lectures/15-pandas-select-aggregate-join.md:990
+msgid "Joins with clients and the rating scale, the anti-join, the EL"
+msgstr ""
+
+#. table cell
+#: site/lectures/15-pandas-select-aggregate-join.md:991
+msgid "`task6-missing.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/15-pandas-select-aggregate-join.md:991
+msgid "Missing values in the export: count, fill, drop, repair"
 msgstr ""
 
 #. heading 2

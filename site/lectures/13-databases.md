@@ -1190,6 +1190,22 @@ for `"postgresql"` and `"sqlite"` from the table above, with the user taken from
 `os.environ["DB_USER"]` and **no** password in the result.
 :::
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| DB-API | `connect` -> `cursor` / `execute` -> `fetchone` / `fetchall` / loop -> `close`; the same for all databases |
+| SQLite | a database in a file; `sqlite3` comes with Python; `:memory:` for tests; dates are ISO text |
+| Rows | tuples, typed; `cursor.description` for names; `row_factory = sqlite3.Row` for rows by name |
+| Close | `closing(...)` or `finally`; `with con:` in sqlite3 is a transaction, not a close |
+| Parameters | `?` or `:name` + a tuple / dict; never f-strings with values (SQL injection); `IN` with one `?` per item |
+| Writing | `executemany`; `commit()`; `rowcount`; work on a copy (`con.backup`) |
+| Transactions | all or nothing; `rollback()`; `with con:` commits or rolls back; `IntegrityError` |
+| SQL or Python | filter, join, aggregate in SQL; rules, cleaning and the report in Python |
+| pandas | `pd.read_sql(sql, con, params=..., parse_dates=...)` -> a DataFrame; `df.to_sql(...)` |
+| SQLAlchemy | `create_engine(url)`, `text("... :name")`; needed by pandas for non-SQLite databases |
+| Passwords | never in code: Windows login, environment variables, keyring; a read-only account |
+
 ## 8. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1210,22 +1226,6 @@ The tasks read `data/portfolio.db`; the ones that write work on a copy in memory
 | 4 | `task4-write-transaction.py` | A copy, a new table, `executemany`, a rollback that keeps the table clean |
 | 5 | `task5-read-sql.py` | `pd.read_sql` with parameters; shape, columns, a total |
 | 6 | `task6-migration.py` (Optional) | Rating migration between two month ends with a self join |
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| DB-API | `connect` -> `cursor` / `execute` -> `fetchone` / `fetchall` / loop -> `close`; the same for all databases |
-| SQLite | a database in a file; `sqlite3` comes with Python; `:memory:` for tests; dates are ISO text |
-| Rows | tuples, typed; `cursor.description` for names; `row_factory = sqlite3.Row` for rows by name |
-| Close | `closing(...)` or `finally`; `with con:` in sqlite3 is a transaction, not a close |
-| Parameters | `?` or `:name` + a tuple / dict; never f-strings with values (SQL injection); `IN` with one `?` per item |
-| Writing | `executemany`; `commit()`; `rowcount`; work on a copy (`con.backup`) |
-| Transactions | all or nothing; `rollback()`; `with con:` commits or rolls back; `IntegrityError` |
-| SQL or Python | filter, join, aggregate in SQL; rules, cleaning and the report in Python |
-| pandas | `pd.read_sql(sql, con, params=..., parse_dates=...)` -> a DataFrame; `df.to_sql(...)` |
-| SQLAlchemy | `create_engine(url)`, `text("... :name")`; needed by pandas for non-SQLite databases |
-| Passwords | never in code: Windows login, environment variables, keyring; a read-only account |
 
 ## Homework
 

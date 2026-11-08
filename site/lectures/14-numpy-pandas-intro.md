@@ -942,6 +942,22 @@ errors="coerce")`. How many values of each could not be read? (Compare with the
 loader of [session 9](./09-errors-and-files.md#_10-loading-data-with-bad-records).)
 :::
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| NumPy | `np.array`; one `dtype`; operations on whole arrays; masks `a[a > 90]`; `&`, `\|`, `~` with brackets |
+| Aggregates | `sum`, `mean`, `min`, `max`, `argmax`, `np.percentile`; `std(ddof=1)` for the sample |
+| `CASE WHEN` | `np.where(cond, a, b)`; `np.select([conds], [choices], default=...)` - the first true wins |
+| Broadcasting | a scalar or a smaller array is stretched; `axis=0` down, `axis=1` across |
+| `NaN` | spreads in NumPy (`np.nansum`); not equal to itself; ints cannot hold it |
+| Series | values + index; operations match labels (alignment); `value_counts` |
+| DataFrame | columns of Series with one index; `df["a"]` a Series, `df[["a", "b"]]` a DataFrame; new columns from others |
+| `read_csv` | `sep`, `decimal`, `thousands`, `encoding`, `dtype`, `parse_dates` + `dayfirst`, `na_values`, `usecols`, `nrows` |
+| `read_excel` | `sheet_name=...`; `None` for all sheets (a dict); `read_sas` for SAS datasets |
+| First look | `shape`, `info()`, `head()`, `describe()`, `value_counts()`, `nunique()`, `isna().sum()`, `duplicated().sum()` |
+| Types | int64, float64, str / object, bool, datetime64, category, Int64; `astype`; `to_numeric` / `to_datetime` with `errors="coerce"` |
+
 ## 9. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -961,22 +977,6 @@ python 14-numpy-pandas-intro/practice/task1-numpy-arrays.py
 | 4 | `task4-read-export.py` | Read `loans_export.csv` with all the right options |
 | 5 | `task5-profile.py` | The profile of a dataset: shape, types, describe, counts, missing values |
 | 6 | `task6-excel-sheets.py` (Optional) | All sheets of `fx_rates.xlsx`; the monthly averages |
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| NumPy | `np.array`; one `dtype`; operations on whole arrays; masks `a[a > 90]`; `&`, `\|`, `~` with brackets |
-| Aggregates | `sum`, `mean`, `min`, `max`, `argmax`, `np.percentile`; `std(ddof=1)` for the sample |
-| `CASE WHEN` | `np.where(cond, a, b)`; `np.select([conds], [choices], default=...)` - the first true wins |
-| Broadcasting | a scalar or a smaller array is stretched; `axis=0` down, `axis=1` across |
-| `NaN` | spreads in NumPy (`np.nansum`); not equal to itself; ints cannot hold it |
-| Series | values + index; operations match labels (alignment); `value_counts` |
-| DataFrame | columns of Series with one index; `df["a"]` a Series, `df[["a", "b"]]` a DataFrame; new columns from others |
-| `read_csv` | `sep`, `decimal`, `thousands`, `encoding`, `dtype`, `parse_dates` + `dayfirst`, `na_values`, `usecols`, `nrows` |
-| `read_excel` | `sheet_name=...`; `None` for all sheets (a dict); `read_sas` for SAS datasets |
-| First look | `shape`, `info()`, `head()`, `describe()`, `value_counts()`, `nunique()`, `isna().sum()`, `duplicated().sum()` |
-| Types | int64, float64, str / object, bool, datetime64, category, Int64; `astype`; `to_numeric` / `to_datetime` with `errors="coerce"` |
 
 ## Homework
 

@@ -1257,6 +1257,23 @@ You need a dictionary `loan_id -> outstanding` from `loans.csv`. How many rows d
 the new rule reject?
 :::
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| Exceptions | an error while the code runs; it stops the script unless caught; read the traceback from the bottom |
+| Common types | `ValueError`, `TypeError`, `KeyError`, `IndexError`, `ZeroDivisionError`, `FileNotFoundError`, `UnicodeDecodeError` |
+| `try` / `except` | catch the specific type; `as error` for the message; a tuple for several types; keep `try` small |
+| `else` / `finally` | `else` without an error; `finally` always |
+| `raise` | `raise DataError(f"... {value!r}")`; `class DataError(ValueError): pass`; `from None` / `from error` |
+| Stop or go on | bad rows: reject and report; bad inputs or settings: raise; bugs: let them stop |
+| `pathlib` | `Path("data") / "x.csv"`; `exists`, `name`, `stem`, `suffix`; `glob("*.csv")`; `mkdir(parents=True, exist_ok=True)` |
+| Files | `with open(path, mode, encoding="utf-8")`; modes `r`, `w`, `a`, `x`; loop over the file for big files |
+| CSV | `csv.reader` / `DictReader`; `delimiter=";"`; write with `newline=""`; `utf-8-sig` for Excel |
+| JSON | `json.load(f)`, `json.dump(obj, f, indent=2)`; dates as ISO text |
+| Excel | `load_workbook(...)`, `ws.iter_rows(values_only=True)`; `Workbook()`, `ws.append`, `wb.save` |
+| Loader | one check per rule, one `try` per row, a reject file with the reason, a summary |
+
 ## 11. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1278,23 +1295,6 @@ in `.gitignore`).
 | 4 | `task4-paths-and-text.py` | `pathlib`: list files, build names, write and read a text file |
 | 5 | `task5-csv-json.py` | Read the config, write a CSV report with `DictWriter` |
 | 6 | `task6-excel.py` (Optional) | Read the three FX sheets; write a workbook with two sheets |
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| Exceptions | an error while the code runs; it stops the script unless caught; read the traceback from the bottom |
-| Common types | `ValueError`, `TypeError`, `KeyError`, `IndexError`, `ZeroDivisionError`, `FileNotFoundError`, `UnicodeDecodeError` |
-| `try` / `except` | catch the specific type; `as error` for the message; a tuple for several types; keep `try` small |
-| `else` / `finally` | `else` without an error; `finally` always |
-| `raise` | `raise DataError(f"... {value!r}")`; `class DataError(ValueError): pass`; `from None` / `from error` |
-| Stop or go on | bad rows: reject and report; bad inputs or settings: raise; bugs: let them stop |
-| `pathlib` | `Path("data") / "x.csv"`; `exists`, `name`, `stem`, `suffix`; `glob("*.csv")`; `mkdir(parents=True, exist_ok=True)` |
-| Files | `with open(path, mode, encoding="utf-8")`; modes `r`, `w`, `a`, `x`; loop over the file for big files |
-| CSV | `csv.reader` / `DictReader`; `delimiter=";"`; write with `newline=""`; `utf-8-sig` for Excel |
-| JSON | `json.load(f)`, `json.dump(obj, f, indent=2)`; dates as ISO text |
-| Excel | `load_workbook(...)`, `ws.iter_rows(values_only=True)`; `Workbook()`, `ws.append`, `wb.save` |
-| Loader | one check per rule, one `try` per row, a reject file with the reason, a summary |
 
 ## Homework
 

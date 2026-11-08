@@ -762,6 +762,20 @@ print(list(enumerate(b, start=10)))
 ```
 :::
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| Remove | `remove(value)` - the first one, `ValueError` if missing; `pop(i)` gives the item back; `del lst[i]`; `clear()` empties |
+| Find | `index(value)` - the first position, `ValueError` if missing: test with `in` first |
+| Sort | `lst.sort()` changes the list; `sorted(x)` gives a new one; `key=`, `reverse=True`; top N: `sorted(...)[:n]` |
+| `None` | the methods change the list and return `None`: never `x = x.sort()` |
+| Comprehension | `[expr for x in items if cond]` = `SELECT expr ... WHERE cond`; always a new list |
+| `if` position | `if` at the end filters; `a if c else b` at the start chooses a value (CASE) |
+| Generator expression | `sum(x for x in items)` - no list in memory; `sum(1 for ... if ...)` = `COUNT(*) ... WHERE`; used once |
+| `zip` | parallel lists -> tuples; stops at the shortest list |
+| `enumerate` | `(number, item)`; `start=1` for a rank |
+
 ## 5. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -780,20 +794,6 @@ python 05-lists-advanced/practice/task1-list-methods.py
 | 4 | `task4-generators.py` | Sums and counts with a condition, without a list; a file line by line |
 | 5 | `task5-zip.py` | Two lists side by side; a rank with `enumerate` |
 | 6 | `task6-clean-a-list.py` (Optional) | Clean a list of loans step by step, then report on it |
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| Remove | `remove(value)` - the first one, `ValueError` if missing; `pop(i)` gives the item back; `del lst[i]`; `clear()` empties |
-| Find | `index(value)` - the first position, `ValueError` if missing: test with `in` first |
-| Sort | `lst.sort()` changes the list; `sorted(x)` gives a new one; `key=`, `reverse=True`; top N: `sorted(...)[:n]` |
-| `None` | the methods change the list and return `None`: never `x = x.sort()` |
-| Comprehension | `[expr for x in items if cond]` = `SELECT expr ... WHERE cond`; always a new list |
-| `if` position | `if` at the end filters; `a if c else b` at the start chooses a value (CASE) |
-| Generator expression | `sum(x for x in items)` - no list in memory; `sum(1 for ... if ...)` = `COUNT(*) ... WHERE`; used once |
-| `zip` | parallel lists -> tuples; stops at the shortest list |
-| `enumerate` | `(number, item)`; `start=1` for a rank |
 
 ## Homework
 

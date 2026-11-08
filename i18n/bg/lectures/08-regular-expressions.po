@@ -489,7 +489,7 @@ msgid "Where the pattern must match"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:370 site/lectures/08-regular-expressions.md:1076
+#: site/lectures/08-regular-expressions.md:370 site/lectures/08-regular-expressions.md:1057
 msgid "SAS / SQL"
 msgstr ""
 
@@ -900,167 +900,167 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/08-regular-expressions.md:1044
-msgid "9. Practice"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-regular-expressions.md:1046
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-regular-expressions.md:1054
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-regular-expressions.md:1054
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-regular-expressions.md:1054
-msgid "What you do"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-regular-expressions.md:1056
-msgid "Write patterns: ids, codes, currencies, whole words"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-regular-expressions.md:1057
-msgid "Predict `findall`, `search`, `sub`; greedy and lazy"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-regular-expressions.md:1058
-msgid "Validators with `fullmatch`: loan id, EIK, IBAN, e-mail, date"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-regular-expressions.md:1059
-msgid "Amounts, dates and loan ids from comments"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-regular-expressions.md:1060
-msgid "Named groups: a payment line, a file name, a rate change"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-regular-expressions.md:1061
-msgid "`task6-sub.py` (Optional)"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-regular-expressions.md:1061
-msgid "Clean and reformat with `sub`: dates, spaces, masks"
-msgstr ""
-
-#. heading 2
-#: site/lectures/08-regular-expressions.md:1063
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1065
+#: site/lectures/08-regular-expressions.md:1046
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1065
+#: site/lectures/08-regular-expressions.md:1046
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1067
+#: site/lectures/08-regular-expressions.md:1048
 msgid "Patterns"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1067
+#: site/lectures/08-regular-expressions.md:1048
 msgid "always `r\"...\"`; letters match themselves; `.` any character, `\\.` a point"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1068
+#: site/lectures/08-regular-expressions.md:1049
 msgid "Classes"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1068
+#: site/lectures/08-regular-expressions.md:1049
 msgid "`[abc]`, `[0-9]`, `[^...]`; `\\d`, `\\w`, `\\s` and `\\D`, `\\W`, `\\S`"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1069
+#: site/lectures/08-regular-expressions.md:1050
 msgid "Anchors"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1069
+#: site/lectures/08-regular-expressions.md:1050
 msgid "`^` start, `$` end, `\\b` word boundary"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1070
+#: site/lectures/08-regular-expressions.md:1051
 msgid "Quantifiers"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1070
+#: site/lectures/08-regular-expressions.md:1051
 msgid "`*` `+` `?` `{n}` `{n,m}`; greedy - add `?` for lazy, or use `[^x]*`"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1071
+#: site/lectures/08-regular-expressions.md:1052
 msgid "Functions"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1071
+#: site/lectures/08-regular-expressions.md:1052
 msgid "`search` (anywhere), `match` (start), `fullmatch` (all - for validation), `findall`, `finditer`, `split`, `sub`, `subn`"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1072
+#: site/lectures/08-regular-expressions.md:1053
 msgid "Groups"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1072
+#: site/lectures/08-regular-expressions.md:1053
 msgid "`( )` and `group(1)`; `(?P<name>...)`, `m[\"name\"]`, `groupdict()`; `(?:...)` does not capture"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1073
+#: site/lectures/08-regular-expressions.md:1054
 msgid "Alternatives"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1073
+#: site/lectures/08-regular-expressions.md:1054
 msgid "`a\\|b` - the first that matches wins; use `\\b` or the longer one first"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1074
+#: site/lectures/08-regular-expressions.md:1055
 msgid "Flags"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1074
+#: site/lectures/08-regular-expressions.md:1055
 msgid "`re.I` ignores the case; `re.compile` for a pattern used many times"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1075
+#: site/lectures/08-regular-expressions.md:1056
 msgid "Validation"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1075
+#: site/lectures/08-regular-expressions.md:1056
 msgid "the shape with a regex, then the meaning (a real date, check digits)"
+msgstr ""
+
+#. heading 2
+#: site/lectures/08-regular-expressions.md:1059
+msgid "9. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/08-regular-expressions.md:1061
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1069
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1069
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1069
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1071
+msgid "Write patterns: ids, codes, currencies, whole words"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1072
+msgid "Predict `findall`, `search`, `sub`; greedy and lazy"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1073
+msgid "Validators with `fullmatch`: loan id, EIK, IBAN, e-mail, date"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1074
+msgid "Amounts, dates and loan ids from comments"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1075
+msgid "Named groups: a payment line, a file name, a rate change"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1076
+msgid "`task6-sub.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/08-regular-expressions.md:1076
+msgid "Clean and reformat with `sub`: dates, spaces, masks"
 msgstr ""
 
 #. heading 2

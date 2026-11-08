@@ -952,25 +952,6 @@ aggregate, report (Excel and a chart - [session 16](./16-pandas-reports-project.
 today; [session 16](./16-pandas-reports-project.md) adds the last tools (pivot tables, dates, Excel output) and the time
 to start.
 
-## 8. Practice
-
-Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
-in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
-terminal, in the repository root (with the virtual environment active):
-
-```bash
-python 15-pandas-select-aggregate-join/practice/task1-select.py
-```
-
-| Task | File | What you do |
-|------|------|-------------|
-| 1 | `task1-select.py` | Rows and columns: masks, `loc`, `iloc`, `isin`, `between`, `query` |
-| 2 | `task2-predict-pandas.py` | Predict: masks, groups, joins, missing values |
-| 3 | `task3-new-columns.py` | New columns with `np.select`, `pd.cut`, `map` and `assign` |
-| 4 | `task4-groupby.py` | Totals by group, named aggregation, `HAVING`, shares with `transform` |
-| 5 | `task5-merge.py` | Joins with clients and the rating scale, the anti-join, the EL |
-| 6 | `task6-missing.py` (Optional) | Missing values in the export: count, fill, drop, repair |
-
 ## Summary
 
 | SQL / SAS | pandas |
@@ -989,6 +970,25 @@ python 15-pandas-select-aggregate-join/practice/task1-select.py
 | `JOIN`, `MERGE BY` + `IN=` | `merge(on, how)`, `indicator=True`; `validate="many_to_one"` |
 | `SET a b`, `UNION ALL` | `pd.concat([a, b])` |
 | `NULL`, `.`, `COALESCE`, `NMISS` | `NaN`; `isna`; aggregates skip it; `fillna`, `dropna(subset=...)` |
+
+## 8. Practice
+
+Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
+in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
+terminal, in the repository root (with the virtual environment active):
+
+```bash
+python 15-pandas-select-aggregate-join/practice/task1-select.py
+```
+
+| Task | File | What you do |
+|------|------|-------------|
+| 1 | `task1-select.py` | Rows and columns: masks, `loc`, `iloc`, `isin`, `between`, `query` |
+| 2 | `task2-predict-pandas.py` | Predict: masks, groups, joins, missing values |
+| 3 | `task3-new-columns.py` | New columns with `np.select`, `pd.cut`, `map` and `assign` |
+| 4 | `task4-groupby.py` | Totals by group, named aggregation, `HAVING`, shares with `transform` |
+| 5 | `task5-merge.py` | Joins with clients and the rating scale, the anti-join, the EL |
+| 6 | `task6-missing.py` (Optional) | Missing values in the export: count, fill, drop, repair |
 
 ## Homework
 

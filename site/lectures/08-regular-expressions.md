@@ -1041,6 +1041,21 @@ Mask the account part of every IBAN in a text for a report: keep `BG` and the fi
 `r"\1" + "*" * 14` as the replacement.
 :::
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| Patterns | always `r"..."`; letters match themselves; `.` any character, `\.` a point |
+| Classes | `[abc]`, `[0-9]`, `[^...]`; `\d`, `\w`, `\s` and `\D`, `\W`, `\S` |
+| Anchors | `^` start, `$` end, `\b` word boundary |
+| Quantifiers | `*` `+` `?` `{n}` `{n,m}`; greedy - add `?` for lazy, or use `[^x]*` |
+| Functions | `search` (anywhere), `match` (start), `fullmatch` (all - for validation), `findall`, `finditer`, `split`, `sub`, `subn` |
+| Groups | `( )` and `group(1)`; `(?P<name>...)`, `m["name"]`, `groupdict()`; `(?:...)` does not capture |
+| Alternatives | `a\|b` - the first that matches wins; use `\b` or the longer one first |
+| Flags | `re.I` ignores the case; `re.compile` for a pattern used many times |
+| Validation | the shape with a regex, then the meaning (a real date, check digits) |
+| SAS / SQL | `PRXMATCH` = `search`; `PRXPOSN` = `group`; `PRXCHANGE` = `sub`; `LIKE` `_` / `%` = `.` / `.*` |
+
 ## 9. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1059,21 +1074,6 @@ python 08-regular-expressions/practice/task1-first-patterns.py
 | 4 | `task4-extract.py` | Amounts, dates and loan ids from comments |
 | 5 | `task5-groups.py` | Named groups: a payment line, a file name, a rate change |
 | 6 | `task6-sub.py` (Optional) | Clean and reformat with `sub`: dates, spaces, masks |
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| Patterns | always `r"..."`; letters match themselves; `.` any character, `\.` a point |
-| Classes | `[abc]`, `[0-9]`, `[^...]`; `\d`, `\w`, `\s` and `\D`, `\W`, `\S` |
-| Anchors | `^` start, `$` end, `\b` word boundary |
-| Quantifiers | `*` `+` `?` `{n}` `{n,m}`; greedy - add `?` for lazy, or use `[^x]*` |
-| Functions | `search` (anywhere), `match` (start), `fullmatch` (all - for validation), `findall`, `finditer`, `split`, `sub`, `subn` |
-| Groups | `( )` and `group(1)`; `(?P<name>...)`, `m["name"]`, `groupdict()`; `(?:...)` does not capture |
-| Alternatives | `a\|b` - the first that matches wins; use `\b` or the longer one first |
-| Flags | `re.I` ignores the case; `re.compile` for a pattern used many times |
-| Validation | the shape with a regex, then the meaning (a real date, check digits) |
-| SAS / SQL | `PRXMATCH` = `search`; `PRXPOSN` = `group`; `PRXCHANGE` = `sub`; `LIKE` `_` / `%` = `.` / `.*` |
 
 ## Homework
 

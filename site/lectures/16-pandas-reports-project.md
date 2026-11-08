@@ -1071,6 +1071,23 @@ Rules that make a report reliable:
 - **Run it twice**: the second run gives the same file. Then run it for 31.08.2026.
 - **Commit** after each step that works ([session 10](./10-modules-and-git.md#good-commits)).
 
+## Summary
+
+| SQL / SAS | pandas |
+|-----------|--------|
+| `PROC TABULATE`, `PIVOT` | `pivot_table(index, columns, values, aggfunc, margins=True, fill_value=0)` |
+| `PROC TRANSPOSE` | `pivot` (no aggregation), `unstack`; back: `melt` |
+| `PROC FREQ; TABLES a * b` | `pd.crosstab(a, b, normalize="index", margins=True)` |
+| SAS dates, `INPUT(x, ddmmyy10.)` | `pd.to_datetime(format=..., errors="coerce")`, `.dt` |
+| `INTNX('month', d, 0, 'end')` | `d + pd.offsets.MonthEnd(0)`; `pd.date_range(freq="ME")` |
+| `INTCK('month', a, b)` | `(b.year - a.year) * 12 + (b.month - a.month)` |
+| `MONYY7.` | `.dt.to_period("M")`, `.dt.strftime("%b %Y")` |
+| `LAG`, `DIF` by group | `sort_values`, then `groupby(key)[col].shift(1)` / `diff()` |
+| `RETAIN` | `groupby(key)[col].cumsum()` / `cummax()` |
+| migration matrix | merge two month ends, `pd.crosstab(start, end)` |
+| `ODS EXCEL`, `PROC EXPORT` | `pd.ExcelWriter` + `to_excel(writer, sheet_name=...)`; openpyxl for formats |
+| `PROC SGPLOT` | `df.plot(kind=...)`, `plt.savefig` |
+
 ## 9. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1091,23 +1108,6 @@ The tasks that write files write them into `out/` (ignored by Git).
 | 4 | `task4-migration.py` | The migration matrix, upgrades and downgrades, the default rate |
 | 5 | `task5-excel-report.py` | A three-sheet Excel report, read back and checked |
 | 6 | `task6-chart.py` (Optional) | A bar chart and a line chart saved as PNG files |
-
-## Summary
-
-| SQL / SAS | pandas |
-|-----------|--------|
-| `PROC TABULATE`, `PIVOT` | `pivot_table(index, columns, values, aggfunc, margins=True, fill_value=0)` |
-| `PROC TRANSPOSE` | `pivot` (no aggregation), `unstack`; back: `melt` |
-| `PROC FREQ; TABLES a * b` | `pd.crosstab(a, b, normalize="index", margins=True)` |
-| SAS dates, `INPUT(x, ddmmyy10.)` | `pd.to_datetime(format=..., errors="coerce")`, `.dt` |
-| `INTNX('month', d, 0, 'end')` | `d + pd.offsets.MonthEnd(0)`; `pd.date_range(freq="ME")` |
-| `INTCK('month', a, b)` | `(b.year - a.year) * 12 + (b.month - a.month)` |
-| `MONYY7.` | `.dt.to_period("M")`, `.dt.strftime("%b %Y")` |
-| `LAG`, `DIF` by group | `sort_values`, then `groupby(key)[col].shift(1)` / `diff()` |
-| `RETAIN` | `groupby(key)[col].cumsum()` / `cummax()` |
-| migration matrix | merge two month ends, `pd.crosstab(start, end)` |
-| `ODS EXCEL`, `PROC EXPORT` | `pd.ExcelWriter` + `to_excel(writer, sheet_name=...)`; openpyxl for formats |
-| `PROC SGPLOT` | `df.plot(kind=...)`, `plt.savefig` |
 
 ## Homework
 

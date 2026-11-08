@@ -1037,6 +1037,23 @@ dict comprehension (only two fields per client). Then print the rating of `C0132
 and the number of corporate clients with a rating of 6 or worse.
 :::
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| Dictionary | `{key: value}`; keys unique and hashable; keeps the insertion order |
+| Read | `d[key]` (KeyError if missing); `d.get(key, default)`; `key in d` checks the keys |
+| Change | `d[key] = v` adds or changes; `update`, `\|`; `del`, `pop(key, default)`; `setdefault` |
+| Loop | `for k in d`; `d.values()`; `for k, v in d.items()`; sort with `sorted(d.items(), key=...)` |
+| Comprehension | `{k: v for ... if ...}` |
+| Lookups | a dict = a SAS format / hash object / lookup table; `get(code, "Other")` = `OTHER=` |
+| Join | a dict of the right table, `get` for every row of the left one = `LEFT JOIN` |
+| Ranges | not keys: a function with `if`, or `bisect` |
+| `GROUP BY` | `d[k] = d.get(k, 0) + 1`; `defaultdict(int / float / list)`; `Counter(...)`; `most_common(n)` |
+| Several keys | a tuple as the key: `(segment, stage)` |
+| Records | `csv.DictReader`: rows as dicts; a dict of dicts keyed by id; optional: `json.dumps` / `loads` |
+| Copies | `copy()` is shallow; `copy.deepcopy` for nested dicts |
+
 ## 8. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1055,23 +1072,6 @@ python 06-dictionaries/practice/task1-dict-basics.py
 | 4 | `task4-count-and-sum.py` | Clients per region, outstanding per segment, `most_common` |
 | 5 | `task5-group-aggregates.py` | Count / sum / average / max per product, `HAVING`, a sorted report |
 | 6 | `task6-nested-groups.py` (Optional) | Clients as a dict of dicts; segment x stage totals with tuple keys |
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| Dictionary | `{key: value}`; keys unique and hashable; keeps the insertion order |
-| Read | `d[key]` (KeyError if missing); `d.get(key, default)`; `key in d` checks the keys |
-| Change | `d[key] = v` adds or changes; `update`, `\|`; `del`, `pop(key, default)`; `setdefault` |
-| Loop | `for k in d`; `d.values()`; `for k, v in d.items()`; sort with `sorted(d.items(), key=...)` |
-| Comprehension | `{k: v for ... if ...}` |
-| Lookups | a dict = a SAS format / hash object / lookup table; `get(code, "Other")` = `OTHER=` |
-| Join | a dict of the right table, `get` for every row of the left one = `LEFT JOIN` |
-| Ranges | not keys: a function with `if`, or `bisect` |
-| `GROUP BY` | `d[k] = d.get(k, 0) + 1`; `defaultdict(int / float / list)`; `Counter(...)`; `most_common(n)` |
-| Several keys | a tuple as the key: `(segment, stage)` |
-| Records | `csv.DictReader`: rows as dicts; a dict of dicts keyed by id; optional: `json.dumps` / `loads` |
-| Copies | `copy()` is shallow; `copy.deepcopy` for nested dicts |
 
 ## Homework
 

@@ -1385,223 +1385,223 @@ msgstr "Същата проверка на две таблици преди JOIN
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:1364
-msgid "13. Practice"
-msgstr "13. Упражнения"
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1366
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
-msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и пускайте задачите от терминала, в главната папка на repository-то:"
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1374
-msgid "Task"
-msgstr "Задача"
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1374
-msgid "File"
-msgstr "Файл"
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1374
-msgid "What you do"
-msgstr "Какво правите"
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1376
-msgid "Predict 14 indexes, slices and operations, then check"
-msgstr "Предвидете 14 индекса, slices и операции, после проверете"
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1377
-msgid "Parts of ids and dates; quarters of a year of monthly values"
-msgstr "Части от номера и дати; тримесечия от година месечни стойности"
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1378
-msgid "A watch list: add, insert, remove, sort, count"
-msgstr "Списък за наблюдение: добавяне, вмъкване, премахване, сортиране, броене"
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1379
-msgid "Records as tuples: unpack, read, sum; a list of tuples"
-msgstr "Записи като tuples: разопаковане, четене, сумиране; list от tuples"
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1380
-msgid "The clients of two months: new, closed, stayed; a credit file"
-msgstr "Клиентите от два месеца: нови, закрити, останали; кредитно досие"
-
-#. table cell
-#: site/lectures/03-lists-tuples-sets.md:1381
-msgid "From `loans.csv` and `clients.csv`: distinct values, lists, set checks"
-msgstr "От `loans.csv` и `clients.csv`: различни стойности, lists, проверки със sets"
-
-#. box title
-#: site/lectures/03-lists-tuples-sets.md:1383
-msgid "Help for the tasks and the homework"
-msgstr "Помощ за задачите и домашното"
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1384
-msgid "**What each task needs.** Tasks 1 - 2: sections 1 - 5 (in task 1, the lines with `(99,)`, `sort` / `sorted` and the sets need sections 6, 8, 11 and 12). Task 3: sections 6 - 7. Task 4: section 8. Tasks 5 - 6 and the homework: sections 8 - 12. If a section was not covered in class yet, start with the tasks before it, or read the section first. A part you have not started prints `TODO`, not `FAIL`."
-msgstr "**Какво иска всяка задача.** Задачи 1 - 2: раздели 1 - 5 (в задача 1 редовете с `(99,)`, `sort` / `sorted` и sets искат раздели 6, 8, 11 и 12). Задача 3: раздели 6 - 7. Задача 4: раздел 8. Задачи 5 - 6 и домашното: раздели 8 - 12. Ако раздел още не е минат в час, започнете със задачите преди него или първо прочетете раздела. Част, която не сте започнали, показва `TODO`, а не `FAIL`."
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1389
-msgid "**Task 1:** `type(x).__name__` is the name of the type, as text: `\"tuple\"`, `\"list\"`."
-msgstr "**Задача 1:** `type(x).__name__` е името на типа, като текст: `\"tuple\"`, `\"list\"`."
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1391
-msgid "**Task 3:** make `backup` first, with `watch.copy()` - `backup = watch` would only give the same list a second name (section 7). `extend` adds several items with one call; `pop()` removes the last item **and returns it**; `sort(reverse=True)` sorts from the largest. The methods change `watch` and return `None`: write `watch.sort()`, not `watch = watch.sort()` (section 6)."
-msgstr "**Задача 3:** първо направете `backup` с `watch.copy()` - `backup = watch` само би дало второ име на същия list (раздел 7). `extend` добавя няколко елемента с едно извикване; `pop()` маха последния елемент **и го връща**; `sort(reverse=True)` сортира от най-големия. Методите променят `watch` и връщат `None`: пишете `watch.sort()`, а не `watch = watch.sort()` (раздел 6)."
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1396
-msgid "**Task 4, part 2:** `record[:-1]` is the record without its last item (a new tuple), `(40,)` is a tuple with one item (section 8), and `+` joins the two."
-msgstr "**Задача 4, част 2:** `record[:-1]` е записът без последния му елемент (нов tuple), `(40,)` е tuple с един елемент (раздел 8), а `+` ги съединява."
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1398
-msgid "**Task 4, part 4:** all four results in one loop - before it, `total = 0.0` and three empty lists."
-msgstr "**Задача 4, част 4:** четирите резултата - в един цикъл; преди него `total = 0.0` и три празни lists."
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1400
-msgid "**Task 6, part 1:** `both_currencies` - in the loop, collect the clients of the EUR loans in one set and of the USD loans in another; after the loop, intersect the two sets with `&`."
-msgstr "**Задача 6, част 1:** `both_currencies` - в цикъла съберете клиентите на кредитите в EUR в един set, а на тези в USD - в друг; след цикъла пресечете двата set-а с `&`."
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1403
-msgid "**Reading a file** (task 6, the homework): as in [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()` skips the header, then `fields = line.strip().split(\",\")` in the loop. The columns are in the order of the header line (task 6 lists them; the [sample data](../sample-data) page too): `fields[0]` is the first one."
-msgstr "**Четене на файл** (задача 6, домашното): както в [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()` прескача заглавния ред, после `fields = line.strip().split(\",\")` в цикъла. Колоните са в реда на заглавния ред (задача 6 ги изброява; страницата [примерни данни](../sample-data) също): `fields[0]` е първата."
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1407
-msgid "**Homework, part 1:** convert while you append: `loans.append((fields[0], ..., float(fields[7]), int(fields[10])))` - note the two pairs of brackets (section 8)."
-msgstr "**Домашно, част 1:** преобразувайте, докато добавяте: `loans.append((fields[0], ..., float(fields[7]), int(fields[10])))` - обърнете внимание на двата чифта скоби (раздел 8)."
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1409
-msgid "**Homework, part 2:** sorting tuples compares their first items first - section 8, \"Sort records: tuples compare item by item\"."
-msgstr "**Домашно, част 2:** при сортиране tuples се сравняват първо по първите си елементи - раздел 8, \"Сортиране на записи: tuples се сравняват елемент по елемент\"."
-
-#. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1411
-msgid "**Homework, part 5:** two loops, one per file: first collect the stage 3 clients into a set, then read `clients.csv` and keep the region when the client is in that set."
-msgstr "**Домашно, част 5:** два цикъла, по един за всеки файл: първо съберете клиентите в stage 3 в set, после прочетете `clients.csv` и запазвайте региона, когато клиентът е в този set."
-
-#. heading 2
-#: site/lectures/03-lists-tuples-sets.md:1416
 msgid "Summary"
 msgstr "Обобщение"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1418
+#: site/lectures/03-lists-tuples-sets.md:1366
 msgid "Topic"
 msgstr "Тема"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1418
+#: site/lectures/03-lists-tuples-sets.md:1366
 msgid "Remember"
 msgstr "Запомнете"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1420
+#: site/lectures/03-lists-tuples-sets.md:1368
 msgid "Sequences"
 msgstr "Поредици"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1420
+#: site/lectures/03-lists-tuples-sets.md:1368
 msgid "`list`, `tuple`, `range`, `str`: ordered; `len`, `in`, `+`, `*`, `min`, `max`, `count`, `index`"
 msgstr "`list`, `tuple`, `range`, `str`: подредени; `len`, `in`, `+`, `*`, `min`, `max`, `count`, `index`"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1421
+#: site/lectures/03-lists-tuples-sets.md:1369
 msgid "Indexes"
 msgstr "Индекси"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1421
+#: site/lectures/03-lists-tuples-sets.md:1369
 msgid "from **0**; `-1` is the last; a wrong index is an `IndexError`"
 msgstr "от **0**; `-1` е последният; грешен индекс е `IndexError`"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1422
+#: site/lectures/03-lists-tuples-sets.md:1370
 msgid "Slices"
 msgstr "Slices"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1422
+#: site/lectures/03-lists-tuples-sets.md:1370
 msgid "`s[start:stop:step]`, the stop is not included; `s[:3]` the first 3, `s[-3:]` the last 3, `s[::-1]` reversed, `s[:]` a copy"
 msgstr "`s[start:stop:step]`, stop не е включен; `s[:3]` първите 3, `s[-3:]` последните 3, `s[::-1]` обърнат, `s[:]` копие"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1423
+#: site/lectures/03-lists-tuples-sets.md:1371
 msgid "Lists"
 msgstr "Lists"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1423
+#: site/lectures/03-lists-tuples-sets.md:1371
 msgid "`[...]`, mutable; `append`, `extend`, `insert`, `pop`, `remove`, `sort`; the methods return `None`"
 msgstr "`[...]`, mutable; `append`, `extend`, `insert`, `pop`, `remove`, `sort`; методите връщат `None`"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1424
+#: site/lectures/03-lists-tuples-sets.md:1372
 msgid "Sorting"
 msgstr "Сортиране"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1424
+#: site/lectures/03-lists-tuples-sets.md:1372
 msgid "`lst.sort()` changes the list; `sorted(x)` returns a new list"
 msgstr "`lst.sort()` променя list-а; `sorted(x)` връща нов list"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1425
+#: site/lectures/03-lists-tuples-sets.md:1373
 msgid "References"
 msgstr "Референции"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1425
+#: site/lectures/03-lists-tuples-sets.md:1373
 msgid "`b = a` is the same list with two names; a copy: `a[:]`, `a.copy()`, `list(a)`"
 msgstr "`b = a` е същият list с две имена; копие: `a[:]`, `a.copy()`, `list(a)`"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1426
+#: site/lectures/03-lists-tuples-sets.md:1374
 msgid "Tuples"
 msgstr "Tuples"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1426
+#: site/lectures/03-lists-tuples-sets.md:1374
 msgid "`(...)`, immutable, the comma makes it: `(99,)`; unpacking `a, b, c = t`, `_` for a value you do not need; records"
 msgstr "`(...)`, immutable, прави го запетаята: `(99,)`; разопаковане `a, b, c = t`, `_` за стойност, която не ви трябва; записи"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1427
+#: site/lectures/03-lists-tuples-sets.md:1375
 msgid "`range(start, stop, step)`, stop not included; small in memory"
 msgstr "`range(start, stop, step)`, stop не е включен; малък в паметта"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1428
+#: site/lectures/03-lists-tuples-sets.md:1376
 msgid "Sets"
 msgstr "Sets"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1428
+#: site/lectures/03-lists-tuples-sets.md:1376
 msgid "`{...}` / `set()`, unique, unordered; `add`, `discard`; fast `in`; print with `sorted()`"
 msgstr "`{...}` / `set()`, уникални, неподредени; `add`, `discard`; бърз `in`; отпечатване със `sorted()`"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1429
+#: site/lectures/03-lists-tuples-sets.md:1377
 msgid "Set operations"
 msgstr "Операции със sets"
 
 #. table cell
-#: site/lectures/03-lists-tuples-sets.md:1429
+#: site/lectures/03-lists-tuples-sets.md:1377
 msgid "`\\|` is SQL `UNION`, `&` is `INTERSECT`, `-` is `EXCEPT`; `^` symmetric difference; `<=` subset"
 msgstr "`\\|` е `UNION` от SQL, `&` е `INTERSECT`, `-` е `EXCEPT`; `^` симетрична разлика; `<=` подмножество"
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:1379
+msgid "13. Practice"
+msgstr "13. Упражнения"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1381
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
+msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и пускайте задачите от терминала, в главната папка на repository-то:"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1389
+msgid "Task"
+msgstr "Задача"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1389
+msgid "File"
+msgstr "Файл"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1389
+msgid "What you do"
+msgstr "Какво правите"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1391
+msgid "Predict 14 indexes, slices and operations, then check"
+msgstr "Предвидете 14 индекса, slices и операции, после проверете"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1392
+msgid "Parts of ids and dates; quarters of a year of monthly values"
+msgstr "Части от номера и дати; тримесечия от година месечни стойности"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1393
+msgid "A watch list: add, insert, remove, sort, count"
+msgstr "Списък за наблюдение: добавяне, вмъкване, премахване, сортиране, броене"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1394
+msgid "Records as tuples: unpack, read, sum; a list of tuples"
+msgstr "Записи като tuples: разопаковане, четене, сумиране; list от tuples"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1395
+msgid "The clients of two months: new, closed, stayed; a credit file"
+msgstr "Клиентите от два месеца: нови, закрити, останали; кредитно досие"
+
+#. table cell
+#: site/lectures/03-lists-tuples-sets.md:1396
+msgid "From `loans.csv` and `clients.csv`: distinct values, lists, set checks"
+msgstr "От `loans.csv` и `clients.csv`: различни стойности, lists, проверки със sets"
+
+#. box title
+#: site/lectures/03-lists-tuples-sets.md:1398
+msgid "Help for the tasks and the homework"
+msgstr "Помощ за задачите и домашното"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1399
+msgid "**What each task needs.** Tasks 1 - 2: sections 1 - 5 (in task 1, the lines with `(99,)`, `sort` / `sorted` and the sets need sections 6, 8, 11 and 12). Task 3: sections 6 - 7. Task 4: section 8. Tasks 5 - 6 and the homework: sections 8 - 12. If a section was not covered in class yet, start with the tasks before it, or read the section first. A part you have not started prints `TODO`, not `FAIL`."
+msgstr "**Какво иска всяка задача.** Задачи 1 - 2: раздели 1 - 5 (в задача 1 редовете с `(99,)`, `sort` / `sorted` и sets искат раздели 6, 8, 11 и 12). Задача 3: раздели 6 - 7. Задача 4: раздел 8. Задачи 5 - 6 и домашното: раздели 8 - 12. Ако раздел още не е минат в час, започнете със задачите преди него или първо прочетете раздела. Част, която не сте започнали, показва `TODO`, а не `FAIL`."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1404
+msgid "**Task 1:** `type(x).__name__` is the name of the type, as text: `\"tuple\"`, `\"list\"`."
+msgstr "**Задача 1:** `type(x).__name__` е името на типа, като текст: `\"tuple\"`, `\"list\"`."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1406
+msgid "**Task 3:** make `backup` first, with `watch.copy()` - `backup = watch` would only give the same list a second name (section 7). `extend` adds several items with one call; `pop()` removes the last item **and returns it**; `sort(reverse=True)` sorts from the largest. The methods change `watch` and return `None`: write `watch.sort()`, not `watch = watch.sort()` (section 6)."
+msgstr "**Задача 3:** първо направете `backup` с `watch.copy()` - `backup = watch` само би дало второ име на същия list (раздел 7). `extend` добавя няколко елемента с едно извикване; `pop()` маха последния елемент **и го връща**; `sort(reverse=True)` сортира от най-големия. Методите променят `watch` и връщат `None`: пишете `watch.sort()`, а не `watch = watch.sort()` (раздел 6)."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1411
+msgid "**Task 4, part 2:** `record[:-1]` is the record without its last item (a new tuple), `(40,)` is a tuple with one item (section 8), and `+` joins the two."
+msgstr "**Задача 4, част 2:** `record[:-1]` е записът без последния му елемент (нов tuple), `(40,)` е tuple с един елемент (раздел 8), а `+` ги съединява."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1413
+msgid "**Task 4, part 4:** all four results in one loop - before it, `total = 0.0` and three empty lists."
+msgstr "**Задача 4, част 4:** четирите резултата - в един цикъл; преди него `total = 0.0` и три празни lists."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1415
+msgid "**Task 6, part 1:** `both_currencies` - in the loop, collect the clients of the EUR loans in one set and of the USD loans in another; after the loop, intersect the two sets with `&`."
+msgstr "**Задача 6, част 1:** `both_currencies` - в цикъла съберете клиентите на кредитите в EUR в един set, а на тези в USD - в друг; след цикъла пресечете двата set-а с `&`."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1418
+msgid "**Reading a file** (task 6, the homework): as in [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()` skips the header, then `fields = line.strip().split(\",\")` in the loop. The columns are in the order of the header line (task 6 lists them; the [sample data](../sample-data) page too): `fields[0]` is the first one."
+msgstr "**Четене на файл** (задача 6, домашното): както в [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()` прескача заглавния ред, после `fields = line.strip().split(\",\")` в цикъла. Колоните са в реда на заглавния ред (задача 6 ги изброява; страницата [примерни данни](../sample-data) също): `fields[0]` е първата."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1422
+msgid "**Homework, part 1:** convert while you append: `loans.append((fields[0], ..., float(fields[7]), int(fields[10])))` - note the two pairs of brackets (section 8)."
+msgstr "**Домашно, част 1:** преобразувайте, докато добавяте: `loans.append((fields[0], ..., float(fields[7]), int(fields[10])))` - обърнете внимание на двата чифта скоби (раздел 8)."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1424
+msgid "**Homework, part 2:** sorting tuples compares their first items first - section 8, \"Sort records: tuples compare item by item\"."
+msgstr "**Домашно, част 2:** при сортиране tuples се сравняват първо по първите си елементи - раздел 8, \"Сортиране на записи: tuples се сравняват елемент по елемент\"."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1426
+msgid "**Homework, part 5:** two loops, one per file: first collect the stage 3 clients into a set, then read `clients.csv` and keep the region when the client is in that set."
+msgstr "**Домашно, част 5:** два цикъла, по един за всеки файл: първо съберете клиентите в stage 3 в set, после прочетете `clients.csv` и запазвайте региона, когато клиентът е в този set."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:1431

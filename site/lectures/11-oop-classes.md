@@ -1412,6 +1412,21 @@ Add a property `share_late` to `Client`: the share of its outstanding that is in
 of stage 2 or 3. Print it for the five largest clients.
 :::
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| Objects | every value is an object of a class; a class is a blueprint, an object one thing made from it |
+| Class | `class Loan:` (CamelCase); `__init__(self, ...)` runs at creation |
+| Attributes | `self.x = x` stores per object; read with `obj.x`; `vars(obj)` |
+| Methods | functions in the class, first parameter `self`; call `obj.method()`; inside: `self.other()` |
+| Text form | `__repr__` for developers (like code), `__str__` for people; write `__repr__` always |
+| Class attributes | in the class body, shared by all objects; never a list or a dict there |
+| Validation | check in `__init__` (or `__post_init__`) and raise `ValueError` |
+| `property` | `@property` - a computed, read-only attribute; `@x.setter` checks every assignment |
+| Dataclass | `@dataclass` + fields with types; `field(default_factory=list)`; `frozen=True`; `order=True` |
+| Together | a `Client` with a list of `Loan` objects; build from files with a dict by id |
+
 ## 9. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1430,21 +1445,6 @@ python 11-oop-classes/practice/task1-first-class.py
 | 4 | `task4-validation-property.py` | Checks in `__init__`, properties, a setter that validates |
 | 5 | `task5-dataclasses.py` | The same with `@dataclass`: defaults, `frozen`, `order`, `__post_init__` |
 | 6 | `task6-client-loans.py` (Optional) | `Client` with its loans, built from the two files |
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| Objects | every value is an object of a class; a class is a blueprint, an object one thing made from it |
-| Class | `class Loan:` (CamelCase); `__init__(self, ...)` runs at creation |
-| Attributes | `self.x = x` stores per object; read with `obj.x`; `vars(obj)` |
-| Methods | functions in the class, first parameter `self`; call `obj.method()`; inside: `self.other()` |
-| Text form | `__repr__` for developers (like code), `__str__` for people; write `__repr__` always |
-| Class attributes | in the class body, shared by all objects; never a list or a dict there |
-| Validation | check in `__init__` (or `__post_init__`) and raise `ValueError` |
-| `property` | `@property` - a computed, read-only attribute; `@x.setter` checks every assignment |
-| Dataclass | `@dataclass` + fields with types; `field(default_factory=list)`; `frozen=True`; `order=True` |
-| Together | a `Client` with a list of `Loan` objects; build from files with a dict by id |
 
 ## Homework
 

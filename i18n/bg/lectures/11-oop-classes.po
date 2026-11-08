@@ -760,172 +760,172 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/11-oop-classes.md:1415
-msgid "9. Practice"
-msgstr ""
-
-#. paragraph
-#: site/lectures/11-oop-classes.md:1417
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
-msgstr ""
-
-#. table cell
-#: site/lectures/11-oop-classes.md:1425
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/11-oop-classes.md:1425
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/11-oop-classes.md:1425
-msgid "What you do"
-msgstr ""
-
-#. table cell
-#: site/lectures/11-oop-classes.md:1427
-msgid "A `RatingGrade` class: attributes, a method, `__repr__`"
-msgstr ""
-
-#. table cell
-#: site/lectures/11-oop-classes.md:1428
-msgid "Predict: attributes, class and object attributes, two names for one object"
-msgstr ""
-
-#. table cell
-#: site/lectures/11-oop-classes.md:1429
-msgid "`Loan` with methods: repaid share, interest, is late, EL, pay"
-msgstr ""
-
-#. table cell
-#: site/lectures/11-oop-classes.md:1430
-msgid "Checks in `__init__`, properties, a setter that validates"
-msgstr ""
-
-#. table cell
-#: site/lectures/11-oop-classes.md:1431
-msgid "The same with `@dataclass`: defaults, `frozen`, `order`, `__post_init__`"
-msgstr ""
-
-#. table cell
-#: site/lectures/11-oop-classes.md:1432
-msgid "`task6-client-loans.py` (Optional)"
-msgstr ""
-
-#. table cell
-#: site/lectures/11-oop-classes.md:1432
-msgid "`Client` with its loans, built from the two files"
-msgstr ""
-
-#. heading 2
-#: site/lectures/11-oop-classes.md:1434
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1436
+#: site/lectures/11-oop-classes.md:1417
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1436
+#: site/lectures/11-oop-classes.md:1417
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1438
+#: site/lectures/11-oop-classes.md:1419
 msgid "Objects"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1438
+#: site/lectures/11-oop-classes.md:1419
 msgid "every value is an object of a class; a class is a blueprint, an object one thing made from it"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1439
+#: site/lectures/11-oop-classes.md:1420
 msgid "Class"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1439
+#: site/lectures/11-oop-classes.md:1420
 msgid "`class Loan:` (CamelCase); `__init__(self, ...)` runs at creation"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1440
+#: site/lectures/11-oop-classes.md:1421
 msgid "Attributes"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1440
+#: site/lectures/11-oop-classes.md:1421
 msgid "`self.x = x` stores per object; read with `obj.x`; `vars(obj)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1441
+#: site/lectures/11-oop-classes.md:1422
 msgid "Methods"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1441
+#: site/lectures/11-oop-classes.md:1422
 msgid "functions in the class, first parameter `self`; call `obj.method()`; inside: `self.other()`"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1442
+#: site/lectures/11-oop-classes.md:1423
 msgid "Text form"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1442
+#: site/lectures/11-oop-classes.md:1423
 msgid "`__repr__` for developers (like code), `__str__` for people; write `__repr__` always"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1443
+#: site/lectures/11-oop-classes.md:1424
 msgid "Class attributes"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1443
+#: site/lectures/11-oop-classes.md:1424
 msgid "in the class body, shared by all objects; never a list or a dict there"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1444
+#: site/lectures/11-oop-classes.md:1425
 msgid "Validation"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1444
+#: site/lectures/11-oop-classes.md:1425
 msgid "check in `__init__` (or `__post_init__`) and raise `ValueError`"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1445
+#: site/lectures/11-oop-classes.md:1426
 msgid "`@property` - a computed, read-only attribute; `@x.setter` checks every assignment"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1446
+#: site/lectures/11-oop-classes.md:1427
 msgid "Dataclass"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1446
+#: site/lectures/11-oop-classes.md:1427
 msgid "`@dataclass` + fields with types; `field(default_factory=list)`; `frozen=True`; `order=True`"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1447
+#: site/lectures/11-oop-classes.md:1428
 msgid "Together"
 msgstr ""
 
 #. table cell
-#: site/lectures/11-oop-classes.md:1447
+#: site/lectures/11-oop-classes.md:1428
 msgid "a `Client` with a list of `Loan` objects; build from files with a dict by id"
+msgstr ""
+
+#. heading 2
+#: site/lectures/11-oop-classes.md:1430
+msgid "9. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/11-oop-classes.md:1432
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/11-oop-classes.md:1440
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/11-oop-classes.md:1440
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/11-oop-classes.md:1440
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/11-oop-classes.md:1442
+msgid "A `RatingGrade` class: attributes, a method, `__repr__`"
+msgstr ""
+
+#. table cell
+#: site/lectures/11-oop-classes.md:1443
+msgid "Predict: attributes, class and object attributes, two names for one object"
+msgstr ""
+
+#. table cell
+#: site/lectures/11-oop-classes.md:1444
+msgid "`Loan` with methods: repaid share, interest, is late, EL, pay"
+msgstr ""
+
+#. table cell
+#: site/lectures/11-oop-classes.md:1445
+msgid "Checks in `__init__`, properties, a setter that validates"
+msgstr ""
+
+#. table cell
+#: site/lectures/11-oop-classes.md:1446
+msgid "The same with `@dataclass`: defaults, `frozen`, `order`, `__post_init__`"
+msgstr ""
+
+#. table cell
+#: site/lectures/11-oop-classes.md:1447
+msgid "`task6-client-loans.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/11-oop-classes.md:1447
+msgid "`Client` with its loans, built from the two files"
 msgstr ""
 
 #. heading 2

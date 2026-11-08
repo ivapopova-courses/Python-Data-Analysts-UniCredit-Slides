@@ -789,7 +789,7 @@ msgid "Teradata"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1089 site/lectures/13-databases.md:1219
+#: site/lectures/13-databases.md:1089 site/lectures/13-databases.md:1198
 msgid "SQLite"
 msgstr ""
 
@@ -855,187 +855,187 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/13-databases.md:1193
-msgid "8. Practice"
-msgstr ""
-
-#. paragraph
-#: site/lectures/13-databases.md:1195
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/13-databases.md:1203
-msgid "The tasks read `data/portfolio.db`; the ones that write work on a copy in memory."
-msgstr ""
-
-#. table cell
-#: site/lectures/13-databases.md:1205
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/13-databases.md:1205
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/13-databases.md:1205
-msgid "What you do"
-msgstr ""
-
-#. table cell
-#: site/lectures/13-databases.md:1207
-msgid "Connect, count, fetch rows, column names, `sqlite3.Row`"
-msgstr ""
-
-#. table cell
-#: site/lectures/13-databases.md:1208
-msgid "Parameterised queries, `IN` lists, injection-safe functions"
-msgstr ""
-
-#. table cell
-#: site/lectures/13-databases.md:1209
-msgid "`GROUP BY` and `JOIN` in SQL; the same numbers in Python"
-msgstr ""
-
-#. table cell
-#: site/lectures/13-databases.md:1210
-msgid "A copy, a new table, `executemany`, a rollback that keeps the table clean"
-msgstr ""
-
-#. table cell
-#: site/lectures/13-databases.md:1211
-msgid "`pd.read_sql` with parameters; shape, columns, a total"
-msgstr ""
-
-#. table cell
-#: site/lectures/13-databases.md:1212
-msgid "`task6-migration.py` (Optional)"
-msgstr ""
-
-#. table cell
-#: site/lectures/13-databases.md:1212
-msgid "Rating migration between two month ends with a self join"
-msgstr ""
-
-#. heading 2
-#: site/lectures/13-databases.md:1214
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1216
+#: site/lectures/13-databases.md:1195
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1216
+#: site/lectures/13-databases.md:1195
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1218
+#: site/lectures/13-databases.md:1197
 msgid "DB-API"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1218
+#: site/lectures/13-databases.md:1197
 msgid "`connect` -> `cursor` / `execute` -> `fetchone` / `fetchall` / loop -> `close`; the same for all databases"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1219
+#: site/lectures/13-databases.md:1198
 msgid "a database in a file; `sqlite3` comes with Python; `:memory:` for tests; dates are ISO text"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1220
+#: site/lectures/13-databases.md:1199
 msgid "Rows"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1220
+#: site/lectures/13-databases.md:1199
 msgid "tuples, typed; `cursor.description` for names; `row_factory = sqlite3.Row` for rows by name"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1221
+#: site/lectures/13-databases.md:1200
 msgid "Close"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1221
+#: site/lectures/13-databases.md:1200
 msgid "`closing(...)` or `finally`; `with con:` in sqlite3 is a transaction, not a close"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1222
+#: site/lectures/13-databases.md:1201
 msgid "Parameters"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1222
+#: site/lectures/13-databases.md:1201
 msgid "`?` or `:name` + a tuple / dict; never f-strings with values (SQL injection); `IN` with one `?` per item"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1223
+#: site/lectures/13-databases.md:1202
 msgid "Writing"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1223
+#: site/lectures/13-databases.md:1202
 msgid "`executemany`; `commit()`; `rowcount`; work on a copy (`con.backup`)"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1224
+#: site/lectures/13-databases.md:1203
 msgid "Transactions"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1224
+#: site/lectures/13-databases.md:1203
 msgid "all or nothing; `rollback()`; `with con:` commits or rolls back; `IntegrityError`"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1225
+#: site/lectures/13-databases.md:1204
 msgid "SQL or Python"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1225
+#: site/lectures/13-databases.md:1204
 msgid "filter, join, aggregate in SQL; rules, cleaning and the report in Python"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1226
+#: site/lectures/13-databases.md:1205
 msgid "pandas"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1226
+#: site/lectures/13-databases.md:1205
 msgid "`pd.read_sql(sql, con, params=..., parse_dates=...)` -> a DataFrame; `df.to_sql(...)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1227
+#: site/lectures/13-databases.md:1206
 msgid "SQLAlchemy"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1227
+#: site/lectures/13-databases.md:1206
 msgid "`create_engine(url)`, `text(\"... :name\")`; needed by pandas for non-SQLite databases"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1228
+#: site/lectures/13-databases.md:1207
 msgid "Passwords"
 msgstr ""
 
 #. table cell
-#: site/lectures/13-databases.md:1228
+#: site/lectures/13-databases.md:1207
 msgid "never in code: Windows login, environment variables, keyring; a read-only account"
+msgstr ""
+
+#. heading 2
+#: site/lectures/13-databases.md:1209
+msgid "8. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/13-databases.md:1211
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/13-databases.md:1219
+msgid "The tasks read `data/portfolio.db`; the ones that write work on a copy in memory."
+msgstr ""
+
+#. table cell
+#: site/lectures/13-databases.md:1221
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/13-databases.md:1221
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/13-databases.md:1221
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/13-databases.md:1223
+msgid "Connect, count, fetch rows, column names, `sqlite3.Row`"
+msgstr ""
+
+#. table cell
+#: site/lectures/13-databases.md:1224
+msgid "Parameterised queries, `IN` lists, injection-safe functions"
+msgstr ""
+
+#. table cell
+#: site/lectures/13-databases.md:1225
+msgid "`GROUP BY` and `JOIN` in SQL; the same numbers in Python"
+msgstr ""
+
+#. table cell
+#: site/lectures/13-databases.md:1226
+msgid "A copy, a new table, `executemany`, a rollback that keeps the table clean"
+msgstr ""
+
+#. table cell
+#: site/lectures/13-databases.md:1227
+msgid "`pd.read_sql` with parameters; shape, columns, a total"
+msgstr ""
+
+#. table cell
+#: site/lectures/13-databases.md:1228
+msgid "`task6-migration.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/13-databases.md:1228
+msgid "Rating migration between two month ends with a self join"
 msgstr ""
 
 #. heading 2

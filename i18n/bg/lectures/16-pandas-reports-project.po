@@ -620,117 +620,117 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/16-pandas-reports-project.md:1074
-msgid "9. Practice"
-msgstr ""
-
-#. paragraph
-#: site/lectures/16-pandas-reports-project.md:1076
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root (with the virtual environment active):"
-msgstr ""
-
-#. paragraph
-#: site/lectures/16-pandas-reports-project.md:1084
-msgid "The tasks that write files write them into `out/` (ignored by Git)."
-msgstr ""
-
-#. table cell
-#: site/lectures/16-pandas-reports-project.md:1086
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/16-pandas-reports-project.md:1086
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/16-pandas-reports-project.md:1086
-msgid "What you do"
-msgstr ""
-
-#. table cell
-#: site/lectures/16-pandas-reports-project.md:1088
-msgid "`pivot_table` with totals, `crosstab` with shares, `melt` back"
-msgstr ""
-
-#. table cell
-#: site/lectures/16-pandas-reports-project.md:1089
-msgid "Parse dates, month ends, months between, periods"
-msgstr ""
-
-#. table cell
-#: site/lectures/16-pandas-reports-project.md:1090
-msgid "LAG by loan, monthly totals, months in arrears"
-msgstr ""
-
-#. table cell
-#: site/lectures/16-pandas-reports-project.md:1091
-msgid "The migration matrix, upgrades and downgrades, the default rate"
-msgstr ""
-
-#. table cell
-#: site/lectures/16-pandas-reports-project.md:1092
-msgid "A three-sheet Excel report, read back and checked"
-msgstr ""
-
-#. table cell
-#: site/lectures/16-pandas-reports-project.md:1093
-msgid "`task6-chart.py` (Optional)"
-msgstr ""
-
-#. table cell
-#: site/lectures/16-pandas-reports-project.md:1093
-msgid "A bar chart and a line chart saved as PNG files"
-msgstr ""
-
-#. heading 2
-#: site/lectures/16-pandas-reports-project.md:1095
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1097
+#: site/lectures/16-pandas-reports-project.md:1076
 msgid "SQL / SAS"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1097
+#: site/lectures/16-pandas-reports-project.md:1076
 msgid "pandas"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1100
+#: site/lectures/16-pandas-reports-project.md:1079
 msgid "`pivot` (no aggregation), `unstack`; back: `melt`"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1102
+#: site/lectures/16-pandas-reports-project.md:1081
 msgid "SAS dates, `INPUT(x, ddmmyy10.)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1106
+#: site/lectures/16-pandas-reports-project.md:1085
 msgid "`LAG`, `DIF` by group"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1106
+#: site/lectures/16-pandas-reports-project.md:1085
 msgid "`sort_values`, then `groupby(key)[col].shift(1)` / `diff()`"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1108
+#: site/lectures/16-pandas-reports-project.md:1087
 msgid "migration matrix"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1108
+#: site/lectures/16-pandas-reports-project.md:1087
 msgid "merge two month ends, `pd.crosstab(start, end)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1109
+#: site/lectures/16-pandas-reports-project.md:1088
 msgid "`pd.ExcelWriter` + `to_excel(writer, sheet_name=...)`; openpyxl for formats"
+msgstr ""
+
+#. heading 2
+#: site/lectures/16-pandas-reports-project.md:1091
+msgid "9. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1093
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root (with the virtual environment active):"
+msgstr ""
+
+#. paragraph
+#: site/lectures/16-pandas-reports-project.md:1101
+msgid "The tasks that write files write them into `out/` (ignored by Git)."
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1103
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1103
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1103
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1105
+msgid "`pivot_table` with totals, `crosstab` with shares, `melt` back"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1106
+msgid "Parse dates, month ends, months between, periods"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1107
+msgid "LAG by loan, monthly totals, months in arrears"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1108
+msgid "The migration matrix, upgrades and downgrades, the default rate"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1109
+msgid "A three-sheet Excel report, read back and checked"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1110
+msgid "`task6-chart.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/16-pandas-reports-project.md:1110
+msgid "A bar chart and a line chart saved as PNG files"
 msgstr ""
 
 #. heading 2

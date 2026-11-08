@@ -174,7 +174,7 @@ msgid "In arrays (and in pandas), combine conditions with `&` (and), `|` (or), `
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-numpy-pandas-intro.md:163 site/lectures/14-numpy-pandas-intro.md:970
+#: site/lectures/14-numpy-pandas-intro.md:163 site/lectures/14-numpy-pandas-intro.md:950
 msgid "Aggregates"
 msgstr ""
 
@@ -845,152 +845,152 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/14-numpy-pandas-intro.md:945
-msgid "9. Practice"
-msgstr ""
-
-#. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:947
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root (with the virtual environment active - the tasks need NumPy and pandas):"
-msgstr ""
-
-#. table cell
-#: site/lectures/14-numpy-pandas-intro.md:956
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/14-numpy-pandas-intro.md:956
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/14-numpy-pandas-intro.md:956
-msgid "What you do"
-msgstr ""
-
-#. table cell
-#: site/lectures/14-numpy-pandas-intro.md:958
-msgid "Arrays, masks and aggregates on the outstanding amounts"
-msgstr ""
-
-#. table cell
-#: site/lectures/14-numpy-pandas-intro.md:959
-msgid "Predict shapes, types, broadcasting, `NaN`, alignment"
-msgstr ""
-
-#. table cell
-#: site/lectures/14-numpy-pandas-intro.md:960
-msgid "`np.where` and `np.select` for buckets, flags and PDs"
-msgstr ""
-
-#. table cell
-#: site/lectures/14-numpy-pandas-intro.md:961
-msgid "Read `loans_export.csv` with all the right options"
-msgstr ""
-
-#. table cell
-#: site/lectures/14-numpy-pandas-intro.md:962
-msgid "The profile of a dataset: shape, types, describe, counts, missing values"
-msgstr ""
-
-#. table cell
-#: site/lectures/14-numpy-pandas-intro.md:963
-msgid "`task6-excel-sheets.py` (Optional)"
-msgstr ""
-
-#. table cell
-#: site/lectures/14-numpy-pandas-intro.md:963
-msgid "All sheets of `fx_rates.xlsx`; the monthly averages"
-msgstr ""
-
-#. heading 2
-#: site/lectures/14-numpy-pandas-intro.md:965
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:967
+#: site/lectures/14-numpy-pandas-intro.md:947
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:967
+#: site/lectures/14-numpy-pandas-intro.md:947
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:969
+#: site/lectures/14-numpy-pandas-intro.md:949
 msgid "NumPy"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:969
+#: site/lectures/14-numpy-pandas-intro.md:949
 msgid "`np.array`; one `dtype`; operations on whole arrays; masks `a[a > 90]`; `&`, `\\|`, `~` with brackets"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:970
+#: site/lectures/14-numpy-pandas-intro.md:950
 msgid "`sum`, `mean`, `min`, `max`, `argmax`, `np.percentile`; `std(ddof=1)` for the sample"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:971
+#: site/lectures/14-numpy-pandas-intro.md:951
 msgid "`np.where(cond, a, b)`; `np.select([conds], [choices], default=...)` - the first true wins"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:972
+#: site/lectures/14-numpy-pandas-intro.md:952
 msgid "Broadcasting"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:972
+#: site/lectures/14-numpy-pandas-intro.md:952
 msgid "a scalar or a smaller array is stretched; `axis=0` down, `axis=1` across"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:973
+#: site/lectures/14-numpy-pandas-intro.md:953
 msgid "spreads in NumPy (`np.nansum`); not equal to itself; ints cannot hold it"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:974
+#: site/lectures/14-numpy-pandas-intro.md:954
 msgid "Series"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:974
+#: site/lectures/14-numpy-pandas-intro.md:954
 msgid "values + index; operations match labels (alignment); `value_counts`"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:975
+#: site/lectures/14-numpy-pandas-intro.md:955
 msgid "DataFrame"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:975
+#: site/lectures/14-numpy-pandas-intro.md:955
 msgid "columns of Series with one index; `df[\"a\"]` a Series, `df[[\"a\", \"b\"]]` a DataFrame; new columns from others"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:977
+#: site/lectures/14-numpy-pandas-intro.md:957
 msgid "`sheet_name=...`; `None` for all sheets (a dict); `read_sas` for SAS datasets"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:978
+#: site/lectures/14-numpy-pandas-intro.md:958
 msgid "First look"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:979
+#: site/lectures/14-numpy-pandas-intro.md:959
 msgid "Types"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:979
+#: site/lectures/14-numpy-pandas-intro.md:959
 msgid "int64, float64, str / object, bool, datetime64, category, Int64; `astype`; `to_numeric` / `to_datetime` with `errors=\"coerce\"`"
+msgstr ""
+
+#. heading 2
+#: site/lectures/14-numpy-pandas-intro.md:961
+msgid "9. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/14-numpy-pandas-intro.md:963
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root (with the virtual environment active - the tasks need NumPy and pandas):"
+msgstr ""
+
+#. table cell
+#: site/lectures/14-numpy-pandas-intro.md:972
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/14-numpy-pandas-intro.md:972
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/14-numpy-pandas-intro.md:972
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/14-numpy-pandas-intro.md:974
+msgid "Arrays, masks and aggregates on the outstanding amounts"
+msgstr ""
+
+#. table cell
+#: site/lectures/14-numpy-pandas-intro.md:975
+msgid "Predict shapes, types, broadcasting, `NaN`, alignment"
+msgstr ""
+
+#. table cell
+#: site/lectures/14-numpy-pandas-intro.md:976
+msgid "`np.where` and `np.select` for buckets, flags and PDs"
+msgstr ""
+
+#. table cell
+#: site/lectures/14-numpy-pandas-intro.md:977
+msgid "Read `loans_export.csv` with all the right options"
+msgstr ""
+
+#. table cell
+#: site/lectures/14-numpy-pandas-intro.md:978
+msgid "The profile of a dataset: shape, types, describe, counts, missing values"
+msgstr ""
+
+#. table cell
+#: site/lectures/14-numpy-pandas-intro.md:979
+msgid "`task6-excel-sheets.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/14-numpy-pandas-intro.md:979
+msgid "All sheets of `fx_rates.xlsx`; the monthly averages"
 msgstr ""
 
 #. heading 2

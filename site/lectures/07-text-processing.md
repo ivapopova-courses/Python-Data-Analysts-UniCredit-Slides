@@ -1008,6 +1008,23 @@ Check the parsed dates against `clients.csv`, where `client_since` is clean ISO:
 all 150 equal? (Read both files, compare the lists with `==`.)
 :::
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| Immutable | every method returns a new string: `s = s.strip()` |
+| Case | `upper`, `lower`, `title` (fix legal forms after it); compare with `.lower()` on both sides |
+| Spaces | `strip` / `lstrip` / `rstrip` at the ends; `" ".join(s.split())` = `COMPBL` |
+| Find | `in`; `startswith((...))`; `find` gives -1, `index` raises; `count` |
+| Test | `isdigit`, `isalpha`, `isalnum`, `isspace` - all characters, non-empty |
+| Split | `split(",")` keeps empty fields; `split()` splits on any spaces; `rsplit`, `partition`, `splitlines` |
+| Join | `", ".join(strings)` - only strings; CSV with quotes: the `csv` module |
+| Replace | `replace(old, new)`; `removeprefix` / `removesuffix`; `translate(str.maketrans(...))` |
+| Pad | `zfill`, `rjust`, `ljust`; f-string `:>10`, `:06d` |
+| Cleaning | one function per column, `None` for what cannot be fixed; check against a trusted source |
+| Numbers | the last `,` or `.` with 1 - 2 digits after it is the decimal separator; know the source |
+| Dates | `date.fromisoformat`; `datetime.strptime(s, "%d.%m.%Y").date()`; `strftime`; `b - a` gives a `timedelta` |
+
 ## 10. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1026,23 +1043,6 @@ python 07-text-processing/practice/task1-case-and-spaces.py
 | 4 | `task4-identifiers.py` | Clean client ids, EIKs, IBANs and e-mails |
 | 5 | `task5-amounts.py` | Numbers in four formats to `float`; the Bulgarian format back |
 | 6 | `task6-dates.py` (Optional) | Dates in five formats; days between; month ends; years as a client |
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| Immutable | every method returns a new string: `s = s.strip()` |
-| Case | `upper`, `lower`, `title` (fix legal forms after it); compare with `.lower()` on both sides |
-| Spaces | `strip` / `lstrip` / `rstrip` at the ends; `" ".join(s.split())` = `COMPBL` |
-| Find | `in`; `startswith((...))`; `find` gives -1, `index` raises; `count` |
-| Test | `isdigit`, `isalpha`, `isalnum`, `isspace` - all characters, non-empty |
-| Split | `split(",")` keeps empty fields; `split()` splits on any spaces; `rsplit`, `partition`, `splitlines` |
-| Join | `", ".join(strings)` - only strings; CSV with quotes: the `csv` module |
-| Replace | `replace(old, new)`; `removeprefix` / `removesuffix`; `translate(str.maketrans(...))` |
-| Pad | `zfill`, `rjust`, `ljust`; f-string `:>10`, `:06d` |
-| Cleaning | one function per column, `None` for what cannot be fixed; check against a trusted source |
-| Numbers | the last `,` or `.` with 1 - 2 digits after it is the decimal separator; know the source |
-| Dates | `date.fromisoformat`; `datetime.strptime(s, "%d.%m.%Y").date()`; `strftime`; `b - a` gives a `timedelta` |
 
 ## Homework
 

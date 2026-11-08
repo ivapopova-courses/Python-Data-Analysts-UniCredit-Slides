@@ -1477,6 +1477,20 @@ Each try halves the interval, so after 22 tries it is smaller than 0.00001%. The
 same idea finds the effective interest rate (the APR) of a loan with fees, or the
 internal rate of return (IRR) of a cash flow.
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| Truth | `0`, `0.0`, `""`, `None`, empty collections are false; everything else is true |
+| Comparisons | `< <= > >= == !=`, `in`, `is None`; never compare a `str` with a number - `"3" == 3` is `False`; strings compare letter by letter |
+| Logic | `and`, `or`, `not`; Python stops as soon as it knows; `x or default` replaces also `0` |
+| `if` | `if` / `elif` / `else`: the first true condition wins - like `CASE WHEN`; test only one bound of each range |
+| Expressions | `a if condition else b`; statements do, expressions give a value |
+| `match` | one value against fixed cases; `\|` for "or", `case _:` for the rest; guards with `if` |
+| `while` | while a condition is true; something in the block must change it |
+| `for` | each item of a sequence: a string, a list, `range`, the lines of a file; `range(1, 13)` is 1 ... 12 |
+| `break` / `continue` | leave the loop / go to the next iteration; `while True` + `break` = `do until`; a flag for "not found" |
+
 ## 16. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1540,20 +1554,6 @@ run the file.
   more or less is a `FAIL`. `print(report)`, then compare the `got:` and `expected:`
   lines under the `FAIL` character by character - one line of the report at a time.
 :::
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| Truth | `0`, `0.0`, `""`, `None`, empty collections are false; everything else is true |
-| Comparisons | `< <= > >= == !=`, `in`, `is None`; never compare a `str` with a number - `"3" == 3` is `False`; strings compare letter by letter |
-| Logic | `and`, `or`, `not`; Python stops as soon as it knows; `x or default` replaces also `0` |
-| `if` | `if` / `elif` / `else`: the first true condition wins - like `CASE WHEN`; test only one bound of each range |
-| Expressions | `a if condition else b`; statements do, expressions give a value |
-| `match` | one value against fixed cases; `\|` for "or", `case _:` for the rest; guards with `if` |
-| `while` | while a condition is true; something in the block must change it |
-| `for` | each item of a sequence: a string, a list, `range`, the lines of a file; `range(1, 13)` is 1 ... 12 |
-| `break` / `continue` | leave the loop / go to the next iteration; `while True` + `break` = `do until`; a flag for "not found" |
 
 ## Homework
 

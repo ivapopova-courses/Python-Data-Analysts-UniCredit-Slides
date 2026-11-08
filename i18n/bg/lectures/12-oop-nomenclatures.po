@@ -839,12 +839,12 @@ msgid "Ask the registry what it knows - `in` and a list of the names, with speci
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1558 site/lectures/12-oop-nomenclatures.md:1833
+#: site/lectures/12-oop-nomenclatures.md:1558 site/lectures/12-oop-nomenclatures.md:1814
 msgid "Inheritance"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1558 site/lectures/12-oop-nomenclatures.md:1834
+#: site/lectures/12-oop-nomenclatures.md:1558 site/lectures/12-oop-nomenclatures.md:1815
 msgid "Composition"
 msgstr ""
 
@@ -965,172 +965,172 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/12-oop-nomenclatures.md:1802
-msgid "9. Practice"
-msgstr ""
-
-#. paragraph
-#: site/lectures/12-oop-nomenclatures.md:1804
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
-msgstr ""
-
-#. table cell
-#: site/lectures/12-oop-nomenclatures.md:1812
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/12-oop-nomenclatures.md:1812
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/12-oop-nomenclatures.md:1812
-msgid "What you do"
-msgstr ""
-
-#. table cell
-#: site/lectures/12-oop-nomenclatures.md:1814
-msgid "A `Nomenclature` dataclass with metadata, `lookup`, `len`, `in`"
-msgstr ""
-
-#. table cell
-#: site/lectures/12-oop-nomenclatures.md:1815
-msgid "Predict: `classmethod`, `staticmethod`, overriding, `super()`, `isinstance`"
-msgstr ""
-
-#. table cell
-#: site/lectures/12-oop-nomenclatures.md:1816
-msgid "The rules at creation, duplicate codes, `validate(values)`"
-msgstr ""
-
-#. table cell
-#: site/lectures/12-oop-nomenclatures.md:1817
-msgid "`apply` to a list of rows, the unmapped report, `strict`"
-msgstr ""
-
-#. table cell
-#: site/lectures/12-oop-nomenclatures.md:1818
-msgid "`BandedNomenclature`: DPD buckets, PD -> grade, size classes"
-msgstr ""
-
-#. table cell
-#: site/lectures/12-oop-nomenclatures.md:1819
-msgid "`task6-registry.py` (Optional)"
-msgstr ""
-
-#. table cell
-#: site/lectures/12-oop-nomenclatures.md:1819
-msgid "A registry applied to two datasets"
-msgstr ""
-
-#. heading 2
-#: site/lectures/12-oop-nomenclatures.md:1821
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1823
+#: site/lectures/12-oop-nomenclatures.md:1804
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1823
+#: site/lectures/12-oop-nomenclatures.md:1804
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1825
+#: site/lectures/12-oop-nomenclatures.md:1806
 msgid "The use case"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1825
+#: site/lectures/12-oop-nomenclatures.md:1806
 msgid "one class for a nomenclature: data, metadata, validation rules, processing methods"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1826
+#: site/lectures/12-oop-nomenclatures.md:1807
 msgid "Data and metadata"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1826
+#: site/lectures/12-oop-nomenclatures.md:1807
 msgid "`codes` + `name`, `version`, `valid_from`, `owner`; a short `__repr__`; a copy of the codes"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1827
+#: site/lectures/12-oop-nomenclatures.md:1808
 msgid "Container"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1828
+#: site/lectures/12-oop-nomenclatures.md:1809
 msgid "Rules"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1828
+#: site/lectures/12-oop-nomenclatures.md:1809
 msgid "at creation in `__post_init__` (no codes, bad codes, empty labels); duplicates before the dict is built"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1829
+#: site/lectures/12-oop-nomenclatures.md:1810
 msgid "Dataset checks"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1829
+#: site/lectures/12-oop-nomenclatures.md:1810
 msgid "`validate(values)` -> a `Counter` of the unknown values; a check report"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1830
+#: site/lectures/12-oop-nomenclatures.md:1811
 msgid "Processing"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1830
+#: site/lectures/12-oop-nomenclatures.md:1811
 msgid "`apply(rows, column, new_column)` -> new rows + the unmapped values; `strict=True` stops"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1831
+#: site/lectures/12-oop-nomenclatures.md:1812
 msgid "`cls` as the first parameter; alternative constructors: `from_csv`, `from_pairs`"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1832
+#: site/lectures/12-oop-nomenclatures.md:1813
 msgid "no `self`, no `cls`: a helper that belongs to the class"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1833
+#: site/lectures/12-oop-nomenclatures.md:1814
 msgid "`class Banded(Nomenclature)`; override `lookup`; `super().__post_init__()`; \"is a\""
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1834
+#: site/lectures/12-oop-nomenclatures.md:1815
 msgid "a `Registry` has nomenclatures; \"has a\""
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1835
+#: site/lectures/12-oop-nomenclatures.md:1816
 msgid "Consistency"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1835
+#: site/lectures/12-oop-nomenclatures.md:1816
 msgid "one object for every dataset; the same report of what does not fit"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1836
+#: site/lectures/12-oop-nomenclatures.md:1817
 msgid "Versions"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-oop-nomenclatures.md:1836
+#: site/lectures/12-oop-nomenclatures.md:1817
 msgid "the metadata says which; a `diff` says what changed"
+msgstr ""
+
+#. heading 2
+#: site/lectures/12-oop-nomenclatures.md:1819
+msgid "9. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/12-oop-nomenclatures.md:1821
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/12-oop-nomenclatures.md:1829
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/12-oop-nomenclatures.md:1829
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/12-oop-nomenclatures.md:1829
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/12-oop-nomenclatures.md:1831
+msgid "A `Nomenclature` dataclass with metadata, `lookup`, `len`, `in`"
+msgstr ""
+
+#. table cell
+#: site/lectures/12-oop-nomenclatures.md:1832
+msgid "Predict: `classmethod`, `staticmethod`, overriding, `super()`, `isinstance`"
+msgstr ""
+
+#. table cell
+#: site/lectures/12-oop-nomenclatures.md:1833
+msgid "The rules at creation, duplicate codes, `validate(values)`"
+msgstr ""
+
+#. table cell
+#: site/lectures/12-oop-nomenclatures.md:1834
+msgid "`apply` to a list of rows, the unmapped report, `strict`"
+msgstr ""
+
+#. table cell
+#: site/lectures/12-oop-nomenclatures.md:1835
+msgid "`BandedNomenclature`: DPD buckets, PD -> grade, size classes"
+msgstr ""
+
+#. table cell
+#: site/lectures/12-oop-nomenclatures.md:1836
+msgid "`task6-registry.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/12-oop-nomenclatures.md:1836
+msgid "A registry applied to two datasets"
 msgstr ""
 
 #. heading 2

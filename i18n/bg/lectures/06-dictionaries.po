@@ -790,182 +790,182 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:1040
-msgid "8. Practice"
-msgstr ""
-
-#. paragraph
-#: site/lectures/06-dictionaries.md:1042
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
-msgstr ""
-
-#. table cell
-#: site/lectures/06-dictionaries.md:1050
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/06-dictionaries.md:1050
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/06-dictionaries.md:1050
-msgid "What you do"
-msgstr ""
-
-#. table cell
-#: site/lectures/06-dictionaries.md:1052
-msgid "A product nomenclature: create, read with a default, add, change, remove"
-msgstr ""
-
-#. table cell
-#: site/lectures/06-dictionaries.md:1053
-msgid "Predict: duplicate keys, `get` vs `[]`, `in`, `pop`, `setdefault`, `\\|`"
-msgstr ""
-
-#. table cell
-#: site/lectures/06-dictionaries.md:1054
-msgid "Rating -> grade / PD; codes -> names; loans with the region of their client"
-msgstr ""
-
-#. table cell
-#: site/lectures/06-dictionaries.md:1055
-msgid "Clients per region, outstanding per segment, `most_common`"
-msgstr ""
-
-#. table cell
-#: site/lectures/06-dictionaries.md:1056
-msgid "Count / sum / average / max per product, `HAVING`, a sorted report"
-msgstr ""
-
-#. table cell
-#: site/lectures/06-dictionaries.md:1057
-msgid "`task6-nested-groups.py` (Optional)"
-msgstr ""
-
-#. table cell
-#: site/lectures/06-dictionaries.md:1057
-msgid "Clients as a dict of dicts; segment x stage totals with tuple keys"
-msgstr ""
-
-#. heading 2
-#: site/lectures/06-dictionaries.md:1059
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1061
+#: site/lectures/06-dictionaries.md:1042
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1061
+#: site/lectures/06-dictionaries.md:1042
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1063
+#: site/lectures/06-dictionaries.md:1044
 msgid "Dictionary"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1063
+#: site/lectures/06-dictionaries.md:1044
 msgid "`{key: value}`; keys unique and hashable; keeps the insertion order"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1064
+#: site/lectures/06-dictionaries.md:1045
 msgid "Read"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1064
+#: site/lectures/06-dictionaries.md:1045
 msgid "`d[key]` (KeyError if missing); `d.get(key, default)`; `key in d` checks the keys"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1065
+#: site/lectures/06-dictionaries.md:1046
 msgid "Change"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1065
+#: site/lectures/06-dictionaries.md:1046
 msgid "`d[key] = v` adds or changes; `update`, `\\|`; `del`, `pop(key, default)`; `setdefault`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1066
+#: site/lectures/06-dictionaries.md:1047
 msgid "Loop"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1066
+#: site/lectures/06-dictionaries.md:1047
 msgid "`for k in d`; `d.values()`; `for k, v in d.items()`; sort with `sorted(d.items(), key=...)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1067
+#: site/lectures/06-dictionaries.md:1048
 msgid "Comprehension"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1068
+#: site/lectures/06-dictionaries.md:1049
 msgid "Lookups"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1068
+#: site/lectures/06-dictionaries.md:1049
 msgid "a dict = a SAS format / hash object / lookup table; `get(code, \"Other\")` = `OTHER=`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1069
+#: site/lectures/06-dictionaries.md:1050
 msgid "Join"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1069
+#: site/lectures/06-dictionaries.md:1050
 msgid "a dict of the right table, `get` for every row of the left one = `LEFT JOIN`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1070
+#: site/lectures/06-dictionaries.md:1051
 msgid "Ranges"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1070
+#: site/lectures/06-dictionaries.md:1051
 msgid "not keys: a function with `if`, or `bisect`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1072
+#: site/lectures/06-dictionaries.md:1053
 msgid "Several keys"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1072
+#: site/lectures/06-dictionaries.md:1053
 msgid "a tuple as the key: `(segment, stage)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1073
+#: site/lectures/06-dictionaries.md:1054
 msgid "Records"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1073
+#: site/lectures/06-dictionaries.md:1054
 msgid "`csv.DictReader`: rows as dicts; a dict of dicts keyed by id; optional: `json.dumps` / `loads`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1074
+#: site/lectures/06-dictionaries.md:1055
 msgid "Copies"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1074
+#: site/lectures/06-dictionaries.md:1055
 msgid "`copy()` is shallow; `copy.deepcopy` for nested dicts"
+msgstr ""
+
+#. heading 2
+#: site/lectures/06-dictionaries.md:1057
+msgid "8. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/06-dictionaries.md:1059
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1067
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1067
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1067
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1069
+msgid "A product nomenclature: create, read with a default, add, change, remove"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1070
+msgid "Predict: duplicate keys, `get` vs `[]`, `in`, `pop`, `setdefault`, `\\|`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1071
+msgid "Rating -> grade / PD; codes -> names; loans with the region of their client"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1072
+msgid "Clients per region, outstanding per segment, `most_common`"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1073
+msgid "Count / sum / average / max per product, `HAVING`, a sorted report"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1074
+msgid "`task6-nested-groups.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/06-dictionaries.md:1074
+msgid "Clients as a dict of dicts; segment x stage totals with tuple keys"
 msgstr ""
 
 #. heading 2

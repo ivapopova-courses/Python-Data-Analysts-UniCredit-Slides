@@ -1275,6 +1275,22 @@ In a file that is run as a script, the main code is often put under
 without running the report. Modules and `import` of your own files are the topic of
 [session 10](./10-modules-and-git.md#_2-your-own-module).
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| Define, call | `def name(params):` + an indented body; `name(args)` runs it - the brackets are required |
+| Parameters | positional; defaults after the others; `name=value` in the call; `*args` a tuple |
+| Defaults | never a list or a dict as a default - use `None` |
+| `return` | ends the function and gives a value; no `return` -> `None`; `return a, b` gives a tuple |
+| `print` / `return` | `print` shows, `return` gives - calculating functions return |
+| Scope | names assigned in a function are local; LEGB: local, enclosing, global, built-in; avoid `global` - values in through parameters, out through `return` |
+| References | a list passed to a function can be changed by it - return a new list instead |
+| Documentation | a docstring in triple quotes; type hints `x: float -> float` are not checked at run time |
+| Functions as values | pass a function as an argument; `lambda x: ...` for a short `key` |
+| Sorting | `sorted(items, key=lambda item: item[2], reverse=True)` - SQL `ORDER BY` any expression |
+| SAS macros | a macro writes code; a function runs and returns a value |
+
 ## 12. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1297,21 +1313,56 @@ values.
 | 5 | `task5-predict-scope.py` | Predict the values: local and global names, a list passed to a function |
 | 6 | `task6-lambda-sorting.py` | Sort and find with `key` and `lambda`; remove duplicates, keep the order |
 
-## Summary
+### Notes on the tasks
 
-| Topic | Remember |
-|-------|----------|
-| Define, call | `def name(params):` + an indented body; `name(args)` runs it - the brackets are required |
-| Parameters | positional; defaults after the others; `name=value` in the call; `*args` a tuple |
-| Defaults | never a list or a dict as a default - use `None` |
-| `return` | ends the function and gives a value; no `return` -> `None`; `return a, b` gives a tuple |
-| `print` / `return` | `print` shows, `return` gives - calculating functions return |
-| Scope | names assigned in a function are local; LEGB: local, enclosing, global, built-in; avoid `global` - values in through parameters, out through `return` |
-| References | a list passed to a function can be changed by it - return a new list instead |
-| Documentation | a docstring in triple quotes; type hints `x: float -> float` are not checked at run time |
-| Functions as values | pass a function as an argument; `lambda x: ...` for a short `key` |
-| Sorting | `sorted(items, key=lambda item: item[2], reverse=True)` - SQL `ORDER BY` any expression |
-| SAS macros | a macro writes code; a function runs and returns a value |
+Some parts of the tasks are not clear enough. Here they are, written more clearly.
+
+**Parts that use an earlier part.** Some parts call a function that you write in
+an earlier part: task 2 Part 4 uses Parts 1 and 2, task 3 Part 4 uses Part 3, task 4
+Part 4 uses Part 3. Do the earlier part first. If it is not done yet, the later part
+shows FAIL (often `got: None (no value - a missing return?)`), even when your code in
+the later part is right.
+
+**Task 2, Part 4: call with keyword arguments.** "Your functions" are
+`annuity_payment` (Part 1) and `expected_loss` (Part 2). "The comments" are the two
+`#` lines inside the "your code" block. Replace each `None` with a call of the
+function:
+
+- `mortgage_payment`: call `annuity_payment` for 50000 at 4.5% for 20 years. Give
+  all three arguments by name: `amount=...`, `yearly_rate=...`, `years=...`.
+- `secured_el`: call `expected_loss` for PD 0.03 and EAD 200000. Give PD and EAD by
+  position (without names), and only the LGD by name: `lgd=0.25`.
+
+The checks test only the result. A call without names gives the same result, so
+check yourself that you used the names.
+
+**Task 3, Part 1: a total.** Start the sum from `0` (an int), not from `0.0`. The
+checks compare the type too: `total(100)` must give `100`, not `100.0`.
+
+**Task 3, Part 4: unpack the result.** Replace the whole line
+`lowest = highest = average = None` with ONE line: the three names on the left,
+separated by commas, and the call `min_max_average(5.44, 8.83, 4.79, 8.35)` on the
+right.
+
+**Task 4, Part 1: the days past due bucket.** The buckets are the same as in
+session 2:
+
+| days_past_due | bucket |
+|---|---|
+| 0 | `"current"` |
+| 1 to 30 | `"1-30"` |
+| 31 to 90 (90 too) | `"31-90"` |
+| more than 90 | `"90+"` |
+
+So `dpd_bucket(90)` is `"31-90"`. The checks do not test 90, so check it yourself.
+
+**Task 4, Part 2: the stage.** "Rating 7 or worse" means the ratings 7, 8, 9 and 10.
+A higher number is a worse rating (1 is the best, 10 is default).
+
+**Task 6, Part 1: the largest first.** Two steps. First sort the loans (the whole
+tuples) with `sorted()`, `key=lambda ...` and `reverse=True`. Then make the list of
+the ids: a loop over the sorted loans that appends the `loan_id` of each one to a new
+list.
 
 ## Homework
 
@@ -1319,6 +1370,16 @@ values.
    functions** - read the loans and the rating scale from the files, find the PD of a
    rating, the expected loss of a loan, and the totals by stage. Every check must print
    `OK`.
+
+   Notes on the homework:
+   - **Part 1:** `loans.csv` has 11 columns. Take only these 6, in this order:
+     `(loan_id, client_id, product, outstanding, days_past_due, stage)`. Skip the
+     other columns (`currency`, `start_date`, `maturity_date`, `amount`,
+     `interest_rate`). Convert the numbers: `outstanding` with `float()`,
+     `days_past_due` and `stage` with `int()`. The first line of the file is the
+     header, not a loan: skip it. You should get 400 tuples.
+   - **Parts that use an earlier part:** Part 4 uses Part 3, Part 5 uses Part 2,
+     Part 7 uses Parts 1 - 6, Part 8 uses Part 1. Do the earlier part first.
 2. The practice tasks you did not finish in class.
 3. Optional: a **loan calculator** made of functions - the same program as the
    optional homework of [session 2](./02-conditions-and-loops.md#homework), but organised like this:

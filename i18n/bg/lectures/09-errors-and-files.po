@@ -965,162 +965,162 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/09-errors-and-files.md:1260
-msgid "11. Practice"
-msgstr ""
-
-#. paragraph
-#: site/lectures/09-errors-and-files.md:1262
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/09-errors-and-files.md:1270
-msgid "The tasks that write files write them into the folder `out/` of the repository (it is in `.gitignore`)."
-msgstr ""
-
-#. table cell
-#: site/lectures/09-errors-and-files.md:1273
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/09-errors-and-files.md:1273
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/09-errors-and-files.md:1273
-msgid "What you do"
-msgstr ""
-
-#. table cell
-#: site/lectures/09-errors-and-files.md:1275
-msgid "`to_float`, `to_int`, `to_date` with `try` / `except`"
-msgstr ""
-
-#. table cell
-#: site/lectures/09-errors-and-files.md:1276
-msgid "Predict the exception, and the output with `else` / `finally`"
-msgstr ""
-
-#. table cell
-#: site/lectures/09-errors-and-files.md:1277
-msgid "Check functions that raise a `DataError` with a clear message"
-msgstr ""
-
-#. table cell
-#: site/lectures/09-errors-and-files.md:1278
-msgid "`pathlib`: list files, build names, write and read a text file"
-msgstr ""
-
-#. table cell
-#: site/lectures/09-errors-and-files.md:1279
-msgid "Read the config, write a CSV report with `DictWriter`"
-msgstr ""
-
-#. table cell
-#: site/lectures/09-errors-and-files.md:1280
-msgid "`task6-excel.py` (Optional)"
-msgstr ""
-
-#. table cell
-#: site/lectures/09-errors-and-files.md:1280
-msgid "Read the three FX sheets; write a workbook with two sheets"
-msgstr ""
-
-#. heading 2
-#: site/lectures/09-errors-and-files.md:1282
 msgid "Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1284
+#: site/lectures/09-errors-and-files.md:1262
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1284
+#: site/lectures/09-errors-and-files.md:1262
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1286
+#: site/lectures/09-errors-and-files.md:1264
 msgid "Exceptions"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1286
+#: site/lectures/09-errors-and-files.md:1264
 msgid "an error while the code runs; it stops the script unless caught; read the traceback from the bottom"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1287
+#: site/lectures/09-errors-and-files.md:1265
 msgid "Common types"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1288
+#: site/lectures/09-errors-and-files.md:1266
 msgid "catch the specific type; `as error` for the message; a tuple for several types; keep `try` small"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1289
+#: site/lectures/09-errors-and-files.md:1267
 msgid "`else` without an error; `finally` always"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1291
+#: site/lectures/09-errors-and-files.md:1269
 msgid "Stop or go on"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1291
+#: site/lectures/09-errors-and-files.md:1269
 msgid "bad rows: reject and report; bad inputs or settings: raise; bugs: let them stop"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1293
+#: site/lectures/09-errors-and-files.md:1271
 msgid "Files"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1293
+#: site/lectures/09-errors-and-files.md:1271
 msgid "`with open(path, mode, encoding=\"utf-8\")`; modes `r`, `w`, `a`, `x`; loop over the file for big files"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1294
+#: site/lectures/09-errors-and-files.md:1272
 msgid "CSV"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1294
+#: site/lectures/09-errors-and-files.md:1272
 msgid "`csv.reader` / `DictReader`; `delimiter=\";\"`; write with `newline=\"\"`; `utf-8-sig` for Excel"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1295
+#: site/lectures/09-errors-and-files.md:1273
 msgid "JSON"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1295
+#: site/lectures/09-errors-and-files.md:1273
 msgid "`json.load(f)`, `json.dump(obj, f, indent=2)`; dates as ISO text"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1296
+#: site/lectures/09-errors-and-files.md:1274
 msgid "Excel"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1297
+#: site/lectures/09-errors-and-files.md:1275
 msgid "Loader"
 msgstr ""
 
 #. table cell
-#: site/lectures/09-errors-and-files.md:1297
+#: site/lectures/09-errors-and-files.md:1275
 msgid "one check per rule, one `try` per row, a reject file with the reason, a summary"
+msgstr ""
+
+#. heading 2
+#: site/lectures/09-errors-and-files.md:1277
+msgid "11. Practice"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1279
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
+msgstr ""
+
+#. paragraph
+#: site/lectures/09-errors-and-files.md:1287
+msgid "The tasks that write files write them into the folder `out/` of the repository (it is in `.gitignore`)."
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1290
+msgid "Task"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1290
+msgid "File"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1290
+msgid "What you do"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1292
+msgid "`to_float`, `to_int`, `to_date` with `try` / `except`"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1293
+msgid "Predict the exception, and the output with `else` / `finally`"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1294
+msgid "Check functions that raise a `DataError` with a clear message"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1295
+msgid "`pathlib`: list files, build names, write and read a text file"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1296
+msgid "Read the config, write a CSV report with `DictWriter`"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1297
+msgid "`task6-excel.py` (Optional)"
+msgstr ""
+
+#. table cell
+#: site/lectures/09-errors-and-files.md:1297
+msgid "Read the three FX sheets; write a workbook with two sheets"
 msgstr ""
 
 #. heading 2

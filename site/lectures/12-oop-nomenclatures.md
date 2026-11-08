@@ -1799,6 +1799,23 @@ Make `diff` a method of a subclass `VersionedNomenclature(Nomenclature)`, and pr
 one-line summary: `"v1 -> v2: 1 added, 1 removed, 1 changed"`.
 :::
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| The use case | one class for a nomenclature: data, metadata, validation rules, processing methods |
+| Data and metadata | `codes` + `name`, `version`, `valid_from`, `owner`; a short `__repr__`; a copy of the codes |
+| Container | `__len__`, `__contains__`, `__iter__` -> `len(nom)`, `code in nom`, `for code in nom` |
+| Rules | at creation in `__post_init__` (no codes, bad codes, empty labels); duplicates before the dict is built |
+| Dataset checks | `validate(values)` -> a `Counter` of the unknown values; a check report |
+| Processing | `apply(rows, column, new_column)` -> new rows + the unmapped values; `strict=True` stops |
+| `classmethod` | `cls` as the first parameter; alternative constructors: `from_csv`, `from_pairs` |
+| `staticmethod` | no `self`, no `cls`: a helper that belongs to the class |
+| Inheritance | `class Banded(Nomenclature)`; override `lookup`; `super().__post_init__()`; "is a" |
+| Composition | a `Registry` has nomenclatures; "has a" |
+| Consistency | one object for every dataset; the same report of what does not fit |
+| Versions | the metadata says which; a `diff` says what changed |
+
 ## 9. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1817,23 +1834,6 @@ python 12-oop-nomenclatures/practice/task1-nomenclature-basics.py
 | 4 | `task4-apply.py` | `apply` to a list of rows, the unmapped report, `strict` |
 | 5 | `task5-banded.py` | `BandedNomenclature`: DPD buckets, PD -> grade, size classes |
 | 6 | `task6-registry.py` (Optional) | A registry applied to two datasets |
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| The use case | one class for a nomenclature: data, metadata, validation rules, processing methods |
-| Data and metadata | `codes` + `name`, `version`, `valid_from`, `owner`; a short `__repr__`; a copy of the codes |
-| Container | `__len__`, `__contains__`, `__iter__` -> `len(nom)`, `code in nom`, `for code in nom` |
-| Rules | at creation in `__post_init__` (no codes, bad codes, empty labels); duplicates before the dict is built |
-| Dataset checks | `validate(values)` -> a `Counter` of the unknown values; a check report |
-| Processing | `apply(rows, column, new_column)` -> new rows + the unmapped values; `strict=True` stops |
-| `classmethod` | `cls` as the first parameter; alternative constructors: `from_csv`, `from_pairs` |
-| `staticmethod` | no `self`, no `cls`: a helper that belongs to the class |
-| Inheritance | `class Banded(Nomenclature)`; override `lookup`; `super().__post_init__()`; "is a" |
-| Composition | a `Registry` has nomenclatures; "has a" |
-| Consistency | one object for every dataset; the same report of what does not fit |
-| Versions | the metadata says which; a `diff` says what changed |
 
 ## Homework
 

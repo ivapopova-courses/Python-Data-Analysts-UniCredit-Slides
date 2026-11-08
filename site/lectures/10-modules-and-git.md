@@ -1362,6 +1362,24 @@ On GitHub, open your own Homework repository: find the list of commits, open one
 look at its changes. Compare with `git log -p -1` in the terminal.
 :::
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| `import` | `import m`, `from m import f`, `import m as x`; never `import *`; runs the file once, keeps it in `sys.modules` |
+| Search path | the folder of the script first; never name a file like a module (`csv.py`) |
+| Own module | a `.py` file with functions and constants; no work at import time |
+| `__main__` | `if __name__ == "__main__":` - code that runs only when the file is run |
+| Notebooks | `%load_ext autoreload` + `%autoreload 2`, or restart the kernel |
+| Package | a folder with `__init__.py`; `from package.module import name`; `python -m package.module` |
+| Project | `README.md`, `requirements.txt`, `.gitignore`, a package, `report.py`, `data/` and `out/` not in Git |
+| Standard library | `calendar.monthrange` for month ends; `statistics`; `namedtuple`, `deque`; `math.fsum`, `isclose`; `os.getenv` |
+| Environments | one `.venv` per project; `pip freeze > requirements.txt`; install name is not always import name |
+| Git | `init`, `status`, `add`, `commit -m`, `log --oneline`, `diff`, `restore` |
+| `.gitignore` | `.venv/`, `data/`, `out/`, secrets - before the first commit; data and passwords never in Git |
+| Branches | `switch -c`, `merge`, conflicts: edit, `add`, `commit` |
+| Remotes | `clone`, `pull`, `push`; a pull request = a review before the merge |
+
 ## 9. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1380,24 +1398,6 @@ python 10-modules-and-git/practice/task1-standard-library.py
 | 4 | `task4-report-dates.py` | Month ends, add months, quarter ends, months between two dates |
 | 5 | `task5-predict-git.py` | Which Git command does what |
 | 6 | `task6-project-layout.py` (Optional) | Create a project skeleton with `pathlib`, with a `.gitignore` |
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| `import` | `import m`, `from m import f`, `import m as x`; never `import *`; runs the file once, keeps it in `sys.modules` |
-| Search path | the folder of the script first; never name a file like a module (`csv.py`) |
-| Own module | a `.py` file with functions and constants; no work at import time |
-| `__main__` | `if __name__ == "__main__":` - code that runs only when the file is run |
-| Notebooks | `%load_ext autoreload` + `%autoreload 2`, or restart the kernel |
-| Package | a folder with `__init__.py`; `from package.module import name`; `python -m package.module` |
-| Project | `README.md`, `requirements.txt`, `.gitignore`, a package, `report.py`, `data/` and `out/` not in Git |
-| Standard library | `calendar.monthrange` for month ends; `statistics`; `namedtuple`, `deque`; `math.fsum`, `isclose`; `os.getenv` |
-| Environments | one `.venv` per project; `pip freeze > requirements.txt`; install name is not always import name |
-| Git | `init`, `status`, `add`, `commit -m`, `log --oneline`, `diff`, `restore` |
-| `.gitignore` | `.venv/`, `data/`, `out/`, secrets - before the first commit; data and passwords never in Git |
-| Branches | `switch -c`, `merge`, conflicts: edit, `add`, `commit` |
-| Remotes | `clone`, `pull`, `push`; a pull request = a review before the merge |
 
 ## Homework
 

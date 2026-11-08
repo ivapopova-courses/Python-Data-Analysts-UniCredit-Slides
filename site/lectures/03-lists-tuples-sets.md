@@ -1361,6 +1361,21 @@ print(loans["client_id"].isin(clients["client_id"]).all())    # every loan has a
 ```
 :::
 
+## Summary
+
+| Topic | Remember |
+|-------|----------|
+| Sequences | `list`, `tuple`, `range`, `str`: ordered; `len`, `in`, `+`, `*`, `min`, `max`, `count`, `index` |
+| Indexes | from **0**; `-1` is the last; a wrong index is an `IndexError` |
+| Slices | `s[start:stop:step]`, the stop is not included; `s[:3]` the first 3, `s[-3:]` the last 3, `s[::-1]` reversed, `s[:]` a copy |
+| Lists | `[...]`, mutable; `append`, `extend`, `insert`, `pop`, `remove`, `sort`; the methods return `None` |
+| Sorting | `lst.sort()` changes the list; `sorted(x)` returns a new list |
+| References | `b = a` is the same list with two names; a copy: `a[:]`, `a.copy()`, `list(a)` |
+| Tuples | `(...)`, immutable, the comma makes it: `(99,)`; unpacking `a, b, c = t`, `_` for a value you do not need; records |
+| `range` | `range(start, stop, step)`, stop not included; small in memory |
+| Sets | `{...}` / `set()`, unique, unordered; `add`, `discard`; fast `in`; print with `sorted()` |
+| Set operations | `\|` is SQL `UNION`, `&` is `INTERSECT`, `-` is `EXCEPT`; `^` symmetric difference; `<=` subset |
+
 ## 13. Practice
 
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1412,21 +1427,6 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
   into a set, then read `clients.csv` and keep the region when the client is in
   that set.
 :::
-
-## Summary
-
-| Topic | Remember |
-|-------|----------|
-| Sequences | `list`, `tuple`, `range`, `str`: ordered; `len`, `in`, `+`, `*`, `min`, `max`, `count`, `index` |
-| Indexes | from **0**; `-1` is the last; a wrong index is an `IndexError` |
-| Slices | `s[start:stop:step]`, the stop is not included; `s[:3]` the first 3, `s[-3:]` the last 3, `s[::-1]` reversed, `s[:]` a copy |
-| Lists | `[...]`, mutable; `append`, `extend`, `insert`, `pop`, `remove`, `sort`; the methods return `None` |
-| Sorting | `lst.sort()` changes the list; `sorted(x)` returns a new list |
-| References | `b = a` is the same list with two names; a copy: `a[:]`, `a.copy()`, `list(a)` |
-| Tuples | `(...)`, immutable, the comma makes it: `(99,)`; unpacking `a, b, c = t`, `_` for a value you do not need; records |
-| `range` | `range(start, stop, step)`, stop not included; small in memory |
-| Sets | `{...}` / `set()`, unique, unordered; `add`, `discard`; fast `in`; print with `sorted()` |
-| Set operations | `\|` is SQL `UNION`, `&` is `INTERSECT`, `-` is `EXCEPT`; `^` symmetric difference; `<=` subset |
 
 ## Homework
 
