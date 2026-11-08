@@ -942,8 +942,7 @@ errors="coerce")`. How many values of each could not be read? (Compare with the
 loader of [session 9](./09-errors-and-files.md#_10-loading-data-with-bad-records).)
 :::
 
-## Summary
-
+## 9. Summary
 | Topic | Remember |
 |-------|----------|
 | NumPy | `np.array`; one `dtype`; operations on whole arrays; masks `a[a > 90]`; `&`, `\|`, `~` with brackets |
@@ -958,8 +957,7 @@ loader of [session 9](./09-errors-and-files.md#_10-loading-data-with-bad-records
 | First look | `shape`, `info()`, `head()`, `describe()`, `value_counts()`, `nunique()`, `isna().sum()`, `duplicated().sum()` |
 | Types | int64, float64, str / object, bool, datetime64, category, Int64; `astype`; `to_numeric` / `to_datetime` with `errors="coerce"` |
 
-## 9. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root (with the virtual environment active - the tasks

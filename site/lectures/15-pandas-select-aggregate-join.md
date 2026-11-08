@@ -952,8 +952,7 @@ aggregate, report (Excel and a chart - [session 16](./16-pandas-reports-project.
 today; [session 16](./16-pandas-reports-project.md) adds the last tools (pivot tables, dates, Excel output) and the time
 to start.
 
-## Summary
-
+## 8. Summary
 | SQL / SAS | pandas |
 |-----------|--------|
 | `SELECT a, b` / `KEEP=` | `df[["a", "b"]]`; `df.drop(columns=[...])` |
@@ -971,8 +970,7 @@ to start.
 | `SET a b`, `UNION ALL` | `pd.concat([a, b])` |
 | `NULL`, `.`, `COALESCE`, `NMISS` | `NaN`; `isna`; aggregates skip it; `fillna`, `dropna(subset=...)` |
 
-## 8. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root (with the virtual environment active):

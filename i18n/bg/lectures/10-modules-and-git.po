@@ -905,7 +905,7 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/10-modules-and-git.md:1365
-msgid "9. Practice"
+msgid "Practice"
 msgstr ""
 
 #. paragraph
@@ -965,7 +965,7 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/10-modules-and-git.md:1384
-msgid "Summary"
+msgid "9. Summary"
 msgstr ""
 
 #. table cell

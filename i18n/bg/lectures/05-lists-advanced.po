@@ -645,195 +645,195 @@ msgstr "Предвидете резултата, после изпълнете �
 
 #. heading 2
 #: site/lectures/05-lists-advanced.md:765
-msgid "Summary"
-msgstr "Обобщение"
+msgid "5. Summary"
+msgstr "5. Обобщение"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:767
+#: site/lectures/05-lists-advanced.md:766
 msgid "Topic"
 msgstr "Тема"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:767
+#: site/lectures/05-lists-advanced.md:766
 msgid "Remember"
 msgstr "Запомнете"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:769
+#: site/lectures/05-lists-advanced.md:768
 msgid "Remove"
 msgstr "Премахване"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:769
+#: site/lectures/05-lists-advanced.md:768
 msgid "`remove(value)` - the first one, `ValueError` if missing; `pop(i)` gives the item back; `del lst[i]`; `clear()` empties"
 msgstr "`remove(value)` - първия, `ValueError`, ако липсва; `pop(i)` връща елемента; `del lst[i]`; `clear()` изпразва"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:770
+#: site/lectures/05-lists-advanced.md:769
 msgid "Find"
 msgstr "Търсене"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:770
+#: site/lectures/05-lists-advanced.md:769
 msgid "`index(value)` - the first position, `ValueError` if missing: test with `in` first"
 msgstr "`index(value)` - първата позиция, `ValueError`, ако липсва: първо проверете с `in`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:771
+#: site/lectures/05-lists-advanced.md:770
 msgid "Sort"
 msgstr "Сортиране"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:771
+#: site/lectures/05-lists-advanced.md:770
 msgid "`lst.sort()` changes the list; `sorted(x)` gives a new one; `key=`, `reverse=True`; top N: `sorted(...)[:n]`"
 msgstr "`lst.sort()` променя list-а; `sorted(x)` дава нов; `key=`, `reverse=True`; първите N: `sorted(...)[:n]`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:772
+#: site/lectures/05-lists-advanced.md:771
 msgid "the methods change the list and return `None`: never `x = x.sort()`"
 msgstr "методите променят list-а и връщат `None`: никога `x = x.sort()`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:773
+#: site/lectures/05-lists-advanced.md:772
 msgid "Comprehension"
 msgstr "Comprehension"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:773
+#: site/lectures/05-lists-advanced.md:772
 msgid "`[expr for x in items if cond]` = `SELECT expr ... WHERE cond`; always a new list"
 msgstr "`[expr for x in items if cond]` = `SELECT expr ... WHERE cond`; винаги нов list"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:774
+#: site/lectures/05-lists-advanced.md:773
 msgid "`if` position"
 msgstr "Позицията на `if`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:774
+#: site/lectures/05-lists-advanced.md:773
 msgid "`if` at the end filters; `a if c else b` at the start chooses a value (CASE)"
 msgstr "`if` в края филтрира; `a if c else b` в началото избира стойност (CASE)"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:775
+#: site/lectures/05-lists-advanced.md:774
 msgid "Generator expression"
 msgstr "Generator expression"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:775
+#: site/lectures/05-lists-advanced.md:774
 msgid "`sum(x for x in items)` - no list in memory; `sum(1 for ... if ...)` = `COUNT(*) ... WHERE`; used once"
 msgstr "`sum(x for x in items)` - без list в паметта; `sum(1 for ... if ...)` = `COUNT(*) ... WHERE`; използва се веднъж"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:776
+#: site/lectures/05-lists-advanced.md:775
 msgid "parallel lists -> tuples; stops at the shortest list"
 msgstr "паралелни lists -> tuples; спира при най-краткия list"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:777
+#: site/lectures/05-lists-advanced.md:776
 msgid "`(number, item)`; `start=1` for a rank"
 msgstr "`(number, item)`; `start=1` за ранг"
 
 #. heading 2
-#: site/lectures/05-lists-advanced.md:779
-msgid "5. Practice"
-msgstr "5. Упражнения"
+#: site/lectures/05-lists-advanced.md:778
+msgid "Practice"
+msgstr "Упражнения"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:781
+#: site/lectures/05-lists-advanced.md:779
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
 msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и изпълнявайте задачите от терминала, в главната папка на repository-то:"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:789
+#: site/lectures/05-lists-advanced.md:787
 msgid "Task"
 msgstr "Задача"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:789
+#: site/lectures/05-lists-advanced.md:787
 msgid "File"
 msgstr "Файл"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:789
+#: site/lectures/05-lists-advanced.md:787
 msgid "What you do"
 msgstr "Какво правите"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:791
+#: site/lectures/05-lists-advanced.md:789
 msgid "Remove, find and sort with the list methods; the top 3"
 msgstr "Премахване, търсене и сортиране с методите на list; първите 3"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:792
+#: site/lectures/05-lists-advanced.md:790
 msgid "Derived lists, filters and `CASE WHEN` with comprehensions"
 msgstr "Производни lists, филтри и `CASE WHEN` с comprehensions"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:793
+#: site/lectures/05-lists-advanced.md:791
 msgid "Predict: `sort()` and `None`, the position of `if`, a used generator, `zip`"
 msgstr "Предвидете: `sort()` и `None`, позицията на `if`, използван generator, `zip`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:794
+#: site/lectures/05-lists-advanced.md:792
 msgid "Sums and counts with a condition, without a list; a file line by line"
 msgstr "Суми и бройки с условие, без list; файл ред по ред"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:795
+#: site/lectures/05-lists-advanced.md:793
 msgid "Two lists side by side; a rank with `enumerate`"
 msgstr "Два lists един до друг; ранг с `enumerate`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:796
+#: site/lectures/05-lists-advanced.md:794
 msgid "`task6-clean-a-list.py` (Optional)"
 msgstr "`task6-clean-a-list.py` (по желание)"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:796
+#: site/lectures/05-lists-advanced.md:794
 msgid "Clean a list of loans step by step, then report on it"
 msgstr "Почистете list от кредити стъпка по стъпка, после направете отчет"
 
 #. heading 2
-#: site/lectures/05-lists-advanced.md:798
+#: site/lectures/05-lists-advanced.md:796
 msgid "Homework"
 msgstr "Домашно"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:800
+#: site/lectures/05-lists-advanced.md:798
 msgid "`05-lists-advanced/homework.py` (in the homework repository): **a small list of loans** - clean it with the list methods, find the five largest exposures with a rank and their share of the total, sum and count with a condition, and compare two years month by month with `zip`. Every check must print `OK`."
 msgstr "`05-lists-advanced/homework.py` (в homework repository): **малък list от кредити** - почистете го с методите на list, намерете петте най-големи експозиции с ранг и дела им от общата сума, сумирайте и бройте с условие и сравнете две години месец по месец със `zip`. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:804
+#: site/lectures/05-lists-advanced.md:802
 msgid "The practice tasks you did not finish in class."
 msgstr "Задачите за упражнение, които не сте довършили в клас."
 
 #. heading 2
-#: site/lectures/05-lists-advanced.md:806
+#: site/lectures/05-lists-advanced.md:804
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:808
+#: site/lectures/05-lists-advanced.md:806
 msgid "Python tutorial: [More on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), [List comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)"
 msgstr "Python tutorial: [More on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), [List comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:810
+#: site/lectures/05-lists-advanced.md:808
 msgid "[Sorting techniques](https://docs.python.org/3/howto/sorting.html)"
 msgstr "[Sorting techniques](https://docs.python.org/3/howto/sorting.html)"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:811
+#: site/lectures/05-lists-advanced.md:809
 msgid "Reference: [generator expressions](https://docs.python.org/3/reference/expressions.html#generator-expressions), [`zip`](https://docs.python.org/3/library/functions.html#zip), [`enumerate`](https://docs.python.org/3/library/functions.html#enumerate)"
 msgstr "Reference: [generator expressions](https://docs.python.org/3/reference/expressions.html#generator-expressions), [`zip`](https://docs.python.org/3/library/functions.html#zip), [`enumerate`](https://docs.python.org/3/library/functions.html#enumerate)"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:814
+#: site/lectures/05-lists-advanced.md:812
 msgid "Real Python: [When to use a list comprehension](https://realpython.com/list-comprehension-python/), [Python's `zip()` function](https://realpython.com/python-zip-function/)"
 msgstr "Real Python: [When to use a list comprehension](https://realpython.com/list-comprehension-python/), [Python's `zip()` function](https://realpython.com/python-zip-function/)"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:817
+#: site/lectures/05-lists-advanced.md:815
 msgid "**Next session:** dictionaries - a key and a value, the Python version of a SAS format and of a lookup table; counting and SQL `GROUP BY` without pandas."
 msgstr "**Следващото занятие:** dictionaries - ключ и стойност, версията на Python на SAS format и на lookup таблица; броене и SQL `GROUP BY` без pandas."

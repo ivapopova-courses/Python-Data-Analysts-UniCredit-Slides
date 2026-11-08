@@ -174,7 +174,7 @@ msgid "In arrays (and in pandas), combine conditions with `&` (and), `|` (or), `
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-numpy-pandas-intro.md:163 site/lectures/14-numpy-pandas-intro.md:950
+#: site/lectures/14-numpy-pandas-intro.md:163 site/lectures/14-numpy-pandas-intro.md:949
 msgid "Aggregates"
 msgstr ""
 
@@ -845,330 +845,330 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/14-numpy-pandas-intro.md:945
-msgid "Summary"
+msgid "9. Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:947
+#: site/lectures/14-numpy-pandas-intro.md:946
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:947
+#: site/lectures/14-numpy-pandas-intro.md:946
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:949
+#: site/lectures/14-numpy-pandas-intro.md:948
 msgid "NumPy"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:949
+#: site/lectures/14-numpy-pandas-intro.md:948
 msgid "`np.array`; one `dtype`; operations on whole arrays; masks `a[a > 90]`; `&`, `\\|`, `~` with brackets"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:950
+#: site/lectures/14-numpy-pandas-intro.md:949
 msgid "`sum`, `mean`, `min`, `max`, `argmax`, `np.percentile`; `std(ddof=1)` for the sample"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:951
+#: site/lectures/14-numpy-pandas-intro.md:950
 msgid "`np.where(cond, a, b)`; `np.select([conds], [choices], default=...)` - the first true wins"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:952
+#: site/lectures/14-numpy-pandas-intro.md:951
 msgid "Broadcasting"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:952
+#: site/lectures/14-numpy-pandas-intro.md:951
 msgid "a scalar or a smaller array is stretched; `axis=0` down, `axis=1` across"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:953
+#: site/lectures/14-numpy-pandas-intro.md:952
 msgid "spreads in NumPy (`np.nansum`); not equal to itself; ints cannot hold it"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:954
+#: site/lectures/14-numpy-pandas-intro.md:953
 msgid "Series"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:954
+#: site/lectures/14-numpy-pandas-intro.md:953
 msgid "values + index; operations match labels (alignment); `value_counts`"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:955
+#: site/lectures/14-numpy-pandas-intro.md:954
 msgid "DataFrame"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:955
+#: site/lectures/14-numpy-pandas-intro.md:954
 msgid "columns of Series with one index; `df[\"a\"]` a Series, `df[[\"a\", \"b\"]]` a DataFrame; new columns from others"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:957
+#: site/lectures/14-numpy-pandas-intro.md:956
 msgid "`sheet_name=...`; `None` for all sheets (a dict); `read_sas` for SAS datasets"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:958
+#: site/lectures/14-numpy-pandas-intro.md:957
 msgid "First look"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:959
+#: site/lectures/14-numpy-pandas-intro.md:958
 msgid "Types"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:959
+#: site/lectures/14-numpy-pandas-intro.md:958
 msgid "int64, float64, str / object, bool, datetime64, category, Int64; `astype`; `to_numeric` / `to_datetime` with `errors=\"coerce\"`"
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-numpy-pandas-intro.md:961
-msgid "9. Practice"
+#: site/lectures/14-numpy-pandas-intro.md:960
+msgid "Practice"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:963
+#: site/lectures/14-numpy-pandas-intro.md:961
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root (with the virtual environment active - the tasks need NumPy and pandas):"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:972
+#: site/lectures/14-numpy-pandas-intro.md:970
 msgid "Task"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:972
+#: site/lectures/14-numpy-pandas-intro.md:970
 msgid "File"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:972
+#: site/lectures/14-numpy-pandas-intro.md:970
 msgid "What you do"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:974
+#: site/lectures/14-numpy-pandas-intro.md:972
 msgid "Arrays, masks and aggregates on the outstanding amounts"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:975
+#: site/lectures/14-numpy-pandas-intro.md:973
 msgid "Predict shapes, types, broadcasting, `NaN`, alignment"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:976
+#: site/lectures/14-numpy-pandas-intro.md:974
 msgid "`np.where` and `np.select` for buckets, flags and PDs"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:977
+#: site/lectures/14-numpy-pandas-intro.md:975
 msgid "Read `loans_export.csv` with all the right options"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:978
+#: site/lectures/14-numpy-pandas-intro.md:976
 msgid "The profile of a dataset: shape, types, describe, counts, missing values"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:979
+#: site/lectures/14-numpy-pandas-intro.md:977
 msgid "`task6-excel-sheets.py` (Optional)"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-numpy-pandas-intro.md:979
+#: site/lectures/14-numpy-pandas-intro.md:977
 msgid "All sheets of `fx_rates.xlsx`; the monthly averages"
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-numpy-pandas-intro.md:981
+#: site/lectures/14-numpy-pandas-intro.md:979
 msgid "Homework"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:983
+#: site/lectures/14-numpy-pandas-intro.md:981
 msgid "`14-numpy-pandas-intro/homework.py` (in the homework repository): **load and profile the export** - a function that reads `loans_export.csv` into a clean DataFrame (snake_case names, the right types, missing values as `NaN`, no duplicate rows), a profile of it, and a comparison of its totals with `loans.csv`. Every check must print `OK`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:988
+#: site/lectures/14-numpy-pandas-intro.md:986
 msgid "The practice tasks you did not finish in class."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:989
+#: site/lectures/14-numpy-pandas-intro.md:987
 msgid "Optional: open a Jupyter notebook in your Homework folder and do section 7 on `clients.csv` and `client_register.csv` - the notebook is the natural place for a first look."
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-numpy-pandas-intro.md:993
+#: site/lectures/14-numpy-pandas-intro.md:991
 msgid "Self-study"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:995
+#: site/lectures/14-numpy-pandas-intro.md:993
 msgid "This part is not covered in class. It is for reading at home: a simulation of the portfolio loss with NumPy - the \"modelling\" side of the team's work - and a short note on SAS files."
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-numpy-pandas-intro.md:999
+#: site/lectures/14-numpy-pandas-intro.md:997
 msgid "Monte Carlo: the distribution of the portfolio loss"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1001
+#: site/lectures/14-numpy-pandas-intro.md:999
 msgid "The expected loss (`PD x LGD x EAD`, summed) is one number. A risk manager also wants the **distribution** of the loss: how bad can a year be? A simple simulation:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1004
+#: site/lectures/14-numpy-pandas-intro.md:1002
 msgid "For each loan, draw a random number; the loan defaults if it is below its PD."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1005
+#: site/lectures/14-numpy-pandas-intro.md:1003
 msgid "The loss of the year is the sum of `LGD x EAD` of the defaulted loans."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1006
+#: site/lectures/14-numpy-pandas-intro.md:1004
 msgid "Repeat 10,000 times; look at the distribution of the 10,000 losses."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1008
+#: site/lectures/14-numpy-pandas-intro.md:1006
 msgid "NumPy does all scenarios at once - a 10,000 x 400 array of random numbers:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1034
+#: site/lectures/14-numpy-pandas-intro.md:1032
 msgid "The mean of the simulation is close to the expected loss of homework 4 (1,140,106.56) - the formula is the mean of this distribution. The 99.9% quantile is far higher: one or two large project finance loans that default together make a bad year. (This simple model treats the defaults as independent; real credit portfolio models add a common factor for the economy.)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1040
+#: site/lectures/14-numpy-pandas-intro.md:1038
 msgid "A histogram (charts: [session 16](./16-pandas-reports-project.md#_7-charts)):"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1062
+#: site/lectures/14-numpy-pandas-intro.md:1060
 msgid "**Exercises**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1064
+#: site/lectures/14-numpy-pandas-intro.md:1062
 msgid "Run the simulation with LGD 0.25 and 0.60. How do the mean and the 99.9% quantile change? Are they proportional to the LGD?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1066
+#: site/lectures/14-numpy-pandas-intro.md:1064
 msgid "Remove the 7 loans over EUR 5 million (`ead > 5e6`) and run it again. What happens to the 99.9% quantile - and why is that the concentration risk of homework 5?"
 msgstr ""
 
 #. box title
-#: site/lectures/14-numpy-pandas-intro.md:1069 site/lectures/14-numpy-pandas-intro.md:1104
+#: site/lectures/14-numpy-pandas-intro.md:1067 site/lectures/14-numpy-pandas-intro.md:1102
 msgid "Answer"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1070
+#: site/lectures/14-numpy-pandas-intro.md:1068
 msgid "Both are proportional: the losses are `defaults x LGD x EAD`, so all of them scale with the LGD (with the same seed, exactly)."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1072
+#: site/lectures/14-numpy-pandas-intro.md:1070
 msgid "`keep = ead <= 5e6`, then use `pd_loan[keep]` and `ead[keep]`. The mean drops a little, the 99.9% quantile drops a lot: the tail of the distribution comes from the few very large loans - the concentration of the top 10 (47% of the portfolio, homework 5)."
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-numpy-pandas-intro.md:1078
+#: site/lectures/14-numpy-pandas-intro.md:1076
 msgid "Reading SAS datasets"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1080
+#: site/lectures/14-numpy-pandas-intro.md:1078
 msgid "`pd.read_sas` reads `.sas7bdat` (and `.xpt`) files without SAS. Points to know:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1082
+#: site/lectures/14-numpy-pandas-intro.md:1080
 msgid "**Encoding:** give `encoding=` (the SAS session encoding, often `latin-1` or `utf-8`); without it, text columns come as bytes (`b'...'`)."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1084
+#: site/lectures/14-numpy-pandas-intro.md:1082
 msgid "**Dates:** SAS date variables with a date format arrive as `datetime64`; without a format, as numbers of days since 1960-01-01 - convert with `pd.to_datetime(x, unit=\"D\", origin=\"1960-01-01\")`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1087
+#: site/lectures/14-numpy-pandas-intro.md:1085
 msgid "**Missing values:** `.` and the special missing values `.A` - `.Z` become `NaN`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1088
+#: site/lectures/14-numpy-pandas-intro.md:1086
 msgid "**Big files:** `chunksize=` gives pieces ([session 13](./13-databases.md#big-tables-in-pieces), Self-study)."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1089
+#: site/lectures/14-numpy-pandas-intro.md:1087
 msgid "**Labels and formats:** `pyreadstat.read_sas7bdat(path)` returns `(df, meta)`; `meta.column_names_to_labels` maps the variable names to their labels."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1099
+#: site/lectures/14-numpy-pandas-intro.md:1097
 msgid "**Exercise**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1101
+#: site/lectures/14-numpy-pandas-intro.md:1099
 msgid "Convert the SAS date numbers `0`, `366` and `24379` into dates. What is the SAS date of 30.09.2026?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1110
+#: site/lectures/14-numpy-pandas-intro.md:1108
 msgid "`0` is 1960-01-01, `366` is 1961-01-01 (1960 was a leap year), `24379` is 2026-09-30."
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-numpy-pandas-intro.md:1113
+#: site/lectures/14-numpy-pandas-intro.md:1111
 msgid "Read more"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1115
+#: site/lectures/14-numpy-pandas-intro.md:1113
 msgid "NumPy: [the absolute basics for beginners](https://numpy.org/doc/stable/user/absolute_beginners.html), [broadcasting](https://numpy.org/doc/stable/user/basics.broadcasting.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1117
+#: site/lectures/14-numpy-pandas-intro.md:1115
 msgid "pandas: [10 minutes to pandas](https://pandas.pydata.org/docs/user_guide/10min.html), [Comparison with SAS](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sas.html), [Comparison with SQL](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html), [`read_csv`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1121
+#: site/lectures/14-numpy-pandas-intro.md:1119
 msgid "pandas 3: [What's new in 3.0](https://pandas.pydata.org/docs/whatsnew/v3.0.0.html) (the string type and copy-on-write)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1123
+#: site/lectures/14-numpy-pandas-intro.md:1121
 msgid "Book: [Python for Data Analysis, 3rd edition](https://wesmckinney.com/book/) by Wes McKinney, the author of pandas - free online"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-numpy-pandas-intro.md:1126
+#: site/lectures/14-numpy-pandas-intro.md:1124
 msgid "**Next session:** pandas - selection with `loc` and masks, new columns with `np.select` and `pd.cut`, `groupby` (the SQL `GROUP BY` and SAS `PROC MEANS` of pandas), `merge` (the SQL `JOIN`), and missing values."
 msgstr ""

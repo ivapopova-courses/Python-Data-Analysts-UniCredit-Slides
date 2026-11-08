@@ -259,7 +259,7 @@ msgid "Shorthand"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:192 site/lectures/08-regular-expressions.md:268 site/lectures/08-regular-expressions.md:1100
+#: site/lectures/08-regular-expressions.md:192 site/lectures/08-regular-expressions.md:268 site/lectures/08-regular-expressions.md:1098
 msgid "Means"
 msgstr ""
 
@@ -489,7 +489,7 @@ msgid "Where the pattern must match"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:370 site/lectures/08-regular-expressions.md:1057
+#: site/lectures/08-regular-expressions.md:370 site/lectures/08-regular-expressions.md:1056
 msgid "SAS / SQL"
 msgstr ""
 
@@ -900,325 +900,325 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/08-regular-expressions.md:1044
-msgid "Summary"
+msgid "9. Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1046
+#: site/lectures/08-regular-expressions.md:1045
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1046
+#: site/lectures/08-regular-expressions.md:1045
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1048
+#: site/lectures/08-regular-expressions.md:1047
 msgid "Patterns"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1048
+#: site/lectures/08-regular-expressions.md:1047
 msgid "always `r\"...\"`; letters match themselves; `.` any character, `\\.` a point"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1049
+#: site/lectures/08-regular-expressions.md:1048
 msgid "Classes"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1049
+#: site/lectures/08-regular-expressions.md:1048
 msgid "`[abc]`, `[0-9]`, `[^...]`; `\\d`, `\\w`, `\\s` and `\\D`, `\\W`, `\\S`"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1050
+#: site/lectures/08-regular-expressions.md:1049
 msgid "Anchors"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1050
+#: site/lectures/08-regular-expressions.md:1049
 msgid "`^` start, `$` end, `\\b` word boundary"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1051
+#: site/lectures/08-regular-expressions.md:1050
 msgid "Quantifiers"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1051
+#: site/lectures/08-regular-expressions.md:1050
 msgid "`*` `+` `?` `{n}` `{n,m}`; greedy - add `?` for lazy, or use `[^x]*`"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1052
+#: site/lectures/08-regular-expressions.md:1051
 msgid "Functions"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1052
+#: site/lectures/08-regular-expressions.md:1051
 msgid "`search` (anywhere), `match` (start), `fullmatch` (all - for validation), `findall`, `finditer`, `split`, `sub`, `subn`"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1053
+#: site/lectures/08-regular-expressions.md:1052
 msgid "Groups"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1053
+#: site/lectures/08-regular-expressions.md:1052
 msgid "`( )` and `group(1)`; `(?P<name>...)`, `m[\"name\"]`, `groupdict()`; `(?:...)` does not capture"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1054
+#: site/lectures/08-regular-expressions.md:1053
 msgid "Alternatives"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1054
+#: site/lectures/08-regular-expressions.md:1053
 msgid "`a\\|b` - the first that matches wins; use `\\b` or the longer one first"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1055
+#: site/lectures/08-regular-expressions.md:1054
 msgid "Flags"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1055
+#: site/lectures/08-regular-expressions.md:1054
 msgid "`re.I` ignores the case; `re.compile` for a pattern used many times"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1056
+#: site/lectures/08-regular-expressions.md:1055
 msgid "Validation"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1056
+#: site/lectures/08-regular-expressions.md:1055
 msgid "the shape with a regex, then the meaning (a real date, check digits)"
 msgstr ""
 
 #. heading 2
-#: site/lectures/08-regular-expressions.md:1059
-msgid "9. Practice"
+#: site/lectures/08-regular-expressions.md:1058
+msgid "Practice"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1061
+#: site/lectures/08-regular-expressions.md:1059
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1069
+#: site/lectures/08-regular-expressions.md:1067
 msgid "Task"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1069
+#: site/lectures/08-regular-expressions.md:1067
 msgid "File"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1069
+#: site/lectures/08-regular-expressions.md:1067
 msgid "What you do"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1071
+#: site/lectures/08-regular-expressions.md:1069
 msgid "Write patterns: ids, codes, currencies, whole words"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1072
+#: site/lectures/08-regular-expressions.md:1070
 msgid "Predict `findall`, `search`, `sub`; greedy and lazy"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1073
+#: site/lectures/08-regular-expressions.md:1071
 msgid "Validators with `fullmatch`: loan id, EIK, IBAN, e-mail, date"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1074
+#: site/lectures/08-regular-expressions.md:1072
 msgid "Amounts, dates and loan ids from comments"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1075
+#: site/lectures/08-regular-expressions.md:1073
 msgid "Named groups: a payment line, a file name, a rate change"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1076
+#: site/lectures/08-regular-expressions.md:1074
 msgid "`task6-sub.py` (Optional)"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1076
+#: site/lectures/08-regular-expressions.md:1074
 msgid "Clean and reformat with `sub`: dates, spaces, masks"
 msgstr ""
 
 #. heading 2
-#: site/lectures/08-regular-expressions.md:1078
+#: site/lectures/08-regular-expressions.md:1076
 msgid "Homework"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1080
+#: site/lectures/08-regular-expressions.md:1078
 msgid "`08-regular-expressions/homework.py` (in the homework repository): **mine the comments** - classify every comment of `loan_comments.csv` by its type, extract the amounts of the payments, the new maturities of the restructurings and the IBANs of the disbursements, and check the IBANs against the register. Every check must print `OK`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1085
+#: site/lectures/08-regular-expressions.md:1083
 msgid "The practice tasks you did not finish in class."
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1086
+#: site/lectures/08-regular-expressions.md:1084
 msgid "Optional: find the e-mail addresses in the comments that are **not** in the register (after cleaning both)."
 msgstr ""
 
 #. heading 2
-#: site/lectures/08-regular-expressions.md:1089
+#: site/lectures/08-regular-expressions.md:1087
 msgid "Self-study"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1091
+#: site/lectures/08-regular-expressions.md:1089
 msgid "This part is not covered in class. It is for reading at home: patterns that look around without taking text, readable patterns with comments, and the check digits of an IBAN and an EIK."
 msgstr ""
 
 #. heading 3
-#: site/lectures/08-regular-expressions.md:1095
+#: site/lectures/08-regular-expressions.md:1093
 msgid "Lookarounds and verbose patterns"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1097
+#: site/lectures/08-regular-expressions.md:1095
 msgid "A **lookaround** checks what is before or after a position, without making it part of the match:"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1100
+#: site/lectures/08-regular-expressions.md:1098
 msgid "Syntax"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1102
+#: site/lectures/08-regular-expressions.md:1100
 msgid "X, if Y follows"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1103
+#: site/lectures/08-regular-expressions.md:1101
 msgid "X, if Y does not follow"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1104
+#: site/lectures/08-regular-expressions.md:1102
 msgid "X, if Y is before it"
 msgstr ""
 
 #. table cell
-#: site/lectures/08-regular-expressions.md:1105
+#: site/lectures/08-regular-expressions.md:1103
 msgid "X, if Y is not before it"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1116
+#: site/lectures/08-regular-expressions.md:1114
 msgid "Long patterns are hard to read. With `re.VERBOSE` (`re.X`), spaces in the pattern are ignored and `#` starts a comment - the pattern can be written on several lines:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1134 site/lectures/08-regular-expressions.md:1197
+#: site/lectures/08-regular-expressions.md:1132 site/lectures/08-regular-expressions.md:1195
 msgid "**Exercises**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1136
+#: site/lectures/08-regular-expressions.md:1134
 msgid "Find the amounts that are **followed** by ` EUR`, without taking ` EUR` into the match, in `\"paid 2 069,77 EUR and 15,00 USD and 99,50 EUR\"`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1138
+#: site/lectures/08-regular-expressions.md:1136
 msgid "Rewrite the e-mail pattern of section 6 with `re.VERBOSE` and a comment per part."
 msgstr ""
 
 #. box title
-#: site/lectures/08-regular-expressions.md:1140 site/lectures/08-regular-expressions.md:1203
+#: site/lectures/08-regular-expressions.md:1138 site/lectures/08-regular-expressions.md:1201
 msgid "Answer"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1141
+#: site/lectures/08-regular-expressions.md:1139
 msgid "`re.findall(r\"\\d[\\d ]*,\\d{2}(?= EUR)\", text)` gives `['2 069,77', '99,50']`."
 msgstr ""
 
 #. heading 3
-#: site/lectures/08-regular-expressions.md:1153
+#: site/lectures/08-regular-expressions.md:1151
 msgid "Check digits: IBAN and EIK"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1155
+#: site/lectures/08-regular-expressions.md:1153
 msgid "The shape is half of the check. Both an IBAN and an EIK have **check digits**, computed from the other digits, that catch most typing errors."
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1158
+#: site/lectures/08-regular-expressions.md:1156
 msgid "**IBAN (ISO 13616):** move the first four characters to the end, replace each letter by a number (`A` = 10, `B` = 11, ..., `Z` = 35), and read it all as one big number. It must give the remainder **1** when divided by 97. Python's `int` has no size limit, so this is two lines:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1177
+#: site/lectures/08-regular-expressions.md:1175
 msgid "**EIK (BULSTAT), 9 digits:** multiply the first 8 digits by the weights 1, 2, ..., 8, and take the sum modulo 11. If it is 10, use the weights 3, 4, ..., 10 instead; if it is 10 again, the check digit is 0. The result must be the 9th digit."
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1194
+#: site/lectures/08-regular-expressions.md:1192
 msgid "(The 13-digit EIK of a branch has a second check digit for the last 4 digits, with the weights 2, 7, 3, 5 - and 4, 9, 5, 7 if the first sum gives 10.)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1199
+#: site/lectures/08-regular-expressions.md:1197
 msgid "Find the IBANs of the register with a valid shape but wrong check digits. How many are there?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1201
+#: site/lectures/08-regular-expressions.md:1199
 msgid "Find the 9-digit EIKs of the register (after cleaning) whose check digit is wrong."
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1215
+#: site/lectures/08-regular-expressions.md:1213
 msgid "The register has two IBANs and three EIKs with wrong check digits - typing errors that a shape check cannot find."
 msgstr ""
 
 #. heading 2
-#: site/lectures/08-regular-expressions.md:1219
+#: site/lectures/08-regular-expressions.md:1217
 msgid "Read more"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1221
+#: site/lectures/08-regular-expressions.md:1219
 msgid "[Regular expression HOWTO](https://docs.python.org/3/howto/regex.html) (the official tutorial); reference: [`re`](https://docs.python.org/3/library/re.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1223
+#: site/lectures/08-regular-expressions.md:1221
 msgid "[regex101.com](https://regex101.com) - test a pattern and see what each part matches (choose *Python*)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1225
+#: site/lectures/08-regular-expressions.md:1223
 msgid "Real Python: [Regular expressions: regexes in Python](https://realpython.com/regex-python/)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/08-regular-expressions.md:1227
+#: site/lectures/08-regular-expressions.md:1225
 msgid "**Next session:** errors and files - catch errors instead of stopping, read and write CSV, JSON and Excel files, and load data with bad rows the way a SAS log would report them."
 msgstr ""

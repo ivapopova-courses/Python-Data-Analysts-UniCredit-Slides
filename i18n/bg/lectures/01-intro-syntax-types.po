@@ -3005,8 +3005,8 @@ msgstr "pandas работи с `float`: там закръглявайте **ре
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:1842
-msgid "15. Practice"
-msgstr "15. Упражнения"
+msgid "Practice"
+msgstr "Упражнения"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1844
@@ -3070,8 +3070,8 @@ msgstr "В `task2-predict-types.py` заменете всяко `\"?\"` с ва�
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:1866
-msgid "Summary"
-msgstr "Обобщение"
+msgid "15. Summary"
+msgstr "15. Обобщение"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1868

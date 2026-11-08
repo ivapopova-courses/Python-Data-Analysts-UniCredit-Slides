@@ -1190,8 +1190,7 @@ for `"postgresql"` and `"sqlite"` from the table above, with the user taken from
 `os.environ["DB_USER"]` and **no** password in the result.
 :::
 
-## Summary
-
+## 8. Summary
 | Topic | Remember |
 |-------|----------|
 | DB-API | `connect` -> `cursor` / `execute` -> `fetchone` / `fetchall` / loop -> `close`; the same for all databases |
@@ -1206,8 +1205,7 @@ for `"postgresql"` and `"sqlite"` from the table above, with the user taken from
 | SQLAlchemy | `create_engine(url)`, `text("... :name")`; needed by pandas for non-SQLite databases |
 | Passwords | never in code: Windows login, environment variables, keyring; a read-only account |
 
-## 8. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:

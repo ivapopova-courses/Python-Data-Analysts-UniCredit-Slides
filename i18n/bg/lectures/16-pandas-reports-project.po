@@ -620,270 +620,270 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/16-pandas-reports-project.md:1074
-msgid "Summary"
+msgid "9. Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1076
+#: site/lectures/16-pandas-reports-project.md:1075
 msgid "SQL / SAS"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1076
+#: site/lectures/16-pandas-reports-project.md:1075
 msgid "pandas"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1079
+#: site/lectures/16-pandas-reports-project.md:1078
 msgid "`pivot` (no aggregation), `unstack`; back: `melt`"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1081
+#: site/lectures/16-pandas-reports-project.md:1080
 msgid "SAS dates, `INPUT(x, ddmmyy10.)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1085
+#: site/lectures/16-pandas-reports-project.md:1084
 msgid "`LAG`, `DIF` by group"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1085
+#: site/lectures/16-pandas-reports-project.md:1084
 msgid "`sort_values`, then `groupby(key)[col].shift(1)` / `diff()`"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1087
+#: site/lectures/16-pandas-reports-project.md:1086
 msgid "migration matrix"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1087
+#: site/lectures/16-pandas-reports-project.md:1086
 msgid "merge two month ends, `pd.crosstab(start, end)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1088
+#: site/lectures/16-pandas-reports-project.md:1087
 msgid "`pd.ExcelWriter` + `to_excel(writer, sheet_name=...)`; openpyxl for formats"
 msgstr ""
 
 #. heading 2
-#: site/lectures/16-pandas-reports-project.md:1091
-msgid "9. Practice"
+#: site/lectures/16-pandas-reports-project.md:1090
+msgid "Practice"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1093
+#: site/lectures/16-pandas-reports-project.md:1091
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root (with the virtual environment active):"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1101
+#: site/lectures/16-pandas-reports-project.md:1099
 msgid "The tasks that write files write them into `out/` (ignored by Git)."
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1103
+#: site/lectures/16-pandas-reports-project.md:1101
 msgid "Task"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1103
+#: site/lectures/16-pandas-reports-project.md:1101
 msgid "File"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1103
+#: site/lectures/16-pandas-reports-project.md:1101
 msgid "What you do"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1105
+#: site/lectures/16-pandas-reports-project.md:1103
 msgid "`pivot_table` with totals, `crosstab` with shares, `melt` back"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1106
+#: site/lectures/16-pandas-reports-project.md:1104
 msgid "Parse dates, month ends, months between, periods"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1107
+#: site/lectures/16-pandas-reports-project.md:1105
 msgid "LAG by loan, monthly totals, months in arrears"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1108
+#: site/lectures/16-pandas-reports-project.md:1106
 msgid "The migration matrix, upgrades and downgrades, the default rate"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1109
+#: site/lectures/16-pandas-reports-project.md:1107
 msgid "A three-sheet Excel report, read back and checked"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1110
+#: site/lectures/16-pandas-reports-project.md:1108
 msgid "`task6-chart.py` (Optional)"
 msgstr ""
 
 #. table cell
-#: site/lectures/16-pandas-reports-project.md:1110
+#: site/lectures/16-pandas-reports-project.md:1108
 msgid "A bar chart and a line chart saved as PNG files"
 msgstr ""
 
 #. heading 2
-#: site/lectures/16-pandas-reports-project.md:1112
+#: site/lectures/16-pandas-reports-project.md:1110
 msgid "Homework"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1114
+#: site/lectures/16-pandas-reports-project.md:1112
 msgid "`16-pandas-reports-project/homework.py` (in the homework repository): **the monthly report, part 1 of the project** - `build_report(data, report_date)` returns a dictionary of tables (summary, segment x stage, DPD buckets, migration, monthly trend, top clients) and `write_report(tables, path)` writes them into one Excel file. Every check must print `OK`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1119
+#: site/lectures/16-pandas-reports-project.md:1117
 msgid "The practice tasks you did not finish in class."
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1120
+#: site/lectures/16-pandas-reports-project.md:1118
 msgid "The [final project](../project): start from the homework, add the loading from the database, the validation with your nomenclatures, a chart, and Git."
 msgstr ""
 
 #. heading 2
-#: site/lectures/16-pandas-reports-project.md:1123
+#: site/lectures/16-pandas-reports-project.md:1121
 msgid "Self-study"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1125
+#: site/lectures/16-pandas-reports-project.md:1123
 msgid "This part is not covered in class. It is for reading at home: a report that looks finished, charts with more control, and where to go after the course."
 msgstr ""
 
 #. heading 3
-#: site/lectures/16-pandas-reports-project.md:1128
+#: site/lectures/16-pandas-reports-project.md:1126
 msgid "A formatted Excel report"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1130
+#: site/lectures/16-pandas-reports-project.md:1128
 msgid "openpyxl ([session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)) can style everything after pandas has written the data: fonts, fills, number formats, frozen panes, filters, conditional colours - and a native Excel chart:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1170
+#: site/lectures/16-pandas-reports-project.md:1168
 msgid "The chart is an Excel chart: it changes when somebody edits the numbers in the file. (A PNG from matplotlib can be put in with `openpyxl.drawing.image.Image`; it needs the Pillow package.)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1174
+#: site/lectures/16-pandas-reports-project.md:1172
 msgid "**Exercises**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1176
+#: site/lectures/16-pandas-reports-project.md:1174
 msgid "Write the migration matrix (section 5) to a sheet and colour it with a `ColorScaleRule` from white (0) to red (the maximum). Freeze the first row and the first column (`freeze_panes = \"B2\"`)."
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1179
+#: site/lectures/16-pandas-reports-project.md:1177
 msgid "Write the segment x stage pivot with `margins=True` and make the \"total\" row bold."
 msgstr ""
 
 #. box title
-#: site/lectures/16-pandas-reports-project.md:1182 site/lectures/16-pandas-reports-project.md:1253
+#: site/lectures/16-pandas-reports-project.md:1180 site/lectures/16-pandas-reports-project.md:1251
 msgid "Answer"
 msgstr ""
 
 #. heading 3
-#: site/lectures/16-pandas-reports-project.md:1215
+#: site/lectures/16-pandas-reports-project.md:1213
 msgid "Charts in more depth"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1217
+#: site/lectures/16-pandas-reports-project.md:1215
 msgid "For full control, create the figure and its axes yourself and give each chart its axes - here two charts side by side:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1244
+#: site/lectures/16-pandas-reports-project.md:1242
 msgid "`fig.savefig(\"chart.png\", dpi=200)` saves the whole figure - 200 dpi is sharp enough for a presentation."
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1247
+#: site/lectures/16-pandas-reports-project.md:1245
 msgid "**Exercise**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1249
+#: site/lectures/16-pandas-reports-project.md:1247
 msgid "Draw the share of loans more than 30 days past due per month end (section 4, Try it) as a line, with the y axis in percent (`FuncFormatter(lambda v, _: f\"{v:.1%}\")`), next to a bar chart of the number of such loans."
 msgstr ""
 
 #. heading 3
-#: site/lectures/16-pandas-reports-project.md:1274
+#: site/lectures/16-pandas-reports-project.md:1272
 msgid "What next"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1276
+#: site/lectures/16-pandas-reports-project.md:1274
 msgid "You now have the tools for most of the daily work. Where to go from here, when you need it:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1279
+#: site/lectures/16-pandas-reports-project.md:1277
 msgid "**Jupyter** (installed with `requirements.txt`): for exploring a new dataset step by step, with tables and charts under the code. Keep the final, repeatable report as a `.py` script."
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1282
+#: site/lectures/16-pandas-reports-project.md:1280
 msgid "**The pandas documentation**: the [user guide](https://pandas.pydata.org/docs/user_guide/index.html) and the comparisons with [SAS](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sas.html) and [SQL](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html)."
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1285
+#: site/lectures/16-pandas-reports-project.md:1283
 msgid "**DuckDB**: SQL directly on DataFrames, CSV and Parquet files - your SQL, inside Python, very fast on large files."
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1287
+#: site/lectures/16-pandas-reports-project.md:1285
 msgid "**polars**: a newer DataFrame library, faster than pandas on large data, with a different (expression-based) API."
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1289
+#: site/lectures/16-pandas-reports-project.md:1287
 msgid "**statsmodels** and **scikit-learn**: regression, scorecards, model validation - the modelling side."
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1291
+#: site/lectures/16-pandas-reports-project.md:1289
 msgid "**Scheduling**: a script with a report-date argument can run every month by itself (Windows Task Scheduler, cron on Linux)."
 msgstr ""
 
 #. heading 2
-#: site/lectures/16-pandas-reports-project.md:1294
+#: site/lectures/16-pandas-reports-project.md:1292
 msgid "Read more"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1296
+#: site/lectures/16-pandas-reports-project.md:1294
 msgid "pandas: [Reshaping and pivot tables](https://pandas.pydata.org/docs/user_guide/reshaping.html), [Time series / date functionality](https://pandas.pydata.org/docs/user_guide/timeseries.html), [Windowing operations](https://pandas.pydata.org/docs/user_guide/window.html), [Chart visualization](https://pandas.pydata.org/docs/user_guide/visualization.html), [`ExcelWriter`](https://pandas.pydata.org/docs/reference/api/pandas.ExcelWriter.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1301
+#: site/lectures/16-pandas-reports-project.md:1299
 msgid "openpyxl: [Styling cells](https://openpyxl.readthedocs.io/en/stable/styles.html), [Charts](https://openpyxl.readthedocs.io/en/stable/charts/introduction.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1303
+#: site/lectures/16-pandas-reports-project.md:1301
 msgid "matplotlib: [Quick start guide](https://matplotlib.org/stable/users/explain/quick_start.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/16-pandas-reports-project.md:1305
+#: site/lectures/16-pandas-reports-project.md:1303
 msgid "**This was the last session.** The [final project](../project) is the next step: one report of your own work, in Python, from the data to the Excel file."
 msgstr ""

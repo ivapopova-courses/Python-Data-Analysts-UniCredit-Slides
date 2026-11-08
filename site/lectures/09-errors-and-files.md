@@ -1257,8 +1257,7 @@ You need a dictionary `loan_id -> outstanding` from `loans.csv`. How many rows d
 the new rule reject?
 :::
 
-## Summary
-
+## 11. Summary
 | Topic | Remember |
 |-------|----------|
 | Exceptions | an error while the code runs; it stops the script unless caught; read the traceback from the bottom |
@@ -1274,8 +1273,7 @@ the new rule reject?
 | Excel | `load_workbook(...)`, `ws.iter_rows(values_only=True)`; `Workbook()`, `ws.append`, `wb.save` |
 | Loader | one check per rule, one `try` per row, a reject file with the reason, a summary |
 
-## 11. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:

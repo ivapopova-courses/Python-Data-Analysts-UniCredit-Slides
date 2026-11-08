@@ -1839,8 +1839,7 @@ print(Decimal("100.50") * 2)
 print(Decimal("100.50") * 1.1)      # TypeError: Decimal and float
 ```
 
-## Summary
-
+## 15. Summary
 | Topic | Remember |
 |-------|----------|
 | Python | a free, general-purpose language; CPython; a new version every October; you use 3.12 or newer |
@@ -1855,8 +1854,7 @@ print(Decimal("100.50") * 1.1)      # TypeError: Decimal and float
 | f-strings | `f"{x:,.2f}"`, `f"{p:.2%}"`, `f"{n:05d}"`, `f"{s:<10}"`, `f"{x=}"` |
 | Money | floats are binary: `0.1 + 0.2 != 0.3`; `round()` rounds half to even; `Decimal("...")` + `quantize(..., ROUND_HALF_UP)` |
 
-## 15. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (first time: see [How to use these pages](/how-to#practice-and-homework); before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:
 
 ```bash

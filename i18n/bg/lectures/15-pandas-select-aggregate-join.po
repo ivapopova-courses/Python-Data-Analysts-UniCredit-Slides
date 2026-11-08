@@ -695,245 +695,245 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/15-pandas-select-aggregate-join.md:955
-msgid "Summary"
+msgid "8. Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:957
+#: site/lectures/15-pandas-select-aggregate-join.md:956
 msgid "SQL / SAS"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:957
+#: site/lectures/15-pandas-select-aggregate-join.md:956
 msgid "pandas"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:960
+#: site/lectures/15-pandas-select-aggregate-join.md:959
 msgid "`df[mask]`, `df.loc[mask, cols]`, `df.query(\"...\")`; `&`, `\\|`, `~` with brackets"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:962
+#: site/lectures/15-pandas-select-aggregate-join.md:961
 msgid "`df.loc[mask, \"col\"] = value` (one `loc`, never two brackets)"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:963
+#: site/lectures/15-pandas-select-aggregate-join.md:962
 msgid "derived column, `CASE WHEN`"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:964
+#: site/lectures/15-pandas-select-aggregate-join.md:963
 msgid "`PROC FORMAT` ranges / values"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:965
+#: site/lectures/15-pandas-select-aggregate-join.md:964
 msgid "`ORDER BY`, top N, `RANK`"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:968
+#: site/lectures/15-pandas-select-aggregate-join.md:967
 msgid "a mask on the grouped result"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:972
+#: site/lectures/15-pandas-select-aggregate-join.md:971
 msgid "`NaN`; `isna`; aggregates skip it; `fillna`, `dropna(subset=...)`"
 msgstr ""
 
 #. heading 2
-#: site/lectures/15-pandas-select-aggregate-join.md:974
-msgid "8. Practice"
+#: site/lectures/15-pandas-select-aggregate-join.md:973
+msgid "Practice"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:976
+#: site/lectures/15-pandas-select-aggregate-join.md:974
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root (with the virtual environment active):"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:984
+#: site/lectures/15-pandas-select-aggregate-join.md:982
 msgid "Task"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:984
+#: site/lectures/15-pandas-select-aggregate-join.md:982
 msgid "File"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:984
+#: site/lectures/15-pandas-select-aggregate-join.md:982
 msgid "What you do"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:986
+#: site/lectures/15-pandas-select-aggregate-join.md:984
 msgid "Rows and columns: masks, `loc`, `iloc`, `isin`, `between`, `query`"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:987
+#: site/lectures/15-pandas-select-aggregate-join.md:985
 msgid "Predict: masks, groups, joins, missing values"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:988
+#: site/lectures/15-pandas-select-aggregate-join.md:986
 msgid "New columns with `np.select`, `pd.cut`, `map` and `assign`"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:989
+#: site/lectures/15-pandas-select-aggregate-join.md:987
 msgid "Totals by group, named aggregation, `HAVING`, shares with `transform`"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:990
+#: site/lectures/15-pandas-select-aggregate-join.md:988
 msgid "Joins with clients and the rating scale, the anti-join, the EL"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:991
+#: site/lectures/15-pandas-select-aggregate-join.md:989
 msgid "`task6-missing.py` (Optional)"
 msgstr ""
 
 #. table cell
-#: site/lectures/15-pandas-select-aggregate-join.md:991
+#: site/lectures/15-pandas-select-aggregate-join.md:989
 msgid "Missing values in the export: count, fill, drop, repair"
 msgstr ""
 
 #. heading 2
-#: site/lectures/15-pandas-select-aggregate-join.md:993
+#: site/lectures/15-pandas-select-aggregate-join.md:991
 msgid "Homework"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:995
+#: site/lectures/15-pandas-select-aggregate-join.md:993
 msgid "`15-pandas-select-aggregate-join/homework.py` (in the homework repository): **the portfolio report in pandas** - one function per table: exposure and EL by segment and stage, the top 10 clients with their region and grade, the concentration of the top 10, the clients without loans, the loans of defaulted clients. The checks compare with the numbers of sessions 4, 6 and 13. Every check must print `OK`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1000
+#: site/lectures/15-pandas-select-aggregate-join.md:998
 msgid "The practice tasks you did not finish in class."
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1001
+#: site/lectures/15-pandas-select-aggregate-join.md:999
 msgid "Read the [final project](../project) brief and choose your report date and the tables you want in your report."
 msgstr ""
 
 #. heading 2
-#: site/lectures/15-pandas-select-aggregate-join.md:1004
+#: site/lectures/15-pandas-select-aggregate-join.md:1002
 msgid "Self-study"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1006
+#: site/lectures/15-pandas-select-aggregate-join.md:1004
 msgid "This part is not covered in class. It is for reading at home: how to write in pandas the SAS DATA step tricks you use every day, and how to write a long transformation as one readable chain."
 msgstr ""
 
 #. heading 3
-#: site/lectures/15-pandas-select-aggregate-join.md:1010
+#: site/lectures/15-pandas-select-aggregate-join.md:1008
 msgid "SAS idioms in pandas"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1012
+#: site/lectures/15-pandas-select-aggregate-join.md:1010
 msgid "**SAS `FIRST.` and `LAST.`** - the first or last row of each `BY` group. Sort, then keep the first row per key:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1026
+#: site/lectures/15-pandas-select-aggregate-join.md:1024
 msgid "`groupby(\"client_id\").head(1)` does the same, and `.head(2)` keeps the first two of each group - not possible with SAS `FIRST.` alone. `keep=\"last\"` is SAS `LAST.`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1029
+#: site/lectures/15-pandas-select-aggregate-join.md:1027
 msgid "**`NODUPKEY`** - `drop_duplicates(subset=[...])` ([session 14](./14-numpy-pandas-intro.md#distinct-values-missing-values-duplicates)); `duplicated(keep=False)` marks **all** copies, to look at them:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1041
+#: site/lectures/15-pandas-select-aggregate-join.md:1039
 msgid "**SAS `LAG` and `RETAIN` by group** - the value of the previous row of the same client, and a running total that restarts for each client:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1055
+#: site/lectures/15-pandas-select-aggregate-join.md:1053
 msgid "`shift(1)` inside the group gives `NaN` on the first row of each client - exactly what SAS `LAG` with `IF FIRST.client_id THEN prev = .` does, without the trap of `LAG` in a condition."
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1059
+#: site/lectures/15-pandas-select-aggregate-join.md:1057
 msgid "**A row counter per group** - `cumcount` (in SAS: `IF FIRST. THEN n = 0; n + 1;`):"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1069
+#: site/lectures/15-pandas-select-aggregate-join.md:1067
 msgid "**Exercises**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1071
+#: site/lectures/15-pandas-select-aggregate-join.md:1069
 msgid "For every client, the month (`month_end`) of the worst rating of the last 12 months (the highest number). If there are several, take the last one."
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1073
+#: site/lectures/15-pandas-select-aggregate-join.md:1071
 msgid "For every client, the number of months in which the rating changed (up or down). Which client changed the most?"
 msgstr ""
 
 #. box title
-#: site/lectures/15-pandas-select-aggregate-join.md:1076 site/lectures/15-pandas-select-aggregate-join.md:1130
+#: site/lectures/15-pandas-select-aggregate-join.md:1074 site/lectures/15-pandas-select-aggregate-join.md:1128
 msgid "Answer"
 msgstr ""
 
 #. heading 3
-#: site/lectures/15-pandas-select-aggregate-join.md:1095
+#: site/lectures/15-pandas-select-aggregate-join.md:1093
 msgid "Method chaining"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1097
+#: site/lectures/15-pandas-select-aggregate-join.md:1095
 msgid "Many steps with temporary names (`df1`, `df2`, `df3`) are hard to read and easy to mix up. A chain reads top to bottom, like a SQL query or a SAS DATA step - each line one step, in brackets so that it can span lines:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1120
+#: site/lectures/15-pandas-select-aggregate-join.md:1118
 msgid "To look inside a chain while you build it, stop it after any line and look at the result. Do not chain 30 steps: a chain per idea (load, clean, aggregate) is easier to test."
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1124
+#: site/lectures/15-pandas-select-aggregate-join.md:1122
 msgid "**Exercise**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1126
+#: site/lectures/15-pandas-select-aggregate-join.md:1124
 msgid "Write one chain: the loans of stage 1 in EUR, with the client's rating (`merge`), a column `rating_band` with `pd.cut` (1 - 3, 4 - 6, 7 - 10), and per band the number of loans and the mean interest rate, sorted by the band."
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1146
+#: site/lectures/15-pandas-select-aggregate-join.md:1144
 msgid "`groupby` on a category column sorts by the order of the labels, so no `sort_values` is needed."
 msgstr ""
 
 #. heading 2
-#: site/lectures/15-pandas-select-aggregate-join.md:1150
+#: site/lectures/15-pandas-select-aggregate-join.md:1148
 msgid "Read more"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1152
+#: site/lectures/15-pandas-select-aggregate-join.md:1150
 msgid "pandas: [Indexing and selecting data](https://pandas.pydata.org/docs/user_guide/indexing.html), [Group by: split-apply-combine](https://pandas.pydata.org/docs/user_guide/groupby.html), [Merge, join, concatenate](https://pandas.pydata.org/docs/user_guide/merging.html), [Working with missing data](https://pandas.pydata.org/docs/user_guide/missing_data.html), [Copy-on-write](https://pandas.pydata.org/docs/user_guide/copy_on_write.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1157
+#: site/lectures/15-pandas-select-aggregate-join.md:1155
 msgid "[Comparison with SAS](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sas.html) and [with SQL](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html) (the official tables)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/15-pandas-select-aggregate-join.md:1161
+#: site/lectures/15-pandas-select-aggregate-join.md:1159
 msgid "**Next session:** pandas for reports - pivot tables (SAS `PROC TABULATE` / `TRANSPOSE`), `melt`, dates and month ends, a rating migration matrix, an Excel file with several sheets, charts - and the start of the final project."
 msgstr ""

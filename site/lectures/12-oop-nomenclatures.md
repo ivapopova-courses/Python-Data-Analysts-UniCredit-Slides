@@ -1799,8 +1799,7 @@ Make `diff` a method of a subclass `VersionedNomenclature(Nomenclature)`, and pr
 one-line summary: `"v1 -> v2: 1 added, 1 removed, 1 changed"`.
 :::
 
-## Summary
-
+## 9. Summary
 | Topic | Remember |
 |-------|----------|
 | The use case | one class for a nomenclature: data, metadata, validation rules, processing methods |
@@ -1816,8 +1815,7 @@ one-line summary: `"v1 -> v2: 1 added, 1 removed, 1 changed"`.
 | Consistency | one object for every dataset; the same report of what does not fit |
 | Versions | the metadata says which; a `diff` says what changed |
 
-## 9. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:

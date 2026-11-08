@@ -1362,8 +1362,7 @@ On GitHub, open your own Homework repository: find the list of commits, open one
 look at its changes. Compare with `git log -p -1` in the terminal.
 :::
 
-## Summary
-
+## 9. Summary
 | Topic | Remember |
 |-------|----------|
 | `import` | `import m`, `from m import f`, `import m as x`; never `import *`; runs the file once, keeps it in `sys.modules` |
@@ -1380,8 +1379,7 @@ look at its changes. Compare with `git log -p -1` in the terminal.
 | Branches | `switch -c`, `merge`, conflicts: edit, `add`, `commit` |
 | Remotes | `clone`, `pull`, `push`; a pull request = a review before the merge |
 
-## 9. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:

@@ -1041,8 +1041,7 @@ Mask the account part of every IBAN in a text for a report: keep `BG` and the fi
 `r"\1" + "*" * 14` as the replacement.
 :::
 
-## Summary
-
+## 9. Summary
 | Topic | Remember |
 |-------|----------|
 | Patterns | always `r"..."`; letters match themselves; `.` any character, `\.` a point |
@@ -1056,8 +1055,7 @@ Mask the account part of every IBAN in a text for a report: keep `BG` and the fi
 | Validation | the shape with a regex, then the meaning (a real date, check digits) |
 | SAS / SQL | `PRXMATCH` = `search`; `PRXPOSN` = `group`; `PRXCHANGE` = `sub`; `LIKE` `_` / `%` = `.` / `.*` |
 
-## 9. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:

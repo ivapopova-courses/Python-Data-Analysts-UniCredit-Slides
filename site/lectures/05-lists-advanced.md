@@ -762,8 +762,7 @@ print(list(enumerate(b, start=10)))
 ```
 :::
 
-## Summary
-
+## 5. Summary
 | Topic | Remember |
 |-------|----------|
 | Remove | `remove(value)` - the first one, `ValueError` if missing; `pop(i)` gives the item back; `del lst[i]`; `clear()` empties |
@@ -776,8 +775,7 @@ print(list(enumerate(b, start=10)))
 | `zip` | parallel lists -> tuples; stops at the shortest list |
 | `enumerate` | `(number, item)`; `start=1` for a rank |
 
-## 5. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:

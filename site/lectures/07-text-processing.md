@@ -1008,8 +1008,7 @@ Check the parsed dates against `clients.csv`, where `client_since` is clean ISO:
 all 150 equal? (Read both files, compare the lists with `==`.)
 :::
 
-## Summary
-
+## 10. Summary
 | Topic | Remember |
 |-------|----------|
 | Immutable | every method returns a new string: `s = s.strip()` |
@@ -1025,8 +1024,7 @@ all 150 equal? (Read both files, compare the lists with `==`.)
 | Numbers | the last `,` or `.` with 1 - 2 digits after it is the decimal separator; know the source |
 | Dates | `date.fromisoformat`; `datetime.strptime(s, "%d.%m.%Y").date()`; `strftime`; `b - a` gives a `timedelta` |
 
-## 10. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:

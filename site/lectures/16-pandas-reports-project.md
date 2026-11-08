@@ -1071,8 +1071,7 @@ Rules that make a report reliable:
 - **Run it twice**: the second run gives the same file. Then run it for 31.08.2026.
 - **Commit** after each step that works ([session 10](./10-modules-and-git.md#good-commits)).
 
-## Summary
-
+## 9. Summary
 | SQL / SAS | pandas |
 |-----------|--------|
 | `PROC TABULATE`, `PIVOT` | `pivot_table(index, columns, values, aggfunc, margins=True, fill_value=0)` |
@@ -1088,8 +1087,7 @@ Rules that make a report reliable:
 | `ODS EXCEL`, `PROC EXPORT` | `pd.ExcelWriter` + `to_excel(writer, sheet_name=...)`; openpyxl for formats |
 | `PROC SGPLOT` | `df.plot(kind=...)`, `plt.savefig` |
 
-## 9. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root (with the virtual environment active):

@@ -790,320 +790,320 @@ msgstr ""
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:1040
-msgid "Summary"
+msgid "8. Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1042
+#: site/lectures/06-dictionaries.md:1041
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1042
+#: site/lectures/06-dictionaries.md:1041
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1044
+#: site/lectures/06-dictionaries.md:1043
 msgid "Dictionary"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1044
+#: site/lectures/06-dictionaries.md:1043
 msgid "`{key: value}`; keys unique and hashable; keeps the insertion order"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1045
+#: site/lectures/06-dictionaries.md:1044
 msgid "Read"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1045
+#: site/lectures/06-dictionaries.md:1044
 msgid "`d[key]` (KeyError if missing); `d.get(key, default)`; `key in d` checks the keys"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1046
+#: site/lectures/06-dictionaries.md:1045
 msgid "Change"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1046
+#: site/lectures/06-dictionaries.md:1045
 msgid "`d[key] = v` adds or changes; `update`, `\\|`; `del`, `pop(key, default)`; `setdefault`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1047
+#: site/lectures/06-dictionaries.md:1046
 msgid "Loop"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1047
+#: site/lectures/06-dictionaries.md:1046
 msgid "`for k in d`; `d.values()`; `for k, v in d.items()`; sort with `sorted(d.items(), key=...)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1048
+#: site/lectures/06-dictionaries.md:1047
 msgid "Comprehension"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1049
+#: site/lectures/06-dictionaries.md:1048
 msgid "Lookups"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1049
+#: site/lectures/06-dictionaries.md:1048
 msgid "a dict = a SAS format / hash object / lookup table; `get(code, \"Other\")` = `OTHER=`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1050
+#: site/lectures/06-dictionaries.md:1049
 msgid "Join"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1050
+#: site/lectures/06-dictionaries.md:1049
 msgid "a dict of the right table, `get` for every row of the left one = `LEFT JOIN`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1051
+#: site/lectures/06-dictionaries.md:1050
 msgid "Ranges"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1051
+#: site/lectures/06-dictionaries.md:1050
 msgid "not keys: a function with `if`, or `bisect`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1053
+#: site/lectures/06-dictionaries.md:1052
 msgid "Several keys"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1053
+#: site/lectures/06-dictionaries.md:1052
 msgid "a tuple as the key: `(segment, stage)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1054
+#: site/lectures/06-dictionaries.md:1053
 msgid "Records"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1054
+#: site/lectures/06-dictionaries.md:1053
 msgid "`csv.DictReader`: rows as dicts; a dict of dicts keyed by id; optional: `json.dumps` / `loads`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1055
+#: site/lectures/06-dictionaries.md:1054
 msgid "Copies"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1055
+#: site/lectures/06-dictionaries.md:1054
 msgid "`copy()` is shallow; `copy.deepcopy` for nested dicts"
 msgstr ""
 
 #. heading 2
-#: site/lectures/06-dictionaries.md:1057
-msgid "8. Practice"
+#: site/lectures/06-dictionaries.md:1056
+msgid "Practice"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1059
+#: site/lectures/06-dictionaries.md:1057
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1067
+#: site/lectures/06-dictionaries.md:1065
 msgid "Task"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1067
+#: site/lectures/06-dictionaries.md:1065
 msgid "File"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1067
+#: site/lectures/06-dictionaries.md:1065
 msgid "What you do"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1069
+#: site/lectures/06-dictionaries.md:1067
 msgid "A product nomenclature: create, read with a default, add, change, remove"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1070
+#: site/lectures/06-dictionaries.md:1068
 msgid "Predict: duplicate keys, `get` vs `[]`, `in`, `pop`, `setdefault`, `\\|`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1071
+#: site/lectures/06-dictionaries.md:1069
 msgid "Rating -> grade / PD; codes -> names; loans with the region of their client"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1072
+#: site/lectures/06-dictionaries.md:1070
 msgid "Clients per region, outstanding per segment, `most_common`"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1073
+#: site/lectures/06-dictionaries.md:1071
 msgid "Count / sum / average / max per product, `HAVING`, a sorted report"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1074
+#: site/lectures/06-dictionaries.md:1072
 msgid "`task6-nested-groups.py` (Optional)"
 msgstr ""
 
 #. table cell
-#: site/lectures/06-dictionaries.md:1074
+#: site/lectures/06-dictionaries.md:1072
 msgid "Clients as a dict of dicts; segment x stage totals with tuple keys"
 msgstr ""
 
 #. heading 2
-#: site/lectures/06-dictionaries.md:1076
+#: site/lectures/06-dictionaries.md:1074
 msgid "Homework"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1078
+#: site/lectures/06-dictionaries.md:1076
 msgid "`06-dictionaries/homework.py` (in the homework repository): **homework 4 again, with dictionaries** - lookups instead of loops; the expected loss of the portfolio (it must be the same 1,140,106.56), the expected loss by segment and by grade, and a sorted text report. Every check must print `OK`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1082
+#: site/lectures/06-dictionaries.md:1080
 msgid "The practice tasks you did not finish in class."
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1083
+#: site/lectures/06-dictionaries.md:1081
 msgid "Optional: a **migration of client counts by region**: count the clients per region in `clients.csv`, then per region **and segment**, and print a small table with the regions as rows and the segments as columns (the Self-study below shows how)."
 msgstr ""
 
 #. heading 2
-#: site/lectures/06-dictionaries.md:1087
+#: site/lectures/06-dictionaries.md:1085
 msgid "Self-study"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1089
+#: site/lectures/06-dictionaries.md:1087
 msgid "This part is not covered in class. It is for reading at home: a cross table by hand, and why a dictionary is fast."
 msgstr ""
 
 #. heading 3
-#: site/lectures/06-dictionaries.md:1092
+#: site/lectures/06-dictionaries.md:1090
 msgid "A pivot by hand: `PROC TABULATE` without pandas"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1094
+#: site/lectures/06-dictionaries.md:1092
 msgid "A **dictionary of dictionaries** is a cross table: the outer key is the row, the inner key is the column. Build it, then print it with the rows and columns sorted:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1116
+#: site/lectures/06-dictionaries.md:1114
 msgid "`defaultdict(lambda: defaultdict(int))`: a missing row is created as a new `defaultdict(int)` - so `table[region][segment] += 1` works for any new pair."
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1119
+#: site/lectures/06-dictionaries.md:1117
 msgid "And back - from the cross table to rows (`region, segment, count`), the job of SAS `PROC TRANSPOSE`, or of `melt` in pandas ([session 16](./16-pandas-reports-project.md#_2-from-wide-to-long-melt)):"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1128
+#: site/lectures/06-dictionaries.md:1126
 msgid "**Exercises**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1130
+#: site/lectures/06-dictionaries.md:1128
 msgid "Build the cross table **product x stage** from `loans.csv`, with the total outstanding (in EUR thousands, rounded) in each cell."
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1132
+#: site/lectures/06-dictionaries.md:1130
 msgid "Add a total row at the bottom."
 msgstr ""
 
 #. box title
-#: site/lectures/06-dictionaries.md:1134 site/lectures/06-dictionaries.md:1197
+#: site/lectures/06-dictionaries.md:1132 site/lectures/06-dictionaries.md:1195
 msgid "Answer"
 msgstr ""
 
 #. heading 3
-#: site/lectures/06-dictionaries.md:1151
+#: site/lectures/06-dictionaries.md:1149
 msgid "How a dictionary works: hashing"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1153
+#: site/lectures/06-dictionaries.md:1151
 msgid "Why is `d[key]` fast, and why must keys not change?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1155
+#: site/lectures/06-dictionaries.md:1153
 msgid "A dictionary keeps its pairs in a table of slots. To store a key, Python computes `hash(key)` - a big integer made from the value - and uses it to choose the slot. To find the key later, it computes the hash again and looks **in that slot only**. So a lookup costs the same for 10 keys or 10 million keys:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1166
+#: site/lectures/06-dictionaries.md:1164
 msgid "A list is not hashable because it can **change**: after a change, its hash would change, and the dictionary would look in the wrong slot. That is why keys must be immutable values."
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1170
+#: site/lectures/06-dictionaries.md:1168
 msgid "The hash of a string changes **between runs** of Python (a security feature), but not during one run. Never save hashes to a file."
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1173
+#: site/lectures/06-dictionaries.md:1171
 msgid "The speed, measured:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1193
+#: site/lectures/06-dictionaries.md:1191
 msgid "**Exercise**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1195
+#: site/lectures/06-dictionaries.md:1193
 msgid "Why is `{(1, [2, 3]): \"x\"}` an error, but `{(1, (2, 3)): \"x\"}` is fine?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1198
+#: site/lectures/06-dictionaries.md:1196
 msgid "A tuple is hashable only if everything inside it is hashable. `(1, [2, 3])` contains a list, which can change, so the tuple has no hash. `(1, (2, 3))` contains only immutable values."
 msgstr ""
 
 #. heading 2
-#: site/lectures/06-dictionaries.md:1203
+#: site/lectures/06-dictionaries.md:1201
 msgid "Read more"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1205
+#: site/lectures/06-dictionaries.md:1203
 msgid "Python tutorial: [Dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries), [Looping techniques](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1207
+#: site/lectures/06-dictionaries.md:1205
 msgid "Reference: [Mapping types - dict](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict), [`collections`](https://docs.python.org/3/library/collections.html) (`defaultdict`, `Counter`), [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1210
+#: site/lectures/06-dictionaries.md:1208
 msgid "Real Python: [Dictionaries in Python](https://realpython.com/python-dicts/), [Python's Counter](https://realpython.com/python-counter/)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:1213
+#: site/lectures/06-dictionaries.md:1211
 msgid "**Next session:** text processing - clean ids, names and codes, read numbers written the Bulgarian way, and dates from text, with the methods of `str` and `datetime`."
 msgstr ""

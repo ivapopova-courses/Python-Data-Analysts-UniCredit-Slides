@@ -1275,8 +1275,7 @@ In a file that is run as a script, the main code is often put under
 without running the report. Modules and `import` of your own files are the topic of
 [session 10](./10-modules-and-git.md#_2-your-own-module).
 
-## Summary
-
+## 12. Summary
 | Topic | Remember |
 |-------|----------|
 | Define, call | `def name(params):` + an indented body; `name(args)` runs it - the brackets are required |
@@ -1291,8 +1290,7 @@ without running the report. Modules and `import` of your own files are the topic
 | Sorting | `sorted(items, key=lambda item: item[2], reverse=True)` - SQL `ORDER BY` any expression |
 | SAS macros | a macro writes code; a function runs and returns a value |
 
-## 12. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:

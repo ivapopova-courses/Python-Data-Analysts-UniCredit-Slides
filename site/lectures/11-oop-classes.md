@@ -1412,8 +1412,7 @@ Add a property `share_late` to `Client`: the share of its outstanding that is in
 of stage 2 or 3. Print it for the five largest clients.
 :::
 
-## Summary
-
+## 9. Summary
 | Topic | Remember |
 |-------|----------|
 | Objects | every value is an object of a class; a class is a blueprint, an object one thing made from it |
@@ -1427,8 +1426,7 @@ of stage 2 or 3. Print it for the five largest clients.
 | Dataclass | `@dataclass` + fields with types; `field(default_factory=list)`; `frozen=True`; `order=True` |
 | Together | a `Client` with a list of `Loan` objects; build from files with a dict by id |
 
-## 9. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:

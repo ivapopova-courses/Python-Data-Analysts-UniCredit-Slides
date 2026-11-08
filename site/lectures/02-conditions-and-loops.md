@@ -1477,8 +1477,7 @@ Each try halves the interval, so after 22 tries it is smaller than 0.00001%. The
 same idea finds the effective interest rate (the APR) of a loan with fees, or the
 internal rate of return (IRR) of a cash flow.
 
-## Summary
-
+## 16. Summary
 | Topic | Remember |
 |-------|----------|
 | Truth | `0`, `0.0`, `""`, `None`, empty collections are false; everything else is true |
@@ -1491,8 +1490,7 @@ internal rate of return (IRR) of a cash flow.
 | `for` | each item of a sequence: a string, a list, `range`, the lines of a file; `range(1, 13)` is 1 ... 12 |
 | `break` / `continue` | leave the loop / go to the next iteration; `while True` + `break` = `do until`; a flag for "not found" |
 
-## 16. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:

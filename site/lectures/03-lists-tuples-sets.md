@@ -1361,8 +1361,7 @@ print(loans["client_id"].isin(clients["client_id"]).all())    # every loan has a
 ```
 :::
 
-## Summary
-
+## 13. Summary
 | Topic | Remember |
 |-------|----------|
 | Sequences | `list`, `tuple`, `range`, `str`: ordered; `len`, `in`, `+`, `*`, `min`, `max`, `count`, `index` |
@@ -1376,8 +1375,7 @@ print(loans["client_id"].isin(clients["client_id"]).all())    # every loan has a
 | Sets | `{...}` / `set()`, unique, unordered; `add`, `discard`; fast `in`; print with `sorted()` |
 | Set operations | `\|` is SQL `UNION`, `&` is `INTERSECT`, `-` is `EXCEPT`; `^` symmetric difference; `<=` subset |
 
-## 13. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:

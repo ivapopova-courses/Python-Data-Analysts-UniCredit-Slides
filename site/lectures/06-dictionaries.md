@@ -1037,8 +1037,7 @@ dict comprehension (only two fields per client). Then print the rating of `C0132
 and the number of corporate clients with a rating of 6 or worse.
 :::
 
-## Summary
-
+## 8. Summary
 | Topic | Remember |
 |-------|----------|
 | Dictionary | `{key: value}`; keys unique and hashable; keeps the insertion order |
@@ -1054,8 +1053,7 @@ and the number of corporate clients with a rating of 6 or worse.
 | Records | `csv.DictReader`: rows as dicts; a dict of dicts keyed by id; optional: `json.dumps` / `loads` |
 | Copies | `copy()` is shallow; `copy.deepcopy` for nested dicts |
 
-## 8. Practice
-
+## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
 in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
 terminal, in the repository root:
