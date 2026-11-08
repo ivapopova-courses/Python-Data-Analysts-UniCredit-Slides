@@ -1350,116 +1350,126 @@ msgstr "**Част 1:** `loans.csv` има 11 колони. Вземете са�
 
 #. paragraph
 #: site/lectures/04-functions.md:1379
+msgid "**Parts 1 - 3: reading a file in a function.** How `open` and `with` work comes in [session 9](./09-errors-and-files.md#open-read-close-with). Until then, copy this code. It is the loop of [session 3](./03-lists-tuples-sets.md#notes-on-the-tasks), inside the function: the file is `path`, the parameter, and the function returns the list after the `with` block."
+msgstr "**Части 1 - 3: четене на файл във функция.** Как работят `open` и `with` ще видим в [занятие 9](./09-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Това е цикълът от [занятие 3](./03-lists-tuples-sets.md#notes-on-the-tasks), вътре във функцията: файлът е `path`, параметърът, а функцията връща list-а след блока `with`."
+
+#. paragraph
+#: site/lectures/04-functions.md:1398
+msgid "The fields of `loans.csv`: `fields[0]` `loan_id`, `fields[1]` `client_id`, `fields[2]` `product`, `fields[7]` `outstanding`, `fields[9]` `days_past_due`, `fields[10]` `stage`. Parts 2 and 3 are the same, with other names and fields: `clients.csv` has `client_id` in `fields[0]` and `rating` in `fields[4]`; `rating_scale.csv` has the columns `rating,grade,pd_min,pd_max,description` - take the first 4."
+msgstr "Полетата на `loans.csv`: `fields[0]` `loan_id`, `fields[1]` `client_id`, `fields[2]` `product`, `fields[7]` `outstanding`, `fields[9]` `days_past_due`, `fields[10]` `stage`. Части 2 и 3 са същите, с други имена и полета: `clients.csv` има `client_id` във `fields[0]` и `rating` във `fields[4]`; `rating_scale.csv` има колоните `rating,grade,pd_min,pd_max,description` - вземете първите 4."
+
+#. paragraph
+#: site/lectures/04-functions.md:1404
 msgid "**Parts that use an earlier part:** Part 4 uses Part 3, Part 5 uses Part 2, Part 7 uses Parts 1 - 6, Part 8 uses Part 1. Do the earlier part first."
 msgstr "**Части, които използват по-ранна част:** част 4 използва част 3, част 5 използва част 2, част 7 използва части 1 - 6, част 8 използва част 1. Първо направете по-ранната част."
 
 #. paragraph
-#: site/lectures/04-functions.md:1381
+#: site/lectures/04-functions.md:1406
 msgid "The practice tasks you did not finish in class."
 msgstr "Задачите за упражнение, които не сте довършили в клас."
 
 #. paragraph
-#: site/lectures/04-functions.md:1382
+#: site/lectures/04-functions.md:1407
 msgid "Optional: a **loan calculator** made of functions - the same program as the optional homework of [session 2](./02-conditions-and-loops.md#homework), but organised like this: `get_user_data()` reads and checks the input (amount > 0, rate 0 - 50, years 1 - 30; ask again while a value is wrong) and returns a tuple; `calc_payment(amount, rate, years)` returns the payment; `print_schedule(amount, rate, years)` prints the schedule. Write a separate function for each check: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, each returning `True` or `False`."
 msgstr "По желание: **кредитен калкулатор**, съставен от функции - същата програма като домашното по желание от [занятие 2](./02-conditions-and-loops.md#homework), но организирана така: `get_user_data()` чете и проверява входа (сума > 0, лихва 0 - 50, години 1 - 30; пита отново, докато стойността е грешна) и връща tuple; `calc_payment(amount, rate, years)` връща вноската; `print_schedule(amount, rate, years)` отпечатва плана. Напишете отделна функция за всяка проверка: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, всяка връща `True` или `False`."
 
 #. heading 2
-#: site/lectures/04-functions.md:1390
+#: site/lectures/04-functions.md:1415
 msgid "Self-study"
 msgstr "Самостоятелно изучаване"
 
 #. paragraph
-#: site/lectures/04-functions.md:1392
+#: site/lectures/04-functions.md:1417
 msgid "This part is not covered in class - it is for reading at home."
 msgstr "Тази част не се разглежда в час - тя е за четене вкъщи."
 
 #. heading 3
-#: site/lectures/04-functions.md:1394
+#: site/lectures/04-functions.md:1419
 msgid "Decorators"
 msgstr "Декоратори"
 
 #. paragraph
-#: site/lectures/04-functions.md:1396
+#: site/lectures/04-functions.md:1421
 msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in [session 11](./11-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` in web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs` and a function inside a function (the Advanced boxes of sections 4 and 6)."
 msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в [занятие 11](./11-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` в уеб frameworks). Тази част обяснява `@`, което ще виждате. Тя използва `*args, **kwargs` и функция във функция (каретата \"За напреднали\" в раздели 4 и 6)."
 
 #. heading 4
-#: site/lectures/04-functions.md:1401
+#: site/lectures/04-functions.md:1426
 msgid "The idea"
 msgstr "Идеята"
 
 #. paragraph
-#: site/lectures/04-functions.md:1403
+#: site/lectures/04-functions.md:1428
 msgid "A **decorator** is a function that takes a function and returns a new, \"decorated\" function: it adds something **before and after** the original, without changing its code. `decorated = decorator(original)`:"
 msgstr "**Декораторът** (decorator) е функция, която приема функция и връща нова, \"декорирана\" функция: добавя нещо **преди и след** оригинала, без да променя кода му. `decorated = decorator(original)`:"
 
 #. heading 4
-#: site/lectures/04-functions.md:1422
+#: site/lectures/04-functions.md:1447
 msgid "The `@` syntax"
 msgstr "Синтаксисът с `@`"
 
 #. paragraph
-#: site/lectures/04-functions.md:1424
+#: site/lectures/04-functions.md:1449
 msgid "`@decorator` above a `def` is a short way to write `name = decorator(name)`:"
 msgstr "`@decorator` над `def` е кратък начин да напишете `name = decorator(name)`:"
 
 #. heading 4
-#: site/lectures/04-functions.md:1441
+#: site/lectures/04-functions.md:1466
 msgid "Arguments and the return value"
 msgstr "Аргументите и върнатата стойност"
 
 #. paragraph
-#: site/lectures/04-functions.md:1443
+#: site/lectures/04-functions.md:1468
 msgid "The wrapper must pass the arguments on, and return the result of the original. `*args, **kwargs` (section 4) take any arguments; `functools.wraps` keeps the name and the docstring of the original. A useful decorator - how long each step of a report takes:"
 msgstr "Обвиващата функция (wrapper) трябва да предаде аргументите нататък и да върне резултата на оригинала. `*args, **kwargs` (раздел 4) приемат всякакви аргументи; `functools.wraps` запазва името и docstring-а на оригинала. Полезен декоратор - колко време отнема всяка стъпка на един отчет:"
 
 #. paragraph
-#: site/lectures/04-functions.md:1473
+#: site/lectures/04-functions.md:1498
 msgid "**Exercise.** Write a decorator `announce` that prints `start: <name of the function>` before the call and `end` after it, and use it on a function `report()` that prints `the report`. (Hint: `func.__name__` is the name of the function.)"
 msgstr "**Упражнение.** Напишете декоратор `announce`, който отпечатва `start: <name of the function>` преди извикването и `end` след него, и го използвайте върху функция `report()`, която отпечатва `the report`. (Подсказка: `func.__name__` е името на функцията.)"
 
 #. box title
-#: site/lectures/04-functions.md:1477
+#: site/lectures/04-functions.md:1502
 msgid "Answer"
 msgstr "Отговор"
 
 #. paragraph
-#: site/lectures/04-functions.md:1498
+#: site/lectures/04-functions.md:1523
 msgid "Read more: [Primer on Python decorators](https://realpython.com/primer-on-python-decorators/) (Real Python)."
 msgstr "Още за четене: [Primer on Python decorators](https://realpython.com/primer-on-python-decorators/) (Real Python)."
 
 #. heading 2
-#: site/lectures/04-functions.md:1501
+#: site/lectures/04-functions.md:1526
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/04-functions.md:1503
+#: site/lectures/04-functions.md:1528
 msgid "Python tutorial: [Defining functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions), [More on defining functions](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions) (defaults, keyword arguments, `*args`, `**kwargs`, `lambda`, docstrings, annotations)"
 msgstr "Python tutorial: [Defining functions](https://docs.python.org/3/tutorial/controlflow.html#defining-functions), [More on defining functions](https://docs.python.org/3/tutorial/controlflow.html#more-on-defining-functions) (стойности по подразбиране, именувани аргументи, `*args`, `**kwargs`, `lambda`, docstrings, анотации)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1506
+#: site/lectures/04-functions.md:1531
 msgid "[Scopes and namespaces](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces) in the tutorial; [Namespaces and scope in Python](https://realpython.com/python-namespaces-scope/) (Real Python)"
 msgstr "[Scopes and namespaces](https://docs.python.org/3/tutorial/classes.html#python-scopes-and-namespaces) в tutorial-а; [Namespaces and scope in Python](https://realpython.com/python-namespaces-scope/) (Real Python)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1509
+#: site/lectures/04-functions.md:1534
 msgid "[Defining your own Python function](https://realpython.com/defining-your-own-python-function/) (Real Python)"
 msgstr "[Defining your own Python function](https://realpython.com/defining-your-own-python-function/) (Real Python)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1511
+#: site/lectures/04-functions.md:1536
 msgid "Type hints: [typing - the basics](https://docs.python.org/3/library/typing.html), [the mypy cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)"
 msgstr "Type hints: [typing - the basics](https://docs.python.org/3/library/typing.html), [the mypy cheat sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1513
+#: site/lectures/04-functions.md:1538
 msgid "Videos: [Python tutorial for beginners 8: functions](https://www.youtube.com/watch?v=9Os0o3wzS_I) (Corey Schafer), [Python lambda functions](https://www.youtube.com/watch?v=j6FCewxjrBM) (Visually Explained)"
 msgstr "Видеа: [Python tutorial for beginners 8: functions](https://www.youtube.com/watch?v=9Os0o3wzS_I) (Corey Schafer), [Python lambda functions](https://www.youtube.com/watch?v=j6FCewxjrBM) (Visually Explained)"
 
 #. paragraph
-#: site/lectures/04-functions.md:1517
+#: site/lectures/04-functions.md:1542
 msgid "**Next session:** lists, advanced - more list methods (remove, find, sort), list comprehensions, generator expressions, `zip` and `enumerate`."
 msgstr "**Следващото занятие:** lists за напреднали - още методи на list (премахване, търсене, сортиране), list comprehensions, generator expressions, `zip` и `enumerate`."
 

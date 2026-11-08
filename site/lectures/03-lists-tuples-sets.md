@@ -1413,10 +1413,8 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
 - **Task 6, part 1:** `both_currencies` - in the loop, collect the clients of the EUR
   loans in one set and of the USD loans in another; after the loop, intersect the
   two sets with `&`.
-- **Reading a file** (task 6, the homework): as in [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()`
-  skips the header, then `fields = line.strip().split(",")` in the loop. The
-  columns are in the order of the header line (task 6 lists them; the
-  [sample data](../sample-data) page too): `fields[0]` is the first one.
+- **Reading a file** (task 6, the homework): the code to copy is in "Notes on the
+  tasks" below.
 - **Homework, part 1:** convert while you append: `loans.append((fields[0], ...,
   float(fields[7]), int(fields[10])))` - note the two pairs of brackets (section 8).
 - **Homework, part 2:** sorting tuples compares their first items first - section 8,
@@ -1425,6 +1423,59 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
   into a set, then read `clients.csv` and keep the region when the client is in
   that set.
 :::
+
+### Notes on the tasks
+
+**Reading a file.** How `open` and `with` work comes in
+[session 9](./09-errors-and-files.md#open-read-close-with). Until then, copy this
+code. It is the loop of [session 2](./02-conditions-and-loops.md#the-rows-of-a-file),
+but it keeps each line as one list, `fields`, and you take a field by its index:
+
+```python
+with open(DATA / "loans.csv", encoding="utf-8") as file:
+    file.readline()                     # skip the header (the column names)
+    for line in file:
+        fields = line.strip().split(",")
+        # your code for each loan
+```
+
+The fields of `loans.csv`, by index (counted from 0, section 3):
+
+| 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| `loan_id` | `client_id` | `product` | `currency` | `start_date` | `maturity_date` | `amount` | `outstanding` | `interest_rate` | `days_past_due` | `stage` |
+
+For `clients.csv`, change the file name. Its fields:
+
+| 0 | 1 | 2 | 3 | 4 | 5 |
+|---|---|---|---|---|---|
+| `client_id` | `segment` | `region` | `industry` | `rating` | `client_since` |
+
+```python
+with open(DATA / "clients.csv", encoding="utf-8") as file:
+    file.readline()                     # skip the header
+    for line in file:
+        fields = line.strip().split(",")
+        # your code for each client
+```
+
+- All the fields are text. Convert the ones you need: `float(fields[7])` for
+  `outstanding`, `int(fields[10])` for `stage`.
+- `DATA / "loans.csv"` is the path of the file in the tasks: `DATA` is the `data/`
+  folder of the repository (the tasks import it from `check.py`). The examples on
+  this page use `"data/loans.csv"` - the same file.
+- Your code goes inside the loop, under the `fields = ...` line, indented like it.
+  The results that you collect (lists, sets) are made **before** the loop, and
+  sorted or sliced **after** it.
+
+Where you need it:
+
+- **Task 6, part 1:** the loop over `loans.csv`. **Part 2:** the loop over
+  `clients.csv`.
+- **Homework, part 1:** the loop over `loans.csv`; in it, append one tuple per
+  loan to `loans`. Parts 2 - 4 use the list `loans` - no file.
+- **Homework, part 5:** first collect the stage 3 clients into a set (a loop over
+  the list `loans`, or over the file), then the loop over `clients.csv`.
 
 ## Homework
 

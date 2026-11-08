@@ -1553,6 +1553,37 @@ run the file.
   lines under the `FAIL` character by character - one line of the report at a time.
 :::
 
+### Notes on the tasks
+
+**Reading a file.** How `open` and `with` work comes in
+[session 9](./09-errors-and-files.md#open-read-close-with). Until then, copy this
+code. It reads `loans.csv` line by line and gives each field of the line a name:
+
+```python
+with open(DATA / "loans.csv", encoding="utf-8") as file:
+    file.readline()                     # skip the header (the column names)
+    for line in file:
+        (loan_id, client_id, product, currency, start_date, maturity_date,
+         amount, outstanding, rate, days_past_due, stage) = line.strip().split(",")
+        # your code for each loan
+```
+
+- All the fields are text. Convert the ones you need: `float(outstanding)`,
+  `int(days_past_due)`. Compare `stage` with `"3"` (text), or convert it first.
+- `DATA / "loans.csv"` is the path of the file in the tasks: `DATA` is the `data/`
+  folder of the repository (the tasks import it from `check.py`). The examples on
+  this page use `"data/loans.csv"` - the same file.
+- Your code goes inside the loop, under the `(loan_id, ...) = ...` line, indented
+  like it.
+
+Where you need it:
+
+- **Task 5, part 2:** the starter code has no loop here. Copy the code above, and
+  stop with `break` at the first loan with `stage == "3"`.
+- **Homework, part 1:** copy the code above into the "your code" block, after the
+  lines that set the counts and totals to 0. In the loop, add the loan to its bucket.
+- **Homework, part 3:** copy the code again: one more loop over the file.
+
 ## Homework
 
 1. `02-conditions-and-loops/homework.py` (in the homework repository): a **report of

@@ -1418,63 +1418,108 @@ msgstr "**Домашно, част 4:** изградете `report` с `+=` и f
 msgid "**Homework, part 4 - a `FAIL`:** the check compares the whole text, so one space more or less is a `FAIL`. `print(report)`, then compare the `got:` and `expected:` lines under the `FAIL` character by character - one line of the report at a time."
 msgstr "**Домашно, част 4 - `FAIL`:** проверката сравнява целия текст, затова един интервал повече или по-малко дава `FAIL`. Направете `print(report)`, после сравнете редовете `got:` и `expected:` под `FAIL` знак по знак - по един ред от отчета."
 
-#. heading 2
+#. heading 3
 #: site/lectures/02-conditions-and-loops.md:1556
+msgid "Notes on the tasks"
+msgstr "Бележки към задачите"
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1558
+msgid "**Reading a file.** How `open` and `with` work comes in [session 9](./09-errors-and-files.md#open-read-close-with). Until then, copy this code. It reads `loans.csv` line by line and gives each field of the line a name:"
+msgstr "**Четене на файл.** Как работят `open` и `with` ще видим в [занятие 9](./09-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Той чете `loans.csv` ред по ред и дава име на всяко поле на реда:"
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1571
+msgid "All the fields are text. Convert the ones you need: `float(outstanding)`, `int(days_past_due)`. Compare `stage` with `\"3\"` (text), or convert it first."
+msgstr "Всички полета са текст. Преобразувайте тези, които ви трябват: `float(outstanding)`, `int(days_past_due)`. Сравнявайте `stage` с `\"3\"` (текст) или първо го преобразувайте."
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1573
+msgid "`DATA / \"loans.csv\"` is the path of the file in the tasks: `DATA` is the `data/` folder of the repository (the tasks import it from `check.py`). The examples on this page use `\"data/loans.csv\"` - the same file."
+msgstr "`DATA / \"loans.csv\"` е пътят до файла в задачите: `DATA` е папката `data/` на repository-то (задачите го импортират от `check.py`). Примерите на тази страница използват `\"data/loans.csv\"` - същия файл."
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1576
+msgid "Your code goes inside the loop, under the `(loan_id, ...) = ...` line, indented like it."
+msgstr "Вашият код е вътре в цикъла, под реда `(loan_id, ...) = ...`, със същия отстъп."
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1579
+msgid "Where you need it:"
+msgstr "Къде ви трябва:"
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1581
+msgid "**Task 5, part 2:** the starter code has no loop here. Copy the code above, and stop with `break` at the first loan with `stage == \"3\"`."
+msgstr "**Задача 5, част 2:** тук началният код няма цикъл. Копирайте кода отгоре и спрете с `break` при първия кредит със `stage == \"3\"`."
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1583
+msgid "**Homework, part 1:** copy the code above into the \"your code\" block, after the lines that set the counts and totals to 0. In the loop, add the loan to its bucket."
+msgstr "**Домашно, част 1:** копирайте кода отгоре в блока \"your code\", след редовете, които задават 0 на броевете и сумите. В цикъла добавете кредита към неговата група."
+
+#. paragraph
+#: site/lectures/02-conditions-and-loops.md:1585
+msgid "**Homework, part 3:** copy the code again: one more loop over the file."
+msgstr "**Домашно, част 3:** копирайте кода отново: още един цикъл по файла."
+
+#. heading 2
+#: site/lectures/02-conditions-and-loops.md:1587
 msgid "Homework"
 msgstr "Домашно"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1558
+#: site/lectures/02-conditions-and-loops.md:1589
 msgid "`02-conditions-and-loops/homework.py` (in the homework repository): a **report of days past due** from `loans.csv` - the number of loans and the outstanding amount in each bucket, the shares, and the largest late loan. Every check must print `OK`."
 msgstr "`02-conditions-and-loops/homework.py` (в homework repository): **отчет за дните просрочие** от `loans.csv` - броят кредити и непогасената сума във всяка група, дяловете и най-големият просрочен кредит. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1562
+#: site/lectures/02-conditions-and-loops.md:1593
 msgid "The practice tasks you did not finish in class."
 msgstr "Задачите за упражнение, които не сте довършили в клас."
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1563
+#: site/lectures/02-conditions-and-loops.md:1594
 msgid "Optional: a **loan calculator** in the terminal - `calculator.py` asks for the amount, the yearly rate and the years with `input()`, asks **again** while a value is not valid (the amount must be more than 0, the rate between 0 and 50, the years between 1 and 30), and prints the repayment schedule of section 15. Add a menu with `match`: 1 - the schedule, 2 - only the total interest, 3 - quit; repeat until the user chooses 3."
 msgstr "По желание: **кредитен калкулатор** в терминала - `calculator.py` пита за сумата, годишната лихва и годините с `input()`, пита **отново**, докато стойността не е валидна (сумата трябва да е повече от 0, лихвата - между 0 и 50, годините - между 1 и 30), и отпечатва погасителния план от раздел 15. Добавете меню с `match`: 1 - планът, 2 - само общата лихва, 3 - изход; повтаряйте, докато потребителят не избере 3."
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1569
+#: site/lectures/02-conditions-and-loops.md:1600
 msgid "Optional: change the bisection example of section 15 so that it also prints each guess and \"too high\" / \"too low\", and stops after at most 30 tries."
 msgstr "По желание: променете примера с бисекцията от раздел 15 така, че да отпечатва и всяко предположение и \"too high\" / \"too low\", и да спира след най-много 30 опита."
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1571
+#: site/lectures/02-conditions-and-loops.md:1602
 msgid "Optional: `02-conditions-and-loops/notebook.ipynb` - short extra tasks on the topics of today in a Jupyter notebook, each with a check cell. Open it in VS Code and select the `.venv` kernel."
 msgstr "По желание: `02-conditions-and-loops/notebook.ipynb` - кратки допълнителни задачи по днешните теми в Jupyter notebook, всяка с клетка за проверка. Отворете го във VS Code и изберете kernel-а `.venv`."
 
 #. heading 2
-#: site/lectures/02-conditions-and-loops.md:1575
+#: site/lectures/02-conditions-and-loops.md:1606
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1577
+#: site/lectures/02-conditions-and-loops.md:1608
 msgid "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` on loops, `pass`, `match`)"
 msgstr "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` на цикли, `pass`, `match`)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1579
+#: site/lectures/02-conditions-and-loops.md:1610
 msgid "Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations), [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons), [Truth value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing), [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)"
 msgstr "Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations), [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons), [Truth value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing), [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1583
+#: site/lectures/02-conditions-and-loops.md:1614
 msgid "`match`: [PEP 636 - the pattern matching tutorial](https://peps.python.org/pep-0636/)"
 msgstr "`match`: [PEP 636 - ръководството за pattern matching](https://peps.python.org/pep-0636/)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1584
+#: site/lectures/02-conditions-and-loops.md:1615
 msgid "Real Python: [Conditional statements](https://realpython.com/python-conditional-statements/), [`for` loops](https://realpython.com/python-for-loop/), [`while` loops](https://realpython.com/python-while-loop/)"
 msgstr "Real Python: [Conditional statements](https://realpython.com/python-conditional-statements/), [`for` loops](https://realpython.com/python-for-loop/), [`while` loops](https://realpython.com/python-while-loop/)"
 
 #. paragraph
-#: site/lectures/02-conditions-and-loops.md:1588
+#: site/lectures/02-conditions-and-loops.md:1619
 msgid "**Next session:** lists, tuples and sets - indexing from 0, slices, the methods of `list`, tuples as records, and the SQL `UNION` / `INTERSECT` / `EXCEPT` with sets."
 msgstr "**Следващото занятие:** lists, tuples и sets - индексиране от 0, slices, методите на `list`, tuples като записи и `UNION` / `INTERSECT` / `EXCEPT` от SQL със sets."
 

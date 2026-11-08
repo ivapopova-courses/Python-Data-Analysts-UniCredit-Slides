@@ -1376,6 +1376,31 @@ list.
      `interest_rate`). Convert the numbers: `outstanding` with `float()`,
      `days_past_due` and `stage` with `int()`. The first line of the file is the
      header, not a loan: skip it. You should get 400 tuples.
+   - **Parts 1 - 3: reading a file in a function.** How `open` and `with` work
+     comes in [session 9](./09-errors-and-files.md#open-read-close-with). Until
+     then, copy this code. It is the loop of
+     [session 3](./03-lists-tuples-sets.md#notes-on-the-tasks), inside the
+     function: the file is `path`, the parameter, and the function returns the
+     list after the `with` block.
+
+     ```python
+     def read_loans(path):
+         """The loans of the file: (loan_id, client_id, product, outstanding, days_past_due, stage)."""
+         loans = []
+         with open(path, encoding="utf-8") as file:
+             file.readline()                 # skip the header (the column names)
+             for line in file:
+                 fields = line.strip().split(",")
+                 # your code: loans.append(( ... ))
+         return loans
+     ```
+
+     The fields of `loans.csv`: `fields[0]` `loan_id`, `fields[1]` `client_id`,
+     `fields[2]` `product`, `fields[7]` `outstanding`, `fields[9]`
+     `days_past_due`, `fields[10]` `stage`. Parts 2 and 3 are the same, with
+     other names and fields: `clients.csv` has `client_id` in `fields[0]` and
+     `rating` in `fields[4]`; `rating_scale.csv` has the columns
+     `rating,grade,pd_min,pd_max,description` - take the first 4.
    - **Parts that use an earlier part:** Part 4 uses Part 3, Part 5 uses Part 2,
      Part 7 uses Parts 1 - 6, Part 8 uses Part 1. Do the earlier part first.
 2. The practice tasks you did not finish in class.

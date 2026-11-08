@@ -1585,78 +1585,136 @@ msgstr "**Задача 6, част 1:** `both_currencies` - в цикъла съ
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1416
-msgid "**Reading a file** (task 6, the homework): as in [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()` skips the header, then `fields = line.strip().split(\",\")` in the loop. The columns are in the order of the header line (task 6 lists them; the [sample data](../sample-data) page too): `fields[0]` is the first one."
-msgstr "**Четене на файл** (задача 6, домашното): както в [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()` прескача заглавния ред, после `fields = line.strip().split(\",\")` в цикъла. Колоните са в реда на заглавния ред (задача 6 ги изброява; страницата [примерни данни](../sample-data) също): `fields[0]` е първата."
+msgid "**Reading a file** (task 6, the homework): the code to copy is in \"Notes on the tasks\" below."
+msgstr "**Четене на файл** (задача 6, домашното): кодът за копиране е в \"Бележки към задачите\" по-долу."
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1420
+#: site/lectures/03-lists-tuples-sets.md:1418
 msgid "**Homework, part 1:** convert while you append: `loans.append((fields[0], ..., float(fields[7]), int(fields[10])))` - note the two pairs of brackets (section 8)."
 msgstr "**Домашно, част 1:** преобразувайте, докато добавяте: `loans.append((fields[0], ..., float(fields[7]), int(fields[10])))` - обърнете внимание на двата чифта скоби (раздел 8)."
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1422
+#: site/lectures/03-lists-tuples-sets.md:1420
 msgid "**Homework, part 2:** sorting tuples compares their first items first - section 8, \"Sort records: tuples compare item by item\"."
 msgstr "**Домашно, част 2:** при сортиране tuples се сравняват първо по първите си елементи - раздел 8, \"Сортиране на записи: tuples се сравняват елемент по елемент\"."
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1424
+#: site/lectures/03-lists-tuples-sets.md:1422
 msgid "**Homework, part 5:** two loops, one per file: first collect the stage 3 clients into a set, then read `clients.csv` and keep the region when the client is in that set."
 msgstr "**Домашно, част 5:** два цикъла, по един за всеки файл: първо съберете клиентите в stage 3 в set, после прочетете `clients.csv` и запазвайте региона, когато клиентът е в този set."
 
-#. heading 2
+#. heading 3
+#: site/lectures/03-lists-tuples-sets.md:1427
+msgid "Notes on the tasks"
+msgstr "Бележки към задачите"
+
+#. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1429
+msgid "**Reading a file.** How `open` and `with` work comes in [session 9](./09-errors-and-files.md#open-read-close-with). Until then, copy this code. It is the loop of [session 2](./02-conditions-and-loops.md#the-rows-of-a-file), but it keeps each line as one list, `fields`, and you take a field by its index:"
+msgstr "**Четене на файл.** Как работят `open` и `with` ще видим в [занятие 9](./09-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Това е цикълът от [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file), но той пази всеки ред като един list, `fields`, и вземате поле по неговия индекс:"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1442
+msgid "The fields of `loans.csv`, by index (counted from 0, section 3):"
+msgstr "Полетата на `loans.csv` по индекс (броят се от 0, раздел 3):"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1448
+msgid "For `clients.csv`, change the file name. Its fields:"
+msgstr "За `clients.csv` сменете името на файла. Неговите полета:"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1462
+msgid "All the fields are text. Convert the ones you need: `float(fields[7])` for `outstanding`, `int(fields[10])` for `stage`."
+msgstr "Всички полета са текст. Преобразувайте тези, които ви трябват: `float(fields[7])` за `outstanding`, `int(fields[10])` за `stage`."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1464
+msgid "`DATA / \"loans.csv\"` is the path of the file in the tasks: `DATA` is the `data/` folder of the repository (the tasks import it from `check.py`). The examples on this page use `\"data/loans.csv\"` - the same file."
+msgstr "`DATA / \"loans.csv\"` е пътят до файла в задачите: `DATA` е папката `data/` на repository-то (задачите го импортират от `check.py`). Примерите на тази страница използват `\"data/loans.csv\"` - същия файл."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1467
+msgid "Your code goes inside the loop, under the `fields = ...` line, indented like it. The results that you collect (lists, sets) are made **before** the loop, and sorted or sliced **after** it."
+msgstr "Вашият код е вътре в цикъла, под реда `fields = ...`, със същия отстъп. Резултатите, които събирате (lists, sets), се създават **преди** цикъла, а се сортират или режат със slice **след** него."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1471
+msgid "Where you need it:"
+msgstr "Къде ви трябва:"
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1473
+msgid "**Task 6, part 1:** the loop over `loans.csv`. **Part 2:** the loop over `clients.csv`."
+msgstr "**Задача 6, част 1:** цикълът по `loans.csv`. **Част 2:** цикълът по `clients.csv`."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1475
+msgid "**Homework, part 1:** the loop over `loans.csv`; in it, append one tuple per loan to `loans`. Parts 2 - 4 use the list `loans` - no file."
+msgstr "**Домашно, част 1:** цикълът по `loans.csv`; в него добавяйте с append по един tuple за всеки кредит към `loans`. Части 2 - 4 използват list-а `loans` - без файл."
+
+#. paragraph
+#: site/lectures/03-lists-tuples-sets.md:1477
+msgid "**Homework, part 5:** first collect the stage 3 clients into a set (a loop over the list `loans`, or over the file), then the loop over `clients.csv`."
+msgstr "**Домашно, част 5:** първо съберете клиентите в stage 3 в set (цикъл по list-а `loans` или по файла), после цикълът по `clients.csv`."
+
+#. heading 2
+#: site/lectures/03-lists-tuples-sets.md:1480
 msgid "Homework"
 msgstr "Домашно"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1431
+#: site/lectures/03-lists-tuples-sets.md:1482
 msgid "`03-lists-tuples-sets/homework.py` (in the homework repository): a **portfolio snapshot** from `loans.csv` - the loans as a list of tuples, the five largest exposures, the distinct products, the clients with both a mortgage and a consumer loan, and the regions of the stage 3 clients. Every check must print `OK`."
 msgstr "`03-lists-tuples-sets/homework.py` (в homework repository): **моментна снимка на портфейла** от `loans.csv` - кредитите като list от tuples, петте най-големи експозиции, различните продукти, клиентите с ипотечен и потребителски кредит едновременно и регионите на клиентите в stage 3. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1436
+#: site/lectures/03-lists-tuples-sets.md:1487
 msgid "The practice tasks you did not finish in class."
 msgstr "Задачите за упражнение, които не сте довършили в клас."
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1437
+#: site/lectures/03-lists-tuples-sets.md:1488
 msgid "Optional: `names.py` asks how many names the user will enter, reads them with `input()` in a loop into a list, and prints them sorted, without duplicates, and how many were duplicates."
 msgstr "По желание: `names.py` пита колко имена ще въведе потребителят, чете ги с `input()` в цикъл в list и ги отпечатва сортирани, без повторения, и колко са били повторенията."
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1440
+#: site/lectures/03-lists-tuples-sets.md:1491
 msgid "Optional: a word is a *palindrome* if it reads the same forwards and backwards, ignoring case (`\"Racecar\"`). Check it with a slice, for words typed by the user."
 msgstr "По желание: една дума е *палиндром*, ако се чете еднакво отпред назад и отзад напред, без значение главни или малки букви (`\"Racecar\"`). Проверете го със slice, за думи, въведени от потребителя."
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1442
+#: site/lectures/03-lists-tuples-sets.md:1493
 msgid "Optional: `03-lists-tuples-sets/notebook.ipynb` - short extra tasks on the topics of today in a Jupyter notebook, each with a check cell. Open it in VS Code and select the `.venv` kernel."
 msgstr "По желание: `03-lists-tuples-sets/notebook.ipynb` - кратки допълнителни задачи по днешните теми в Jupyter notebook, всяка с клетка за проверка. Отворете го във VS Code и изберете kernel-а `.venv`."
 
 #. heading 2
-#: site/lectures/03-lists-tuples-sets.md:1446
+#: site/lectures/03-lists-tuples-sets.md:1497
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1448
+#: site/lectures/03-lists-tuples-sets.md:1499
 msgid "Python tutorial: [Data structures](https://docs.python.org/3/tutorial/datastructures.html) (lists, `del`, tuples and sequences, sets)"
 msgstr "Python tutorial: [Data structures](https://docs.python.org/3/tutorial/datastructures.html) (lists, `del`, tuples и поредици, sets)"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1450
+#: site/lectures/03-lists-tuples-sets.md:1501
 msgid "Reference: [Sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range), [Set types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset), [`copy`](https://docs.python.org/3/library/copy.html)"
 msgstr "Reference: [Sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range), [Set types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset), [`copy`](https://docs.python.org/3/library/copy.html)"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1453
+#: site/lectures/03-lists-tuples-sets.md:1504
 msgid "Real Python: [Lists and tuples](https://realpython.com/python-lists-tuples/), [Sets](https://realpython.com/python-sets/)"
 msgstr "Real Python: [Lists and tuples](https://realpython.com/python-lists-tuples/), [Sets](https://realpython.com/python-sets/)"
 
 #. paragraph
-#: site/lectures/03-lists-tuples-sets.md:1456
+#: site/lectures/03-lists-tuples-sets.md:1507
 msgid "**Next session:** functions - your own `def`, parameters and return values, and why a function is the Python version of a SAS macro."
 msgstr "**Следващото занятие:** функции - собствен `def`, параметри и върнати стойности и защо функцията е версията на SAS macro в Python."
+
+#~ msgid "**Reading a file** (task 6, the homework): as in [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()` skips the header, then `fields = line.strip().split(\",\")` in the loop. The columns are in the order of the header line (task 6 lists them; the [sample data](../sample-data) page too): `fields[0]` is the first one."
+#~ msgstr "**Четене на файл** (задача 6, домашното): както в [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file) - `file.readline()` прескача заглавния ред, после `fields = line.strip().split(\",\")` в цикъла. Колоните са в реда на заглавния ред (задача 6 ги изброява; страницата [примерни данни](../sample-data) също): `fields[0]` е първата."
 
 #~ msgid "These are **shallow** copies: the new list has the same items. When the items are lists themselves (a table as a list of rows), the rows are still shared - [session 5](./05-lists-advanced.md#_6-copies-of-a-table) explains shallow and deep copies."
 #~ msgstr "Това са **плитки** (shallow) копия: новият list има същите елементи. Когато елементите сами са lists (таблица като list от редове), редовете пак са общи - [занятие 5](./05-lists-advanced.md#_6-copies-of-a-table) обяснява плитките и дълбоките копия."
