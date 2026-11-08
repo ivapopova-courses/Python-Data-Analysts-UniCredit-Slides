@@ -466,6 +466,36 @@ A comprehension is for **building a new list**. Use a normal loop when:
   or write the loop;
 - the line becomes too long to read in one look (more than about 80 characters).
 
+::: details Advanced: `map` and `filter`
+You will meet them in other people's code. Both take a **function** and a list,
+and call the function for every item:
+
+- `map(function, items)` gives the result of the function for every item: as many
+  items out as in, like the expression of a comprehension (SQL: `SELECT`
+  expression).
+- `filter(function, items)` keeps the items for which the function returns
+  something true: fewer items, like the `if` at the end of a comprehension (SQL:
+  `WHERE`).
+
+![map sends every item of days through d // 30 and gives 5 new values; filter tests every item with d > 30 and keeps only 35 and 120](/diagrams/map-filter.svg){.diagram width=920 height=400}
+
+Both give their values one by one, like a generator (section 3) - wrap them in
+`list()` to see them. A comprehension does the same job and reads better:
+
+```python run
+days = [0, 35, 0, 120, 15]
+
+print(list(map(lambda d: d // 30, days)), [d // 30 for d in days])
+print(list(filter(lambda d: d > 30, days)), [d for d in days if d > 30])
+
+fields = ["1156900.00", "1044231.30", "8.83"]
+print(list(map(float, fields)))           # short when the function has a name
+```
+
+In pandas, `map` comes back: `series.map(function)` or `series.map(dictionary)`
+(sessions 6 and 15).
+:::
+
 ::: info The same in pandas
 In pandas ([session 14](./14-numpy-pandas-intro.md#columns)) you do not loop at all - an operation on a column works on
 all its values:

@@ -159,7 +159,7 @@ msgid "`lst.count(value)` ([session 3](./03-lists-tuples-sets.md#len-min-max-sum
 msgstr "`lst.count(value)` ([занятие 3](./03-lists-tuples-sets.md#len-min-max-sum-count-index)) казва колко пъти стойността се среща; `count(x) > 0` е същото като `x in lst`."
 
 #. box title
-#: site/lectures/05-lists-advanced.md:140 site/lectures/05-lists-advanced.md:485 site/lectures/05-lists-advanced.md:599 site/lectures/05-lists-advanced.md:723
+#: site/lectures/05-lists-advanced.md:140 site/lectures/05-lists-advanced.md:515 site/lectures/05-lists-advanced.md:629 site/lectures/05-lists-advanced.md:753
 msgid "Try it"
 msgstr "Пробвайте"
 
@@ -244,7 +244,7 @@ msgid "The fields of a file are text: `float(row[7])` in the key compares the am
 msgstr "Полетата на файла са текст: `float(row[7])` в ключа сравнява сумите като числа. Без него `\"9\"` би бил по-голям от `\"10\"`."
 
 #. box title
-#: site/lectures/05-lists-advanced.md:242 site/lectures/05-lists-advanced.md:469 site/lectures/05-lists-advanced.md:569 site/lectures/05-lists-advanced.md:710
+#: site/lectures/05-lists-advanced.md:242 site/lectures/05-lists-advanced.md:499 site/lectures/05-lists-advanced.md:599 site/lectures/05-lists-advanced.md:740
 msgid "The same in pandas"
 msgstr "Същото в pandas"
 
@@ -423,382 +423,417 @@ msgstr "логиката иска няколко стъпки или някол�
 msgid "the line becomes too long to read in one look (more than about 80 characters)."
 msgstr "редът става твърде дълъг, за да се прочете с един поглед (повече от около 80 знака)."
 
+#. box title
+#: site/lectures/05-lists-advanced.md:469
+msgid "Advanced: `map` and `filter`"
+msgstr "Advanced: `map` и `filter`"
+
 #. paragraph
 #: site/lectures/05-lists-advanced.md:470
+msgid "You will meet them in other people's code. Both take a **function** and a list, and call the function for every item:"
+msgstr "Ще ги срещнете в чужд код. И двете приемат **функция** и list и извикват функцията за всеки елемент:"
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:473
+msgid "`map(function, items)` gives the result of the function for every item: as many items out as in, like the expression of a comprehension (SQL: `SELECT` expression)."
+msgstr "`map(function, items)` дава резултата на функцията за всеки елемент: излизат толкова елементи, колкото влизат - като израза на comprehension (SQL: израз в `SELECT`)."
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:476
+msgid "`filter(function, items)` keeps the items for which the function returns something true: fewer items, like the `if` at the end of a comprehension (SQL: `WHERE`)."
+msgstr "`filter(function, items)` запазва елементите, за които функцията връща нещо вярно: излизат по-малко елементи - като `if` в края на comprehension (SQL: `WHERE`)."
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:480
+msgid "![map sends every item of days through d // 30 and gives 5 new values; filter tests every item with d > 30 and keeps only 35 and 120](/diagrams/map-filter.svg){.diagram width=920 height=400}"
+msgstr "![map прекарва всеки елемент на days през d // 30 и дава 5 нови стойности; filter проверява всеки елемент с d > 30 и запазва само 35 и 120](/diagrams/map-filter.svg){.diagram width=920 height=400}"
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:482
+msgid "Both give their values one by one, like a generator (section 3) - wrap them in `list()` to see them. A comprehension does the same job and reads better:"
+msgstr "И двете дават стойностите си една по една, като generator (раздел 3) - обвийте ги в `list()`, за да ги видите. Comprehension върши същата работа и се чете по-лесно:"
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:495
+msgid "In pandas, `map` comes back: `series.map(function)` or `series.map(dictionary)` (sessions 6 and 15)."
+msgstr "В pandas `map` се появява отново: `series.map(function)` или `series.map(dictionary)` (занятия 6 и 15)."
+
+#. paragraph
+#: site/lectures/05-lists-advanced.md:500
 msgid "In pandas ([session 14](./14-numpy-pandas-intro.md#columns)) you do not loop at all - an operation on a column works on all its values:"
 msgstr "В pandas ([занятие 14](./14-numpy-pandas-intro.md#columns)) изобщо не пишете цикъл - операция върху колона работи върху всичките ѝ стойности:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:481
+#: site/lectures/05-lists-advanced.md:511
 msgid "The idea is the same as a comprehension: a new column from an old one, with a filter."
 msgstr "Идеята е същата като при comprehension: нова колона от стара, с филтър."
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:486 site/lectures/05-lists-advanced.md:600
+#: site/lectures/05-lists-advanced.md:516 site/lectures/05-lists-advanced.md:630
 msgid "Predict, then press **Run**:"
 msgstr "Предвидете, после натиснете **Run**:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:495
+#: site/lectures/05-lists-advanced.md:525
 msgid "Then change the second line to keep only the values between 10 and 100."
 msgstr "После променете втория ред, така че да остават само стойностите между 10 и 100."
 
 #. heading 2
-#: site/lectures/05-lists-advanced.md:498
+#: site/lectures/05-lists-advanced.md:528
 msgid "3. Generator expressions: no list in memory"
 msgstr "3. Generator expressions: без list в паметта"
 
 #. heading 3
-#: site/lectures/05-lists-advanced.md:500
+#: site/lectures/05-lists-advanced.md:530
 msgid "`sum(... for ...)`: SUM and COUNT with a condition"
 msgstr "`sum(... for ...)`: SUM и COUNT с условие"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:502
+#: site/lectures/05-lists-advanced.md:532
 msgid "When you only need the **total**, you do not need the list. Write the comprehension without the square brackets, inside the call:"
 msgstr "Когато ви трябва само **сумата**, list не ви трябва. Напишете comprehension-а без квадратните скоби, вътре в извикването:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:517
+#: site/lectures/05-lists-advanced.md:547
 msgid "`sum(x for ... if ...)` is SQL `SUM(x) ... WHERE ...`;"
 msgstr "`sum(x for ... if ...)` е SQL `SUM(x) ... WHERE ...`;"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:518
+#: site/lectures/05-lists-advanced.md:548
 msgid "`sum(1 for ... if ...)` is SQL `COUNT(*) ... WHERE ...`: one `1` for each row that passes."
 msgstr "`sum(1 for ... if ...)` е SQL `COUNT(*) ... WHERE ...`: по една `1` за всеки ред, който минава."
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:521
+#: site/lectures/05-lists-advanced.md:551
 msgid "This is a **generator expression**. It works inside any function that takes many values: `sum`, `min`, `max`, `sorted`, `list`, `\", \".join(...)`."
 msgstr "Това е **generator expression**. Работи във всяка функция, която приема много стойности: `sum`, `min`, `max`, `sorted`, `list`, `\", \".join(...)`."
 
 #. heading 3
-#: site/lectures/05-lists-advanced.md:524
+#: site/lectures/05-lists-advanced.md:554
 msgid "Why: a generator does not keep the values"
 msgstr "Защо: generator не пази стойностите"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:526
+#: site/lectures/05-lists-advanced.md:556
 msgid "A list comprehension builds the **whole list** first, and keeps all its values in memory. A generator expression keeps **none** of them: it makes the next value only when `sum` asks for it, gives it, and forgets it."
 msgstr "List comprehension първо създава **целия list** и пази всичките му стойности в паметта. Generator expression не пази **нито една** от тях: създава следващата стойност едва когато `sum` я поиска, подава я и я забравя."
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:541
+#: site/lectures/05-lists-advanced.md:571
 msgid "The result is the same; the memory is not. (On your computer the list takes about 8 MB; in the browser of this site about 4 MB. The numbers inside it take more memory again.) It is the idea of `range` in [session 3](./03-lists-tuples-sets.md#a-range-does-not-keep-its-numbers): a range of a billion numbers is small, because it does not keep them. A SAS DATA step works this way too: it reads one observation, processes it, and goes to the next."
 msgstr "Резултатът е същият; паметта не е. (На вашия компютър list-ът заема около 8 MB; в браузъра на този сайт - около 4 MB. Числата в него заемат още памет.) Това е идеята на `range` от [занятие 3](./03-lists-tuples-sets.md#a-range-does-not-keep-its-numbers): range от милиард числа е малък, защото не ги пази. SAS DATA step работи по същия начин: чете едно наблюдение, обработва го и минава към следващото."
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:548
+#: site/lectures/05-lists-advanced.md:578
 msgid "(The round brackets make a generator on its own line. Inside a call - `sum(x for x in ...)` - the brackets of the call are enough.)"
 msgstr "(Кръглите скоби създават generator на отделен ред. Вътре в извикване - `sum(x for x in ...)` - скобите на извикването са достатъчни.)"
 
 #. heading 3
-#: site/lectures/05-lists-advanced.md:551
+#: site/lectures/05-lists-advanced.md:581
 msgid "A file, one line at a time"
 msgstr "Файл, по един ред"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:553
+#: site/lectures/05-lists-advanced.md:583
 msgid "A file works the same way: `for line in file` reads **one line at a time**. A generator over the file gives the total of a file of any size, and only one line is in memory at a time:"
 msgstr "Файлът работи по същия начин: `for line in file` чете **по един ред**. Generator върху файла дава сумата на файл с произволна големина, а в паметта винаги има само един ред:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:565
+#: site/lectures/05-lists-advanced.md:595
 msgid "The list of rows of section 2 (`rows = [... for line in file]`) keeps the whole file in memory. For `loans.csv` (400 rows) both are fine. For a file of 10 million rows, the generator still works on a laptop."
 msgstr "List-ът от редове в раздел 2 (`rows = [... for line in file]`) пази целия файл в паметта. За `loans.csv` (400 реда) и двата начина са добре. За файл от 10 милиона реда generator-ът пак работи на лаптоп."
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:570
+#: site/lectures/05-lists-advanced.md:600
 msgid "`pd.read_csv` reads the **whole** file into memory. For a file larger than the memory, `chunksize=` reads it in pieces, and you add up the pieces - the same idea:"
 msgstr "`pd.read_csv` чете **целия** файл в паметта. За файл, по-голям от паметта, `chunksize=` го чете на части, а вие събирате частите - същата идея:"
 
 #. heading 3
-#: site/lectures/05-lists-advanced.md:583
+#: site/lectures/05-lists-advanced.md:613
 msgid "A trap: a generator is used once"
 msgstr "Капан: generator се използва веднъж"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:585
+#: site/lectures/05-lists-advanced.md:615
 msgid "A generator gives its values **once**. After that it is empty - there is nothing kept to give again:"
 msgstr "Generator дава стойностите си **веднъж**. След това е празен - няма нищо запазено, което да даде отново:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:595
+#: site/lectures/05-lists-advanced.md:625
 msgid "It also has no `len()` and no index (`late[0]` is an error). When you need the values more than once, or their number, make a **list** - that is what lists are for."
 msgstr "Той няма и `len()`, и индекс (`late[0]` е грешка). Когато ви трябват стойностите повече от веднъж или броят им, създайте **list** - за това са lists."
 
 #. heading 2
-#: site/lectures/05-lists-advanced.md:612
+#: site/lectures/05-lists-advanced.md:642
 msgid "4. `zip` and `enumerate`"
 msgstr "4. `zip` и `enumerate`"
 
 #. heading 3
-#: site/lectures/05-lists-advanced.md:614
+#: site/lectures/05-lists-advanced.md:644
 msgid "`zip`: several lists side by side"
 msgstr "`zip`: няколко lists един до друг"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:616
+#: site/lectures/05-lists-advanced.md:646
 msgid "`zip` takes several lists and gives **tuples**: the first items together, then the second items, and so on:"
 msgstr "`zip` приема няколко lists и дава **tuples**: първите елементи заедно, после вторите и т.н.:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:630
+#: site/lectures/05-lists-advanced.md:660
 msgid "Each item of `zip` is a tuple, and `for loan_id, product, amount in ...` takes it apart into three names - the **unpacking** of [session 3](./03-lists-tuples-sets.md#unpacking), `loan_id, product, amount = (\"L000001\", \"investment\", 1044231.30)`, done for every item."
 msgstr "Всеки елемент на `zip` е tuple, а `for loan_id, product, amount in ...` го разделя на три имена - **разопаковането** (unpacking) от [занятие 3](./03-lists-tuples-sets.md#unpacking), `loan_id, product, amount = (\"L000001\", \"investment\", 1044231.30)`, направено за всеки елемент."
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:635
+#: site/lectures/05-lists-advanced.md:665
 msgid "Columns become rows. A common use: two lists of the same months, compared month by month:"
 msgstr "Колоните стават редове. Честа употреба: два lists със същите месеци, сравнени месец по месец:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:647
+#: site/lectures/05-lists-advanced.md:677
 msgid "And in a comprehension - a new list from two lists, item by item:"
 msgstr "И в comprehension - нов list от два lists, елемент по елемент:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:657
+#: site/lectures/05-lists-advanced.md:687
 msgid "`zip` gives its pairs one by one, like a generator: `list(zip(...))` shows them all. Two lists - the keys and the values - become a dictionary with `dict(zip(keys, values))` in [session 6](./06-dictionaries.md)."
 msgstr "`zip` дава двойките си една по една, като generator: `list(zip(...))` ги показва всичките. Два lists - ключовете и стойностите - стават dictionary с `dict(zip(keys, values))` в [занятие 6](./06-dictionaries.md)."
 
 #. heading 3
-#: site/lectures/05-lists-advanced.md:661
+#: site/lectures/05-lists-advanced.md:691
 msgid "A trap: the shortest list wins"
 msgstr "Капан: печели най-краткият list"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:663
+#: site/lectures/05-lists-advanced.md:693
 msgid "`zip` stops at the end of the **shortest** list - without an error. A missing value in one list silently drops the last row:"
 msgstr "`zip` спира в края на **най-краткия** list - без грешка. Липсваща стойност в единия list тихо изпуска последния ред:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:673
+#: site/lectures/05-lists-advanced.md:703
 msgid "Check the lengths first when the lists come from different places: `len(loan_ids) == len(amounts)`."
 msgstr "Първо проверете дължините, когато lists идват от различни места: `len(loan_ids) == len(amounts)`."
 
 #. heading 3
-#: site/lectures/05-lists-advanced.md:676
+#: site/lectures/05-lists-advanced.md:706
 msgid "`enumerate`: the number of each item"
 msgstr "`enumerate`: номерът на всеки елемент"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:678
+#: site/lectures/05-lists-advanced.md:708
 msgid "Sometimes you need the **position** of each item, not only the item. [`enumerate(items, start=0)`](https://docs.python.org/3/library/functions.html#enumerate) gives pairs `(number, item)` - it is a `zip` of the numbers 0, 1, 2, ... and the items:"
 msgstr "Понякога ви трябва **позицията** на всеки елемент, а не само елементът. [`enumerate(items, start=0)`](https://docs.python.org/3/library/functions.html#enumerate) дава двойки `(number, item)` - това е `zip` на числата 0, 1, 2, ... и елементите:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:692
+#: site/lectures/05-lists-advanced.md:722
 msgid "With `start=1` the number is a **rank** - here for the top N of section 1:"
 msgstr "Със `start=1` номерът е **ранг** - тук за първите N от раздел 1:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:707
+#: site/lectures/05-lists-advanced.md:737
 msgid "In SAS, the number of the current row in a DATA step is `_N_`; in SQL, a rank is `ROW_NUMBER() OVER (ORDER BY outstanding DESC)`."
 msgstr "В SAS номерът на текущия ред в DATA step е `_N_`; в SQL рангът е `ROW_NUMBER() OVER (ORDER BY outstanding DESC)`."
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:711
+#: site/lectures/05-lists-advanced.md:741
 msgid "In a DataFrame, the columns are already side by side - no `zip` is needed. A new column from two columns is one line:"
 msgstr "В DataFrame колоните вече са една до друга - `zip` не е нужен. Нова колона от две колони е един ред:"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:724
+#: site/lectures/05-lists-advanced.md:754
 msgid "Predict the output, then run it:"
 msgstr "Предвидете резултата, после изпълнете кода:"
 
 #. heading 2
-#: site/lectures/05-lists-advanced.md:735
+#: site/lectures/05-lists-advanced.md:765
 msgid "5. Practice"
 msgstr "5. Упражнения"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:737
+#: site/lectures/05-lists-advanced.md:767
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
 msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и изпълнявайте задачите от терминала, в главната папка на repository-то:"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:745
+#: site/lectures/05-lists-advanced.md:775
 msgid "Task"
 msgstr "Задача"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:745
+#: site/lectures/05-lists-advanced.md:775
 msgid "File"
 msgstr "Файл"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:745
+#: site/lectures/05-lists-advanced.md:775
 msgid "What you do"
 msgstr "Какво правите"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:747
+#: site/lectures/05-lists-advanced.md:777
 msgid "Remove, find and sort with the list methods; the top 3"
 msgstr "Премахване, търсене и сортиране с методите на list; първите 3"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:748
+#: site/lectures/05-lists-advanced.md:778
 msgid "Derived lists, filters and `CASE WHEN` with comprehensions"
 msgstr "Производни lists, филтри и `CASE WHEN` с comprehensions"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:749
+#: site/lectures/05-lists-advanced.md:779
 msgid "Predict: `sort()` and `None`, the position of `if`, a used generator, `zip`"
 msgstr "Предвидете: `sort()` и `None`, позицията на `if`, използван generator, `zip`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:750
+#: site/lectures/05-lists-advanced.md:780
 msgid "Sums and counts with a condition, without a list; a file line by line"
 msgstr "Суми и бройки с условие, без list; файл ред по ред"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:751
+#: site/lectures/05-lists-advanced.md:781
 msgid "Two lists side by side; a rank with `enumerate`"
 msgstr "Два lists един до друг; ранг с `enumerate`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:752
+#: site/lectures/05-lists-advanced.md:782
 msgid "`task6-clean-a-list.py` (Optional)"
 msgstr "`task6-clean-a-list.py` (по желание)"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:752
+#: site/lectures/05-lists-advanced.md:782
 msgid "Clean a list of loans step by step, then report on it"
 msgstr "Почистете list от кредити стъпка по стъпка, после направете отчет"
 
 #. heading 2
-#: site/lectures/05-lists-advanced.md:754
+#: site/lectures/05-lists-advanced.md:784
 msgid "Summary"
 msgstr "Обобщение"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:756
+#: site/lectures/05-lists-advanced.md:786
 msgid "Topic"
 msgstr "Тема"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:756
+#: site/lectures/05-lists-advanced.md:786
 msgid "Remember"
 msgstr "Запомнете"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:758
+#: site/lectures/05-lists-advanced.md:788
 msgid "Remove"
 msgstr "Премахване"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:758
+#: site/lectures/05-lists-advanced.md:788
 msgid "`remove(value)` - the first one, `ValueError` if missing; `pop(i)` gives the item back; `del lst[i]`; `clear()` empties"
 msgstr "`remove(value)` - първия, `ValueError`, ако липсва; `pop(i)` връща елемента; `del lst[i]`; `clear()` изпразва"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:759
+#: site/lectures/05-lists-advanced.md:789
 msgid "Find"
 msgstr "Търсене"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:759
+#: site/lectures/05-lists-advanced.md:789
 msgid "`index(value)` - the first position, `ValueError` if missing: test with `in` first"
 msgstr "`index(value)` - първата позиция, `ValueError`, ако липсва: първо проверете с `in`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:760
+#: site/lectures/05-lists-advanced.md:790
 msgid "Sort"
 msgstr "Сортиране"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:760
+#: site/lectures/05-lists-advanced.md:790
 msgid "`lst.sort()` changes the list; `sorted(x)` gives a new one; `key=`, `reverse=True`; top N: `sorted(...)[:n]`"
 msgstr "`lst.sort()` променя list-а; `sorted(x)` дава нов; `key=`, `reverse=True`; първите N: `sorted(...)[:n]`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:761
+#: site/lectures/05-lists-advanced.md:791
 msgid "the methods change the list and return `None`: never `x = x.sort()`"
 msgstr "методите променят list-а и връщат `None`: никога `x = x.sort()`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:762
+#: site/lectures/05-lists-advanced.md:792
 msgid "Comprehension"
 msgstr "Comprehension"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:762
+#: site/lectures/05-lists-advanced.md:792
 msgid "`[expr for x in items if cond]` = `SELECT expr ... WHERE cond`; always a new list"
 msgstr "`[expr for x in items if cond]` = `SELECT expr ... WHERE cond`; винаги нов list"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:763
+#: site/lectures/05-lists-advanced.md:793
 msgid "`if` position"
 msgstr "Позицията на `if`"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:763
+#: site/lectures/05-lists-advanced.md:793
 msgid "`if` at the end filters; `a if c else b` at the start chooses a value (CASE)"
 msgstr "`if` в края филтрира; `a if c else b` в началото избира стойност (CASE)"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:764
+#: site/lectures/05-lists-advanced.md:794
 msgid "Generator expression"
 msgstr "Generator expression"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:764
+#: site/lectures/05-lists-advanced.md:794
 msgid "`sum(x for x in items)` - no list in memory; `sum(1 for ... if ...)` = `COUNT(*) ... WHERE`; used once"
 msgstr "`sum(x for x in items)` - без list в паметта; `sum(1 for ... if ...)` = `COUNT(*) ... WHERE`; използва се веднъж"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:765
+#: site/lectures/05-lists-advanced.md:795
 msgid "parallel lists -> tuples; stops at the shortest list"
 msgstr "паралелни lists -> tuples; спира при най-краткия list"
 
 #. table cell
-#: site/lectures/05-lists-advanced.md:766
+#: site/lectures/05-lists-advanced.md:796
 msgid "`(number, item)`; `start=1` for a rank"
 msgstr "`(number, item)`; `start=1` за ранг"
 
 #. heading 2
-#: site/lectures/05-lists-advanced.md:768
+#: site/lectures/05-lists-advanced.md:798
 msgid "Homework"
 msgstr "Домашно"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:770
+#: site/lectures/05-lists-advanced.md:800
 msgid "`05-lists-advanced/homework.py` (in the homework repository): **a small list of loans** - clean it with the list methods, find the five largest exposures with a rank and their share of the total, sum and count with a condition, and compare two years month by month with `zip`. Every check must print `OK`."
 msgstr "`05-lists-advanced/homework.py` (в homework repository): **малък list от кредити** - почистете го с методите на list, намерете петте най-големи експозиции с ранг и дела им от общата сума, сумирайте и бройте с условие и сравнете две години месец по месец със `zip`. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:774
+#: site/lectures/05-lists-advanced.md:804
 msgid "The practice tasks you did not finish in class."
 msgstr "Задачите за упражнение, които не сте довършили в клас."
 
 #. heading 2
-#: site/lectures/05-lists-advanced.md:776
+#: site/lectures/05-lists-advanced.md:806
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:778
+#: site/lectures/05-lists-advanced.md:808
 msgid "Python tutorial: [More on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), [List comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)"
 msgstr "Python tutorial: [More on lists](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists), [List comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:780
+#: site/lectures/05-lists-advanced.md:810
 msgid "[Sorting techniques](https://docs.python.org/3/howto/sorting.html)"
 msgstr "[Sorting techniques](https://docs.python.org/3/howto/sorting.html)"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:781
+#: site/lectures/05-lists-advanced.md:811
 msgid "Reference: [generator expressions](https://docs.python.org/3/reference/expressions.html#generator-expressions), [`zip`](https://docs.python.org/3/library/functions.html#zip), [`enumerate`](https://docs.python.org/3/library/functions.html#enumerate)"
 msgstr "Reference: [generator expressions](https://docs.python.org/3/reference/expressions.html#generator-expressions), [`zip`](https://docs.python.org/3/library/functions.html#zip), [`enumerate`](https://docs.python.org/3/library/functions.html#enumerate)"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:784
+#: site/lectures/05-lists-advanced.md:814
 msgid "Real Python: [When to use a list comprehension](https://realpython.com/list-comprehension-python/), [Python's `zip()` function](https://realpython.com/python-zip-function/)"
 msgstr "Real Python: [When to use a list comprehension](https://realpython.com/list-comprehension-python/), [Python's `zip()` function](https://realpython.com/python-zip-function/)"
 
 #. paragraph
-#: site/lectures/05-lists-advanced.md:787
+#: site/lectures/05-lists-advanced.md:817
 msgid "**Next session:** dictionaries - a key and a value, the Python version of a SAS format and of a lookup table; counting and SQL `GROUP BY` without pandas."
 msgstr "**Следващото занятие:** dictionaries - ключ и стойност, версията на Python на SAS format и на lookup таблица; броене и SQL `GROUP BY` без pandas."

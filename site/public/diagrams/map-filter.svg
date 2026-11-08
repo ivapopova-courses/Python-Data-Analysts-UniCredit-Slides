@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 400" width="920" height="400" role="img">
+<title>map and filter: one function, applied to every item</title>
+<defs><marker id="head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b616b"/></marker></defs>
+<text x="20" y="28" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">map: every item changes</text>
+<text x="20" y="54" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">map(lambda d: d // 30, days)</text>
+<text x="20" y="80" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">days</text>
+<rect x="24" y="176" width="402" height="40" rx="6" fill="#fdebd3" stroke="#c97a1c" stroke-width="2"/>
+<text x="225.0" y="202" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">d // 30</text>
+<rect x="30" y="104" width="70" height="44" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="65.0" y="132" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">0</text>
+<path d="M65.0,150 L65.0,172" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<path d="M65.0,218 L65.0,252" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="30" y="256" width="70" height="44" rx="4" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="65.0" y="284" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">0</text>
+<rect x="110" y="104" width="70" height="44" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="145.0" y="132" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">35</text>
+<path d="M145.0,150 L145.0,172" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<path d="M145.0,218 L145.0,252" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="110" y="256" width="70" height="44" rx="4" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="145.0" y="284" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">1</text>
+<rect x="190" y="104" width="70" height="44" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="225.0" y="132" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">0</text>
+<path d="M225.0,150 L225.0,172" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<path d="M225.0,218 L225.0,252" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="190" y="256" width="70" height="44" rx="4" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="225.0" y="284" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">0</text>
+<rect x="270" y="104" width="70" height="44" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="305.0" y="132" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">120</text>
+<path d="M305.0,150 L305.0,172" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<path d="M305.0,218 L305.0,252" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="270" y="256" width="70" height="44" rx="4" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="305.0" y="284" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">4</text>
+<rect x="350" y="104" width="70" height="44" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="385.0" y="132" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">15</text>
+<path d="M385.0,150 L385.0,172" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<path d="M385.0,218 L385.0,252" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="350" y="256" width="70" height="44" rx="4" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="385.0" y="284" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">0</text>
+<text x="20" y="332" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">5 items in, 5 items out</text>
+<text x="20" y="356" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">the same: [d // 30 for d in days]</text>
+<text x="20" y="380" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">SQL: SELECT expression</text>
+<text x="480" y="28" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="16" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">filter: only some items stay</text>
+<text x="480" y="54" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">filter(lambda d: d &gt; 30, days)</text>
+<text x="480" y="80" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="12" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">days</text>
+<rect x="484" y="176" width="402" height="40" rx="6" fill="#ece4f8" stroke="#7b48c4" stroke-width="2"/>
+<text x="685.0" y="202" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="700" fill="#1f2328" text-anchor="middle" xml:space="preserve">d &gt; 30 ?</text>
+<rect x="490" y="104" width="70" height="44" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="525.0" y="132" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">0</text>
+<path d="M525.0,150 L525.0,172" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="525.0" y="284" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#c4302b" text-anchor="middle" xml:space="preserve">no</text>
+<rect x="570" y="104" width="70" height="44" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="605.0" y="132" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">35</text>
+<path d="M605.0,150 L605.0,172" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<path d="M605.0,218 L605.0,252" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="570" y="256" width="70" height="44" rx="4" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="605.0" y="284" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">35</text>
+<rect x="650" y="104" width="70" height="44" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="685.0" y="132" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">0</text>
+<path d="M685.0,150 L685.0,172" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="685.0" y="284" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#c4302b" text-anchor="middle" xml:space="preserve">no</text>
+<rect x="730" y="104" width="70" height="44" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="765.0" y="132" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">120</text>
+<path d="M765.0,150 L765.0,172" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<path d="M765.0,218 L765.0,252" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<rect x="730" y="256" width="70" height="44" rx="4" fill="#e2f2e0" stroke="#4f8a45" stroke-width="2"/>
+<text x="765.0" y="284" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">120</text>
+<rect x="810" y="104" width="70" height="44" rx="4" fill="#f3f1ec" stroke="#8c8578" stroke-width="2"/>
+<text x="845.0" y="132" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="16" font-weight="400" fill="#1f2328" text-anchor="middle" xml:space="preserve">15</text>
+<path d="M845.0,150 L845.0,172" fill="none" stroke="#5b616b" stroke-width="2.2" marker-end="url(#head)"/>
+<text x="845.0" y="284" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#c4302b" text-anchor="middle" xml:space="preserve">no</text>
+<text x="480" y="332" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="700" fill="#1f2328" text-anchor="start" xml:space="preserve">5 items in, 2 items out</text>
+<text x="480" y="356" font-family="JetBrains Mono, Cascadia Code, Consolas, DejaVu Sans Mono, monospace" font-size="14" font-weight="400" fill="#1f2328" text-anchor="start" xml:space="preserve">the same: [d for d in days if d &gt; 30]</text>
+<text x="480" y="380" font-family="Segoe UI, Noto Sans, Roboto, Helvetica Neue, Arial, sans-serif" font-size="14" font-weight="400" fill="#5b616b" text-anchor="start" xml:space="preserve">SQL: WHERE</text>
+<path d="M460,16 L460,388" stroke="#8c8578" stroke-width="1.5" stroke-dasharray="4 4"/>
+</svg>

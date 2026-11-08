@@ -974,9 +974,71 @@ def vscode_window(t):
     return s.render()
 
 
+# ---------------------------------------------------------------------------
+# map-filter: map changes every item, filter keeps some items
+
+MAPF = {
+    "en": {
+        "title": "map and filter: one function, applied to every item",
+        "map": "map: every item changes", "filter": "filter: only some items stay",
+        "fmap": "d // 30", "ffilter": "d > 30 ?",
+        "nmap": "5 items in, 5 items out", "nfilter": "5 items in, 2 items out",
+        "no": "no",
+        "cmap": "the same: [d // 30 for d in days]", "cfilter": "the same: [d for d in days if d > 30]",
+        "smap": "SQL: SELECT expression", "sfilter": "SQL: WHERE",
+    },
+    "bg": {
+        "title": "map и filter: една функция, приложена върху всеки елемент",
+        "map": "map: всеки елемент се променя", "filter": "filter: остават само някои елементи",
+        "fmap": "d // 30", "ffilter": "d > 30 ?",
+        "nmap": "5 елемента влизат, 5 излизат", "nfilter": "5 елемента влизат, 2 излизат",
+        "no": "не",
+        "cmap": "същото: [d // 30 for d in days]", "cfilter": "същото: [d for d in days if d > 30]",
+        "smap": "SQL: SELECT израз", "sfilter": "SQL: WHERE",
+    },
+}
+
+
+def map_filter(t):
+    days = [0, 35, 0, 120, 15]
+    red = COLORS["red"][1]
+    s = Svg(920, 400, t["title"])
+    w, gap, yin, ybar, yout = 70, 10, 104, 176, 256
+    for px, key, code, fn, color in ((20, "map", "map(lambda d: d // 30, days)", "fmap", "orange"),
+                                     (480, "filter", "filter(lambda d: d > 30, days)", "ffilter", "violet")):
+        s.text(px, 28, t[key], size=16, weight=700)
+        s.text(px, 54, code, size=14, mono=True)
+        s.text(px, 80, "days", size=12, mono=True, color=MUTED)
+        x0 = px + 10
+        s.rect(x0 - 6, ybar, 5 * w + 4 * gap + 12, 40, color, radius=6)
+        s.text(x0 + (5 * w + 4 * gap) / 2, ybar + 26, t[fn], size=16, weight=700, mono=True, anchor="middle")
+        for i, d in enumerate(days):
+            x = x0 + i * (w + gap)
+            cx = x + w / 2
+            s.rect(x, yin, w, 44, "gray", radius=4)
+            s.text(cx, yin + 28, str(d), size=16, mono=True, anchor="middle")
+            s.arrow(cx, yin + 46, cx, ybar - 4)
+            if key == "map":
+                keep, out = True, str(d // 30)
+            else:
+                keep, out = d > 30, str(d)
+            if keep:
+                s.arrow(cx, ybar + 42, cx, yout - 4)
+                s.rect(x, yout, w, 44, "green", radius=4)
+                s.text(cx, yout + 28, out, size=16, mono=True, anchor="middle")
+            else:
+                s.text(cx, yout + 28, t["no"], size=14, weight=700, color=red, anchor="middle")
+        s.text(px, yout + 76, t["n" + key], size=14, weight=700)
+        s.text(px, yout + 100, t["c" + key], size=14, mono=True)
+        s.text(px, yout + 124, t["s" + key], size=14, color=MUTED)
+    s.raw(f'<path d="M460,16 L460,388" stroke="{COLORS["gray"][1]}" stroke-width="1.5" stroke-dasharray="4 4"/>')
+    return s.render()
+
+
 DIAGRAMS = {"run-python": (run_python, RUN), "venv": (venv, VENV),
             "if-elif-else": (if_elif_else, IFS), "loop-simple": (loop_simple, LOOPS), "loop-flow": (loop_flow, LOOP),
             "list-indexing": (list_indexing, INDEX), "list-slicing": (list_slicing, SLICE), "set-operations": (set_operations, SETS),
+            "map-filter": (map_filter, MAPF),
             "scope-legb": (scope_legb, LEGB),
             "table-rows": (table_rows, TABLE),
             "dict-lookup": (dict_lookup, LOOKUP),
