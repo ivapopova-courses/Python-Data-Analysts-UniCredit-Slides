@@ -12,14 +12,17 @@ title: 6. Dictionaries
 **Today you will learn to:**
 
 - keep pairs of a **key** and a **value** in a dictionary, and find a value by its key
-  in one step;
+  without searching through a list;
 - add, change and remove entries, and loop over keys, values and pairs;
 - use a dictionary as a **lookup table** - the Python version of a SAS format, a
   hash object and a small SQL reference table;
 - build dictionaries in one line with a **dict comprehension**;
-- count, sum and average **by group** - `GROUP BY` without pandas - with `get`,
+- count and sum **by group** - `GROUP BY` without pandas - with `get`,
   `defaultdict` and `Counter`;
 - work with **records**: a row as a dictionary, a table as a dictionary of rows.
+
+Follow the main sections for the core lesson. Collapsed **Advanced** blocks keep
+extra techniques for later reading; they are not needed for the required homework.
 
 From SAS to Python - a format that turns a code into a name:
 
@@ -49,6 +52,8 @@ print(product_names["overdraft"])
 print(product_names.get("investment", "Other"))     # OTHER = 'Other'
 ```
 
+::: details Advanced: Preview: a lookup for every loan
+
 And the question of homework 4, "what is the rating of the client of each loan?",
 answered for all 400 loans with one dictionary - instead of 400 x 150 comparisons:
 
@@ -64,6 +69,7 @@ with open("data/loans.csv", encoding="utf-8") as file:
 for loan in loans[:5]:
     print(loan["loan_id"], loan["client_id"], rating_of[loan["client_id"]])
 ```
+:::
 
 ## 1. What is a dictionary?
 
@@ -103,6 +109,14 @@ primary key:
 ### Create a dictionary
 
 ```python run
+empty = {}
+currencies = {"EUR": "Euro", "USD": "US dollar"}
+print(empty, currencies)
+```
+
+::: details Advanced: other constructors
+
+```python run
 empty = {}                                         # an empty dict (not a set!)
 currencies = {"EUR": "Euro", "USD": "US dollar"}
 same = dict(EUR="Euro", USD="US dollar")           # keys that are valid names
@@ -110,6 +124,7 @@ from_pairs = dict([("EUR", "Euro"), ("USD", "US dollar")])
 
 print(type(empty), currencies == same == from_pairs)
 ```
+:::
 
 From two lists - the keys and the values - with `zip` ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):
 
@@ -177,6 +192,8 @@ print(by_segment_stage[("retail", 2)])
 bad = {["retail", 1]: 120}                      # TypeError: a list is unhashable
 ```
 
+::: details Advanced: `fromkeys`: unique values and initial values
+
 Two useful forms of `dict.fromkeys`: unique values **in the order of their first
 appearance** (a set loses the order), and many keys with one start value:
 
@@ -186,6 +203,7 @@ currencies = ["EUR", "USD", "EUR", "EUR", "USD", "GBP"]
 print(list(dict.fromkeys(currencies)))        # unique, order kept
 print(dict.fromkeys(["retail", "sme", "corporate"], 0))
 ```
+:::
 
 ::: tip Try it
 Predict, then run: how many keys has `{"a": 1, "A": 2}`, and how many has
@@ -224,6 +242,8 @@ product_names["mortgage"] = "Mortgage (housing)"      # UPDATE
 print(product_names)
 ```
 
+::: details Advanced: update several entries
+
 ### Several at once: `update` and `|`
 
 ```python run
@@ -237,6 +257,7 @@ base = {"EUR": "Euro"}
 print(base | {"USD": "US dollar"})       # a NEW dict (Python 3.9+); base is not changed
 print(base)
 ```
+:::
 
 ### Remove: `del`, `pop`
 
@@ -250,6 +271,8 @@ print(removed, names)
 print(names.pop("leasing", None))          # a default: no KeyError
 ```
 
+::: details Advanced: `setdefault`: add only if missing
+
 ### `setdefault`: add only if missing
 
 `d.setdefault(key, value)` returns the value of the key; if the key is missing, it
@@ -262,6 +285,7 @@ print(limits.setdefault("retail", 99))     # exists: 50000, nothing changes
 print(limits.setdefault("sme", 250000))    # missing: added
 print(limits)
 ```
+:::
 
 ### A trap: changing a dictionary while looping over it
 
@@ -288,6 +312,8 @@ print(balances)
 
 Changing only the **values** of existing keys in a loop is fine.
 
+::: details Advanced: compare two dictionaries
+
 ### Compare two dictionaries
 
 `==` compares the pairs - the order does not matter. A quick check that a
@@ -302,6 +328,7 @@ print(version_1 == version_2)
 print(version_1 == version_3)
 print({k for k in version_1 if version_1[k] != version_3.get(k)})     # what changed
 ```
+:::
 
 ::: tip Try it
 Start from `rates = {"EUR": 3.5, "USD": 5.25}`. Add `"GBP": 4.75`, change `EUR` to
@@ -330,6 +357,19 @@ for segment, amount in outstanding.items():     # pairs - unpack them
 ```
 
 `items()` is the most common: it gives the key and the value together.
+
+### Sort the keys
+
+`sorted(d)` returns a list of the keys in sorted order. It does not change `d`:
+
+```python run
+names = {"overdraft": "Overdraft", "mortgage": "Mortgage loan"}
+print(sorted(names))
+for code in sorted(names):
+    print(code, names[code])
+```
+
+::: details Advanced: sorting and ranking by values
 
 ### Sort the result
 
@@ -367,6 +407,7 @@ ranked = sorted(outstanding.items(), key=lambda kv: kv[1], reverse=True)
 for rank, (segment, amount) in enumerate(ranked, start=1):
     print(f"{rank}. {segment:<10}{amount:>7.1f}{amount / total:>8.1%}")
 ```
+:::
 
 ::: details Advanced: the views are live
 `keys()`, `values()` and `items()` are **views**: they show the dictionary as it is
@@ -397,8 +438,8 @@ print(new.keys() - old.keys())     # added
 :::
 
 ::: tip Try it
-Print the segments of the example sorted by the **length** of their name. Then print
-only the segments with more than EUR 10 million.
+From `outstanding = {"retail": 6.9, "sme": 39.5, "corporate": 85.0}`, print
+each segment and amount with `items()`. Then print the segment names alphabetically.
 :::
 
 ## 4. Dict comprehensions
@@ -429,6 +470,11 @@ region_of = {client_id: region for client_id, segment, region in clients}       
 corporate = {client_id: region for client_id, segment, region in clients if segment == "corporate"}
 print(region_of["C0002"], corporate)
 
+```
+
+::: details Advanced: invert a dictionary
+
+```python run
 # invert a dict whose values ARE unique
 grade_of_rating = {1: "AAA", 2: "AA", 3: "A"}
 rating_of_grade = {g: r for r, g in grade_of_rating.items()}
@@ -448,6 +494,7 @@ print(inverted)              # {'retail': 'consumer', ...} - mortgage is gone
 ```
 
 For "group -> all products" you need a dictionary of **lists** (section 6).
+:::
 
 ::: tip Try it
 From `grades` and `pds` of the first example, build `{grade: pd}` only for the grades
@@ -478,6 +525,17 @@ print([product_names.get(code, "Other") for code in codes])
 :::
 
 ### A nomenclature from a file: the rating scale
+
+`csv.DictReader` gives each row as a dictionary: column names are keys, and all
+values start as text. Use this file-reading pattern for now; lecture 8 explains
+files in depth. Convert numbers with `int` or `float` before calculating:
+
+```python run
+row = {"rating": "4", "grade": "BBB", "pd_min": "0.0025", "pd_max": "0.006"}
+rating = int(row["rating"])
+pd_mid = (float(row["pd_min"]) + float(row["pd_max"])) / 2
+print(rating, row["grade"], pd_mid)
+```
 
 `rating_scale.csv` is a nomenclature: one row per rating. Read it into a dictionary
 **rating -> (grade, PD)** once, and use it for every client:
@@ -533,7 +591,24 @@ class with its own checks.
 ### The join: loans with the region of their client
 
 In Python, a SQL `LEFT JOIN loans -> clients ON client_id` is: a dictionary of the
-clients, and a lookup for every loan.
+clients, and a lookup for every loan. Here each `client_id` occurs only once in
+`clients.csv`. A duplicate ID would overwrite an entry in the dictionary; a SQL
+join could instead produce several matches for one loan.
+
+The outer dictionary uses a client ID as its key. Its value is another dictionary,
+with the client's fields:
+
+```python run
+clients = {"C0002": {"region": "Ruse", "segment": "sme"}}
+client = clients["C0002"]
+print(client)
+print(client["region"])
+print(clients["C0002"]["region"])     # the same lookup in two steps
+```
+
+For a missing client, `clients.get(client_id, {})` gives an empty dictionary.
+Calling `.get("region")` on that empty dictionary gives `None`. This keeps the loan
+in the result, like a SQL LEFT JOIN with an unmatched client.
 
 ```sql
 SELECT l.loan_id, l.client_id, c.region, c.segment
@@ -562,16 +637,19 @@ A SAS programmer would do this with a hash object (`declare hash h(dataset:
 "clients"); h.defineKey("client_id"); ...; rc = h.find();`). The dictionary is the
 same idea, with less code.
 
-Why it is fast: a dictionary finds a key in **one step**, however big it is -
-homework 4 needed up to 150 comparisons per loan. Section "How a dictionary works"
-in the Self-study explains why.
+Why it is fast: dictionary lookup takes approximately constant time on average,
+instead of scanning all clients for each loan. Homework 4 needed up to 150
+comparisons per loan. The Advanced block "How a dictionary works: hashing"
+explains the idea and its limits.
 
 ### A chain of lookups: loan -> client -> rating -> PD
 
 The expected loss of homework 4 needs the PD of each loan, two tables away: the
 loan has a client, the client has a rating, the rating has a PD. With two
-dictionaries, that is two lookups in a row - like two `LEFT JOIN`s in SQL, or two
-`put()` with formats in a SAS DATA step. On small made-up tables:
+dictionaries, that is two lookups in a row - following the same keys as two SQL
+joins. Here every client and rating must exist: `[]` raises `KeyError` for a
+missing key. This version does not keep unmatched rows like a LEFT JOIN. On
+small made-up tables:
 
 ```python run
 rating_of = {"C0001": 3, "C0002": 7}              # client_id -> rating
@@ -597,6 +675,8 @@ Change the loan to the client `C0001`. Predict the rating, the PD and the EL bef
 you run it. What happens with a client that is not in `rating_of`, and how would
 `get` change that?
 :::
+
+:::: details Advanced: ranges and `bisect`
 
 ### Ranges are not keys
 
@@ -634,8 +714,9 @@ print([grade_of_pd(p) for p in [0.0003, 0.0043, 0.02, 0.5, 1.0]])
 
 In pandas, `pd.cut` does the same for a whole column ([lecture 14](./14-pandas-select-aggregate-join.md#bands-pd-cut)).
 :::
+::::
 
-::: info The same in pandas
+::: details Advanced: the same in pandas
 `Series.map(dictionary)` applies a dictionary to a whole column - a SAS format on a
 column. Missing keys become `NaN`:
 
@@ -658,9 +739,21 @@ does `client.get(...)` give, and what would `client[...]` do?
 
 ### Count by group: from `if` to `Counter`
 
-The SQL `SELECT region, COUNT(*) FROM clients GROUP BY region` - four ways, from the longest to
-the shortest. All do the same: a dictionary **group -> count** that grows row by
-row.
+The SQL `SELECT region, COUNT(*) FROM clients GROUP BY region` builds a result
+**group -> count**. Start with a small list so you can follow each update:
+
+```python run
+regions = ["Ruse", "Varna", "Ruse"]
+counts = {}
+for region in regions:
+    counts[region] = counts.get(region, 0) + 1
+    print(region, counts)
+```
+
+For a new region, `get(region, 0)` gives zero. For a known region, it gives the
+count so far. Add one and store the new count under the same key.
+
+::: details Advanced: count with an explicit condition
 
 **1. `if key in d`:**
 
@@ -678,8 +771,9 @@ for region in regions:
         counts[region] = 1
 print(counts)
 ```
+:::
 
-**2. `get` with a default** - "the count so far, or 0":
+**On the file: `get` with a default** - "the count so far, or 0":
 
 ```python run
 import csv
@@ -692,6 +786,8 @@ for region in regions:
     counts[region] = counts.get(region, 0) + 1
 print(counts)
 ```
+
+::: details Advanced: count with `defaultdict(int)`
 
 **3. `defaultdict(int)`** - a dictionary that creates a missing key by itself, with
 `int()`, that is `0`:
@@ -708,8 +804,9 @@ for region in regions:
     counts[region] += 1
 print(dict(counts))
 ```
+:::
 
-**4. `Counter`** - made for counting:
+**`Counter`** - made for counting:
 
 ```python run
 import csv
@@ -728,6 +825,21 @@ print(counts["Sofia"], counts["Vidin"])      # a missing key counts 0 - no KeyEr
 :::
 
 ### Sum by group
+
+`defaultdict(float)` creates a missing key with `float()`, which is `0.0`, when
+you read it with `[]`. You can then add to the new total straight away:
+
+```python run
+from collections import defaultdict
+
+totals = defaultdict(float)
+for product, amount in [("mortgage", 100.0), ("overdraft", 20.0), ("mortgage", 50.0)]:
+    totals[product] += amount
+print(dict(totals))
+```
+
+Pass `float`, not `float()`: the dictionary calls it for each new key. `dict(totals)`
+makes a normal dictionary with the same pairs. Round only after summing a group.
 
 The SQL `SELECT segment, SUM(outstanding) ... GROUP BY segment` - the segment is in
 `clients.csv`, the amount in `loans.csv`: a lookup (section 5) and a sum:
@@ -752,10 +864,26 @@ for segment, total in sorted(totals.items()):
 **Grouping by hand:** [3. Sum with `defaultdict`](../animations/groupingByHand.html#3){target="_blank"}
 :::
 
+::: details Advanced: several aggregates and shares
+
 ### Several aggregates per group
 
 `COUNT`, `SUM`, `AVG`, `MAX` by product - keep a small list per group,
-`[count, sum, max]`, and compute the average at the end:
+`[count, sum, max]`, and compute the average at the end. `setdefault` returns the
+list stored under the key. The name `s` refers to that same list; updating `s`
+changes the value inside `stats` without another assignment:
+
+```python run
+stats = {}
+for amount in [100.0, 50.0]:
+    s = stats.setdefault("mortgage", [0, 0.0, 0.0])
+    s[0] += 1
+    s[1] += amount
+    s[2] = max(s[2], amount)
+    print(stats)
+```
+
+On the file:
 
 ```python run
 import csv
@@ -793,6 +921,7 @@ grand_total = sum(totals.values())
 shares = {cur: round(t / grand_total, 4) for cur, t in totals.items()}
 print(shares)
 ```
+:::
 
 ### Group into lists
 
@@ -803,18 +932,20 @@ lists:
 import csv
 from collections import defaultdict
 
-loans_of = defaultdict(list)                   # list() is []
+loans_of = defaultdict(list)                   # a NEW list() for each missing key
 with open("data/loans.csv", encoding="utf-8") as file:
     for loan in csv.DictReader(file):
         loans_of[loan["client_id"]].append(loan["loan_id"])
 
 print(loans_of["C0030"])
-print(max(loans_of, key=lambda c: len(loans_of[c])), "has the most loans")
+print(len(loans_of["C0030"]), "loans for C0030")
 ```
 
 ::: info Animation
 **Grouping by hand:** [4. Group into lists](../animations/groupingByHand.html#4){target="_blank"}
 :::
+
+::: details Advanced: two-column groups, HAVING and ORDER BY
 
 ### Two keys: `GROUP BY segment, stage`
 
@@ -858,6 +989,7 @@ for client_id, n in sorted(many.items(), key=lambda kv: (-kv[1], kv[0])):
 The key is a tuple - two columns, like `ORDER BY a, b` ([session 4](./04-functions.md#sorting-by-a-key)).
 `-kv[1]` is the count with a minus: the largest count gives the smallest key, so it
 comes first (`DESC`) while the client ids stay A - Z.
+:::
 
 ::: details Advanced: `Counter` arithmetic - two months side by side
 Counters can be added and subtracted. The change of the number of loans per stage
@@ -889,7 +1021,7 @@ print(Counter(cities))
 print(Counter(c.strip().title() for c in cities))
 ```
 
-::: info The same in pandas
+::: details Advanced: the same in pandas
 `value_counts` and `groupby` do all of this section (lectures 13 - 14):
 
 ```python run
@@ -904,8 +1036,9 @@ print(loans.groupby("product")["outstanding"].agg(["count", "sum", "mean", "max"
 
 ::: tip Try it
 Count the loans per **currency** with `Counter`, then sum the outstanding per
-**currency and stage** with a tuple key. Predict first: how many groups will the
-second result have at most?
+**currency** with `defaultdict(float)`. Convert amounts with `float`, and round
+the completed totals to two decimals. Why do you need a different operation for
+the count and the sum?
 :::
 
 ## 7. Nested dictionaries and records
@@ -928,6 +1061,8 @@ print(usd[:5])
 
 Compare with [session 5](./05-lists-advanced.md#on-the-portfolio): `row[3] == "USD"` vs `loan["currency"] == "USD"`. The name
 says what the column is, and adding a column to the file does not break the code.
+
+::: details Advanced: convert and sort whole records
 
 The values are still **text**. Convert them once, into a new record:
 
@@ -964,6 +1099,8 @@ for loan in by_product[:4]:
     print(loan["product"], loan["loan_id"], loan["outstanding"])
 ```
 
+:::
+
 ### A dictionary of dictionaries: a table keyed by id
 
 ```python run
@@ -992,11 +1129,9 @@ print(clients.get("C9999", {}).get("region", "unknown"))
 print(clients["C9999"]["region"])               # KeyError: 'C9999'
 ```
 
-### The shape of JSON
+::: details Advanced: the shape of JSON
 
-::: info Optional
-Not needed for the tasks, the homework or the next sessions - read it when you have time.
-:::
+### The shape of JSON
 
 Nested dictionaries and lists are the shape of **JSON**, the text format of web
 APIs and of many configuration files. The module `json` turns one into the other
@@ -1015,6 +1150,10 @@ print(text)
 print(json.loads(text)["segments"]["sme"]["loans"])
 ```
 
+:::
+
+::: details Advanced: copies of nested dictionaries
+
 ### Copies of nested dictionaries
 
 The same rule as for the copies of lists ([session 3](./03-lists-tuples-sets.md#make-a-copy)): `d.copy()` and `dict(d)` are
@@ -1030,6 +1169,7 @@ deep = copy.deepcopy(limits)
 limits["retail"]["max"] = 0
 print(shallow["retail"], deep["retail"])
 ```
+:::
 
 ::: tip Try it
 From `clients.csv`, build `{client_id: {"segment": ..., "rating": int(...)}}` with one
@@ -1040,18 +1180,17 @@ and the number of corporate clients with a rating of 6 or worse.
 ## 8. Summary
 | Topic | Remember |
 |-------|----------|
-| Dictionary | `{key: value}`; keys unique and hashable; keeps the insertion order |
-| Read | `d[key]` (KeyError if missing); `d.get(key, default)`; `key in d` checks the keys |
-| Change | `d[key] = v` adds or changes; `update`, `\|`; `del`, `pop(key, default)`; `setdefault` |
-| Loop | `for k in d`; `d.values()`; `for k, v in d.items()`; sort with `sorted(d.items(), key=...)` |
-| Comprehension | `{k: v for ... if ...}` |
-| Lookups | a dict = a SAS format / hash object / lookup table; `get(code, "Other")` = `OTHER=` |
-| Join | a dict of the right table, `get` for every row of the left one = `LEFT JOIN` |
-| Ranges | not keys: a function with `if`, or `bisect` |
-| `GROUP BY` | `d[k] = d.get(k, 0) + 1`; `defaultdict(int / float / list)`; `Counter(...)`; `most_common(n)` |
-| Several keys | a tuple as the key: `(segment, stage)` |
-| Records | `csv.DictReader`: rows as dicts; a dict of dicts keyed by id; optional: `json.dumps` / `loads` |
-| Copies | `copy()` is shallow; `copy.deepcopy` for nested dicts |
+| Dictionary | `{key: value}`; keys unique and hashable; keeps insertion order |
+| Read | `d[key]` for a required key; `d.get(key, default)` for an expected missing key; `key in d` |
+| Change | `d[key] = value` adds or changes; `pop(key, default)` removes and returns a value |
+| Loop | `for key in d`; `d.values()`; `for key, value in d.items()`; `sorted(d)` sorts the keys |
+| Comprehension | `{key: value for ... if ...}`; `dict(zip(keys, values))` pairs two lists |
+| Lookups | A dictionary is like a SAS format or a SQL lookup table with unique keys |
+| Join | Unique right-hand keys and `get` for each left-hand row give a LEFT JOIN-style lookup |
+| Counting | `counts[key] = counts.get(key, 0) + 1`; `Counter(values)`; `most_common(n)` |
+| Summing | `defaultdict(float)` starts each group at zero; convert text to numbers; round final totals |
+| Grouping rows | `defaultdict(list)` creates a separate list for each group |
+| Records | `csv.DictReader` gives text fields; `clients[id]["region"]` reads a nested field |
 
 ## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1065,27 +1204,36 @@ python 06-dictionaries/practice/task1-dict-basics.py
 | Task | File | What you do |
 |------|------|-------------|
 | 1 | `task1-dict-basics.py` | A product nomenclature: create, read with a default, add, change, remove |
-| 2 | `task2-predict-dicts.py` | Predict: duplicate keys, `get` vs `[]`, `in`, `pop`, `setdefault`, `\|` |
+| 2 | `task2-predict-dicts.py` | Predict: duplicate keys, lookups, membership, changes and counting |
 | 3 | `task3-lookups.py` | Rating -> grade / PD; codes -> names; loans with the region of their client |
 | 4 | `task4-count-and-sum.py` | Clients per region, outstanding per segment, `most_common` |
-| 5 | `task5-group-aggregates.py` | Count / sum / average / max per product, `HAVING`, a sorted report |
-| 6 | `task6-nested-groups.py` (Optional) | Clients as a dict of dicts; segment x stage totals with tuple keys |
+| 5 | `task5-group-aggregates.py` (Optional, Advanced) | Count / sum / average / max per product, `HAVING`, a sorted report |
+| 6 | `task6-nested-groups.py` (Optional, Advanced) | Clients as a dict of dicts; segment x stage totals with tuple keys |
+
+Start with Task 1, Parts 1-6; then Task 3, Parts 1-3 and 5; then Task 4,
+Parts 1 and 4. Each part has its own checks. While you work on selected parts,
+`TODO` for the other parts means they are still unfinished. Task 2 is extra
+practice on the main lesson. Tasks 5-6 and `task2-predict-dicts-advanced.py` are
+optional extensions after reading the relevant Advanced blocks.
 
 ## Homework
 
-1. `06-dictionaries/homework.py` (in the homework repository): **homework 4 again,
-   with dictionaries** - lookups instead of loops; the expected loss of the portfolio
-   (it must be the same 1,140,106.56), the expected loss by segment and by grade, and
-   a sorted text report. Every check must print `OK`.
-2. The practice tasks you did not finish in class.
-3. Optional: a **cross table of the clients**: count the clients per region
-   in `clients.csv`, then per region **and segment**, and print a small table with
-   the regions as rows and the segments as columns (the Self-study below shows how).
+1. Complete `06-dictionaries/homework.py`: build the lookup dictionaries, calculate
+   one loan's expected loss, then the portfolio EL. Use lookups instead of repeatedly
+   searching through all clients for each loan. The total must be **1,140,106.56**,
+   as in homework 4. The file has five parts; every check must print `OK`.
+2. Recommended: finish practice Tasks 1-4 as time allows, alongside your remaining
+   Lecture 5 work. Tasks 5-6 are optional, not required unfinished homework.
+3. Optional: `06-dictionaries/homework-advanced.py` adds EL by segment and grade,
+   shares and a sorted report. Complete the required homework first. The extension
+   has its own checks; it does not affect completion of `homework.py`.
 
 ## Self-study
 
-This part is not covered in class. It is for reading at home: a cross table by hand,
-and why a dictionary is fast.
+The Advanced blocks below are optional reading for home. They are not required
+for the main practice or homework.
+
+:::: details Advanced: a pivot by hand
 
 ### A pivot by hand: `PROC TABULATE` without pandas
 
@@ -1146,14 +1294,20 @@ print(f"{'total':<16}" + "".join(f"{sum(table[p][s] for p in table):>12,.0f}" fo
 ```
 :::
 
+::::
+
+:::: details Advanced: how a dictionary works
+
 ### How a dictionary works: hashing
 
 Why is `d[key]` fast, and why must keys not change?
 
 A dictionary keeps its pairs in a table of slots. To store a key, Python computes
 `hash(key)` - a big integer made from the value - and uses it to choose the slot. To
-find the key later, it computes the hash again and looks **in that slot only**. So a
-lookup costs the same for 10 keys or 10 million keys:
+find the key later, it computes the hash again. Different keys can lead to the
+same slot (a collision), so Python may need to check more than one slot and compare
+keys. Lookups take approximately constant time **on average**; they are not a
+guaranteed single step or an identical runtime for every dictionary size:
 
 ```python run
 print(hash("C0002"), hash("C0002") == hash("C0002"))
@@ -1197,6 +1351,8 @@ A tuple is hashable only if everything inside it is hashable. `(1, [2, 3])` cont
 list, which can change, so the tuple has no hash. `(1, (2, 3))` contains only
 immutable values.
 :::
+
+::::
 
 ## Read more
 
