@@ -900,8 +900,8 @@ msgstr "Често използване на list от tuples - етикет с�
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:920
-msgid "Tuples are also used for **several return values of a function** ([session 4](./04-functions.md#several-values-a-tuple)) and as **keys of a dictionary** ([session 6](./06-dictionaries.md#rules-for-keys)), where a list is not allowed."
-msgstr "Tuples се използват и за **няколко върнати стойности на функция** ([занятие 4](./04-functions.md#several-values-a-tuple)) и като **ключове на dictionary** ([занятие 6](./06-dictionaries.md#rules-for-keys)), където list не е позволен."
+msgid "Tuples are also used for **several return values of a function** ([session 4](./04-functions.md#several-values-a-tuple)) and as **keys of a dictionary** ([session 6](./06-dictionaries.md#rules-for-keys-and-values)), where a list is not allowed."
+msgstr "Tuples се използват и за **няколко върнати стойности на функция** ([занятие 4](./04-functions.md#several-values-a-tuple)) и като **ключове на dictionary** ([занятие 6](./06-dictionaries.md#rules-for-keys-and-values)), където list не е позволен."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:923

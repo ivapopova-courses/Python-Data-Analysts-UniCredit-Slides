@@ -590,7 +590,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1092
-msgid "A frozen dataclass is also **hashable**: it can be a key of a dictionary or an item of a set ([session 6](./06-dictionaries.md#rules-for-keys)). To \"change\" it, make a new one with `dataclasses.replace`:"
+msgid "A frozen dataclass is also **hashable**: it can be a key of a dictionary or an item of a set ([session 6](./06-dictionaries.md#rules-for-keys-and-values)). To \"change\" it, make a new one with `dataclasses.replace`:"
 msgstr ""
 
 #. heading 3

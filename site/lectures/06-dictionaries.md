@@ -155,7 +155,7 @@ print(0.0003 in pd_of_grade.values())           # True, looks at the values: .va
   items of a set.)
 - Values can be anything: numbers, lists, other dictionaries, functions.
 - A dictionary keeps the **order** in which the keys were added (since Python 3.7).
-- Lookups, insertions, and deletions operations run in **constant time** (*O(1)* average) using a hash table.
+- Lookups, insertions and deletions run in **constant time** (*O(1)* average) using a hash table.
 - Keys and values can be of **mixed data types** within the same dictionary.
 
 ```python run
@@ -308,9 +308,9 @@ Start from `rates = {"EUR": 3.5, "USD": 5.25}`. Add `"GBP": 4.75`, change `EUR` 
 
 When you loop through a dictionary with a `for` loop, it iterates over the **keys** by default. To loop over values or pairs instead, use explicit dictionary methods:
 
-*   **`keys()`**: Returns all keys (this is identical to looping directly over the dictionary).
-*   **`values()`**: Returns all values.
-*   **`items()`**: Returns key-value pairs as `(key, value)` tuples, which you can unpack directly in the loop.
+- **`keys()`**: Returns all keys (this is identical to looping directly over the dictionary).
+- **`values()`**: Returns all values.
+- **`items()`**: Returns key-value pairs as `(key, value)` tuples, which you can unpack directly in the loop.
 
 ```python run
 outstanding = {"retail": 6.9, "sme": 39.5, "corporate": 85.0}     # EUR million

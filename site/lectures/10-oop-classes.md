@@ -1090,7 +1090,7 @@ bbb.pd_max = 0.5                           # FrozenInstanceError
 ```
 
 A frozen dataclass is also **hashable**: it can be a key of a dictionary or an item of
-a set ([session 6](./06-dictionaries.md#rules-for-keys)). To "change" it, make a new one with `dataclasses.replace`:
+a set ([session 6](./06-dictionaries.md#rules-for-keys-and-values)). To "change" it, make a new one with `dataclasses.replace`:
 
 ```python run
 from dataclasses import dataclass, replace

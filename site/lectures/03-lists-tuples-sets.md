@@ -918,7 +918,7 @@ print(amounts)
 ```
 
 Tuples are also used for **several return values of a function** ([session 4](./04-functions.md#several-values-a-tuple)) and as
-**keys of a dictionary** ([session 6](./06-dictionaries.md#rules-for-keys)), where a list is not allowed.
+**keys of a dictionary** ([session 6](./06-dictionaries.md#rules-for-keys-and-values)), where a list is not allowed.
 
 ### Sort records: tuples compare item by item
 

@@ -392,7 +392,7 @@ except ValueError as error:
 
 ### Duplicate codes
 
-A dictionary cannot **have** duplicate keys - the last one wins silently ([session 6](./06-dictionaries.md#rules-for-keys)).
+A dictionary cannot **have** duplicate keys - the last one wins silently ([session 6](./06-dictionaries.md#rules-for-keys-and-values)).
 So the duplicates must be caught **before** the dictionary is built - when the codes
 come as pairs, for example from a file:
 

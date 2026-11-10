@@ -395,7 +395,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:395
-msgid "A dictionary cannot **have** duplicate keys - the last one wins silently ([session 6](./06-dictionaries.md#rules-for-keys)). So the duplicates must be caught **before** the dictionary is built - when the codes come as pairs, for example from a file:"
+msgid "A dictionary cannot **have** duplicate keys - the last one wins silently ([session 6](./06-dictionaries.md#rules-for-keys-and-values)). So the duplicates must be caught **before** the dictionary is built - when the codes come as pairs, for example from a file:"
 msgstr ""
 
 #. paragraph
