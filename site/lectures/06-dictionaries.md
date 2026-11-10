@@ -52,25 +52,6 @@ print(product_names["overdraft"])
 print(product_names.get("investment", "Other"))     # OTHER = 'Other'
 ```
 
-::: details Advanced: Preview: a lookup for every loan
-
-And the question of homework 4, "what is the rating of the client of each loan?",
-answered for all 400 loans with one dictionary - instead of 400 x 150 comparisons:
-
-```python run
-import csv
-
-with open("data/clients.csv", encoding="utf-8") as file:
-    rating_of = {row["client_id"]: int(row["rating"]) for row in csv.DictReader(file)}
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    loans = list(csv.DictReader(file))
-
-for loan in loans[:5]:
-    print(loan["loan_id"], loan["client_id"], rating_of[loan["client_id"]])
-```
-:::
-
 ## 1. What is a dictionary?
 
 ### A key and a value
@@ -98,13 +79,6 @@ primary key:
 | `"BBB"` | `0.0043` |
 | `"B"` | `0.0275` |
 
-![A dictionary next to a SAS format and a SQL lookup table: the same key-value pairs in three forms](/diagrams/dict-lookup.svg){.diagram width=920 height=330}
-
-| | SAS | SQL | Python |
-|---|---|---|---|
-| A code -> a text | `PROC FORMAT` `VALUE` + `PUT()` | a lookup table + `JOIN` | `names[code]` |
-| A key -> several values | a hash object, `h.find()` | a reference table + `JOIN` | a dict of tuples or dicts |
-| Not found | `OTHER=` | `LEFT JOIN` + `COALESCE` | `.get(key, default)` |
 
 ### Create a dictionary
 
