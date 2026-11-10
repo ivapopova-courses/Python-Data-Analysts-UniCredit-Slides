@@ -453,8 +453,9 @@ loans = pd.read_csv("data/loans.csv")
 loans.groupby("stage")["outstanding"].sum()
 ```
 
-The stage totals of [session 6](./06-dictionaries.md#sum-by-group) (`110184825.28`, `16884527.04`, `4301356.28`) - in one
-line. The result is a Series with the groups as its index. Compare with [session 6](./06-dictionaries.md#sum-by-group):
+The totals per stage (`110184825.28`, `16884527.04`, `4301356.28`) - in one
+line. The result is a Series with the groups as its index. Compare with the sum by
+group by hand of [session 6](./06-dictionaries.md#sum-by-group):
 
 ```python run
 import pandas as pd

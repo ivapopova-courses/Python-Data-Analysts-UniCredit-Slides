@@ -209,7 +209,7 @@ msgid "`loans[loans[\"days_past_due\"] > 90][\"stage\"] = 3` changes a temporary
 msgstr ""
 
 #. box title
-#: site/lectures/14-pandas-select-aggregate-join.md:223 site/lectures/14-pandas-select-aggregate-join.md:386 site/lectures/14-pandas-select-aggregate-join.md:638 site/lectures/14-pandas-select-aggregate-join.md:807 site/lectures/14-pandas-select-aggregate-join.md:943 site/lectures/14-pandas-select-aggregate-join.md:1136
+#: site/lectures/14-pandas-select-aggregate-join.md:223 site/lectures/14-pandas-select-aggregate-join.md:386 site/lectures/14-pandas-select-aggregate-join.md:639 site/lectures/14-pandas-select-aggregate-join.md:808 site/lectures/14-pandas-select-aggregate-join.md:944 site/lectures/14-pandas-select-aggregate-join.md:1137
 msgid "Try it"
 msgstr ""
 
@@ -380,740 +380,740 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-pandas-select-aggregate-join.md:456
-msgid "The stage totals of [session 6](./06-dictionaries.md#sum-by-group) (`110184825.28`, `16884527.04`, `4301356.28`) - in one line. The result is a Series with the groups as its index. Compare with [session 6](./06-dictionaries.md#sum-by-group):"
+msgid "The totals per stage (`110184825.28`, `16884527.04`, `4301356.28`) - in one line. The result is a Series with the groups as its index. Compare with the sum by group by hand of [session 6](./06-dictionaries.md#sum-by-group):"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:473
+#: site/lectures/14-pandas-select-aggregate-join.md:474
 msgid "Several statistics: `agg`"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:475
+#: site/lectures/14-pandas-select-aggregate-join.md:476
 msgid "A list of functions - SAS `PROC MEANS N SUM MEAN MAX`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:484
+#: site/lectures/14-pandas-select-aggregate-join.md:485
 msgid "**Named aggregation** gives every result column its name - SQL `COUNT(*) AS loans`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:498
+#: site/lectures/14-pandas-select-aggregate-join.md:499
 msgid "Each item is `new_name=(column, function)`. This is the form to use in reports."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:500
+#: site/lectures/14-pandas-select-aggregate-join.md:501
 msgid "The full SAS `PROC MEANS` output for every group - `describe` after `groupby`:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:509
+#: site/lectures/14-pandas-select-aggregate-join.md:510
 msgid "Several keys"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:520
+#: site/lectures/14-pandas-select-aggregate-join.md:521
 msgid "The index has two levels now (a `MultiIndex`). For a flat table - columns as in SQL - use `as_index=False` or `reset_index()`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:532
+#: site/lectures/14-pandas-select-aggregate-join.md:533
 msgid "The share of each stage **in its segment** - a group total of a group result (`transform`, below, explains the second line):"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:546
+#: site/lectures/14-pandas-select-aggregate-join.md:547
 msgid "(The same table with the stages as columns is a **pivot** - [lecture 15](./15-pandas-reports.md#_1-pivot-tables).)"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:548
+#: site/lectures/14-pandas-select-aggregate-join.md:549
 msgid "`size` and `count`"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:550
+#: site/lectures/14-pandas-select-aggregate-join.md:551
 msgid "`size()` counts the rows of each group (SQL `COUNT(*)`); `count()` counts the values that are not missing (SQL `COUNT(col)`):"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:561
+#: site/lectures/14-pandas-select-aggregate-join.md:562
 msgid "`HAVING`: filter after the grouping"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:573
+#: site/lectures/14-pandas-select-aggregate-join.md:574
 msgid "`PROC FREQ` with two variables"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:575
+#: site/lectures/14-pandas-select-aggregate-join.md:576
 msgid "`value_counts` on several columns counts the combinations:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:585
+#: site/lectures/14-pandas-select-aggregate-join.md:586
 msgid "(`pd.crosstab` - the two-way table with rows and columns - is [lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares).)"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:587
+#: site/lectures/14-pandas-select-aggregate-join.md:588
 msgid "The share inside a group: `transform`"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:589
+#: site/lectures/14-pandas-select-aggregate-join.md:590
 msgid "The share of each loan in its client's total needs the group total **on every row**. In SQL that is a window function: `SUM(outstanding) OVER (PARTITION BY client_id)`. In pandas, `transform`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:602
+#: site/lectures/14-pandas-select-aggregate-join.md:603
 msgid "`agg` gives one row per group; `transform` gives one value per **row** (the group result repeated) - so it fits as a new column. Other window functions in the same way:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:616
+#: site/lectures/14-pandas-select-aggregate-join.md:617
 msgid "Groups from bands"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:618
+#: site/lectures/14-pandas-select-aggregate-join.md:619
 msgid "Group by a column made with `pd.cut`. For category columns, `observed=True` shows only the bands that have rows (the default in pandas 3; pandas 2.2 warns if you do not say it):"
 msgstr ""
 
 #. box title
-#: site/lectures/14-pandas-select-aggregate-join.md:632
+#: site/lectures/14-pandas-select-aggregate-join.md:633
 msgid "`groupby` and SAS"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:633
+#: site/lectures/14-pandas-select-aggregate-join.md:634
 msgid "SAS `PROC MEANS DATA=loans; CLASS segment stage; VAR outstanding; OUTPUT OUT=...` is `groupby([\"segment\", \"stage\"]).agg(...)`. There is no need to sort first (in SAS, `BY` needs `PROC SORT`; `groupby` does not), and the groups come out sorted by the keys."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:639
+#: site/lectures/14-pandas-select-aggregate-join.md:640
 msgid "By `currency`: the number of loans, the total and the mean outstanding, the maximum days past due - with named aggregation. Then keep only the currencies with more than 20 loans."
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-pandas-select-aggregate-join.md:644
+#: site/lectures/14-pandas-select-aggregate-join.md:645
 msgid "5. `merge` and `concat`: JOIN and SET"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:646
+#: site/lectures/14-pandas-select-aggregate-join.md:647
 msgid "The kinds of join"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:648
+#: site/lectures/14-pandas-select-aggregate-join.md:649
 msgid "A small example first - two tables, one key:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:661
+#: site/lectures/14-pandas-select-aggregate-join.md:662
 msgid "`how=\"right\"` exists too. The rows without a partner get `NaN` - and an int column with `NaN` becomes float ([lecture 13](./13-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64): `5.0`, `3.0`)."
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:664
+#: site/lectures/14-pandas-select-aggregate-join.md:665
 msgid "`IN=` of SAS: `indicator=True`"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:666
+#: site/lectures/14-pandas-select-aggregate-join.md:667
 msgid "In SAS, the DATA step `MERGE a(in=a) b(in=b); BY id;` tells where each row came from. `indicator=True` adds the column `_merge` with `both`, `left_only`, `right_only`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:681
+#: site/lectures/14-pandas-select-aggregate-join.md:682
 msgid "The 7 clients without loans - the anti-join (in SQL: `WHERE l.client_id IS NULL`). Simpler, when you need only the ids: `~clients[\"client_id\"].isin(loans[\"client_id\"])`."
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:684
+#: site/lectures/14-pandas-select-aggregate-join.md:685
 msgid "The portfolio join and the EL"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:686
+#: site/lectures/14-pandas-select-aggregate-join.md:687
 msgid "Loans + clients + the rating scale - the join of homework 4 ([session 4](./04-functions.md), with loops; [session 6](./06-dictionaries.md#the-join-loans-with-the-region-of-their-client), with dicts; [lecture 12](./12-databases.md#a-join-in-sql), in SQL). Now in pandas:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:707
+#: site/lectures/14-pandas-select-aggregate-join.md:708
 msgid "The same number as with loops, dicts and SQL: the tools agree."
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:709
+#: site/lectures/14-pandas-select-aggregate-join.md:710
 msgid "Different key names, the same column names"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:711
+#: site/lectures/14-pandas-select-aggregate-join.md:712
 msgid "`left_on` / `right_on` when the key has another name; `suffixes` when both tables have a column with the same name. The rating of each client in August and September from `ratings_history.csv` (a self join, as in [lecture 12](./12-databases.md#the-rating-migration-a-self-join)):"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:737
+#: site/lectures/14-pandas-select-aggregate-join.md:738
 msgid "A key of **two** columns - `on=[...]`, like `BY loan_id month_end` or `ON a.x = b.x AND a.y = b.y`. The monthly balance of each loan with the rating of its client in the same month:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:754
+#: site/lectures/14-pandas-select-aggregate-join.md:755
 msgid "The trap: a duplicated key"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:756
+#: site/lectures/14-pandas-select-aggregate-join.md:757
 msgid "If the key is not unique on the \"one\" side, every match is a row: the table grows and the totals double - the many-to-many join. `validate` stops it with an error:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:776
+#: site/lectures/14-pandas-select-aggregate-join.md:777
 msgid "Rule: on a lookup join, write `validate=\"many_to_one\"` (or check `key.is_unique` first), and compare the row count before and after."
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:779
+#: site/lectures/14-pandas-select-aggregate-join.md:780
 msgid "`concat`: one table under another"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:781
+#: site/lectures/14-pandas-select-aggregate-join.md:782
 msgid "`pd.concat` puts tables under each other - SAS `SET a b;`, SQL `UNION ALL`. The columns are matched by name:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:794
+#: site/lectures/14-pandas-select-aggregate-join.md:795
 msgid "`keys=` labels where each part came from (like `INDSNAME=` in SAS), and a missing column is filled with `NaN`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:805
+#: site/lectures/14-pandas-select-aggregate-join.md:806
 msgid "(SQL `UNION` without `ALL` = `concat` + `drop_duplicates()`.)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:808
+#: site/lectures/14-pandas-select-aggregate-join.md:809
 msgid "Join `loans.csv` with `client_register.csv` on `client_id` with `how=\"left\"` and `indicator=True`. Do all loans find their client? (Look at the ids in the register - [lecture 7](./07-text-and-regex.md#client-ids).) How would you fix the key before the join?"
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-pandas-select-aggregate-join.md:813
+#: site/lectures/14-pandas-select-aggregate-join.md:814
 msgid "6. Missing values"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:817
+#: site/lectures/14-pandas-select-aggregate-join.md:818
 msgid "pandas marks a missing value with `NaN` in number columns, and with `NaN` or `None` in text columns (pandas 3: `NaN` in the `str` type). Nullable types (`Int64`, [lecture 13](./13-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64)) use `pd.NA`. Do not compare with them - use `isna()` / `notna()`:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:831
+#: site/lectures/14-pandas-select-aggregate-join.md:832
 msgid "Aggregates skip them"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:833
+#: site/lectures/14-pandas-select-aggregate-join.md:834
 msgid "Unlike NumPy ([lecture 13](./13-numpy-pandas-intro.md#missing-values-in-numpy-nan)), pandas skips `NaN` in `sum`, `mean`, `min`, `max` - like SQL and SAS `PROC MEANS`:"
 msgstr ""
 
 #. box title
-#: site/lectures/14-pandas-select-aggregate-join.md:846
+#: site/lectures/14-pandas-select-aggregate-join.md:847
 msgid "A mean that skips is a different mean"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:847
+#: site/lectures/14-pandas-select-aggregate-join.md:848
 msgid "`mean()` divides by the values that are there (398 here), not by all rows. If a missing amount means 0, fill it first - that changes the mean. Decide what a missing value means before you aggregate."
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:852
+#: site/lectures/14-pandas-select-aggregate-join.md:853
 msgid "Fill: `fillna`"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:854
+#: site/lectures/14-pandas-select-aggregate-join.md:855
 msgid "With one value, with a value per column, or from another column - SQL `COALESCE`:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:876
+#: site/lectures/14-pandas-select-aggregate-join.md:877
 msgid "Drop: `dropna`"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:885
+#: site/lectures/14-pandas-select-aggregate-join.md:886
 msgid "`dropna()` without `subset` drops a row with **any** missing value - often too much. Name the columns that matter."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:888
+#: site/lectures/14-pandas-select-aggregate-join.md:889
 msgid "How complete is each column? `isna().mean()` is the share of missing values - the first table of a data quality report:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:899
+#: site/lectures/14-pandas-select-aggregate-join.md:900
 msgid "NaN in comparisons, groups and joins"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:911
+#: site/lectures/14-pandas-select-aggregate-join.md:912
 msgid "`!=` is `True` for `NaN` (SQL would give `NULL`, and drop the row); `groupby` drops the `NaN` key unless `dropna=False`. In `merge`, `NaN` keys **match each other** - unlike SQL, where `NULL = NULL` is not true:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:923
+#: site/lectures/14-pandas-select-aggregate-join.md:924
 msgid "Repair the export from a trusted source"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:925
+#: site/lectures/14-pandas-select-aggregate-join.md:926
 msgid "The 8 missing amounts of the export are in `loans.csv`. A left join brings the reference value next to each row, `fillna` takes it where the export has none:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:941
+#: site/lectures/14-pandas-select-aggregate-join.md:942
 msgid "The totals agree: 131,370,708.60."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:944
+#: site/lectures/14-pandas-select-aggregate-join.md:945
 msgid "How many rows of the export have **some** missing value? Fill the missing interest rates with the mean rate of the same product (hint: `groupby(\"Product\")[\"Interest rate %\"].transform(\"mean\")`)."
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-pandas-select-aggregate-join.md:949
+#: site/lectures/14-pandas-select-aggregate-join.md:950
 msgid "7. From a database into a DataFrame"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:951
+#: site/lectures/14-pandas-select-aggregate-join.md:952
 msgid "The result of a query as a DataFrame"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:953
+#: site/lectures/14-pandas-select-aggregate-join.md:954
 msgid "In [lecture 12](./12-databases.md) the rows of a query came back as tuples. `pd.read_sql(sql, connection)` runs the query and returns a **DataFrame**, with the column names of the query:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:969
+#: site/lectures/14-pandas-select-aggregate-join.md:970
 msgid "Parameters work the same way as in lecture 12 - a `?` in the SQL and the values in `params`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:985
+#: site/lectures/14-pandas-select-aggregate-join.md:986
 msgid "`parse_dates` turns the text dates of SQLite into real dates:"
 msgstr ""
 
 #. box title
-#: site/lectures/14-pandas-select-aggregate-join.md:998
+#: site/lectures/14-pandas-select-aggregate-join.md:999
 msgid "Advanced: a DataFrame back to Python rows"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:999
+#: site/lectures/14-pandas-select-aggregate-join.md:1000
 msgid "A DataFrame goes back to Python rows when you need them - `to_dict(\"records\")` gives a list of dictionaries ([session 6](./06-dictionaries.md#a-row-as-a-dictionary)):"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:1012
+#: site/lectures/14-pandas-select-aggregate-join.md:1013
 msgid "SQLAlchemy: one way to connect to every database"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1014
+#: site/lectures/14-pandas-select-aggregate-join.md:1015
 msgid "**SQLAlchemy** (in `requirements.txt`) is a library on top of the drivers: one **engine** object, made from a URL, for any database. pandas works best with it - for SQLite a plain connection is fine, for other databases pandas expects an engine:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1033
+#: site/lectures/14-pandas-select-aggregate-join.md:1034
 msgid "A DataFrame from the engine with **named** parameters - `text()` and a dictionary:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1047
+#: site/lectures/14-pandas-select-aggregate-join.md:1048
 msgid "`create_engine(url)` - the URL names the kind of database and where it is:"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1049
+#: site/lectures/14-pandas-select-aggregate-join.md:1050
 msgid "Database"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1049
+#: site/lectures/14-pandas-select-aggregate-join.md:1050
 msgid "SQLAlchemy URL"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1051
+#: site/lectures/14-pandas-select-aggregate-join.md:1052
 msgid "Oracle"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1052
+#: site/lectures/14-pandas-select-aggregate-join.md:1053
 msgid "MS SQL Server"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1053
+#: site/lectures/14-pandas-select-aggregate-join.md:1054
 msgid "PostgreSQL"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1054
+#: site/lectures/14-pandas-select-aggregate-join.md:1055
 msgid "Teradata"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1054
+#: site/lectures/14-pandas-select-aggregate-join.md:1055
 msgid "`teradatasql://user:pw@host` (with the package `teradatasqlalchemy`)"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1055
+#: site/lectures/14-pandas-select-aggregate-join.md:1056
 msgid "SQLite"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1057
+#: site/lectures/14-pandas-select-aggregate-join.md:1058
 msgid "Never write a real password into the URL in your code   ([lecture 12](./12-databases.md#never-a-password-in-the-code))."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1059
+#: site/lectures/14-pandas-select-aggregate-join.md:1060
 msgid "`text(...)` marks a string as SQL; parameters are `:name`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1060
+#: site/lectures/14-pandas-select-aggregate-join.md:1061
 msgid "`engine.dispose()` closes the connections of the engine when you are done."
 msgstr ""
 
 #. box title
-#: site/lectures/14-pandas-select-aggregate-join.md:1062
+#: site/lectures/14-pandas-select-aggregate-join.md:1063
 msgid "Advanced: look into a database; read a whole table"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1063
+#: site/lectures/14-pandas-select-aggregate-join.md:1064
 msgid "SQLAlchemy can also **look into** a database - the tables and their columns, for any database kind:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1077
+#: site/lectures/14-pandas-select-aggregate-join.md:1078
 msgid "With an engine, pandas reads a whole table by its name:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:1091
+#: site/lectures/14-pandas-select-aggregate-join.md:1092
 msgid "Write a DataFrame to a table: `to_sql`"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1104
+#: site/lectures/14-pandas-select-aggregate-join.md:1105
 msgid "`if_exists=\"replace\"` drops and recreates the table; `\"append\"` adds rows; `\"fail\"` (the default) stops if the table exists."
 msgstr ""
 
 #. box title
-#: site/lectures/14-pandas-select-aggregate-join.md:1107
+#: site/lectures/14-pandas-select-aggregate-join.md:1108
 msgid "Advanced: the trap of `\"append\"`"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1108
+#: site/lectures/14-pandas-select-aggregate-join.md:1109
 msgid "The trap of `\"append\"`: run the load twice - the second run of the same month - and every row is there twice. Delete the month first (one transaction), then append:"
 msgstr ""
 
 #. box title
-#: site/lectures/14-pandas-select-aggregate-join.md:1130
+#: site/lectures/14-pandas-select-aggregate-join.md:1131
 msgid "pandas 2 and pandas 3"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1131
+#: site/lectures/14-pandas-select-aggregate-join.md:1132
 msgid "`pd.read_sql` with a `sqlite3` connection works in both. With any **other** DB-API connection (oracledb, pyodbc), pandas shows a `UserWarning` and asks for an SQLAlchemy engine - use one."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1137
+#: site/lectures/14-pandas-select-aggregate-join.md:1138
 msgid "Read `ratings_history` for `2026-09-30` into a DataFrame with a parameter, and print its `shape`. Then count the clients per rating with `df[\"rating\"].value_counts()`."
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-pandas-select-aggregate-join.md:1141
+#: site/lectures/14-pandas-select-aggregate-join.md:1142
 msgid "8. The final project"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1143
+#: site/lectures/14-pandas-select-aggregate-join.md:1144
 msgid "The [final project](../project) is a monthly portfolio report from end to end: load (files and the database), validate (the nomenclatures of [lecture 11](./11-oop-nomenclatures.md)), clean, aggregate, report (Excel and a chart - [lecture 15](./15-pandas-reports.md#_6-an-excel-report-with-several-sheets)), and keep it in Git. Read the brief today; [lecture 15](./15-pandas-reports.md) adds the last tools (pivot tables, dates, Excel output) and the time to start."
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-pandas-select-aggregate-join.md:1149
+#: site/lectures/14-pandas-select-aggregate-join.md:1150
 msgid "9. Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1150
+#: site/lectures/14-pandas-select-aggregate-join.md:1151
 msgid "SQL / SAS"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1150
+#: site/lectures/14-pandas-select-aggregate-join.md:1151
 msgid "pandas"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1153
+#: site/lectures/14-pandas-select-aggregate-join.md:1154
 msgid "`df[mask]`, `df.loc[mask, cols]`, `df.query(\"...\")`; `&`, `\\|`, `~` with brackets"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1155
+#: site/lectures/14-pandas-select-aggregate-join.md:1156
 msgid "`df.loc[mask, \"col\"] = value` (one `loc`, never two brackets)"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1156
+#: site/lectures/14-pandas-select-aggregate-join.md:1157
 msgid "derived column, `CASE WHEN`"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1157
+#: site/lectures/14-pandas-select-aggregate-join.md:1158
 msgid "`PROC FORMAT` ranges / values"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1158
+#: site/lectures/14-pandas-select-aggregate-join.md:1159
 msgid "`ORDER BY`, top N, `RANK`"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1161
+#: site/lectures/14-pandas-select-aggregate-join.md:1162
 msgid "a mask on the grouped result"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1165
+#: site/lectures/14-pandas-select-aggregate-join.md:1166
 msgid "`NaN`; `isna`; aggregates skip it; `fillna`, `dropna(subset=...)`"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1166
+#: site/lectures/14-pandas-select-aggregate-join.md:1167
 msgid "a query from Python"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1166
+#: site/lectures/14-pandas-select-aggregate-join.md:1167
 msgid "`pd.read_sql(sql, con, params=..., parse_dates=...)`; SQLAlchemy `create_engine(url)`; `df.to_sql(...)`"
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-pandas-select-aggregate-join.md:1168
+#: site/lectures/14-pandas-select-aggregate-join.md:1169
 msgid "Practice"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1169
+#: site/lectures/14-pandas-select-aggregate-join.md:1170
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root (with the virtual environment active):"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1177
+#: site/lectures/14-pandas-select-aggregate-join.md:1178
 msgid "Task"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1177
+#: site/lectures/14-pandas-select-aggregate-join.md:1178
 msgid "File"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1177
+#: site/lectures/14-pandas-select-aggregate-join.md:1178
 msgid "What you do"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1179
+#: site/lectures/14-pandas-select-aggregate-join.md:1180
 msgid "Rows and columns: masks, `loc`, `iloc`, `isin`, `between`, `query`"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1180
+#: site/lectures/14-pandas-select-aggregate-join.md:1181
 msgid "Predict: masks, groups, joins, missing values"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1181
+#: site/lectures/14-pandas-select-aggregate-join.md:1182
 msgid "New columns with `np.select`, `pd.cut`, `map` and `assign`"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1182
+#: site/lectures/14-pandas-select-aggregate-join.md:1183
 msgid "Totals by group, named aggregation, `HAVING`, shares with `transform`"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1183
+#: site/lectures/14-pandas-select-aggregate-join.md:1184
 msgid "Joins with clients and the rating scale, the anti-join, the EL"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1184
+#: site/lectures/14-pandas-select-aggregate-join.md:1185
 msgid "`task6-missing.py` (Optional)"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1184
+#: site/lectures/14-pandas-select-aggregate-join.md:1185
 msgid "Missing values in the export: count, fill, drop, repair"
 msgstr ""
 
 #. table cell
-#: site/lectures/14-pandas-select-aggregate-join.md:1185
+#: site/lectures/14-pandas-select-aggregate-join.md:1186
 msgid "`pd.read_sql` with parameters; shape, columns, a total"
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-pandas-select-aggregate-join.md:1187
+#: site/lectures/14-pandas-select-aggregate-join.md:1188
 msgid "Homework"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1189
+#: site/lectures/14-pandas-select-aggregate-join.md:1190
 msgid "`14-pandas-select-aggregate-join/homework.py` (in the homework repository): **the portfolio report in pandas** - one function per table: exposure and EL by segment and stage, the top 10 clients with their region and grade, the concentration of the top 10, the clients without loans, the loans of defaulted clients. The checks compare with the numbers of lectures 4, 6 and 12. Every check must print `OK`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1194
+#: site/lectures/14-pandas-select-aggregate-join.md:1195
 msgid "The practice tasks you did not finish in class."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1195
+#: site/lectures/14-pandas-select-aggregate-join.md:1196
 msgid "Read the [final project](../project) brief and choose your report date and the tables you want in your report."
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-pandas-select-aggregate-join.md:1198
+#: site/lectures/14-pandas-select-aggregate-join.md:1199
 msgid "Self-study"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1200
+#: site/lectures/14-pandas-select-aggregate-join.md:1201
 msgid "This part is not covered in class. It is for reading at home: how to write in pandas the SAS DATA step tricks you use every day, and how to write a long transformation as one readable chain."
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:1204
+#: site/lectures/14-pandas-select-aggregate-join.md:1205
 msgid "SAS idioms in pandas"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1206
+#: site/lectures/14-pandas-select-aggregate-join.md:1207
 msgid "**SAS `FIRST.` and `LAST.`** - the first or last row of each `BY` group. Sort, then keep the first row per key:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1220
+#: site/lectures/14-pandas-select-aggregate-join.md:1221
 msgid "`groupby(\"client_id\").head(1)` does the same, and `.head(2)` keeps the first two of each group - not possible with SAS `FIRST.` alone. `keep=\"last\"` is SAS `LAST.`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1223
+#: site/lectures/14-pandas-select-aggregate-join.md:1224
 msgid "**`NODUPKEY`** - `drop_duplicates(subset=[...])` ([lecture 13](./13-numpy-pandas-intro.md#distinct-values-missing-values-duplicates)); `duplicated(keep=False)` marks **all** copies, to look at them:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1235
+#: site/lectures/14-pandas-select-aggregate-join.md:1236
 msgid "**SAS `LAG` and `RETAIN` by group** - the value of the previous row of the same client, and a running total that restarts for each client:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1249
+#: site/lectures/14-pandas-select-aggregate-join.md:1250
 msgid "`shift(1)` inside the group gives `NaN` on the first row of each client - exactly what SAS `LAG` with `IF FIRST.client_id THEN prev = .` does, without the trap of `LAG` in a condition."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1253
+#: site/lectures/14-pandas-select-aggregate-join.md:1254
 msgid "**A row counter per group** - `cumcount` (in SAS: `IF FIRST. THEN n = 0; n + 1;`):"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1263
+#: site/lectures/14-pandas-select-aggregate-join.md:1264
 msgid "**Exercises**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1265
+#: site/lectures/14-pandas-select-aggregate-join.md:1266
 msgid "For every client, the month (`month_end`) of the worst rating of the last 12 months (the highest number). If there are several, take the last one."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1267
+#: site/lectures/14-pandas-select-aggregate-join.md:1268
 msgid "For every client, the number of months in which the rating changed (up or down). Which client changed the most?"
 msgstr ""
 
 #. box title
-#: site/lectures/14-pandas-select-aggregate-join.md:1270 site/lectures/14-pandas-select-aggregate-join.md:1324
+#: site/lectures/14-pandas-select-aggregate-join.md:1271 site/lectures/14-pandas-select-aggregate-join.md:1325
 msgid "Answer"
 msgstr ""
 
 #. heading 3
-#: site/lectures/14-pandas-select-aggregate-join.md:1289
+#: site/lectures/14-pandas-select-aggregate-join.md:1290
 msgid "Method chaining"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1291
+#: site/lectures/14-pandas-select-aggregate-join.md:1292
 msgid "Many steps with temporary names (`df1`, `df2`, `df3`) are hard to read and easy to mix up. A chain reads top to bottom, like a SQL query or a SAS DATA step - each line one step, in brackets so that it can span lines:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1314
+#: site/lectures/14-pandas-select-aggregate-join.md:1315
 msgid "To look inside a chain while you build it, stop it after any line and look at the result. Do not chain 30 steps: a chain per idea (load, clean, aggregate) is easier to test."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1318
+#: site/lectures/14-pandas-select-aggregate-join.md:1319
 msgid "**Exercise**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1320
+#: site/lectures/14-pandas-select-aggregate-join.md:1321
 msgid "Write one chain: the loans of stage 1 in EUR, with the client's rating (`merge`), a column `rating_band` with `pd.cut` (1 - 3, 4 - 6, 7 - 10), and per band the number of loans and the mean interest rate, sorted by the band."
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1340
+#: site/lectures/14-pandas-select-aggregate-join.md:1341
 msgid "`groupby` on a category column sorts by the order of the labels, so no `sort_values` is needed."
 msgstr ""
 
 #. heading 2
-#: site/lectures/14-pandas-select-aggregate-join.md:1344
+#: site/lectures/14-pandas-select-aggregate-join.md:1345
 msgid "Read more"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1346
+#: site/lectures/14-pandas-select-aggregate-join.md:1347
 msgid "pandas: [Indexing and selecting data](https://pandas.pydata.org/docs/user_guide/indexing.html), [Group by: split-apply-combine](https://pandas.pydata.org/docs/user_guide/groupby.html), [Merge, join, concatenate](https://pandas.pydata.org/docs/user_guide/merging.html), [Working with missing data](https://pandas.pydata.org/docs/user_guide/missing_data.html), [Copy-on-write](https://pandas.pydata.org/docs/user_guide/copy_on_write.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1351
+#: site/lectures/14-pandas-select-aggregate-join.md:1352
 msgid "[Comparison with SAS](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sas.html) and [with SQL](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html) (the official tables)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/14-pandas-select-aggregate-join.md:1355
+#: site/lectures/14-pandas-select-aggregate-join.md:1356
 msgid "**Next lecture:** pandas for reports - pivot tables (SAS `PROC TABULATE` / `TRANSPOSE`), `melt`, dates and month ends, a rating migration matrix, an Excel file with several sheets, charts - and the start of the final project."
 msgstr ""

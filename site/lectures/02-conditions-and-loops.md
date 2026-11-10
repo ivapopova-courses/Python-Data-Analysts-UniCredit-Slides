@@ -1077,7 +1077,7 @@ for number, name in pairs:
 ```
 
 That is all you need today. [Session 3](./03-lists-tuples-sets.md#tuples-as-records) shows lists of records like this one, and
-[session 6](./06-dictionaries.md#keys-values-items) loops over a dictionary the same way.
+[session 6](./06-dictionaries.md#keys-values-and-items) loops over a dictionary the same way.
 
 ### Nested loops
 

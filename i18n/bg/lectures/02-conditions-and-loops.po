@@ -1000,8 +1000,8 @@ msgstr "Когато всеки елемент е **двойка** стойно�
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1079
-msgid "That is all you need today. [Session 3](./03-lists-tuples-sets.md#tuples-as-records) shows lists of records like this one, and [session 6](./06-dictionaries.md#keys-values-items) loops over a dictionary the same way."
-msgstr "Днес ви трябва само това. [Занятие 3](./03-lists-tuples-sets.md#tuples-as-records) показва lists от записи като този, а [занятие 6](./06-dictionaries.md#keys-values-items) обхожда dictionary по същия начин."
+msgid "That is all you need today. [Session 3](./03-lists-tuples-sets.md#tuples-as-records) shows lists of records like this one, and [session 6](./06-dictionaries.md#keys-values-and-items) loops over a dictionary the same way."
+msgstr "Днес ви трябва само това. [Занятие 3](./03-lists-tuples-sets.md#tuples-as-records) показва lists от записи като този, а [занятие 6](./06-dictionaries.md#keys-values-and-items) обхожда dictionary по същия начин."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1082
@@ -1522,6 +1522,9 @@ msgstr "Real Python: [Conditional statements](https://realpython.com/python-cond
 #: site/lectures/02-conditions-and-loops.md:1619
 msgid "**Next session:** lists, tuples and sets - indexing from 0, slices, the methods of `list`, tuples as records, and the SQL `UNION` / `INTERSECT` / `EXCEPT` with sets."
 msgstr "**Следващото занятие:** lists, tuples и sets - индексиране от 0, slices, методите на `list`, tuples като записи и `UNION` / `INTERSECT` / `EXCEPT` от SQL със sets."
+
+#~ msgid "That is all you need today. [Session 3](./03-lists-tuples-sets.md#tuples-as-records) shows lists of records like this one, and [session 6](./06-dictionaries.md#keys-values-items) loops over a dictionary the same way."
+#~ msgstr "Днес ви трябва само това. [Занятие 3](./03-lists-tuples-sets.md#tuples-as-records) показва lists от записи като този, а [занятие 6](./06-dictionaries.md#keys-values-items) обхожда dictionary по същия начин."
 
 #~ msgid "Tables kept in memory - a list of rows - and the loops over them come in [session 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows)."
 #~ msgstr "Таблиците в паметта - list от редове - и циклите по тях идват в [занятие 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows)."

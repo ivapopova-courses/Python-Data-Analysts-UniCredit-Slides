@@ -155,7 +155,9 @@ print(0.0003 in pd_of_grade.values())           # True, looks at the values: .va
   items of a set.)
 - Values can be anything: numbers, lists, other dictionaries, functions.
 - A dictionary keeps the **order** in which the keys were added (since Python 3.7).
-- Lookups, insertions and deletions run in **constant time** (*O(1)* average) using a hash table.
+- Finding a key is **fast**, also in a big dictionary: Python does not search
+  through all the keys (the Self-study explains how).
+- Keys are **case-sensitive**: `"a"` and `"A"` are two different keys.
 - Keys and values can be of **mixed data types** within the same dictionary.
 
 ```python run
@@ -209,8 +211,6 @@ product_names["mortgage"] = "Mortgage (housing)"      # UPDATE
 print(product_names)
 ```
 
-::: details Advanced: update several entries
-
 ### Several at once: `update` and `|`
 
 ```python run
@@ -221,10 +221,19 @@ names.update(more)              # changes names; the values of more win
 print(names)
 
 base = {"EUR": "Euro"}
-print(base | {"USD": "US dollar"})       # a NEW dict (Python 3.9+); base is not changed
+print(base | {"USD": "US dollar"})       # a NEW dict; base is not changed
 print(base)
 ```
-:::
+
+`|` is the safe way to add a column to a record (section 7) without changing the
+original row - a new dictionary with one more pair:
+
+```python run
+row = {"loan_id": "L000001", "stage": "1"}
+new_row = row | {"stage_name": "performing"}
+print(new_row)
+print(row)                               # unchanged
+```
 
 ### Remove: `del`, `pop`
 
@@ -299,7 +308,8 @@ print(version_1 == version_3)
 ::: tip Try it
 Start from `rates = {"EUR": 3.5, "USD": 5.25}`. Add `"GBP": 4.75`, change `EUR` to
 `3.25`, remove `USD` with `pop`, and print the dict. What does
-`rates.pop("CHF", 0)` return?
+`rates.pop("CHF", 0)` return? Then predict: what does `rates | {"CHF": 0.5}` give,
+and is `rates` changed after it?
 :::
 
 ## 3. Iterating over a dictionary
@@ -607,7 +617,7 @@ same idea, with less code.
 
 Why it is fast: dictionary lookup takes approximately constant time on average,
 instead of scanning all clients for each loan. Homework 4 needed up to 150
-comparisons per loan. The Advanced block "How a dictionary works: hashing"
+comparisons per loan. The Self-study section "How a dictionary works: hashing"
 explains the idea and its limits.
 
 ### A chain of lookups: loan -> client -> rating -> PD
@@ -723,7 +733,7 @@ count so far. Add one and store the new count under the same key.
 
 ::: details Advanced: count with an explicit condition
 
-**1. `if key in d`:**
+**With `if key in d`:**
 
 ```python run
 import csv
@@ -757,7 +767,7 @@ print(counts)
 
 ::: details Advanced: count with `defaultdict(int)`
 
-**3. `defaultdict(int)`** - a dictionary that creates a missing key by itself, with
+**With `defaultdict(int)`** - a dictionary that creates a missing key by itself, with
 `int()`, that is `0`:
 
 ```python run
@@ -1178,8 +1188,8 @@ python 06-dictionaries/practice/task1-dict-basics.py
 | 5 | `task5-group-aggregates.py` (Optional, Advanced) | Count / sum / average / max per product, `HAVING`, a sorted report |
 | 6 | `task6-nested-groups.py` (Optional, Advanced) | Clients as a dict of dicts; segment x stage totals with tuple keys |
 
-Start with Task 1, Parts 1-6; then Task 3, Parts 1-3 and 5; then Task 4,
-Parts 1 and 4. Each part has its own checks. While you work on selected parts,
+Start with Task 1, Parts 1-6 (Parts 7-8 if you have time); then Task 3, Parts
+1-3 and 5; then Task 4, Parts 1 and 4. Each part has its own checks. While you work on selected parts,
 `TODO` for the other parts means they are still unfinished. Task 2 is extra
 practice on the main lesson. Tasks 5-6 and `task2-predict-dicts-advanced.py` are
 optional extensions after reading the relevant Advanced blocks.
@@ -1198,10 +1208,8 @@ optional extensions after reading the relevant Advanced blocks.
 
 ## Self-study
 
-The Advanced blocks below are optional reading for home. They are not required
-for the main practice or homework.
-
-:::: details Advanced: a pivot by hand
+This part is not covered in class. It is for reading at home: a cross table by hand,
+and why a dictionary is fast.
 
 ### A pivot by hand: `PROC TABULATE` without pandas
 
@@ -1262,10 +1270,6 @@ print(f"{'total':<16}" + "".join(f"{sum(table[p][s] for p in table):>12,.0f}" fo
 ```
 :::
 
-::::
-
-:::: details Advanced: how a dictionary works
-
 ### How a dictionary works: hashing
 
 Why is `d[key]` fast, and why must keys not change?
@@ -1319,8 +1323,6 @@ A tuple is hashable only if everything inside it is hashable. `(1, [2, 3])` cont
 list, which can change, so the tuple has no hash. `(1, (2, 3))` contains only
 immutable values.
 :::
-
-::::
 
 ## Read more
 
