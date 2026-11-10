@@ -866,7 +866,7 @@ con.close()
 ```
 
 `executemany` also takes **dictionaries** with named parameters - the rows of
-`csv.DictReader` ([session 6](./06-dictionaries.md#a-row-as-a-dictionary)) go straight into a table:
+`csv.DictReader` ([lecture 8](./08-errors-and-files.md#read-csv-reader-and-csv-dictreader)) go straight into a table:
 
 ```python run
 import csv

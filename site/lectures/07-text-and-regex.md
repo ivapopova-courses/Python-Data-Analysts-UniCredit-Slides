@@ -33,6 +33,22 @@ data clean;
 run;
 ```
 
+::: info Reading a CSV file: `csv.DictReader`
+The examples of this lecture read the sample files with the module `csv` (it comes
+with Python). `csv.DictReader` gives each row of the file as a **dictionary**: the
+column name is the key, the value is **text** - a record as in
+[session 6](./06-dictionaries.md#a-row-as-a-dictionary). The pattern is always the same:
+
+```python
+import csv
+
+with open("data/clients.csv", encoding="utf-8") as file:
+    rows = list(csv.DictReader(file))      # a list of dicts, one per row
+```
+
+Use it as given; [lecture 8](./08-errors-and-files.md#_7-csv-files) explains files in depth.
+:::
+
 ```python run
 import csv
 
@@ -338,8 +354,8 @@ print(",".join(row))              # TypeError: sequence item 1: expected str ins
 
 ::: info Do not use `split(",")` to read a CSV file
 A field can contain a comma, inside quotes: `C0026,"Silver Textiles, Plovdiv",AD`.
-`split` does not know quotes; the `csv` module does. That is why the examples since
-[session 6](./06-dictionaries.md#a-row-as-a-dictionary) read files with `csv.DictReader`. [Lecture 8](./08-errors-and-files.md#_7-csv-files) covers the `csv` module.
+`split` does not know quotes; the `csv` module does. That is why the examples read
+files with `csv.DictReader` (see the box at the start of this lecture). [Lecture 8](./08-errors-and-files.md#_7-csv-files) covers the `csv` module.
 :::
 
 ### `replace`

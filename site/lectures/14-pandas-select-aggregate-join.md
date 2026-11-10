@@ -685,7 +685,7 @@ when you need only the ids: `~clients["client_id"].isin(loans["client_id"])`.
 ### The portfolio join and the EL
 
 Loans + clients + the rating scale - the join of homework 4 ([session 4](./04-functions.md), with loops;
-[session 6](./06-dictionaries.md#the-join-loans-with-the-region-of-their-client), with dicts; [lecture 12](./12-databases.md#a-join-in-sql), in SQL). Now in pandas:
+[session 6](./06-dictionaries.md#a-chain-of-lookups-loan-client-rating-pd), with dicts; [lecture 12](./12-databases.md#a-join-in-sql), in SQL). Now in pandas:
 
 ```python run
 import pandas as pd

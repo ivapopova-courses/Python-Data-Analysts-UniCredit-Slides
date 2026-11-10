@@ -735,7 +735,7 @@ then read the file back and print the number of lines.
 
 ### Read: `csv.reader` and `csv.DictReader`
 
-You know `csv.DictReader` ([session 6](./06-dictionaries.md#a-row-as-a-dictionary)). `csv.reader` gives each row as a **list**.
+You know `csv.DictReader` ([lecture 7](./07-text-and-regex.md), the box at the start). `csv.reader` gives each row as a **list**.
 Both understand quotes, and both take a `delimiter` for files that are not
 comma-separated - like `;` in a Bulgarian Excel export:
 

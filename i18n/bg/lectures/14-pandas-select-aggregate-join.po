@@ -540,7 +540,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/14-pandas-select-aggregate-join.md:687
-msgid "Loans + clients + the rating scale - the join of homework 4 ([session 4](./04-functions.md), with loops; [session 6](./06-dictionaries.md#the-join-loans-with-the-region-of-their-client), with dicts; [lecture 12](./12-databases.md#a-join-in-sql), in SQL). Now in pandas:"
+msgid "Loans + clients + the rating scale - the join of homework 4 ([session 4](./04-functions.md), with loops; [session 6](./06-dictionaries.md#a-chain-of-lookups-loan-client-rating-pd), with dicts; [lecture 12](./12-databases.md#a-join-in-sql), in SQL). Now in pandas:"
 msgstr ""
 
 #. paragraph

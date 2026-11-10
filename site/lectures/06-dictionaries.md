@@ -521,75 +521,13 @@ Keep the nomenclature (the dictionary) as a **constant** at the top of the scrip
 in capitals: one place to change it. [Lecture 11](./11-oop-nomenclatures.md) turns such a nomenclature into a
 class with its own checks.
 
-### The join: loans with the region of their client
-
-In Python, a SQL `LEFT JOIN loans -> clients ON client_id` is: a dictionary of the
-clients, and a lookup for every loan. Here each `client_id` occurs only once in
-`clients.csv`. A duplicate ID would overwrite an entry in the dictionary; a SQL
-join could instead produce several matches for one loan.
-
-The outer dictionary uses a client ID as its key. Its value is another dictionary,
-with the client's fields:
-
-```python run
-clients = {"C0002": {"region": "Ruse", "segment": "sme"}}
-client = clients["C0002"]
-print(client)
-print(client["region"])
-print(clients["C0002"]["region"])     # the same lookup in two steps
-```
-
-For a missing client, `clients.get(client_id, {})` gives an empty dictionary.
-Calling `.get("region")` on that empty dictionary gives `None`. This keeps the loan
-in the result, like a SQL LEFT JOIN with an unmatched client.
-
-```sql
-SELECT l.loan_id, l.client_id, c.region, c.segment
-FROM loans l LEFT JOIN clients c ON l.client_id = c.client_id;
-```
-
-::: info Reading the sample files
-From here on, the examples read the sample files with `csv.DictReader`: it gives
-each row of the file as a dictionary, the column name -> the value as **text**. Use
-the code as it is; [section 7](#a-row-as-a-dictionary) shows the rows, and
-[lecture 8](./08-errors-and-files.md#_7-csv-files) explains files.
-:::
-
-```python run
-import csv
-
-with open("data/clients.csv", encoding="utf-8") as file:
-    client = {row["client_id"]: row for row in csv.DictReader(file)}   # client_id -> the whole row
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    loans = list(csv.DictReader(file))
-
-for loan in loans[:5]:
-    c = client.get(loan["client_id"], {})                  # LEFT JOIN: {} if not found
-    print(loan["loan_id"], loan["client_id"], c.get("region"), c.get("segment"))
-```
-
-::: info Animation
-**Grouping by hand:** [5. The join by key](../animations/groupingByHand.html#5){target="_blank"}
-:::
-
-A SAS programmer would do this with a hash object (`declare hash h(dataset:
-"clients"); h.defineKey("client_id"); ...; rc = h.find();`). The dictionary is the
-same idea, with less code.
-
-Why it is fast: dictionary lookup takes approximately constant time on average,
-instead of scanning all clients for each loan. Homework 4 needed up to 150
-comparisons per loan. The Self-study section "How a dictionary works: hashing"
-explains the idea and its limits.
-
 ### A chain of lookups: loan -> client -> rating -> PD
 
 The expected loss of homework 4 needs the PD of each loan, two tables away: the
 loan has a client, the client has a rating, the rating has a PD. With two
 dictionaries, that is two lookups in a row - following the same keys as two SQL
 joins. Here every client and rating must exist: `[]` raises `KeyError` for a
-missing key. This version does not keep unmatched rows like a LEFT JOIN. On
-small made-up tables:
+missing key (`get` with a default avoids that). On small made-up tables:
 
 ```python run
 rating_of = {"C0001": 3, "C0002": 7}              # client_id -> rating
@@ -607,7 +545,9 @@ print(pd_of[rating_of[loan["client_id"]]])        # the same chain in one line
 ```
 
 For the whole portfolio, that is 400 x 2 lookups instead of the 400 x 150
-comparisons of homework 4.
+comparisons of homework 4 - and a lookup is fast, however big the dictionary is (the
+Self-study explains why). A SAS programmer would do this with a hash object
+(`h.find()`); the dictionary is the same idea, with less code.
 
 ::: tip Try it
 Change the loan to the client `C0001`. Predict the rating, the PD and the EL before
@@ -668,12 +608,6 @@ print(loans["product"].map(names).fillna("Other").head())
 ```
 :::
 
-::: tip Try it
-In "The join" example, add the `rating` of the client to each printed line. Then
-change one `client_id` in the loop to `"C9999"` (a client that does not exist): what
-does `client.get(...)` give, and what would `client[...]` do?
-:::
-
 ## 6. Grouping by hand: `GROUP BY`
 
 ### Count by group: from `if` to `Counter`
@@ -697,10 +631,7 @@ count so far. Add one and store the new count under the same key.
 **With `if key in d`:**
 
 ```python run
-import csv
-
-with open("data/clients.csv", encoding="utf-8") as file:
-    regions = [row["region"] for row in csv.DictReader(file)]
+regions = ["Ruse", "Varna", "Sofia", "Ruse", "Burgas", "Varna", "Ruse", "Plovdiv"]
 
 counts = {}
 for region in regions:
@@ -712,31 +643,15 @@ print(counts)
 ```
 :::
 
-**On the file: `get` with a default** - "the count so far, or 0":
-
-```python run
-import csv
-
-with open("data/clients.csv", encoding="utf-8") as file:
-    regions = [row["region"] for row in csv.DictReader(file)]
-
-counts = {}
-for region in regions:
-    counts[region] = counts.get(region, 0) + 1
-print(counts)
-```
-
 ::: details Advanced: count with `defaultdict(int)`
 
 **With `defaultdict(int)`** - a dictionary that creates a missing key by itself, with
 `int()`, that is `0`:
 
 ```python run
-import csv
 from collections import defaultdict
 
-with open("data/clients.csv", encoding="utf-8") as file:
-    regions = [row["region"] for row in csv.DictReader(file)]
+regions = ["Ruse", "Varna", "Sofia", "Ruse", "Burgas", "Varna", "Ruse", "Plovdiv"]
 
 counts = defaultdict(int)
 for region in regions:
@@ -748,11 +663,10 @@ print(dict(counts))
 **`Counter`** - made for counting:
 
 ```python run
-import csv
 from collections import Counter
 
-with open("data/clients.csv", encoding="utf-8") as file:
-    counts = Counter(row["region"] for row in csv.DictReader(file))
+regions = ["Ruse", "Varna", "Sofia", "Ruse", "Burgas", "Varna", "Ruse", "Plovdiv"]
+counts = Counter(regions)
 
 print(counts)
 print(counts.most_common(3))        # PROC FREQ ORDER=FREQ, the top 3
@@ -781,19 +695,17 @@ Pass `float`, not `float()`: the dictionary calls it for each new key. `dict(tot
 makes a normal dictionary with the same pairs. Round only after summing a group.
 
 The SQL `SELECT segment, SUM(outstanding) ... GROUP BY segment` - the segment is in
-`clients.csv`, the amount in `loans.csv`: a lookup (section 5) and a sum:
+the clients table, the amount in the loans table: a lookup (section 5) and a sum:
 
 ```python run
-import csv
 from collections import defaultdict
 
-with open("data/clients.csv", encoding="utf-8") as file:
-    segment_of = {r["client_id"]: r["segment"] for r in csv.DictReader(file)}
+segment_of = {"C0001": "retail", "C0002": "sme", "C0003": "corporate"}   # client_id -> segment
+loans = [("C0002", 120000.0), ("C0001", 8500.0), ("C0003", 40000.0), ("C0002", 3200.0)]
 
 totals = defaultdict(float)                         # float() is 0.0
-with open("data/loans.csv", encoding="utf-8") as file:
-    for loan in csv.DictReader(file):
-        totals[segment_of[loan["client_id"]]] += float(loan["outstanding"])
+for client_id, outstanding in loans:
+    totals[segment_of[client_id]] += outstanding
 
 for segment, total in sorted(totals.items()):
     print(f"{segment:<10}{total:>18,.2f}")
@@ -822,19 +734,18 @@ for amount in [100.0, 50.0]:
     print(stats)
 ```
 
-On the file:
+On a small table of loans (product, currency, outstanding):
 
 ```python run
-import csv
+loans = [("mortgage", "EUR", 120000.0), ("consumer", "EUR", 8500.0), ("overdraft", "USD", 40000.0),
+         ("mortgage", "EUR", 250000.0), ("consumer", "USD", 15000.0), ("overdraft", "EUR", 1200.0)]
 
 stats = {}
-with open("data/loans.csv", encoding="utf-8") as file:
-    for loan in csv.DictReader(file):
-        amount = float(loan["outstanding"])
-        s = stats.setdefault(loan["product"], [0, 0.0, 0.0])     # count, sum, max
-        s[0] += 1
-        s[1] += amount
-        s[2] = max(s[2], amount)
+for product, currency, amount in loans:
+    s = stats.setdefault(product, [0, 0.0, 0.0])     # count, sum, max
+    s[0] += 1
+    s[1] += amount
+    s[2] = max(s[2], amount)
 
 print(f"{'product':<16}{'n':>4}{'sum':>16}{'avg':>14}{'max':>14}")
 for product, (n, total, largest) in sorted(stats.items()):
@@ -848,13 +759,14 @@ The **share** of each group in the total - one more pass over the small result, 
 over the data:
 
 ```python run
-import csv
 from collections import defaultdict
 
+loans = [("mortgage", "EUR", 120000.0), ("consumer", "EUR", 8500.0), ("overdraft", "USD", 40000.0),
+         ("mortgage", "EUR", 250000.0), ("consumer", "USD", 15000.0), ("overdraft", "EUR", 1200.0)]
+
 totals = defaultdict(float)
-with open("data/loans.csv", encoding="utf-8") as file:
-    for loan in csv.DictReader(file):
-        totals[loan["currency"]] += float(loan["outstanding"])
+for product, currency, amount in loans:
+    totals[currency] += amount
 
 grand_total = sum(totals.values())
 shares = {cur: round(t / grand_total, 4) for cur, t in totals.items()}
@@ -868,16 +780,17 @@ Sometimes you need the **rows** of each group, not only a number - a dictionary 
 lists:
 
 ```python run
-import csv
 from collections import defaultdict
 
-loans_of = defaultdict(list)                   # a NEW list() for each missing key
-with open("data/loans.csv", encoding="utf-8") as file:
-    for loan in csv.DictReader(file):
-        loans_of[loan["client_id"]].append(loan["loan_id"])
+loans = [("L000001", "C0002"), ("L000002", "C0001"), ("L000003", "C0002"),
+         ("L000004", "C0003"), ("L000005", "C0002")]        # loan_id, client_id
 
-print(loans_of["C0030"])
-print(len(loans_of["C0030"]), "loans for C0030")
+loans_of = defaultdict(list)                   # a NEW list() for each missing key
+for loan_id, client_id in loans:
+    loans_of[client_id].append(loan_id)
+
+print(dict(loans_of))
+print(len(loans_of["C0002"]), "loans for C0002")
 ```
 
 ::: info Animation
@@ -891,17 +804,14 @@ print(len(loans_of["C0030"]), "loans for C0030")
 A **tuple** of the two values is the key:
 
 ```python run
-import csv
 from collections import defaultdict
 
-with open("data/clients.csv", encoding="utf-8") as file:
-    segment_of = {r["client_id"]: r["segment"] for r in csv.DictReader(file)}
+loans = [("retail", 1, 8500.0), ("sme", 1, 120000.0), ("retail", 2, 3200.0),
+         ("sme", 1, 40000.0), ("retail", 1, 1200.0)]          # segment, stage, outstanding
 
 totals = defaultdict(float)
-with open("data/loans.csv", encoding="utf-8") as file:
-    for loan in csv.DictReader(file):
-        key = (segment_of[loan["client_id"]], int(loan["stage"]))
-        totals[key] += float(loan["outstanding"])
+for segment, stage, outstanding in loans:
+    totals[(segment, stage)] += outstanding
 
 for (segment, stage), total in sorted(totals.items()):
     print(f"{segment:<10} stage {stage}{total:>18,.2f}")
@@ -913,14 +823,13 @@ The result is a dictionary - filter it with a comprehension (SQL `HAVING`), sort
 items (SQL `ORDER BY`):
 
 ```python run
-import csv
 from collections import Counter
 
-with open("data/loans.csv", encoding="utf-8") as file:
-    loans_per_client = Counter(row["client_id"] for row in csv.DictReader(file))
+client_of_loan = ["C0002", "C0001", "C0002", "C0003", "C0002", "C0003", "C0004", "C0001"]
+loans_per_client = Counter(client_of_loan)
 
-# HAVING COUNT(*) >= 6, ORDER BY COUNT(*) DESC, client_id
-many = {c: n for c, n in loans_per_client.items() if n >= 6}
+# HAVING COUNT(*) >= 2, ORDER BY COUNT(*) DESC, client_id
+many = {c: n for c, n in loans_per_client.items() if n >= 2}
 for client_id, n in sorted(many.items(), key=lambda kv: (-kv[1], kv[0])):
     print(client_id, n)
 ```
@@ -974,40 +883,42 @@ print(loans.groupby("product")["outstanding"].agg(["count", "sum", "mean", "max"
 :::
 
 ::: tip Try it
-Count the loans per **currency** with `Counter`, then sum the outstanding per
-**currency** with `defaultdict(float)`. Convert amounts with `float`, and round
-the completed totals to two decimals. Why do you need a different operation for
-the count and the sum?
+Start from `loans = [("EUR", 1200.5), ("USD", 300.25), ("EUR", 99.25)]` (currency,
+outstanding). Count the loans per **currency** with `Counter`, then sum the
+outstanding per **currency** with `defaultdict(float)`, and round the completed
+totals to two decimals. Why do you need a different operation for the count and
+the sum?
 :::
 
 ## 7. Nested dictionaries and records
 
 ### A row as a dictionary
 
-`csv.DictReader` gives each row as a dictionary: a **record** with named fields. A
-list of them is a table where the columns have names:
+A row of a table can be a dictionary: a **record** with named fields. A list of
+them is a table where the columns have names:
 
 ```python run
-import csv
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    loans = list(csv.DictReader(file))
+loans = [
+    {"loan_id": "L000001", "client_id": "C0002", "product": "mortgage", "currency": "EUR", "outstanding": 120000.0},
+    {"loan_id": "L000002", "client_id": "C0001", "product": "consumer", "currency": "USD", "outstanding": 8500.0},
+    {"loan_id": "L000003", "client_id": "C0002", "product": "overdraft", "currency": "USD", "outstanding": 1200.0},
+]
 
 print(len(loans), loans[0]["loan_id"], loans[0]["product"])
 usd = [loan["loan_id"] for loan in loans if loan["currency"] == "USD"]
-print(usd[:5])
+print(usd)
 ```
 
 Compare with [session 5](./05-lists-advanced.md#on-the-portfolio): `row[3] == "USD"` vs `loan["currency"] == "USD"`. The name
-says what the column is, and adding a column to the file does not break the code.
+says what the column is, and adding a column does not break the code. In
+[lecture 8](./08-errors-and-files.md#_7-csv-files) you will read rows like these from a CSV file.
 
 ::: details Advanced: convert and sort whole records
 
-The values are still **text**. Convert them once, into a new record:
+A CSV file (lecture 8) gives all values as **text**. Convert them once, into a new
+record:
 
 ```python run
-import csv
-
 def typed(loan):
     """A loan record with numbers instead of text."""
     return loan | {
@@ -1018,8 +929,11 @@ def typed(loan):
         "stage": int(loan["stage"]),
     }
 
-with open("data/loans.csv", encoding="utf-8") as file:
-    loans = [typed(row) for row in csv.DictReader(file)]
+rows = [
+    {"loan_id": "L000001", "amount": "150000", "outstanding": "120000.00", "interest_rate": "4.2", "days_past_due": "0", "stage": "1"},
+    {"loan_id": "L000002", "amount": "10000", "outstanding": "8500.50", "interest_rate": "9.9", "days_past_due": "95", "stage": "3"},
+]                                                    # all values are text
+loans = [typed(row) for row in rows]
 
 print(loans[1])
 print(sum(l["outstanding"] for l in loans if l["stage"] == 3))
@@ -1028,13 +942,15 @@ print(sum(l["outstanding"] for l in loans if l["stage"] == 3))
 Sort a list of records by one or more fields - SQL `ORDER BY` with column names:
 
 ```python run
-import csv
+loans = [
+    {"loan_id": "L000001", "product": "mortgage", "outstanding": 120000.0},
+    {"loan_id": "L000002", "product": "consumer", "outstanding": 8500.0},
+    {"loan_id": "L000003", "product": "mortgage", "outstanding": 250000.0},
+    {"loan_id": "L000004", "product": "consumer", "outstanding": 15000.0},
+]
 
-with open("data/loans.csv", encoding="utf-8") as file:
-    loans = list(csv.DictReader(file))
-
-by_product = sorted(loans, key=lambda l: (l["product"], -float(l["outstanding"])))
-for loan in by_product[:4]:
+by_product = sorted(loans, key=lambda l: (l["product"], -l["outstanding"]))
+for loan in by_product:
     print(loan["product"], loan["loan_id"], loan["outstanding"])
 ```
 
@@ -1042,11 +958,16 @@ for loan in by_product[:4]:
 
 ### A dictionary of dictionaries: a table keyed by id
 
-```python run
-import csv
+The outer key is the client id; the value is the whole row:
 
-with open("data/clients.csv", encoding="utf-8") as file:
-    clients = {row["client_id"]: row for row in csv.DictReader(file)}
+```python run
+rows = [
+    {"client_id": "C0001", "segment": "retail", "region": "Ruse", "rating": 3},
+    {"client_id": "C0002", "segment": "sme", "region": "Ruse", "rating": 7},
+    {"client_id": "C0003", "segment": "corporate", "region": "Varna", "rating": 6},
+    {"client_id": "C0004", "segment": "corporate", "region": "Sofia", "rating": 2},
+]
+clients = {row["client_id"]: row for row in rows}     # client_id -> the whole row
 
 print(clients["C0002"])
 print(clients["C0002"]["region"])            # two steps: the client, then the field
@@ -1111,9 +1032,10 @@ print(shallow["retail"], deep["retail"])
 :::
 
 ::: tip Try it
-From `clients.csv`, build `{client_id: {"segment": ..., "rating": int(...)}}` with one
-dict comprehension (only two fields per client). Then print the rating of `C0132`
-and the number of corporate clients with a rating of 6 or worse.
+From `rows` of "A dictionary of dictionaries", build
+`{client_id: {"segment": ..., "rating": ...}}` with one dict comprehension (only two
+fields per client). Then print the rating of `C0003` and the number of corporate
+clients with a rating of 6 or worse.
 :::
 
 ## 8. Summary
@@ -1125,11 +1047,10 @@ and the number of corporate clients with a rating of 6 or worse.
 | Loop | `for key in d`; `d.values()`; `for key, value in d.items()`; `sorted(d)` sorts the keys |
 | Comprehension | `{key: value for ... if ...}`; `dict(zip(keys, values))` pairs two lists |
 | Lookups | A dictionary is like a SAS format or a SQL lookup table with unique keys |
-| Join | Unique right-hand keys and `get` for each left-hand row give a LEFT JOIN-style lookup |
 | Counting | `counts[key] = counts.get(key, 0) + 1`; `Counter(values)`; `most_common(n)` |
 | Summing | `defaultdict(float)` starts each group at zero; convert text to numbers; round final totals |
 | Grouping rows | `defaultdict(list)` creates a separate list for each group |
-| Records | `csv.DictReader` gives text fields; `clients[id]["region"]` reads a nested field |
+| Records | a row as a dict, a table as a list of dicts; `clients[id]["region"]` reads a nested field |
 
 ## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1168,11 +1089,13 @@ A **dictionary of dictionaries** is a cross table: the outer key is the row, the
 key is the column. Build it, then print it with the rows and columns sorted:
 
 ```python run
-import csv
 from collections import defaultdict
 
-with open("data/clients.csv", encoding="utf-8") as file:
-    clients = list(csv.DictReader(file))
+clients = [
+    {"region": "Ruse", "segment": "retail"}, {"region": "Ruse", "segment": "sme"},
+    {"region": "Varna", "segment": "retail"}, {"region": "Ruse", "segment": "retail"},
+    {"region": "Sofia", "segment": "corporate"}, {"region": "Varna", "segment": "sme"},
+]
 
 table = defaultdict(lambda: defaultdict(int))      # region -> segment -> count
 for c in clients:
@@ -1200,19 +1123,25 @@ print(rows)
 
 **Exercises**
 
-1. Build the cross table **product x stage** from `loans.csv`, with the total
-   outstanding (in EUR thousands, rounded) in each cell.
+1. Build the cross table **product x stage** from the list `loans` below, with the
+   total outstanding (in EUR thousands, rounded) in each cell.
 2. Add a total row at the bottom.
+
+```python
+loans = [("mortgage", 1, 120000.0), ("consumer", 1, 8500.0), ("mortgage", 2, 250000.0),
+         ("overdraft", 3, 1200.0), ("consumer", 2, 15000.0), ("mortgage", 1, 95000.0)]
+```
 
 ::: details Answer
 ```python
-import csv
 from collections import defaultdict
 
+loans = [("mortgage", 1, 120000.0), ("consumer", 1, 8500.0), ("mortgage", 2, 250000.0),
+         ("overdraft", 3, 1200.0), ("consumer", 2, 15000.0), ("mortgage", 1, 95000.0)]
+
 table = defaultdict(lambda: defaultdict(float))
-with open("data/loans.csv", encoding="utf-8") as file:
-    for loan in csv.DictReader(file):
-        table[loan["product"]][int(loan["stage"])] += float(loan["outstanding"]) / 1000
+for product, stage, outstanding in loans:
+    table[product][stage] += outstanding / 1000
 
 print(f"{'product':<16}" + "".join(f"{s:>12}" for s in (1, 2, 3)))
 for product in sorted(table):
@@ -1281,7 +1210,7 @@ immutable values.
   [Looping techniques](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques)
 - Reference: [Mapping types - dict](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict),
   [`collections`](https://docs.python.org/3/library/collections.html) (`defaultdict`,
-  `Counter`), [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader)
+  `Counter`)
 - Real Python: [Dictionaries in Python](https://realpython.com/python-dicts/),
   [Python's Counter](https://realpython.com/python-counter/)
 

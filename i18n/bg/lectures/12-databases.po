@@ -865,7 +865,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:868
-msgid "`executemany` also takes **dictionaries** with named parameters - the rows of `csv.DictReader` ([session 6](./06-dictionaries.md#a-row-as-a-dictionary)) go straight into a table:"
+msgid "`executemany` also takes **dictionaries** with named parameters - the rows of `csv.DictReader` ([lecture 8](./08-errors-and-files.md#read-csv-reader-and-csv-dictreader)) go straight into a table:"
 msgstr ""
 
 #. paragraph
