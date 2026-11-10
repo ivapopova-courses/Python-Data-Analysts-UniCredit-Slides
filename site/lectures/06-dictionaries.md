@@ -523,11 +523,16 @@ class with its own checks.
 
 ### A chain of lookups: loan -> client -> rating -> PD
 
-The expected loss of homework 4 needs the PD of each loan, two tables away: the
-loan has a client, the client has a rating, the rating has a PD. With two
-dictionaries, that is two lookups in a row - following the same keys as two SQL
-joins. Here every client and rating must exist: `[]` raises `KeyError` for a
-missing key (`get` with a default avoids that). On small made-up tables:
+A loan has no PD of its own. The loan has a client, the client has a rating, and
+the rating has a PD. So, to find the PD of a loan, look up two times, one after
+the other:
+
+1. the client of the loan -> its rating (in `rating_of`);
+2. the rating -> its PD (in `pd_of`).
+
+In SQL, these are two joins: the loan to its client by `client_id`, then the
+client to the rating scale by `rating`. With the PD, the example computes the
+expected loss of the loan: EL = PD x LGD x outstanding. On small made-up tables:
 
 ```python run
 rating_of = {"C0001": 3, "C0002": 7}              # client_id -> rating
@@ -544,9 +549,12 @@ print(f"EL = {pd_value * LGD * loan['outstanding']:,.2f}")
 print(pd_of[rating_of[loan["client_id"]]])        # the same chain in one line
 ```
 
-For the whole portfolio, that is 400 x 2 lookups instead of the 400 x 150
-comparisons of homework 4 - and a lookup is fast, however big the dictionary is (the
-Self-study explains why). A SAS programmer would do this with a hash object
+`[]` needs every key to exist: a client that is not in `rating_of` raises
+`KeyError` (`get` with a default avoids that).
+
+Each loan needs only two lookups, and a lookup is fast, however big the dictionary
+is (the Self-study explains why). Without a dictionary, you would loop over all the
+clients to find the client of each loan. A SAS programmer would do this with a hash object
 (`h.find()`); the dictionary is the same idea, with less code.
 
 ::: tip Try it
