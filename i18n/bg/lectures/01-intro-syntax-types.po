@@ -90,8 +90,8 @@ msgstr "От SQL към Python - един и същ въпрос, по два н
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:38
-msgid "By session 16 you will write code like this every day. Today we start from the pieces it is made of: values, types, variables and operators."
-msgstr "До занятие 16 ще пишете такъв код всеки ден. Днес започваме от частите, от които е направен: стойности, типове, променливи и оператори."
+msgid "By lecture 15 you will write code like this every day. Today we start from the pieces it is made of: values, types, variables and operators."
+msgstr "До лекция 15 ще пишете такъв код всеки ден. Днес започваме от частите, от които е направен: стойности, типове, променливи и оператори."
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:41
@@ -395,8 +395,8 @@ msgstr "безплатен"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:124
-msgid "You will **not** stop using SQL. The best place to filter and join big tables is still the database; Python sends the SQL query and works with the result (session 13). Python replaces mostly the SAS part of the work - and adds what neither SQL nor SAS does well."
-msgstr "**Няма** да спрете да ползвате SQL. Най-доброто място за филтриране и съединяване на големи таблици все още е базата данни; Python изпраща SQL заявката и работи с резултата (занятие 13). Python заменя най-вече SAS частта от работата - и добавя това, което нито SQL, нито SAS правят добре."
+msgid "You will **not** stop using SQL. The best place to filter and join big tables is still the database; Python sends the SQL query and works with the result (lecture 12). Python replaces mostly the SAS part of the work - and adds what neither SQL nor SAS does well."
+msgstr "**Няма** да спрете да ползвате SQL. Най-доброто място за филтриране и съединяване на големи таблици все още е базата данни; Python изпраща SQL заявката и работи с резултата (лекция 12). Python заменя най-вече SAS частта от работата - и добавя това, което нито SQL, нито SAS правят добре."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:129
@@ -410,8 +410,8 @@ msgstr "DATA step"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:133
-msgid "a loop over rows (sessions 2 - 6), or pandas (sessions 14 - 16)"
-msgstr "цикъл по редовете (занятия 2 - 6) или pandas (занятия 14 - 16)"
+msgid "a loop over rows (sessions 2 - 6), or pandas (lectures 13 - 15)"
+msgstr "цикъл по редовете (занятия 2 - 6) или pandas (лекции 13 - 15)"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:138
@@ -870,8 +870,8 @@ msgstr "pandas 2 или pandas 3?"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:420
-msgid "`>=` means \"this version or newer\", so `pandas>=2.2` installs the newest pandas - **pandas 3** today (3.1 in October 2026). The site runs pandas 3 too, so this course uses pandas 3; where pandas 2.2 behaves differently (the type of text columns, copies of a DataFrame), sessions 14 - 16 say so. Check yours with `pip show pandas`."
-msgstr "`>=` означава \"тази версия или по-нова\", така че `pandas>=2.2` инсталира най-новия pandas - днес това е **pandas 3** (3.1 през октомври 2026). Сайтът също работи с pandas 3, затова в този курс използваме pandas 3; където pandas 2.2 се държи различно (типът на текстовите колони, копията на DataFrame), занятия 14 - 16 го казват. Проверете своята версия с `pip show pandas`."
+msgid "`>=` means \"this version or newer\", so `pandas>=2.2` installs the newest pandas - **pandas 3** today (3.1 in October 2026). The site runs pandas 3 too, so this course uses pandas 3; where pandas 2.2 behaves differently (the type of text columns, copies of a DataFrame), lectures 13 - 15 say so. Check yours with `pip show pandas`."
+msgstr "`>=` означава \"тази версия или по-нова\", така че `pandas>=2.2` инсталира най-новия pandas - днес това е **pandas 3** (3.1 през октомври 2026). Сайтът също работи с pandas 3, затова в този курс използваме pandas 3; където pandas 2.2 се държи различно (типът на текстовите колони, копията на DataFrame), лекции 13 - 15 го казват. Проверете своята версия с `pip show pandas`."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:426
@@ -1150,8 +1150,8 @@ msgstr "Следващите лекции работят с файлове с д
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:507
-msgid "**Data Wrangler** (Microsoft) - a DataFrame or a CSV file as a table you can sort and filter, with statistics per column; it writes the pandas code for the cleaning steps you click (lectures 14 - 16);"
-msgstr "**Data Wrangler** (Microsoft) - DataFrame или CSV файл като таблица, която можете да сортирате и филтрирате, със статистики за всяка колона; пише pandas кода за стъпките за почистване, които избирате с клик (лекции 14 - 16);"
+msgid "**Data Wrangler** (Microsoft) - a DataFrame or a CSV file as a table you can sort and filter, with statistics per column; it writes the pandas code for the cleaning steps you click (lectures 13 - 15);"
+msgstr "**Data Wrangler** (Microsoft) - DataFrame или CSV файл като таблица, която можете да сортирате и филтрирате, със статистики за всяка колона; пише pandas кода за стъпките за почистване, които избирате с клик (лекции 13 - 15);"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:510
@@ -1160,8 +1160,8 @@ msgstr "**Rainbow CSV** (mechatroner) - всяка колона на CSV фай�
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:512
-msgid "**SQLite Viewer** (Florian Klampfer) - the tables of a SQLite database (lecture 13);"
-msgstr "**SQLite Viewer** (Florian Klampfer) - таблиците на SQLite база данни (лекция 13);"
+msgid "**SQLite Viewer** (Florian Klampfer) - the tables of a SQLite database (lecture 12);"
+msgstr "**SQLite Viewer** (Florian Klampfer) - таблиците на SQLite база данни (лекция 12);"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:514
@@ -1330,8 +1330,8 @@ msgstr "Git във VS Code"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:585
-msgid "The **Source Control** view (`Ctrl+Shift+G`) shows the changed files; type a message, **Commit**, then **Sync** (push). The commands for the Homework repository are in [How to use these pages](/how-to#practice-and-homework); Git itself is the topic of [session 10](./10-modules-and-git.md#_6-git-versions-of-your-code)."
-msgstr "Изгледът **Source Control** (`Ctrl+Shift+G`) показва променените файлове; напишете съобщение, **Commit**, след това **Sync** (push). Командите за Homework repository са в [Как да ползвате тези страници](/how-to#practice-and-homework); самият Git е темата на [занятие 10](./10-modules-and-git.md#_6-git-versions-of-your-code)."
+msgid "The **Source Control** view (`Ctrl+Shift+G`) shows the changed files; type a message, **Commit**, then **Sync** (push). The commands for the Homework repository are in [How to use these pages](/how-to#practice-and-homework); Git itself is the topic of [lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code)."
+msgstr "Изгледът **Source Control** (`Ctrl+Shift+G`) показва променените файлове; напишете съобщение, **Commit**, след това **Sync** (push). Командите за Homework repository са в [Как да ползвате тези страници](/how-to#practice-and-homework); самият Git е темата на [лекция 9](./09-modules-and-git.md#_6-git-versions-of-your-code)."
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:590
@@ -1505,8 +1505,8 @@ msgstr "**Учене** - пробвайте един ред и вижте рез
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:673
-msgid "Notebooks are not the right tool for a job that runs every month without a person, or for code that many reports share - for that you write a script or a module (see \"Script or notebook?\" at the end of this section, and lecture 10)."
-msgstr "Notebooks не са подходящи за задача, която се изпълнява всеки месец без човек, или за код, който много отчети ползват общо - за това пишете скрипт или модул (вижте \"Скрипт или notebook?\" в края на тази секция и лекция 10)."
+msgid "Notebooks are not the right tool for a job that runs every month without a person, or for code that many reports share - for that you write a script or a module (see \"Script or notebook?\" at the end of this section, and lecture 9)."
+msgstr "Notebooks не са подходящи за задача, която се изпълнява всеки месец без човек, или за код, който много отчети ползват общо - за това пишете скрипт или модул (вижте \"Скрипт или notebook?\" в края на тази секция и лекция 9)."
 
 #. box title
 #: site/lectures/01-intro-syntax-types.md:677
@@ -2170,8 +2170,8 @@ msgstr "`None` не е `NULL`"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1103
-msgid "In SQL, `NULL = NULL` is not true, and you must write `IS NULL`. In SAS, a missing `.` is smaller than every number, so `if x < 0` is true for missing values. In Python, `None == None` is `True`, and `None < 0` is an error. Test with `x is None`. (pandas has its own missing values, `NaN` and `NA` - [session 14](./14-numpy-pandas-intro.md#missing-values-in-numpy-nan).)"
-msgstr "В SQL `NULL = NULL` не е истина и трябва да пишете `IS NULL`. В SAS липсващото `.` е по-малко от всяко число, затова `if x < 0` е истина за липсващи стойности. В Python `None == None` е `True`, а `None < 0` е грешка. Проверявайте с `x is None`. (pandas има свои липсващи стойности, `NaN` и `NA` - [занятие 14](./14-numpy-pandas-intro.md#missing-values-in-numpy-nan).)"
+msgid "In SQL, `NULL = NULL` is not true, and you must write `IS NULL`. In SAS, a missing `.` is smaller than every number, so `if x < 0` is true for missing values. In Python, `None == None` is `True`, and `None < 0` is an error. Test with `x is None`. (pandas has its own missing values, `NaN` and `NA` - [lecture 13](./13-numpy-pandas-intro.md#missing-values-in-numpy-nan).)"
+msgstr "В SQL `NULL = NULL` не е истина и трябва да пишете `IS NULL`. В SAS липсващото `.` е по-малко от всяко число, затова `if x < 0` е истина за липсващи стойности. В Python `None == None` е `True`, а `None < 0` е грешка. Проверявайте с `x is None`. (pandas има свои липсващи стойности, `NaN` и `NA` - [лекция 13](./13-numpy-pandas-intro.md#missing-values-in-numpy-nan).)"
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:1109
@@ -2310,8 +2310,8 @@ msgstr "константи (стойности, които не се проме�
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1218
-msgid "classes ([session 11](./11-oop-classes.md))"
-msgstr ""
+msgid "classes ([lecture 10](./10-oop-classes.md))"
+msgstr "класове ([лекция 10](./10-oop-classes.md))"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1220
@@ -2560,8 +2560,8 @@ msgstr "`&` и `|` не са `and` и `or`"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1397
-msgid "In SAS, `&` and `|` mean AND and OR. In Python they are different (bit) operators. pandas uses them for conditions on whole columns ([session 15](./15-pandas-select-aggregate-join.md#rows-a-mask-is-the-where)) - but for single values, write `and`, `or`, `not`."
-msgstr "В SAS `&` и `|` означават AND и OR. В Python те са други (побитови) оператори. pandas ги използва за условия върху цели колони ([занятие 15](./15-pandas-select-aggregate-join.md#rows-a-mask-is-the-where)) - но за отделни стойности пишете `and`, `or`, `not`."
+msgid "In SAS, `&` and `|` mean AND and OR. In Python they are different (bit) operators. pandas uses them for conditions on whole columns ([lecture 14](./14-pandas-select-aggregate-join.md#rows-a-mask-is-the-where)) - but for single values, write `and`, `or`, `not`."
+msgstr "В SAS `&` и `|` означават AND и OR. В Python те са други (побитови) оператори. pandas ги използва за условия върху цели колони ([лекция 14](./14-pandas-select-aggregate-join.md#rows-a-mask-is-the-where)) - но за отделни стойности пишете `and`, `or`, `not`."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1402
@@ -2605,8 +2605,8 @@ msgstr "Първи поглед към методите на string"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1440
-msgid "Strings have many **methods** - functions you call with a dot after the value. A few, for a first look ([session 7](./07-text-processing.md) has them all):"
-msgstr "Strings имат много **методи** - функции, които извиквате с точка след стойността. Няколко, за първи поглед (в [занятие 7](./07-text-processing.md) са всички):"
+msgid "Strings have many **methods** - functions you call with a dot after the value. A few, for a first look ([lecture 7](./07-text-and-regex.md) has them all):"
+msgstr "Strings имат много **методи** - функции, които извиквате с точка след стойността. Няколко, за първи поглед (в [лекция 7](./07-text-and-regex.md) са всички):"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1453
@@ -2700,8 +2700,8 @@ msgstr "Какво приемат `int()` и `float()` и какво не:"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1539
-msgid "Numbers written the Bulgarian way - a space between the thousands, a comma for the fraction - must be cleaned first (more string methods in [session 7](./07-text-processing.md#_8-numbers-from-text)):"
-msgstr "Числата, записани по българския начин - интервал между хилядите, запетая пред дробната част - трябва първо да се почистят (още методи на string в [занятие 7](./07-text-processing.md#_8-numbers-from-text)):"
+msgid "Numbers written the Bulgarian way - a space between the thousands, a comma for the fraction - must be cleaned first (more string methods in [lecture 7](./07-text-and-regex.md#numbers)):"
+msgstr "Числата, записани по българския начин - интервал между хилядите, запетая пред дробната част - трябва първо да се почистят (още методи на string в [лекция 7](./07-text-and-regex.md#numbers)):"
 
 #. box title
 #: site/lectures/01-intro-syntax-types.md:1548
@@ -3005,8 +3005,8 @@ msgstr "`Decimal` е по-бавен от `float`. Използвайте го �
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1837
-msgid "pandas works with `float`: there, round the **results** ([session 15](./15-pandas-select-aggregate-join.md))."
-msgstr "pandas работи с `float`: там закръглявайте **резултатите** ([занятие 15](./15-pandas-select-aggregate-join.md))."
+msgid "pandas works with `float`: there, round the **results** ([lecture 14](./14-pandas-select-aggregate-join.md))."
+msgstr "pandas работи с `float`: там закръглявайте **резултатите** ([лекция 14](./14-pandas-select-aggregate-join.md))."
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:1846
@@ -3252,6 +3252,9 @@ msgstr "Видеа за по-късно: [NumPy for beginners (SciPy 2018)](http
 #: site/lectures/01-intro-syntax-types.md:1928
 msgid "**Next session:** conditional statements and loops - `if` / `elif` / `else`, the Python version of SQL `CASE WHEN`, and `for` / `while` loops over the rows of a file."
 msgstr "**Следващото занятие:** условни конструкции и цикли - `if` / `elif` / `else`, версията на Python на `CASE WHEN` от SQL, и цикли `for` / `while` по редовете на файл."
+
+#~ msgid "You will **not** stop using SQL. The best place to filter and join big tables is still the database; Python sends the SQL query and works with the result (session 13). Python replaces mostly the SAS part of the work - and adds what neither SQL nor SAS does well."
+#~ msgstr "**Няма** да спрете да ползвате SQL. Най-доброто място за филтриране и съединяване на големи таблици все още е базата данни; Python изпраща SQL заявката и работи с резултата (лекция 12). Python заменя най-вече SAS частта от работата - и добавя това, което нито SQL, нито SAS правят добре."
 
 #~ msgid "**Next session:** conditional statements and loops - `if` / `elif` / `else`, the Python `CASE WHEN`, and `for` / `while` loops over the rows of a file."
 #~ msgstr "**Следващото занятие:** условни конструкции и цикли - `if` / `elif` / `else`, `CASE WHEN` на Python и цикли `for` / `while` по редовете на файл."

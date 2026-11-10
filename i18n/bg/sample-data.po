@@ -55,13 +55,13 @@ msgstr "рейтинговата скала: по един ред за всек�
 
 #. paragraph
 #: site/sample-data.md:15
-msgid "From session 7 on, more files of the same made-up portfolio - with the problems of real data on purpose: messy text, several formats, bad rows, history over time."
-msgstr "От занятие 7 нататък - още файлове от същия измислен портфейл, нарочно с проблемите на истинските данни: разхвърлян текст, няколко формата, лоши редове, история във времето."
+msgid "From lecture 7 on, more files of the same made-up portfolio - with the problems of real data on purpose: messy text, several formats, bad rows, history over time."
+msgstr "От лекция 7 нататък - още файлове от същия измислен портфейл, нарочно с проблемите на истинските данни: разхвърлян текст, няколко формата, лоши редове, история във времето."
 
 #. table cell
 #: site/sample-data.md:18
-msgid "Sessions"
-msgstr "Занятия"
+msgid "Lectures"
+msgstr "Лекции"
 
 #. table cell
 #: site/sample-data.md:20
@@ -265,8 +265,8 @@ msgstr "PD интервалът на класа (0.0025 = 0.25%)"
 
 #. heading 2
 #: site/sample-data.md:103
-msgid "The files of the later sessions"
-msgstr "Файловете за следващите занятия"
+msgid "The files of the later lectures"
+msgstr "Файловете за следващите лекции"
 
 #. heading 3
 #: site/sample-data.md:105
@@ -355,8 +355,14 @@ msgstr "Без pandas"
 
 #. paragraph
 #: site/sample-data.md:170
-msgid "The first lectures read the files with the standard library (`open`, `csv`), and pandas comes in session 14. Both ways read the same files."
-msgstr "Първите лекции четат файловете със стандартната библиотека (`open`, `csv`), а pandas идва в занятие 14. И двата начина четат едни и същи файлове."
+msgid "The first lectures read the files with the standard library (`open`, `csv`), and pandas comes in lecture 13. Both ways read the same files."
+msgstr "Първите лекции четат файловете със стандартната библиотека (`open`, `csv`), а pandas идва в лекция 13. И двата начина четат едни и същи файлове."
+
+#~ msgid "Sessions"
+#~ msgstr "Занятия"
+
+#~ msgid "The files of the later sessions"
+#~ msgstr "Файловете за следващите занятия"
 
 #~ msgid "Click a file name in the tables to open the file on GitHub, or see [all the files](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Slides/tree/main/data). A CSV file is shown there as a table that you can search, and every file has a download button. The `.xlsx` and `.db` files can only be downloaded. Two files look wrong on GitHub on purpose: `loans_export.csv` is shown as plain text (GitHub expects `,`, not `;`), and the Bulgarian names in `regions_bg.csv` are broken (GitHub does not read cp1251). The lectures that use them show how to read them right."
 #~ msgstr "Щракнете върху името на файл в таблиците, за да го отворите в GitHub, или вижте [всички файлове](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Slides/tree/main/data). Там файлът CSV се показва като таблица, в която може да търсите, а всеки файл има бутон за изтегляне. Файловете `.xlsx` и `.db` може само да се изтеглят. Два файла изглеждат грешно в GitHub нарочно: `loans_export.csv` се показва като обикновен текст (GitHub очаква `,`, а не `;`), а българските имена в `regions_bg.csv` са развалени (GitHub не чете cp1251). Лекциите, които ги използват, показват как да ги прочетете правилно."

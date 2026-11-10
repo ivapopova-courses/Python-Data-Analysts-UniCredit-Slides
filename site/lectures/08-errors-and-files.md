@@ -1,11 +1,11 @@
 ---
-title: 9. Error handling and file handling
+title: 8. Error handling and file handling
 ---
 
-# 9. Error handling and file handling
+# 8. Error handling and file handling
 
 <div class="lecture-meta">
-  <span>Session 9</span><span>practice: <code>09-errors-and-files/</code> in the homework repository</span>
+  <span>Session 8</span><span>practice: <code>08-errors-and-files/</code> in the homework repository</span>
   <span><a href="../sample-data">the sample data</a></span>
 </div>
 
@@ -229,7 +229,7 @@ print(f"total of the known values: {sum(v for v in values if v is not None):,.2f
 
 ### Try the formats one by one
 
-[Session 7](./07-text-processing.md#several-formats-in-one-column) detected the date format by the shape of the text. With `try`, there is a
+[Lecture 7](./07-text-and-regex.md#several-date-formats-and-month-ends) detected the date format by the shape of the text. With `try`, there is a
 shorter way: try each format, and take the first that works:
 
 ```python run
@@ -308,7 +308,7 @@ for text in ["12.50", "abc"]:
 
 `else` keeps the `try` block small: only the risky line is inside, the code that
 **uses** the result is in `else`. `finally` is for clean-up that must happen
-whatever comes - closing a connection ([session 13](./13-databases.md#close-the-connection-always)), writing the last log line.
+whatever comes - closing a connection ([lecture 12](./12-databases.md#close-the-connection-always)), writing the last log line.
 
 A monthly file that may not be there yet - the error is expected, the work on the
 file is in `else`:
@@ -420,7 +420,7 @@ print(check_report_date("2026-09-29"))
 
 ### Your own exception type
 
-A one-line class (classes: [session 11](./11-oop-classes.md)) makes a new kind of exception. Then the
+A one-line class (classes: [lecture 10](./10-oop-classes.md)) makes a new kind of exception. Then the
 loader can catch **your** data errors, and let real bugs (a `NameError`, a
 `TypeError` in your code) stop the script:
 
@@ -543,7 +543,7 @@ print(loans_file.name, "|", loans_file.stem, "|", loans_file.suffix, "|", loans_
 
 ::: warning Windows paths in Python code
 A Windows path in a normal string has backslashes - and `"\n"`, `"\t"` are special
-characters ([session 8](./08-regular-expressions.md#raw-strings-r)). Use a raw string, or forward slashes, which Windows also
+characters ([lecture 7](./07-text-and-regex.md#raw-strings-r)). Use a raw string, or forward slashes, which Windows also
 accepts:
 
 ```python
@@ -643,7 +643,7 @@ The **mode** says what you want to do:
 | `"a"` | append at the end |
 | `"x"` | write a new file - an error if it exists |
 
-Always give the `encoding` ([session 7](./07-text-processing.md)):
+Always give the `encoding` ([lecture 7](./07-text-and-regex.md)):
 
 ```python run
 from pathlib import Path
@@ -751,7 +751,7 @@ print(header)
 print(first)
 ```
 
-(`utf-8-sig` removes the BOM that Excel writes at the start - [session 7](./07-text-processing.md#encodings-utf-8-cp1251-and-cyrillic), Self-study.)
+(`utf-8-sig` removes the BOM that Excel writes at the start - [lecture 7](./07-text-and-regex.md#encodings-utf-8-cp1251-and-cyrillic), Self-study.)
 
 A file **without** a header line: give the column names with `fieldnames`:
 
@@ -909,7 +909,7 @@ print(Path("out/summary.json").read_text(encoding="utf-8"))
 
 A summary made from the portfolio - counted with a dictionary ([session 6](./06-dictionaries.md#_6-grouping-by-hand-group-by)), written
 with `sort_keys=True` so that the file looks the same in every run (easy to compare in
-Git, [session 10](./10-modules-and-git.md#_6-git-versions-of-your-code)):
+Git, [lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code)):
 
 ```python run
 import csv
@@ -1047,8 +1047,8 @@ print(ws["B2"].value, type(ws["B2"].value).__name__, ws["B2"].number_format)
 ```
 
 In SAS: `PROC IMPORT DBMS=XLSX`, `LIBNAME x XLSX`, `ODS EXCEL`. pandas reads and
-writes whole sheets in one line (`read_excel`, sessions 14 and 16; `to_excel` with
-several sheets, [session 16](./16-pandas-reports-project.md#_6-an-excel-report-with-several-sheets)) - with openpyxl working inside.
+writes whole sheets in one line (`read_excel`, lectures 13 and 15; `to_excel` with
+several sheets, [lecture 15](./15-pandas-reports.md#_6-an-excel-report-with-several-sheets)) - with openpyxl working inside.
 
 ::: info Excel on this site
 The site installs `openpyxl` the first time an example uses Excel - the first run of
@@ -1246,7 +1246,7 @@ else:
 
 ::: info The same in pandas
 pandas has options for bad lines (`pd.read_csv(..., on_bad_lines="skip")`) and turns
-bad numbers into `NaN` with `pd.to_numeric(..., errors="coerce")` ([session 15](./15-pandas-select-aggregate-join.md)). They
+bad numbers into `NaN` with `pd.to_numeric(..., errors="coerce")` ([lecture 14](./14-pandas-select-aggregate-join.md)). They
 are faster - but they do not tell you **why** a row is bad. For an input you must
 explain to someone, the loader of this section is the better tool.
 :::
@@ -1279,7 +1279,7 @@ in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) 
 terminal, in the repository root:
 
 ```bash
-python 09-errors-and-files/practice/task1-safe-convert.py
+python 08-errors-and-files/practice/task1-safe-convert.py
 ```
 
 The tasks that write files write them into the folder `out/` of the repository (it is
@@ -1296,7 +1296,7 @@ in `.gitignore`).
 
 ## Homework
 
-1. `09-errors-and-files/homework.py` (in the homework repository): **load the
+1. `08-errors-and-files/homework.py` (in the homework repository): **load the
    September payments** - check every row against the rules, write the valid
    payments and a reject file with the line number and the reason, compute the totals
    per currency and per day, and return a summary. Every check must print `OK`.
@@ -1375,7 +1375,7 @@ logging.getLogger().addHandler(screen)
 ### A folder of monthly files
 
 A monthly process often reads **all** files of a folder: one per month, one per
-branch. `glob` finds them, a regex ([session 8](./08-regular-expressions.md)) takes the month from the name, and
+branch. `glob` finds them, a regex ([lecture 7](./07-text-and-regex.md)) takes the month from the name, and
 the loader reads each - one bad file must not stop the others:
 
 ```python run

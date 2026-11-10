@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python for Data Analysts\n"
 "Language-Team: \n"
-"Last-Translator: \n"
+"Last-Translator: Claude Fable 5.2 (machine translation - to review)\n"
 "PO-Revision-Date: \n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -16,1094 +16,1094 @@ msgstr ""
 #. front matter: title
 #: site/lectures/06-dictionaries.md:2 site/lectures/06-dictionaries.md:5
 msgid "6. Dictionaries"
-msgstr ""
+msgstr "6. Dictionaries"
 
 #. html
 #: site/lectures/06-dictionaries.md:8
 msgid "<span>Session 6</span><span>practice: <code>06-dictionaries/</code> in the homework repository</span>"
-msgstr ""
+msgstr "<span>Занятие 6</span><span>упражнения: <code>06-dictionaries/</code> в homework repository</span>"
 
 #. html
 #: site/lectures/06-dictionaries.md:9
 msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
-msgstr ""
+msgstr "<span><a href=\"../sample-data\">примерните данни</a></span>"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:12
 msgid "**Today you will learn to:**"
-msgstr ""
+msgstr "**Днес ще се научите да:**"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:14
 msgid "keep pairs of a **key** and a **value** in a dictionary, and find a value by its key in one step;"
-msgstr ""
+msgstr "пазите двойки от **ключ** и **стойност** в dictionary и намирате стойност по ключа ѝ с една стъпка;"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:16
 msgid "add, change and remove entries, and loop over keys, values and pairs;"
-msgstr ""
+msgstr "добавяте, променяте и премахвате записи и обхождате ключовете, стойностите и двойките;"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:17
 msgid "use a dictionary as a **lookup table** - the Python version of a SAS format, a hash object and a small SQL reference table;"
-msgstr ""
+msgstr "използвате dictionary като **lookup таблица** - версията на Python на SAS format, на hash обект и на малка справочна таблица в SQL;"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:19
 msgid "build dictionaries in one line with a **dict comprehension**;"
-msgstr ""
+msgstr "създавате dictionaries на един ред с **dict comprehension**;"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:20
 msgid "count, sum and average **by group** - `GROUP BY` without pandas - with `get`, `defaultdict` and `Counter`;"
-msgstr ""
+msgstr "броите, сумирате и смятате средно **по групи** - `GROUP BY` без pandas - с `get`, `defaultdict` и `Counter`;"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:22
 msgid "work with **records**: a row as a dictionary, a table as a dictionary of rows."
-msgstr ""
+msgstr "работите със **записи**: ред като dictionary, таблица като dictionary от редове."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:24
 msgid "From SAS to Python - a format that turns a code into a name:"
-msgstr ""
+msgstr "От SAS към Python - format, който превръща код в име:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:52
 msgid "And the question of homework 4, \"what is the rating of the client of each loan?\", answered for all 400 loans with one dictionary - instead of 400 x 150 comparisons:"
-msgstr ""
+msgstr "И въпросът от домашно 4, \"какъв е рейтингът на клиента на всеки кредит?\", с отговор за всичките 400 кредита с един dictionary - вместо 400 x 150 сравнения:"
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:68
 msgid "1. What is a dictionary?"
-msgstr ""
+msgstr "1. Какво е dictionary?"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:70
 msgid "A key and a value"
-msgstr ""
+msgstr "Ключ и стойност"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:72
 msgid "A **dictionary** (type `dict`) keeps **pairs**: a **key** and its **value**. You find a value by its key - not by a position, as in a list:"
-msgstr ""
+msgstr "**Dictionary** (тип `dict`) пази **двойки**: **ключ** и неговата **стойност**. Стойност намирате по ключа ѝ - не по позиция, както в list:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:83
 msgid "The syntax: curly brackets, pairs `key: value`, separated by commas. The same curly brackets as a set ([session 3](./03-lists-tuples-sets.md#_11-sets)) - but a set has only values, a dictionary has pairs."
-msgstr ""
+msgstr "Синтаксисът: къдрави скоби, двойки `key: value`, разделени със запетаи. Същите къдрави скоби като при set ([занятие 3](./03-lists-tuples-sets.md#_11-sets)) - но set има само стойности, а dictionary има двойки."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:86
 msgid "Think of it as a two-column table with a **unique key**, like a SQL table with a primary key:"
-msgstr ""
+msgstr "Мислете за него като за таблица с две колони и **уникален ключ**, като SQL таблица с primary key:"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:89
 msgid "key (`grade`)"
-msgstr ""
+msgstr "ключ (`grade`)"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:89
 msgid "value (`pd`)"
-msgstr ""
+msgstr "стойност (`pd`)"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:95
 msgid "![A dictionary next to a SAS format and a SQL lookup table: the same key-value pairs in three forms](/diagrams/dict-lookup.svg){.diagram width=920 height=330}"
-msgstr ""
+msgstr "![Dictionary до SAS format и SQL lookup таблица: едни и същи двойки ключ-стойност в три форми](/diagrams/dict-lookup.svg){.diagram width=920 height=330}"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:97
 msgid "SAS"
-msgstr ""
+msgstr "SAS"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:97
 msgid "SQL"
-msgstr ""
+msgstr "SQL"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:97
 msgid "Python"
-msgstr ""
+msgstr "Python"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:99
 msgid "A code -> a text"
-msgstr ""
+msgstr "Код -> текст"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:99
 msgid "a lookup table + `JOIN`"
-msgstr ""
+msgstr "lookup таблица + `JOIN`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:100
 msgid "A key -> several values"
-msgstr ""
+msgstr "Ключ -> няколко стойности"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:100
 msgid "a hash object, `h.find()`"
-msgstr ""
+msgstr "hash обект, `h.find()`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:100
 msgid "a reference table + `JOIN`"
-msgstr ""
+msgstr "справочна таблица + `JOIN`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:100
 msgid "a dict of tuples or dicts"
-msgstr ""
+msgstr "dict от tuples или dicts"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:101
 msgid "Not found"
-msgstr ""
+msgstr "Не е намерен"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:103
 msgid "Create a dictionary"
-msgstr ""
+msgstr "Създаване на dictionary"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:114
 msgid "From two lists - the keys and the values - with `zip` ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):"
-msgstr ""
+msgstr "От два lists - ключовете и стойностите - със `zip` ([занятие 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:124
 msgid "Read a value: `[]` and `get`"
-msgstr ""
+msgstr "Четене на стойност: `[]` и `get`"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:126
 msgid "`d[key]` gives the value. A key that is not there is a `KeyError` - the program stops:"
-msgstr ""
+msgstr "`d[key]` дава стойността. Ключ, който го няма, е `KeyError` - програмата спира:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:136
 msgid "`d.get(key)` gives `None` for a missing key, and `d.get(key, default)` gives the default - like `OTHER=` in a SAS format:"
-msgstr ""
+msgstr "`d.get(key)` дава `None` за липсващ ключ, а `d.get(key, default)` дава стойността по подразбиране - като `OTHER=` в SAS format:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:147
 msgid "Which one to use? `d[key]` when a missing key is an **error** in the data and you want to know at once. `get` when a missing key is **normal**, and you know what to use instead."
-msgstr ""
+msgstr "Кое да използвате? `d[key]`, когато липсващ ключ е **грешка** в данните и искате да разберете веднага. `get`, когато липсващ ключ е **нещо нормално** и знаете какво да използвате вместо него."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:151
 msgid "`in` checks the keys"
-msgstr ""
+msgstr "`in` проверява ключовете"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:161
 msgid "Rules for keys"
-msgstr ""
+msgstr "Правила за ключовете"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:163
 msgid "Keys are **unique**. The same key twice: the last value wins."
-msgstr ""
+msgstr "Ключовете са **уникални**. Един и същ ключ два пъти: остава последната стойност."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:164
 msgid "Keys must be **hashable**: values that cannot change - `str`, `int`, `float`, `bool`, `tuple` (of such values). A list cannot be a key. (The same rule as for the items of a set.)"
-msgstr ""
+msgstr "Ключовете трябва да са **hashable**: стойности, които не могат да се променят - `str`, `int`, `float`, `bool`, `tuple` (от такива стойности). List не може да бъде ключ. (Същото правило като за елементите на set.)"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:167
 msgid "Values can be anything: numbers, lists, other dictionaries, functions."
-msgstr ""
+msgstr "Стойностите могат да са всякакви: числа, lists, други dictionaries, функции."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:168
 msgid "A dictionary keeps the **order** in which the keys were added (since Python 3.7)."
-msgstr ""
+msgstr "Dictionary пази **реда**, в който са добавени ключовете (от Python 3.7)."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:180
 msgid "Two useful forms of `dict.fromkeys`: unique values **in the order of their first appearance** (a set loses the order), and many keys with one start value:"
-msgstr ""
+msgstr "Две полезни форми на `dict.fromkeys`: уникални стойности **в реда на първото им срещане** (set губи реда) и много ключове с една начална стойност:"
 
 #. box title
 #: site/lectures/06-dictionaries.md:190 site/lectures/06-dictionaries.md:306 site/lectures/06-dictionaries.md:399 site/lectures/06-dictionaries.md:452 site/lectures/06-dictionaries.md:595 site/lectures/06-dictionaries.md:651 site/lectures/06-dictionaries.md:905 site/lectures/06-dictionaries.md:1034
 msgid "Try it"
-msgstr ""
+msgstr "Пробвайте"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:191
 msgid "Predict, then run: how many keys has `{\"a\": 1, \"A\": 2}`, and how many has `{\"EUR\": 1, \"EUR \": 2}`?"
-msgstr ""
+msgstr "Предвидете, после изпълнете: колко ключа има `{\"a\": 1, \"A\": 2}` и колко има `{\"EUR\": 1, \"EUR \": 2}`?"
 
 #. box title
 #: site/lectures/06-dictionaries.md:200
 msgid "Advanced: `1`, `True` and `1.0` are one key"
-msgstr ""
+msgstr "За напреднали: `1`, `True` и `1.0` са един ключ"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:206
 msgid "`1`, `True` and `1.0` are equal and have the same hash, so they are **one** key: the first key stays, the last value wins."
-msgstr ""
+msgstr "`1`, `True` и `1.0` са равни и имат един и същ hash, затова са **един** ключ: остава първият ключ и последната стойност."
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:210
 msgid "2. Change a dictionary"
-msgstr ""
+msgstr "2. Промяна на dictionary"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:212
 msgid "A dictionary is **mutable**: you can add, change and remove pairs."
-msgstr ""
+msgstr "Dictionary е **mutable** (променяем): можете да добавяте, променяте и премахвате двойки."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:214
 msgid "Add and change: `d[key] = value`"
-msgstr ""
+msgstr "Добавяне и промяна: `d[key] = value`"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:216
 msgid "The same statement does both: a new key is **added**, an existing key gets a **new value**:"
-msgstr ""
+msgstr "Един и същ statement прави и двете: нов ключ се **добавя**, а съществуващ ключ получава **нова стойност**:"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:227
 msgid "Several at once: `update` and `|`"
-msgstr ""
+msgstr "Няколко наведнъж: `update` и `|`"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:241
 msgid "Remove: `del`, `pop`"
-msgstr ""
+msgstr "Премахване: `del`, `pop`"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:253
 msgid "`setdefault`: add only if missing"
-msgstr ""
+msgstr "`setdefault`: добавя само ако липсва"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:255
 msgid "`d.setdefault(key, value)` returns the value of the key; if the key is missing, it first adds it with `value`:"
-msgstr ""
+msgstr "`d.setdefault(key, value)` връща стойността на ключа; ако ключът липсва, първо го добавя с `value`:"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:266
 msgid "A trap: changing a dictionary while looping over it"
-msgstr ""
+msgstr "Капан: промяна на dictionary, докато го обхождате"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:268
 msgid "Adding or removing keys while a loop goes over the same dictionary is an error:"
-msgstr ""
+msgstr "Добавянето или премахването на ключове, докато цикъл обхожда същия dictionary, е грешка:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:278
 msgid "Loop over a **copy of the keys**, or build a new dictionary (section 4):"
-msgstr ""
+msgstr "Обхождайте **копие на ключовете** или създайте нов dictionary (раздел 4):"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:289
 msgid "Changing only the **values** of existing keys in a loop is fine."
-msgstr ""
+msgstr "Промяната само на **стойностите** на съществуващи ключове в цикъл е наред."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:291
 msgid "Compare two dictionaries"
-msgstr ""
+msgstr "Сравняване на два dictionaries"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:293
 msgid "`==` compares the pairs - the order does not matter. A quick check that a nomenclature did not change between two versions:"
-msgstr ""
+msgstr "`==` сравнява двойките - редът няма значение. Бърза проверка, че една номенклатура не се е променила между две версии:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:307
 msgid "Start from `rates = {\"EUR\": 3.5, \"USD\": 5.25}`. Add `\"GBP\": 4.75`, change `EUR` to `3.25`, remove `USD` with `pop`, and print the dict. What does `rates.pop(\"CHF\", 0)` return?"
-msgstr ""
+msgstr "Започнете от `rates = {\"EUR\": 3.5, \"USD\": 5.25}`. Добавете `\"GBP\": 4.75`, променете `EUR` на `3.25`, премахнете `USD` с `pop` и отпечатайте dict-а. Какво връща `rates.pop(\"CHF\", 0)`?"
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:312
 msgid "3. Loop over a dictionary"
-msgstr ""
+msgstr "3. Обхождане на dictionary"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:316
 msgid "A `for` over a dictionary goes over its **keys**. For the values or the pairs, use the methods:"
-msgstr ""
+msgstr "`for` върху dictionary обхожда неговите **ключове**. За стойностите или двойките използвайте методите:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:332
 msgid "`items()` is the most common: it gives the key and the value together."
-msgstr ""
+msgstr "`items()` се използва най-често: дава ключа и стойността заедно."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:334
 msgid "Sort the result"
-msgstr ""
+msgstr "Сортиране на резултата"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:336
 msgid "The order of a dictionary is the order of insertion. To show it sorted, sort the `items()` - by the key, or by the value:"
-msgstr ""
+msgstr "Редът на dictionary е редът на добавяне. За да го покажете сортиран, сортирайте `items()` - по ключа или по стойността:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:349
 msgid "The key with the largest value:"
-msgstr ""
+msgstr "Ключът с най-голяма стойност:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:357
 msgid "(`key=outstanding.get` - the method itself, without brackets: `max` calls it for each key.)"
-msgstr ""
+msgstr "(`key=outstanding.get` - самият метод, без скоби: `max` го извиква за всеки ключ.)"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:360
 msgid "A ranked report: `enumerate` over the sorted items ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)):"
-msgstr ""
+msgstr "Отчет с ранг: `enumerate` върху сортираните двойки ([занятие 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)):"
 
 #. box title
 #: site/lectures/06-dictionaries.md:371
 msgid "Advanced: the views are live"
-msgstr ""
+msgstr "За напреднали: изгледите (views) са живи"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:372
 msgid "`keys()`, `values()` and `items()` are **views**: they show the dictionary as it is **now**, also after a change:"
-msgstr ""
+msgstr "`keys()`, `values()` и `items()` са **views**: показват dictionary-то такова, каквото е **сега**, също и след промяна:"
 
 #. box title
 #: site/lectures/06-dictionaries.md:385
 msgid "Advanced: keys behave like a set"
-msgstr ""
+msgstr "За напреднали: ключовете се държат като set"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:386
 msgid "`keys()` supports the set operations of [session 3](./03-lists-tuples-sets.md#_12-set-operations-sql-union-intersect-except) - handy to compare two nomenclatures:"
-msgstr ""
+msgstr "`keys()` поддържа операциите със sets от [занятие 3](./03-lists-tuples-sets.md#_12-set-operations-sql-union-intersect-except) - удобно за сравняване на две номенклатури:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:400
 msgid "Print the segments of the example sorted by the **length** of their name. Then print only the segments with more than EUR 10 million."
-msgstr ""
+msgstr "Отпечатайте сегментите от примера, сортирани по **дължината** на името им. После отпечатайте само сегментите с повече от 10 милиона EUR."
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:404
 msgid "4. Dict comprehensions"
-msgstr ""
+msgstr "4. Dict comprehensions"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:408
 msgid "Like a list comprehension ([session 5](./05-lists-advanced.md#_2-list-comprehensions)), with `key: value` and curly brackets:"
-msgstr ""
+msgstr "Като list comprehension ([занятие 5](./05-lists-advanced.md#_2-list-comprehensions)), но с `key: value` и къдрави скоби:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:422
 msgid "In SQL terms: `SELECT key, expression FROM ... WHERE ...` into a lookup table. Common forms, on a small list of clients:"
-msgstr ""
+msgstr "На езика на SQL: `SELECT key, expression FROM ... WHERE ...` в lookup таблица. Чести форми, върху малък list от клиенти:"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:438
 msgid "Inverting a dictionary - a trap"
-msgstr ""
+msgstr "Обръщане на dictionary - капан"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:440
 msgid "Value -> key: swap the pairs. But values are not unique; when two keys have the same value, one of them is lost:"
-msgstr ""
+msgstr "Стойност -> ключ: разменете двойките. Но стойностите не са уникални; когато два ключа имат една и съща стойност, единият се губи:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:450
 msgid "For \"group -> all products\" you need a dictionary of **lists** (section 6)."
-msgstr ""
+msgstr "За \"група -> всички продукти\" ви трябва dictionary от **lists** (раздел 6)."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:453
 msgid "From `grades` and `pds` of the first example, build `{grade: pd}` only for the grades with a PD below 0.002, with the PD in basis points. Predict how many grades you get."
-msgstr ""
+msgstr "От `grades` и `pds` от първия пример създайте `{grade: pd}` само за оценките (grades) с PD под 0.002, като PD е в базисни точки. Предвидете колко оценки ще получите."
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:457
 msgid "5. Lookup tables and nomenclatures"
-msgstr ""
+msgstr "5. Lookup таблици и номенклатури"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:459
 msgid "This is the main use of dictionaries in data work: a **code -> description** or **key -> attributes** table, used for every row of a dataset."
-msgstr ""
+msgstr "Това е основната употреба на dictionaries при работа с данни: таблица **код -> описание** или **ключ -> атрибути**, използвана за всеки ред от набор от данни."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:462
 msgid "A format with `OTHER=`"
-msgstr ""
+msgstr "Format с `OTHER=`"
 
 #. box title
 #: site/lectures/06-dictionaries.md:476 site/lectures/06-dictionaries.md:557 site/lectures/06-dictionaries.md:726 site/lectures/06-dictionaries.md:751 site/lectures/06-dictionaries.md:815
 msgid "Animation"
-msgstr ""
+msgstr "Анимация"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:477
 msgid "**Grouping by hand:** [1. A lookup](../animations/groupingByHand.html#1){target=\"_blank\"}"
-msgstr ""
+msgstr "**Групиране на ръка:** [1. Lookup](../animations/groupingByHand.html#1){target=\"_blank\"}"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:480
 msgid "A nomenclature from a file: the rating scale"
-msgstr ""
+msgstr "Номенклатура от файл: рейтинговата скала"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:482
 msgid "`rating_scale.csv` is a nomenclature: one row per rating. Read it into a dictionary **rating -> (grade, PD)** once, and use it for every client:"
-msgstr ""
+msgstr "`rating_scale.csv` е номенклатура: по един ред за всеки рейтинг. Прочетете я веднъж в dictionary **rating -> (grade, PD)** и я използвайте за всеки клиент:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:499
-msgid "`csv.DictReader` (the module `csv` comes with Python) reads a CSV file row by row, and gives each row as a dictionary: the column name is the key. No more `row[7]` - `row[\"outstanding\"]`. Files and `csv` in depth: [session 9](./09-errors-and-files.md#_7-csv-files)."
-msgstr ""
+msgid "`csv.DictReader` (the module `csv` comes with Python) reads a CSV file row by row, and gives each row as a dictionary: the column name is the key. No more `row[7]` - `row[\"outstanding\"]`. Files and `csv` in depth: [lecture 8](./08-errors-and-files.md#_7-csv-files)."
+msgstr "`csv.DictReader` (модулът `csv` идва с Python) чете CSV файл ред по ред и дава всеки ред като dictionary: името на колоната е ключът. Вече не `row[7]`, а `row[\"outstanding\"]`. Файловете и `csv` в дълбочина: [лекция 8](./08-errors-and-files.md#_7-csv-files)."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:514
 msgid "Codes in the data: a lookup in a function"
-msgstr ""
+msgstr "Кодове в данните: lookup във функция"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:516
 msgid "When the same lookup is used in many places, put it in a function with the default in one place:"
-msgstr ""
+msgstr "Когато един и същ lookup се използва на много места, сложете го във функция, със стойността по подразбиране на едно място:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:529
-msgid "Keep the nomenclature (the dictionary) as a **constant** at the top of the script, in capitals: one place to change it. [Session 12](./12-oop-nomenclatures.md) turns such a nomenclature into a class with its own checks."
-msgstr ""
+msgid "Keep the nomenclature (the dictionary) as a **constant** at the top of the script, in capitals: one place to change it. [Lecture 11](./11-oop-nomenclatures.md) turns such a nomenclature into a class with its own checks."
+msgstr "Дръжте номенклатурата (dictionary-то) като **константа** в началото на скрипта, с главни букви: едно място, където да я променяте. [Лекция 11](./11-oop-nomenclatures.md) превръща такава номенклатура в клас със собствени проверки."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:533
 msgid "The join: loans with the region of their client"
-msgstr ""
+msgstr "Join: кредитите с региона на клиента им"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:535
 msgid "In Python, a SQL `LEFT JOIN loans -> clients ON client_id` is: a dictionary of the clients, and a lookup for every loan."
-msgstr ""
+msgstr "В Python един SQL `LEFT JOIN loans -> clients ON client_id` е: dictionary с клиентите и lookup за всеки кредит."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:558
 msgid "**Grouping by hand:** [5. The join by key](../animations/groupingByHand.html#5){target=\"_blank\"}"
-msgstr ""
+msgstr "**Групиране на ръка:** [5. Join по ключ](../animations/groupingByHand.html#5){target=\"_blank\"}"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:561
 msgid "A SAS programmer would do this with a hash object (`declare hash h(dataset: \"clients\"); h.defineKey(\"client_id\"); ...; rc = h.find();`). The dictionary is the same idea, with less code."
-msgstr ""
+msgstr "SAS програмист би направил това с hash обект (`declare hash h(dataset: \"clients\"); h.defineKey(\"client_id\"); ...; rc = h.find();`). Dictionary е същата идея, с по-малко код."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:565
 msgid "Why it is fast: a dictionary finds a key in **one step**, however big it is - homework 4 needed up to 150 comparisons per loan. Section \"How a dictionary works\" in the Self-study explains why."
-msgstr ""
+msgstr "Защо е бързо: dictionary намира ключ с **една стъпка**, колкото и да е голям - в домашно 4 трябваха до 150 сравнения за кредит. Разделът \"Как работи dictionary\" в частта за самостоятелно изучаване обяснява защо."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:569
 msgid "A chain of lookups: loan -> client -> rating -> PD"
-msgstr ""
+msgstr "Верига от lookups: кредит -> клиент -> рейтинг -> PD"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:571
 msgid "The expected loss of homework 4 needs the PD of each loan, two tables away: the loan has a client, the client has a rating, the rating has a PD. With two dictionaries, that is two lookups in a row - like two `LEFT JOIN`s in SQL, or two `put()` with formats in a SAS DATA step. On small made-up tables:"
-msgstr ""
+msgstr "За очакваната загуба от домашно 4 е нужен PD на всеки кредит, който е през две таблици: кредитът има клиент, клиентът има рейтинг, рейтингът има PD. С два dictionaries това са два lookups един след друг - като два `LEFT JOIN` в SQL или два `put()` с formats в SAS DATA step. Върху малки измислени таблици:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:591
 msgid "Homework 6 builds the two dictionaries from the files and does this for the whole portfolio - the total must be the same as in homework 4, with 400 x 2 lookups instead of 400 x 150 comparisons."
-msgstr ""
+msgstr "В домашно 6 създавате двата dictionaries от файловете и правите това за целия портфейл - общата сума трябва да е същата като в домашно 4, с 400 x 2 lookups вместо 400 x 150 сравнения."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:596
 msgid "Change the loan to the client `C0001`. Predict the rating, the PD and the EL before you run it. What happens with a client that is not in `rating_of`, and how would `get` change that?"
-msgstr ""
+msgstr "Сменете кредита с клиента `C0001`. Предвидете рейтинга, PD и EL, преди да изпълните кода. Какво става с клиент, който не е в `rating_of`, и как `get` би променил това?"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:601
 msgid "Ranges are not keys"
-msgstr ""
+msgstr "Диапазоните не са ключове"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:603
 msgid "A dictionary needs the **exact** key. PD bands, days-past-due buckets, amount ranges - a value **between** two limits - are not a dictionary lookup. Use a function with `if` (sessions 2 and 4), or a list of limits:"
-msgstr ""
+msgstr "Dictionary иска **точния** ключ. PD диапазони, групи по дни просрочие, диапазони от суми - стойност **между** две граници - не са lookup в dictionary. Използвайте функция с `if` (занятия 2 и 4) или list от граници:"
 
 #. box title
 #: site/lectures/06-dictionaries.md:619
 msgid "Advanced: `bisect` for many ranges"
-msgstr ""
+msgstr "За напреднали: `bisect` за много диапазони"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:620
 msgid "For a long, sorted list of limits, the module `bisect` finds the position of a value by halving the list, not by checking every limit:"
-msgstr ""
+msgstr "За дълъг, сортиран list от граници модулът `bisect` намира позицията на стойност, като разполовява list-а, а не като проверява всяка граница:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:635
-msgid "In pandas, `pd.cut` does the same for a whole column ([session 15](./15-pandas-select-aggregate-join.md#bands-pd-cut))."
-msgstr ""
+msgid "In pandas, `pd.cut` does the same for a whole column ([lecture 14](./14-pandas-select-aggregate-join.md#bands-pd-cut))."
+msgstr "В pandas `pd.cut` прави същото за цяла колона ([лекция 14](./14-pandas-select-aggregate-join.md#bands-pd-cut))."
 
 #. box title
 #: site/lectures/06-dictionaries.md:638 site/lectures/06-dictionaries.md:892
 msgid "The same in pandas"
-msgstr ""
+msgstr "Същото в pandas"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:639
 msgid "`Series.map(dictionary)` applies a dictionary to a whole column - a SAS format on a column. Missing keys become `NaN`:"
-msgstr ""
+msgstr "`Series.map(dictionary)` прилага dictionary върху цяла колона - SAS format върху колона. Липсващите ключове стават `NaN`:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:652
 msgid "In \"The join\" example, add the `rating` of the client to each printed line. Then change one `client_id` in the loop to `\"C9999\"` (a client that does not exist): what does `client.get(...)` give, and what would `client[...]` do?"
-msgstr ""
+msgstr "В примера \"Join\" добавете `rating` на клиента към всеки отпечатан ред. После сменете един `client_id` в цикъла с `\"C9999\"` (клиент, който не съществува): какво дава `client.get(...)` и какво би направил `client[...]`?"
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:657
 msgid "6. Grouping by hand: `GROUP BY`"
-msgstr ""
+msgstr "6. Групиране на ръка: `GROUP BY`"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:659
 msgid "Count by group: from `if` to `Counter`"
-msgstr ""
+msgstr "Броене по групи: от `if` до `Counter`"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:661
 msgid "The SQL `SELECT region, COUNT(*) FROM clients GROUP BY region` - four ways, from the longest to the shortest. All do the same: a dictionary **group -> count** that grows row by row."
-msgstr ""
+msgstr "SQL заявката `SELECT region, COUNT(*) FROM clients GROUP BY region` - по четири начина, от най-дългия до най-краткия. Всички правят едно и също: dictionary **група -> брой**, който расте ред по ред."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:682
 msgid "**2. `get` with a default** - \"the count so far, or 0\":"
-msgstr ""
+msgstr "**2. `get` със стойност по подразбиране** - \"броят досега или 0\":"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:696
 msgid "**3. `defaultdict(int)`** - a dictionary that creates a missing key by itself, with `int()`, that is `0`:"
-msgstr ""
+msgstr "**3. `defaultdict(int)`** - dictionary, който сам създава липсващ ключ, с `int()`, тоест `0`:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:712
 msgid "**4. `Counter`** - made for counting:"
-msgstr ""
+msgstr "**4. `Counter`** - направен за броене:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:727
 msgid "**Grouping by hand:** [2. Count with `get`](../animations/groupingByHand.html#2){target=\"_blank\"}"
-msgstr ""
+msgstr "**Групиране на ръка:** [2. Броене с `get`](../animations/groupingByHand.html#2){target=\"_blank\"}"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:730
 msgid "Sum by group"
-msgstr ""
+msgstr "Сума по групи"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:732
 msgid "The SQL `SELECT segment, SUM(outstanding) ... GROUP BY segment` - the segment is in `clients.csv`, the amount in `loans.csv`: a lookup (section 5) and a sum:"
-msgstr ""
+msgstr "SQL заявката `SELECT segment, SUM(outstanding) ... GROUP BY segment` - сегментът е в `clients.csv`, а сумата в `loans.csv`: lookup (раздел 5) и сума:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:752
 msgid "**Grouping by hand:** [3. Sum with `defaultdict`](../animations/groupingByHand.html#3){target=\"_blank\"}"
-msgstr ""
+msgstr "**Групиране на ръка:** [3. Сума с `defaultdict`](../animations/groupingByHand.html#3){target=\"_blank\"}"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:755
 msgid "Several aggregates per group"
-msgstr ""
+msgstr "Няколко агрегата за група"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:757
 msgid "`COUNT`, `SUM`, `AVG`, `MAX` by product - keep a small list per group, `[count, sum, max]`, and compute the average at the end:"
-msgstr ""
+msgstr "`COUNT`, `SUM`, `AVG`, `MAX` по продукт - пазете малък list за всяка група, `[count, sum, max]`, и сметнете средното накрая:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:777
-msgid "This is SAS `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line ([session 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means)) - but now you know what it does."
-msgstr ""
+msgid "This is SAS `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line ([lecture 14](./14-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means)) - but now you know what it does."
+msgstr "Това е SAS `PROC MEANS` с `CLASS product`, на ръка. pandas го прави на един ред ([лекция 14](./14-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means)) - но вече знаете какво прави."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:780
 msgid "The **share** of each group in the total - one more pass over the small result, not over the data:"
-msgstr ""
+msgstr "**Делът** на всяка група от общата сума - още едно минаване през малкия резултат, не през данните:"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:797
 msgid "Group into lists"
-msgstr ""
+msgstr "Групиране в lists"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:799
 msgid "Sometimes you need the **rows** of each group, not only a number - a dictionary of lists:"
-msgstr ""
+msgstr "Понякога ви трябват **редовете** на всяка група, а не само число - dictionary от lists:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:816
 msgid "**Grouping by hand:** [4. Group into lists](../animations/groupingByHand.html#4){target=\"_blank\"}"
-msgstr ""
+msgstr "**Групиране на ръка:** [4. Групиране в lists](../animations/groupingByHand.html#4){target=\"_blank\"}"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:819
 msgid "Two keys: `GROUP BY segment, stage`"
-msgstr ""
+msgstr "Два ключа: `GROUP BY segment, stage`"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:821
 msgid "A **tuple** of the two values is the key:"
-msgstr ""
+msgstr "Ключът е **tuple** от двете стойности:"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:840
 msgid "`HAVING` and `ORDER BY` on the result"
-msgstr ""
+msgstr "`HAVING` и `ORDER BY` върху резултата"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:842
 msgid "The result is a dictionary - filter it with a comprehension (SQL `HAVING`), sort its items (SQL `ORDER BY`):"
-msgstr ""
+msgstr "Резултатът е dictionary - филтрирайте го с comprehension (SQL `HAVING`), сортирайте двойките му (SQL `ORDER BY`):"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:858
 msgid "The key is a tuple - two columns, like `ORDER BY a, b` ([session 4](./04-functions.md#sorting-by-a-key)). `-kv[1]` is the count with a minus: the largest count gives the smallest key, so it comes first (`DESC`) while the client ids stay A - Z."
-msgstr ""
+msgstr "Ключът е tuple - две колони, като `ORDER BY a, b` ([занятие 4](./04-functions.md#sorting-by-a-key)). `-kv[1]` е броят с минус: най-големият брой дава най-малкия ключ, затова е първи (`DESC`), а идентификаторите на клиентите остават от A до Z."
 
 #. box title
 #: site/lectures/06-dictionaries.md:862
 msgid "Advanced: `Counter` arithmetic - two months side by side"
-msgstr ""
+msgstr "За напреднали: аритметика с `Counter` - два месеца един до друг"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:863
 msgid "Counters can be added and subtracted. The change of the number of loans per stage between two months:"
-msgstr ""
+msgstr "Counters могат да се събират и изваждат. Промяната в броя на кредитите по етап между два месеца:"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:879
 msgid "A trap: the group key from dirty text"
-msgstr ""
+msgstr "Капан: ключ на групата от мръсен текст"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:881
-msgid "`\"Sofia\"`, `\"sofia\"` and `\"Sofia \"` are three different keys. Clean the key before you group (text cleaning: [session 7](./07-text-processing.md#_7-cleaning-identifiers-and-names)):"
-msgstr ""
+msgid "`\"Sofia\"`, `\"sofia\"` and `\"Sofia \"` are three different keys. Clean the key before you group (text cleaning: [lecture 7](./07-text-and-regex.md#_5-cleaning-identifiers-and-names)):"
+msgstr "`\"Sofia\"`, `\"sofia\"` и `\"Sofia \"` са три различни ключа. Почистете ключа, преди да групирате (почистване на текст: [лекция 7](./07-text-and-regex.md#_5-cleaning-identifiers-and-names)):"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:893
-msgid "`value_counts` and `groupby` do all of this section (sessions 14 - 15):"
-msgstr ""
+msgid "`value_counts` and `groupby` do all of this section (lectures 13 - 14):"
+msgstr "`value_counts` и `groupby` правят всичко от този раздел (лекции 13 - 14):"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:906
 msgid "Count the loans per **currency** with `Counter`, then sum the outstanding per **currency and stage** with a tuple key. Predict first: how many groups will the second result have at most?"
-msgstr ""
+msgstr "Пребройте кредитите по **валута** с `Counter`, после сумирайте непогасената сума по **валута и етап** с ключ tuple. Първо предвидете: колко групи най-много ще има вторият резултат?"
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:911
 msgid "7. Nested dictionaries and records"
-msgstr ""
+msgstr "7. Вложени dictionaries и записи"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:913
 msgid "A row as a dictionary"
-msgstr ""
+msgstr "Ред като dictionary"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:915
 msgid "`csv.DictReader` gives each row as a dictionary: a **record** with named fields. A list of them is a table where the columns have names:"
-msgstr ""
+msgstr "`csv.DictReader` дава всеки ред като dictionary: **запис** с именувани полета. List от такива записи е таблица, в която колоните имат имена:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:929
 msgid "Compare with [session 5](./05-lists-advanced.md#on-the-portfolio): `row[3] == \"USD\"` vs `loan[\"currency\"] == \"USD\"`. The name says what the column is, and adding a column to the file does not break the code."
-msgstr ""
+msgstr "Сравнете със [занятие 5](./05-lists-advanced.md#on-the-portfolio): `row[3] == \"USD\"` срещу `loan[\"currency\"] == \"USD\"`. Името казва каква е колоната, а добавянето на колона във файла не чупи кода."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:932
 msgid "The values are still **text**. Convert them once, into a new record:"
-msgstr ""
+msgstr "Стойностите все още са **текст**. Преобразувайте ги веднъж, в нов запис:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:954
 msgid "Sort a list of records by one or more fields - SQL `ORDER BY` with column names:"
-msgstr ""
+msgstr "Сортиране на list от записи по едно или няколко полета - SQL `ORDER BY` с имена на колони:"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:967
 msgid "A dictionary of dictionaries: a table keyed by id"
-msgstr ""
+msgstr "Dictionary от dictionaries: таблица с ключ идентификатора"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:979
 msgid "Like a SAS dataset with an index on `client_id`, or a hash object with several data fields."
-msgstr ""
+msgstr "Като SAS dataset с индекс по `client_id` или hash обект с няколко полета с данни."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:982
 msgid "Safe nested access"
-msgstr ""
+msgstr "Безопасен достъп до вложени нива"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:984
 msgid "With nested dictionaries, a missing level is a `KeyError` (or a `TypeError` on `None`). Chain `get` with an empty dictionary as the default:"
-msgstr ""
+msgstr "При вложени dictionaries липсващо ниво е `KeyError` (или `TypeError` върху `None`). Навържете `get` с празен dictionary като стойност по подразбиране:"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:995
 msgid "The shape of JSON"
-msgstr ""
+msgstr "Формата на JSON"
 
 #. box title
 #: site/lectures/06-dictionaries.md:997
 msgid "Optional"
-msgstr ""
+msgstr "По желание"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:998
 msgid "Not needed for the tasks, the homework or the next sessions - read it when you have time."
-msgstr ""
+msgstr "Не е нужно за задачите, домашното или следващите занятия - прочетете го, когато имате време."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1001
-msgid "Nested dictionaries and lists are the shape of **JSON**, the text format of web APIs and of many configuration files. The module `json` turns one into the other (JSON files: [session 9](./09-errors-and-files.md#_8-json-files)):"
-msgstr ""
+msgid "Nested dictionaries and lists are the shape of **JSON**, the text format of web APIs and of many configuration files. The module `json` turns one into the other (JSON files: [lecture 8](./08-errors-and-files.md#_8-json-files)):"
+msgstr "Вложените dictionaries и lists са формата на **JSON** - текстовият формат на уеб API-тата и на много конфигурационни файлове. Модулът `json` превръща едното в другото (JSON файлове: [лекция 8](./08-errors-and-files.md#_8-json-files)):"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:1018
 msgid "Copies of nested dictionaries"
-msgstr ""
+msgstr "Копия на вложени dictionaries"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1020
 msgid "The same rule as for the copies of lists ([session 3](./03-lists-tuples-sets.md#make-a-copy)): `d.copy()` and `dict(d)` are **shallow** - the inner dictionaries are shared. `copy.deepcopy` copies all levels:"
-msgstr ""
+msgstr "Същото правило като за копията на lists ([занятие 3](./03-lists-tuples-sets.md#make-a-copy)): `d.copy()` и `dict(d)` са **плитки** копия - вътрешните dictionaries са общи. `copy.deepcopy` копира всички нива:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1035
 msgid "From `clients.csv`, build `{client_id: {\"segment\": ..., \"rating\": int(...)}}` with one dict comprehension (only two fields per client). Then print the rating of `C0132` and the number of corporate clients with a rating of 6 or worse."
-msgstr ""
+msgstr "От `clients.csv` създайте `{client_id: {\"segment\": ..., \"rating\": int(...)}}` с един dict comprehension (само две полета за клиент). После отпечатайте рейтинга на `C0132` и броя на корпоративните клиенти (corporate) с рейтинг 6 или по-лош."
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:1040
 msgid "8. Summary"
-msgstr ""
+msgstr "8. Обобщение"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1041
 msgid "Topic"
-msgstr ""
+msgstr "Тема"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1041
 msgid "Remember"
-msgstr ""
+msgstr "Запомнете"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1043
 msgid "Dictionary"
-msgstr ""
+msgstr "Dictionary"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1043
 msgid "`{key: value}`; keys unique and hashable; keeps the insertion order"
-msgstr ""
+msgstr "`{key: value}`; ключовете са уникални и hashable; пази реда на добавяне"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1044
 msgid "Read"
-msgstr ""
+msgstr "Четене"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1044
 msgid "`d[key]` (KeyError if missing); `d.get(key, default)`; `key in d` checks the keys"
-msgstr ""
+msgstr "`d[key]` (KeyError, ако липсва); `d.get(key, default)`; `key in d` проверява ключовете"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1045
 msgid "Change"
-msgstr ""
+msgstr "Промяна"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1045
 msgid "`d[key] = v` adds or changes; `update`, `\\|`; `del`, `pop(key, default)`; `setdefault`"
-msgstr ""
+msgstr "`d[key] = v` добавя или променя; `update`, `\\|`; `del`, `pop(key, default)`; `setdefault`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1046
 msgid "Loop"
-msgstr ""
+msgstr "Обхождане"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1046
 msgid "`for k in d`; `d.values()`; `for k, v in d.items()`; sort with `sorted(d.items(), key=...)`"
-msgstr ""
+msgstr "`for k in d`; `d.values()`; `for k, v in d.items()`; сортиране със `sorted(d.items(), key=...)`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1047
 msgid "Comprehension"
-msgstr ""
+msgstr "Comprehension"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1048
 msgid "Lookups"
-msgstr ""
+msgstr "Lookups"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1048
 msgid "a dict = a SAS format / hash object / lookup table; `get(code, \"Other\")` = `OTHER=`"
-msgstr ""
+msgstr "dict = SAS format / hash обект / lookup таблица; `get(code, \"Other\")` = `OTHER=`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1049
 msgid "Join"
-msgstr ""
+msgstr "Join"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1049
 msgid "a dict of the right table, `get` for every row of the left one = `LEFT JOIN`"
-msgstr ""
+msgstr "dict от дясната таблица и `get` за всеки ред от лявата = `LEFT JOIN`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1050
 msgid "Ranges"
-msgstr ""
+msgstr "Диапазони"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1050
 msgid "not keys: a function with `if`, or `bisect`"
-msgstr ""
+msgstr "не са ключове: функция с `if` или `bisect`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1052
 msgid "Several keys"
-msgstr ""
+msgstr "Няколко ключа"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1052
 msgid "a tuple as the key: `(segment, stage)`"
-msgstr ""
+msgstr "tuple като ключ: `(segment, stage)`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1053
 msgid "Records"
-msgstr ""
+msgstr "Записи"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1053
 msgid "`csv.DictReader`: rows as dicts; a dict of dicts keyed by id; optional: `json.dumps` / `loads`"
-msgstr ""
+msgstr "`csv.DictReader`: редове като dicts; dict от dicts с ключ идентификатора; по желание: `json.dumps` / `loads`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1054
 msgid "Copies"
-msgstr ""
+msgstr "Копия"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1054
 msgid "`copy()` is shallow; `copy.deepcopy` for nested dicts"
-msgstr ""
+msgstr "`copy()` е плитко копие; `copy.deepcopy` за вложени dicts"
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:1056
 msgid "Practice"
-msgstr ""
+msgstr "Упражнения"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1057
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
-msgstr ""
+msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и изпълнявайте задачите от терминала, в главната папка на repository-то:"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1065
 msgid "Task"
-msgstr ""
+msgstr "Задача"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1065
 msgid "File"
-msgstr ""
+msgstr "Файл"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1065
 msgid "What you do"
-msgstr ""
+msgstr "Какво правите"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1067
 msgid "A product nomenclature: create, read with a default, add, change, remove"
-msgstr ""
+msgstr "Номенклатура на продуктите: създаване, четене със стойност по подразбиране, добавяне, промяна, премахване"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1068
 msgid "Predict: duplicate keys, `get` vs `[]`, `in`, `pop`, `setdefault`, `\\|`"
-msgstr ""
+msgstr "Предвидете: повтарящи се ключове, `get` срещу `[]`, `in`, `pop`, `setdefault`, `\\|`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1069
 msgid "Rating -> grade / PD; codes -> names; loans with the region of their client"
-msgstr ""
+msgstr "Рейтинг -> оценка (grade) / PD; кодове -> имена; кредитите с региона на клиента им"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1070
 msgid "Clients per region, outstanding per segment, `most_common`"
-msgstr ""
+msgstr "Клиенти по регион, непогасена сума по сегмент, `most_common`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1071
 msgid "Count / sum / average / max per product, `HAVING`, a sorted report"
-msgstr ""
+msgstr "Брой / сума / средно / максимум по продукт, `HAVING`, сортиран отчет"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1072
 msgid "`task6-nested-groups.py` (Optional)"
-msgstr ""
+msgstr "`task6-nested-groups.py` (по желание)"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:1072
 msgid "Clients as a dict of dicts; segment x stage totals with tuple keys"
-msgstr ""
+msgstr "Клиентите като dict от dicts; суми по сегмент x етап с ключове tuples"
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:1074
 msgid "Homework"
-msgstr ""
+msgstr "Домашно"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1076
 msgid "`06-dictionaries/homework.py` (in the homework repository): **homework 4 again, with dictionaries** - lookups instead of loops; the expected loss of the portfolio (it must be the same 1,140,106.56), the expected loss by segment and by grade, and a sorted text report. Every check must print `OK`."
-msgstr ""
+msgstr "`06-dictionaries/homework.py` (в homework repository): **домашно 4 отново, с dictionaries** - lookups вместо цикли; очакваната загуба на портфейла (трябва да е същата: 1,140,106.56), очакваната загуба по сегмент и по оценка (grade) и сортиран текстов отчет. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1080
 msgid "The practice tasks you did not finish in class."
-msgstr ""
+msgstr "Задачите за упражнение, които не сте довършили в клас."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1081
-msgid "Optional: a **migration of client counts by region**: count the clients per region in `clients.csv`, then per region **and segment**, and print a small table with the regions as rows and the segments as columns (the Self-study below shows how)."
-msgstr ""
+msgid "Optional: a **cross table of the clients**: count the clients per region in `clients.csv`, then per region **and segment**, and print a small table with the regions as rows and the segments as columns (the Self-study below shows how)."
+msgstr "По желание: **кръстосана таблица на клиентите**: пребройте клиентите по регион в `clients.csv`, после по регион **и сегмент**, и отпечатайте малка таблица с регионите като редове и сегментите като колони (частта за самостоятелно изучаване по-долу показва как)."
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:1085
 msgid "Self-study"
-msgstr ""
+msgstr "Самостоятелно изучаване"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1087
 msgid "This part is not covered in class. It is for reading at home: a cross table by hand, and why a dictionary is fast."
-msgstr ""
+msgstr "Тази част не се разглежда в час. Тя е за четене вкъщи: кръстосана таблица на ръка и защо dictionary е бърз."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:1090
 msgid "A pivot by hand: `PROC TABULATE` without pandas"
-msgstr ""
+msgstr "Pivot на ръка: `PROC TABULATE` без pandas"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1092
 msgid "A **dictionary of dictionaries** is a cross table: the outer key is the row, the inner key is the column. Build it, then print it with the rows and columns sorted:"
-msgstr ""
+msgstr "**Dictionary от dictionaries** е кръстосана таблица: външният ключ е редът, вътрешният ключ е колоната. Създайте я, после я отпечатайте със сортирани редове и колони:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1114
 msgid "`defaultdict(lambda: defaultdict(int))`: a missing row is created as a new `defaultdict(int)` - so `table[region][segment] += 1` works for any new pair."
-msgstr ""
+msgstr "`defaultdict(lambda: defaultdict(int))`: липсващ ред се създава като нов `defaultdict(int)` - затова `table[region][segment] += 1` работи за всяка нова двойка."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1117
-msgid "And back - from the cross table to rows (`region, segment, count`), the job of SAS `PROC TRANSPOSE`, or of `melt` in pandas ([session 16](./16-pandas-reports-project.md#_2-from-wide-to-long-melt)):"
-msgstr ""
+msgid "And back - from the cross table to rows (`region, segment, count`), the job of SAS `PROC TRANSPOSE`, or of `melt` in pandas ([lecture 15](./15-pandas-reports.md#_2-from-wide-to-long-melt)):"
+msgstr "И обратно - от кръстосаната таблица към редове (`region, segment, count`), работата на SAS `PROC TRANSPOSE` или на `melt` в pandas ([лекция 15](./15-pandas-reports.md#_2-from-wide-to-long-melt)):"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1126
 msgid "**Exercises**"
-msgstr ""
+msgstr "**Упражнения**"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1128
 msgid "Build the cross table **product x stage** from `loans.csv`, with the total outstanding (in EUR thousands, rounded) in each cell."
-msgstr ""
+msgstr "Създайте кръстосаната таблица **продукт x етап** от `loans.csv`, с общата непогасена сума (в хиляди EUR, закръглена) във всяка клетка."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1130
 msgid "Add a total row at the bottom."
-msgstr ""
+msgstr "Добавете ред с общите суми най-отдолу."
 
 #. box title
 #: site/lectures/06-dictionaries.md:1132 site/lectures/06-dictionaries.md:1195
 msgid "Answer"
-msgstr ""
+msgstr "Отговор"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:1149
 msgid "How a dictionary works: hashing"
-msgstr ""
+msgstr "Как работи dictionary: hashing"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1151
 msgid "Why is `d[key]` fast, and why must keys not change?"
-msgstr ""
+msgstr "Защо `d[key]` е бързо и защо ключовете не трябва да се променят?"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1153
 msgid "A dictionary keeps its pairs in a table of slots. To store a key, Python computes `hash(key)` - a big integer made from the value - and uses it to choose the slot. To find the key later, it computes the hash again and looks **in that slot only**. So a lookup costs the same for 10 keys or 10 million keys:"
-msgstr ""
+msgstr "Dictionary пази двойките си в таблица от клетки (slots). За да запише ключ, Python изчислява `hash(key)` - голямо цяло число, получено от стойността - и с него избира клетката. За да намери ключа по-късно, изчислява hash-а отново и търси **само в тази клетка**. Затова един lookup струва еднакво при 10 ключа и при 10 милиона ключа:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1164
 msgid "A list is not hashable because it can **change**: after a change, its hash would change, and the dictionary would look in the wrong slot. That is why keys must be immutable values."
-msgstr ""
+msgstr "List не е hashable, защото може да се **променя**: след промяна неговият hash би се променил и dictionary би търсил в грешната клетка. Затова ключовете трябва да са непроменими (immutable) стойности."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1168
 msgid "The hash of a string changes **between runs** of Python (a security feature), but not during one run. Never save hashes to a file."
-msgstr ""
+msgstr "Hash-ът на string се променя **между отделните стартирания** на Python (мярка за сигурност), но не и по време на едно изпълнение. Никога не записвайте hash стойности във файл."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1171
 msgid "The speed, measured:"
-msgstr ""
+msgstr "Скоростта, измерена:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1191
 msgid "**Exercise**"
-msgstr ""
+msgstr "**Упражнение**"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1193
 msgid "Why is `{(1, [2, 3]): \"x\"}` an error, but `{(1, (2, 3)): \"x\"}` is fine?"
-msgstr ""
+msgstr "Защо `{(1, [2, 3]): \"x\"}` е грешка, а `{(1, (2, 3)): \"x\"}` е наред?"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1196
 msgid "A tuple is hashable only if everything inside it is hashable. `(1, [2, 3])` contains a list, which can change, so the tuple has no hash. `(1, (2, 3))` contains only immutable values."
-msgstr ""
+msgstr "Tuple е hashable само ако всичко в него е hashable. `(1, [2, 3])` съдържа list, който може да се променя, затова tuple-ът няма hash. `(1, (2, 3))` съдържа само непроменими (immutable) стойности."
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:1201
 msgid "Read more"
-msgstr ""
+msgstr "Още за четене"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1203
 msgid "Python tutorial: [Dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries), [Looping techniques](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques)"
-msgstr ""
+msgstr "Python tutorial: [Dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries), [Looping techniques](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques)"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1205
 msgid "Reference: [Mapping types - dict](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict), [`collections`](https://docs.python.org/3/library/collections.html) (`defaultdict`, `Counter`), [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader)"
-msgstr ""
+msgstr "Справочник: [Mapping types - dict](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict), [`collections`](https://docs.python.org/3/library/collections.html) (`defaultdict`, `Counter`), [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader)"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1208
 msgid "Real Python: [Dictionaries in Python](https://realpython.com/python-dicts/), [Python's Counter](https://realpython.com/python-counter/)"
-msgstr ""
+msgstr "Real Python: [Dictionaries in Python](https://realpython.com/python-dicts/), [Python's Counter](https://realpython.com/python-counter/)"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:1211
-msgid "**Next session:** text processing - clean ids, names and codes, read numbers written the Bulgarian way, and dates from text, with the methods of `str` and `datetime`."
-msgstr ""
+msgid "**Next session:** text processing and regular expressions - clean ids, names and codes, read numbers and dates from text with the methods of `str` and `datetime`, and describe the shape of a text with a pattern."
+msgstr "**Следващото занятие:** обработка на текст и регулярни изрази - почистване на идентификатори, имена и кодове, четене на числа и дати от текст с методите на `str` и `datetime` и описване на формата на текст с pattern."

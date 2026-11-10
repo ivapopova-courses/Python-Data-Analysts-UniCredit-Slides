@@ -225,8 +225,8 @@ msgstr "DataFrame или CSV файл като таблица: сортиран�
 
 #. table cell
 #: site/how-to.md:80
-msgid "lectures 14 - 16"
-msgstr "лекции 14 - 16"
+msgid "lectures 13 - 15"
+msgstr "лекции 13 - 15"
 
 #. table cell
 #: site/how-to.md:81
@@ -245,8 +245,8 @@ msgstr "всяка колона на CSV файл в свой цвят; заяв
 
 #. table cell
 #: site/how-to.md:81
-msgid "from lecture 9"
-msgstr "от лекция 9"
+msgid "from lecture 8"
+msgstr "от лекция 8"
 
 #. table cell
 #: site/how-to.md:82
@@ -265,8 +265,8 @@ msgstr "отваря SQLite файл `.db` и показва таблиците 
 
 #. table cell
 #: site/how-to.md:82
-msgid "lecture 13"
-msgstr "лекция 13"
+msgid "lecture 12"
+msgstr "лекция 12"
 
 #. table cell
 #: site/how-to.md:83
@@ -285,8 +285,8 @@ msgstr "отваря файлове `.xlsx` във VS Code (старото му 
 
 #. table cell
 #: site/how-to.md:83
-msgid "lectures 9, 14, 16"
-msgstr "лекции 9, 14, 16"
+msgid "lectures 8, 13, 15"
+msgstr "лекции 8, 13, 15"
 
 #. table cell
 #: site/how-to.md:84

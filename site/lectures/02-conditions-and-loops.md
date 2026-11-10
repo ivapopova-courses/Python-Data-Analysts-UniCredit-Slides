@@ -54,7 +54,7 @@ print("90+    ", over_90)
 ```
 
 By the end of today you will be able to read every line of this example. In
-[session 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means) pandas does the same in two lines - but it does exactly this inside.
+[lecture 14](./14-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means) pandas does the same in two lines - but it does exactly this inside.
 
 ## 1. True and False
 
@@ -206,7 +206,7 @@ print("2026-01-15" < "2026-09-30")      # True - right
 print("15.01.2026" < "30.09.2025")      # True - wrong: "1" < "3"
 ```
 
-Real dates (`datetime`) come in [session 7](./07-text-processing.md#_9-dates-from-text).
+Real dates (`datetime`) come in [lecture 7](./07-text-and-regex.md#from-text-to-a-date).
 
 ### Chained comparisons
 
@@ -756,7 +756,7 @@ print(RETAIL)                    # corporate - the constant is lost too
 
 With a `case _:` after it, Python even refuses to run the code: `SyntaxError: name
 capture 'RETAIL' makes remaining patterns unreachable`. Write the values themselves
-(`case "retail":`), or dotted names (`case Segment.RETAIL:`, [session 11](./11-oop-classes.md#enum-named-codes)).
+(`case "retail":`), or dotted names (`case Segment.RETAIL:`, [lecture 10](./10-oop-classes.md#enum-named-codes)).
 :::
 
 ### Before Python 3.10: `if` - `elif` chains
@@ -865,7 +865,7 @@ A **loop** runs a block of code **many times**. Each run of the block is an
 
 You already use loops in SAS: the **DATA step is a loop** - it runs once for each
 row of the input data set, without you writing it. In Python you write the loop
-yourself (and in pandas, again, you do not - [session 14](./14-numpy-pandas-intro.md#operations-on-the-whole-array)).
+yourself (and in pandas, again, you do not - [lecture 13](./13-numpy-pandas-intro.md#operations-on-the-whole-array)).
 
 | SAS | Python |
 |---|---|
@@ -1122,13 +1122,13 @@ for years in range(1, 6):
 ```
 
 Tables kept in memory come with pandas, in
-[session 14](./14-numpy-pandas-intro.md).
+[lecture 13](./13-numpy-pandas-intro.md).
 
 ### The rows of a file
 
 A text file is a sequence of **lines**, so `for` can read it line by line - like a
 SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in
-[session 9](./09-errors-and-files.md#open-read-close-with)):
+[lecture 8](./08-errors-and-files.md#open-read-close-with)):
 
 ```python run
 with open("data/loans.csv", encoding="utf-8") as file:
@@ -1518,7 +1518,7 @@ run the file.
 - **Task 1:** four predictions show how `and` and `or` work inside (section 3, "`and`
   and `or` return one of their operands"): `0 or "n/a"`, `"" or None`, `5 and 0`
   and `True or 1 / 0`. They are *optional* - in pandas you combine conditions with
-  `&` and `|` instead (sessions 14 - 15). And `"3" == 3` is `False`: `==` between a
+  `&` and `|` instead (lectures 13 - 14). And `"3" == 3` is `False`: `==` between a
   string and a number is allowed, and different types are never equal; only `<`,
   `>`, `<=`, `>=` stop with a `TypeError`.
 - **Task 3, part 2** (leap years) is *optional* - a classic exercise. Build the
@@ -1556,7 +1556,7 @@ run the file.
 ### Notes on the tasks
 
 **Reading a file.** How `open` and `with` work comes in
-[session 9](./09-errors-and-files.md#open-read-close-with). Until then, copy this
+[lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this
 code. It reads `loans.csv` line by line and gives each field of the line a name:
 
 ```python

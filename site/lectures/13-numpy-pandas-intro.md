@@ -1,11 +1,11 @@
 ---
-title: 14. NumPy and introduction to pandas
+title: 13. NumPy and introduction to pandas
 ---
 
-# 14. NumPy and introduction to pandas
+# 13. NumPy and introduction to pandas
 
 <div class="lecture-meta">
-  <span>Session 14</span><span>practice: <code>14-numpy-pandas-intro/</code> in the homework repository</span>
+  <span>Sessions 12 - 13</span><span>practice: <code>13-numpy-pandas-intro/</code> in the homework repository</span>
   <span><a href="../sample-data">the sample data</a></span>
 </div>
 
@@ -75,8 +75,8 @@ variables. pandas code looks like the second.
 ::: info pandas 2 and pandas 3
 `pip install -r requirements.txt` installs pandas 3 today ([session 1](./01-intro-syntax-types.md#packages-and-pip)); this site runs
 pandas 3 too. Where pandas 2.2 behaves differently, these pages say so - mostly the
-type of text columns (`str` in 3, `object` in 2.2) and copies of a DataFrame (session
-15). Check your version: `pd.__version__`.
+type of text columns (`str` in 3, `object` in 2.2) and copies of a DataFrame (lecture
+14). Check your version: `pd.__version__`.
 :::
 
 ::: tip Try it
@@ -433,7 +433,7 @@ loans.sort_values("outstanding", ascending=False).head(3)[["loan_id", "product",
 ```
 
 `sort_values` is SAS `PROC SORT` / SQL `ORDER BY`; selection with conditions (SQL `WHERE`) and
-`loc` are [session 15](./15-pandas-select-aggregate-join.md#loc-rows-and-columns-by-label).
+`loc` are [lecture 14](./14-pandas-select-aggregate-join.md#loc-rows-and-columns-by-label).
 
 ### The index
 
@@ -444,7 +444,7 @@ become the index - then rows are found by it, like a dictionary:
 import pandas as pd
 
 clients = pd.read_csv("data/clients.csv").set_index("client_id")
-print(clients.loc["C0002"])                            # a row by its label (more in session 15)
+print(clients.loc["C0002"])                            # a row by its label (more in lecture 14)
 print(clients.index[:3].tolist())
 ```
 
@@ -467,7 +467,7 @@ that is right. For files from other systems, the options tell pandas how to read
 | `sep=";"` | the separator | `DLM=';'` |
 | `decimal=","` | the decimal comma | `COMMAX.` |
 | `thousands=" "` | the thousands separator | `COMMA.` |
-| `encoding="utf-8-sig"` / `"cp1251"` | the encoding ([session 7](./07-text-processing.md#encodings-utf-8-cp1251-and-cyrillic)) | `ENCODING=` |
+| `encoding="utf-8-sig"` / `"cp1251"` | the encoding ([lecture 7](./07-text-and-regex.md#encodings-utf-8-cp1251-and-cyrillic)) | `ENCODING=` |
 | `dtype={"client_id": str}` | the type of a column | `$` / an informat |
 | `parse_dates=[...]`, `dayfirst=True` | dates | `DDMMYY10.` |
 | `na_values=["."]` | texts that mean "missing" | `.` is missing in SAS |
@@ -526,7 +526,7 @@ loans = loans.rename(columns={"interest_rate_pct": "interest_rate"})   # one nam
 print(loans.columns.tolist()[-3:])
 ```
 
-`loans.columns.str` gives the string methods of [session 7](./07-text-processing.md) for all names at once.
+`loans.columns.str` gives the string methods of [lecture 7](./07-text-and-regex.md) for all names at once.
 
 A thousands separator and a title above the table - `thousands=` and `skiprows=`:
 
@@ -572,7 +572,7 @@ print(pd.read_csv(io.StringIO(text)))                                  # 42, 123
 print(pd.read_csv(io.StringIO(text), dtype={"branch": str, "eik": str}))
 ```
 
-(`io.StringIO` makes a string behave like a file - [session 9](./09-errors-and-files.md).)
+(`io.StringIO` makes a string behave like a file - [lecture 8](./08-errors-and-files.md).)
 
 ### Some columns, some rows; another encoding
 
@@ -582,14 +582,14 @@ import pandas as pd
 first = pd.read_csv("data/loans.csv", usecols=["loan_id", "product", "outstanding"], nrows=5)
 print(first)
 
-regions = pd.read_csv("data/regions_bg.csv", encoding="cp1251")     # session 7: cp1251
+regions = pd.read_csv("data/regions_bg.csv", encoding="cp1251")     # lecture 7: cp1251
 print(regions)
 ```
 
 ### Check the result against a trusted source
 
 The export and `loans.csv` should hold the same loans. A quick check of the totals -
-the habit of [session 7](./07-text-processing.md):
+the habit of [lecture 7](./07-text-and-regex.md):
 
 ```python run
 import pandas as pd
@@ -602,7 +602,7 @@ print(round(clean["outstanding"].sum(), 2), round(export["Outstanding"].sum(), 2
 print(export["Loan ID"].duplicated().sum(), "duplicated ids;", export["Outstanding"].isna().sum(), "missing amounts")
 ```
 
-The export has 6 rows more (duplicates) and 8 missing amounts - [session 15](./15-pandas-select-aggregate-join.md#_6-missing-values) cleans them.
+The export has 6 rows more (duplicates) and 8 missing amounts - [lecture 14](./14-pandas-select-aggregate-join.md#_6-missing-values) cleans them.
 
 ::: tip Try it
 Read only the columns `Loan ID`, `Product` and `Outstanding` of the export (`usecols`),
@@ -613,7 +613,7 @@ with the right options. How many rows have no product?
 
 ### `read_excel`
 
-`pd.read_excel` reads a sheet of an `.xlsx` file (with openpyxl underneath, [session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)):
+`pd.read_excel` reads a sheet of an `.xlsx` file (with openpyxl underneath, [lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)):
 
 ```python run
 import pandas as pd
@@ -634,7 +634,7 @@ for name, df in sheets.items():
     print(name, len(df), "days, USD from", df["USD"].min(), "to", df["USD"].max())
 ```
 
-To put the sheets under each other in one table, `pd.concat` ([session 15](./15-pandas-select-aggregate-join.md#concat-one-table-under-another) explains it):
+To put the sheets under each other in one table, `pd.concat` ([lecture 14](./14-pandas-select-aggregate-join.md#concat-one-table-under-another) explains it):
 
 ```python run
 import pandas as pd
@@ -745,7 +745,7 @@ loans = pd.read_csv("data/loans.csv")
 loans["interest_rate"].value_counts(bins=[0, 4, 8, 12, 16]).sort_index()
 ```
 
-Two variables - `TABLES stage * currency` - is `pd.crosstab` ([session 16](./16-pandas-reports-project.md#pd-crosstab-counts-and-shares)):
+Two variables - `TABLES stage * currency` - is `pd.crosstab` ([lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares)):
 
 ```python run
 import pandas as pd
@@ -795,7 +795,7 @@ print(loans["start_date"].min(), loans["start_date"].max())
 print(loans["maturity_date"].dt.year.value_counts().sort_index().head())
 ```
 
-`.dt` gives the date parts of a whole column ([session 16](./16-pandas-reports-project.md#_3-dates-and-month-ends) uses it a lot).
+`.dt` gives the date parts of a whole column ([lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends) uses it a lot).
 
 ### A profile function
 
@@ -819,7 +819,7 @@ profile(loans)
 
 ::: tip Try it
 Profile `client_register.csv` with the function. Which columns have missing values,
-and how many distinct cities does it see (compare with [session 7](./07-text-processing.md#cities-a-mapping-of-variants))?
+and how many distinct cities does it see (compare with [lecture 7](./07-text-and-regex.md#cities-a-mapping-of-variants))?
 :::
 
 ## 8. The types of the columns
@@ -883,7 +883,7 @@ print((buckets > "1-30").tolist())
 ### Text to numbers and dates: `to_numeric`, `to_datetime`
 
 `astype(float)` stops at the first bad value. `pd.to_numeric(..., errors="coerce")`
-turns bad values into `NaN` - the `??` informat of SAS ([session 9](./09-errors-and-files.md)) - so you can count
+turns bad values into `NaN` - the `??` informat of SAS ([lecture 8](./08-errors-and-files.md)) - so you can count
 them:
 
 ```python run
@@ -896,7 +896,7 @@ print(numbers.isna().sum(), "could not be read:", raw[numbers.isna()].tolist())
 ```
 
 `pd.to_datetime` with a `format` reads dates - for a whole column, much faster than
-`strptime` in a loop ([session 7](./07-text-processing.md#any-format-strptime-and-strftime)):
+`strptime` in a loop ([lecture 7](./07-text-and-regex.md#from-text-to-a-date)):
 
 ```python run
 import pandas as pd
@@ -939,7 +939,7 @@ print(f"{before / 1024:.0f} KB -> {after / 1024:.0f} KB")
 Read `payments_2026-09.csv` and convert `amount` with `pd.to_numeric(...,
 errors="coerce")` and `pay_date` with `pd.to_datetime(..., format="%Y-%m-%d",
 errors="coerce")`. How many values of each could not be read? (Compare with the
-loader of [session 9](./09-errors-and-files.md#_10-loading-data-with-bad-records).)
+loader of [lecture 8](./08-errors-and-files.md#_10-loading-data-with-bad-records).)
 :::
 
 ## 9. Summary
@@ -964,7 +964,7 @@ terminal, in the repository root (with the virtual environment active - the task
 need NumPy and pandas):
 
 ```bash
-python 14-numpy-pandas-intro/practice/task1-numpy-arrays.py
+python 13-numpy-pandas-intro/practice/task1-numpy-arrays.py
 ```
 
 | Task | File | What you do |
@@ -978,7 +978,7 @@ python 14-numpy-pandas-intro/practice/task1-numpy-arrays.py
 
 ## Homework
 
-1. `14-numpy-pandas-intro/homework.py` (in the homework repository): **load and
+1. `13-numpy-pandas-intro/homework.py` (in the homework repository): **load and
    profile the export** - a function that reads `loans_export.csv` into a clean
    DataFrame (snake_case names, the right types, missing values as `NaN`, no
    duplicate rows), a profile of it, and a comparison of its totals with `loans.csv`.
@@ -1035,7 +1035,7 @@ two large project finance loans that default together make a bad year. (This sim
 model treats the defaults as independent; real credit portfolio models add a common
 factor for the economy.)
 
-A histogram (charts: [session 16](./16-pandas-reports-project.md#_7-charts)):
+A histogram (charts: [lecture 15](./15-pandas-reports.md#_7-charts)):
 
 ```python run
 import numpy as np
@@ -1083,7 +1083,7 @@ plt.show()
   format, as numbers of days since 1960-01-01 - convert with
   `pd.to_datetime(x, unit="D", origin="1960-01-01")`.
 - **Missing values:** `.` and the special missing values `.A` - `.Z` become `NaN`.
-- **Big files:** `chunksize=` gives pieces ([session 13](./13-databases.md#big-tables-in-pieces), Self-study).
+- **Big files:** `chunksize=` gives pieces ([lecture 12](./12-databases.md#big-tables-in-pieces), Self-study).
 - **Labels and formats:** `pyreadstat.read_sas7bdat(path)` returns `(df, meta)`;
   `meta.column_names_to_labels` maps the variable names to their labels.
 
@@ -1121,6 +1121,6 @@ print((pd.Timestamp("2026-09-30") - pd.Timestamp("1960-01-01")).days)     # 2437
 - Book: [Python for Data Analysis, 3rd edition](https://wesmckinney.com/book/) by Wes
   McKinney, the author of pandas - free online
 
-**Next session:** pandas - selection with `loc` and masks, new columns with
+**Next lecture:** pandas - selection with `loc` and masks, new columns with
 `np.select` and `pd.cut`, `groupby` (the SQL `GROUP BY` and SAS `PROC MEANS` of
 pandas), `merge` (the SQL `JOIN`), and missing values.

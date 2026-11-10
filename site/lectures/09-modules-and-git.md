@@ -1,11 +1,11 @@
 ---
-title: 10. Modules, packages, Git and GitHub
+title: 9. Modules, packages, Git and GitHub
 ---
 
-# 10. Modules, packages, Git and GitHub
+# 9. Modules, packages, Git and GitHub
 
 <div class="lecture-meta">
-  <span>Session 10</span><span>practice: <code>10-modules-and-git/</code> in the homework repository</span>
+  <span>Session 9</span><span>practice: <code>09-modules-and-git/</code> in the homework repository</span>
   <span><a href="../sample-data">the sample data</a></span>
 </div>
 
@@ -38,7 +38,7 @@ print(dpd_bucket(45))
 ```
 
 A **module** is just a `.py` file. Everything you defined in it - functions,
-constants - can be imported by another file. That is how the code of sessions 4 - 9
+constants - can be imported by another file. That is how the code of lectures 4 - 8
 becomes a library you use every month.
 
 ## 1. `import`
@@ -199,7 +199,7 @@ not a typo?
 ### Write the module
 
 A module is a `.py` file with functions and constants - and **no** code that does
-work when it is imported. This one collects functions of sessions 4 - 8:
+work when it is imported. This one collects functions of lectures 4 - 7:
 
 ```python
 """portfolio_utils.py - functions for the loan portfolio."""
@@ -581,7 +581,7 @@ notebook there is no `__file__`; start Jupyter in the project folder.)
 | `LIBNAME in "/data"` | `DATA = Path("data")` at the top of `report.py` |
 
 ::: tip Try it
-Add a module `cleaning.py` with `squeeze(s)` ([session 7](./07-text-processing.md#spaces-inside-compbl)) to the `portfolio` package
+Add a module `cleaning.py` with `squeeze(s)` ([lecture 7](./07-text-and-regex.md#spaces-inside-compbl)) to the `portfolio` package
 of the example above, and import it with `from portfolio.cleaning import squeeze`.
 :::
 
@@ -592,7 +592,7 @@ The ones an analyst uses most:
 
 ### `datetime` and `calendar`: report dates
 
-[Session 7](./07-text-processing.md#_9-dates-from-text) introduced `date`, `datetime` and `timedelta`. Month ends - the report dates -
+[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) introduced `date`, `datetime` and `timedelta`. Month ends - the report dates -
 need the number of days of a month: `calendar.monthrange(year, month)` gives the
 weekday of the 1st and the number of days:
 
@@ -665,7 +665,7 @@ import calendar
 print(calendar.month(2026, 9))
 ```
 
-(pandas has all of this built in - `pd.offsets.MonthEnd`, `Period` - [session 16](./16-pandas-reports-project.md#_3-dates-and-month-ends).)
+(pandas has all of this built in - `pd.offsets.MonthEnd`, `Period` - [lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends).)
 
 ### `statistics`: `PROC MEANS` and `PROC UNIVARIATE` for a list
 
@@ -735,7 +735,7 @@ print(list(last_three), round(sum(last_three) / 3, 2))  # a 3-month moving avera
 ```
 
 A `namedtuple` is a tuple with names for its positions - a light record ([session 3](./03-lists-tuples-sets.md#tuples-as-records),
-Advanced). Classes ([session 11](./11-oop-classes.md)) do the same with more power. Rows of a CSV file as
+Advanced). Classes ([lecture 10](./10-oop-classes.md)) do the same with more power. Rows of a CSV file as
 named tuples:
 
 ```python run
@@ -926,7 +926,7 @@ print(os.getenv("REPORT_FOLDER"))
 print(sys.version.split()[0], sys.platform)
 ```
 
-[Session 13](./13-databases.md#never-a-password-in-the-code) reads the password of a database this way - never write a password into a
+[Lecture 12](./12-databases.md#never-a-password-in-the-code) reads the password of a database this way - never write a password into a
 script or a notebook that goes into Git.
 
 ::: code-group
@@ -1239,7 +1239,7 @@ Path("out/.gitignore").write_text(rules, encoding="utf-8")
 print(Path("out/.gitignore").read_text(encoding="utf-8").splitlines())
 ```
 
-The patterns of `.gitignore` are the same kind as `glob` ([session 9](./09-errors-and-files.md#find-files-glob)). The module
+The patterns of `.gitignore` are the same kind as `glob` ([lecture 8](./08-errors-and-files.md#find-files-glob)). The module
 `fnmatch` tests a name against them - which files of a project would Git ignore?
 
 ```python run
@@ -1391,7 +1391,7 @@ in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) 
 terminal, in the repository root:
 
 ```bash
-python 10-modules-and-git/practice/task1-standard-library.py
+python 09-modules-and-git/practice/task1-standard-library.py
 ```
 
 | Task | File | What you do |
@@ -1405,9 +1405,9 @@ python 10-modules-and-git/practice/task1-standard-library.py
 
 ## Homework
 
-1. `10-modules-and-git/homework.py` and `10-modules-and-git/homework_utils.py` (in the
+1. `09-modules-and-git/homework.py` and `09-modules-and-git/homework_utils.py` (in the
    homework repository): **the portfolio library as a module** - move the functions of
-   sessions 4 - 9 into `homework_utils.py`, with docstrings, constants at the top and a
+   lectures 4 - 8 into `homework_utils.py`, with docstrings, constants at the top and a
    `__main__` self-test; `homework.py` imports and checks them. Every check must print
    `OK`.
 2. The Git part (not checked by the file): make a new folder outside the Homework

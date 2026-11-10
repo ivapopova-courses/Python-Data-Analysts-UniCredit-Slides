@@ -6,7 +6,7 @@ of the history, from the raw data to one Excel file, and it can be run again nex
 month without changes.
 
 1. **Load** the data from files (CSV, Excel) and from a database (SQLite).
-2. **Validate** it with nomenclatures written as classes (session 12): codes that
+2. **Validate** it with nomenclatures written as classes (lecture 11): codes that
    do not exist, values out of range, missing values.
 3. **Clean and transform** it with pandas: types, dates, new columns.
 4. **Aggregate**: groups, pivot tables, joins.
@@ -14,9 +14,9 @@ month without changes.
 6. **Keep the code in Git**, as a script that can be run again on new data.
 
 Each lecture adds a part that the project reuses: functions (4), dictionaries as
-lookup tables (6), text cleaning and regular expressions (7, 8), reading files
-and handling bad records (9), modules and Git (10), classes (11, 12), databases
-(13) and pandas (14 - 16). The homework of session 16 is the first part of the
+lookup tables (6), text cleaning and regular expressions (7), reading files
+and handling bad records (8), modules and Git (9), classes (10, 11), databases
+(12) and pandas (13 - 15). The homework of lecture 15 is the first part of the
 project.
 
 ## The task
@@ -37,11 +37,11 @@ All in `data/` of the homework repository ([the sample data](./sample-data)):
 
 | Source | What you take from it |
 |---|---|
-| `portfolio.db` (SQLite) | the tables `clients`, `loans` (the client of each loan, product, currency, dates), `rating_scale`, `ratings_history` - with SQL and parameters (session 13) |
+| `portfolio.db` (SQLite) | the tables `clients`, `loans` (the client of each loan, product, currency, dates), `rating_scale`, `ratings_history` - with SQL and parameters (lecture 12) |
 | `balances_monthly.csv` | the outstanding and the days past due of each loan at each month end |
-| `client_register.csv` | the names, EIKs, IBANs and cities of the clients (messy text - sessions 7, 8) |
-| `fx_rates.xlsx` | the EUR exchange rates of each working day, one sheet per month (sessions 9, 14) |
-| `regions_bg.csv` | the region codes and names (cp1251 - session 7) |
+| `client_register.csv` | the names, EIKs, IBANs and cities of the clients (messy text - lecture 7) |
+| `fx_rates.xlsx` | the EUR exchange rates of each working day, one sheet per month (lectures 8, 13) |
+| `regions_bg.csv` | the region codes and names (cp1251 - lecture 7) |
 
 ## The steps
 
@@ -58,7 +58,7 @@ All in `data/` of the homework repository ([the sample data](./sample-data)):
 
 ### 2. Validate
 
-Use your module `homework_nomenclature.py` of session 12 (copy it next to
+Use your module `homework_nomenclature.py` of lecture 11 (copy it next to
 `report.py`). At least:
 
 - **codes**: product, segment, region and rating - every value must be in its
@@ -67,7 +67,7 @@ Use your module `homework_nomenclature.py` of session 12 (copy it next to
   below 0, an interest rate outside 0 - 30, a maturity date before the start date;
 - **missing values**: a loan without a client or a client without a rating at the
   report date;
-- **the register** (sessions 7, 8): ids that are not in the clients table after
+- **the register** (lecture 7): ids that are not in the clients table after
   cleaning, EIKs and IBANs with a wrong shape.
 
 Every failed check is one row of a **rejects** table: the dataset, the id, the
@@ -102,7 +102,7 @@ The tables of the report:
 
 ### 5. Report
 
-- One Excel file with the sheets above (`pd.ExcelWriter`, session 16): readable
+- One Excel file with the sheets above (`pd.ExcelWriter`, lecture 15): readable
   widths, a number format for the amounts, a title row on the summary.
 - One chart (PNG): the monthly outstanding (trend), or the outstanding by segment
   and DPD bucket.
@@ -111,14 +111,14 @@ The tables of the report:
 ### 6. Git
 
 The project lives in a folder `project/` of your copy of the homework repository
-(session 10): `report.py`, `homework_nomenclature.py`, any other module of yours, a
+(lecture 9): `report.py`, `homework_nomenclature.py`, any other module of yours, a
 `README.md` (what the report does, how to run it, what each sheet means). `out/` is
 not committed. Commit after each step that works - the history should show the
 steps.
 
 ## The checks your report must pass
 
-For the report date **2026-09-30** (the numbers of sessions 4, 6, 13 and 15):
+For the report date **2026-09-30** (the numbers of lectures 4, 6, 12 and 14):
 
 - 400 loans, 143 clients with loans, outstanding **131,370,708.60**;
 - EL with LGD 0.45: **1,140,106.56**;
@@ -138,7 +138,7 @@ For **2026-08-31**: outstanding 133,492,549.54 and EL 1,093,088.84.
 - [ ] No date, path or LGD is written inside the functions: they are parameters (or
       constants at the top of the file).
 - [ ] The SQL uses parameters (`?` or `:name`).
-- [ ] The nomenclatures are objects of your classes of session 12.
+- [ ] The nomenclatures are objects of your classes of lecture 11.
 - [ ] Every rejected row is in the `rejects` sheet, with its reason.
 - [ ] The checks above are printed and agree.
 - [ ] Every function has a docstring; the steps are functions (load, validate,
@@ -148,10 +148,10 @@ For **2026-08-31**: outstanding 133,492,549.54 and EL 1,093,088.84.
 
 ## Ideas for more
 
-- The rejects and the data quality sheet with colours (Self-study of session 16).
-- The check digits of the EIKs and the IBANs (Self-study of session 8).
+- The rejects and the data quality sheet with colours (Self-study of lecture 15).
+- The check digits of the EIKs and the IBANs (Self-study of lecture 7).
 - The report of all month ends in one run (a loop over `pd.date_range(freq="ME")`),
   and one sheet that compares them.
 - The loans in USD shown in EUR with the rate of the report date (take the
   amounts of the sample data as amounts in the loan's currency).
-- A command-line option for the LGD (`argparse`, Self-study of session 10).
+- A command-line option for the LGD (`argparse`, Self-study of lecture 9).

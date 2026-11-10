@@ -1273,7 +1273,7 @@ has a name, can be tested alone, and can be reused - `read_loans` in the next re
 In a file that is run as a script, the main code is often put under
 `if __name__ == "__main__":` - so that the functions can be imported by another file
 without running the report. Modules and `import` of your own files are the topic of
-[session 10](./10-modules-and-git.md#_2-your-own-module).
+[lecture 9](./09-modules-and-git.md#_2-your-own-module).
 
 ## 12. Summary
 | Topic | Remember |
@@ -1377,7 +1377,7 @@ list.
      `days_past_due` and `stage` with `int()`. The first line of the file is the
      header, not a loan: skip it. You should get 400 tuples.
    - **Parts 1 - 3: reading a file in a function.** How `open` and `with` work
-     comes in [session 9](./09-errors-and-files.md#open-read-close-with). Until
+     comes in [lecture 8](./08-errors-and-files.md#open-read-close-with). Until
      then, copy this code. It is the loop of
      [session 3](./03-lists-tuples-sets.md#notes-on-the-tasks), inside the
      function: the file is `path`, the parameter, and the function returns the
@@ -1419,7 +1419,7 @@ This part is not covered in class - it is for reading at home.
 ### Decorators
 
 Decorators are not needed for the tasks of this course, but you will meet them in
-libraries (`@property` and `@dataclass` in [session 11](./11-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` in
+libraries (`@property` and `@dataclass` in [lecture 10](./10-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` in
 web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs`
 and a function inside a function (the Advanced boxes of sections 4 and 6).
 

@@ -1,11 +1,11 @@
 ---
-title: "16. pandas: reports and the final project"
+title: "15. pandas: reports"
 ---
 
-# 16. pandas: reports and the final project
+# 15. pandas: reports
 
 <div class="lecture-meta">
-  <span>Session 16</span><span>practice: <code>16-pandas-reports-project/</code> in the homework repository</span>
+  <span>Session 15</span><span>practice: <code>15-pandas-reports/</code> in the homework repository</span>
   <span><a href="../sample-data">the sample data</a></span>
 </div>
 
@@ -40,7 +40,7 @@ portfolio.pivot_table(index="segment", columns="stage", values="outstanding",
                       aggfunc="sum", margins=True, margins_name="all").round(2)
 ```
 
-Sessions 14 and 15 gave you the data and the numbers. Today they become a report.
+Lectures 13 and 14 gave you the data and the numbers. Today they become a report.
 
 ## 1. Pivot tables
 
@@ -122,7 +122,7 @@ print(table.reindex(["retail", "sme", "corporate"]))                     # the o
 
 ### `unstack`: a pivot from a `groupby`
 
-A `groupby` with two keys ([session 15](./15-pandas-select-aggregate-join.md#several-keys)) gives a long Series; `unstack` moves the last
+A `groupby` with two keys ([lecture 14](./14-pandas-select-aggregate-join.md#several-keys)) gives a long Series; `unstack` moves the last
 key into the columns - the same table:
 
 ```python run
@@ -275,7 +275,7 @@ print(q3.sort_values(["client_id", "month_end"]).head(4))
 
 ### Text to dates
 
-[Session 7](./07-text-processing.md#any-format-strptime-and-strftime) parsed dates one by one with `datetime.strptime`. `pd.to_datetime` does the
+[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) parsed dates one by one with `datetime.strptime`. `pd.to_datetime` does the
 whole column; `format=` says how, `errors="coerce"` turns a bad date into `NaT` (the
 `NaN` of dates):
 
@@ -288,7 +288,7 @@ print(dates)
 print(dates.isna().sum(), "bad or missing")
 ```
 
-`read_csv(parse_dates=...)` ([session 14](./14-numpy-pandas-intro.md)) does the same while reading. A date column
+`read_csv(parse_dates=...)` ([lecture 13](./13-numpy-pandas-intro.md)) does the same while reading. A date column
 has the `.dt` methods:
 
 ```python run
@@ -306,7 +306,7 @@ parts.head()
 ```
 
 Real files mix formats. `client_register.csv` has the registration date in four
-formats ([session 7](./07-text-processing.md#several-formats-in-one-column)). Try one format after another, and keep the first that works -
+formats ([lecture 7](./07-text-and-regex.md#several-date-formats-and-month-ends)). Try one format after another, and keep the first that works -
 a SQL `COALESCE` of the parsing attempts:
 
 ```python run
@@ -400,7 +400,7 @@ loans["left_months"] = months_between(report_date, loans["maturity_date"].dt)
 loans[["loan_id", "start_date", "maturity_date", "age_months", "left_months"]].head()
 ```
 
-Bands of the loan age - `pd.cut` ([session 15](./15-pandas-select-aggregate-join.md#bands-pd-cut)) on the months:
+Bands of the loan age - `pd.cut` ([lecture 14](./14-pandas-select-aggregate-join.md#bands-pd-cut)) on the months:
 
 ```python run
 import pandas as pd
@@ -686,7 +686,7 @@ pd.crosstab(pairs["rating_start"], pairs["rating_end"], values=pairs["exposure_m
             aggfunc="sum").fillna(0).round(1)
 ```
 
-::: info The same in SQL (session 13)
+::: info The same in SQL (lecture 12)
 In SQL, `SELECT s.rating, e.rating, COUNT(*) FROM history s JOIN history e ON ... GROUP BY 1,
 2` gives the long form; `crosstab` gives the matrix directly. In SAS: `PROC FREQ;
 TABLES rating_start * rating_end / NOCOL NOPERCENT;`.
@@ -728,14 +728,14 @@ check = pd.read_excel("out/portfolio_2026-09.xlsx", sheet_name=None)     # read 
 {name: df.shape for name, df in check.items()}
 ```
 
-`with` closes the file at the end ([session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)) - only then is it a valid Excel file.
+`with` closes the file at the end ([lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)) - only then is it a valid Excel file.
 `index=False` leaves out the row numbers; keep the index when it holds the labels
 (the segments of the pivot).
 
 ### A title above the table, widths and number formats
 
 `startrow` leaves room for a title; then `writer.sheets[...]` gives the openpyxl
-worksheet ([session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)) to write the title, set the widths and the number format:
+worksheet ([lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)) to write the title, set the widths and the number format:
 
 ```python run
 from pathlib import Path
@@ -817,7 +817,7 @@ with pd.ExcelWriter("out/report_loop.xlsx") as writer:
 list(pd.read_excel("out/report_loop.xlsx", sheet_name=None))
 ```
 
-For a system that wants CSV - the export side of [session 14](./14-numpy-pandas-intro.md): `;`, decimal comma, a
+For a system that wants CSV - the export side of [lecture 13](./13-numpy-pandas-intro.md): `;`, decimal comma, a
 BOM so that Excel shows the Cyrillic right:
 
 ```python run
@@ -954,7 +954,7 @@ A bar chart of the migration summary of section 5 (upgrades, stable, downgrades)
 
 ## 8. The final project: from script to process
 
-The [final project](../project) brings all sessions together: a monthly report that
+The [final project](../project) brings all lectures together: a monthly report that
 runs again for every new month. The brief is on the project page; here is the shape of
 the code.
 
@@ -965,14 +965,14 @@ portfolio-report/
   README.md                  what the report does, how to run it
   requirements.txt
   report.py                  main(): load -> validate -> transform -> aggregate -> write
-  portfolio_utils.py         session 10: functions (buckets, EL, parsing)
-  homework_nomenclature.py   session 12: Nomenclature, BandedNomenclature, Registry
+  portfolio_utils.py         lecture 9: functions (buckets, EL, parsing)
+  homework_nomenclature.py   lecture 11: Nomenclature, BandedNomenclature, Registry
   data/                      the input (not in Git if real)
   out/                       the reports (not in Git: .gitignore)
 ```
 
 `report.py` - every step a function that can be tested alone, the report date as a
-parameter ([session 10](./10-modules-and-git.md)):
+parameter ([lecture 9](./09-modules-and-git.md)):
 
 ```python
 """Monthly portfolio report.  Run:  python report.py 2026-09-30"""
@@ -986,27 +986,27 @@ OUT = Path("out")
 
 
 def load(report_date):
-    """Files and the database -> DataFrames (sessions 9, 13, 14)."""
+    """Files and the database -> DataFrames (lectures 8, 12, 13)."""
     ...
 
 
 def validate(tables):
-    """Nomenclatures (session 12): unknown codes, values out of range -> a reject table."""
+    """Nomenclatures (lecture 11): unknown codes, values out of range -> a reject table."""
     ...
 
 
 def transform(tables, report_date):
-    """Types, new columns (buckets, PD, EL), joins (session 15)."""
+    """Types, new columns (buckets, PD, EL), joins (lecture 14)."""
     ...
 
 
 def aggregate(portfolio):
-    """The report tables: pivots, migration, trend (sessions 15, 16)."""
+    """The report tables: pivots, migration, trend (lectures 14, 15)."""
     ...
 
 
 def write(tables, report_date):
-    """One Excel file with several sheets and a chart (session 16)."""
+    """One Excel file with several sheets and a chart (lecture 15)."""
     ...
 
 
@@ -1069,7 +1069,7 @@ Rules that make a report reliable:
 - **Rejects are part of the output**: the rows that failed the validation, with the
   reason, in their own sheet - never silently dropped.
 - **Run it twice**: the second run gives the same file. Then run it for 31.08.2026.
-- **Commit** after each step that works ([session 10](./10-modules-and-git.md#good-commits)).
+- **Commit** after each step that works ([lecture 9](./09-modules-and-git.md#good-commits)).
 
 ## 9. Summary
 | SQL / SAS | pandas |
@@ -1093,7 +1093,7 @@ in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) 
 terminal, in the repository root (with the virtual environment active):
 
 ```bash
-python 16-pandas-reports-project/practice/task1-pivot.py
+python 15-pandas-reports/practice/task1-pivot.py
 ```
 
 The tasks that write files write them into `out/` (ignored by Git).
@@ -1109,7 +1109,7 @@ The tasks that write files write them into `out/` (ignored by Git).
 
 ## Homework
 
-1. `16-pandas-reports-project/homework.py` (in the homework repository): **the monthly
+1. `15-pandas-reports/homework.py` (in the homework repository): **the monthly
    report, part 1 of the project** - `build_report(data, report_date)` returns a
    dictionary of tables (summary, segment x stage, DPD buckets, migration, monthly
    trend, top clients) and `write_report(tables, path)` writes them into one Excel
@@ -1125,7 +1125,7 @@ finished, charts with more control, and where to go after the course.
 
 ### A formatted Excel report
 
-openpyxl ([session 9](./09-errors-and-files.md#_9-excel-files-with-openpyxl)) can style everything after pandas has written the data: fonts,
+openpyxl ([lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)) can style everything after pandas has written the data: fonts,
 fills, number formats, frozen panes, filters, conditional colours - and a native Excel
 chart:
 
@@ -1300,5 +1300,5 @@ need it:
   [Charts](https://openpyxl.readthedocs.io/en/stable/charts/introduction.html)
 - matplotlib: [Quick start guide](https://matplotlib.org/stable/users/explain/quick_start.html)
 
-**This was the last session.** The [final project](../project) is the next step: one
+**This was the last lecture.** Session 16 is for the [final project](../project): one
 report of your own work, in Python, from the data to the Excel file.

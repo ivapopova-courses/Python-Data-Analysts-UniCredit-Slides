@@ -120,8 +120,8 @@ msgstr "пон 16.11"
 
 #. table cell
 #: site/agenda.md:31
-msgid "[Text processing](/lectures/07-text-processing)"
-msgstr "[Обработка на текст](/lectures/07-text-processing)"
+msgid "[Text processing and regular expressions](/lectures/07-text-and-regex)"
+msgstr "[Обработка на текст и регулярни изрази (regular expressions)](/lectures/07-text-and-regex)"
 
 #. table cell
 #: site/agenda.md:32
@@ -130,8 +130,8 @@ msgstr "ср 18.11"
 
 #. table cell
 #: site/agenda.md:32
-msgid "[Regular expressions](/lectures/08-regular-expressions)"
-msgstr "[Регулярни изрази (regular expressions)](/lectures/08-regular-expressions)"
+msgid "[Error handling and file handling](/lectures/08-errors-and-files)"
+msgstr "[Обработка на грешки и работа с файлове](/lectures/08-errors-and-files)"
 
 #. table cell
 #: site/agenda.md:33
@@ -140,8 +140,8 @@ msgstr "пон 23.11"
 
 #. table cell
 #: site/agenda.md:33
-msgid "[Error handling and file handling](/lectures/09-errors-and-files)"
-msgstr "[Обработка на грешки и работа с файлове](/lectures/09-errors-and-files)"
+msgid "[Modules, packages, Git and GitHub](/lectures/09-modules-and-git)"
+msgstr "[Модули, пакети, Git и GitHub](/lectures/09-modules-and-git)"
 
 #. table cell
 #: site/agenda.md:34
@@ -150,8 +150,8 @@ msgstr "ср 25.11"
 
 #. table cell
 #: site/agenda.md:34
-msgid "[Modules, packages, Git and GitHub](/lectures/10-modules-and-git)"
-msgstr "[Модули, пакети, Git и GitHub](/lectures/10-modules-and-git)"
+msgid "[OOP: first steps, classes and objects](/lectures/10-oop-classes)"
+msgstr "[ООП: първи стъпки, класове и обекти](/lectures/10-oop-classes)"
 
 #. table cell
 #: site/agenda.md:35
@@ -160,8 +160,8 @@ msgstr "пон 30.11"
 
 #. table cell
 #: site/agenda.md:35
-msgid "[OOP: first steps, classes and objects](/lectures/11-oop-classes)"
-msgstr "[ООП: първи стъпки, класове и обекти](/lectures/11-oop-classes)"
+msgid "[OOP in practice: nomenclatures](/lectures/11-oop-nomenclatures)"
+msgstr "[ООП на практика: номенклатури](/lectures/11-oop-nomenclatures)"
 
 #. table cell
 #: site/agenda.md:36
@@ -170,8 +170,8 @@ msgstr "ср 02.12"
 
 #. table cell
 #: site/agenda.md:36
-msgid "[OOP in practice: nomenclatures](/lectures/12-oop-nomenclatures)"
-msgstr "[ООП на практика: номенклатури](/lectures/12-oop-nomenclatures)"
+msgid "[Working with databases](/lectures/12-databases); [NumPy and introduction to pandas](/lectures/13-numpy-pandas-intro) (start)"
+msgstr "[Работа с бази данни](/lectures/12-databases); [NumPy и въведение в pandas](/lectures/13-numpy-pandas-intro) (начало)"
 
 #. table cell
 #: site/agenda.md:37
@@ -180,8 +180,8 @@ msgstr "пон 07.12"
 
 #. table cell
 #: site/agenda.md:37
-msgid "[Working with databases](/lectures/13-databases)"
-msgstr "[Работа с бази данни](/lectures/13-databases)"
+msgid "[Introduction to pandas](/lectures/13-numpy-pandas-intro) (end); [pandas: selection and new columns](/lectures/14-pandas-select-aggregate-join)"
+msgstr "[Въведение в pandas](/lectures/13-numpy-pandas-intro) (край); [pandas: селекция и нови колони](/lectures/14-pandas-select-aggregate-join)"
 
 #. table cell
 #: site/agenda.md:38
@@ -190,8 +190,8 @@ msgstr "ср 09.12"
 
 #. table cell
 #: site/agenda.md:38
-msgid "[NumPy and introduction to pandas](/lectures/14-numpy-pandas-intro)"
-msgstr "[NumPy и въведение в pandas](/lectures/14-numpy-pandas-intro)"
+msgid "[pandas: aggregation, joins, missing values](/lectures/14-pandas-select-aggregate-join)"
+msgstr "[pandas: агрегиране, съединяване (joins), липсващи стойности](/lectures/14-pandas-select-aggregate-join)"
 
 #. table cell
 #: site/agenda.md:39
@@ -200,8 +200,8 @@ msgstr "пон 14.12"
 
 #. table cell
 #: site/agenda.md:39
-msgid "[pandas: selection, aggregation, joins](/lectures/15-pandas-select-aggregate-join)"
-msgstr "[pandas: селекция, агрегиране, съединяване (joins)](/lectures/15-pandas-select-aggregate-join)"
+msgid "[pandas: reports](/lectures/15-pandas-reports)"
+msgstr "[pandas: отчети](/lectures/15-pandas-reports)"
 
 #. table cell
 #: site/agenda.md:40
@@ -210,8 +210,8 @@ msgstr "ср 16.12"
 
 #. table cell
 #: site/agenda.md:40
-msgid "[pandas: reports](/lectures/16-pandas-reports-project) and the [final project](/project)"
-msgstr "[pandas: отчети](/lectures/16-pandas-reports-project) и [финалният проект](/project)"
+msgid "[Final project](/project)"
+msgstr "[Финален проект](/project)"
 
 #. heading 2
 #: site/agenda.md:42
@@ -340,8 +340,8 @@ msgstr "Таблици за търсене (lookup tables) и номенклат
 
 #. heading 3
 #: site/agenda.md:83
-msgid "7. Text processing"
-msgstr "7. Обработка на текст"
+msgid "7. Text processing and regular expressions"
+msgstr "7. Обработка на текст и регулярни изрази"
 
 #. paragraph
 #: site/agenda.md:85
@@ -358,175 +358,226 @@ msgstr "Почистване на текстови данни: имена, ко�
 msgid "Dates from text with `datetime`."
 msgstr "Дати от текст с `datetime`."
 
-#. heading 3
+#. paragraph
+#: site/agenda.md:88
+msgid "The `re` module: patterns, groups, `search` / `findall` / `sub`."
+msgstr "Модулът `re`: patterns, groups, `search` / `findall` / `sub`."
+
+#. paragraph
 #: site/agenda.md:89
-msgid "8. Regular expressions"
-msgstr "8. Регулярни изрази (regular expressions)"
-
-#. paragraph
-#: site/agenda.md:91
-msgid "The `re` module: patterns, groups, `search` / `findall` / `sub` / `split`."
-msgstr "Модулът `re`: patterns, groups, `search` / `findall` / `sub` / `split`."
-
-#. paragraph
-#: site/agenda.md:92
 msgid "Validating IBANs, company ids (EIK), e-mails and dates; extracting values from free text."
 msgstr "Валидиране на IBAN, ЕИК, e-mail адреси и дати; извличане на стойности от свободен текст."
 
 #. paragraph
-#: site/agenda.md:94
+#: site/agenda.md:91
 msgid "The Python version of `PRXMATCH` (SAS) and `LIKE` / `REGEXP` (SQL)."
 msgstr "Версията на Python за `PRXMATCH` (SAS) и `LIKE` / `REGEXP` (SQL)."
 
 #. heading 3
-#: site/agenda.md:96
-msgid "9. Error handling and file handling"
-msgstr "9. Обработка на грешки и работа с файлове"
+#: site/agenda.md:93
+msgid "8. Error handling and file handling"
+msgstr "8. Обработка на грешки и работа с файлове"
 
 #. paragraph
-#: site/agenda.md:98
+#: site/agenda.md:95
 msgid "`try` / `except` / `else` / `finally`, kinds of exceptions, `raise`, your own exceptions."
 msgstr "`try` / `except` / `else` / `finally`, видове exceptions, `raise`, ваши собствени exceptions."
 
 #. paragraph
-#: site/agenda.md:100
+#: site/agenda.md:97
 msgid "`pathlib`, `with open`; text, CSV, JSON and Excel files."
 msgstr "`pathlib`, `with open`; текстови, CSV, JSON и Excel файлове."
 
 #. paragraph
-#: site/agenda.md:101
+#: site/agenda.md:98
 msgid "Handling bad records while loading data."
 msgstr "Обработка на лоши записи при зареждане на данни."
 
 #. heading 3
-#: site/agenda.md:103
-msgid "10. Modules, packages, Git and GitHub"
-msgstr "10. Модули, пакети, Git и GitHub"
+#: site/agenda.md:100
+msgid "9. Modules, packages, Git and GitHub"
+msgstr "9. Модули, пакети, Git и GitHub"
 
 #. paragraph
-#: site/agenda.md:105
+#: site/agenda.md:102
 msgid "`import`, your own modules, the standard library (`datetime`, `collections`, `statistics`, `os`)."
 msgstr "`import`, ваши собствени модули, стандартната библиотека (`datetime`, `collections`, `statistics`, `os`)."
 
 #. paragraph
-#: site/agenda.md:107
+#: site/agenda.md:104
 msgid "`pip` and virtual environments; the structure of a project."
 msgstr "`pip` и виртуални среди; структурата на един проект."
 
 #. paragraph
-#: site/agenda.md:108
+#: site/agenda.md:105
 msgid "Git: `commit`, `branch`, `merge`, `.gitignore`. GitHub: `clone`, `push`, `pull`, pull requests."
 msgstr "Git: `commit`, `branch`, `merge`, `.gitignore`. GitHub: `clone`, `push`, `pull`, pull requests."
 
 #. heading 3
-#: site/agenda.md:111
-msgid "11. OOP: first steps, classes and objects"
-msgstr "11. ООП: първи стъпки, класове и обекти"
+#: site/agenda.md:108
+msgid "10. OOP: first steps, classes and objects"
+msgstr "10. ООП: първи стъпки, класове и обекти"
 
 #. paragraph
-#: site/agenda.md:113
+#: site/agenda.md:110
 msgid "Class and object, `__init__`, attributes, methods, `self`."
 msgstr "Клас и обект, `__init__`, атрибути, методи, `self`."
 
 #. paragraph
-#: site/agenda.md:114
+#: site/agenda.md:111
 msgid "`__str__` / `__repr__`; class attributes; `property`; dataclasses."
 msgstr "`__str__` / `__repr__`; атрибути на класа; `property`; dataclasses."
 
 #. heading 3
-#: site/agenda.md:116
-msgid "12. OOP in practice: nomenclatures"
-msgstr "12. ООП на практика: номенклатури"
+#: site/agenda.md:113
+msgid "11. OOP in practice: nomenclatures"
+msgstr "11. ООП на практика: номенклатури"
 
 #. paragraph
-#: site/agenda.md:118
+#: site/agenda.md:115
 msgid "A nomenclature as a class: data, metadata, validation rules and processing methods."
 msgstr "Номенклатура като клас: данни, метаданни, правила за валидиране и методи за обработка."
 
 #. paragraph
-#: site/agenda.md:120
+#: site/agenda.md:117
 msgid "`classmethod` and `staticmethod`; inheritance and composition."
 msgstr "`classmethod` и `staticmethod`; наследяване и композиция."
 
 #. paragraph
-#: site/agenda.md:121
+#: site/agenda.md:118
 msgid "Applying one nomenclature the same way to different datasets."
 msgstr "Прилагане на една номенклатура по един и същи начин към различни набори от данни."
 
 #. heading 3
-#: site/agenda.md:123
-msgid "13. Working with databases"
-msgstr "13. Работа с бази данни"
+#: site/agenda.md:120
+msgid "12. Working with databases; NumPy and introduction to pandas"
+msgstr "12. Работа с бази данни; NumPy и въведение в pandas"
 
 #. paragraph
-#: site/agenda.md:125
+#: site/agenda.md:122
 msgid "DB-API and `sqlite3`: connection, cursor, parameterised queries, transactions."
 msgstr "DB-API и `sqlite3`: връзка (connection), cursor, параметризирани заявки, транзакции."
 
 #. paragraph
-#: site/agenda.md:126
-msgid "SQLAlchemy engine; the result of a query straight into a DataFrame."
-msgstr "SQLAlchemy engine; резултатът от заявка направо в DataFrame."
-
-#. paragraph
-#: site/agenda.md:127
+#: site/agenda.md:123
 msgid "Drivers for Oracle / MS SQL / PostgreSQL (overview)."
 msgstr "Драйвери за Oracle / MS SQL / PostgreSQL (преглед)."
 
-#. heading 3
-#: site/agenda.md:129
-msgid "14. NumPy and introduction to pandas"
-msgstr "14. NumPy и въведение в pandas"
-
 #. paragraph
-#: site/agenda.md:131
+#: site/agenda.md:124
 msgid "`ndarray`, vector operations, broadcasting, aggregates, `np.where`."
 msgstr "`ndarray`, векторни операции, broadcasting, агрегати, `np.where`."
 
+#. heading 3
+#: site/agenda.md:126
+msgid "13. Introduction to pandas; selection and new columns"
+msgstr "13. Въведение в pandas; селекция и нови колони"
+
 #. paragraph
-#: site/agenda.md:132
+#: site/agenda.md:128
 msgid "`Series` and `DataFrame`; reading CSV and Excel files."
 msgstr "`Series` и `DataFrame`; четене на CSV и Excel файлове."
 
 #. paragraph
-#: site/agenda.md:133
+#: site/agenda.md:129
 msgid "`head`, `info`, `describe`, the types of the columns."
 msgstr "`head`, `info`, `describe`, типовете на колоните."
 
-#. heading 3
-#: site/agenda.md:135
-msgid "15. pandas: selection, aggregation, joins"
-msgstr "15. pandas: селекция, агрегиране, съединяване (joins)"
-
 #. paragraph
-#: site/agenda.md:137
+#: site/agenda.md:130
 msgid "`loc` / `iloc`, boolean masks, `query`, new columns."
 msgstr "`loc` / `iloc`, булеви маски, `query`, нови колони."
 
+#. heading 3
+#: site/agenda.md:132
+msgid "14. pandas: aggregation, joins, missing values"
+msgstr "14. pandas: агрегиране, съединяване (joins), липсващи стойности"
+
 #. paragraph
-#: site/agenda.md:138
+#: site/agenda.md:134
 msgid "`groupby` / `agg` (like `GROUP BY` and `PROC MEANS`)."
 msgstr "`groupby` / `agg` (като `GROUP BY` и `PROC MEANS`)."
 
 #. paragraph
-#: site/agenda.md:139
+#: site/agenda.md:135
 msgid "`merge` / `concat` (like `JOIN` and `MERGE` in a DATA step); missing values."
 msgstr "`merge` / `concat` (като `JOIN` и `MERGE` в DATA step); липсващи стойности."
 
+#. paragraph
+#: site/agenda.md:136
+msgid "SQLAlchemy engine; the result of a query straight into a DataFrame."
+msgstr "SQLAlchemy engine; резултатът от заявка направо в DataFrame."
+
 #. heading 3
-#: site/agenda.md:141
-msgid "16. pandas: reports and final project"
-msgstr "16. pandas: отчети и финален проект"
+#: site/agenda.md:138
+msgid "15. pandas: reports"
+msgstr "15. pandas: отчети"
 
 #. paragraph
-#: site/agenda.md:143
+#: site/agenda.md:140
 msgid "`pivot_table`, `melt`, dates and time series, export to Excel with several sheets."
 msgstr "`pivot_table`, `melt`, дати и времеви редове, експорт в Excel с няколко листа."
+
+#. heading 3
+#: site/agenda.md:143
+msgid "16. Final project"
+msgstr "16. Финален проект"
 
 #. paragraph
 #: site/agenda.md:145
 msgid "[Final project](/project): load data from a file and a database, nomenclatures as classes, cleaning, aggregation and a finished report."
 msgstr "[Финален проект](/project): зареждане на данни от файл и от база данни, номенклатури като класове, почистване, агрегиране и готов отчет."
+
+#~ msgid "[Text processing](/lectures/07-text-and-regex)"
+#~ msgstr "[Обработка на текст](/lectures/07-text-and-regex)"
+
+#~ msgid "[Regular expressions](/lectures/07-text-and-regex)"
+#~ msgstr "[Регулярни изрази (regular expressions)](/lectures/07-text-and-regex)"
+
+#~ msgid "[Working with databases](/lectures/12-databases)"
+#~ msgstr "[Работа с бази данни](/lectures/12-databases)"
+
+#~ msgid "[NumPy and introduction to pandas](/lectures/13-numpy-pandas-intro)"
+#~ msgstr "[NumPy и въведение в pandas](/lectures/13-numpy-pandas-intro)"
+
+#~ msgid "[pandas: selection, aggregation, joins](/lectures/14-pandas-select-aggregate-join)"
+#~ msgstr "[pandas: селекция, агрегиране, съединяване (joins)](/lectures/14-pandas-select-aggregate-join)"
+
+#~ msgid "[pandas: reports](/lectures/15-pandas-reports) and the [final project](/project)"
+#~ msgstr "[pandas: отчети](/lectures/15-pandas-reports) и [финалният проект](/project)"
+
+#~ msgid "7. Text processing"
+#~ msgstr "7. Обработка на текст"
+
+#~ msgid "8. Regular expressions"
+#~ msgstr "8. Регулярни изрази (regular expressions)"
+
+#~ msgid "The `re` module: patterns, groups, `search` / `findall` / `sub` / `split`."
+#~ msgstr "Модулът `re`: patterns, groups, `search` / `findall` / `sub` / `split`."
+
+#~ msgid "9. Error handling and file handling"
+#~ msgstr "9. Обработка на грешки и работа с файлове"
+
+#~ msgid "10. Modules, packages, Git and GitHub"
+#~ msgstr "10. Модули, пакети, Git и GitHub"
+
+#~ msgid "11. OOP: first steps, classes and objects"
+#~ msgstr "11. ООП: първи стъпки, класове и обекти"
+
+#~ msgid "12. OOP in practice: nomenclatures"
+#~ msgstr "12. ООП на практика: номенклатури"
+
+#~ msgid "13. Working with databases"
+#~ msgstr "13. Работа с бази данни"
+
+#~ msgid "14. NumPy and introduction to pandas"
+#~ msgstr "14. NumPy и въведение в pandas"
+
+#~ msgid "15. pandas: selection, aggregation, joins"
+#~ msgstr "15. pandas: селекция, агрегиране, съединяване (joins)"
+
+#~ msgid "16. pandas: reports and final project"
+#~ msgstr "16. pandas: отчети и финален проект"
 
 #~ msgid "pandas: selection, aggregation, joins"
 #~ msgstr "pandas: селекция, агрегиране, съединяване (joins)"

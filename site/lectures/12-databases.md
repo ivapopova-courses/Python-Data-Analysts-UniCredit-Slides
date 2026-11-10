@@ -1,11 +1,11 @@
 ---
-title: 13. Working with databases
+title: 12. Working with databases
 ---
 
-# 13. Working with databases
+# 12. Working with databases
 
 <div class="lecture-meta">
-  <span>Session 13</span><span>practice: <code>13-databases/</code> in the homework repository</span>
+  <span>Session 12 (first half)</span><span>practice: <code>12-databases/</code> in the homework repository</span>
   <span><a href="../sample-data">the sample data</a></span>
 </div>
 
@@ -15,13 +15,10 @@ title: 13. Working with databases
   standard interface that works for every database;
 - pass values to a query safely, with **parameters** - never by gluing text;
 - write tables, and keep changes safe with **transactions**;
-- decide what the database should do and what Python should do;
-- read the result of a query straight into a **DataFrame**, with pandas and
-  SQLAlchemy;
 - connect to your own database (Oracle, MS SQL Server, PostgreSQL, ...) without a
   password in the code.
 
-You know SQL. This session is about **Python talking to a database** - the SQL is the
+You know SQL. This lecture is about **Python talking to a database** - the SQL is the
 one you write every day. From SAS to Python - a query with a parameter, two ways:
 
 ```sas
@@ -69,7 +66,7 @@ the sample data: `clients`, `loans`, `rating_scale` and `ratings_history`.
   `oracledb` for Oracle, `pyodbc` for MS SQL Server, `psycopg` for PostgreSQL.
 - All drivers follow the same standard, the **DB-API** (PEP 249): `connect`,
   `cursor`, `execute`, `fetchall`, `commit`, `close`. What you learn today with SQLite
-  works with your database too - only the `connect` line changes (section 7).
+  works with your database too - only the `connect` line changes (section 5).
 - **SQLite** is a database in a single file. The module `sqlite3` comes with Python -
   nothing to install, no server. Perfect for learning, for tests and for small local
   data marts.
@@ -121,6 +118,7 @@ for table in TABLES:
 con.close()
 ```
 
+::: details Advanced: foreign keys and indexes
 How the tables are linked - the **foreign keys** of `loans` (each loan points to a
 client), and its indexes:
 
@@ -133,8 +131,9 @@ for row in con.execute("PRAGMA foreign_key_list(loans)"):
 print("indexes:", [row[1] for row in con.execute("PRAGMA index_list(loans)")])
 con.close()
 ```
+:::
 
-::: warning A typo in the file name creates a new, empty database
+::: details Advanced: a typo in the file name creates a new, empty database
 `sqlite3.connect` **creates** the file if it does not exist. A wrong path gives no
 error at the connect - only later, "no such table". To open an existing file only (and
 read-only), use a URI with `mode=ro`:
@@ -182,7 +181,7 @@ con.close()                                        # close it at the end
 
 - `fetchone()` - the next row, or `None` at the end;
 - `fetchall()` - all (remaining) rows as a list;
-- `fetchmany(n)` - the next `n` rows (for big results, Self-study).
+- `fetchmany(n)` - the next `n` rows (for big results - see the Self-study part).
 
 `con.execute(...)` is a shortcut of SQLite: it creates the cursor for you and returns
 it. With other drivers, use `con.cursor()` first.
@@ -206,6 +205,7 @@ con.close()
 The values come back **typed**: `outstanding` is a `float`, `stage` an `int` - no
 `float(row[7])` as with a CSV file.
 
+::: details Advanced: `fetchmany` and a second query on the same cursor
 `fetchmany(n)` takes the next `n` rows; a new `execute` on the same cursor starts a new
 result:
 
@@ -220,8 +220,9 @@ cur.execute("SELECT COUNT(*) FROM clients")  # a new query: the old result is go
 print(cur.fetchone())
 con.close()
 ```
+:::
 
-A mistake in the SQL is an exception like any other ([session 9](./09-errors-and-files.md#_1-errors-and-exceptions)) - in SQLite an
+A mistake in the SQL is an exception like any other ([lecture 8](./08-errors-and-files.md#_1-errors-and-exceptions)) - in SQLite an
 `OperationalError`, with the message of the database:
 
 ```python run
@@ -235,7 +236,8 @@ except sqlite3.OperationalError as error:
 con.close()
 ```
 
-Rows straight into the dataclasses of [session 11](./11-oop-classes.md#_7-dataclasses) - `*row` unpacks the tuple into the
+::: details Advanced: rows into dataclasses
+Rows straight into the dataclasses of [lecture 10](./10-oop-classes.md#_7-dataclasses) - `*row` unpacks the tuple into the
 fields:
 
 ```python run
@@ -256,6 +258,7 @@ con.close()
 print(len(loans), loans[0])
 print(sum(l.outstanding for l in loans if l.stage == 3))
 ```
+:::
 
 ### The column names
 
@@ -291,7 +294,7 @@ con.close()
 ### Close the connection - always
 
 A connection holds resources on the database server (and a lock on an SQLite file).
-Close it also when the query fails: `try` / `finally` ([session 9](./09-errors-and-files.md#_3-else-and-finally)), or
+Close it also when the query fails: `try` / `finally` ([lecture 8](./08-errors-and-files.md#_3-else-and-finally)), or
 `contextlib.closing` in a `with`:
 
 ```python run
@@ -379,6 +382,7 @@ print(n, total)
 (Other drivers use other placeholders: `%s` for psycopg and pyodbc's `?`, `:name` for
 oracledb. The idea is the same.)
 
+::: details Advanced: dates and `LIKE` patterns as parameters
 Dates go as ISO text into SQLite (other drivers accept `date` objects directly), and
 `LIKE` patterns are values too:
 
@@ -396,6 +400,7 @@ with sqlite3.connect("data/portfolio.db") as con:
                             ("L00000%",)).fetchall()
 print(n_old, n_month, len(first_ids))
 ```
+:::
 
 A query with parameters inside a function is a reusable report - the function of
 [session 4](./04-functions.md), the SQL of today:
@@ -461,6 +466,7 @@ script must choose a table, take the name from a fixed list in your code, never
 directly from an input.
 :::
 
+::: details Advanced: a parameter in the place of a name
 A parameter in the place of a **name** does not fail - it is worse: `ORDER BY ?` sorts
 by the constant text `"outstanding"`, which is the same for every row, so the order is
 not what you asked for:
@@ -472,6 +478,7 @@ with sqlite3.connect("data/portfolio.db") as con:
     print(con.execute("SELECT loan_id FROM loans ORDER BY ? DESC LIMIT 3", ("outstanding",)).fetchall())
     print(con.execute("SELECT loan_id FROM loans ORDER BY outstanding DESC LIMIT 3").fetchall())
 ```
+:::
 
 ### `IN` lists
 
@@ -491,7 +498,7 @@ with sqlite3.connect("data/portfolio.db") as con:
 ```
 
 The f-string builds only the **placeholders** - the values still go as parameters.
-(For thousands of values, `itertools.batched` of [session 10](./10-modules-and-git.md) cuts the list into
+(For thousands of values, `itertools.batched` of [lecture 9](./09-modules-and-git.md) cuts the list into
 pieces.)
 
 ### The same query, many values: `executemany`
@@ -555,23 +562,6 @@ print(con.execute("SELECT COUNT(*), MAX(days_past_due) FROM late_loans").fetchon
 con.close()
 ```
 
-`INSERT INTO ... SELECT` works too - the database does it all without sending the rows
-to Python:
-
-```python run
-import sqlite3
-
-source = sqlite3.connect("data/portfolio.db")
-con = sqlite3.connect(":memory:")
-source.backup(con)
-source.close()
-
-con.execute("CREATE TABLE stage3 AS SELECT loan_id, client_id, outstanding FROM loans WHERE stage = 3")
-con.commit()
-print(con.execute("SELECT COUNT(*), ROUND(SUM(outstanding), 2) FROM stage3").fetchone())
-con.close()
-```
-
 ### Transactions: all or nothing
 
 A **transaction** groups changes: either **all** of them are saved (`commit`) or
@@ -620,6 +610,245 @@ con.close()
 The duplicate `P1` broke the **primary key**; the whole batch was rolled back - not
 two rows of three. In a monthly load, this is what you want: the table is either
 updated completely, or not at all.
+
+| SQL / SAS | Python DB-API |
+|---|---|
+| `COMMIT;` | `con.commit()` |
+| `ROLLBACK;` | `con.rollback()` |
+| a failed `PROC APPEND` leaves the table as it was | `with con:` + an exception |
+| a constraint violation | `sqlite3.IntegrityError` (other drivers: their own `IntegrityError`) |
+
+### `UPDATE` and `DELETE` with parameters
+
+```python run
+import sqlite3
+
+source = sqlite3.connect("data/portfolio.db")
+con = sqlite3.connect(":memory:")
+source.backup(con)
+source.close()
+
+with con:
+    cur = con.execute("UPDATE loans SET stage = 2 WHERE days_past_due > ? AND stage = 1", (15,))
+    print(cur.rowcount, "loans moved to stage 2 (a stricter rule: more than 15 days)")
+    cur = con.execute("DELETE FROM loans WHERE outstanding < ?", (500,))
+    print(cur.rowcount, "small loans deleted")
+con.close()
+```
+
+`cursor.rowcount` is the number of rows the statement changed - check it: an `UPDATE`
+that changes 0 rows (or 40,000) is often a bug.
+
+::: tip Try it
+In a copy of the database, create a table `client_flags (client_id, flag)` and insert
+the clients with rating 8 or worse with the flag `"watch"`, in one `with con:` block.
+Then try to insert one of them again: what happens to the transaction?
+:::
+
+::: info SQL or Python?
+With a real database the data is on a server, often millions of rows. **Filter, join
+and aggregate in SQL** and take only the result into Python - the same idea as SAS
+pass-through. Python is the better place for the rules that are hard in SQL (text
+cleaning, checks with clear messages), for data from several sources, and for the
+report itself. More: [What to do in SQL, what in Python](#what-to-do-in-sql-what-in-python)
+in the Self-study part.
+:::
+
+::: info The result of a query as a DataFrame
+`pd.read_sql(sql, connection)` gives the result of a query as a pandas table. It comes
+in [lecture 14](./14-pandas-select-aggregate-join.md#_7-from-a-database-into-a-dataframe), when you know DataFrames.
+:::
+
+## 5. Your database: drivers and passwords
+
+### The drivers
+
+On this page everything is SQLite. At work, the same code runs against your database -
+with its driver and its connection string. The common ones:
+
+| Database | Driver (`pip install`) |
+|---|---|
+| Oracle | `oracledb` |
+| MS SQL Server | `pyodbc` (+ the Microsoft ODBC driver) |
+| PostgreSQL | `psycopg` |
+| Teradata | `teradatasql` |
+| SQLite | (comes with Python) |
+
+The DB-API calls of sections 2 - 4 are the same; the differences are the placeholder
+style (`?`, `%s`, `:name`) and the SQL dialect of the database. Your IT department
+says which driver and which server; on a corporate laptop the driver may need to be
+installed by IT.
+
+```python
+# Oracle, without SQLAlchemy (not runnable here)
+import os
+import oracledb
+
+con = oracledb.connect(user=os.environ["DB_USER"], password=os.environ["DB_PASSWORD"],
+                       dsn="dbhost.example.com:1521/RISKDB")
+cur = con.cursor()
+cur.execute("SELECT COUNT(*) FROM loans WHERE report_date = :d", {"d": "2026-09-30"})
+print(cur.fetchone())
+con.close()
+```
+
+```python
+# MS SQL Server with Windows login (not runnable here)
+import pyodbc
+
+con = pyodbc.connect("DRIVER={ODBC Driver 18 for SQL Server};SERVER=risk-sql01;DATABASE=RiskMart;"
+                     "Trusted_Connection=yes;TrustServerCertificate=yes")
+cur = con.cursor()
+cur.execute("SELECT COUNT(*) FROM dbo.loans WHERE report_date = ?", ("2026-09-30",))
+print(cur.fetchone())
+con.close()
+```
+
+### Never a password in the code
+
+A password in a script, a notebook or a config file ends up in Git, in e-mails and in
+backups ([lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code)). Ways to keep it out:
+
+- **Windows login** (trusted connection, Kerberos) - no password at all, if your
+  database supports it; the best option.
+- **environment variables** ([lecture 9](./09-modules-and-git.md#os-and-sys-the-environment)) - set per user, read with `os.environ`.
+- the **keyring** package - stores the password in the Windows Credential Manager.
+- a `.env` file **listed in `.gitignore`**, read with the `python-dotenv` package.
+
+```python run
+import os
+
+os.environ.setdefault("DB_USER", "risk_reader")       # on this page: pretend it is set
+user = os.environ["DB_USER"]
+password = os.getenv("DB_PASSWORD")                   # None if it is not set
+if password is None:
+    print(f"DB_PASSWORD is not set for {user} - ask for it, never write it into the script")
+```
+
+::: code-group
+```powershell [Windows]
+$env:DB_USER = "risk_reader"
+$env:DB_PASSWORD = Read-Host -MaskInput "Password"
+python report.py
+```
+```bash [Linux / macOS]
+export DB_USER=risk_reader
+read -s -p "Password: " DB_PASSWORD && export DB_PASSWORD
+python report.py
+```
+:::
+
+::: details Advanced: SQLAlchemy URLs without a password in the code
+SQLAlchemy builds a URL from its parts - and hides the password when the URL is
+printed (into a log, say):
+
+```python run
+from sqlalchemy.engine import URL
+
+url = URL.create("postgresql+psycopg", username="risk_reader", password="s3cret",
+                 host="dbhost.example.com", port=5432, database="riskmart")
+print(url)                                            # the password is masked
+print(url.render_as_string(hide_password=True))
+```
+
+The path of the database is a setting too: from an environment variable, with a
+default - the script runs unchanged on another computer:
+
+```python run
+import os
+from pathlib import Path
+from sqlalchemy import create_engine, text
+from sqlalchemy.engine import URL
+
+db_path = Path(os.getenv("PORTFOLIO_DB", "data/portfolio.db"))
+url = URL.create("sqlite", database=str(db_path))
+print(url)
+
+engine = create_engine(url)
+with engine.connect() as con:
+    print(con.execute(text("SELECT COUNT(*) FROM clients")).scalar())
+engine.dispose()
+```
+:::
+
+Ask for a **read-only** account for analysis: a script with a bug can then never
+change the data of the bank.
+
+::: tip Try it
+Set the environment variable `PORTFOLIO_DB` to `data/portfolio.db` in the code
+(`os.environ["PORTFOLIO_DB"] = ...`), then connect with
+`sqlite3.connect(os.environ["PORTFOLIO_DB"])` and count the clients. What happens
+when the variable is not set?
+:::
+
+## 6. Summary
+
+| Topic | Remember |
+|-------|----------|
+| DB-API | `connect` -> `cursor` / `execute` -> `fetchone` / `fetchall` / loop -> `close`; the same for all databases |
+| SQLite | a database in a file; `sqlite3` comes with Python; `:memory:` for tests; dates are ISO text |
+| Rows | tuples, typed; `cursor.description` for names; `row_factory = sqlite3.Row` for rows by name |
+| Close | `closing(...)` or `finally`; `with con:` in sqlite3 is a transaction, not a close |
+| Parameters | `?` or `:name` + a tuple / dict; never f-strings with values (SQL injection); `IN` with one `?` per item |
+| Writing | `executemany`; `commit()`; `rowcount`; work on a copy (`con.backup`) |
+| Transactions | all or nothing; `rollback()`; `with con:` commits or rolls back; `IntegrityError` |
+| SQL or Python | filter, join, aggregate in SQL; rules, cleaning and the report in Python |
+| Your database | its driver follows the same DB-API; only the `connect` line and the placeholders change |
+| Passwords | never in code: Windows login, environment variables, keyring; a read-only account |
+
+## Practice
+Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
+in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
+terminal, in the repository root:
+
+```bash
+python 12-databases/practice/task1-first-queries.py
+```
+
+The tasks read `data/portfolio.db`; the ones that write work on a copy in memory.
+
+| Task | File | What you do |
+|------|------|-------------|
+| 1 | `task1-first-queries.py` | Connect, count, fetch rows, column names, `sqlite3.Row` |
+| 2 | `task2-parameters.py` | Parameterised queries, `IN` lists, injection-safe functions |
+| 3 | `task3-aggregate-join.py` | `GROUP BY` and `JOIN` in SQL; the same numbers in Python |
+| 4 | `task4-write-transaction.py` | A copy, a new table, `executemany`, a rollback that keeps the table clean |
+| 5 | `task5-migration.py` (Optional) | Rating migration between two month ends with a self join |
+
+## Homework
+
+1. `12-databases/homework.py` (in the homework repository): **a monthly report from
+   the database** - parameterised by the report date: the exposure and the EL by
+   segment and stage in SQL, the clients that moved to a worse rating since the month
+   before, and a table of rule breaks written in one transaction to a copy of the
+   database. Every check must print `OK`.
+2. The practice tasks you did not finish in class.
+3. Optional: find out which database your team uses, which Python driver it needs,
+   and whether you can get a read-only account - we use the answer in [lecture 15](./15-pandas-reports.md).
+
+## Self-study
+
+This part is not covered in class. It is for reading at home: more about writing,
+what to do in SQL and what in Python, tables too big for memory, and window functions - `LAG`, `RETAIN` and `FIRST.` of SAS, in SQL.
+
+### More about writing: constraints, a log table, a file
+
+`INSERT INTO ... SELECT` works too - the database does it all without sending the rows
+to Python:
+
+```python run
+import sqlite3
+
+source = sqlite3.connect("data/portfolio.db")
+con = sqlite3.connect(":memory:")
+source.backup(con)
+source.close()
+
+con.execute("CREATE TABLE stage3 AS SELECT loan_id, client_id, outstanding FROM loans WHERE stage = 3")
+con.commit()
+print(con.execute("SELECT COUNT(*), ROUND(SUM(outstanding), 2) FROM stage3").fetchone())
+con.close()
+```
 
 A `NOT NULL` column refuses a missing value - the database checks the data too:
 
@@ -686,43 +915,31 @@ print(target.execute("SELECT COUNT(*) FROM loans").fetchone(), Path("out/portfol
 target.close()
 ```
 
-| SQL / SAS | Python DB-API |
-|---|---|
-| `COMMIT;` | `con.commit()` |
-| `ROLLBACK;` | `con.rollback()` |
-| a failed `PROC APPEND` leaves the table as it was | `with con:` + an exception |
-| a constraint violation | `sqlite3.IntegrityError` (other drivers: their own `IntegrityError`) |
+**Exercise**
 
-### `UPDATE` and `DELETE` with parameters
+1. In a database in memory, create a table `flags (client_id TEXT PRIMARY KEY, flag
+   TEXT NOT NULL)`. Insert two rows in one `with con:` block, where the second row
+   has `None` as the flag. How many rows does the table have after the error?
 
-```python run
+::: details Answer
+```python
 import sqlite3
 
-source = sqlite3.connect("data/portfolio.db")
 con = sqlite3.connect(":memory:")
-source.backup(con)
-source.close()
-
-with con:
-    cur = con.execute("UPDATE loans SET stage = 2 WHERE days_past_due > ? AND stage = 1", (15,))
-    print(cur.rowcount, "loans moved to stage 2 (a stricter rule: more than 15 days)")
-    cur = con.execute("DELETE FROM loans WHERE outstanding < ?", (500,))
-    print(cur.rowcount, "small loans deleted")
+con.execute("CREATE TABLE flags (client_id TEXT PRIMARY KEY, flag TEXT NOT NULL)")
+try:
+    with con:
+        con.executemany("INSERT INTO flags VALUES (?, ?)", [("C0001", "watch"), ("C0002", None)])
+except sqlite3.IntegrityError as error:
+    print("rolled back:", error)
+print(con.execute("SELECT COUNT(*) FROM flags").fetchone())     # (0,): none of the two rows
 con.close()
 ```
-
-`cursor.rowcount` is the number of rows the statement changed - check it: an `UPDATE`
-that changes 0 rows (or 40,000) is often a bug.
-
-::: tip Try it
-In a copy of the database, create a table `client_flags (client_id, flag)` and insert
-the clients with rating 8 or worse with the flag `"watch"`, in one `with con:` block.
-Then try to insert one of them again: what happens to the transaction?
 :::
 
-## 5. What to do in SQL, what in Python
+### What to do in SQL, what in Python
 
-### Let the database do the heavy work
+#### Let the database do the heavy work
 
 With a real database, the data is on a server, often millions of rows. Moving all rows
 to your laptop to filter them there is slow. The rule: **filter, join and aggregate in
@@ -789,9 +1006,9 @@ with sqlite3.connect("data/portfolio.db") as con:
 print(len(in_sql), len(totals), f"SQL {t_sql * 1000:.2f} ms, Python {t_python * 1000:.2f} ms")
 ```
 
-### A join in SQL
+#### A join in SQL
 
-The expected loss of the portfolio - the number of homework 4, 6 and 11 - in **one**
+The expected loss of the portfolio - the number of homework 4, 6 and 10 - in **one**
 query, with two joins:
 
 ```python run
@@ -807,9 +1024,9 @@ with sqlite3.connect("data/portfolio.db") as con:
     print(con.execute(sql).fetchone())
 ```
 
-1,140,106.56 again: loops (4), dictionaries (6), objects (11) and SQL agree.
+1,140,106.56 again: loops (4), dictionaries (6), objects (10) and SQL agree.
 
-### The rating migration: a self join
+#### The rating migration: a self join
 
 Which clients changed their rating from August to September? A join of
 `ratings_history` with itself:
@@ -834,9 +1051,9 @@ print(moves)
 print(worse, "clients downgraded,", better, "upgraded")
 ```
 
-([Session 16](./16-pandas-reports-project.md#_5-the-rating-migration-matrix) turns this into a full **migration matrix** with pandas.)
+([Lecture 15](./15-pandas-reports.md#_5-the-rating-migration-matrix) turns this into a full **migration matrix** with pandas.)
 
-### Step by step: `WITH`
+#### Step by step: `WITH`
 
 A long query reads better in named steps - a **common table expression** (`WITH`), like
 a chain of SAS `PROC SQL` steps that create temporary tables. The share of the 10 largest
@@ -859,10 +1076,10 @@ with sqlite3.connect("data/portfolio.db") as con:
     print(con.execute(sql).fetchone())
 ```
 
-### When Python is the better place
+#### When Python is the better place
 
-- logic that is hard in SQL: text cleaning with regex (8), nomenclature classes (12),
-  checks with clear error messages (9);
+- logic that is hard in SQL: text cleaning with regex (lecture 7), nomenclature
+  classes (lecture 11), checks with clear error messages (lecture 8);
 - combining data from several sources: a database, a CSV, an Excel file;
 - the report itself: Excel, charts, files.
 
@@ -870,7 +1087,7 @@ A common pattern: SQL for the **data** (filter, join, aggregate), Python for the
 **rules** and the **report**.
 
 Two sources together: the exposure per client from the database, the names from the
-register file of [session 7](./07-text-processing.md#_7-cleaning-identifiers-and-names) - joined in Python with a dictionary:
+register file of [lecture 7](./07-text-and-regex.md#_5-cleaning-identifiers-and-names) - joined in Python with a dictionary:
 
 ```python run
 import csv
@@ -887,359 +1104,26 @@ for client_id, exposure in top:
     print(f"{client_id} {name_of.get(client_id, '?'):<28}{exposure:>16,.2f}")
 ```
 
-The names are as they were typed into the register - the `clean_name` of [session 7](./07-text-processing.md#company-and-person-names)
+The names are as they were typed into the register - the `clean_name` of [lecture 7](./07-text-and-regex.md#company-and-person-names)
 would fix them. That is the Python part of the job.
 
-::: tip Try it
-Write one SQL query for the outstanding per segment and stage (`GROUP BY` two
-columns). Then compare one number with homework 6.
-:::
+**Exercise**
 
-## 6. pandas and SQLAlchemy
+1. Write one SQL query for the outstanding per segment and stage (`GROUP BY` two
+   columns) and print its rows.
 
-### The result of a query as a DataFrame
-
-`pd.read_sql(sql, connection)` runs the query and returns a **DataFrame** - a table
-with named, typed columns. pandas is the topic of the next three sessions; today, only
-how the result arrives:
-
-```python run
+::: details Answer
+```python
 import sqlite3
-import pandas as pd
 
-with sqlite3.connect("data/portfolio.db") as con:
-    df = pd.read_sql("SELECT loan_id, product, outstanding, stage FROM loans", con)
-
-print(type(df), df.shape)          # rows, columns
-print(list(df.columns))
-df.head()
-```
-
-The last line is shown as a table: `head()` gives the first 5 rows. Parameters work
-the same way:
-
-```python run
-import sqlite3
-import pandas as pd
-
-sql = """SELECT c.segment, l.stage, COUNT(*) AS loans, ROUND(SUM(l.outstanding), 2) AS outstanding
+sql = """SELECT c.segment, l.stage, ROUND(SUM(l.outstanding), 2)
          FROM loans l JOIN clients c ON c.client_id = l.client_id
-         WHERE l.currency = ?
-         GROUP BY c.segment, l.stage"""
+         GROUP BY c.segment, l.stage ORDER BY c.segment, l.stage"""
 with sqlite3.connect("data/portfolio.db") as con:
-    df = pd.read_sql(sql, con, params=("EUR",))
-df
-```
-
-`parse_dates` turns the text dates of SQLite into real dates:
-
-```python run
-import sqlite3
-import pandas as pd
-
-with sqlite3.connect("data/portfolio.db") as con:
-    df = pd.read_sql("SELECT loan_id, start_date, maturity_date FROM loans", con,
-                     parse_dates=["start_date", "maturity_date"])
-print(df.dtypes)
-print(df["maturity_date"].max())
-```
-
-(pandas 3 shows text columns as `str` and dates as `datetime64[us]`; pandas 2.2 shows
-`object` and `datetime64[ns]`. The data is the same - [session 14](./14-numpy-pandas-intro.md#_8-the-types-of-the-columns) explains the types.)
-
-A DataFrame goes back to Python rows when you need them - `to_dict("records")` gives
-a list of dictionaries ([session 6](./06-dictionaries.md#a-row-as-a-dictionary)):
-
-```python run
-import sqlite3
-import pandas as pd
-
-with sqlite3.connect("data/portfolio.db") as con:
-    df = pd.read_sql("SELECT grade, pd_min, pd_max FROM rating_scale WHERE rating <= 3", con)
-print(df.to_dict("records"))
-```
-
-### SQLAlchemy: one way to connect to every database
-
-**SQLAlchemy** (in `requirements.txt`) is a library on top of the drivers: one
-**engine** object, made from a URL, for any database. pandas works best with it - for
-SQLite a plain connection is fine, for other databases pandas expects an engine:
-
-```python run
-import pandas as pd
-from sqlalchemy import create_engine, text
-
-engine = create_engine("sqlite:///data/portfolio.db")      # the URL: dialect:///file
-
-df = pd.read_sql(text("SELECT segment, COUNT(*) AS clients FROM clients GROUP BY segment"), engine)
-print(df)
-
-with engine.connect() as con:                               # also without pandas
-    result = con.execute(text("SELECT COUNT(*) FROM loans WHERE stage = :stage"), {"stage": 2})
-    print(result.scalar())
-engine.dispose()
-```
-
-A DataFrame from the engine with **named** parameters - `text()` and a dictionary:
-
-```python run
-import pandas as pd
-from sqlalchemy import create_engine, text
-
-engine = create_engine("sqlite:///data/portfolio.db")
-sql = text("""SELECT loan_id, product, outstanding FROM loans
-              WHERE stage = :stage AND outstanding > :min_outstanding ORDER BY outstanding DESC""")
-df = pd.read_sql(sql, engine, params={"stage": 3, "min_outstanding": 100000})
-engine.dispose()
-df
-```
-
-- `create_engine(url)` - the URL names the database kind and where it is (section 7).
-- `text(...)` marks a string as SQL; parameters are `:name`.
-- `engine.dispose()` closes the connections of the engine when you are done.
-
-SQLAlchemy can also **look into** a database - the tables and their columns, for any
-database kind:
-
-```python run
-from sqlalchemy import create_engine, inspect
-
-engine = create_engine("sqlite:///data/portfolio.db")
-inspector = inspect(engine)
-print(inspector.get_table_names())
-print([c["name"] for c in inspector.get_columns("ratings_history")])
-print(inspector.get_pk_constraint("ratings_history")["constrained_columns"])
-engine.dispose()
-```
-
-With an engine, pandas reads a whole table by its name:
-
-```python run
-import pandas as pd
-from sqlalchemy import create_engine
-
-engine = create_engine("sqlite:///data/portfolio.db")
-scale = pd.read_sql_table("rating_scale", engine)
-print(scale.shape)
-print(scale[["grade", "pd_max"]].tail(3))
-engine.dispose()
-```
-
-### Write a DataFrame to a table: `to_sql`
-
-```python run
-import sqlite3
-import pandas as pd
-
-work = sqlite3.connect(":memory:")
-regions = pd.DataFrame({"code": ["SOF", "VAR"], "name_en": ["Sofia", "Varna"]})
-regions.to_sql("regions", work, index=False, if_exists="replace")
-print(work.execute("SELECT * FROM regions").fetchall())
-work.close()
-```
-
-`if_exists="replace"` drops and recreates the table; `"append"` adds rows; `"fail"`
-(the default) stops if the table exists.
-
-The trap of `"append"`: run the load twice - the second run of the same month - and
-every row is there twice. Delete the month first (one transaction), then append:
-
-```python run
-import sqlite3
-import pandas as pd
-
-work = sqlite3.connect(":memory:")
-month = pd.DataFrame({"month_end": ["2026-09-30"] * 2, "loan_id": ["L1", "L2"], "outstanding": [100.0, 50.0]})
-
-for run in (1, 2):                                       # the script runs twice
-    month.to_sql("balances", work, index=False, if_exists="append")
-print(work.execute("SELECT COUNT(*) FROM balances").fetchone())       # 4 rows - doubled
-
-with work:
-    work.execute("DELETE FROM balances WHERE month_end = ?", ("2026-09-30",))
-month.to_sql("balances", work, index=False, if_exists="append")
-print(work.execute("SELECT COUNT(*) FROM balances").fetchone())       # 2 rows
-work.close()
-```
-
-::: info pandas 2 and pandas 3
-`pd.read_sql` with a `sqlite3` connection works in both. With any **other** DB-API
-connection (oracledb, pyodbc), pandas shows a `UserWarning` and asks for an SQLAlchemy
-engine - use one.
-:::
-
-::: tip Try it
-Read `ratings_history` for `2026-09-30` into a DataFrame with a parameter, and print
-its `shape`. Then `df["rating"].value_counts()` - a preview of [session 14](./14-numpy-pandas-intro.md#value-counts-proc-freq).
-:::
-
-## 7. Your database: drivers and passwords
-
-### The drivers
-
-On this page everything is SQLite. At work, the same code runs against your database -
-with its driver and its connection string. The common ones:
-
-| Database | Driver (`pip install`) | SQLAlchemy URL |
-|---|---|---|
-| Oracle | `oracledb` | `oracle+oracledb://user:pw@host:1521/?service_name=ORCL` |
-| MS SQL Server | `pyodbc` (+ the Microsoft ODBC driver) | `mssql+pyodbc://@server/db?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=yes` |
-| PostgreSQL | `psycopg` | `postgresql+psycopg://user:pw@host:5432/db` |
-| Teradata | `teradatasql` (+ `teradatasqlalchemy`) | `teradatasql://user:pw@host` |
-| SQLite | (comes with Python) | `sqlite:///path/to/file.db` |
-
-The DB-API calls of sections 2 - 4 are the same; the differences are the placeholder
-style (`?`, `%s`, `:name`) and the SQL dialect of the database. Your IT department
-says which driver and which server; on a corporate laptop the driver may need to be
-installed by IT.
-
-```python
-# Oracle, without SQLAlchemy (not runnable here)
-import os
-import oracledb
-
-con = oracledb.connect(user=os.environ["DB_USER"], password=os.environ["DB_PASSWORD"],
-                       dsn="dbhost.example.com:1521/RISKDB")
-cur = con.cursor()
-cur.execute("SELECT COUNT(*) FROM loans WHERE report_date = :d", {"d": "2026-09-30"})
-print(cur.fetchone())
-con.close()
-```
-
-```python
-# MS SQL Server with Windows login, through SQLAlchemy (not runnable here)
-from sqlalchemy import create_engine
-import pandas as pd
-
-engine = create_engine("mssql+pyodbc://@risk-sql01/RiskMart"
-                       "?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=yes&TrustServerCertificate=yes")
-df = pd.read_sql("SELECT TOP 10 * FROM dbo.loans", engine)
-```
-
-### Never a password in the code
-
-A password in a script, a notebook or a config file ends up in Git, in e-mails and in
-backups ([session 10](./10-modules-and-git.md#_6-git-versions-of-your-code)). Ways to keep it out:
-
-- **Windows login** (trusted connection, Kerberos) - no password at all, if your
-  database supports it; the best option.
-- **environment variables** ([session 10](./10-modules-and-git.md#os-and-sys-the-environment)) - set per user, read with `os.environ`.
-- the **keyring** package - stores the password in the Windows Credential Manager.
-- a `.env` file **listed in `.gitignore`**, read with the `python-dotenv` package.
-
-```python run
-import os
-
-os.environ.setdefault("DB_USER", "risk_reader")       # on this page: pretend it is set
-user = os.environ["DB_USER"]
-password = os.getenv("DB_PASSWORD")                   # None if it is not set
-if password is None:
-    print(f"DB_PASSWORD is not set for {user} - ask for it, never write it into the script")
-```
-
-::: code-group
-```powershell [Windows]
-$env:DB_USER = "risk_reader"
-$env:DB_PASSWORD = Read-Host -MaskInput "Password"
-python report.py
-```
-```bash [Linux / macOS]
-export DB_USER=risk_reader
-read -s -p "Password: " DB_PASSWORD && export DB_PASSWORD
-python report.py
+    for row in con.execute(sql):
+        print(row)
 ```
 :::
-
-SQLAlchemy builds a URL from its parts - and hides the password when the URL is
-printed (into a log, say):
-
-```python run
-from sqlalchemy.engine import URL
-
-url = URL.create("postgresql+psycopg", username="risk_reader", password="s3cret",
-                 host="dbhost.example.com", port=5432, database="riskmart")
-print(url)                                            # the password is masked
-print(url.render_as_string(hide_password=True))
-```
-
-The path of the database is a setting too: from an environment variable, with a
-default - the script runs unchanged on another computer:
-
-```python run
-import os
-from pathlib import Path
-from sqlalchemy import create_engine, text
-from sqlalchemy.engine import URL
-
-db_path = Path(os.getenv("PORTFOLIO_DB", "data/portfolio.db"))
-url = URL.create("sqlite", database=str(db_path))
-print(url)
-
-engine = create_engine(url)
-with engine.connect() as con:
-    print(con.execute(text("SELECT COUNT(*) FROM clients")).scalar())
-engine.dispose()
-```
-
-Ask for a **read-only** account for analysis: a script with a bug can then never
-change the data of the bank.
-
-::: tip Try it
-Write a function `connection_url(kind, host, database)` that returns the SQLAlchemy URL
-for `"postgresql"` and `"sqlite"` from the table above, with the user taken from
-`os.environ["DB_USER"]` and **no** password in the result.
-:::
-
-## 8. Summary
-| Topic | Remember |
-|-------|----------|
-| DB-API | `connect` -> `cursor` / `execute` -> `fetchone` / `fetchall` / loop -> `close`; the same for all databases |
-| SQLite | a database in a file; `sqlite3` comes with Python; `:memory:` for tests; dates are ISO text |
-| Rows | tuples, typed; `cursor.description` for names; `row_factory = sqlite3.Row` for rows by name |
-| Close | `closing(...)` or `finally`; `with con:` in sqlite3 is a transaction, not a close |
-| Parameters | `?` or `:name` + a tuple / dict; never f-strings with values (SQL injection); `IN` with one `?` per item |
-| Writing | `executemany`; `commit()`; `rowcount`; work on a copy (`con.backup`) |
-| Transactions | all or nothing; `rollback()`; `with con:` commits or rolls back; `IntegrityError` |
-| SQL or Python | filter, join, aggregate in SQL; rules, cleaning and the report in Python |
-| pandas | `pd.read_sql(sql, con, params=..., parse_dates=...)` -> a DataFrame; `df.to_sql(...)` |
-| SQLAlchemy | `create_engine(url)`, `text("... :name")`; needed by pandas for non-SQLite databases |
-| Passwords | never in code: Windows login, environment variables, keyring; a read-only account |
-
-## Practice
-Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
-in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
-terminal, in the repository root:
-
-```bash
-python 13-databases/practice/task1-first-queries.py
-```
-
-The tasks read `data/portfolio.db`; the ones that write work on a copy in memory.
-
-| Task | File | What you do |
-|------|------|-------------|
-| 1 | `task1-first-queries.py` | Connect, count, fetch rows, column names, `sqlite3.Row` |
-| 2 | `task2-parameters.py` | Parameterised queries, `IN` lists, injection-safe functions |
-| 3 | `task3-aggregate-join.py` | `GROUP BY` and `JOIN` in SQL; the same numbers in Python |
-| 4 | `task4-write-transaction.py` | A copy, a new table, `executemany`, a rollback that keeps the table clean |
-| 5 | `task5-read-sql.py` | `pd.read_sql` with parameters; shape, columns, a total |
-| 6 | `task6-migration.py` (Optional) | Rating migration between two month ends with a self join |
-
-## Homework
-
-1. `13-databases/homework.py` (in the homework repository): **a monthly report from
-   the database** - parameterised by the report date: the exposure and the EL by
-   segment and stage in SQL, the clients that moved to a worse rating since the month
-   before, and a table of rule breaks written in one transaction to a copy of the
-   database. Every check must print `OK`.
-2. The practice tasks you did not finish in class.
-3. Optional: find out which database your team uses, which Python driver it needs,
-   and whether you can get a read-only account - we use the answer in [session 16](./16-pandas-reports-project.md).
-
-## Self-study
-
-This part is not covered in class. It is for reading at home: tables too big for
-memory, and window functions - `LAG`, `RETAIN` and `FIRST.` of SAS, in SQL.
 
 ### Big tables: in pieces
 
@@ -1278,7 +1162,7 @@ with sqlite3.connect("data/portfolio.db") as con:
 print(totals.sort_index().astype(int).to_dict())
 ```
 
-Better still: let the database aggregate (section 5) - then the result is small.
+Better still: let the database aggregate (see above) - then the result is small.
 
 **Exercises**
 
@@ -1379,6 +1263,6 @@ Run them with `con.execute(...).fetchall()`.
   [psycopg](https://www.psycopg.org/psycopg3/docs/)
 - SQLite: [Window functions](https://www.sqlite.org/windowfunctions.html)
 
-**Next session:** NumPy and pandas - arrays that calculate a whole column at once, and
+**Next lecture** (it starts in the same session): NumPy and pandas - arrays that calculate a whole column at once, and
 the DataFrame: read CSV and Excel files, and look at a dataset the way SAS
 `PROC CONTENTS`, `PROC MEANS` and `PROC FREQ` do.

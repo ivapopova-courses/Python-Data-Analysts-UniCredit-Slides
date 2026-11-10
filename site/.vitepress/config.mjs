@@ -22,16 +22,15 @@ const lectures = [
   { text: '4. Functions', link: '/lectures/04-functions' },
   { text: '5. Lists (advanced)', link: '/lectures/05-lists-advanced' },
   { text: '6. Dictionaries', link: '/lectures/06-dictionaries' },
-  { text: '7. Text processing', link: '/lectures/07-text-processing' },
-  { text: '8. Regular expressions', link: '/lectures/08-regular-expressions' },
-  { text: '9. Errors and files', link: '/lectures/09-errors-and-files' },
-  { text: '10. Modules and Git', link: '/lectures/10-modules-and-git' },
-  { text: '11. OOP: classes and objects', link: '/lectures/11-oop-classes' },
-  { text: '12. OOP: nomenclatures', link: '/lectures/12-oop-nomenclatures' },
-  { text: '13. Databases', link: '/lectures/13-databases' },
-  { text: '14. NumPy and pandas', link: '/lectures/14-numpy-pandas-intro' },
-  { text: '15. pandas: select, group, join', link: '/lectures/15-pandas-select-aggregate-join' },
-  { text: '16. pandas: reports, project', link: '/lectures/16-pandas-reports-project' }
+  { text: '7. Text and regular expressions', link: '/lectures/07-text-and-regex' },
+  { text: '8. Errors and files', link: '/lectures/08-errors-and-files' },
+  { text: '9. Modules and Git', link: '/lectures/09-modules-and-git' },
+  { text: '10. OOP: classes and objects', link: '/lectures/10-oop-classes' },
+  { text: '11. OOP: nomenclatures', link: '/lectures/11-oop-nomenclatures' },
+  { text: '12. Databases', link: '/lectures/12-databases' },
+  { text: '13. NumPy and pandas', link: '/lectures/13-numpy-pandas-intro' },
+  { text: '14. pandas: select, group, join', link: '/lectures/14-pandas-select-aggregate-join' },
+  { text: '15. pandas: reports', link: '/lectures/15-pandas-reports' }
 ].map(it => (isReleased(it.link) ? it : { text: it.text })) // no link: grey text (theme/sidebar.css)
 
 const course = defineCourse({

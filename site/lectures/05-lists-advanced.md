@@ -240,7 +240,7 @@ The fields of a file are text: `float(row[7])` in the key compares the amounts a
 numbers. Without it, `"9"` would be larger than `"10"`.
 
 ::: info The same in pandas
-In pandas ([session 15](./15-pandas-select-aggregate-join.md#_3-sorting-and-the-top-n))
+In pandas ([lecture 14](./14-pandas-select-aggregate-join.md#_3-sorting-and-the-top-n))
 a table is sorted by the name of a column:
 
 ```python run
@@ -493,11 +493,11 @@ print(list(map(float, fields)))           # short when the function has a name
 ```
 
 In pandas, `map` comes back: `series.map(function)` or `series.map(dictionary)`
-(sessions 6 and 15).
+(lectures 6 and 14).
 :::
 
 ::: info The same in pandas
-In pandas ([session 14](./14-numpy-pandas-intro.md#columns)) you do not loop at all - an operation on a column works on
+In pandas ([lecture 13](./13-numpy-pandas-intro.md#columns)) you do not loop at all - an operation on a column works on
 all its values:
 
 ```python run

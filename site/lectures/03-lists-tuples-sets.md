@@ -368,11 +368,11 @@ year, month, day = report_date[:4], report_date[5:7], report_date[8:]
 print(year, month, day)
 ```
 
-Strings cannot be changed: `loan_id[0] = "X"` is an error. String methods ([session 7](./07-text-processing.md))
+Strings cannot be changed: `loan_id[0] = "X"` is an error. String methods ([lecture 7](./07-text-and-regex.md))
 make **new** strings.
 
 ::: info The same in pandas
-pandas ([session 14](./14-numpy-pandas-intro.md)) uses the same rules. `iloc` takes rows and columns by
+pandas ([lecture 13](./13-numpy-pandas-intro.md)) uses the same rules. `iloc` takes rows and columns by
 position - from 0, without the stop; `.str[...]` takes the same slice of every text
 in a column:
 
@@ -659,7 +659,7 @@ way is `sorted(..., key=...)`: sessions 4 and 5.
 
 ::: info The same in pandas
 The methods of pandas work like `sorted()`: they return a **new** table and do not
-change the old one ([session 14](./14-numpy-pandas-intro.md)). Keep the result in a name:
+change the old one ([lecture 13](./13-numpy-pandas-intro.md)). Keep the result in a name:
 
 ```python run
 import pandas as pd
@@ -976,7 +976,7 @@ print(loan[2])                   # still by position
 loan_id, product, outstanding = loan
 ```
 
-Classes and data classes (sessions 11 - 12) go further: records that can also check
+Classes and data classes (lectures 10 - 11) go further: records that can also check
 their data and have their own methods.
 :::
 
@@ -1312,7 +1312,7 @@ print("Missing: ", ", ".join(sorted(required - submitted)))
 print("Extra:   ", ", ".join(sorted(submitted - required)))
 ```
 
-`", ".join(...)` makes one string of the items, with `", "` between them ([session 7](./07-text-processing.md#join-fields-into-a-line)).
+`", ".join(...)` makes one string of the items, with `", "` between them ([lecture 7](./07-text-and-regex.md#join-fields-into-a-line)).
 
 ### Subsets and checks of the data
 
@@ -1348,7 +1348,7 @@ print("loans of unknown clients:", loan_clients - clients)       # LEFT JOIN ...
 
 ::: info The same in pandas
 The same check on two tables before a join - with `set()` of a column, or with
-`isin` ([session 15](./15-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there `merge(..., indicator=True)` shows the rows without a
+`isin` ([lecture 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there `merge(..., indicator=True)` shows the rows without a
 match):
 
 ```python run
@@ -1427,7 +1427,7 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
 ### Notes on the tasks
 
 **Reading a file.** How `open` and `with` work comes in
-[session 9](./09-errors-and-files.md#open-read-close-with). Until then, copy this
+[lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this
 code. It is the loop of [session 2](./02-conditions-and-loops.md#the-rows-of-a-file),
 but it keeps each line as one list, `fields`, and you take a field by its index:
 

@@ -35,7 +35,7 @@ loans = pd.read_csv("data/loans.csv")
 print(loans.loc[loans["stage"] == 3, "outstanding"].sum())
 ```
 
-By session 16 you will write code like this every day. Today we start from the
+By lecture 15 you will write code like this every day. Today we start from the
 pieces it is made of: values, types, variables and operators.
 
 ## 1. About the course
@@ -122,15 +122,15 @@ openpyxl for Excel, SQLAlchemy for databases. They are all free.
 | Price | part of the database | licence | free |
 
 You will **not** stop using SQL. The best place to filter and join big tables is
-still the database; Python sends the SQL query and works with the result (session
-13). Python replaces mostly the SAS part of the work - and adds what neither SQL nor
+still the database; Python sends the SQL query and works with the result (lecture
+12). Python replaces mostly the SAS part of the work - and adds what neither SQL nor
 SAS does well.
 
 How SAS ideas map to Python (most of them come in the later sessions):
 
 | SAS | Python |
 |---|---|
-| DATA step | a loop over rows (sessions 2 - 6), or pandas (sessions 14 - 16) |
+| DATA step | a loop over rows (sessions 2 - 6), or pandas (lectures 13 - 15) |
 | `PROC SORT` | `sorted()`, `DataFrame.sort_values()` |
 | `PROC MEANS`, `PROC SUMMARY` | `sum()`, `statistics`, `DataFrame.groupby().agg()` |
 | `PROC FREQ` | `collections.Counter`, `value_counts()`, `pd.crosstab()` |
@@ -420,7 +420,7 @@ dependencies* - it avoids "but it works on my machine".
 `>=` means "this version or newer", so `pandas>=2.2` installs the newest pandas -
 **pandas 3** today (3.1 in October 2026). The site runs pandas 3 too, so this course
 uses pandas 3; where pandas 2.2 behaves differently (the type of text columns,
-copies of a DataFrame), sessions 14 - 16 say so. Check yours with `pip show pandas`.
+copies of a DataFrame), lectures 13 - 15 say so. Check yours with `pip show pandas`.
 :::
 
 What the packages of this course are for:
@@ -506,11 +506,11 @@ without leaving VS Code:
 
 - **Data Wrangler** (Microsoft) - a DataFrame or a CSV file as a table you can
   sort and filter, with statistics per column; it writes the pandas code for the
-  cleaning steps you click (lectures 14 - 16);
+  cleaning steps you click (lectures 13 - 15);
 - **Rainbow CSV** (mechatroner) - each column of a CSV file in its own colour, and
   SQL-like queries on the file;
 - **SQLite Viewer** (Florian Klampfer) - the tables of a SQLite database
-  (lecture 13);
+  (lecture 12);
 - **Spreadsheet Viewer** (MESCIUS) - `.xlsx` files inside VS Code.
 
 You do not have to search for them one by one: the Homework folder lists them all
@@ -585,7 +585,7 @@ In the terminal, `cls` (cmd) or `clear` clears the screen. All shortcuts:
 The **Source Control** view (`Ctrl+Shift+G`) shows the changed files; type a message,
 **Commit**, then **Sync** (push). The commands for the Homework repository are in
 [How to use these pages](/how-to#practice-and-homework); Git itself is the topic of
-[session 10](./10-modules-and-git.md#_6-git-versions-of-your-code).
+[lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code).
 
 ## 6. The terminal and the REPL
 
@@ -672,7 +672,7 @@ shows it as a page, with the results, without running it.
 
 Notebooks are not the right tool for a job that runs every month without a person,
 or for code that many reports share - for that you write a script or a module
-(see "Script or notebook?" at the end of this section, and lecture 10).
+(see "Script or notebook?" at the end of this section, and lecture 9).
 
 ::: tip Try it without installing
 [jupyter.org/try](https://jupyter.org/try) opens JupyterLab in the browser, with
@@ -1103,7 +1103,7 @@ print(type(industry))
 In SQL, `NULL = NULL` is not true, and you must write `IS NULL`. In SAS, a missing
 `.` is smaller than every number, so `if x < 0` is true for missing values. In
 Python, `None == None` is `True`, and `None < 0` is an error. Test with
-`x is None`. (pandas has its own missing values, `NaN` and `NA` - [session 14](./14-numpy-pandas-intro.md#missing-values-in-numpy-nan).)
+`x is None`. (pandas has its own missing values, `NaN` and `NA` - [lecture 13](./13-numpy-pandas-intro.md#missing-values-in-numpy-nan).)
 :::
 
 ## 10. Variables
@@ -1215,7 +1215,7 @@ Python. For names:
 |---|---|---|
 | variables, functions | `snake_case`: small letters, words joined with `_` | `days_past_due`, `client_since` |
 | constants (values that do not change) | `UPPER_SNAKE_CASE` | `REPORT_DATE = "2026-09-30"` |
-| classes ([session 11](./11-oop-classes.md)) | `CapWords` | `Loan`, `RatingScale` |
+| classes ([lecture 10](./10-oop-classes.md)) | `CapWords` | `Loan`, `RatingScale` |
 
 - Names that say what is inside: `outstanding`, not `x` or `data2`.
 - Booleans as a question: `is_late`, `has_collateral`.
@@ -1395,7 +1395,7 @@ print(not days_past_due > 90)
 
 ::: warning `&` and `|` are not `and` and `or`
 In SAS, `&` and `|` mean AND and OR. In Python they are different (bit) operators.
-pandas uses them for conditions on whole columns ([session 15](./15-pandas-select-aggregate-join.md#rows-a-mask-is-the-where)) - but for single
+pandas uses them for conditions on whole columns ([lecture 14](./14-pandas-select-aggregate-join.md#rows-a-mask-is-the-where)) - but for single
 values, write `and`, `or`, `not`.
 :::
 
@@ -1438,7 +1438,7 @@ The fix is an explicit conversion, `"Stage " + str(3)` (section 12), or an f-str
 ### A first look at string methods
 
 Strings have many **methods** - functions you call with a dot after the value.
-A few, for a first look ([session 7](./07-text-processing.md) has them all):
+A few, for a first look ([lecture 7](./07-text-and-regex.md) has them all):
 
 ```python run
 print("ada".capitalize())
@@ -1537,7 +1537,7 @@ print(float("1 044 231,30"))     # ValueError: Bulgarian format
 ```
 
 Numbers written the Bulgarian way - a space between the thousands, a comma for the
-fraction - must be cleaned first (more string methods in [session 7](./07-text-processing.md#_8-numbers-from-text)):
+fraction - must be cleaned first (more string methods in [lecture 7](./07-text-and-regex.md#numbers)):
 
 ```python run
 text = "1 044 231,30"
@@ -1834,7 +1834,7 @@ Rules for `Decimal`:
 - `Decimal` is slower than `float`. Use it for **money that must add up** to the
   cent: balances, interest, reconciliations with the general ledger. For rates, PDs,
   statistics and models, `float` is right.
-- pandas works with `float`: there, round the **results** ([session 15](./15-pandas-select-aggregate-join.md)).
+- pandas works with `float`: there, round the **results** ([lecture 14](./14-pandas-select-aggregate-join.md)).
 
 ```python run
 from decimal import Decimal

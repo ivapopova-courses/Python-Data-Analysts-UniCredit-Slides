@@ -460,8 +460,8 @@ msgstr "Python"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:371
-msgid "Strings cannot be changed: `loan_id[0] = \"X\"` is an error. String methods ([session 7](./07-text-processing.md)) make **new** strings."
-msgstr "Strings не могат да се променят: `loan_id[0] = \"X\"` е грешка. Методите на strings ([занятие 7](./07-text-processing.md)) правят **нови** strings."
+msgid "Strings cannot be changed: `loan_id[0] = \"X\"` is an error. String methods ([lecture 7](./07-text-and-regex.md)) make **new** strings."
+msgstr "Strings не могат да се променят: `loan_id[0] = \"X\"` е грешка. Методите на strings ([лекция 7](./07-text-and-regex.md)) правят **нови** strings."
 
 #. box title
 #: site/lectures/03-lists-tuples-sets.md:374 site/lectures/03-lists-tuples-sets.md:660 site/lectures/03-lists-tuples-sets.md:1349
@@ -470,8 +470,8 @@ msgstr "Същото в pandas"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:375
-msgid "pandas ([session 14](./14-numpy-pandas-intro.md)) uses the same rules. `iloc` takes rows and columns by position - from 0, without the stop; `.str[...]` takes the same slice of every text in a column:"
-msgstr "pandas ([занятие 14](./14-numpy-pandas-intro.md)) използва същите правила. `iloc` взима редове и колони по позиция - от 0, без stop; `.str[...]` взима един и същ slice от всеки текст в колоната:"
+msgid "pandas ([lecture 13](./13-numpy-pandas-intro.md)) uses the same rules. `iloc` takes rows and columns by position - from 0, without the stop; `.str[...]` takes the same slice of every text in a column:"
+msgstr "pandas ([лекция 13](./13-numpy-pandas-intro.md)) използва същите правила. `iloc` взима редове и колони по позиция - от 0, без stop; `.str[...]` взима един и същ slice от всеки текст в колоната:"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:388
@@ -715,8 +715,8 @@ msgstr "`PROC SORT` в SAS и `ORDER BY` в SQL могат да сортират
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:661
-msgid "The methods of pandas work like `sorted()`: they return a **new** table and do not change the old one ([session 14](./14-numpy-pandas-intro.md)). Keep the result in a name:"
-msgstr "Методите на pandas работят като `sorted()`: връщат **нова** таблица и не променят старата ([занятие 14](./14-numpy-pandas-intro.md)). Запазете резултата в име:"
+msgid "The methods of pandas work like `sorted()`: they return a **new** table and do not change the old one ([lecture 13](./13-numpy-pandas-intro.md)). Keep the result in a name:"
+msgstr "Методите на pandas работят като `sorted()`: връщат **нова** таблица и не променят старата ([лекция 13](./13-numpy-pandas-intro.md)). Запазете резултата в име:"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:674
@@ -940,8 +940,8 @@ msgstr "В обикновен tuple `loan[2]` не казва коя е трет
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:979
-msgid "Classes and data classes (sessions 11 - 12) go further: records that can also check their data and have their own methods."
-msgstr "Класовете и data classes (занятия 11 - 12) отиват по-далеч: записи, които могат и да проверяват данните си и имат собствени методи."
+msgid "Classes and data classes (lectures 10 - 11) go further: records that can also check their data and have their own methods."
+msgstr "Класовете и data classes (лекции 10 - 11) отиват по-далеч: записи, които могат и да проверяват данните си и имат собствени методи."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:983
@@ -1350,8 +1350,8 @@ msgstr "Пример: какво липсва в кредитно досие"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1315
-msgid "`\", \".join(...)` makes one string of the items, with `\", \"` between them ([session 7](./07-text-processing.md#join-fields-into-a-line))."
-msgstr "`\", \".join(...)` прави един string от елементите, с `\", \"` между тях ([занятие 7](./07-text-processing.md#join-fields-into-a-line))."
+msgid "`\", \".join(...)` makes one string of the items, with `\", \"` between them ([lecture 7](./07-text-and-regex.md#join-fields-into-a-line))."
+msgstr "`\", \".join(...)` прави един string от елементите, с `\", \"` между тях ([лекция 7](./07-text-and-regex.md#join-fields-into-a-line))."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1317
@@ -1380,8 +1380,8 @@ msgstr "Това са бързи проверки на данните, като 
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1350
-msgid "The same check on two tables before a join - with `set()` of a column, or with `isin` ([session 15](./15-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there `merge(..., indicator=True)` shows the rows without a match):"
-msgstr "Същата проверка на две таблици преди JOIN - със `set()` от колона или с `isin` ([занятие 15](./15-pandas-select-aggregate-join.md#in-of-sas-indicator-true); там `merge(..., indicator=True)` показва редовете без съвпадение):"
+msgid "The same check on two tables before a join - with `set()` of a column, or with `isin` ([lecture 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there `merge(..., indicator=True)` shows the rows without a match):"
+msgstr "Същата проверка на две таблици преди JOIN - със `set()` от колона или с `isin` ([лекция 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); там `merge(..., indicator=True)` показва редовете без съвпадение):"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:1364
@@ -1610,8 +1610,8 @@ msgstr "Бележки към задачите"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1429
-msgid "**Reading a file.** How `open` and `with` work comes in [session 9](./09-errors-and-files.md#open-read-close-with). Until then, copy this code. It is the loop of [session 2](./02-conditions-and-loops.md#the-rows-of-a-file), but it keeps each line as one list, `fields`, and you take a field by its index:"
-msgstr "**Четене на файл.** Как работят `open` и `with` ще видим в [занятие 9](./09-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Това е цикълът от [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file), но той пази всеки ред като един list, `fields`, и вземате поле по неговия индекс:"
+msgid "**Reading a file.** How `open` and `with` work comes in [lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this code. It is the loop of [session 2](./02-conditions-and-loops.md#the-rows-of-a-file), but it keeps each line as one list, `fields`, and you take a field by its index:"
+msgstr "**Четене на файл.** Как работят `open` и `with` ще видим в [лекция 8](./08-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Това е цикълът от [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file), но той пази всеки ред като един list, `fields`, и вземате поле по неговия индекс:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1442
@@ -1734,11 +1734,11 @@ msgstr "**Следващото занятие:** функции - собстве
 #~ msgid "The rule \"the stop is not included\" is the same as in `range` (session 2). It has a nice side: `a[:3]` is the first 3 items, `a[3:]` the rest, and `a[2:5]` has 5 - 2 = 3 items."
 #~ msgstr "Правилото \"stop не е включен\" е същото като в `range` (занятие 2). То има хубава страна: `a[:3]` са първите 3 елемента, `a[3:]` - останалите, а `a[2:5]` има 5 - 2 = 3 елемента."
 
-#~ msgid "Strings cannot be changed: `loan_id[0] = \"X\"` is an error. String methods (session 7) make **new** strings."
-#~ msgstr "Strings не могат да се променят: `loan_id[0] = \"X\"` е грешка. Методите на strings (занятие 7) правят **нови** strings."
+#~ msgid "Strings cannot be changed: `loan_id[0] = \"X\"` is an error. String methods (lecture 7) make **new** strings."
+#~ msgstr "Strings не могат да се променят: `loan_id[0] = \"X\"` е грешка. Методите на strings (лекция 7) правят **нови** strings."
 
-#~ msgid "pandas (session 14) uses the same rules. `iloc` takes rows and columns by position - from 0, without the stop; `.str[...]` takes the same slice of every text in a column:"
-#~ msgstr "pandas (занятие 14) използва същите правила. `iloc` взима редове и колони по позиция - от 0, без stop; `.str[...]` взима един и същ slice от всеки текст в колоната:"
+#~ msgid "pandas (lecture 13) uses the same rules. `iloc` takes rows and columns by position - from 0, without the stop; `.str[...]` takes the same slice of every text in a column:"
+#~ msgstr "pandas (лекция 13) използва същите правила. `iloc` взима редове и колони по позиция - от 0, без stop; `.str[...]` взима един и същ slice от всеки текст в колоната:"
 
 #~ msgid "`min` and `max` work on strings too (alphabetically, session 2). `sum` only on numbers. `index` gives a `ValueError` when the value is not in the list - test with `in` first."
 #~ msgstr "`min` и `max` работят и върху strings (по азбучен ред, занятие 2). `sum` - само върху числа. `index` дава `ValueError`, когато стойността не е в list-а - първо проверете с `in`."
@@ -1752,8 +1752,8 @@ msgstr "**Следващото занятие:** функции - собстве
 #~ msgid "Sorting compares the items with `<` (session 2): strings alphabetically - capital letters before small ones - and a mix of numbers and strings is an error:"
 #~ msgstr "Сортирането сравнява елементите с `<` (занятие 2): strings - по азбучен ред, главните букви преди малките, а смесица от числа и strings е грешка:"
 
-#~ msgid "The methods of pandas work like `sorted()`: they return a **new** table and do not change the old one (session 14). Keep the result in a name:"
-#~ msgstr "Методите на pandas работят като `sorted()`: връщат **нова** таблица и не променят старата (занятие 14). Запазете резултата в име:"
+#~ msgid "The methods of pandas work like `sorted()`: they return a **new** table and do not change the old one (lecture 13). Keep the result in a name:"
+#~ msgstr "Методите на pandas работят като `sorted()`: връщат **нова** таблица и не променят старата (лекция 13). Запазете резултата в име:"
 
 #~ msgid "Session 1 showed that a variable is a **name** bound to an **object**. With numbers and strings this hardly matters, because they cannot change. A list **can** change - and then it matters a lot:"
 #~ msgstr "Занятие 1 показа, че променливата е **име**, свързано с **обект**. При числа и strings това почти няма значение, защото те не могат да се променят. List **може** да се променя - и тогава това има голямо значение:"
@@ -1779,11 +1779,11 @@ msgstr "**Следващото занятие:** функции - собстве
 #~ msgid "A set does not remember the order in which values came. Print the same set of strings in two runs of a program, and the order can be different. When the order matters - in a report, in a test - use `sorted(the_set)`. (To remove duplicates **and** keep the first order: `list(dict.fromkeys(items))`, session 6.)"
 #~ msgstr "Set не помни реда, в който са дошли стойностите. Отпечатайте един и същ set от strings при две пускания на програмата и редът може да е различен. Когато редът има значение - в отчет, в тест - използвайте `sorted(the_set)`. (За да премахнете повторенията **и** да запазите първоначалния ред: `list(dict.fromkeys(items))`, занятие 6.)"
 
-#~ msgid "`\", \".join(...)` makes one string of the items, with `\", \"` between them (session 7)."
-#~ msgstr "`\", \".join(...)` прави един string от елементите, с `\", \"` между тях (занятие 7)."
+#~ msgid "`\", \".join(...)` makes one string of the items, with `\", \"` between them (lecture 7)."
+#~ msgstr "`\", \".join(...)` прави един string от елементите, с `\", \"` между тях (лекция 7)."
 
-#~ msgid "The same check on two tables before a join - with `set()` of a column, or with `isin` (session 15; there `merge(..., indicator=True)` shows the rows without a match):"
-#~ msgstr "Същата проверка на две таблици преди JOIN - със `set()` от колона или с `isin` (занятие 15; там `merge(..., indicator=True)` показва редовете без съвпадение):"
+#~ msgid "The same check on two tables before a join - with `set()` of a column, or with `isin` (lecture 14; there `merge(..., indicator=True)` shows the rows without a match):"
+#~ msgstr "Същата проверка на две таблици преди JOIN - със `set()` от колона или с `isin` (лекция 14; там `merge(..., indicator=True)` показва редовете без съвпадение):"
 
 #~ msgid "**Reading a file** (task 6, the homework): as in session 2 - `file.readline()` skips the header, then `fields = line.strip().split(\",\")` in the loop. The columns are in the order of the header line (task 6 lists them; the [sample data](../sample-data) page too): `fields[0]` is the first one."
 #~ msgstr "**Четене на файл** (задача 6, домашното): както в занятие 2 - `file.readline()` прескача заглавния ред, после `fields = line.strip().split(\",\")` в цикъла. Колоните са в реда на заглавния ред (задача 6 ги изброява; страницата [примерни данни](../sample-data) също): `fields[0]` е първата."

@@ -498,7 +498,7 @@ print(grade, pd_value)
 
 `csv.DictReader` (the module `csv` comes with Python) reads a CSV file row by row,
 and gives each row as a dictionary: the column name is the key. No more `row[7]` -
-`row["outstanding"]`. Files and `csv` in depth: [session 9](./09-errors-and-files.md#_7-csv-files).
+`row["outstanding"]`. Files and `csv` in depth: [lecture 8](./08-errors-and-files.md#_7-csv-files).
 
 ```python run
 import csv
@@ -527,7 +527,7 @@ print([stage_name(s) for s in [1, 3, 2, 4]])
 ```
 
 Keep the nomenclature (the dictionary) as a **constant** at the top of the script,
-in capitals: one place to change it. [Session 12](./12-oop-nomenclatures.md) turns such a nomenclature into a
+in capitals: one place to change it. [Lecture 11](./11-oop-nomenclatures.md) turns such a nomenclature into a
 class with its own checks.
 
 ### The join: loans with the region of their client
@@ -632,7 +632,7 @@ def grade_of_pd(pd_value):
 print([grade_of_pd(p) for p in [0.0003, 0.0043, 0.02, 0.5, 1.0]])
 ```
 
-In pandas, `pd.cut` does the same for a whole column ([session 15](./15-pandas-select-aggregate-join.md#bands-pd-cut)).
+In pandas, `pd.cut` does the same for a whole column ([lecture 14](./14-pandas-select-aggregate-join.md#bands-pd-cut)).
 :::
 
 ::: info The same in pandas
@@ -775,7 +775,7 @@ for product, (n, total, largest) in sorted(stats.items()):
 ```
 
 This is SAS `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line
-([session 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means)) - but now you know what it does.
+([lecture 14](./14-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means)) - but now you know what it does.
 
 The **share** of each group in the total - one more pass over the small result, not
 over the data:
@@ -879,7 +879,7 @@ print((august + Counter({3: 1})).total())       # total(): Python 3.10+
 ### A trap: the group key from dirty text
 
 `"Sofia"`, `"sofia"` and `"Sofia "` are three different keys. Clean the key before
-you group (text cleaning: [session 7](./07-text-processing.md#_7-cleaning-identifiers-and-names)):
+you group (text cleaning: [lecture 7](./07-text-and-regex.md#_5-cleaning-identifiers-and-names)):
 
 ```python run
 from collections import Counter
@@ -890,7 +890,7 @@ print(Counter(c.strip().title() for c in cities))
 ```
 
 ::: info The same in pandas
-`value_counts` and `groupby` do all of this section (sessions 14 - 15):
+`value_counts` and `groupby` do all of this section (lectures 13 - 14):
 
 ```python run
 import pandas as pd
@@ -1000,7 +1000,7 @@ Not needed for the tasks, the homework or the next sessions - read it when you h
 
 Nested dictionaries and lists are the shape of **JSON**, the text format of web
 APIs and of many configuration files. The module `json` turns one into the other
-(JSON files: [session 9](./09-errors-and-files.md#_8-json-files)):
+(JSON files: [lecture 8](./08-errors-and-files.md#_8-json-files)):
 
 ```python run
 import json
@@ -1078,7 +1078,7 @@ python 06-dictionaries/practice/task1-dict-basics.py
    (it must be the same 1,140,106.56), the expected loss by segment and by grade, and
    a sorted text report. Every check must print `OK`.
 2. The practice tasks you did not finish in class.
-3. Optional: a **migration of client counts by region**: count the clients per region
+3. Optional: a **cross table of the clients**: count the clients per region
    in `clients.csv`, then per region **and segment**, and print a small table with
    the regions as rows and the segments as columns (the Self-study below shows how).
 
@@ -1115,7 +1115,7 @@ for region in sorted(table):
 `defaultdict(int)` - so `table[region][segment] += 1` works for any new pair.
 
 And back - from the cross table to rows (`region, segment, count`), the job of
-SAS `PROC TRANSPOSE`, or of `melt` in pandas ([session 16](./16-pandas-reports-project.md#_2-from-wide-to-long-melt)):
+SAS `PROC TRANSPOSE`, or of `melt` in pandas ([lecture 15](./15-pandas-reports.md#_2-from-wide-to-long-melt)):
 
 ```python run
 table = {"Ruse": {"retail": 18, "sme": 7}, "Varna": {"retail": 13, "corporate": 3}}
@@ -1208,5 +1208,6 @@ immutable values.
 - Real Python: [Dictionaries in Python](https://realpython.com/python-dicts/),
   [Python's Counter](https://realpython.com/python-counter/)
 
-**Next session:** text processing - clean ids, names and codes, read numbers written
-the Bulgarian way, and dates from text, with the methods of `str` and `datetime`.
+**Next session:** text processing and regular expressions - clean ids, names and
+codes, read numbers and dates from text with the methods of `str` and `datetime`,
+and describe the shape of a text with a pattern.

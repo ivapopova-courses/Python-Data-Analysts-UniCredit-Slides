@@ -1,11 +1,11 @@
 ---
-title: "15. pandas: selection, aggregation, joins"
+title: "14. pandas: selection, aggregation, joins"
 ---
 
-# 15. pandas: selection, aggregation, joins
+# 14. pandas: selection, aggregation, joins
 
 <div class="lecture-meta">
-  <span>Session 15</span><span>practice: <code>15-pandas-select-aggregate-join/</code> in the homework repository</span>
+  <span>Sessions 13 - 14</span><span>practice: <code>14-pandas-select-aggregate-join/</code> in the homework repository</span>
   <span><a href="../sample-data">the sample data</a></span>
 </div>
 
@@ -19,7 +19,9 @@ title: "15. pandas: selection, aggregation, joins"
 - group and aggregate with `groupby` and `agg` - SQL `GROUP BY` and SAS `PROC MEANS`;
 - join tables with `merge` and stack them with `concat` - SQL `JOIN`, SAS `MERGE` and
   `SET`;
-- handle missing values in all of these.
+- handle missing values in all of these;
+- read the result of an SQL query straight into a DataFrame, with pandas and
+  SQLAlchemy.
 
 From SQL to pandas - one query, two ways:
 
@@ -58,7 +60,7 @@ one.
 
 ### Columns: `KEEP` and `DROP`
 
-You know `df["col"]` (a Series) and `df[["a", "b"]]` (a DataFrame) from [session 14](./14-numpy-pandas-intro.md#columns).
+You know `df["col"]` (a Series) and `df[["a", "b"]]` (a DataFrame) from [lecture 13](./13-numpy-pandas-intro.md#columns).
 `drop` removes columns - SAS `DROP=`:
 
 ```python run
@@ -95,7 +97,7 @@ loans[late][["loan_id", "product", "outstanding", "days_past_due"]].head()
 ```
 
 Several conditions: `&` (and), `|` (or), `~` (not), each comparison in brackets -
-the rule of [session 14](./14-numpy-pandas-intro.md):
+the rule of [lecture 13](./13-numpy-pandas-intro.md):
 
 ```python run
 import pandas as pd
@@ -134,7 +136,7 @@ loans = pd.read_csv("data/loans.csv")
 loans.loc[loans["stage"] == 3, ["loan_id", "client_id", "outstanding"]].head()
 ```
 
-With an index of ids ([session 14](./14-numpy-pandas-intro.md#the-index)), `loc` takes the labels - like a lookup in a
+With an index of ids ([lecture 13](./13-numpy-pandas-intro.md#the-index)), `loc` takes the labels - like a lookup in a
 dictionary:
 
 ```python run
@@ -259,7 +261,7 @@ function without a name).
 
 ### `CASE WHEN`: `np.where` and `np.select`
 
-The tools of [session 14](./14-numpy-pandas-intro.md) work on columns too:
+The tools of [lecture 13](./13-numpy-pandas-intro.md) work on columns too:
 
 ```python run
 import numpy as np
@@ -309,7 +311,7 @@ print(pd.cut(amounts, bins=[0, 100_000, 1_000_000, float("inf")], right=False,
              labels=["< 100k", "100k - 1m", "1m +"]))
 ```
 
-The result is a **category** column ([session 14](./14-numpy-pandas-intro.md)): the labels keep their order (not
+The result is a **category** column ([lecture 13](./13-numpy-pandas-intro.md)): the labels keep their order (not
 alphabetical), which is right for a report.
 
 ### Codes and descriptions: `map`
@@ -328,7 +330,7 @@ print(loans["group"].value_counts(dropna=False))     # working_capital is not in
 ```
 
 A value that is not a key gives `NaN` - check for it, like the "unknown code" of a
-nomenclature ([session 12](./12-oop-nomenclatures.md)). The lookup can come from a table: a Series with the codes
+nomenclature ([lecture 11](./11-oop-nomenclatures.md)). The lookup can come from a table: a Series with the codes
 as its index:
 
 ```python run
@@ -343,7 +345,7 @@ clients[["client_id", "rating", "grade"]].head()
 
 ### Text and dates in a column
 
-The `.str` methods of [session 7](./07-text-processing.md) and the `.dt` date parts work on a whole column:
+The `.str` methods of [lecture 7](./07-text-and-regex.md) and the `.dt` date parts work on a whole column:
 
 ```python run
 import pandas as pd
@@ -541,7 +543,7 @@ table["share_in_segment"] = (table["outstanding"] / table.groupby("segment")["ou
 table
 ```
 
-(The same table with the stages as columns is a **pivot** - [session 16](./16-pandas-reports-project.md#_1-pivot-tables).)
+(The same table with the stages as columns is a **pivot** - [lecture 15](./15-pandas-reports.md#_1-pivot-tables).)
 
 ### `size` and `count`
 
@@ -580,7 +582,7 @@ print(clients.value_counts(["segment", "region"]).head(6))
 print(clients.groupby("segment")["region"].value_counts(normalize=True).round(3).head(7))
 ```
 
-(`pd.crosstab` - the two-way table with rows and columns - is [session 16](./16-pandas-reports-project.md#pd-crosstab-counts-and-shares).)
+(`pd.crosstab` - the two-way table with rows and columns - is [lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares).)
 
 ### The share inside a group: `transform`
 
@@ -657,7 +659,7 @@ print(left.merge(right, on="client_id", how="outer"))     # FULL OUTER JOIN
 ```
 
 `how="right"` exists too. The rows without a partner get `NaN` - and an int column
-with `NaN` becomes float ([session 14](./14-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64): `5.0`, `3.0`).
+with `NaN` becomes float ([lecture 13](./13-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64): `5.0`, `3.0`).
 
 ### `IN=` of SAS: `indicator=True`
 
@@ -682,7 +684,7 @@ when you need only the ids: `~clients["client_id"].isin(loans["client_id"])`.
 ### The portfolio join and the EL
 
 Loans + clients + the rating scale - the join of homework 4 ([session 4](./04-functions.md), with loops;
-[session 6](./06-dictionaries.md#the-join-loans-with-the-region-of-their-client), with dicts; [session 13](./13-databases.md#a-join-in-sql), in SQL). Now in pandas:
+[session 6](./06-dictionaries.md#the-join-loans-with-the-region-of-their-client), with dicts; [lecture 12](./12-databases.md#a-join-in-sql), in SQL). Now in pandas:
 
 ```python run
 import pandas as pd
@@ -708,7 +710,7 @@ The same number as with loops, dicts and SQL: the tools agree.
 
 `left_on` / `right_on` when the key has another name; `suffixes` when both tables have
 a column with the same name. The rating of each client in August and September from
-`ratings_history.csv` (a self join, as in [session 13](./13-databases.md#the-rating-migration-a-self-join)):
+`ratings_history.csv` (a self join, as in [lecture 12](./12-databases.md#the-rating-migration-a-self-join)):
 
 ```python run
 import pandas as pd
@@ -805,7 +807,7 @@ print(pd.concat([old, new], keys=["old_system", "new_system"]))
 ::: tip Try it
 Join `loans.csv` with `client_register.csv` on `client_id` with `how="left"` and
 `indicator=True`. Do all loans find their client? (Look at the ids in the register -
-[session 7](./07-text-processing.md#client-ids).) How would you fix the key before the join?
+[lecture 7](./07-text-and-regex.md#client-ids).) How would you fix the key before the join?
 :::
 
 ## 6. Missing values
@@ -814,7 +816,7 @@ Join `loans.csv` with `client_register.csv` on `client_id` with `how="left"` and
 
 pandas marks a missing value with `NaN` in number columns, and with `NaN` or `None`
 in text columns (pandas 3: `NaN` in the `str` type). Nullable types (`Int64`,
-[session 14](./14-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64)) use `pd.NA`. Do not compare with them - use `isna()` / `notna()`:
+[lecture 13](./13-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64)) use `pd.NA`. Do not compare with them - use `isna()` / `notna()`:
 
 ```python run
 import pandas as pd
@@ -828,7 +830,7 @@ print(s == np.nan)                         # all False: NaN is not equal to anyt
 
 ### Aggregates skip them
 
-Unlike NumPy ([session 14](./14-numpy-pandas-intro.md#missing-values-in-numpy-nan)), pandas skips `NaN` in `sum`, `mean`, `min`, `max` - like
+Unlike NumPy ([lecture 13](./13-numpy-pandas-intro.md#missing-values-in-numpy-nan)), pandas skips `NaN` in `sum`, `mean`, `min`, `max` - like
 SQL and SAS `PROC MEANS`:
 
 ```python run
@@ -944,15 +946,207 @@ rates with the mean rate of the same product (hint:
 `groupby("Product")["Interest rate %"].transform("mean")`).
 :::
 
-## 7. The final project
+## 7. From a database into a DataFrame
+
+### The result of a query as a DataFrame
+
+In [lecture 12](./12-databases.md) the rows of a query came back as tuples.
+`pd.read_sql(sql, connection)` runs the query and returns a **DataFrame**, with the
+column names of the query:
+
+```python run
+import sqlite3
+import pandas as pd
+
+with sqlite3.connect("data/portfolio.db") as con:
+    df = pd.read_sql("SELECT loan_id, product, outstanding, stage FROM loans", con)
+
+print(type(df), df.shape)          # rows, columns
+print(list(df.columns))
+df.head()
+```
+
+Parameters work the same way as in lecture 12 - a `?` in the SQL and the values in
+`params`:
+
+```python run
+import sqlite3
+import pandas as pd
+
+sql = """SELECT c.segment, l.stage, COUNT(*) AS loans, ROUND(SUM(l.outstanding), 2) AS outstanding
+         FROM loans l JOIN clients c ON c.client_id = l.client_id
+         WHERE l.currency = ?
+         GROUP BY c.segment, l.stage"""
+with sqlite3.connect("data/portfolio.db") as con:
+    df = pd.read_sql(sql, con, params=("EUR",))
+df
+```
+
+`parse_dates` turns the text dates of SQLite into real dates:
+
+```python run
+import sqlite3
+import pandas as pd
+
+with sqlite3.connect("data/portfolio.db") as con:
+    df = pd.read_sql("SELECT loan_id, start_date, maturity_date FROM loans", con,
+                     parse_dates=["start_date", "maturity_date"])
+print(df.dtypes)
+print(df["maturity_date"].max())
+```
+
+::: details Advanced: a DataFrame back to Python rows
+A DataFrame goes back to Python rows when you need them - `to_dict("records")` gives
+a list of dictionaries ([session 6](./06-dictionaries.md#a-row-as-a-dictionary)):
+
+```python run
+import sqlite3
+import pandas as pd
+
+with sqlite3.connect("data/portfolio.db") as con:
+    df = pd.read_sql("SELECT grade, pd_min, pd_max FROM rating_scale WHERE rating <= 3", con)
+print(df.to_dict("records"))
+```
+:::
+
+### SQLAlchemy: one way to connect to every database
+
+**SQLAlchemy** (in `requirements.txt`) is a library on top of the drivers: one
+**engine** object, made from a URL, for any database. pandas works best with it - for
+SQLite a plain connection is fine, for other databases pandas expects an engine:
+
+```python run
+import pandas as pd
+from sqlalchemy import create_engine, text
+
+engine = create_engine("sqlite:///data/portfolio.db")      # the URL: dialect:///file
+
+df = pd.read_sql(text("SELECT segment, COUNT(*) AS clients FROM clients GROUP BY segment"), engine)
+print(df)
+
+with engine.connect() as con:                               # also without pandas
+    result = con.execute(text("SELECT COUNT(*) FROM loans WHERE stage = :stage"), {"stage": 2})
+    print(result.scalar())
+engine.dispose()
+```
+
+A DataFrame from the engine with **named** parameters - `text()` and a dictionary:
+
+```python run
+import pandas as pd
+from sqlalchemy import create_engine, text
+
+engine = create_engine("sqlite:///data/portfolio.db")
+sql = text("""SELECT loan_id, product, outstanding FROM loans
+              WHERE stage = :stage AND outstanding > :min_outstanding ORDER BY outstanding DESC""")
+df = pd.read_sql(sql, engine, params={"stage": 3, "min_outstanding": 100000})
+engine.dispose()
+df
+```
+
+- `create_engine(url)` - the URL names the kind of database and where it is:
+
+| Database | SQLAlchemy URL |
+|---|---|
+| Oracle | `oracle+oracledb://user:pw@host:1521/?service_name=ORCL` |
+| MS SQL Server | `mssql+pyodbc://@server/db?driver=ODBC+Driver+18+for+SQL+Server&trusted_connection=yes` |
+| PostgreSQL | `postgresql+psycopg://user:pw@host:5432/db` |
+| Teradata | `teradatasql://user:pw@host` (with the package `teradatasqlalchemy`) |
+| SQLite | `sqlite:///path/to/file.db` |
+
+  Never write a real password into the URL in your code
+  ([lecture 12](./12-databases.md#never-a-password-in-the-code)).
+- `text(...)` marks a string as SQL; parameters are `:name`.
+- `engine.dispose()` closes the connections of the engine when you are done.
+
+::: details Advanced: look into a database; read a whole table
+SQLAlchemy can also **look into** a database - the tables and their columns, for any
+database kind:
+
+```python run
+from sqlalchemy import create_engine, inspect
+
+engine = create_engine("sqlite:///data/portfolio.db")
+inspector = inspect(engine)
+print(inspector.get_table_names())
+print([c["name"] for c in inspector.get_columns("ratings_history")])
+print(inspector.get_pk_constraint("ratings_history")["constrained_columns"])
+engine.dispose()
+```
+
+With an engine, pandas reads a whole table by its name:
+
+```python run
+import pandas as pd
+from sqlalchemy import create_engine
+
+engine = create_engine("sqlite:///data/portfolio.db")
+scale = pd.read_sql_table("rating_scale", engine)
+print(scale.shape)
+print(scale[["grade", "pd_max"]].tail(3))
+engine.dispose()
+```
+:::
+
+### Write a DataFrame to a table: `to_sql`
+
+```python run
+import sqlite3
+import pandas as pd
+
+work = sqlite3.connect(":memory:")
+regions = pd.DataFrame({"code": ["SOF", "VAR"], "name_en": ["Sofia", "Varna"]})
+regions.to_sql("regions", work, index=False, if_exists="replace")
+print(work.execute("SELECT * FROM regions").fetchall())
+work.close()
+```
+
+`if_exists="replace"` drops and recreates the table; `"append"` adds rows; `"fail"`
+(the default) stops if the table exists.
+
+::: details Advanced: the trap of `"append"`
+The trap of `"append"`: run the load twice - the second run of the same month - and
+every row is there twice. Delete the month first (one transaction), then append:
+
+```python run
+import sqlite3
+import pandas as pd
+
+work = sqlite3.connect(":memory:")
+month = pd.DataFrame({"month_end": ["2026-09-30"] * 2, "loan_id": ["L1", "L2"], "outstanding": [100.0, 50.0]})
+
+for run in (1, 2):                                       # the script runs twice
+    month.to_sql("balances", work, index=False, if_exists="append")
+print(work.execute("SELECT COUNT(*) FROM balances").fetchone())       # 4 rows - doubled
+
+with work:
+    work.execute("DELETE FROM balances WHERE month_end = ?", ("2026-09-30",))
+month.to_sql("balances", work, index=False, if_exists="append")
+print(work.execute("SELECT COUNT(*) FROM balances").fetchone())       # 2 rows
+work.close()
+```
+:::
+
+::: info pandas 2 and pandas 3
+`pd.read_sql` with a `sqlite3` connection works in both. With any **other** DB-API
+connection (oracledb, pyodbc), pandas shows a `UserWarning` and asks for an SQLAlchemy
+engine - use one.
+:::
+
+::: tip Try it
+Read `ratings_history` for `2026-09-30` into a DataFrame with a parameter, and print
+its `shape`. Then count the clients per rating with `df["rating"].value_counts()`.
+:::
+
+## 8. The final project
 
 The [final project](../project) is a monthly portfolio report from end to end: load
-(files and the database), validate (the nomenclatures of [session 12](./12-oop-nomenclatures.md)), clean,
-aggregate, report (Excel and a chart - [session 16](./16-pandas-reports-project.md#_6-an-excel-report-with-several-sheets)), and keep it in Git. Read the brief
-today; [session 16](./16-pandas-reports-project.md) adds the last tools (pivot tables, dates, Excel output) and the time
+(files and the database), validate (the nomenclatures of [lecture 11](./11-oop-nomenclatures.md)), clean,
+aggregate, report (Excel and a chart - [lecture 15](./15-pandas-reports.md#_6-an-excel-report-with-several-sheets)), and keep it in Git. Read the brief
+today; [lecture 15](./15-pandas-reports.md) adds the last tools (pivot tables, dates, Excel output) and the time
 to start.
 
-## 8. Summary
+## 9. Summary
 | SQL / SAS | pandas |
 |-----------|--------|
 | `SELECT a, b` / `KEEP=` | `df[["a", "b"]]`; `df.drop(columns=[...])` |
@@ -969,6 +1163,7 @@ to start.
 | `JOIN`, `MERGE BY` + `IN=` | `merge(on, how)`, `indicator=True`; `validate="many_to_one"` |
 | `SET a b`, `UNION ALL` | `pd.concat([a, b])` |
 | `NULL`, `.`, `COALESCE`, `NMISS` | `NaN`; `isna`; aggregates skip it; `fillna`, `dropna(subset=...)` |
+| a query from Python | `pd.read_sql(sql, con, params=..., parse_dates=...)`; SQLAlchemy `create_engine(url)`; `df.to_sql(...)` |
 
 ## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -976,7 +1171,7 @@ in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) 
 terminal, in the repository root (with the virtual environment active):
 
 ```bash
-python 15-pandas-select-aggregate-join/practice/task1-select.py
+python 14-pandas-select-aggregate-join/practice/task1-select.py
 ```
 
 | Task | File | What you do |
@@ -987,14 +1182,15 @@ python 15-pandas-select-aggregate-join/practice/task1-select.py
 | 4 | `task4-groupby.py` | Totals by group, named aggregation, `HAVING`, shares with `transform` |
 | 5 | `task5-merge.py` | Joins with clients and the rating scale, the anti-join, the EL |
 | 6 | `task6-missing.py` (Optional) | Missing values in the export: count, fill, drop, repair |
+| 7 | `task7-read-sql.py` | `pd.read_sql` with parameters; shape, columns, a total |
 
 ## Homework
 
-1. `15-pandas-select-aggregate-join/homework.py` (in the homework repository): **the
+1. `14-pandas-select-aggregate-join/homework.py` (in the homework repository): **the
    portfolio report in pandas** - one function per table: exposure and EL by segment
    and stage, the top 10 clients with their region and grade, the concentration of
    the top 10, the clients without loans, the loans of defaulted clients. The checks
-   compare with the numbers of sessions 4, 6 and 13. Every check must print `OK`.
+   compare with the numbers of lectures 4, 6 and 12. Every check must print `OK`.
 2. The practice tasks you did not finish in class.
 3. Read the [final project](../project) brief and choose your report date and the
    tables you want in your report.
@@ -1024,7 +1220,7 @@ largest[["client_id", "loan_id", "outstanding"]].head()
 `groupby("client_id").head(1)` does the same, and `.head(2)` keeps the first two of each
 group - not possible with SAS `FIRST.` alone. `keep="last"` is SAS `LAST.`.
 
-**`NODUPKEY`** - `drop_duplicates(subset=[...])` ([session 14](./14-numpy-pandas-intro.md#distinct-values-missing-values-duplicates)); `duplicated(keep=False)`
+**`NODUPKEY`** - `drop_duplicates(subset=[...])` ([lecture 13](./13-numpy-pandas-intro.md#distinct-values-missing-values-duplicates)); `duplicated(keep=False)`
 marks **all** copies, to look at them:
 
 ```python run
@@ -1156,6 +1352,6 @@ is needed.
   and [with SQL](https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_sql.html)
   (the official tables)
 
-**Next session:** pandas for reports - pivot tables (SAS `PROC TABULATE` /
+**Next lecture:** pandas for reports - pivot tables (SAS `PROC TABULATE` /
 `TRANSPOSE`), `melt`, dates and month ends, a rating migration matrix, an Excel file
 with several sheets, charts - and the start of the final project.

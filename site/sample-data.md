@@ -12,21 +12,21 @@ nomenclature (the rating scale).
 | <DataFile file="loans.csv" /> | 400 | one row per loan; `client_id` points to `clients.csv` |
 | <DataFile file="rating_scale.csv" /> | 10 | the rating scale: one row per rating grade, with its PD band |
 
-From session 7 on, more files of the same made-up portfolio - with the problems of
+From lecture 7 on, more files of the same made-up portfolio - with the problems of
 real data on purpose: messy text, several formats, bad rows, history over time.
 
-| File | Rows | What it is | Sessions |
+| File | Rows | What it is | Lectures |
 |---|---|---|---|
-| <DataFile file="client_register.csv" /> | 150 | the clients with their text fields as people typed them | 7, 8 |
-| <DataFile file="loan_comments.csv" /> | 231 | free-text comments of credit officers about loans | 8 |
-| <DataFile file="payments_2026-09.csv" /> | 280 | the payments of September 2026, with some bad rows | 9 |
-| <DataFile file="report_config.json" /> | - | the settings of a monthly report | 9 |
-| <DataFile file="fx_rates.xlsx" /> | 3 sheets | daily exchange rates, one sheet per month | 9, 14, 16 |
-| <DataFile file="regions_bg.csv" /> | 7 | the regions in Bulgarian and English - saved in **cp1251** | 7, 9 |
-| <DataFile file="ratings_history.csv" /> | 1800 | the rating of each client at 12 month ends | 12, 13, 16 |
-| <DataFile file="balances_monthly.csv" /> | 3992 | the outstanding amount of each loan at 12 month ends | 16 |
-| <DataFile file="loans_export.csv" /> | 406 | `loans.csv` as a local export: `;`, decimal comma, `dd.mm.yyyy`, missing values, duplicates | 14, 15 |
-| <DataFile file="portfolio.db" /> | 4 tables | an SQLite database: `clients`, `loans`, `rating_scale`, `ratings_history` | 13, 16 |
+| <DataFile file="client_register.csv" /> | 150 | the clients with their text fields as people typed them | 7 |
+| <DataFile file="loan_comments.csv" /> | 231 | free-text comments of credit officers about loans | 7 |
+| <DataFile file="payments_2026-09.csv" /> | 280 | the payments of September 2026, with some bad rows | 8 |
+| <DataFile file="report_config.json" /> | - | the settings of a monthly report | 8 |
+| <DataFile file="fx_rates.xlsx" /> | 3 sheets | daily exchange rates, one sheet per month | 8, 13, 15 |
+| <DataFile file="regions_bg.csv" /> | 7 | the regions in Bulgarian and English - saved in **cp1251** | 7, 8 |
+| <DataFile file="ratings_history.csv" /> | 1800 | the rating of each client at 12 month ends | 11, 12, 15 |
+| <DataFile file="balances_monthly.csv" /> | 3992 | the outstanding amount of each loan at 12 month ends | 15 |
+| <DataFile file="loans_export.csv" /> | 406 | `loans.csv` as a local export: `;`, decimal comma, `dd.mm.yyyy`, missing values, duplicates | 13, 14 |
+| <DataFile file="portfolio.db" /> | 4 tables | an SQLite database: `clients`, `loans`, `rating_scale`, `ratings_history` | 12, 14, 15 |
 
 The same files are in the `data/` folder of the Homework repository. On these
 pages they are in `data/` of every runnable example.
@@ -100,7 +100,7 @@ with open("data/rating_scale.csv", encoding="utf-8") as f:
         print(row["rating"], row["grade"], row["description"])
 ```
 
-## The files of the later sessions
+## The files of the later lectures
 
 ### client_register.csv
 
@@ -168,5 +168,5 @@ con.close()
 
 ::: tip Without pandas
 The first lectures read the files with the standard library (`open`, `csv`), and
-pandas comes in session 14. Both ways read the same files.
+pandas comes in lecture 13. Both ways read the same files.
 :::

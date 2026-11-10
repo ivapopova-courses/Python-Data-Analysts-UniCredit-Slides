@@ -1,11 +1,11 @@
 ---
-title: "12. OOP in practice: nomenclatures"
+title: "11. OOP in practice: nomenclatures"
 ---
 
-# 12. OOP in practice: nomenclatures
+# 11. OOP in practice: nomenclatures
 
 <div class="lecture-meta">
-  <span>Session 12</span><span>practice: <code>12-oop-nomenclatures/</code> in the homework repository</span>
+  <span>Session 11</span><span>practice: <code>11-oop-nomenclatures/</code> in the homework repository</span>
   <span><a href="../sample-data">the sample data</a></span>
 </div>
 
@@ -147,7 +147,7 @@ would their metadata be (who owns them, how often do they change)?
 
 ### The data and the metadata in one object
 
-A dataclass ([session 11](./11-oop-classes.md#_7-dataclasses)) with the codes and the facts about them:
+A dataclass ([lecture 10](./10-oop-classes.md#_7-dataclasses)) with the codes and the facts about them:
 
 ```python run
 from dataclasses import dataclass
@@ -199,7 +199,7 @@ for code, label in stages.codes.items():
 ```
 
 Two nomenclatures are **equal** when all their fields are equal - the dataclass
-`__eq__` of [session 11](./11-oop-classes.md). The same codes with another version are **not** the same
+`__eq__` of [lecture 10](./10-oop-classes.md). The same codes with another version are **not** the same
 nomenclature:
 
 ```python run
@@ -219,7 +219,7 @@ print(a == b, a == c, a.codes == c.codes)
 ```
 
 A trap of dataclasses: an empty dictionary as a default is refused - it would be one
-dictionary for all objects ([session 11](./11-oop-classes.md#_5-class-attributes)):
+dictionary for all objects ([lecture 10](./10-oop-classes.md#_5-class-attributes)):
 
 ```python run
 from dataclasses import dataclass
@@ -233,7 +233,7 @@ class Nomenclature:
 
 ### Behave like a container: `len`, `in`, `for`
 
-Three special methods ([session 11](./11-oop-classes.md#special-methods-objects-that-work-with-python-s-operators), Self-study) make the object work with `len()`,
+Three special methods ([lecture 10](./10-oop-classes.md#special-methods-objects-that-work-with-python-s-operators), Self-study) make the object work with `len()`,
 `in` and `for` - like the dictionary inside it:
 
 ```python run
@@ -332,7 +332,7 @@ the owner `"Treasury"` and the version `"2026.2"`. Print it, and the label of `U
 ### Rules when the nomenclature is created
 
 A nomenclature with a duplicate code, an empty label or a malformed code must not
-exist at all. `__post_init__` checks it, and raises a clear error ([session 9](./09-errors-and-files.md#raise-stop-with-a-clear-message)):
+exist at all. `__post_init__` checks it, and raises a clear error ([lecture 8](./08-errors-and-files.md#raise-stop-with-a-clear-message)):
 
 ```python run
 import re
@@ -342,7 +342,7 @@ from dataclasses import dataclass
 class Nomenclature:
     name: str
     codes: dict
-    code_pattern: str = r".+"                  # a regex every code must fit (session 8)
+    code_pattern: str = r".+"                  # a regex every code must fit (lecture 7)
 
     def __post_init__(self):
         if not self.codes:
@@ -444,8 +444,8 @@ The check found a gap in the **nomenclature**, not in the data: `project_finance
 real product that the list does not know. Without the check, 21 loans - the largest of
 the portfolio - would get no product name in the report.
 
-The register of [session 7](./07-text-processing.md#cities-a-mapping-of-variants) against a nomenclature of the region names - first the raw
-city column, then after the cleaning function of [session 7](./07-text-processing.md#cities-a-mapping-of-variants):
+The register of [lecture 7](./07-text-and-regex.md#cities-a-mapping-of-variants) against a nomenclature of the region names - first the raw
+city column, then after the cleaning function of [lecture 7](./07-text-and-regex.md#cities-a-mapping-of-variants):
 
 ```python run
 import csv
@@ -686,7 +686,7 @@ print(len(rows), "rows; unmapped:", dict(unmapped))
 ### Strict or lenient?
 
 For some reports, an unknown code is acceptable (show it as "unknown"); for others it
-must **stop** the process ([session 9](./09-errors-and-files.md#when-to-stop-when-to-go-on): when to stop, when to go on). One parameter
+must **stop** the process ([lecture 8](./08-errors-and-files.md#when-to-stop-when-to-go-on): when to stop, when to go on). One parameter
 decides:
 
 ```python run
@@ -762,7 +762,7 @@ This is "apply consistently across datasets": one definition, many inputs, and t
 same report of what did not fit.
 
 ::: info The same in pandas
-A nomenclature's dictionary works directly with `Series.map` ([session 15](./15-pandas-select-aggregate-join.md#codes-and-descriptions-map)); the unknown
+A nomenclature's dictionary works directly with `Series.map` ([lecture 14](./14-pandas-select-aggregate-join.md#codes-and-descriptions-map)); the unknown
 values become `NaN` and are easy to count:
 
 ```python run
@@ -930,7 +930,7 @@ Nomenclature.lookup("1")
 
 A **static method** has neither `self` nor `cls` - it is a plain function that lives in
 the class because it belongs to its job. For example, the cleaning of a code before the
-lookup ([session 7](./07-text-processing.md#_7-cleaning-identifiers-and-names)):
+lookup ([lecture 7](./07-text-and-regex.md#_5-cleaning-identifiers-and-names)):
 
 ```python run
 from dataclasses import dataclass
@@ -998,7 +998,7 @@ print(type(currencies).__name__, isinstance(currencies, Nomenclature))
 
 ### The class so far, as a module
 
-All the pieces of sections 2 - 5 together, in a module `nomenclature.py` ([session 10](./10-modules-and-git.md#_2-your-own-module))
+All the pieces of sections 2 - 5 together, in a module `nomenclature.py` ([lecture 9](./09-modules-and-git.md#_2-your-own-module))
 that the next sections import. (On this page: run this example first.)
 
 ```python run
@@ -1821,7 +1821,7 @@ in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) 
 terminal, in the repository root:
 
 ```bash
-python 12-oop-nomenclatures/practice/task1-nomenclature-basics.py
+python 11-oop-nomenclatures/practice/task1-nomenclature-basics.py
 ```
 
 | Task | File | What you do |
@@ -1835,7 +1835,7 @@ python 12-oop-nomenclatures/practice/task1-nomenclature-basics.py
 
 ## Homework
 
-1. `12-oop-nomenclatures/homework.py` and `12-oop-nomenclatures/homework_nomenclature.py`
+1. `11-oop-nomenclatures/homework.py` and `11-oop-nomenclatures/homework_nomenclature.py`
    (in the homework repository): **the nomenclature module of the project** - the
    classes `Nomenclature`, `BandedNomenclature` and `Registry` in a module, three
    nomenclatures built from the files (products with their groups, the rating scale
@@ -1982,7 +1982,7 @@ print(sum(1 for r in rows if grades.lookup(int(r["rating"]), date.fromisoformat(
 ```
 (The rows with rating 5 from April 2026 on.)
 2. Yes for a report: a date without a valid version means the report would use an
-   unknown mapping, which is worse than stopping ([session 9](./09-errors-and-files.md#when-to-stop-when-to-go-on): wrong settings stop the
+   unknown mapping, which is worse than stopping ([lecture 8](./08-errors-and-files.md#when-to-stop-when-to-go-on): wrong settings stop the
    report).
 :::
 
@@ -1998,4 +1998,4 @@ print(sum(1 for r in rows if grades.lookup(int(r["rating"]), date.fromisoformat(
   [Python's instance, class, and static methods demystified](https://realpython.com/instance-class-and-static-methods-demystified/)
 
 **Next session:** databases - SQL from Python: connect, query with parameters,
-transactions, and the result of a query straight into a DataFrame.
+transactions. In the same session we start NumPy and pandas.

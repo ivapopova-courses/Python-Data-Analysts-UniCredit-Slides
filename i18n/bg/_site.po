@@ -115,50 +115,75 @@ msgstr "6. Dictionaries"
 
 #. side menu
 #: site/.vitepress/config.mjs
-msgid "7. Text processing"
-msgstr "7. Обработка на текст"
+msgid "7. Text and regular expressions"
+msgstr "7. Текст и регулярни изрази"
 
 #. side menu
 #: site/.vitepress/config.mjs
-msgid "8. Regular expressions"
-msgstr "8. Регулярни изрази"
+msgid "8. Errors and files"
+msgstr "8. Грешки и файлове"
 
 #. side menu
 #: site/.vitepress/config.mjs
-msgid "9. Errors and files"
-msgstr "9. Грешки и файлове"
+msgid "9. Modules and Git"
+msgstr "9. Модули и Git"
 
 #. side menu
 #: site/.vitepress/config.mjs
-msgid "10. Modules and Git"
-msgstr "10. Модули и Git"
+msgid "10. OOP: classes and objects"
+msgstr "10. ООП: класове и обекти"
 
 #. side menu
 #: site/.vitepress/config.mjs
-msgid "11. OOP: classes and objects"
-msgstr "11. ООП: класове и обекти"
+msgid "11. OOP: nomenclatures"
+msgstr "11. ООП: номенклатури"
 
 #. side menu
 #: site/.vitepress/config.mjs
-msgid "12. OOP: nomenclatures"
-msgstr "12. ООП: номенклатури"
+msgid "12. Databases"
+msgstr "12. Бази данни"
 
 #. side menu
 #: site/.vitepress/config.mjs
-msgid "13. Databases"
-msgstr "13. Бази данни"
+msgid "13. NumPy and pandas"
+msgstr "13. NumPy и pandas"
 
 #. side menu
 #: site/.vitepress/config.mjs
-msgid "14. NumPy and pandas"
-msgstr "14. NumPy и pandas"
+msgid "14. pandas: select, group, join"
+msgstr "14. pandas: селекция, групиране, join"
 
 #. side menu
 #: site/.vitepress/config.mjs
-msgid "15. pandas: select, group, join"
-msgstr "15. pandas: селекция, групиране, join"
+msgid "15. pandas: reports"
+msgstr "15. pandas: отчети"
 
-#. side menu
-#: site/.vitepress/config.mjs
-msgid "16. pandas: reports, project"
-msgstr "16. pandas: отчети, проект"
+#~ msgid "7. Text processing"
+#~ msgstr "7. Обработка на текст"
+
+#~ msgid "8. Regular expressions"
+#~ msgstr "8. Регулярни изрази"
+
+#~ msgid "9. Errors and files"
+#~ msgstr "9. Грешки и файлове"
+
+#~ msgid "10. Modules and Git"
+#~ msgstr "10. Модули и Git"
+
+#~ msgid "11. OOP: classes and objects"
+#~ msgstr "11. ООП: класове и обекти"
+
+#~ msgid "12. OOP: nomenclatures"
+#~ msgstr "12. ООП: номенклатури"
+
+#~ msgid "13. Databases"
+#~ msgstr "13. Бази данни"
+
+#~ msgid "14. NumPy and pandas"
+#~ msgstr "14. NumPy и pandas"
+
+#~ msgid "15. pandas: select, group, join"
+#~ msgstr "15. pandas: селекция, групиране, join"
+
+#~ msgid "16. pandas: reports, project"
+#~ msgstr "16. pandas: отчети, проект"

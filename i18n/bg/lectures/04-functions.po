@@ -1065,8 +1065,8 @@ msgstr "Сравнете го с първия пример от [занятие 
 
 #. paragraph
 #: site/lectures/04-functions.md:1273
-msgid "In a file that is run as a script, the main code is often put under `if __name__ == \"__main__\":` - so that the functions can be imported by another file without running the report. Modules and `import` of your own files are the topic of [session 10](./10-modules-and-git.md#_2-your-own-module)."
-msgstr "Във файл, който се пуска като скрипт, основният код често се слага под `if __name__ == \"__main__\":` - така функциите могат да се import-ват от друг файл, без да се пуска отчетът. Модулите и `import` на собствени файлове са темата на [занятие 10](./10-modules-and-git.md#_2-your-own-module)."
+msgid "In a file that is run as a script, the main code is often put under `if __name__ == \"__main__\":` - so that the functions can be imported by another file without running the report. Modules and `import` of your own files are the topic of [lecture 9](./09-modules-and-git.md#_2-your-own-module)."
+msgstr "Във файл, който се пуска като скрипт, основният код често се слага под `if __name__ == \"__main__\":` - така функциите могат да се import-ват от друг файл, без да се пуска отчетът. Модулите и `import` на собствени файлове са темата на [лекция 9](./09-modules-and-git.md#_2-your-own-module)."
 
 #. heading 2
 #: site/lectures/04-functions.md:1278
@@ -1350,8 +1350,8 @@ msgstr "**Част 1:** `loans.csv` има 11 колони. Вземете са�
 
 #. paragraph
 #: site/lectures/04-functions.md:1379
-msgid "**Parts 1 - 3: reading a file in a function.** How `open` and `with` work comes in [session 9](./09-errors-and-files.md#open-read-close-with). Until then, copy this code. It is the loop of [session 3](./03-lists-tuples-sets.md#notes-on-the-tasks), inside the function: the file is `path`, the parameter, and the function returns the list after the `with` block."
-msgstr "**Части 1 - 3: четене на файл във функция.** Как работят `open` и `with` ще видим в [занятие 9](./09-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Това е цикълът от [занятие 3](./03-lists-tuples-sets.md#notes-on-the-tasks), вътре във функцията: файлът е `path`, параметърът, а функцията връща list-а след блока `with`."
+msgid "**Parts 1 - 3: reading a file in a function.** How `open` and `with` work comes in [lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this code. It is the loop of [session 3](./03-lists-tuples-sets.md#notes-on-the-tasks), inside the function: the file is `path`, the parameter, and the function returns the list after the `with` block."
+msgstr "**Части 1 - 3: четене на файл във функция.** Как работят `open` и `with` ще видим в [лекция 8](./08-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Това е цикълът от [занятие 3](./03-lists-tuples-sets.md#notes-on-the-tasks), вътре във функцията: файлът е `path`, параметърът, а функцията връща list-а след блока `with`."
 
 #. paragraph
 #: site/lectures/04-functions.md:1398
@@ -1390,8 +1390,8 @@ msgstr "Декоратори"
 
 #. paragraph
 #: site/lectures/04-functions.md:1421
-msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in [session 11](./11-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` in web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs` and a function inside a function (the Advanced boxes of sections 4 and 6)."
-msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в [занятие 11](./11-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` в уеб frameworks). Тази част обяснява `@`, което ще виждате. Тя използва `*args, **kwargs` и функция във функция (каретата \"За напреднали\" в раздели 4 и 6)."
+msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in [lecture 10](./10-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` in web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs` and a function inside a function (the Advanced boxes of sections 4 and 6)."
+msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в [лекция 10](./10-oop-classes.md#property-a-computed-attribute), `@pytest.fixture`, `@app.get` в уеб frameworks). Тази част обяснява `@`, което ще виждате. Тя използва `*args, **kwargs` и функция във функция (каретата \"За напреднали\" в раздели 4 и 6)."
 
 #. heading 4
 #: site/lectures/04-functions.md:1426
@@ -1500,14 +1500,14 @@ msgstr "**Следващото занятие:** lists за напреднали
 #~ msgid "Compare it with the first example of session 2: the same result, but now each part has a name, can be tested alone, and can be reused - `read_loans` in the next report, `dpd_bucket` in a check of the data."
 #~ msgstr "Сравнете го с първия пример от занятие 2: същият резултат, но сега всяка част има име, може да се тества сама и може да се преизползва - `read_loans` в следващия отчет, `dpd_bucket` в проверка на данните."
 
-#~ msgid "In a file that is run as a script, the main code is often put under `if __name__ == \"__main__\":` - so that the functions can be imported by another file without running the report. Modules and `import` of your own files are the topic of session 10."
-#~ msgstr "Във файл, който се пуска като скрипт, основният код често се слага под `if __name__ == \"__main__\":` - така функциите могат да се import-ват от друг файл, без да се пуска отчетът. Модулите и `import` на собствени файлове са темата на занятие 10."
+#~ msgid "In a file that is run as a script, the main code is often put under `if __name__ == \"__main__\":` - so that the functions can be imported by another file without running the report. Modules and `import` of your own files are the topic of lecture 9."
+#~ msgstr "Във файл, който се пуска като скрипт, основният код често се слага под `if __name__ == \"__main__\":` - така функциите могат да се import-ват от друг файл, без да се пуска отчетът. Модулите и `import` на собствени файлове са темата на лекция 9."
 
 #~ msgid "Optional: a **loan calculator** made of functions - the same program as the optional homework of session 2, but organised like this: `get_user_data()` reads and checks the input (amount > 0, rate 0 - 50, years 1 - 30; ask again while a value is wrong) and returns a tuple; `calc_payment(amount, rate, years)` returns the payment; `print_schedule(amount, rate, years)` prints the schedule. Write a separate function for each check: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, each returning `True` or `False`."
 #~ msgstr "По желание: **кредитен калкулатор**, съставен от функции - същата програма като домашното по желание от занятие 2, но организирана така: `get_user_data()` чете и проверява входа (сума > 0, лихва 0 - 50, години 1 - 30; пита отново, докато стойността е грешна) и връща tuple; `calc_payment(amount, rate, years)` връща вноската; `print_schedule(amount, rate, years)` отпечатва плана. Напишете отделна функция за всяка проверка: `is_valid_amount()`, `is_valid_rate()`, `is_valid_years()`, всяка връща `True` или `False`."
 
-#~ msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in session 11, `@pytest.fixture`, `@app.get` in web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs` and a function inside a function (the Advanced boxes of sections 4 and 6)."
-#~ msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в занятие 11, `@pytest.fixture`, `@app.get` в уеб frameworks). Тази част обяснява `@`, което ще виждате. Тя използва `*args, **kwargs` и функция във функция (каретата \"За напреднали\" в раздели 4 и 6)."
+#~ msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in lecture 10, `@pytest.fixture`, `@app.get` in web frameworks). This part explains the `@` you will see. It uses `*args, **kwargs` and a function inside a function (the Advanced boxes of sections 4 and 6)."
+#~ msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в лекция 10, `@pytest.fixture`, `@app.get` в уеб frameworks). Тази част обяснява `@`, което ще виждате. Тя използва `*args, **kwargs` и функция във функция (каретата \"За напреднали\" в раздели 4 и 6)."
 
 #~ msgid "Use it rarely. A function that changes global variables is hard to understand and to test: you cannot see from the call what it changes. Prefer: **values in through the parameters, results out through `return`**."
 #~ msgstr "Използвайте го рядко. Функция, която променя глобални променливи, е трудна за разбиране и за тестване: от извикването не се вижда какво променя. Предпочитайте: **стойностите влизат през параметрите, резултатите излизат през `return`**."
@@ -1593,8 +1593,8 @@ msgstr "**Следващото занятие:** lists за напреднали
 #~ msgid "Advanced"
 #~ msgstr "За напреднали"
 
-#~ msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in session 11, `@pytest.fixture`, `@app.get` in web frameworks). This section explains the `@` you will see."
-#~ msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в занятие 11, `@pytest.fixture`, `@app.get` в уеб frameworks). Този раздел обяснява `@`, което ще виждате."
+#~ msgid "Decorators are not needed for the tasks of this course, but you will meet them in libraries (`@property` and `@dataclass` in lecture 10, `@pytest.fixture`, `@app.get` in web frameworks). This section explains the `@` you will see."
+#~ msgstr "Декораторите не са нужни за задачите в този курс, но ще ги срещнете в библиотеки (`@property` и `@dataclass` в лекция 10, `@pytest.fixture`, `@app.get` в уеб frameworks). Този раздел обяснява `@`, което ще виждате."
 
 #~ msgid "12. From macros to functions: a small library"
 #~ msgstr "12. От macros към функции: малка библиотека"

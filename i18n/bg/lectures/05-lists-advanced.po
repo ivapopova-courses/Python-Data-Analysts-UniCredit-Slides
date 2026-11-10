@@ -250,8 +250,8 @@ msgstr "Същото в pandas"
 
 #. paragraph
 #: site/lectures/05-lists-advanced.md:243
-msgid "In pandas ([session 15](./15-pandas-select-aggregate-join.md#_3-sorting-and-the-top-n)) a table is sorted by the name of a column:"
-msgstr "В pandas ([занятие 15](./15-pandas-select-aggregate-join.md#_3-sorting-and-the-top-n)) таблицата се сортира по името на колона:"
+msgid "In pandas ([lecture 14](./14-pandas-select-aggregate-join.md#_3-sorting-and-the-top-n)) a table is sorted by the name of a column:"
+msgstr "В pandas ([лекция 14](./14-pandas-select-aggregate-join.md#_3-sorting-and-the-top-n)) таблицата се сортира по името на колона:"
 
 #. box title
 #: site/lectures/05-lists-advanced.md:255
@@ -455,13 +455,13 @@ msgstr "И двете дават стойностите си една по ед�
 
 #. paragraph
 #: site/lectures/05-lists-advanced.md:495
-msgid "In pandas, `map` comes back: `series.map(function)` or `series.map(dictionary)` (sessions 6 and 15)."
-msgstr "В pandas `map` се появява отново: `series.map(function)` или `series.map(dictionary)` (занятия 6 и 15)."
+msgid "In pandas, `map` comes back: `series.map(function)` or `series.map(dictionary)` (lectures 6 and 14)."
+msgstr "В pandas `map` се появява отново: `series.map(function)` или `series.map(dictionary)` (лекции 6 и 14)."
 
 #. paragraph
 #: site/lectures/05-lists-advanced.md:500
-msgid "In pandas ([session 14](./14-numpy-pandas-intro.md#columns)) you do not loop at all - an operation on a column works on all its values:"
-msgstr "В pandas ([занятие 14](./14-numpy-pandas-intro.md#columns)) изобщо не пишете цикъл - операция върху колона работи върху всичките ѝ стойности:"
+msgid "In pandas ([lecture 13](./13-numpy-pandas-intro.md#columns)) you do not loop at all - an operation on a column works on all its values:"
+msgstr "В pandas ([лекция 13](./13-numpy-pandas-intro.md#columns)) изобщо не пишете цикъл - операция върху колона работи върху всичките ѝ стойности:"
 
 #. paragraph
 #: site/lectures/05-lists-advanced.md:511

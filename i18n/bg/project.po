@@ -30,8 +30,8 @@ msgstr "**Зареждане** на данните от файлове (CSV, Exc
 
 #. paragraph
 #: site/project.md:9
-msgid "**Validate** it with nomenclatures written as classes (session 12): codes that do not exist, values out of range, missing values."
-msgstr "**Валидиране** с номенклатури, написани като класове (занятие 12): кодове, които не съществуват, стойности извън диапазона, липсващи стойности."
+msgid "**Validate** it with nomenclatures written as classes (lecture 11): codes that do not exist, values out of range, missing values."
+msgstr "**Валидиране** с номенклатури, написани като класове (лекция 11): кодове, които не съществуват, стойности извън диапазона, липсващи стойности."
 
 #. paragraph
 #: site/project.md:11
@@ -55,8 +55,8 @@ msgstr "**Кодът се пази в Git**, като скрипт, който �
 
 #. paragraph
 #: site/project.md:16
-msgid "Each lecture adds a part that the project reuses: functions (4), dictionaries as lookup tables (6), text cleaning and regular expressions (7, 8), reading files and handling bad records (9), modules and Git (10), classes (11, 12), databases (13) and pandas (14 - 16). The homework of session 16 is the first part of the project."
-msgstr "Всяка лекция добавя част, която проектът използва: функции (4), dictionaries като таблици за търсене (6), почистване на текст и регулярни изрази (7, 8), четене на файлове и обработка на лоши записи (9), модули и Git (10), класове (11, 12), бази данни (13) и pandas (14 - 16). Домашното от занятие 16 е първата част от проекта."
+msgid "Each lecture adds a part that the project reuses: functions (4), dictionaries as lookup tables (6), text cleaning and regular expressions (7), reading files and handling bad records (8), modules and Git (9), classes (10, 11), databases (12) and pandas (13 - 15). The homework of lecture 15 is the first part of the project."
+msgstr "Всяка лекция добавя част, която проектът използва: функции (4), dictionaries като таблици за търсене (6), почистване на текст и регулярни изрази (7), четене на файлове и обработка на лоши записи (8), модули и Git (9), класове (10, 11), бази данни (12) и pandas (13 - 15). Домашното от лекция 15 е първата част от проекта."
 
 #. heading 2
 #: site/project.md:22
@@ -100,8 +100,8 @@ msgstr "`portfolio.db` (SQLite)"
 
 #. table cell
 #: site/project.md:40
-msgid "the tables `clients`, `loans` (the client of each loan, product, currency, dates), `rating_scale`, `ratings_history` - with SQL and parameters (session 13)"
-msgstr "таблиците `clients`, `loans` (клиентът на всеки кредит, продукт, валута, дати), `rating_scale`, `ratings_history` - със SQL и параметри (занятие 13)"
+msgid "the tables `clients`, `loans` (the client of each loan, product, currency, dates), `rating_scale`, `ratings_history` - with SQL and parameters (lecture 12)"
+msgstr "таблиците `clients`, `loans` (клиентът на всеки кредит, продукт, валута, дати), `rating_scale`, `ratings_history` - със SQL и параметри (лекция 12)"
 
 #. table cell
 #: site/project.md:41
@@ -110,18 +110,18 @@ msgstr "непогасената сума и дните просрочие на 
 
 #. table cell
 #: site/project.md:42
-msgid "the names, EIKs, IBANs and cities of the clients (messy text - sessions 7, 8)"
-msgstr "имената, ЕИК, IBAN и градовете на клиентите (разхвърлян текст - занятия 7, 8)"
+msgid "the names, EIKs, IBANs and cities of the clients (messy text - lecture 7)"
+msgstr "имената, ЕИК, IBAN и градовете на клиентите (разхвърлян текст - лекция 7)"
 
 #. table cell
 #: site/project.md:43
-msgid "the EUR exchange rates of each working day, one sheet per month (sessions 9, 14)"
-msgstr "курсовете на еврото за всеки работен ден, по един лист на месец (занятия 9, 14)"
+msgid "the EUR exchange rates of each working day, one sheet per month (lectures 8, 13)"
+msgstr "курсовете на еврото за всеки работен ден, по един лист на месец (лекции 8, 13)"
 
 #. table cell
 #: site/project.md:44
-msgid "the region codes and names (cp1251 - session 7)"
-msgstr "кодовете и имената на регионите (cp1251 - занятие 7)"
+msgid "the region codes and names (cp1251 - lecture 7)"
+msgstr "кодовете и имената на регионите (cp1251 - лекция 7)"
 
 #. heading 2
 #: site/project.md:46
@@ -160,8 +160,8 @@ msgstr "2. Валидиране"
 
 #. paragraph
 #: site/project.md:61
-msgid "Use your module `homework_nomenclature.py` of session 12 (copy it next to `report.py`). At least:"
-msgstr "Използвайте своя модул `homework_nomenclature.py` от занятие 12 (копирайте го до `report.py`). Най-малко:"
+msgid "Use your module `homework_nomenclature.py` of lecture 11 (copy it next to `report.py`). At least:"
+msgstr "Използвайте своя модул `homework_nomenclature.py` от лекция 11 (копирайте го до `report.py`). Най-малко:"
 
 #. paragraph
 #: site/project.md:64
@@ -180,8 +180,8 @@ msgstr "**липсващи стойности**: кредит без клиен�
 
 #. paragraph
 #: site/project.md:70
-msgid "**the register** (sessions 7, 8): ids that are not in the clients table after cleaning, EIKs and IBANs with a wrong shape."
-msgstr "**регистърът** (занятия 7, 8): номера, които ги няма в таблицата с клиенти след почистването, ЕИК и IBAN с грешна форма."
+msgid "**the register** (lecture 7): ids that are not in the clients table after cleaning, EIKs and IBANs with a wrong shape."
+msgstr "**регистърът** (лекция 7): номера, които ги няма в таблицата с клиенти след почистването, ЕИК и IBAN с грешна форма."
 
 #. paragraph
 #: site/project.md:73
@@ -270,8 +270,8 @@ msgstr "5. Отчет"
 
 #. paragraph
 #: site/project.md:105
-msgid "One Excel file with the sheets above (`pd.ExcelWriter`, session 16): readable widths, a number format for the amounts, a title row on the summary."
-msgstr "Един Excel файл с листата по-горе (`pd.ExcelWriter`, занятие 16): четими ширини, числов формат за сумите, ред със заглавие в обобщението."
+msgid "One Excel file with the sheets above (`pd.ExcelWriter`, lecture 15): readable widths, a number format for the amounts, a title row on the summary."
+msgstr "Един Excel файл с листата по-горе (`pd.ExcelWriter`, лекция 15): четими ширини, числов формат за сумите, ред със заглавие в обобщението."
 
 #. paragraph
 #: site/project.md:107
@@ -290,8 +290,8 @@ msgstr "6. Git"
 
 #. paragraph
 #: site/project.md:113
-msgid "The project lives in a folder `project/` of your copy of the homework repository (session 10): `report.py`, `homework_nomenclature.py`, any other module of yours, a `README.md` (what the report does, how to run it, what each sheet means). `out/` is not committed. Commit after each step that works - the history should show the steps."
-msgstr "Проектът живее в папка `project/` на вашето копие на homework repository (занятие 10): `report.py`, `homework_nomenclature.py`, всеки друг ваш модул и `README.md` (какво прави отчетът, как се пуска, какво означава всеки лист). `out/` не се commit-ва. Направете commit след всяка стъпка, която работи - историята трябва да показва стъпките."
+msgid "The project lives in a folder `project/` of your copy of the homework repository (lecture 9): `report.py`, `homework_nomenclature.py`, any other module of yours, a `README.md` (what the report does, how to run it, what each sheet means). `out/` is not committed. Commit after each step that works - the history should show the steps."
+msgstr "Проектът живее в папка `project/` на вашето копие на homework repository (лекция 9): `report.py`, `homework_nomenclature.py`, всеки друг ваш модул и `README.md` (какво прави отчетът, как се пуска, какво означава всеки лист). `out/` не се commit-ва. Направете commit след всяка стъпка, която работи - историята трябва да показва стъпките."
 
 #. heading 2
 #: site/project.md:119
@@ -300,8 +300,8 @@ msgstr "Проверките, които отчетът ви трябва да �
 
 #. paragraph
 #: site/project.md:121
-msgid "For the report date **2026-09-30** (the numbers of sessions 4, 6, 13 and 15):"
-msgstr "За дата на отчета **2026-09-30** (числата от занятия 4, 6, 13 и 15):"
+msgid "For the report date **2026-09-30** (the numbers of lectures 4, 6, 12 and 14):"
+msgstr "За дата на отчета **2026-09-30** (числата от лекции 4, 6, 12 и 14):"
 
 #. paragraph
 #: site/project.md:123
@@ -360,8 +360,8 @@ msgstr "[ ] SQL-ът използва параметри (`?` или `:name`)."
 
 #. paragraph
 #: site/project.md:141
-msgid "[ ] The nomenclatures are objects of your classes of session 12."
-msgstr "[ ] Номенклатурите са обекти на вашите класове от занятие 12."
+msgid "[ ] The nomenclatures are objects of your classes of lecture 11."
+msgstr "[ ] Номенклатурите са обекти на вашите класове от лекция 11."
 
 #. paragraph
 #: site/project.md:142
@@ -395,13 +395,13 @@ msgstr "Идеи за още"
 
 #. paragraph
 #: site/project.md:151
-msgid "The rejects and the data quality sheet with colours (Self-study of session 16)."
-msgstr "Листовете с отхвърлените и с качеството на данните, оцветени (Self-study на занятие 16)."
+msgid "The rejects and the data quality sheet with colours (Self-study of lecture 15)."
+msgstr "Листовете с отхвърлените и с качеството на данните, оцветени (Self-study на лекция 15)."
 
 #. paragraph
 #: site/project.md:152
-msgid "The check digits of the EIKs and the IBANs (Self-study of session 8)."
-msgstr "Контролните цифри на ЕИК и IBAN (Self-study на занятие 8)."
+msgid "The check digits of the EIKs and the IBANs (Self-study of lecture 7)."
+msgstr "Контролните цифри на ЕИК и IBAN (Self-study на лекция 7)."
 
 #. paragraph
 #: site/project.md:153
@@ -415,8 +415,11 @@ msgstr "Кредитите в USD, показани в EUR с курса към 
 
 #. paragraph
 #: site/project.md:157
-msgid "A command-line option for the LGD (`argparse`, Self-study of session 10)."
-msgstr "Опция от командния ред за LGD (`argparse`, Self-study на занятие 10)."
+msgid "A command-line option for the LGD (`argparse`, Self-study of lecture 9)."
+msgstr "Опция от командния ред за LGD (`argparse`, Self-study на лекция 9)."
+
+#~ msgid "Each lecture adds a part that the project reuses: functions (4), dictionaries as lookup tables (6), text cleaning and regular expressions (7, 8), reading files and handling bad records (9), modules and Git (10), classes (11, 12), databases (13) and pandas (14 - 16). The homework of lecture 15 is the first part of the project."
+#~ msgstr "Всяка лекция добавя част, която проектът използва: функции (4), dictionaries като таблици за търсене (6), почистване на текст и регулярни изрази (7, 8), четене на файлове и обработка на лоши записи (9), модули и Git (10), класове (11, 12), бази данни (13) и pandas (14 - 16). Домашното от лекция 15 е първата част от проекта."
 
 #~ msgid "In the last two sessions (15 and 16) you build one complete process, of the kind you now do in SAS or SQL:"
 #~ msgstr "В последните две занятия (15 и 16) изграждате един цялостен процес, от вида, който сега правите в SAS или SQL:"
@@ -424,5 +427,5 @@ msgstr "Опция от командния ред за LGD (`argparse`, Self-stu
 #~ msgid "Each lecture adds a part that the project reuses: functions (4), dictionaries as lookup tables (6), text cleaning and regular expressions (7, 8), reading files and handling bad records (9), modules and Git (10), classes (11, 12), databases (13) and pandas (14 - 16)."
 #~ msgstr "Всяка лекция добавя част, която проектът използва: функции (4), dictionaries като таблици за търсене (6), почистване на текст и регулярни изрази (7, 8), четене на файлове и обработка на лоши записи (9), модули и Git (10), класове (11, 12), бази данни (13) и pandas (14 - 16)."
 
-#~ msgid "The details, the data and the checklist are given in session 15."
-#~ msgstr "Подробностите, данните и списъкът за проверка се дават в занятие 15."
+#~ msgid "The details, the data and the checklist are given in lecture 14."
+#~ msgstr "Подробностите, данните и списъкът за проверка се дават в лекция 14."

@@ -28,16 +28,16 @@ The dates are planned and may change.
 | 4 | Wed 04.11 | [Functions](/lectures/04-functions) |
 | 5 | Mon 09.11 | [Lists (advanced)](/lectures/05-lists-advanced) |
 | 6 | Wed 11.11 | [Dictionaries](/lectures/06-dictionaries) |
-| 7 | Mon 16.11 | [Text processing](/lectures/07-text-processing) |
-| 8 | Wed 18.11 | [Regular expressions](/lectures/08-regular-expressions) |
-| 9 | Mon 23.11 | [Error handling and file handling](/lectures/09-errors-and-files) |
-| 10 | Wed 25.11 | [Modules, packages, Git and GitHub](/lectures/10-modules-and-git) |
-| 11 | Mon 30.11 | [OOP: first steps, classes and objects](/lectures/11-oop-classes) |
-| 12 | Wed 02.12 | [OOP in practice: nomenclatures](/lectures/12-oop-nomenclatures) |
-| 13 | Mon 07.12 | [Working with databases](/lectures/13-databases) |
-| 14 | Wed 09.12 | [NumPy and introduction to pandas](/lectures/14-numpy-pandas-intro) |
-| 15 | Mon 14.12 | [pandas: selection, aggregation, joins](/lectures/15-pandas-select-aggregate-join) |
-| 16 | Wed 16.12 | [pandas: reports](/lectures/16-pandas-reports-project) and the [final project](/project) |
+| 7 | Mon 16.11 | [Text processing and regular expressions](/lectures/07-text-and-regex) |
+| 8 | Wed 18.11 | [Error handling and file handling](/lectures/08-errors-and-files) |
+| 9 | Mon 23.11 | [Modules, packages, Git and GitHub](/lectures/09-modules-and-git) |
+| 10 | Wed 25.11 | [OOP: first steps, classes and objects](/lectures/10-oop-classes) |
+| 11 | Mon 30.11 | [OOP in practice: nomenclatures](/lectures/11-oop-nomenclatures) |
+| 12 | Wed 02.12 | [Working with databases](/lectures/12-databases); [NumPy and introduction to pandas](/lectures/13-numpy-pandas-intro) (start) |
+| 13 | Mon 07.12 | [Introduction to pandas](/lectures/13-numpy-pandas-intro) (end); [pandas: selection and new columns](/lectures/14-pandas-select-aggregate-join) |
+| 14 | Wed 09.12 | [pandas: aggregation, joins, missing values](/lectures/14-pandas-select-aggregate-join) |
+| 15 | Mon 14.12 | [pandas: reports](/lectures/15-pandas-reports) |
+| 16 | Wed 16.12 | [Final project](/project) |
 
 ## Session details
 
@@ -80,27 +80,24 @@ The dates are planned and may change.
 - Grouping and aggregating by hand (`GROUP BY` without pandas).
 - Lookup tables and nomenclatures.
 
-### 7. Text processing
+### 7. Text processing and regular expressions
 
 - The methods of `str`: `split` / `join`, `strip`, `replace`, formatting.
 - Cleaning text data: names, codes, identifiers.
 - Dates from text with `datetime`.
-
-### 8. Regular expressions
-
-- The `re` module: patterns, groups, `search` / `findall` / `sub` / `split`.
+- The `re` module: patterns, groups, `search` / `findall` / `sub`.
 - Validating IBANs, company ids (EIK), e-mails and dates; extracting values from
   free text.
 - The Python version of `PRXMATCH` (SAS) and `LIKE` / `REGEXP` (SQL).
 
-### 9. Error handling and file handling
+### 8. Error handling and file handling
 
 - `try` / `except` / `else` / `finally`, kinds of exceptions, `raise`, your own
   exceptions.
 - `pathlib`, `with open`; text, CSV, JSON and Excel files.
 - Handling bad records while loading data.
 
-### 10. Modules, packages, Git and GitHub
+### 9. Modules, packages, Git and GitHub
 
 - `import`, your own modules, the standard library (`datetime`, `collections`,
   `statistics`, `os`).
@@ -108,39 +105,42 @@ The dates are planned and may change.
 - Git: `commit`, `branch`, `merge`, `.gitignore`. GitHub: `clone`, `push`, `pull`,
   pull requests.
 
-### 11. OOP: first steps, classes and objects
+### 10. OOP: first steps, classes and objects
 
 - Class and object, `__init__`, attributes, methods, `self`.
 - `__str__` / `__repr__`; class attributes; `property`; dataclasses.
 
-### 12. OOP in practice: nomenclatures
+### 11. OOP in practice: nomenclatures
 
 - A nomenclature as a class: data, metadata, validation rules and processing
   methods.
 - `classmethod` and `staticmethod`; inheritance and composition.
 - Applying one nomenclature the same way to different datasets.
 
-### 13. Working with databases
+### 12. Working with databases; NumPy and introduction to pandas
 
 - DB-API and `sqlite3`: connection, cursor, parameterised queries, transactions.
-- SQLAlchemy engine; the result of a query straight into a DataFrame.
 - Drivers for Oracle / MS SQL / PostgreSQL (overview).
-
-### 14. NumPy and introduction to pandas
-
 - `ndarray`, vector operations, broadcasting, aggregates, `np.where`.
+
+### 13. Introduction to pandas; selection and new columns
+
 - `Series` and `DataFrame`; reading CSV and Excel files.
 - `head`, `info`, `describe`, the types of the columns.
-
-### 15. pandas: selection, aggregation, joins
-
 - `loc` / `iloc`, boolean masks, `query`, new columns.
+
+### 14. pandas: aggregation, joins, missing values
+
 - `groupby` / `agg` (like `GROUP BY` and `PROC MEANS`).
 - `merge` / `concat` (like `JOIN` and `MERGE` in a DATA step); missing values.
+- SQLAlchemy engine; the result of a query straight into a DataFrame.
 
-### 16. pandas: reports and final project
+### 15. pandas: reports
 
 - `pivot_table`, `melt`, dates and time series, export to Excel with several
   sheets.
+
+### 16. Final project
+
 - [Final project](/project): load data from a file and a database, nomenclatures
   as classes, cleaning, aggregation and a finished report.

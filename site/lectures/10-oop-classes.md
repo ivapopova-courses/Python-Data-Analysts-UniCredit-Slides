@@ -1,11 +1,11 @@
 ---
-title: "11. OOP: first steps, classes and objects"
+title: "10. OOP: first steps, classes and objects"
 ---
 
-# 11. OOP: first steps, classes and objects
+# 10. OOP: first steps, classes and objects
 
 <div class="lecture-meta">
-  <span>Session 11</span><span>practice: <code>11-oop-classes/</code> in the homework repository</span>
+  <span>Session 10</span><span>practice: <code>10-oop-classes/</code> in the homework repository</span>
   <span><a href="../sample-data">the sample data</a></span>
 </div>
 
@@ -45,7 +45,7 @@ print(loan.repaid_share())
 
 The client asked for this course with one idea in mind: *nomenclatures as structured
 entities that combine data, metadata, validation rules and processing methods*. That
-is exactly what a class is. Today: the building blocks. [Session 12](./12-oop-nomenclatures.md): the nomenclature.
+is exactly what a class is. Today: the building blocks. [Lecture 11](./11-oop-nomenclatures.md): the nomenclature.
 
 ## 1. Why classes; everything is an object
 
@@ -67,7 +67,7 @@ print(type(len), type(Exception("x")))
 
 A **class** is the blueprint of a type: `str`, `list`, `dict` are classes. An
 **object** (or **instance**) is one thing made from the blueprint: `"c0014"` is an
-instance of `str`. A DataFrame ([session 14](./14-numpy-pandas-intro.md#_4-dataframe)) is an instance of the class `DataFrame`,
+instance of `str`. A DataFrame ([lecture 13](./13-numpy-pandas-intro.md#_4-dataframe)) is an instance of the class `DataFrame`,
 and `df.groupby(...)` is one of its methods.
 
 ```python run
@@ -492,7 +492,7 @@ print(f"{total:,.2f}")
 
 ::: tip Try it
 Add a method `months_to_maturity(report_date)` to a `Loan` with a `maturity_date`
-attribute (a `date`). Use the `months_between` idea of [session 10](./10-modules-and-git.md#datetime-and-calendar-report-dates):
+attribute (a `date`). Use the `months_between` idea of [lecture 9](./09-modules-and-git.md#datetime-and-calendar-report-dates):
 `(m.year - r.year) * 12 + (m.month - r.month)`.
 :::
 
@@ -754,7 +754,7 @@ method again.
 ### Check the data when the object is created
 
 An object that holds wrong data is worse than no object: every report made from it
-is wrong. Check in `__init__`, and raise a clear error ([session 9](./09-errors-and-files.md#raise-stop-with-a-clear-message)):
+is wrong. Check in `__init__`, and raise a clear error ([lecture 8](./08-errors-and-files.md#raise-stop-with-a-clear-message)):
 
 ```python run
 class Loan:
@@ -781,7 +781,7 @@ for args in [("X1", 100.0, 50.0), ("L000002", 100.0, 150.0)]:
 This is the "validation rules" part of the client's nomenclature idea: the rules sit
 in the class, and **every** object that exists has passed them.
 
-With a file, the loader of [session 9](./09-errors-and-files.md#_10-loading-data-with-bad-records) decides what to do with a row that fails: one
+With a file, the loader of [lecture 8](./08-errors-and-files.md#_10-loading-data-with-bad-records) decides what to do with a row that fails: one
 `try` per row, and a list of the rejected rows:
 
 ```python run
@@ -1157,7 +1157,7 @@ print(by_grade["CCC"].pd_max)
 ```
 
 Back to rows: `asdict` and `astuple` turn a dataclass into a dictionary or a tuple -
-ready for `csv.DictWriter` ([session 9](./09-errors-and-files.md#write-csv-writer-and-csv-dictwriter)) or JSON. `fields` lists the fields:
+ready for `csv.DictWriter` ([lecture 8](./08-errors-and-files.md#write-csv-writer-and-csv-dictwriter)) or JSON. `fields` lists the fields:
 
 ```python run
 import csv
@@ -1370,7 +1370,7 @@ print(f"{sum(l.expected_loss(pd_of) for l in loans):,.2f}")
 ```
 
 The trap: a loan whose client is not in the clients file. `clients[r["client_id"]]`
-stops the whole load with a `KeyError`; `get` and a list of rejects ([session 9](./09-errors-and-files.md#the-reject-file-and-the-summary)) keep
+stops the whole load with a `KeyError`; `get` and a list of rejects ([lecture 8](./08-errors-and-files.md#the-reject-file-and-the-summary)) keep
 going and report it:
 
 ```python run
@@ -1398,11 +1398,11 @@ print(rejected)
 ```
 
 This is the shape of the final project: objects that hold the data and know their
-rules. In [session 12](./12-oop-nomenclatures.md) the rules themselves - the nomenclatures - become objects.
+rules. In [lecture 11](./11-oop-nomenclatures.md) the rules themselves - the nomenclatures - become objects.
 
 ::: info The same in pandas
 In pandas you do not create one object per row: the DataFrame is **one** object for
-the whole table, and its methods work on all rows ([session 14](./14-numpy-pandas-intro.md#operations-on-the-whole-array)). Classes are for the
+the whole table, and its methods work on all rows ([lecture 13](./13-numpy-pandas-intro.md#operations-on-the-whole-array)). Classes are for the
 **rules** around the data - nomenclatures, checks, report settings - not for millions
 of rows.
 :::
@@ -1432,7 +1432,7 @@ in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) 
 terminal, in the repository root:
 
 ```bash
-python 11-oop-classes/practice/task1-first-class.py
+python 10-oop-classes/practice/task1-first-class.py
 ```
 
 | Task | File | What you do |
@@ -1446,13 +1446,13 @@ python 11-oop-classes/practice/task1-first-class.py
 
 ## Homework
 
-1. `11-oop-classes/homework.py` (in the homework repository): **the portfolio as
+1. `10-oop-classes/homework.py` (in the homework repository): **the portfolio as
    objects** - `Loan` and `Client` dataclasses with validation, built from
    `loans.csv`, `clients.csv` and `rating_scale.csv`; the EL of each loan with a method
    (the total must be 1,140,106.56 again), the exposure and the EL per client and per
    segment, and the 10 largest clients. Every check must print `OK`.
 2. The practice tasks you did not finish in class.
-3. Show your Git history of homework 10 at the start of the next session.
+3. Show your Git history of homework 9 at the start of the next session.
 
 ## Self-study
 

@@ -75,8 +75,8 @@ msgstr "От SQL към Python - един и същ въпрос, по два н
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:56
-msgid "By the end of today you will be able to read every line of this example. In [session 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means) pandas does the same in two lines - but it does exactly this inside."
-msgstr "До края на днешното занятие ще можете да прочетете всеки ред от този пример. В [занятие 15](./15-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means) pandas прави същото с два реда - но отвътре прави точно това."
+msgid "By the end of today you will be able to read every line of this example. In [lecture 14](./14-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means) pandas does the same in two lines - but it does exactly this inside."
+msgstr "До края на днешното занятие ще можете да прочетете всеки ред от този пример. В [лекция 14](./14-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means) pandas прави същото с два реда - но отвътре прави точно това."
 
 #. heading 2
 #: site/lectures/02-conditions-and-loops.md:59
@@ -335,8 +335,8 @@ msgstr "Датите във формат ISO `YYYY-MM-DD` (форматът на
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:209
-msgid "Real dates (`datetime`) come in [session 7](./07-text-processing.md#_9-dates-from-text)."
-msgstr "Истинските дати (`datetime`) идват в [занятие 7](./07-text-processing.md#_9-dates-from-text)."
+msgid "Real dates (`datetime`) come in [lecture 7](./07-text-and-regex.md#from-text-to-a-date)."
+msgstr "Истинските дати (`datetime`) идват в [лекция 7](./07-text-and-regex.md#from-text-to-a-date)."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:211
@@ -735,8 +735,8 @@ msgstr "**Име в case хваща всичко.** В `case` обикновен
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:757
-msgid "With a `case _:` after it, Python even refuses to run the code: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Write the values themselves (`case \"retail\":`), or dotted names (`case Segment.RETAIL:`, [session 11](./11-oop-classes.md#enum-named-codes))."
-msgstr "С `case _:` след него Python дори отказва да изпълни кода: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Пишете самите стойности (`case \"retail\":`) или имена с точка (`case Segment.RETAIL:`, [занятие 11](./11-oop-classes.md#enum-named-codes))."
+msgid "With a `case _:` after it, Python even refuses to run the code: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Write the values themselves (`case \"retail\":`), or dotted names (`case Segment.RETAIL:`, [lecture 10](./10-oop-classes.md#enum-named-codes))."
+msgstr "С `case _:` след него Python дори отказва да изпълни кода: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Пишете самите стойности (`case \"retail\":`) или имена с точка (`case Segment.RETAIL:`, [лекция 10](./10-oop-classes.md#enum-named-codes))."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:762
@@ -830,8 +830,8 @@ msgstr "`for` повтаря **за всеки елемент** на поред�
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:866
-msgid "You already use loops in SAS: the **DATA step is a loop** - it runs once for each row of the input data set, without you writing it. In Python you write the loop yourself (and in pandas, again, you do not - [session 14](./14-numpy-pandas-intro.md#operations-on-the-whole-array))."
-msgstr "В SAS вече използвате цикли: **DATA step-ът е цикъл** - той се изпълнява веднъж за всеки ред на входния набор от данни, без да го пишете. В Python пишете цикъла сами (а в pandas - пак не, [занятие 14](./14-numpy-pandas-intro.md#operations-on-the-whole-array))."
+msgid "You already use loops in SAS: the **DATA step is a loop** - it runs once for each row of the input data set, without you writing it. In Python you write the loop yourself (and in pandas, again, you do not - [lecture 13](./13-numpy-pandas-intro.md#operations-on-the-whole-array))."
+msgstr "В SAS вече използвате цикли: **DATA step-ът е цикъл** - той се изпълнява веднъж за всеки ред на входния набор от данни, без да го пишете. В Python пишете цикъла сами (а в pandas - пак не, [лекция 13](./13-numpy-pandas-intro.md#operations-on-the-whole-array))."
 
 #. table cell
 #: site/lectures/02-conditions-and-loops.md:872
@@ -1025,8 +1025,8 @@ msgstr "Върху портфейла - месечната вноска за н�
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1124
-msgid "Tables kept in memory come with pandas, in [session 14](./14-numpy-pandas-intro.md)."
-msgstr "Таблиците в паметта идват с pandas, в [занятие 14](./14-numpy-pandas-intro.md)."
+msgid "Tables kept in memory come with pandas, in [lecture 13](./13-numpy-pandas-intro.md)."
+msgstr "Таблиците в паметта идват с pandas, в [лекция 13](./13-numpy-pandas-intro.md)."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1127
@@ -1035,8 +1035,8 @@ msgstr "Редовете на файл"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1129
-msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in [session 9](./09-errors-and-files.md#open-read-close-with)):"
-msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step в SAS с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в [занятие 9](./09-errors-and-files.md#open-read-close-with)):"
+msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in [lecture 8](./08-errors-and-files.md#open-read-close-with)):"
+msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step в SAS с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в [лекция 8](./08-errors-and-files.md#open-read-close-with)):"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1143
@@ -1375,8 +1375,8 @@ msgstr "**Част, която пропуснете,** показва `TODO`, а
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1518
-msgid "**Task 1:** four predictions show how `and` and `or` work inside (section 3, \"`and` and `or` return one of their operands\"): `0 or \"n/a\"`, `\"\" or None`, `5 and 0` and `True or 1 / 0`. They are *optional* - in pandas you combine conditions with `&` and `|` instead (sessions 14 - 15). And `\"3\" == 3` is `False`: `==` between a string and a number is allowed, and different types are never equal; only `<`, `>`, `<=`, `>=` stop with a `TypeError`."
-msgstr "**Задача 1:** четири от предсказванията показват как работят `and` и `or` отвътре (раздел 3, \"`and` и `or` връщат един от операндите си\"): `0 or \"n/a\"`, `\"\" or None`, `5 and 0` и `True or 1 / 0`. Те са *по желание* - в pandas условията се съчетават с `&` и `|` (занятия 14 - 15). А `\"3\" == 3` е `False`: `==` между string и число е позволено и различните типове никога не са равни; само `<`, `>`, `<=`, `>=` спират с `TypeError`."
+msgid "**Task 1:** four predictions show how `and` and `or` work inside (section 3, \"`and` and `or` return one of their operands\"): `0 or \"n/a\"`, `\"\" or None`, `5 and 0` and `True or 1 / 0`. They are *optional* - in pandas you combine conditions with `&` and `|` instead (lectures 13 - 14). And `\"3\" == 3` is `False`: `==` between a string and a number is allowed, and different types are never equal; only `<`, `>`, `<=`, `>=` stop with a `TypeError`."
+msgstr "**Задача 1:** четири от предсказванията показват как работят `and` и `or` отвътре (раздел 3, \"`and` и `or` връщат един от операндите си\"): `0 or \"n/a\"`, `\"\" or None`, `5 and 0` и `True or 1 / 0`. Те са *по желание* - в pandas условията се съчетават с `&` и `|` (лекции 13 - 14). А `\"3\" == 3` е `False`: `==` между string и число е позволено и различните типове никога не са равни; само `<`, `>`, `<=`, `>=` спират с `TypeError`."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1524
@@ -1425,8 +1425,8 @@ msgstr "Бележки към задачите"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1558
-msgid "**Reading a file.** How `open` and `with` work comes in [session 9](./09-errors-and-files.md#open-read-close-with). Until then, copy this code. It reads `loans.csv` line by line and gives each field of the line a name:"
-msgstr "**Четене на файл.** Как работят `open` и `with` ще видим в [занятие 9](./09-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Той чете `loans.csv` ред по ред и дава име на всяко поле на реда:"
+msgid "**Reading a file.** How `open` and `with` work comes in [lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this code. It reads `loans.csv` line by line and gives each field of the line a name:"
+msgstr "**Четене на файл.** Как работят `open` и `with` ще видим в [лекция 8](./08-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Той чете `loans.csv` ред по ред и дава име на всяко поле на реда:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1571
@@ -1526,8 +1526,8 @@ msgstr "**Следващото занятие:** lists, tuples и sets - инд�
 #~ msgid "Tables kept in memory - a list of rows - and the loops over them come in [session 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows)."
 #~ msgstr "Таблиците в паметта - list от редове - и циклите по тях идват в [занятие 5](./05-lists-advanced.md#_5-a-table-as-a-list-of-rows)."
 
-#~ msgid "By the end of today you will be able to read every line of this example. In session 15 pandas does the same in two lines - but it does exactly this inside."
-#~ msgstr "До края на днешното занятие ще можете да прочетете всеки ред от този пример. В занятие 15 pandas прави същото с два реда - но отвътре прави точно това."
+#~ msgid "By the end of today you will be able to read every line of this example. In lecture 14 pandas does the same in two lines - but it does exactly this inside."
+#~ msgstr "До края на днешното занятие ще можете да прочетете всеки ред от този пример. В лекция 14 pandas прави същото с два реда - но отвътре прави точно това."
 
 #~ msgid "`if` and `while` accept **any value**, not only `True` and `False`. Python decides by the rules you met in session 1 (*truthy* and *falsy*):"
 #~ msgstr "`if` и `while` приемат **всяка стойност**, не само `True` и `False`. Python решава по правилата, които видяхте в занятие 1 (*truthy* и *falsy*):"
@@ -1538,8 +1538,8 @@ msgstr "**Следващото занятие:** lists, tuples и sets - инд�
 #~ msgid "Make sure you compare values of the **same type**. Convert the data first - `int()`, `float()`, `str()` (session 1) - and then compare."
 #~ msgstr "Уверете се, че сравнявате стойности от **един и същ тип**. Първо преобразувайте данните - `int()`, `float()`, `str()` (занятие 1) - и после сравнявайте."
 
-#~ msgid "Real dates (`datetime`) come in session 7."
-#~ msgstr "Истинските дати (`datetime`) идват в занятие 7."
+#~ msgid "Real dates (`datetime`) come in lecture 7."
+#~ msgstr "Истинските дати (`datetime`) идват в лекция 7."
 
 #~ msgid "Comparisons can be chained, like `BETWEEN` in SQL (session 1):"
 #~ msgstr "Сравненията могат да се свързват във верига, като `BETWEEN` в SQL (занятие 1):"
@@ -1559,8 +1559,8 @@ msgstr "**Следващото занятие:** lists, tuples и sets - инд�
 #~ msgid "`pass` works in every block: `if`, `for`, `while`, functions (session 4)."
 #~ msgstr "`pass` работи във всеки блок: `if`, `for`, `while`, функции (занятие 4)."
 
-#~ msgid "With a `case _:` after it, Python even refuses to run the code: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Write the values themselves (`case \"retail\":`), or dotted names (`case Segment.RETAIL:`, session 11)."
-#~ msgstr "С `case _:` след него Python дори отказва да изпълни кода: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Пишете самите стойности (`case \"retail\":`) или имена с точка (`case Segment.RETAIL:`, занятие 11)."
+#~ msgid "With a `case _:` after it, Python even refuses to run the code: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Write the values themselves (`case \"retail\":`), or dotted names (`case Segment.RETAIL:`, lecture 10)."
+#~ msgstr "С `case _:` след него Python дори отказва да изпълни кода: `SyntaxError: name capture 'RETAIL' makes remaining patterns unreachable`. Пишете самите стойности (`case \"retail\":`) или имена с точка (`case Segment.RETAIL:`, лекция 10)."
 
 #~ msgid "A pattern can also take a tuple apart (tuples: session 3). Each name in the pattern gets its part of the value:"
 #~ msgstr "Pattern може и да разглоби tuple (tuples: занятие 3). Всяко име в pattern получава своята част от стойността:"
@@ -1571,8 +1571,8 @@ msgstr "**Следващото занятие:** lists, tuples и sets - инд�
 #~ msgid "The short version of the table (the full one in session 1, section 11, and in the [Python reference](https://docs.python.org/3/reference/expressions.html#operator-precedence)): arithmetic, then comparisons (`<`, `==`, `in`, `is`, ...), then `not`, then `and`, then `or`, and the conditional expression `... if ... else ...` last of all."
 #~ msgstr "Кратката версия на таблицата (пълната е в занятие 1, раздел 11, и в [Python reference](https://docs.python.org/3/reference/expressions.html#operator-precedence)): аритметика, после сравнения (`<`, `==`, `in`, `is`, ...), после `not`, после `and`, после `or`, а условният израз `... if ... else ...` - най-накрая."
 
-#~ msgid "You already use loops in SAS: the **DATA step is a loop** - it runs once for each row of the input data set, without you writing it. In Python you write the loop yourself (and in pandas, again, you do not - session 14)."
-#~ msgstr "В SAS вече използвате цикли: **DATA step-ът е цикъл** - той се изпълнява веднъж за всеки ред на входния набор от данни, без да го пишете. В Python пишете цикъла сами (а в pandas - пак не, занятие 14)."
+#~ msgid "You already use loops in SAS: the **DATA step is a loop** - it runs once for each row of the input data set, without you writing it. In Python you write the loop yourself (and in pandas, again, you do not - lecture 13)."
+#~ msgstr "В SAS вече използвате цикли: **DATA step-ът е цикъл** - той се изпълнява веднъж за всеки ред на входния набор от данни, без да го пишете. В Python пишете цикъла сами (а в pandas - пак не, лекция 13)."
 
 #~ msgid "Anything that gives items one by one - an *iterable*. Today: a string (its characters), a `range` of numbers, a few values in square brackets, and the lines of a file. The square brackets make a **list** - session 3 is all about lists; for now, read `[0, 35, 120]` simply as \"these values, one by one\". Tuples (session 3) and dictionaries (session 6) come later."
 #~ msgstr "Всичко, което дава елементи един по един - *iterable*. Днес: string (символите му), `range` от числа, няколко стойности в квадратни скоби и редовете на файл. Квадратните скоби правят **list** - занятие 3 е изцяло за lists; засега четете `[0, 35, 120]` просто като \"тези стойности, една по една\". Tuples (занятие 3) и dictionaries (занятие 6) идват по-късно."
@@ -1589,8 +1589,8 @@ msgstr "**Следващото занятие:** lists, tuples и sets - инд�
 #~ msgid "Tables kept in memory - a list of rows - and the loops over them come in session 5."
 #~ msgstr "Таблиците в паметта - list от редове - и циклите по тях идват в занятие 5."
 
-#~ msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in session 9):"
-#~ msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step в SAS с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в занятие 9):"
+#~ msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a SAS DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in lecture 8):"
+#~ msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step в SAS с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в лекция 8):"
 
 #~ msgid "`split(\",\")` cuts the line at the commas and gives the fields as strings, in square brackets: a list (session 3). The names on the left of `=` take them in order (as in \"several names at once\", session 1) - then convert the ones you need:"
 #~ msgstr "`split(\",\")` разрязва реда при запетаите и дава полетата като strings, в квадратни скоби: list (занятие 3). Имената вляво от `=` ги вземат по ред (както при \"няколко имена наведнъж\", занятие 1) - после преобразувайте тези, които ви трябват:"
@@ -1628,8 +1628,8 @@ msgstr "**Следващото занятие:** lists, tuples и sets - инд�
 #~ msgid "On the portfolio - the monthly payment for several amounts and terms, a grid like `PROC TABULATE` would print:"
 #~ msgstr "Върху портфейла - месечната вноска за няколко суми и срока, мрежа, каквато би отпечатал `PROC TABULATE`:"
 
-#~ msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in session 9):"
-#~ msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в занятие 9):"
+#~ msgid "A text file is a sequence of **lines**, so `for` can read it line by line - like a DATA step with `INFILE` or `SET`. The pattern (the details of `with open` come in lecture 8):"
+#~ msgstr "Текстовият файл е поредица от **редове**, затова `for` може да го чете ред по ред - като DATA step с `INFILE` или `SET`. Шаблонът (подробностите за `with open` идват в лекция 8):"
 
 #~ msgid "After a search with `break`, how do you know if something was found? Set a **flag** before the loop - like `found = 0;` in a DATA step:"
 #~ msgstr "След търсене с `break` как разбирате дали нещо е намерено? Задайте **флаг** преди цикъла - като `found = 0;` в DATA step:"

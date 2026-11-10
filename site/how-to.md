@@ -77,10 +77,10 @@ the Homework folder - see [step 9](#create-the-venv) below.
 |---|---|---|---|
 | **Python** | Microsoft | run and debug Python; it installs **Pylance**, **Python Debugger** and **Python Environments** too | required |
 | **Jupyter** | Microsoft | notebooks inside VS Code | required |
-| **Data Wrangler** | Microsoft | see a DataFrame or a CSV file as a table: sort, filter, statistics per column; it writes the pandas code for the cleaning steps you click | lectures 14 - 16 |
-| **Rainbow CSV** | mechatroner | each column of a CSV file in its own colour; SQL-like queries on a CSV file | from lecture 9 |
-| **SQLite Viewer** | Florian Klampfer | open a SQLite `.db` file and look at its tables | lecture 13 |
-| **Spreadsheet Viewer** | MESCIUS | open `.xlsx` files in VS Code (its old name is *Excel Viewer*) | lectures 9, 14, 16 |
+| **Data Wrangler** | Microsoft | see a DataFrame or a CSV file as a table: sort, filter, statistics per column; it writes the pandas code for the cleaning steps you click | lectures 13 - 15 |
+| **Rainbow CSV** | mechatroner | each column of a CSV file in its own colour; SQL-like queries on a CSV file | from lecture 8 |
+| **SQLite Viewer** | Florian Klampfer | open a SQLite `.db` file and look at its tables | lecture 12 |
+| **Spreadsheet Viewer** | MESCIUS | open `.xlsx` files in VS Code (its old name is *Excel Viewer*) | lectures 8, 13, 15 |
 | **Ruff** | Astral | linter and formatter: finds mistakes and fixes the layout of your code - see [below](#ruff) | recommended |
 
 **Install them all at once.**

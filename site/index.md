@@ -34,16 +34,16 @@ features:
 | 4 | [Functions](/lectures/04-functions) |
 | 5 | [Lists (advanced)](/lectures/05-lists-advanced) |
 | 6 | [Dictionaries](/lectures/06-dictionaries) |
-| 7 | [Text processing](/lectures/07-text-processing) |
-| 8 | [Regular expressions](/lectures/08-regular-expressions) |
-| 9 | [Error handling and file handling](/lectures/09-errors-and-files) |
-| 10 | [Modules, packages, Git and GitHub](/lectures/10-modules-and-git) |
-| 11 | [OOP: first steps, classes and objects](/lectures/11-oop-classes) |
-| 12 | [OOP in practice: nomenclatures](/lectures/12-oop-nomenclatures) |
-| 13 | [Working with databases](/lectures/13-databases) |
-| 14 | [NumPy and introduction to pandas](/lectures/14-numpy-pandas-intro) |
-| 15 | [pandas: selection, aggregation, joins](/lectures/15-pandas-select-aggregate-join) |
-| 16 | [pandas: reports](/lectures/16-pandas-reports-project) and the [final project](/project) |
+| 7 | [Text processing and regular expressions](/lectures/07-text-and-regex) |
+| 8 | [Error handling and file handling](/lectures/08-errors-and-files) |
+| 9 | [Modules, packages, Git and GitHub](/lectures/09-modules-and-git) |
+| 10 | [OOP: first steps, classes and objects](/lectures/10-oop-classes) |
+| 11 | [OOP in practice: nomenclatures](/lectures/11-oop-nomenclatures) |
+| 12 | [Working with databases](/lectures/12-databases); [NumPy and introduction to pandas](/lectures/13-numpy-pandas-intro) (start) |
+| 13 | [Introduction to pandas](/lectures/13-numpy-pandas-intro) (end); [pandas: selection and new columns](/lectures/14-pandas-select-aggregate-join) |
+| 14 | [pandas: aggregation, joins, missing values](/lectures/14-pandas-select-aggregate-join) |
+| 15 | [pandas: reports](/lectures/15-pandas-reports) |
+| 16 | [Final project](/project) |
 
 <style>
 .VPHome .vp-doc { max-width: 1152px; margin: 48px auto 0; padding: 0 24px; }
