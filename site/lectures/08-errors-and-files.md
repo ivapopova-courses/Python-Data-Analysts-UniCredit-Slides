@@ -735,7 +735,7 @@ then read the file back and print the number of lines.
 
 ### Read: `csv.reader` and `csv.DictReader`
 
-You know `csv.DictReader` ([session 6](./06-dictionaries.md)). `csv.reader` gives each row as a **list**.
+You know `csv.DictReader` ([session 6](./06-dictionaries.md#a-row-as-a-dictionary)). `csv.reader` gives each row as a **list**.
 Both understand quotes, and both take a `delimiter` for files that are not
 comma-separated - like `;` in a Bulgarian Excel export:
 
@@ -782,6 +782,46 @@ with open("data/loans.csv", encoding="utf-8") as file:
 
 print(loans[0])
 ```
+
+### A lookup table from a file: the rating scale
+
+A nomenclature often lives in a file: `rating_scale.csv` has one row per rating.
+Read it **once** into a dictionary **rating -> (grade, PD)** - a SAS format made
+from a dataset (`PROC FORMAT CNTLIN=`), or a small SQL reference table - and use it
+for every client. The values are text: convert the key with `int` and the PD
+bounds with `float`:
+
+```python run
+import csv
+
+scale = {}
+with open("data/rating_scale.csv", encoding="utf-8") as file:
+    for row in csv.DictReader(file):
+        pd_mid = (float(row["pd_min"]) + float(row["pd_max"])) / 2
+        scale[int(row["rating"])] = (row["grade"], round(pd_mid, 6))
+
+print(scale[4])
+grade, pd_value = scale[7]
+print(grade, pd_value)
+```
+
+The trap: without `int`, the keys are the strings `"1"`, `"2"`, ... and
+`scale[4]` raises `KeyError` - the rating `4` of a client is an int:
+
+```python run
+import csv
+
+with open("data/rating_scale.csv", encoding="utf-8") as file:
+    text_keys = {row["rating"]: row["grade"] for row in csv.DictReader(file)}
+
+print(list(text_keys)[:3])
+print(text_keys.get(4, "not found"), text_keys["4"])
+```
+
+::: tip Try it
+Build a second dictionary **grade -> description** from the same file, and print
+the description of `"CCC"`. Which column is the key now?
+:::
 
 ### Write: `csv.writer` and `csv.DictWriter`
 

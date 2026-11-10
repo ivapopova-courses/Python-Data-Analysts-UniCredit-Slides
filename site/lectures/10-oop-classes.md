@@ -463,7 +463,7 @@ print(base.yearly_interest(), stressed.yearly_interest(), base.rate)
 
 ### The EL of homework 4, with objects
 
-Each `Loan` knows its client's rating; the PD comes from the rating scale ([session 6](./06-dictionaries.md#a-nomenclature-from-a-file-the-rating-scale)) -
+Each `Loan` knows its client's rating; the PD comes from the rating scale ([lecture 8](./08-errors-and-files.md#a-lookup-table-from-a-file-the-rating-scale)) -
 the same 1,140,106.56:
 
 ```python run

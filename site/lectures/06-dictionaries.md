@@ -22,7 +22,7 @@ title: 6. Dictionaries
 - work with **records**: a row as a dictionary, a table as a dictionary of rows.
 
 Follow the main sections for the core lesson. Collapsed **Advanced** blocks keep
-extra techniques for later reading; they are not needed for the required homework.
+extra techniques for later reading; they are not needed for the practice tasks.
 
 From SAS to Python - a format that turns a code into a name:
 
@@ -502,51 +502,6 @@ print([product_names.get(code, "Other") for code in codes])
 **Grouping by hand:** [1. A lookup](../animations/groupingByHand.html#1){target="_blank"}
 :::
 
-### A nomenclature from a file: the rating scale
-
-`csv.DictReader` gives each row as a dictionary: column names are keys, and all
-values start as text. Use this file-reading pattern for now; lecture 8 explains
-files in depth. Convert numbers with `int` or `float` before calculating:
-
-```python run
-row = {"rating": "4", "grade": "BBB", "pd_min": "0.0025", "pd_max": "0.006"}
-rating = int(row["rating"])
-pd_mid = (float(row["pd_min"]) + float(row["pd_max"])) / 2
-print(rating, row["grade"], pd_mid)
-```
-
-`rating_scale.csv` is a nomenclature: one row per rating. Read it into a dictionary
-**rating -> (grade, PD)** once, and use it for every client:
-
-```python run
-import csv
-
-scale = {}
-with open("data/rating_scale.csv", encoding="utf-8") as file:
-    for row in csv.DictReader(file):
-        pd_mid = (float(row["pd_min"]) + float(row["pd_max"])) / 2
-        scale[int(row["rating"])] = (row["grade"], round(pd_mid, 6))
-
-print(scale[4])
-grade, pd_value = scale[7]
-print(grade, pd_value)
-```
-
-`csv.DictReader` (the module `csv` comes with Python) reads a CSV file row by row,
-and gives each row as a dictionary: the column name is the key. No more `row[7]` -
-`row["outstanding"]`. Files and `csv` in depth: [lecture 8](./08-errors-and-files.md#_7-csv-files).
-
-```python run
-import csv
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    reader = csv.DictReader(file)
-    first = next(reader)          # the first row
-
-print(first)
-print(first["outstanding"], type(first["outstanding"]))     # still text
-```
-
 ### Codes in the data: a lookup in a function
 
 When the same lookup is used in many places, put it in a function with the
@@ -592,6 +547,13 @@ in the result, like a SQL LEFT JOIN with an unmatched client.
 SELECT l.loan_id, l.client_id, c.region, c.segment
 FROM loans l LEFT JOIN clients c ON l.client_id = c.client_id;
 ```
+
+::: info Reading the sample files
+From here on, the examples read the sample files with `csv.DictReader`: it gives
+each row of the file as a dictionary, the column name -> the value as **text**. Use
+the code as it is; [section 7](#a-row-as-a-dictionary) shows the rows, and
+[lecture 8](./08-errors-and-files.md#_7-csv-files) explains files.
+:::
 
 ```python run
 import csv
@@ -644,9 +606,8 @@ print(f"EL = {pd_value * LGD * loan['outstanding']:,.2f}")
 print(pd_of[rating_of[loan["client_id"]]])        # the same chain in one line
 ```
 
-Homework 6 builds the two dictionaries from the files and does this for the whole
-portfolio - the total must be the same as in homework 4, with 400 x 2 lookups
-instead of 400 x 150 comparisons.
+For the whole portfolio, that is 400 x 2 lookups instead of the 400 x 150
+comparisons of homework 4.
 
 ::: tip Try it
 Change the loan to the client `C0001`. Predict the rating, the PD and the EL before
@@ -1183,28 +1144,18 @@ python 06-dictionaries/practice/task1-dict-basics.py
 |------|------|-------------|
 | 1 | `task1-dict-basics.py` | A product nomenclature: create, read with a default, add, change, remove |
 | 2 | `task2-predict-dicts.py` | Predict: duplicate keys, lookups, membership, changes and counting |
-| 3 | `task3-lookups.py` | Rating -> grade / PD; codes -> names; loans with the region of their client |
-| 4 | `task4-count-and-sum.py` | Clients per region, outstanding per segment, `most_common` |
-| 5 | `task5-group-aggregates.py` (Optional, Advanced) | Count / sum / average / max per product, `HAVING`, a sorted report |
-| 6 | `task6-nested-groups.py` (Optional, Advanced) | Clients as a dict of dicts; segment x stage totals with tuple keys |
+| 3 | `task3-count-and-sum.py` | Clients per region, outstanding per segment, `most_common` |
+| 4 | `task4-group-aggregates.py` (Optional, Advanced) | Count / sum / average / max per product, `HAVING`, a sorted report |
 
-Start with Task 1, Parts 1-6 (Parts 7-8 if you have time); then Task 3, Parts
-1-3 and 5; then Task 4, Parts 1 and 4. Each part has its own checks. While you work on selected parts,
-`TODO` for the other parts means they are still unfinished. Task 2 is extra
-practice on the main lesson. Tasks 5-6 and `task2-predict-dicts-advanced.py` are
+Start with Task 1, then Task 3. Each part has its own checks. While you work on one
+part, `TODO` for the other parts means they are still unfinished. Task 2 is extra
+practice on the main lesson. Task 4 and `task2-predict-dicts-advanced.py` are
 optional extensions after reading the relevant Advanced blocks.
 
 ## Homework
 
-1. Complete `06-dictionaries/homework.py`: build the lookup dictionaries, calculate
-   one loan's expected loss, then the portfolio EL. Use lookups instead of repeatedly
-   searching through all clients for each loan. The total must be **1,140,106.56**,
-   as in homework 4. The file has five parts; every check must print `OK`.
-2. Recommended: finish practice Tasks 1-4 as time allows, alongside your remaining
-   Lecture 5 work. Tasks 5-6 are optional, not required unfinished homework.
-3. Optional: `06-dictionaries/homework-advanced.py` adds EL by segment and grade,
-   shares and a sorted report. Complete the required homework first. The extension
-   has its own checks; it does not affect completion of `homework.py`.
+1. Finish the practice tasks 1 - 3. Every check must print `OK`.
+2. Optional: Task 4 and `task2-predict-dicts-advanced.py`.
 
 ## Self-study
 
