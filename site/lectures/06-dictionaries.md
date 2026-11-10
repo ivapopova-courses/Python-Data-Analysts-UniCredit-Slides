@@ -144,10 +144,10 @@ pd_of_grade = {"AAA": 0.0003, "BBB": 0.0043}
 
 print("AAA" in pd_of_grade)
 print(0.0003 in pd_of_grade)                    # False: in looks at the keys
-print(0.0003 in pd_of_grade.values())           # the values: .values()
+print(0.0003 in pd_of_grade.values())           # True, looks at the values: .values()
 ```
 
-### Rules for keys
+### Rules for keys and values
 
 - Keys are **unique**. The same key twice: the last value wins.
 - Keys must be **hashable**: values that cannot change - `str`, `int`, `float`,
@@ -155,6 +155,8 @@ print(0.0003 in pd_of_grade.values())           # the values: .values()
   items of a set.)
 - Values can be anything: numbers, lists, other dictionaries, functions.
 - A dictionary keeps the **order** in which the keys were added (since Python 3.7).
+- Lookups, insertions, and deletions operations run in **constant time** (*O(1)* average) using a hash table.
+- Keys and values can be of **mixed data types** within the same dictionary.
 
 ```python run
 d = {"EUR": 1, "USD": 2, "EUR": 3}
@@ -179,15 +181,6 @@ print(dict.fromkeys(["retail", "sme", "corporate"], 0))
 ```
 :::
 
-::: tip Try it
-Predict, then run: how many keys has `{"a": 1, "A": 2}`, and how many has
-`{"EUR": 1, "EUR ": 2}`?
-
-```python run
-print(len({"a": 1, "A": 2}))
-print(len({"EUR": 1, "EUR ": 2}))
-```
-:::
 
 ::: details Advanced: `1`, `True` and `1.0` are one key
 ```python run
@@ -300,7 +293,6 @@ version_3 = {"overdraft": "Overdraft", "mortgage": "Housing loan"}
 
 print(version_1 == version_2)
 print(version_1 == version_3)
-print({k for k in version_1 if version_1[k] != version_3.get(k)})     # what changed
 ```
 :::
 
@@ -310,12 +302,15 @@ Start from `rates = {"EUR": 3.5, "USD": 5.25}`. Add `"GBP": 4.75`, change `EUR` 
 `rates.pop("CHF", 0)` return?
 :::
 
-## 3. Loop over a dictionary
+## 3. Iterating over a dictionary
 
-### `keys()`, `values()`, `items()`
+### `keys()`, `values()`, and `items()`
 
-A `for` over a dictionary goes over its **keys**. For the values or the pairs, use
-the methods:
+When you loop through a dictionary with a `for` loop, it iterates over the **keys** by default. To loop over values or pairs instead, use explicit dictionary methods:
+
+*   **`keys()`**: Returns all keys (this is identical to looping directly over the dictionary).
+*   **`values()`**: Returns all values.
+*   **`items()`**: Returns key-value pairs as `(key, value)` tuples, which you can unpack directly in the loop.
 
 ```python run
 outstanding = {"retail": 6.9, "sme": 39.5, "corporate": 85.0}     # EUR million
@@ -343,9 +338,8 @@ for code in sorted(names):
     print(code, names[code])
 ```
 
-::: details Advanced: sorting and ranking by values
 
-### Sort the result
+### Sorting and ranking by values
 
 The order of a dictionary is the order of insertion. To show it sorted, sort the
 `items()` - by the key, or by the value:
@@ -355,7 +349,7 @@ outstanding = {"sme": 39.5, "corporate": 85.0, "retail": 6.9}
 
 for segment, amount in sorted(outstanding.items()):                       # by key
     print(segment, amount)
-print()
+print("~"*20)
 for segment, amount in sorted(outstanding.items(), key=lambda kv: kv[1], reverse=True):
     print(segment, amount)                                                # by value DESC
 ```
@@ -381,7 +375,7 @@ ranked = sorted(outstanding.items(), key=lambda kv: kv[1], reverse=True)
 for rank, (segment, amount) in enumerate(ranked, start=1):
     print(f"{rank}. {segment:<10}{amount:>7.1f}{amount / total:>8.1%}")
 ```
-:::
+
 
 ::: details Advanced: the views are live
 `keys()`, `values()` and `items()` are **views**: they show the dictionary as it is
