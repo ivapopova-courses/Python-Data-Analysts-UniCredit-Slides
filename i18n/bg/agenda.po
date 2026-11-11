@@ -329,202 +329,202 @@ msgid "Working with `dict`, looping over it, nested dictionaries, dict comprehen
 msgstr "Работа с `dict`, обхождане с цикъл, вложени dictionaries, dict comprehensions."
 
 #. paragraph
-#: site/agenda.md:80
+#: site/agenda.md:79
 msgid "Grouping and aggregating by hand (`GROUP BY` without pandas)."
 msgstr "Групиране и агрегиране на ръка (`GROUP BY` без pandas)."
 
 #. paragraph
-#: site/agenda.md:81
+#: site/agenda.md:80
 msgid "Lookup tables and nomenclatures."
 msgstr "Таблици за търсене (lookup tables) и номенклатури."
 
 #. heading 3
-#: site/agenda.md:83
+#: site/agenda.md:82
 msgid "7. Text processing and regular expressions"
 msgstr "7. Обработка на текст и регулярни изрази"
 
 #. paragraph
-#: site/agenda.md:85
+#: site/agenda.md:84
 msgid "The methods of `str`: `split` / `join`, `strip`, `replace`, formatting."
 msgstr "Методите на `str`: `split` / `join`, `strip`, `replace`, форматиране."
 
 #. paragraph
-#: site/agenda.md:86
+#: site/agenda.md:85
 msgid "Cleaning text data: names, codes, identifiers."
 msgstr "Почистване на текстови данни: имена, кодове, идентификатори."
 
 #. paragraph
-#: site/agenda.md:87
+#: site/agenda.md:86
 msgid "Dates from text with `datetime`."
 msgstr "Дати от текст с `datetime`."
 
 #. paragraph
-#: site/agenda.md:88
+#: site/agenda.md:87
 msgid "The `re` module: patterns, groups, `search` / `findall` / `sub`."
 msgstr "Модулът `re`: patterns, groups, `search` / `findall` / `sub`."
 
 #. paragraph
-#: site/agenda.md:89
+#: site/agenda.md:88
 msgid "Validating IBANs, company ids (EIK), e-mails and dates; extracting values from free text."
 msgstr "Валидиране на IBAN, ЕИК, e-mail адреси и дати; извличане на стойности от свободен текст."
 
 #. paragraph
-#: site/agenda.md:91
+#: site/agenda.md:90
 msgid "The Python version of `PRXMATCH` (SAS) and `LIKE` / `REGEXP` (SQL)."
 msgstr "Версията на Python за `PRXMATCH` (SAS) и `LIKE` / `REGEXP` (SQL)."
 
 #. heading 3
-#: site/agenda.md:93
+#: site/agenda.md:92
 msgid "8. Error handling and file handling"
 msgstr "8. Обработка на грешки и работа с файлове"
 
 #. paragraph
-#: site/agenda.md:95
+#: site/agenda.md:94
 msgid "`try` / `except` / `else` / `finally`, kinds of exceptions, `raise`, your own exceptions."
 msgstr "`try` / `except` / `else` / `finally`, видове exceptions, `raise`, ваши собствени exceptions."
 
 #. paragraph
-#: site/agenda.md:97
+#: site/agenda.md:96
 msgid "`pathlib`, `with open`; text, CSV, JSON and Excel files."
 msgstr "`pathlib`, `with open`; текстови, CSV, JSON и Excel файлове."
 
 #. paragraph
-#: site/agenda.md:98
+#: site/agenda.md:97
 msgid "Handling bad records while loading data."
 msgstr "Обработка на лоши записи при зареждане на данни."
 
 #. heading 3
-#: site/agenda.md:100
+#: site/agenda.md:99
 msgid "9. Modules, packages, Git and GitHub"
 msgstr "9. Модули, пакети, Git и GitHub"
 
 #. paragraph
-#: site/agenda.md:102
+#: site/agenda.md:101
 msgid "`import`, your own modules, the standard library (`datetime`, `collections`, `statistics`, `os`)."
 msgstr "`import`, ваши собствени модули, стандартната библиотека (`datetime`, `collections`, `statistics`, `os`)."
 
 #. paragraph
-#: site/agenda.md:104
+#: site/agenda.md:103
 msgid "`pip` and virtual environments; the structure of a project."
 msgstr "`pip` и виртуални среди; структурата на един проект."
 
 #. paragraph
-#: site/agenda.md:105
+#: site/agenda.md:104
 msgid "Git: `commit`, `branch`, `merge`, `.gitignore`. GitHub: `clone`, `push`, `pull`, pull requests."
 msgstr "Git: `commit`, `branch`, `merge`, `.gitignore`. GitHub: `clone`, `push`, `pull`, pull requests."
 
 #. heading 3
-#: site/agenda.md:108
+#: site/agenda.md:107
 msgid "10. OOP: first steps, classes and objects"
 msgstr "10. ООП: първи стъпки, класове и обекти"
 
 #. paragraph
-#: site/agenda.md:110
+#: site/agenda.md:109
 msgid "Class and object, `__init__`, attributes, methods, `self`."
 msgstr "Клас и обект, `__init__`, атрибути, методи, `self`."
 
 #. paragraph
-#: site/agenda.md:111
+#: site/agenda.md:110
 msgid "`__str__` / `__repr__`; class attributes; `property`; dataclasses."
 msgstr "`__str__` / `__repr__`; атрибути на класа; `property`; dataclasses."
 
 #. heading 3
-#: site/agenda.md:113
+#: site/agenda.md:112
 msgid "11. OOP in practice: nomenclatures"
 msgstr "11. ООП на практика: номенклатури"
 
 #. paragraph
-#: site/agenda.md:115
+#: site/agenda.md:114
 msgid "A nomenclature as a class: data, metadata, validation rules and processing methods."
 msgstr "Номенклатура като клас: данни, метаданни, правила за валидиране и методи за обработка."
 
 #. paragraph
-#: site/agenda.md:117
+#: site/agenda.md:116
 msgid "`classmethod` and `staticmethod`; inheritance and composition."
 msgstr "`classmethod` и `staticmethod`; наследяване и композиция."
 
 #. paragraph
-#: site/agenda.md:118
+#: site/agenda.md:117
 msgid "Applying one nomenclature the same way to different datasets."
 msgstr "Прилагане на една номенклатура по един и същи начин към различни набори от данни."
 
 #. heading 3
-#: site/agenda.md:120
+#: site/agenda.md:119
 msgid "12. Working with databases; NumPy and introduction to pandas"
 msgstr "12. Работа с бази данни; NumPy и въведение в pandas"
 
 #. paragraph
-#: site/agenda.md:122
+#: site/agenda.md:121
 msgid "DB-API and `sqlite3`: connection, cursor, parameterised queries, transactions."
 msgstr "DB-API и `sqlite3`: връзка (connection), cursor, параметризирани заявки, транзакции."
 
 #. paragraph
-#: site/agenda.md:123
+#: site/agenda.md:122
 msgid "Drivers for Oracle / MS SQL / PostgreSQL (overview)."
 msgstr "Драйвери за Oracle / MS SQL / PostgreSQL (преглед)."
 
 #. paragraph
-#: site/agenda.md:124
+#: site/agenda.md:123
 msgid "`ndarray`, vector operations, broadcasting, aggregates, `np.where`."
 msgstr "`ndarray`, векторни операции, broadcasting, агрегати, `np.where`."
 
 #. heading 3
-#: site/agenda.md:126
+#: site/agenda.md:125
 msgid "13. Introduction to pandas; selection and new columns"
 msgstr "13. Въведение в pandas; селекция и нови колони"
 
 #. paragraph
-#: site/agenda.md:128
+#: site/agenda.md:127
 msgid "`Series` and `DataFrame`; reading CSV and Excel files."
 msgstr "`Series` и `DataFrame`; четене на CSV и Excel файлове."
 
 #. paragraph
-#: site/agenda.md:129
+#: site/agenda.md:128
 msgid "`head`, `info`, `describe`, the types of the columns."
 msgstr "`head`, `info`, `describe`, типовете на колоните."
 
 #. paragraph
-#: site/agenda.md:130
+#: site/agenda.md:129
 msgid "`loc` / `iloc`, boolean masks, `query`, new columns."
 msgstr "`loc` / `iloc`, булеви маски, `query`, нови колони."
 
 #. heading 3
-#: site/agenda.md:132
+#: site/agenda.md:131
 msgid "14. pandas: aggregation, joins, missing values"
 msgstr "14. pandas: агрегиране, съединяване (joins), липсващи стойности"
 
 #. paragraph
-#: site/agenda.md:134
+#: site/agenda.md:133
 msgid "`groupby` / `agg` (like `GROUP BY` and `PROC MEANS`)."
 msgstr "`groupby` / `agg` (като `GROUP BY` и `PROC MEANS`)."
 
 #. paragraph
-#: site/agenda.md:135
+#: site/agenda.md:134
 msgid "`merge` / `concat` (like `JOIN` and `MERGE` in a DATA step); missing values."
 msgstr "`merge` / `concat` (като `JOIN` и `MERGE` в DATA step); липсващи стойности."
 
 #. paragraph
-#: site/agenda.md:136
+#: site/agenda.md:135
 msgid "SQLAlchemy engine; the result of a query straight into a DataFrame."
 msgstr "SQLAlchemy engine; резултатът от заявка направо в DataFrame."
 
 #. heading 3
-#: site/agenda.md:138
+#: site/agenda.md:137
 msgid "15. pandas: reports"
 msgstr "15. pandas: отчети"
 
 #. paragraph
-#: site/agenda.md:140
+#: site/agenda.md:139
 msgid "`pivot_table`, `melt`, dates and time series, export to Excel with several sheets."
 msgstr "`pivot_table`, `melt`, дати и времеви редове, експорт в Excel с няколко листа."
 
 #. heading 3
-#: site/agenda.md:143
+#: site/agenda.md:142
 msgid "16. Final project"
 msgstr "16. Финален проект"
 
 #. paragraph
-#: site/agenda.md:145
+#: site/agenda.md:144
 msgid "[Final project](/project): load data from a file and a database, nomenclatures as classes, cleaning, aggregation and a finished report."
 msgstr "[Финален проект](/project): зареждане на данни от файл и от база данни, номенклатури като класове, почистване, агрегиране и готов отчет."
 

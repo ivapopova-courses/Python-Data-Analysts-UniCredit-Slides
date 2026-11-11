@@ -76,7 +76,6 @@ The dates are planned and may change.
 ### 6. Dictionaries
 
 - Working with `dict`, looping over it, nested dictionaries, dict comprehensions.
-- `defaultdict`, `Counter`.
 - Grouping and aggregating by hand (`GROUP BY` without pandas).
 - Lookup tables and nomenclatures.
 
