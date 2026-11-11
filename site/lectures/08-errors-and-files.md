@@ -947,7 +947,7 @@ with open("out/summary.json", "w", encoding="utf-8") as file:
 print(Path("out/summary.json").read_text(encoding="utf-8"))
 ```
 
-A summary made from the portfolio - counted with a dictionary ([session 6](./06-dictionaries.md#_6-grouping-by-hand-group-by)), written
+A summary made from the portfolio - the number of loans per product, written
 with `sort_keys=True` so that the file looks the same in every run (easy to compare in
 Git, [lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code)):
 

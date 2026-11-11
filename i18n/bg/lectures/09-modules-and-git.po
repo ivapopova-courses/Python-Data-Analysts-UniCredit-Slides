@@ -240,7 +240,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:314
-msgid "The buckets of the whole portfolio, counted with the function of the module and a `Counter` ([session 6](./06-dictionaries.md#count-by-group-from-if-to-counter)):"
+msgid "The buckets of the whole portfolio, counted with the function of the module and a `Counter`:"
 msgstr ""
 
 #. box title
@@ -445,7 +445,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:686
-msgid "By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists ([session 6](./06-dictionaries.md#group-into-lists)) and `statistics` per group:"
+msgid "By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists (`defaultdict(list)`) and `statistics` per group:"
 msgstr ""
 
 #. paragraph
@@ -465,7 +465,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:722
-msgid "You know `Counter` and `defaultdict` ([session 6](./06-dictionaries.md#count-by-group-from-if-to-counter)). Two more:"
+msgid "`Counter` (counts values) and `defaultdict` (a dictionary that creates a missing key) are in this module. Two more:"
 msgstr ""
 
 #. paragraph

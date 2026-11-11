@@ -17,8 +17,6 @@ title: 6. Dictionaries
 - use a dictionary as a **lookup table** - the Python version of a SAS format, a
   hash object and a small SQL reference table;
 - build dictionaries in one line with a **dict comprehension**;
-- count and sum **by group** - `GROUP BY` without pandas - with `get`,
-  `defaultdict` and `Counter`;
 - work with **records**: a row as a dictionary, a table as a dictionary of rows.
 
 Follow the main sections for the core lesson. Collapsed **Advanced** blocks keep
@@ -225,7 +223,7 @@ print(base | {"USD": "US dollar"})       # a NEW dict; base is not changed
 print(base)
 ```
 
-`|` is the safe way to add a column to a record (section 7) without changing the
+`|` is the safe way to add a column to a record (section 6) without changing the
 original row - a new dictionary with one more pair:
 
 ```python run
@@ -471,7 +469,7 @@ inverted = {group: product for product, group in group_of.items()}
 print(inverted)              # {'retail': 'consumer', ...} - mortgage is gone
 ```
 
-For "group -> all products" you need a dictionary of **lists** (section 6).
+For "group -> all products" you need a dictionary of **lists**: `{"retail": ["mortgage", "consumer"], ...}`.
 :::
 
 ::: tip Try it
@@ -616,289 +614,7 @@ print(loans["product"].map(names).fillna("Other").head())
 ```
 :::
 
-## 6. Grouping by hand: `GROUP BY`
-
-### Count by group: from `if` to `Counter`
-
-The SQL `SELECT region, COUNT(*) FROM clients GROUP BY region` builds a result
-**group -> count**. Start with a small list so you can follow each update:
-
-```python run
-regions = ["Ruse", "Varna", "Ruse"]
-counts = {}
-for region in regions:
-    counts[region] = counts.get(region, 0) + 1
-    print(region, counts)
-```
-
-For a new region, `get(region, 0)` gives zero. For a known region, it gives the
-count so far. Add one and store the new count under the same key.
-
-::: details Advanced: count with an explicit condition
-
-**With `if key in d`:**
-
-```python run
-regions = ["Ruse", "Varna", "Sofia", "Ruse", "Burgas", "Varna", "Ruse", "Plovdiv"]
-
-counts = {}
-for region in regions:
-    if region in counts:
-        counts[region] += 1
-    else:
-        counts[region] = 1
-print(counts)
-```
-:::
-
-::: details Advanced: count with `defaultdict(int)`
-
-**With `defaultdict(int)`** - a dictionary that creates a missing key by itself, with
-`int()`, that is `0`:
-
-```python run
-from collections import defaultdict
-
-regions = ["Ruse", "Varna", "Sofia", "Ruse", "Burgas", "Varna", "Ruse", "Plovdiv"]
-
-counts = defaultdict(int)
-for region in regions:
-    counts[region] += 1
-print(dict(counts))
-```
-:::
-
-**`Counter`** - made for counting:
-
-```python run
-from collections import Counter
-
-regions = ["Ruse", "Varna", "Sofia", "Ruse", "Burgas", "Varna", "Ruse", "Plovdiv"]
-counts = Counter(regions)
-
-print(counts)
-print(counts.most_common(3))        # PROC FREQ ORDER=FREQ, the top 3
-print(counts["Sofia"], counts["Vidin"])      # a missing key counts 0 - no KeyError
-```
-
-::: info Animation
-**Grouping by hand:** [2. Count with `get`](../animations/groupingByHand.html#2){target="_blank"}
-:::
-
-### Sum by group
-
-`defaultdict(float)` creates a missing key with `float()`, which is `0.0`, when
-you read it with `[]`. You can then add to the new total straight away:
-
-```python run
-from collections import defaultdict
-
-totals = defaultdict(float)
-for product, amount in [("mortgage", 100.0), ("overdraft", 20.0), ("mortgage", 50.0)]:
-    totals[product] += amount
-print(dict(totals))
-```
-
-Pass `float`, not `float()`: the dictionary calls it for each new key. `dict(totals)`
-makes a normal dictionary with the same pairs. Round only after summing a group.
-
-The SQL `SELECT segment, SUM(outstanding) ... GROUP BY segment` - the segment is in
-the clients table, the amount in the loans table: a lookup (section 5) and a sum:
-
-```python run
-from collections import defaultdict
-
-segment_of = {"C0001": "retail", "C0002": "sme", "C0003": "corporate"}   # client_id -> segment
-loans = [("C0002", 120000.0), ("C0001", 8500.0), ("C0003", 40000.0), ("C0002", 3200.0)]
-
-totals = defaultdict(float)                         # float() is 0.0
-for client_id, outstanding in loans:
-    totals[segment_of[client_id]] += outstanding
-
-for segment, total in sorted(totals.items()):
-    print(f"{segment:<10}{total:>18,.2f}")
-```
-
-::: info Animation
-**Grouping by hand:** [3. Sum with `defaultdict`](../animations/groupingByHand.html#3){target="_blank"}
-:::
-
-::: details Advanced: several aggregates and shares
-
-### Several aggregates per group
-
-`COUNT`, `SUM`, `AVG`, `MAX` by product - keep a small list per group,
-`[count, sum, max]`, and compute the average at the end. `setdefault` returns the
-list stored under the key. The name `s` refers to that same list; updating `s`
-changes the value inside `stats` without another assignment:
-
-```python run
-stats = {}
-for amount in [100.0, 50.0]:
-    s = stats.setdefault("mortgage", [0, 0.0, 0.0])
-    s[0] += 1
-    s[1] += amount
-    s[2] = max(s[2], amount)
-    print(stats)
-```
-
-On a small table of loans (product, currency, outstanding):
-
-```python run
-loans = [("mortgage", "EUR", 120000.0), ("consumer", "EUR", 8500.0), ("overdraft", "USD", 40000.0),
-         ("mortgage", "EUR", 250000.0), ("consumer", "USD", 15000.0), ("overdraft", "EUR", 1200.0)]
-
-stats = {}
-for product, currency, amount in loans:
-    s = stats.setdefault(product, [0, 0.0, 0.0])     # count, sum, max
-    s[0] += 1
-    s[1] += amount
-    s[2] = max(s[2], amount)
-
-print(f"{'product':<16}{'n':>4}{'sum':>16}{'avg':>14}{'max':>14}")
-for product, (n, total, largest) in sorted(stats.items()):
-    print(f"{product:<16}{n:>4}{total:>16,.0f}{total / n:>14,.0f}{largest:>14,.0f}")
-```
-
-This is SAS `PROC MEANS` with `CLASS product`, by hand. pandas does it in one line
-([lecture 14](./14-pandas-select-aggregate-join.md#_4-groupby-group-by-and-proc-means)) - but now you know what it does.
-
-The **share** of each group in the total - one more pass over the small result, not
-over the data:
-
-```python run
-from collections import defaultdict
-
-loans = [("mortgage", "EUR", 120000.0), ("consumer", "EUR", 8500.0), ("overdraft", "USD", 40000.0),
-         ("mortgage", "EUR", 250000.0), ("consumer", "USD", 15000.0), ("overdraft", "EUR", 1200.0)]
-
-totals = defaultdict(float)
-for product, currency, amount in loans:
-    totals[currency] += amount
-
-grand_total = sum(totals.values())
-shares = {cur: round(t / grand_total, 4) for cur, t in totals.items()}
-print(shares)
-```
-:::
-
-### Group into lists
-
-Sometimes you need the **rows** of each group, not only a number - a dictionary of
-lists:
-
-```python run
-from collections import defaultdict
-
-loans = [("L000001", "C0002"), ("L000002", "C0001"), ("L000003", "C0002"),
-         ("L000004", "C0003"), ("L000005", "C0002")]        # loan_id, client_id
-
-loans_of = defaultdict(list)                   # a NEW list() for each missing key
-for loan_id, client_id in loans:
-    loans_of[client_id].append(loan_id)
-
-print(dict(loans_of))
-print(len(loans_of["C0002"]), "loans for C0002")
-```
-
-::: info Animation
-**Grouping by hand:** [4. Group into lists](../animations/groupingByHand.html#4){target="_blank"}
-:::
-
-::: details Advanced: two-column groups, HAVING and ORDER BY
-
-### Two keys: `GROUP BY segment, stage`
-
-A **tuple** of the two values is the key:
-
-```python run
-from collections import defaultdict
-
-loans = [("retail", 1, 8500.0), ("sme", 1, 120000.0), ("retail", 2, 3200.0),
-         ("sme", 1, 40000.0), ("retail", 1, 1200.0)]          # segment, stage, outstanding
-
-totals = defaultdict(float)
-for segment, stage, outstanding in loans:
-    totals[(segment, stage)] += outstanding
-
-for (segment, stage), total in sorted(totals.items()):
-    print(f"{segment:<10} stage {stage}{total:>18,.2f}")
-```
-
-### `HAVING` and `ORDER BY` on the result
-
-The result is a dictionary - filter it with a comprehension (SQL `HAVING`), sort its
-items (SQL `ORDER BY`):
-
-```python run
-from collections import Counter
-
-client_of_loan = ["C0002", "C0001", "C0002", "C0003", "C0002", "C0003", "C0004", "C0001"]
-loans_per_client = Counter(client_of_loan)
-
-# HAVING COUNT(*) >= 2, ORDER BY COUNT(*) DESC, client_id
-many = {c: n for c, n in loans_per_client.items() if n >= 2}
-for client_id, n in sorted(many.items(), key=lambda kv: (-kv[1], kv[0])):
-    print(client_id, n)
-```
-
-The key is a tuple - two columns, like `ORDER BY a, b` ([session 4](./04-functions.md#sorting-by-a-key)).
-`-kv[1]` is the count with a minus: the largest count gives the smallest key, so it
-comes first (`DESC`) while the client ids stay A - Z.
-:::
-
-::: details Advanced: `Counter` arithmetic - two months side by side
-Counters can be added and subtracted. The change of the number of loans per stage
-between two months:
-
-```python run
-from collections import Counter
-
-august = Counter({1: 330, 2: 52, 3: 18})
-september = Counter({1: 323, 2: 58, 3: 19})
-
-print(september - august)              # only the positive changes
-september.subtract(august)             # all changes, also negative
-print(dict(september))
-print((august + Counter({3: 1})).total())       # total(): Python 3.10+
-```
-:::
-
-### A trap: the group key from dirty text
-
-`"Sofia"`, `"sofia"` and `"Sofia "` are three different keys. Clean the key before
-you group (text cleaning: [lecture 7](./07-text-and-regex.md#_5-cleaning-identifiers-and-names)):
-
-```python run
-from collections import Counter
-
-cities = ["Sofia", "sofia", "Sofia ", "Varna", "VARNA"]
-print(Counter(cities))
-print(Counter(c.strip().title() for c in cities))
-```
-
-::: details Advanced: the same in pandas
-`value_counts` and `groupby` do all of this section (lectures 13 - 14):
-
-```python run
-import pandas as pd
-
-clients = pd.read_csv("data/clients.csv")
-print(clients["region"].value_counts().head(3))
-loans = pd.read_csv("data/loans.csv")
-print(loans.groupby("product")["outstanding"].agg(["count", "sum", "mean", "max"]).round(0))
-```
-:::
-
-::: tip Try it
-Start from `loans = [("EUR", 1200.5), ("USD", 300.25), ("EUR", 99.25)]` (currency,
-outstanding). Count the loans per **currency** with `Counter`, then sum the
-outstanding per **currency** with `defaultdict(float)`, and round the completed
-totals to two decimals. Why do you need a different operation for the count and
-the sum?
-:::
-
-## 7. Nested dictionaries and records
+## 6. Nested dictionaries and records
 
 ### A row as a dictionary
 
@@ -1046,7 +762,7 @@ fields per client). Then print the rating of `C0003` and the number of corporate
 clients with a rating of 6 or worse.
 :::
 
-## 8. Summary
+## 7. Summary
 | Topic | Remember |
 |-------|----------|
 | Dictionary | `{key: value}`; keys unique and hashable; keeps insertion order |
@@ -1055,9 +771,6 @@ clients with a rating of 6 or worse.
 | Loop | `for key in d`; `d.values()`; `for key, value in d.items()`; `sorted(d)` sorts the keys |
 | Comprehension | `{key: value for ... if ...}`; `dict(zip(keys, values))` pairs two lists |
 | Lookups | A dictionary is like a SAS format or a SQL lookup table with unique keys |
-| Counting | `counts[key] = counts.get(key, 0) + 1`; `Counter(values)`; `most_common(n)` |
-| Summing | `defaultdict(float)` starts each group at zero; convert text to numbers; round final totals |
-| Grouping rows | `defaultdict(list)` creates a separate list for each group |
 | Records | a row as a dict, a table as a list of dicts; `clients[id]["region"]` reads a nested field |
 
 ## Practice
@@ -1072,19 +785,17 @@ python 06-dictionaries/practice/task1-dict-basics.py
 | Task | File | What you do |
 |------|------|-------------|
 | 1 | `task1-dict-basics.py` | A product nomenclature: create, read with a default, add, change, remove |
-| 2 | `task2-predict-dicts.py` | Predict: duplicate keys, lookups, membership, changes and counting |
-| 3 | `task3-count-and-sum.py` | Clients per region, outstanding per segment, `most_common` |
-| 4 | `task4-group-aggregates.py` (Optional, Advanced) | Count / sum / average / max per product, `HAVING`, a sorted report |
+| 2 | `task2-predict-dicts.py` | Predict: duplicate keys, lookups, membership and changes |
 
-Start with Task 1, then Task 3. Each part has its own checks. While you work on one
-part, `TODO` for the other parts means they are still unfinished. Task 2 is extra
-practice on the main lesson. Task 4 and `task2-predict-dicts-advanced.py` are
-optional extensions after reading the relevant Advanced blocks.
+Start with Task 1, then Task 2. Each part has its own checks. While you work on one
+part, `TODO` for the other parts means they are still unfinished.
+`task2-predict-dicts-advanced.py` is an optional extension after reading the
+relevant Advanced blocks.
 
 ## Homework
 
-1. Finish the practice tasks 1 - 3. Every check must print `OK`.
-2. Optional: Task 4 and `task2-predict-dicts-advanced.py`.
+1. Finish the practice tasks 1 and 2. Every check must print `OK`.
+2. Optional: `task2-predict-dicts-advanced.py`.
 
 ## Self-study
 
@@ -1117,7 +828,9 @@ for region in sorted(table):
     print(f"{region:<14}{cells}{sum(row.values()):>8}")
 ```
 
-`defaultdict(lambda: defaultdict(int))`: a missing row is created as a new
+A `defaultdict` (from the module `collections`) is a dictionary that creates a
+missing key by itself: `defaultdict(int)` gives a new key the value `int()`, that is
+`0`. `defaultdict(lambda: defaultdict(int))`: a missing row is created as a new
 `defaultdict(int)` - so `table[region][segment] += 1` works for any new pair.
 
 And back - from the cross table to rows (`region, segment, count`), the job of
@@ -1217,10 +930,8 @@ immutable values.
 - Python tutorial: [Dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries),
   [Looping techniques](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques)
 - Reference: [Mapping types - dict](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict),
-  [`collections`](https://docs.python.org/3/library/collections.html) (`defaultdict`,
-  `Counter`)
-- Real Python: [Dictionaries in Python](https://realpython.com/python-dicts/),
-  [Python's Counter](https://realpython.com/python-counter/)
+  [`collections.defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict)
+- Real Python: [Dictionaries in Python](https://realpython.com/python-dicts/)
 
 **Next session:** text processing and regular expressions - clean ids, names and
 codes, read numbers and dates from text with the methods of `str` and `datetime`,

@@ -835,5 +835,8 @@ msgstr "Real Python: [When to use a list comprehension](https://realpython.com/l
 
 #. paragraph
 #: site/lectures/05-lists-advanced.md:815
-msgid "**Next session:** dictionaries - a key and a value, the Python version of a SAS format and of a lookup table; counting and SQL `GROUP BY` without pandas."
-msgstr "**Следващото занятие:** dictionaries - ключ и стойност, версията на Python на SAS format и на lookup таблица; броене и SQL `GROUP BY` без pandas."
+msgid "**Next session:** dictionaries - a key and a value, the Python version of a SAS format and of a lookup table; records with named fields."
+msgstr "**Следващото занятие:** dictionaries - ключ и стойност, версията на Python на SAS format и на lookup таблица; записи с именувани полета."
+
+#~ msgid "**Next session:** dictionaries - a key and a value, the Python version of a SAS format and of a lookup table; counting and SQL `GROUP BY` without pandas."
+#~ msgstr "**Следващото занятие:** dictionaries - ключ и стойност, версията на Python на SAS format и на lookup таблица; броене и SQL `GROUP BY` без pandas."

@@ -601,7 +601,7 @@ print(Counter(r["group"] for r in rows))
 ```
 
 The new column, then a total per label - the outstanding per stage name, the SQL
-`GROUP BY` of [session 6](./06-dictionaries.md#_6-grouping-by-hand-group-by):
+`GROUP BY`:
 
 ```python run
 import csv

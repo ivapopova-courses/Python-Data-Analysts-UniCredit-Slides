@@ -800,7 +800,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:950
-msgid "A summary made from the portfolio - counted with a dictionary ([session 6](./06-dictionaries.md#_6-grouping-by-hand-group-by)), written with `sort_keys=True` so that the file looks the same in every run (easy to compare in Git, [lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code)):"
+msgid "A summary made from the portfolio - the number of loans per product, written with `sort_keys=True` so that the file looks the same in every run (easy to compare in Git, [lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code)):"
 msgstr ""
 
 #. box title

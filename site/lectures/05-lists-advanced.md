@@ -813,4 +813,4 @@ python 05-lists-advanced/practice/task1-list-methods.py
   [Python's `zip()` function](https://realpython.com/python-zip-function/)
 
 **Next session:** dictionaries - a key and a value, the Python version of a SAS format
-and of a lookup table; counting and SQL `GROUP BY` without pandas.
+and of a lookup table; records with named fields.

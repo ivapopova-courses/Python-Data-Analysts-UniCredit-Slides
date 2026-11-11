@@ -475,7 +475,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:603
-msgid "The new column, then a total per label - the outstanding per stage name, the SQL `GROUP BY` of [session 6](./06-dictionaries.md#_6-grouping-by-hand-group-by):"
+msgid "The new column, then a total per label - the outstanding per stage name, the SQL `GROUP BY`:"
 msgstr ""
 
 #. box title

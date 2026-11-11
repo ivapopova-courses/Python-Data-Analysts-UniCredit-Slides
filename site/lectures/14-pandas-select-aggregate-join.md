@@ -455,7 +455,7 @@ loans.groupby("stage")["outstanding"].sum()
 
 The totals per stage (`110184825.28`, `16884527.04`, `4301356.28`) - in one
 line. The result is a Series with the groups as its index. Compare with the sum by
-group by hand of [session 6](./06-dictionaries.md#sum-by-group):
+group by hand, with a dictionary:
 
 ```python run
 import pandas as pd
