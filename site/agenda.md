@@ -76,7 +76,6 @@ The dates are planned and may change.
 ### 6. Dictionaries
 
 - Working with `dict`, looping over it, nested dictionaries, dict comprehensions.
-- Grouping and aggregating by hand (`GROUP BY` without pandas).
 - Lookup tables and nomenclatures.
 
 ### 7. Text processing and regular expressions
