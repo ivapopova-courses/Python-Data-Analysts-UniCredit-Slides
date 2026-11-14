@@ -187,9 +187,10 @@ print("0001200".lstrip("0"))
 print("www.example.com".strip("w.com"))      # careful: characters, not a word!
 ```
 
-### Spaces inside: `COMPBL`
+### Spaces inside: `COMPBL` in SAS {#spaces-inside-compbl}
 
-`strip` does not touch the spaces **inside** a text. `split()` without an argument
+In SAS, `COMPBL` ("compress blanks") replaces every group of spaces inside a text
+with one space. `strip` does not touch the spaces **inside** a text. `split()` without an argument
 cuts the text into words at every group of spaces, and `" ".join(...)` puts the words
 back with one space between them:
 
