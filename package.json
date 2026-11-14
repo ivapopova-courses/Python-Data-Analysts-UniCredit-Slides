@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vitepress dev site",
     "dev:trainer": "TRAINER=1 vitepress dev site",
+    "dev:search": "SEARCH=1 vitepress dev site",
     "build": "vitepress build site",
     "build:trainer": "TRAINER=1 vitepress build site",
     "preview": "vitepress preview site",

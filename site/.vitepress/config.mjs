@@ -121,7 +121,7 @@ const config = await withLocales(course, { footerMessage })
 //   source text (up to 1024), so each save of a long lecture kept a few MB more and
 //   a long editing day ended with "JavaScript heap out of memory";
 // - no local search: building its index renders every page (EN and BG) before the
-//   server starts (5 - 18 s instead of about 1 s). `SEARCH=1 npm run dev` keeps it.
+//   server starts (5 - 18 s instead of about 1 s). `npm run dev:search` keeps it.
 // withLocales sets the search, so this comes after it.
 if (isDev) {
   config.markdown = { ...config.markdown, cache: false }

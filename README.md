@@ -24,12 +24,14 @@ The course has four repositories, cloned side by side in one course folder:
 ```bash
 npm install          # once
 npm run dev          # live preview at http://localhost:5173, reloads on save
+npm run dev:trainer  # the same, with the trainer notes (key T); never deploy it
+npm run dev:search   # the same, with the search box (starts in 5 - 15 s)
 npm run build        # static site in site/.vitepress/dist (for GitHub Pages)
 ```
 
 In `npm run dev` and `npm run dev:trainer` the search box is off, so the server
 starts in about a second (building the search index renders every page first).
-To test the search, start it with `SEARCH=1 npm run dev`. The dev server also does
+To test the search, use `npm run dev:search`. The dev server also does
 not cache the rendered pages, so its memory does not grow with every save. Both
 settings are at the end of `site/.vitepress/config.mjs`; `npm run build` keeps
 the search and the cache.
