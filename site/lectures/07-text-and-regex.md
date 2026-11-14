@@ -254,19 +254,19 @@ Use `in` for "is it there?".
 
 ### What kind of characters?
 
-These methods return `True` if **all** characters are of one kind (and the string is
-not empty):
-
-```python run
-for s in ["131234567", "12O.50", "EUR", "BG80", ""]:
-    print(f"{s!r:<12} digit={s.isdigit()!s:<6} alpha={s.isalpha()!s:<6} alnum={s.isalnum()}")
-```
-
 | Method | `True` when all characters are | SAS |
 |---|---|---|
 | [`s.isdigit()`](https://docs.python.org/3/builtins/stdtypes.html#str.isdigit) | digits | `NOTDIGIT(s) = 0` |
 | [`s.isalpha()`](https://docs.python.org/3/builtins/stdtypes.html#str.isalpha) | letters | `NOTALPHA(s) = 0` |
 | [`s.isalnum()`](https://docs.python.org/3/builtins/stdtypes.html#str.isalnum) | letters or digits | `NOTALNUM(s) = 0` |
+
+These methods return `True` if **all** characters are of one kind (and the string is
+not empty):
+
+```python run
+for s in ["123", "abc", "123a", ""]:
+    print(f"'{s}': digit={s.isdigit()}, alpha={s.isalpha()}, alnum={s.isalnum()}")
+```
 
 **Check a loan id.** Check an id by its parts - "an L and six digits":
 
@@ -299,13 +299,11 @@ print(fields)
 print(fields[2])                  # SCAN(line, 3, ',') in SAS
 ```
 
-There are two kinds of [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split):
-
+- [`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) without an argument: every group of spaces, tabs and new lines cuts, and
+  there are no empty fields. This is right for words.
 - [`split(",")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) with a separator: **every** comma cuts, so two commas give an
   **empty** field. This is right for CSV, where an empty field means a missing
   value.
-- [`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) without an argument: every group of spaces, tabs and new lines cuts, and
-  there are no empty fields. This is right for words.
 
 ```python run
 print("a,,b".split(","))           # ['a', '', 'b'] - the missing value is kept
@@ -313,32 +311,6 @@ print("a  b".split(" "))           # ['a', '', 'b'] - often not what you want
 print("a  b".split())              # ['a', 'b']
 print("  Iron   Retail ".split())
 ```
-
-**Limit the cuts.** A second argument limits the number of cuts. [`rsplit`](https://docs.python.org/3/builtins/stdtypes.html#str.rsplit) cuts from the right - the last
-word of a company name is its legal form:
-
-```python run
-name = "Black Sea Design ET"
-
-print(name.split(" ", 1))          # the first word, and the rest
-print(name.rsplit(" ", 1))         # the rest, and the last word
-base, form = name.rsplit(" ", 1)
-print(base, "|", form)
-```
-
-**Cut once: [`partition`](https://docs.python.org/3/builtins/stdtypes.html#str.partition).** [`partition`](https://docs.python.org/3/builtins/stdtypes.html#str.partition) cuts at the **first** separator and always gives three parts: the text
-before, the separator, the text after. It is handy for `key=value`:
-
-```python run
-setting = "report_date=2026-09-30"
-key, _, value = setting.partition("=")
-print(key, value)
-
-print("no equals sign".partition("="))
-```
-
-(The name `_` is a normal variable. By convention it means "I do not need this
-value".)
 
 ### `join`: fields into a line
 
@@ -439,7 +411,7 @@ print(reg["city"].str.strip().str.title().value_counts().head(4))
 ::: tip Try it
 `settings = "lgd=0.45;currency=EUR;report_date=2026-09-30"`. Turn it into a
 dictionary `{"lgd": "0.45", ...}`: [`split(";")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) gives the three parts, and
-[`partition("=")`](https://docs.python.org/3/builtins/stdtypes.html#str.partition) cuts each part into a key and a value. Then join the dictionary
+[`split("=")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) cuts each part into a key and a value. Then join the dictionary
 back into the same string.
 :::
 
@@ -1290,7 +1262,7 @@ there?
 | Case | [`upper`](https://docs.python.org/3/builtins/stdtypes.html#str.upper), [`lower`](https://docs.python.org/3/builtins/stdtypes.html#str.lower), [`title`](https://docs.python.org/3/builtins/stdtypes.html#str.title) (fix legal forms after it); compare with [`.lower()`](https://docs.python.org/3/builtins/stdtypes.html#str.lower) on both sides |
 | Spaces | [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) / [`lstrip`](https://docs.python.org/3/builtins/stdtypes.html#str.lstrip) / [`rstrip`](https://docs.python.org/3/builtins/stdtypes.html#str.rstrip) at the ends; `" ".join(s.split())` = `COMPBL` |
 | Find and test | `in`; [`startswith((...))`](https://docs.python.org/3/builtins/stdtypes.html#str.startswith); [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find) gives -1; [`count`](https://docs.python.org/3/builtins/stdtypes.html#str.count); [`isdigit`](https://docs.python.org/3/builtins/stdtypes.html#str.isdigit), [`isalpha`](https://docs.python.org/3/builtins/stdtypes.html#str.isalpha), [`isalnum`](https://docs.python.org/3/builtins/stdtypes.html#str.isalnum) |
-| Split and join | [`split(",")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) keeps empty fields; [`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) cuts at any spaces; [`rsplit`](https://docs.python.org/3/builtins/stdtypes.html#str.rsplit), [`partition`](https://docs.python.org/3/builtins/stdtypes.html#str.partition); `", ".join(strings)` |
+| Split and join | [`split(",")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) keeps empty fields; [`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) cuts at any spaces; `", ".join(strings)` |
 | Replace | [`replace(old, new)`](https://docs.python.org/3/builtins/stdtypes.html#str.replace); [`removeprefix`](https://docs.python.org/3/builtins/stdtypes.html#str.removeprefix) / [`removesuffix`](https://docs.python.org/3/builtins/stdtypes.html#str.removesuffix); [`zfill`](https://docs.python.org/3/builtins/stdtypes.html#str.zfill) |
 | Cleaning | one function per column, `None` for what cannot be fixed; check against a trusted source |
 | Counting | [`Counter(values)`](https://docs.python.org/3/library/collections.html#collections.Counter) = `GROUP BY` + `COUNT(*)`, `PROC FREQ`; [`most_common(n)`](https://docs.python.org/3/library/collections.html#collections.Counter.most_common); a missing key counts 0; clean the key first |
