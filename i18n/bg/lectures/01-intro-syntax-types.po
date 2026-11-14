@@ -55,8 +55,8 @@ msgstr "пускате Python код във VS Code, в терминала и в
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:18
-msgid "read the structure of a program: lines, indentation, comments, `print()`;"
-msgstr "четете структурата на една програма: редове, отстъп, коментари, `print()`;"
+msgid "read the structure of a program: lines, indentation, comments, [`print()`](https://docs.python.org/3/builtins/functions.html#print);"
+msgstr "четете структурата на една програма: редове, отстъп, коментари, [`print()`](https://docs.python.org/3/builtins/functions.html#print);"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:19
@@ -80,8 +80,8 @@ msgstr "преобразувате стойности между типовет�
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:23
-msgid "calculate money values exactly with `Decimal`, and round them the way SAS and SQL do."
-msgstr "смятате парични стойности точно с `Decimal` и ги закръгляте така, както го правят SAS и SQL."
+msgid "calculate money values exactly with [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal), and round them the way SAS and SQL do."
+msgstr "смятате парични стойности точно с [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) и ги закръгляте така, както го правят SAS и SQL."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:25
@@ -1910,8 +1910,8 @@ msgstr "Отговор"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:876
-msgid "`print(\"Performing\")` is not indented, so it is not part of the `else` block: it runs always, also for a loan 120 days past due. It needs 4 spaces in front."
-msgstr "`print(\"Performing\")` не е отместен, затова не е част от блока на `else`: изпълнява се винаги, също и за кредит със 120 дни просрочие. Трябват му 4 интервала отпред."
+msgid "[`print(\"Performing\")`](https://docs.python.org/3/builtins/functions.html#print) is not indented, so it is not part of the `else` block: it runs always, also for a loan 120 days past due. It needs 4 spaces in front."
+msgstr "[`print(\"Performing\")`](https://docs.python.org/3/builtins/functions.html#print) не е отместен, затова не е част от блока на `else`: изпълнява се винаги, също и за кредит със 120 дни просрочие. Трябват му 4 интервала отпред."
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:880
@@ -1955,8 +1955,8 @@ msgstr "`print()`: показване на стойности"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:905
-msgid "[`print()`](https://docs.python.org/3/library/functions.html#print) writes values to the screen, separated by spaces, and ends with a new line. Two options change that: `sep` (the separator) and `end` (what comes at the end)."
-msgstr "[`print()`](https://docs.python.org/3/library/functions.html#print) записва стойности на екрана, разделени с интервали, и завършва с нов ред. Две опции променят това: `sep` (разделителят) и `end` (какво идва накрая)."
+msgid "[`print()`](https://docs.python.org/3/builtins/functions.html#print) writes values to the screen, separated by spaces, and ends with a new line. Two options change that: `sep` (the separator) and `end` (what comes at the end)."
+msgstr "[`print()`](https://docs.python.org/3/builtins/functions.html#print) записва стойности на екрана, разделени с интервали, и завършва с нов ред. Две опции променят това: `sep` (разделителят) и `end` (какво идва накрая)."
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:921
@@ -1965,13 +1965,13 @@ msgstr "`input()`: питане на потребителя"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:923
-msgid "[`input()`](https://docs.python.org/3/library/functions.html#input) shows a message, waits for the user to type a line and press `Enter`, and returns what was typed - always as **text** (`str`), even when the user types a number. Convert it yourself (section 12):"
-msgstr "[`input()`](https://docs.python.org/3/library/functions.html#input) показва съобщение, чака потребителят да въведе ред и да натисне `Enter`, и връща въведеното - винаги като **текст** (`str`), дори когато потребителят въведе число. Преобразувайте го сами (раздел 12):"
+msgid "[`input()`](https://docs.python.org/3/builtins/functions.html#input) shows a message, waits for the user to type a line and press `Enter`, and returns what was typed - always as **text** (`str`), even when the user types a number. Convert it yourself (section 12):"
+msgstr "[`input()`](https://docs.python.org/3/builtins/functions.html#input) показва съобщение, чака потребителят да въведе ред и да натисне `Enter`, и връща въведеното - винаги като **текст** (`str`), дори когато потребителят въведе число. Преобразувайте го сами (раздел 12):"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:935
-msgid "`input()` does not work on this site - try it in VS Code (`python file.py`) or in a notebook. In analysis work you seldom need it: the data comes from files and databases."
-msgstr "`input()` не работи на този сайт - пробвайте го във VS Code (`python file.py`) или в notebook. В аналитичната работа рядко ви трябва: данните идват от файлове и бази данни."
+msgid "[`input()`](https://docs.python.org/3/builtins/functions.html#input) does not work on this site - try it in VS Code (`python file.py`) or in a notebook. In analysis work you seldom need it: the data comes from files and databases."
+msgstr "[`input()`](https://docs.python.org/3/builtins/functions.html#input) не работи на този сайт - пробвайте го във VS Code (`python file.py`) или в notebook. В аналитичната работа рядко ви трябва: данните идват от файлове и бази данни."
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:939
@@ -2085,8 +2085,8 @@ msgstr "липсваща стойност (`.`, `\" \"`)"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:997
-msgid "`type()` gives the type of a value:"
-msgstr "`type()` дава типа на една стойност:"
+msgid "[`type()`](https://docs.python.org/3/builtins/functions.html#type) gives the type of a value:"
+msgstr "[`type()`](https://docs.python.org/3/builtins/functions.html#type) дава типа на една стойност:"
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:1004
@@ -2150,8 +2150,8 @@ msgstr "Резултатът от сравнение е `bool`. Обърнете
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1083
-msgid "A `bool` is a kind of `int`: `True` is `1` and `False` is `0`. So you can count with it - like `sum(dpd > 90)` in SAS SQL:"
-msgstr "`bool` е вид `int`: `True` е `1`, а `False` е `0`. Затова можете да броите с него - като `sum(dpd > 90)` в SAS SQL:"
+msgid "A `bool` is a kind of `int`: `True` is `1` and `False` is `0`. So you can count with it - like [`sum(dpd > 90)`](https://docs.python.org/3/builtins/functions.html#sum) in SAS SQL:"
+msgstr "`bool` е вид `int`: `True` е `1`, а `False` е `0`. Затова можете да броите с него - като [`sum(dpd > 90)`](https://docs.python.org/3/builtins/functions.html#sum) в SAS SQL:"
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:1091
@@ -2205,8 +2205,8 @@ msgstr "Имена, а не кутии"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1136
-msgid "In many languages a variable is a box that holds a value. In Python it is more exact to say: the value is an **object** in memory, and the variable is a **name** (a label) **bound** to that object. Assignment binds a name to an object; `id()` gives the identity of the object (in CPython, its memory address):"
-msgstr "В много езици променливата е кутия, която съдържа стойност. В Python е по-точно да се каже: стойността е **обект** в паметта, а променливата е **име** (етикет), **свързано** с този обект. Присвояването свързва име с обект; `id()` дава идентичността на обекта (в CPython - адреса му в паметта):"
+msgid "In many languages a variable is a box that holds a value. In Python it is more exact to say: the value is an **object** in memory, and the variable is a **name** (a label) **bound** to that object. Assignment binds a name to an object; [`id()`](https://docs.python.org/3/builtins/functions.html#id) gives the identity of the object (in CPython, its memory address):"
+msgstr "В много езици променливата е кутия, която съдържа стойност. В Python е по-точно да се каже: стойността е **обект** в паметта, а променливата е **име** (етикет), **свързано** с този обект. Присвояването свързва име с обект; [`id()`](https://docs.python.org/3/builtins/functions.html#id) дава идентичността на обекта (в CPython - адреса му в паметта):"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1151
@@ -2460,8 +2460,8 @@ msgstr "За напреднали: `//` и `%` с отрицателни чис�
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1320
-msgid "`//` rounds **down**, towards minus infinity: `-7 // 2` is `-4`, not `-3`, and `-7 % 2` is `1`. SAS `INT()` and `int()` in Python cut the fraction towards zero: `int(-3.5)` is `-3`. For negative values, check which one you need."
-msgstr "`//` закръгля **надолу**, към минус безкрайност: `-7 // 2` е `-4`, а не `-3`, а `-7 % 2` е `1`. `INT()` в SAS и `int()` в Python отрязват дробната част към нулата: `int(-3.5)` е `-3`. При отрицателни стойности проверете кое ви трябва."
+msgid "`//` rounds **down**, towards minus infinity: `-7 // 2` is `-4`, not `-3`, and `-7 % 2` is `1`. SAS `INT()` and [`int()`](https://docs.python.org/3/builtins/functions.html#int) in Python cut the fraction towards zero: [`int(-3.5)`](https://docs.python.org/3/builtins/functions.html#int) is `-3`. For negative values, check which one you need."
+msgstr "`//` закръгля **надолу**, към минус безкрайност: `-7 // 2` е `-4`, а не `-3`, а `-7 % 2` е `1`. `INT()` в SAS и [`int()`](https://docs.python.org/3/builtins/functions.html#int) в Python отрязват дробната част към нулата: [`int(-3.5)`](https://docs.python.org/3/builtins/functions.html#int) е `-3`. При отрицателни стойности проверете кое ви трябва."
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:1329
@@ -2610,8 +2610,8 @@ msgstr "Strings имат много **методи** - функции, коит�
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1453
-msgid "Reference: [String methods](https://docs.python.org/3/library/stdtypes.html#string-methods)."
-msgstr "Справка: [String methods](https://docs.python.org/3/library/stdtypes.html#string-methods)."
+msgid "Reference: [String methods](https://docs.python.org/3/builtins/stdtypes.html#string-methods)."
+msgstr "Справка: [String methods](https://docs.python.org/3/builtins/stdtypes.html#string-methods)."
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:1455
@@ -2625,8 +2625,8 @@ msgstr "Готови за ползване, без `import`:"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1468
-msgid "`round()` has a surprise for people from SAS and SQL - see section 14."
-msgstr "`round()` има изненада за хората от SAS и SQL - вижте раздел 14."
+msgid "[`round()`](https://docs.python.org/3/builtins/functions.html#round) has a surprise for people from SAS and SQL - see section 14."
+msgstr "[`round()`](https://docs.python.org/3/builtins/functions.html#round) има изненада за хората от SAS и SQL - вижте раздел 14."
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:1470
@@ -2675,8 +2675,8 @@ msgstr "`int`"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1494
-msgid "`int(\"42\")` -> `42`, `int(3.99)` -> `3` (cuts, does not round)"
-msgstr "`int(\"42\")` -> `42`, `int(3.99)` -> `3` (отрязва, не закръгля)"
+msgid "[`int(\"42\")`](https://docs.python.org/3/builtins/functions.html#int) -> `42`, [`int(3.99)`](https://docs.python.org/3/builtins/functions.html#int) -> `3` (cuts, does not round)"
+msgstr "[`int(\"42\")`](https://docs.python.org/3/builtins/functions.html#int) -> `42`, [`int(3.99)`](https://docs.python.org/3/builtins/functions.html#int) -> `3` (отрязва, не закръгля)"
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:1499
@@ -2685,8 +2685,8 @@ msgstr "Текст към числа"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1501
-msgid "Data from files, `input()`, Excel exports and the web often comes as **text**. A row of `loans.csv`, before any conversion, is only a string:"
-msgstr "Данните от файлове, `input()`, експорти от Excel и уеб често идват като **текст**. Един ред от `loans.csv`, преди всяко преобразуване, е само string:"
+msgid "Data from files, [`input()`](https://docs.python.org/3/builtins/functions.html#input), Excel exports and the web often comes as **text**. A row of `loans.csv`, before any conversion, is only a string:"
+msgstr "Данните от файлове, [`input()`](https://docs.python.org/3/builtins/functions.html#input), експорти от Excel и уеб често идват като **текст**. Един ред от `loans.csv`, преди всяко преобразуване, е само string:"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1509
@@ -2695,8 +2695,8 @@ msgstr "Всяко парче е `str`. Не можете да смятате с
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1524
-msgid "What `int()` and `float()` accept, and what not:"
-msgstr "Какво приемат `int()` и `float()` и какво не:"
+msgid "What [`int()`](https://docs.python.org/3/builtins/functions.html#int) and [`float()`](https://docs.python.org/3/builtins/functions.html#float) accept, and what not:"
+msgstr "Какво приемат [`int()`](https://docs.python.org/3/builtins/functions.html#int) и [`float()`](https://docs.python.org/3/builtins/functions.html#float) и какво не:"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1539
@@ -2735,8 +2735,8 @@ msgstr "Към `bool`: truthy и falsy"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1578
-msgid "`bool()` gives `False` for \"empty\" values and `True` for everything else:"
-msgstr "`bool()` дава `False` за \"празни\" стойности и `True` за всичко останало:"
+msgid "[`bool()`](https://docs.python.org/3/builtins/functions.html#bool) gives `False` for \"empty\" values and `True` for everything else:"
+msgstr "[`bool()`](https://docs.python.org/3/builtins/functions.html#bool) дава `False` за \"празни\" стойности и `True` за всичко останало:"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1580
@@ -2775,8 +2775,8 @@ msgstr "непразни колекции"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1592
-msgid "`bool(\"False\")` is `True`! To read \"yes\" / \"no\" or \"True\" / \"False\" from a file, compare the text:"
-msgstr "`bool(\"False\")` е `True`! За да прочетете \"yes\" / \"no\" или \"True\" / \"False\" от файл, сравнете текста:"
+msgid "[`bool(\"False\")`](https://docs.python.org/3/builtins/functions.html#bool) is `True`! To read \"yes\" / \"no\" or \"True\" / \"False\" from a file, compare the text:"
+msgstr "[`bool(\"False\")`](https://docs.python.org/3/builtins/functions.html#bool) е `True`! За да прочетете \"yes\" / \"no\" или \"True\" / \"False\" от файл, сравнете текста:"
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:1601
@@ -2905,8 +2905,8 @@ msgstr "По-стари начини, които ще срещнете"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1712
-msgid "Code written before f-strings (Python 3.6, 2016) uses `str.format()` or `%`. Read them; write f-strings."
-msgstr "Кодът, писан преди f-strings (Python 3.6, 2016), използва `str.format()` или `%`. Четете ги; пишете f-strings."
+msgid "Code written before f-strings (Python 3.6, 2016) uses [`str.format()`](https://docs.python.org/3/builtins/stdtypes.html#str.format) or `%`. Read them; write f-strings."
+msgstr "Кодът, писан преди f-strings (Python 3.6, 2016), използва [`str.format()`](https://docs.python.org/3/builtins/stdtypes.html#str.format) или `%`. Четете ги; пишете f-strings."
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:1726
@@ -2920,8 +2920,8 @@ msgstr "Защо `0.1 + 0.2` не е `0.3`"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1736
-msgid "A `float` is stored in **binary**. Like 1/3 = 0.333... in decimal, 1/10 has no end in binary: it is cut after 53 binary digits, so `0.1` in memory is a tiny bit more than 0.1. Usually you do not see it, because `print()` shows the shortest text that gives the same number. In sums of many values the small errors add up. Read more: [Floating Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html)."
-msgstr "`float` се пази в **двоичен** вид. Както 1/3 = 0.333... в десетичен вид, 1/10 няма край в двоичен вид: отрязва се след 53 двоични цифри, затова `0.1` в паметта е мъничко повече от 0.1. Обикновено не го виждате, защото `print()` показва най-краткия текст, който дава същото число. В суми на много стойности малките грешки се натрупват. Още за четене: [Floating Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html)."
+msgid "A `float` is stored in **binary**. Like 1/3 = 0.333... in decimal, 1/10 has no end in binary: it is cut after 53 binary digits, so `0.1` in memory is a tiny bit more than 0.1. Usually you do not see it, because [`print()`](https://docs.python.org/3/builtins/functions.html#print) shows the shortest text that gives the same number. In sums of many values the small errors add up. Read more: [Floating Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html)."
+msgstr "`float` се пази в **двоичен** вид. Както 1/3 = 0.333... в десетичен вид, 1/10 няма край в двоичен вид: отрязва се след 53 двоични цифри, затова `0.1` в паметта е мъничко повече от 0.1. Обикновено не го виждате, защото [`print()`](https://docs.python.org/3/builtins/functions.html#print) показва най-краткия текст, който дава същото число. В суми на много стойности малките грешки се натрупват. Още за четене: [Floating Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html)."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1742
@@ -2940,18 +2940,18 @@ msgstr "`round()` закръгля половинките към четно"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1761
-msgid "`round()` rounds a 5 to the **even** neighbour: `round(2.5)` is `2`. This is \"banker's rounding\" - it does not push sums up. SAS `ROUND`, and SQL `ROUND` on `DECIMAL` / `NUMERIC` values, round a 5 **away from zero** (`2.5` -> `3`)."
-msgstr "`round()` закръгля 5 към **четния** съсед: `round(2.5)` е `2`. Това е \"банкерското закръгляне\" (banker's rounding) - то не тласка сумите нагоре. SAS `ROUND` и SQL `ROUND` върху стойности `DECIMAL` / `NUMERIC` закръглят 5 **далеч от нулата** (`2.5` -> `3`)."
+msgid "[`round()`](https://docs.python.org/3/builtins/functions.html#round) rounds a 5 to the **even** neighbour: [`round(2.5)`](https://docs.python.org/3/builtins/functions.html#round) is `2`. This is \"banker's rounding\" - it does not push sums up. SAS `ROUND`, and SQL `ROUND` on `DECIMAL` / `NUMERIC` values, round a 5 **away from zero** (`2.5` -> `3`)."
+msgstr "[`round()`](https://docs.python.org/3/builtins/functions.html#round) закръгля 5 към **четния** съсед: [`round(2.5)`](https://docs.python.org/3/builtins/functions.html#round) е `2`. Това е \"банкерското закръгляне\" (banker's rounding) - то не тласка сумите нагоре. SAS `ROUND` и SQL `ROUND` върху стойности `DECIMAL` / `NUMERIC` закръглят 5 **далеч от нулата** (`2.5` -> `3`)."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1764
-msgid "`round(2.675, 2)` gives `2.67`, because `2.675` in binary is a tiny bit less than 2.675."
-msgstr "`round(2.675, 2)` дава `2.67`, защото `2.675` в двоичен вид е мъничко по-малко от 2.675."
+msgid "[`round(2.675, 2)`](https://docs.python.org/3/builtins/functions.html#round) gives `2.67`, because `2.675` in binary is a tiny bit less than 2.675."
+msgstr "[`round(2.675, 2)`](https://docs.python.org/3/builtins/functions.html#round) дава `2.67`, защото `2.675` в двоичен вид е мъничко по-малко от 2.675."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1767
-msgid "For results that must match SAS, SQL or the accounting system to the cent, use `Decimal`."
-msgstr "За резултати, които трябва да съвпадат до стотинка със SAS, SQL или счетоводната система, използвайте `Decimal`."
+msgid "For results that must match SAS, SQL or the accounting system to the cent, use [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal)."
+msgstr "За резултати, които трябва да съвпадат до стотинка със SAS, SQL или счетоводната система, използвайте [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal)."
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:1770
@@ -2965,8 +2965,8 @@ msgstr "Модулът [`decimal`](https://docs.python.org/3/library/decimal.htm
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1784
-msgid "Create a `Decimal` **from a string**. From a float, it takes over the float's error - and shows the exact value the float really has:"
-msgstr "Създавайте `Decimal` **от string**. От float той поема грешката на float - и показва точната стойност, която float всъщност има:"
+msgid "Create a [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) **from a string**. From a float, it takes over the float's error - and shows the exact value the float really has:"
+msgstr "Създавайте [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) **от string**. От float той поема грешката на float - и показва точната стойност, която float всъщност има:"
 
 #. heading 3
 #: site/lectures/01-intro-syntax-types.md:1794
@@ -2975,8 +2975,8 @@ msgstr "Закръгляне на пари с `quantize`"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1796
-msgid "`quantize()` rounds to the places of the given value; `rounding` says how. `ROUND_HALF_UP` is the rounding of SAS, SQL and the schoolbook:"
-msgstr "`quantize()` закръгля до знаците на дадената стойност; `rounding` казва как. `ROUND_HALF_UP` е закръглянето на SAS, на SQL и от училище:"
+msgid "[`quantize()`](https://docs.python.org/3/library/decimal.html#decimal.Decimal.quantize) rounds to the places of the given value; `rounding` says how. `ROUND_HALF_UP` is the rounding of SAS, SQL and the schoolbook:"
+msgstr "[`quantize()`](https://docs.python.org/3/library/decimal.html#decimal.Decimal.quantize) закръгля до знаците на дадената стойност; `rounding` казва как. `ROUND_HALF_UP` е закръглянето на SAS, на SQL и от училище:"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1811
@@ -2985,23 +2985,23 @@ msgstr "Годишната лихва на три кредита, до стот�
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1828
-msgid "Rules for `Decimal`:"
-msgstr "Правила за `Decimal`:"
+msgid "Rules for [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal):"
+msgstr "Правила за [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal):"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1830
-msgid "`Decimal` with `int` works; `Decimal` with `float` is a `TypeError` - convert the float with `Decimal(str(x))`."
-msgstr "`Decimal` с `int` работи; `Decimal` с `float` е `TypeError` - преобразувайте float с `Decimal(str(x))`."
+msgid "[`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) with `int` works; [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) with `float` is a `TypeError` - convert the float with [`Decimal(str(x))`](https://docs.python.org/3/library/decimal.html#decimal.Decimal)."
+msgstr "[`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) с `int` работи; [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) с `float` е `TypeError` - преобразувайте float с [`Decimal(str(x))`](https://docs.python.org/3/library/decimal.html#decimal.Decimal)."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1832
-msgid "The result of a division has up to 28 significant digits (the default *precision*); round it with `quantize()` when you need cents."
-msgstr "Резултатът от деление има до 28 значещи цифри (*precision* по подразбиране); закръглете го с `quantize()`, когато ви трябват стотинки."
+msgid "The result of a division has up to 28 significant digits (the default *precision*); round it with [`quantize()`](https://docs.python.org/3/library/decimal.html#decimal.Decimal.quantize) when you need cents."
+msgstr "Резултатът от деление има до 28 значещи цифри (*precision* по подразбиране); закръглете го с [`quantize()`](https://docs.python.org/3/library/decimal.html#decimal.Decimal.quantize), когато ви трябват стотинки."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1834
-msgid "`Decimal` is slower than `float`. Use it for **money that must add up** to the cent: balances, interest, reconciliations with the general ledger. For rates, PDs, statistics and models, `float` is right."
-msgstr "`Decimal` е по-бавен от `float`. Използвайте го за **пари, които трябва да се съберат** до стотинка: салда, лихви, равнения с главната книга. За лихвени проценти, PD, статистика и модели `float` е правилният избор."
+msgid "[`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) is slower than `float`. Use it for **money that must add up** to the cent: balances, interest, reconciliations with the general ledger. For rates, PDs, statistics and models, `float` is right."
+msgstr "[`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) е по-бавен от `float`. Използвайте го за **пари, които трябва да се съберат** до стотинка: салда, лихви, равнения с главната книга. За лихвени проценти, PD, статистика и модели `float` е правилният избор."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1837
@@ -3070,8 +3070,8 @@ msgstr "Типове"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1854
-msgid "`int`, `float`, `str`, `bool`, `None`; `type(x)`; everything is an object"
-msgstr "`int`, `float`, `str`, `bool`, `None`; `type(x)`; всичко е обект"
+msgid "`int`, `float`, `str`, `bool`, `None`; [`type(x)`](https://docs.python.org/3/builtins/functions.html#type); everything is an object"
+msgstr "`int`, `float`, `str`, `bool`, `None`; [`type(x)`](https://docs.python.org/3/builtins/functions.html#type); всичко е обект"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1855
@@ -3095,8 +3095,8 @@ msgstr "Преобразувания"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1857
-msgid "`int()`, `float()`, `str()`, `bool()`; text never becomes a number by itself; `bool(\"False\")` is `True`"
-msgstr "`int()`, `float()`, `str()`, `bool()`; текстът никога не става число сам; `bool(\"False\")` е `True`"
+msgid "[`int()`](https://docs.python.org/3/builtins/functions.html#int), [`float()`](https://docs.python.org/3/builtins/functions.html#float), [`str()`](https://docs.python.org/3/builtins/stdtypes.html#str), [`bool()`](https://docs.python.org/3/builtins/functions.html#bool); text never becomes a number by itself; [`bool(\"False\")`](https://docs.python.org/3/builtins/functions.html#bool) is `True`"
+msgstr "[`int()`](https://docs.python.org/3/builtins/functions.html#int), [`float()`](https://docs.python.org/3/builtins/functions.html#float), [`str()`](https://docs.python.org/3/builtins/stdtypes.html#str), [`bool()`](https://docs.python.org/3/builtins/functions.html#bool); текстът никога не става число сам; [`bool(\"False\")`](https://docs.python.org/3/builtins/functions.html#bool) е `True`"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1859
@@ -3105,8 +3105,8 @@ msgstr "Пари"
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1859
-msgid "floats are binary: `0.1 + 0.2 != 0.3`; `round()` rounds half to even; `Decimal(\"...\")` + `quantize(..., ROUND_HALF_UP)`"
-msgstr "float числата са двоични: `0.1 + 0.2 != 0.3`; `round()` закръгля половинките към четно; `Decimal(\"...\")` + `quantize(..., ROUND_HALF_UP)`"
+msgid "floats are binary: `0.1 + 0.2 != 0.3`; [`round()`](https://docs.python.org/3/builtins/functions.html#round) rounds half to even; [`Decimal(\"...\")`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) + [`quantize(..., ROUND_HALF_UP)`](https://docs.python.org/3/library/decimal.html#decimal.Decimal.quantize)"
+msgstr "float числата са двоични: `0.1 + 0.2 != 0.3`; [`round()`](https://docs.python.org/3/builtins/functions.html#round) закръгля половинките към четно; [`Decimal(\"...\")`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) + [`quantize(..., ROUND_HALF_UP)`](https://docs.python.org/3/library/decimal.html#decimal.Decimal.quantize)"
 
 #. heading 2
 #: site/lectures/01-intro-syntax-types.md:1861
@@ -3165,8 +3165,8 @@ msgstr "Форматирайте суми, проценти и идентифи�
 
 #. table cell
 #: site/lectures/01-intro-syntax-types.md:1879
-msgid "Interest to the cent with `Decimal`, rounded the SAS way"
-msgstr "Лихва до стотинка с `Decimal`, закръглена по начина на SAS"
+msgid "Interest to the cent with [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal), rounded the SAS way"
+msgstr "Лихва до стотинка с [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal), закръглена по начина на SAS"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1881
@@ -3190,8 +3190,8 @@ msgstr "Задачите за упражнение, които не довърш
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1891
-msgid "Optional: write `payment.py`, which asks for the amount, the yearly rate in percent and the number of years with `input()`, and prints the monthly payment (the formula is in `homework.py`), formatted with two decimals and a thousands separator. Run it in the terminal."
-msgstr "По желание: напишете `payment.py`, който пита за сумата, годишния лихвен процент и броя години с `input()` и отпечатва месечната вноска (формулата е в `homework.py`), форматирана с два знака след запетаята и разделител на хилядите. Пуснете го в терминала."
+msgid "Optional: write `payment.py`, which asks for the amount, the yearly rate in percent and the number of years with [`input()`](https://docs.python.org/3/builtins/functions.html#input), and prints the monthly payment (the formula is in `homework.py`), formatted with two decimals and a thousands separator. Run it in the terminal."
+msgstr "По желание: напишете `payment.py`, който пита за сумата, годишния лихвен процент и броя години с [`input()`](https://docs.python.org/3/builtins/functions.html#input) и отпечатва месечната вноска (формулата е в `homework.py`), форматирана с два знака след запетаята и разделител на хилядите. Пуснете го в терминала."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1895
@@ -3210,8 +3210,8 @@ msgstr "Още за четене"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1904
-msgid "Python: [the official tutorial](https://docs.python.org/3/tutorial/), chapters 1 - 3; [Built-in types](https://docs.python.org/3/library/stdtypes.html); [Built-in functions](https://docs.python.org/3/library/functions.html)"
-msgstr "Python: [официалният tutorial](https://docs.python.org/3/tutorial/), глави 1 - 3; [Built-in types](https://docs.python.org/3/library/stdtypes.html); [Built-in functions](https://docs.python.org/3/library/functions.html)"
+msgid "Python: [the official tutorial](https://docs.python.org/3/tutorial/), chapters 1 - 3; [Built-in types](https://docs.python.org/3/builtins/stdtypes.html); [Built-in functions](https://docs.python.org/3/builtins/functions.html)"
+msgstr "Python: [официалният tutorial](https://docs.python.org/3/tutorial/), глави 1 - 3; [Built-in types](https://docs.python.org/3/builtins/stdtypes.html); [Built-in functions](https://docs.python.org/3/builtins/functions.html)"
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1907

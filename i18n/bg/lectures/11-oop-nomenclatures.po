@@ -50,7 +50,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:18
-msgid "create objects in more than one way with `classmethod`, and write helpers with `staticmethod`;"
+msgid "create objects in more than one way with [`classmethod`](https://docs.python.org/3/builtins/functions.html#classmethod), and write helpers with [`staticmethod`](https://docs.python.org/3/builtins/functions.html#staticmethod);"
 msgstr ""
 
 #. paragraph
@@ -200,7 +200,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:111
-msgid "**A copy with a typo.** And a copy with a typo - `\"credit card\"` instead of `\"credit_card\"` - loses a whole product, without an error (counted with a `Counter`, [lecture 7](./07-text-and-regex.md#counting-with-counter)):"
+msgid "**A copy with a typo.** And a copy with a typo - `\"credit card\"` instead of `\"credit_card\"` - loses a whole product, without an error (counted with a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter), [lecture 7](./07-text-and-regex.md#counting-with-counter)):"
 msgstr ""
 
 #. heading 3
@@ -315,7 +315,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:201
-msgid "**Equal nomenclatures.** Two nomenclatures are **equal** when all their fields are equal - the dataclass `__eq__` of [lecture 10](./10-oop-classes.md). The same codes with another version are **not** the same nomenclature:"
+msgid "**Equal nomenclatures.** Two nomenclatures are **equal** when all their fields are equal - the dataclass [`__eq__`](https://docs.python.org/3/reference/datamodel.html#object.__eq__) of [lecture 10](./10-oop-classes.md). The same codes with another version are **not** the same nomenclature:"
 msgstr ""
 
 #. paragraph
@@ -330,7 +330,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:236
-msgid "Three special methods ([lecture 10](./10-oop-classes.md#special-methods-objects-that-work-with-python-s-operators), Self-study) make the object work with `len()`, `in` and `for` - like the dictionary inside it:"
+msgid "Three special methods ([lecture 10](./10-oop-classes.md#special-methods-objects-that-work-with-python-s-operators), Self-study) make the object work with [`len()`](https://docs.python.org/3/builtins/functions.html#len), `in` and `for` - like the dictionary inside it:"
 msgstr ""
 
 #. heading 3
@@ -340,12 +340,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:266
-msgid "The automatic `repr` of a dataclass prints **all** the codes - too long for a list of 200 products. A short one, with the metadata:"
+msgid "The automatic [`repr`](https://docs.python.org/3/builtins/functions.html#repr) of a dataclass prints **all** the codes - too long for a list of 200 products. A short one, with the metadata:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:288
-msgid "(A dataclass does not write `__repr__` if the class has its own.)"
+msgid "(A dataclass does not write [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) if the class has its own.)"
 msgstr ""
 
 #. heading 3
@@ -355,12 +355,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:292
-msgid "The dictionary of codes is **shared** with whoever passed it in - a change outside changes the nomenclature (references, [session 3](./03-lists-tuples-sets.md#_7-a-list-is-mutable-names-and-references)). Take a **copy** in `__post_init__`:"
+msgid "The dictionary of codes is **shared** with whoever passed it in - a change outside changes the nomenclature (references, [session 3](./03-lists-tuples-sets.md#_7-a-list-is-mutable-names-and-references)). Take a **copy** in [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:313
-msgid "**A read-only view.** A copy can still be changed through `nom.codes[...] = ...`. If nobody should change the codes after the nomenclature is created, keep them behind a **read-only view** - `types.MappingProxyType` looks like a dictionary, but refuses changes:"
+msgid "**A read-only view.** A copy can still be changed through `nom.codes[...] = ...`. If nobody should change the codes after the nomenclature is created, keep them behind a **read-only view** - [`types.MappingProxyType`](https://docs.python.org/3/library/types.html#types.MappingProxyType) looks like a dictionary, but refuses changes:"
 msgstr ""
 
 #. paragraph
@@ -380,7 +380,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:334
-msgid "A nomenclature with a duplicate code, an empty label or a malformed code must not exist at all. `__post_init__` checks it, and raises a clear error ([lecture 8](./08-errors-and-files.md#raise-stop-with-a-clear-message)):"
+msgid "A nomenclature with a duplicate code, an empty label or a malformed code must not exist at all. [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__) checks it, and raises a clear error ([lecture 8](./08-errors-and-files.md#raise-stop-with-a-clear-message)):"
 msgstr ""
 
 #. paragraph
@@ -475,7 +475,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:603
-msgid "**A total per label.** The new column, then a total per label - the outstanding per stage name, the SQL `GROUP BY` (`defaultdict(float)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
+msgid "**A total per label.** The new column, then a total per label - the outstanding per stage name, the SQL `GROUP BY` ([`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
 msgstr ""
 
 #. box title
@@ -495,7 +495,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:653
-msgid "`apply` should also tell what it could not map. Return the new rows **and** a `Counter` of the unknown values:"
+msgid "`apply` should also tell what it could not map. Return the new rows **and** a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) of the unknown values:"
 msgstr ""
 
 #. heading 3
@@ -715,17 +715,17 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1173
-msgid "`lookup` is **overridden**: the subclass has its own version, and every call of `lookup` - also the one **inside** `apply` and `__contains__`, written in the base class - uses it. This is the power of inheritance."
+msgid "`lookup` is **overridden**: the subclass has its own version, and every call of `lookup` - also the one **inside** `apply` and [`__contains__`](https://docs.python.org/3/reference/datamodel.html#object.__contains__), written in the base class - uses it. This is the power of inheritance."
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1176
-msgid "`super().__post_init__()` runs the checks of the base class first, then the new checks. Without it, the base checks would be lost."
+msgid "[`super().__post_init__()`](https://docs.python.org/3/builtins/functions.html#super) runs the checks of the base class first, then the new checks. Without it, the base checks would be lost."
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1178
-msgid "`zip(self.bands, self.bands[1:])` gives each band with the next one: the list side by side with itself, one step later ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)). Each pair of bands is unpacked at once: `(_, high, _)` from the first band, `(low, _, _)` from the next."
+msgid "[`zip(self.bands, self.bands[1:])`](https://docs.python.org/3/builtins/functions.html#zip) gives each band with the next one: the list side by side with itself, one step later ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)). Each pair of bands is unpacked at once: `(_, high, _)` from the first band, `(low, _, _)` from the next."
 msgstr ""
 
 #. paragraph
@@ -770,7 +770,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1338
-msgid "**Extend with `super()`.** An override can also **extend** the method of the base class with `super()` - here the `repr` gets the number of bands:"
+msgid "**Extend with [`super()`](https://docs.python.org/3/builtins/functions.html#super).** An override can also **extend** the method of the base class with [`super()`](https://docs.python.org/3/builtins/functions.html#super) - here the [`repr`](https://docs.python.org/3/builtins/functions.html#repr) gets the number of bands:"
 msgstr ""
 
 #. heading 3
@@ -785,7 +785,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1405
-msgid "Here nothing is overridden except `__post_init__` (with `super()`); the subclass only **adds**. Both are normal uses of inheritance."
+msgid "Here nothing is overridden except [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__) (with [`super()`](https://docs.python.org/3/builtins/functions.html#super)); the subclass only **adds**. Both are normal uses of inheritance."
 msgstr ""
 
 #. paragraph
@@ -800,7 +800,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1440
-msgid "A subclass with its own `__post_init__` **replaces** the one of the base class. Without `super().__post_init__()`, the checks of the base class do not run - an empty nomenclature is created without a word:"
+msgid "A subclass with its own [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__) **replaces** the one of the base class. Without [`super().__post_init__()`](https://docs.python.org/3/builtins/functions.html#super), the checks of the base class do not run - an empty nomenclature is created without a word:"
 msgstr ""
 
 #. box title
@@ -995,7 +995,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/11-oop-nomenclatures.md:1806
-msgid "`codes` + `name`, `version`, `valid_from`, `owner`; a short `__repr__`; a copy of the codes"
+msgid "`codes` + `name`, `version`, `valid_from`, `owner`; a short [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__); a copy of the codes"
 msgstr ""
 
 #. table cell
@@ -1010,7 +1010,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/11-oop-nomenclatures.md:1808
-msgid "at creation in `__post_init__` (no codes, bad codes, empty labels); duplicates before the dict is built"
+msgid "at creation in [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__) (no codes, bad codes, empty labels); duplicates before the dict is built"
 msgstr ""
 
 #. table cell
@@ -1020,7 +1020,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/11-oop-nomenclatures.md:1809
-msgid "`validate(values)` -> a `Counter` of the unknown values; a check report"
+msgid "`validate(values)` -> a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) of the unknown values; a check report"
 msgstr ""
 
 #. table cell
@@ -1045,7 +1045,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/11-oop-nomenclatures.md:1813
-msgid "`class Banded(Nomenclature)`; override `lookup`; `super().__post_init__()`; \"is a\""
+msgid "`class Banded(Nomenclature)`; override `lookup`; [`super().__post_init__()`](https://docs.python.org/3/builtins/functions.html#super); \"is a\""
 msgstr ""
 
 #. table cell
@@ -1100,12 +1100,12 @@ msgstr ""
 
 #. table cell
 #: site/lectures/11-oop-nomenclatures.md:1829
-msgid "A `Nomenclature` dataclass with metadata, `lookup`, `len`, `in`"
+msgid "A `Nomenclature` dataclass with metadata, `lookup`, [`len`](https://docs.python.org/3/builtins/functions.html#len), `in`"
 msgstr ""
 
 #. table cell
 #: site/lectures/11-oop-nomenclatures.md:1830
-msgid "Predict: `classmethod`, `staticmethod`, overriding, `super()`, `isinstance`"
+msgid "Predict: [`classmethod`](https://docs.python.org/3/builtins/functions.html#classmethod), [`staticmethod`](https://docs.python.org/3/builtins/functions.html#staticmethod), overriding, [`super()`](https://docs.python.org/3/builtins/functions.html#super), [`isinstance`](https://docs.python.org/3/builtins/functions.html#isinstance)"
 msgstr ""
 
 #. table cell
@@ -1215,7 +1215,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1928
-msgid "To find that version, the class uses `bisect_right` from the standard module `bisect`. `bisect_right(starts, day)` takes a **sorted** list and returns how many items in it are `<=` `day`. With `i = bisect_right(starts, day)`, the version valid on `day` is the one at position `i - 1`: the last version that started on or before `day`. In SQL, this is the row with the biggest `valid_from <= day`. A result of `0` means that `day` is before the first version:"
+msgid "To find that version, the class uses [`bisect_right`](https://docs.python.org/3/library/bisect.html#bisect.bisect_right) from the standard module `bisect`. [`bisect_right(starts, day)`](https://docs.python.org/3/library/bisect.html#bisect.bisect_right) takes a **sorted** list and returns how many items in it are `<=` `day`. With `i = bisect_right(starts, day)`, the version valid on `day` is the one at position `i - 1`: the last version that started on or before `day`. In SQL, this is the row with the biggest `valid_from <= day`. A result of `0` means that `day` is before the first version:"
 msgstr ""
 
 #. paragraph
@@ -1255,7 +1255,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:2011
-msgid "Reference: [`classmethod`](https://docs.python.org/3/library/functions.html#classmethod), [`staticmethod`](https://docs.python.org/3/library/functions.html#staticmethod), [`super`](https://docs.python.org/3/library/functions.html#super), [`abc`](https://docs.python.org/3/library/abc.html), [dataclasses - inheritance](https://docs.python.org/3/library/dataclasses.html#inheritance)"
+msgid "Reference: [`classmethod`](https://docs.python.org/3/builtins/functions.html#classmethod), [`staticmethod`](https://docs.python.org/3/builtins/functions.html#staticmethod), [`super`](https://docs.python.org/3/builtins/functions.html#super), [`abc`](https://docs.python.org/3/library/abc.html), [dataclasses - inheritance](https://docs.python.org/3/library/dataclasses.html#inheritance)"
 msgstr ""
 
 #. paragraph

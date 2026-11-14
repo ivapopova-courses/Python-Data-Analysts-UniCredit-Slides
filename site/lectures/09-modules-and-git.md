@@ -63,7 +63,7 @@ print(med([1, 5, 2]))
 
 | Form | Use it when |
 |---|---|
-| `import math` | you use a few things, and want the reader to see where they come from (`math.sqrt`) |
+| `import math` | you use a few things, and want the reader to see where they come from ([`math.sqrt`](https://docs.python.org/3/library/math.html#math.sqrt)) |
 | `from math import sqrt` | you use a name often, and it is clear |
 | `import pandas as pd` | the module has a common short name: `pd`, `np`, `plt` |
 | `from x import *` | **never** in your code: it hides where the names come from, and can overwrite your own |
@@ -98,7 +98,7 @@ import hello_module                        # taken from sys.modules: no print
 print(hello_module.RATE)
 ```
 
-**What is in a module.** `dir(module)` lists its names; `help(module.function)` shows the docstring (session
+**What is in a module.** [`dir(module)`](https://docs.python.org/3/builtins/functions.html#dir) lists its names; [`help(module.function)`](https://docs.python.org/3/builtins/functions.html#help) shows the docstring (session
 4). The docstring is also in `__doc__`:
 
 ```python run
@@ -312,7 +312,7 @@ print({s: round(v, 2) for s, v in sorted(el_by_stage.items())})
 ```
 
 **Buckets of the portfolio.** The buckets of the whole portfolio, counted with the function of the module and a
-`Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter)):
+[`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) ([lecture 7](./07-text-and-regex.md#counting-with-counter)):
 
 ```python run
 import csv
@@ -409,7 +409,7 @@ switch on automatic reloading once, at the top of the notebook:
 from portfolio_utils import dpd_bucket      # now picks up every saved change
 ```
 
-**Reload a module.** In a script or a running Python, `importlib.reload` reads a module again:
+**Reload a module.** In a script or a running Python, [`importlib.reload`](https://docs.python.org/3/library/importlib.html#importlib.reload) reads a module again:
 
 ```python run
 import importlib
@@ -427,7 +427,7 @@ print(portfolio_utils.LGD)                  # the new value
 
 ::: tip Try it
 Add a function `stage(days_past_due, rating)` ([session 4](./04-functions.md)) to `portfolio_utils.py`
-with `write_text`, reload the module, and call it for `(45, 5)` and `(0, 10)`.
+with [`write_text`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.write_text), reload the module, and call it for `(45, 5)` and `(0, 10)`.
 :::
 
 ## 3. Packages and the layout of a project
@@ -597,7 +597,7 @@ The ones an analyst uses most:
 ### `datetime` and `calendar`: report dates
 
 [Lecture 7](./07-text-and-regex.md#from-text-to-a-date) introduced `date`, `datetime` and `timedelta`. Month ends - the report dates -
-need the number of days of a month: `calendar.monthrange(year, month)` gives the
+need the number of days of a month: [`calendar.monthrange(year, month)`](https://docs.python.org/3/library/calendar.html#calendar.monthrange) gives the
 weekday of the 1st and the number of days:
 
 ```python run
@@ -687,7 +687,7 @@ print("stdev  ", round(st.stdev(rates), 3))          # the sample standard devia
 print("deciles", [round(q, 2) for q in st.quantiles(rates, n=10)])
 ```
 
-**Statistics by group.** By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists (`defaultdict(list)`,
+**Statistics by group.** By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists ([`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict),
 [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)) and `statistics` per group:
 
 ```python run
@@ -718,13 +718,13 @@ print(round(st.correlation(rates, dpd), 3))
 ```
 
 `stdev` is the sample standard deviation (like SAS `STD`), `pstdev` the population
-one. `quantiles(..., n=4)` gives the quartiles; note that the methods of computing
+one. [`quantiles(..., n=4)`](https://docs.python.org/3/library/statistics.html#statistics.quantiles) gives the quartiles; note that the methods of computing
 quantiles differ a little between SAS, SQL and Python.
 
 ### `collections`: more containers
 
-You know two containers of this module: `Counter` counts values
-([lecture 7](./07-text-and-regex.md#counting-with-counter)), and `defaultdict` is a dictionary that
+You know two containers of this module: [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) counts values
+([lecture 7](./07-text-and-regex.md#counting-with-counter)), and [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) is a dictionary that
 creates a missing key ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)). Two more:
 
 ```python run
@@ -788,7 +788,7 @@ print(total == 1.0, math.isclose(total, 1.0))           # compare floats with a 
 print(round(math.log(1.05), 6), math.exp(0.05))         # continuous rates
 ```
 
-**Compound growth.** `math.prod` multiplies - compound growth over several periods:
+**Compound growth.** [`math.prod`](https://docs.python.org/3/library/math.html#math.prod) multiplies - compound growth over several periods:
 
 ```python run
 import math
@@ -819,7 +819,7 @@ print(f"portfolio_report_{report_date:%Y-%m}.xlsx")
 print(f"rejected_{report_date:%Y%m%d}.csv")
 ```
 
-**A text template.** `string.Template` fills `$names` in a text - a mail or a report header that a
+**A text template.** [`string.Template`](https://docs.python.org/3/library/string.html#string.Template) fills `$names` in a text - a mail or a report header that a
 colleague can edit without knowing Python:
 
 ```python run
@@ -829,7 +829,7 @@ text = Template("Report $report_date: $loans loans, outstanding EUR $outstanding
 print(text.substitute(report_date="30.09.2026", loans=400, outstanding="131,370,708.60"))
 ```
 
-**`namedtuple` to dictionary.** `namedtuple` records turn into dictionaries (for `csv.DictWriter`) and can be copied
+**`namedtuple` to dictionary.** `namedtuple` records turn into dictionaries (for [`csv.DictWriter`](https://docs.python.org/3/library/csv.html#csv.DictWriter)) and can be copied
 with one field changed:
 
 ```python run
@@ -841,7 +841,7 @@ print(loan._asdict())
 print(loan._replace(stage=3), loan)            # a new record; the old one is unchanged
 ```
 
-**Ids in batches.** `itertools.batched` (Python 3.12+) cuts a list into pieces - for example ids for SQL
+**Ids in batches.** [`itertools.batched`](https://docs.python.org/3/library/itertools.html#itertools.batched) (Python 3.12+) cuts a list into pieces - for example ids for SQL
 `IN (...)` lists, which many databases limit to 1000 values:
 
 ```python run
@@ -852,7 +852,7 @@ for chunk in batched(loan_ids, 1000):
     print(len(chunk), chunk[0], "...", chunk[-1])
 ```
 
-**The closest match.** `difflib.get_close_matches` finds the most similar known value - a typo in a city or a
+**The closest match.** [`difflib.get_close_matches`](https://docs.python.org/3/library/difflib.html#difflib.get_close_matches) finds the most similar known value - a typo in a city or a
 product name:
 
 ```python run
@@ -865,7 +865,7 @@ for typed in ["Sofiq", "Plovdif", "Stara Zag.", "Vidin"]:
 
 ### `random`: a sample for a manual check
 
-An auditor wants 10 loans chosen at random to check by hand. `random.seed` makes the
+An auditor wants 10 loans chosen at random to check by hand. [`random.seed`](https://docs.python.org/3/library/random.html#random.seed) makes the
 choice **repeatable** - the same seed gives the same sample next week:
 
 ```python run
@@ -983,7 +983,7 @@ with zipfile.ZipFile("out/inputs_2026-09.zip") as archive:
 
 ::: tip Try it
 Compute the quartiles of the outstanding amounts of the stage 1 loans with
-`statistics.quantiles(..., n=4)`. Then the median of the days past due of the loans
+[`statistics.quantiles(..., n=4)`](https://docs.python.org/3/library/statistics.html#statistics.quantiles). Then the median of the days past due of the loans
 that are late at all.
 :::
 
@@ -1245,7 +1245,7 @@ Path("out/.gitignore").write_text(rules, encoding="utf-8")
 print(Path("out/.gitignore").read_text(encoding="utf-8").splitlines())
 ```
 
-**What Git ignores.** The patterns of `.gitignore` are the same kind as `glob` ([lecture 8](./08-errors-and-files.md#find-files-glob)). The module
+**What Git ignores.** The patterns of `.gitignore` are the same kind as [`glob`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) ([lecture 8](./08-errors-and-files.md#find-files-glob)). The module
 `fnmatch` tests a name against them - which files of a project would Git ignore?
 
 ```python run
@@ -1384,7 +1384,7 @@ look at its changes. Compare with `git log -p -1` in the terminal.
 | Notebooks | `%load_ext autoreload` + `%autoreload 2`, or restart the kernel |
 | Package | a folder with `__init__.py`; `from package.module import name`; `python -m package.module` |
 | Project | `README.md`, `requirements.txt`, `.gitignore`, a package, `report.py`, `data/` and `out/` not in Git |
-| Standard library | `calendar.monthrange` for month ends; `statistics`; `namedtuple`, `deque`; `math.fsum`, `isclose`; `os.getenv` |
+| Standard library | [`calendar.monthrange`](https://docs.python.org/3/library/calendar.html#calendar.monthrange) for month ends; `statistics`; `namedtuple`, `deque`; [`math.fsum`](https://docs.python.org/3/library/math.html#math.fsum), `isclose`; [`os.getenv`](https://docs.python.org/3/library/os.html#os.getenv) |
 | Environments | one `.venv` per project; `pip freeze > requirements.txt`; install name is not always import name |
 | Git | `init`, `status`, `add`, `commit -m`, `log --oneline`, `diff`, `restore` |
 | `.gitignore` | `.venv/`, `data/`, `out/`, secrets - before the first commit; data and passwords never in Git |
@@ -1403,7 +1403,7 @@ python 09-modules-and-git/practice/task1-standard-library.py
 | Task | File | What you do |
 |------|------|-------------|
 | 1 | `task1-standard-library.py` | `statistics`, `math` and `collections` on the portfolio |
-| 2 | `task2-predict-imports.py` | Predict: module names, `__name__`, `dir`, what `import` returns |
+| 2 | `task2-predict-imports.py` | Predict: module names, `__name__`, [`dir`](https://docs.python.org/3/builtins/functions.html#dir), what `import` returns |
 | 3 | `task3-my-module.py` | Write `portfolio_utils.py` in the same folder; the task imports and checks it |
 | 4 | `task4-report-dates.py` | Month ends, add months, quarter ends, months between two dates |
 | 5 | `task5-predict-git.py` | Which Git command does what |
@@ -1457,7 +1457,7 @@ print(args.date, args.lgd, args.excel)
 parser.print_help()
 ```
 
-In a script, `parser.parse_args()` without a list reads `sys.argv`. A wrong date
+In a script, [`parser.parse_args()`](https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.parse_args) without a list reads `sys.argv`. A wrong date
 stops the script with a clear message - before any work is done.
 
 ::: code-group
@@ -1475,12 +1475,12 @@ python report.py --help
 
 1. Add an argument `--input` with the default `data/loans.csv` (type `Path`), and
    print whether the file exists.
-2. What happens with `parser.parse_args(["--date", "30.09.2026"])`? Why is that good?
+2. What happens with [`parser.parse_args(["--date", "30.09.2026"])`](https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.parse_args)? Why is that good?
 
 ::: details Answer
-1. `parser.add_argument("--input", type=Path, default=Path("data/loans.csv"))`, then
-   `print(args.input.exists())` (with `from pathlib import Path`).
-2. `argparse` calls `date.fromisoformat("30.09.2026")`, which raises a `ValueError`;
+1. [`parser.add_argument("--input", type=Path, default=Path("data/loans.csv"))`](https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument), then
+   [`print(args.input.exists())`](https://docs.python.org/3/builtins/functions.html#print) (with `from pathlib import Path`).
+2. `argparse` calls [`date.fromisoformat("30.09.2026")`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat), which raises a `ValueError`;
    `argparse` turns it into the message *argument --date: invalid fromisoformat
    value* and stops with an error code - the report never runs with a wrong date.
 :::

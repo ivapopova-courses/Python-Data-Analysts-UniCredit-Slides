@@ -170,8 +170,8 @@ msgstr "винаги"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:88
-msgid "`bool()` shows the decision:"
-msgstr "`bool()` показва решението:"
+msgid "[`bool()`](https://docs.python.org/3/builtins/functions.html#bool) shows the decision:"
+msgstr "[`bool()`](https://docs.python.org/3/builtins/functions.html#bool) показва решението:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:96
@@ -300,8 +300,8 @@ msgstr "Добра практика"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:167
-msgid "Make sure you compare values of the **same type**. Convert the data first - `int()`, `float()`, `str()` ([session 1](./01-intro-syntax-types.md#_12-converting-between-types)) - and then compare."
-msgstr "Уверете се, че сравнявате стойности от **един и същ тип**. Първо преобразувайте данните - `int()`, `float()`, `str()` ([занятие 1](./01-intro-syntax-types.md#_12-converting-between-types)) - и после сравнявайте."
+msgid "Make sure you compare values of the **same type**. Convert the data first - [`int()`](https://docs.python.org/3/builtins/functions.html#int), [`float()`](https://docs.python.org/3/builtins/functions.html#float), [`str()`](https://docs.python.org/3/builtins/stdtypes.html#str) ([session 1](./01-intro-syntax-types.md#_12-converting-between-types)) - and then compare."
+msgstr "Уверете се, че сравнявате стойности от **един и същ тип**. Първо преобразувайте данните - [`int()`](https://docs.python.org/3/builtins/functions.html#int), [`float()`](https://docs.python.org/3/builtins/functions.html#float), [`str()`](https://docs.python.org/3/builtins/stdtypes.html#str) ([занятие 1](./01-intro-syntax-types.md#_12-converting-between-types)) - и после сравнявайте."
 
 #. box title
 #: site/lectures/02-conditions-and-loops.md:177
@@ -320,8 +320,8 @@ msgstr "Strings се сравняват буква по буква"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:185
-msgid "Strings are compared **lexicographically**, like words in a dictionary: the first characters first; if they are equal, the second ones, and so on. Each character is compared by its number (its *code point*) in the Unicode table, and [`ord()`](https://docs.python.org/3/library/functions.html#ord) shows that number:"
-msgstr "Strings се сравняват **лексикографски**, като думите в речник: първо първите символи; ако са равни - вторите и т.н. Всеки символ се сравнява по номера си (неговия *code point*) в таблицата Unicode, а [`ord()`](https://docs.python.org/3/library/functions.html#ord) показва този номер:"
+msgid "Strings are compared **lexicographically**, like words in a dictionary: the first characters first; if they are equal, the second ones, and so on. Each character is compared by its number (its *code point*) in the Unicode table, and [`ord()`](https://docs.python.org/3/builtins/functions.html#ord) shows that number:"
+msgstr "Strings се сравняват **лексикографски**, като думите в речник: първо първите символи; ако са равни - вторите и т.н. Всеки символ се сравнява по номера си (неговия *code point*) в таблицата Unicode, а [`ord()`](https://docs.python.org/3/builtins/functions.html#ord) показва този номер:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:197
@@ -520,8 +520,8 @@ msgstr "Отстъпът решава"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:383
-msgid "`print(\"1\")` and `print(\"2\")` form the block: they run **only if the condition is true**. `print(\"3\")` is not in the block - it always runs."
-msgstr "`print(\"1\")` и `print(\"2\")` образуват блока: те се изпълняват **само ако условието е вярно**. `print(\"3\")` не е в блока - той се изпълнява винаги."
+msgid "[`print(\"1\")`](https://docs.python.org/3/builtins/functions.html#print) and [`print(\"2\")`](https://docs.python.org/3/builtins/functions.html#print) form the block: they run **only if the condition is true**. [`print(\"3\")`](https://docs.python.org/3/builtins/functions.html#print) is not in the block - it always runs."
+msgstr "[`print(\"1\")`](https://docs.python.org/3/builtins/functions.html#print) и [`print(\"2\")`](https://docs.python.org/3/builtins/functions.html#print) образуват блока: те се изпълняват **само ако условието е вярно**. [`print(\"3\")`](https://docs.python.org/3/builtins/functions.html#print) не е в блока - той се изпълнява винаги."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:386
@@ -745,8 +745,8 @@ msgstr "Преди Python 3.10: вериги `if` - `elif`"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:764
-msgid "Older code (and older courses) write the same with `if` / `elif`. A typical program menu (this one needs `input()`, so try it in VS Code):"
-msgstr "По-старият код (и по-старите курсове) пише същото с `if` / `elif`. Типично меню на програма (то иска `input()`, затова го пробвайте във VS Code):"
+msgid "Older code (and older courses) write the same with `if` / `elif`. A typical program menu (this one needs [`input()`](https://docs.python.org/3/builtins/functions.html#input), so try it in VS Code):"
+msgstr "По-старият код (и по-старите курсове) пише същото с `if` / `elif`. Типично меню на програма (то иска [`input()`](https://docs.python.org/3/builtins/functions.html#input), затова го пробвайте във VS Code):"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:784
@@ -825,8 +825,8 @@ msgstr "`while` повтаря, **докато условие е вярно** - 
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:863
-msgid "`for` repeats **for each item** of a sequence - the rows of a file, the items of a list, the numbers of a `range` (section 12)."
-msgstr "`for` повтаря **за всеки елемент** на поредица - редовете на файл, елементите на list, числата на `range` (раздел 12)."
+msgid "`for` repeats **for each item** of a sequence - the rows of a file, the items of a list, the numbers of a [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) (section 12)."
+msgstr "`for` повтаря **за всеки елемент** на поредица - редовете на файл, елементите на list, числата на [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) (раздел 12)."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:866
@@ -880,8 +880,8 @@ msgstr "![Как протичат цикълът while и цикълът for: п
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:906
-msgid "This is just a simple example. For a fixed number of iterations, a `for` loop with `range` is better (section 12)."
-msgstr "Това е само прост пример. За фиксиран брой итерации цикъл `for` с `range` е по-добър (раздел 12)."
+msgid "This is just a simple example. For a fixed number of iterations, a `for` loop with [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) is better (section 12)."
+msgstr "Това е само прост пример. За фиксиран брой итерации цикъл `for` с [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) е по-добър (раздел 12)."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:909
@@ -920,13 +920,13 @@ msgstr "**Циклите стъпка по стъпка:** [3. `while`: пога
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:965
-msgid "Another typical case is checking what a user types - the program asks again until the answer is right. With `input()`, so try it in VS Code:"
-msgstr "Друг типичен случай е проверката на това, което въвежда потребителят - програмата пита отново, докато отговорът не е правилен. С `input()`, затова го пробвайте във VS Code:"
+msgid "Another typical case is checking what a user types - the program asks again until the answer is right. With [`input()`](https://docs.python.org/3/builtins/functions.html#input), so try it in VS Code:"
+msgstr "Друг типичен случай е проверката на това, което въвежда потребителят - програмата пита отново, докато отговорът не е правилен. С [`input()`](https://docs.python.org/3/builtins/functions.html#input), затова го пробвайте във VS Code:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:976
-msgid "The `input()` line is written twice - section 13 shows a cleaner way with `while True` and `break`."
-msgstr "Редът с `input()` е написан два пъти - раздел 13 показва по-чист начин с `while True` и `break`."
+msgid "The [`input()`](https://docs.python.org/3/builtins/functions.html#input) line is written twice - section 13 shows a cleaner way with `while True` and `break`."
+msgstr "Редът с [`input()`](https://docs.python.org/3/builtins/functions.html#input) е написан два пъти - раздел 13 показва по-чист начин с `while True` и `break`."
 
 #. heading 2
 #: site/lectures/02-conditions-and-loops.md:979
@@ -945,8 +945,8 @@ msgstr "Какво може да обхожда `for`"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:999
-msgid "Anything that gives items one by one - an *iterable*. Today: a string (its characters), a `range` of numbers, a few values in square brackets, and the lines of a file. The square brackets make a **list** - [session 3](./03-lists-tuples-sets.md#_2-lists) is all about lists; for now, read `[0, 35, 120]` simply as \"these values, one by one\". Tuples ([session 3](./03-lists-tuples-sets.md#_8-tuples)) and dictionaries ([session 6](./06-dictionaries.md)) come later."
-msgstr "Всичко, което дава елементи един по един - *iterable*. Днес: string (символите му), `range` от числа, няколко стойности в квадратни скоби и редовете на файл. Квадратните скоби правят **list** - [занятие 3](./03-lists-tuples-sets.md#_2-lists) е изцяло за lists; засега четете `[0, 35, 120]` просто като \"тези стойности, една по една\". Tuples ([занятие 3](./03-lists-tuples-sets.md#_8-tuples)) и dictionaries ([занятие 6](./06-dictionaries.md)) идват по-късно."
+msgid "Anything that gives items one by one - an *iterable*. Today: a string (its characters), a [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) of numbers, a few values in square brackets, and the lines of a file. The square brackets make a **list** - [session 3](./03-lists-tuples-sets.md#_2-lists) is all about lists; for now, read `[0, 35, 120]` simply as \"these values, one by one\". Tuples ([session 3](./03-lists-tuples-sets.md#_8-tuples)) and dictionaries ([session 6](./06-dictionaries.md)) come later."
+msgstr "Всичко, което дава елементи един по един - *iterable*. Днес: string (символите му), [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) от числа, няколко стойности в квадратни скоби и редовете на файл. Квадратните скоби правят **list** - [занятие 3](./03-lists-tuples-sets.md#_2-lists) е изцяло за lists; засега четете `[0, 35, 120]` просто като \"тези стойности, една по една\". Tuples ([занятие 3](./03-lists-tuples-sets.md#_8-tuples)) и dictionaries ([занятие 6](./06-dictionaries.md)) идват по-късно."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1016
@@ -955,8 +955,8 @@ msgstr "`range`: поредица от числа"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1018
-msgid "`range(stop)`, `range(start, stop)` and `range(start, stop, step)` give whole numbers from `start` (0 if not given) up to **`stop - 1`** - the stop itself is **not** included. [Session 3](./03-lists-tuples-sets.md#_10-range) has the details."
-msgstr "`range(stop)`, `range(start, stop)` и `range(start, stop, step)` дават цели числа от `start` (0, ако не е даден) до **`stop - 1`** - самият stop **не** е включен. Подробностите са в [занятие 3](./03-lists-tuples-sets.md#_10-range)."
+msgid "[`range(stop)`](https://docs.python.org/3/builtins/stdtypes.html#range), [`range(start, stop)`](https://docs.python.org/3/builtins/stdtypes.html#range) and [`range(start, stop, step)`](https://docs.python.org/3/builtins/stdtypes.html#range) give whole numbers from `start` (0 if not given) up to **`stop - 1`** - the stop itself is **not** included. [Session 3](./03-lists-tuples-sets.md#_10-range) has the details."
+msgstr "[`range(stop)`](https://docs.python.org/3/builtins/stdtypes.html#range), [`range(start, stop)`](https://docs.python.org/3/builtins/stdtypes.html#range) и [`range(start, stop, step)`](https://docs.python.org/3/builtins/stdtypes.html#range) дават цели числа от `start` (0, ако не е даден) до **`stop - 1`** - самият stop **не** е включен. Подробностите са в [занятие 3](./03-lists-tuples-sets.md#_10-range)."
 
 #. box title
 #: site/lectures/02-conditions-and-loops.md:1030
@@ -965,8 +965,8 @@ msgstr "SAS брои до края, `range` спира преди него"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1031
-msgid "`do month = 1 to 12;` runs 12 times, for 1 ... 12. In Python, `range(1, 12)` stops at 11: write `range(1, 13)`. `range(12)` also runs 12 times, but for 0 ... 11."
-msgstr "`do month = 1 to 12;` се изпълнява 12 пъти, за 1 ... 12. В Python `range(1, 12)` спира на 11: пишете `range(1, 13)`. `range(12)` също се изпълнява 12 пъти, но за 0 ... 11."
+msgid "`do month = 1 to 12;` runs 12 times, for 1 ... 12. In Python, [`range(1, 12)`](https://docs.python.org/3/builtins/stdtypes.html#range) stops at 11: write [`range(1, 13)`](https://docs.python.org/3/builtins/stdtypes.html#range). [`range(12)`](https://docs.python.org/3/builtins/stdtypes.html#range) also runs 12 times, but for 0 ... 11."
+msgstr "`do month = 1 to 12;` се изпълнява 12 пъти, за 1 ... 12. В Python [`range(1, 12)`](https://docs.python.org/3/builtins/stdtypes.html#range) спира на 11: пишете [`range(1, 13)`](https://docs.python.org/3/builtins/stdtypes.html#range). [`range(12)`](https://docs.python.org/3/builtins/stdtypes.html#range) също се изпълнява 12 пъти, но за 0 ... 11."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1035
@@ -1040,8 +1040,8 @@ msgstr "Текстовият файл е поредица от **редове**,
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1143
-msgid "`split(\",\")` cuts the line at the commas and gives the fields as strings, in square brackets: a list ([session 3](./03-lists-tuples-sets.md#from-text-split)). The names on the left of `=` take them in order (as in \"several names at once\", [session 1](./01-intro-syntax-types.md#assignment-in-more-forms)) - then convert the ones you need:"
-msgstr "`split(\",\")` разрязва реда при запетаите и дава полетата като strings, в квадратни скоби: list ([занятие 3](./03-lists-tuples-sets.md#from-text-split)). Имената вляво от `=` ги вземат по ред (както при \"няколко имена наведнъж\", [занятие 1](./01-intro-syntax-types.md#assignment-in-more-forms)) - после преобразувайте тези, които ви трябват:"
+msgid "[`split(\",\")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) cuts the line at the commas and gives the fields as strings, in square brackets: a list ([session 3](./03-lists-tuples-sets.md#from-text-split)). The names on the left of `=` take them in order (as in \"several names at once\", [session 1](./01-intro-syntax-types.md#assignment-in-more-forms)) - then convert the ones you need:"
+msgstr "[`split(\",\")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) разрязва реда при запетаите и дава полетата като strings, в квадратни скоби: list ([занятие 3](./03-lists-tuples-sets.md#from-text-split)). Имената вляво от `=` ги вземат по ред (както при \"няколко имена наведнъж\", [занятие 1](./01-intro-syntax-types.md#assignment-in-more-forms)) - после преобразувайте тези, които ви трябват:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1170
@@ -1095,8 +1095,8 @@ msgstr "Python няма цикъл `do ... while` (C, Java) и няма `do unti
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1240
-msgid "The name check of section 11, without writing `input()` twice:"
-msgstr "Проверката на името от раздел 11, без да пишете `input()` два пъти:"
+msgid "The name check of section 11, without writing [`input()`](https://docs.python.org/3/builtins/functions.html#input) twice:"
+msgstr "Проверката на името от раздел 11, без да пишете [`input()`](https://docs.python.org/3/builtins/functions.html#input) два пъти:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1250
@@ -1295,8 +1295,8 @@ msgstr "докато условие е вярно; нещо в блока тря
 
 #. table cell
 #: site/lectures/02-conditions-and-loops.md:1490
-msgid "each item of a sequence: a string, a list, `range`, the lines of a file; `range(1, 13)` is 1 ... 12"
-msgstr "всеки елемент на поредица: string, list, `range`, редовете на файл; `range(1, 13)` е 1 ... 12"
+msgid "each item of a sequence: a string, a list, [`range`](https://docs.python.org/3/builtins/stdtypes.html#range), the lines of a file; [`range(1, 13)`](https://docs.python.org/3/builtins/stdtypes.html#range) is 1 ... 12"
+msgstr "всеки елемент на поредица: string, list, [`range`](https://docs.python.org/3/builtins/stdtypes.html#range), редовете на файл; [`range(1, 13)`](https://docs.python.org/3/builtins/stdtypes.html#range) е 1 ... 12"
 
 #. table cell
 #: site/lectures/02-conditions-and-loops.md:1491
@@ -1415,8 +1415,8 @@ msgstr "**Домашно, част 4:** изградете `report` с `+=` и f
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1551
-msgid "**Homework, part 4 - a `FAIL`:** the check compares the whole text, so one space more or less is a `FAIL`. `print(report)`, then compare the `got:` and `expected:` lines under the `FAIL` character by character - one line of the report at a time."
-msgstr "**Домашно, част 4 - `FAIL`:** проверката сравнява целия текст, затова един интервал повече или по-малко дава `FAIL`. Направете `print(report)`, после сравнете редовете `got:` и `expected:` под `FAIL` знак по знак - по един ред от отчета."
+msgid "**Homework, part 4 - a `FAIL`:** the check compares the whole text, so one space more or less is a `FAIL`. [`print(report)`](https://docs.python.org/3/builtins/functions.html#print), then compare the `got:` and `expected:` lines under the `FAIL` character by character - one line of the report at a time."
+msgstr "**Домашно, част 4 - `FAIL`:** проверката сравнява целия текст, затова един интервал повече или по-малко дава `FAIL`. Направете [`print(report)`](https://docs.python.org/3/builtins/functions.html#print), после сравнете редовете `got:` и `expected:` под `FAIL` знак по знак - по един ред от отчета."
 
 #. heading 3
 #: site/lectures/02-conditions-and-loops.md:1556
@@ -1425,13 +1425,13 @@ msgstr "Бележки към задачите"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1558
-msgid "**Reading a file.** How `open` and `with` work comes in [lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this code. It reads `loans.csv` line by line and gives each field of the line a name:"
-msgstr "**Четене на файл.** Как работят `open` и `with` ще видим в [лекция 8](./08-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Той чете `loans.csv` ред по ред и дава име на всяко поле на реда:"
+msgid "**Reading a file.** How [`open`](https://docs.python.org/3/builtins/functions.html#open) and `with` work comes in [lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this code. It reads `loans.csv` line by line and gives each field of the line a name:"
+msgstr "**Четене на файл.** Как работят [`open`](https://docs.python.org/3/builtins/functions.html#open) и `with` ще видим в [лекция 8](./08-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Той чете `loans.csv` ред по ред и дава име на всяко поле на реда:"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1571
-msgid "All the fields are text. Convert the ones you need: `float(outstanding)`, `int(days_past_due)`. Compare `stage` with `\"3\"` (text), or convert it first."
-msgstr "Всички полета са текст. Преобразувайте тези, които ви трябват: `float(outstanding)`, `int(days_past_due)`. Сравнявайте `stage` с `\"3\"` (текст) или първо го преобразувайте."
+msgid "All the fields are text. Convert the ones you need: [`float(outstanding)`](https://docs.python.org/3/builtins/functions.html#float), [`int(days_past_due)`](https://docs.python.org/3/builtins/functions.html#int). Compare `stage` with `\"3\"` (text), or convert it first."
+msgstr "Всички полета са текст. Преобразувайте тези, които ви трябват: [`float(outstanding)`](https://docs.python.org/3/builtins/functions.html#float), [`int(days_past_due)`](https://docs.python.org/3/builtins/functions.html#int). Сравнявайте `stage` с `\"3\"` (текст) или първо го преобразувайте."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1573
@@ -1480,8 +1480,8 @@ msgstr "Задачите за упражнение, които не сте до�
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1594
-msgid "Optional: a **loan calculator** in the terminal - `calculator.py` asks for the amount, the yearly rate and the years with `input()`, asks **again** while a value is not valid (the amount must be more than 0, the rate between 0 and 50, the years between 1 and 30), and prints the repayment schedule of section 15. Add a menu with `match`: 1 - the schedule, 2 - only the total interest, 3 - quit; repeat until the user chooses 3."
-msgstr "По желание: **кредитен калкулатор** в терминала - `calculator.py` пита за сумата, годишната лихва и годините с `input()`, пита **отново**, докато стойността не е валидна (сумата трябва да е повече от 0, лихвата - между 0 и 50, годините - между 1 и 30), и отпечатва погасителния план от раздел 15. Добавете меню с `match`: 1 - планът, 2 - само общата лихва, 3 - изход; повтаряйте, докато потребителят не избере 3."
+msgid "Optional: a **loan calculator** in the terminal - `calculator.py` asks for the amount, the yearly rate and the years with [`input()`](https://docs.python.org/3/builtins/functions.html#input), asks **again** while a value is not valid (the amount must be more than 0, the rate between 0 and 50, the years between 1 and 30), and prints the repayment schedule of section 15. Add a menu with `match`: 1 - the schedule, 2 - only the total interest, 3 - quit; repeat until the user chooses 3."
+msgstr "По желание: **кредитен калкулатор** в терминала - `calculator.py` пита за сумата, годишната лихва и годините с [`input()`](https://docs.python.org/3/builtins/functions.html#input), пита **отново**, докато стойността не е валидна (сумата трябва да е повече от 0, лихвата - между 0 и 50, годините - между 1 и 30), и отпечатва погасителния план от раздел 15. Добавете меню с `match`: 1 - планът, 2 - само общата лихва, 3 - изход; повтаряйте, докато потребителят не избере 3."
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1600
@@ -1500,13 +1500,13 @@ msgstr "Още за четене"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1608
-msgid "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` on loops, `pass`, `match`)"
-msgstr "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, `range`, `break`, `continue`, `else` на цикли, `pass`, `match`)"
+msgid "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, [`range`](https://docs.python.org/3/builtins/stdtypes.html#range), `break`, `continue`, `else` on loops, `pass`, `match`)"
+msgstr "Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html) (`if`, `for`, [`range`](https://docs.python.org/3/builtins/stdtypes.html#range), `break`, `continue`, `else` на цикли, `pass`, `match`)"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1610
-msgid "Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations), [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons), [Truth value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing), [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)"
-msgstr "Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations), [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons), [Truth value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing), [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)"
+msgid "Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations), [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons), [Truth value testing](https://docs.python.org/3/builtins/stdtypes.html#truth-value-testing), [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)"
+msgstr "Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations), [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons), [Truth value testing](https://docs.python.org/3/builtins/stdtypes.html#truth-value-testing), [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)"
 
 #. paragraph
 #: site/lectures/02-conditions-and-loops.md:1614

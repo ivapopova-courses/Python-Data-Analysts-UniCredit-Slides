@@ -15,7 +15,7 @@ title: "10. OOP: first steps, classes and objects"
 - write your own class: its data (**attributes**) and its behaviour (**methods**);
 - give your objects a readable form for reports and for debugging;
 - share values between all objects of a class, and keep values per object;
-- check the data when an object is created, and compute values with `property`;
+- check the data when an object is created, and compute values with [`property`](https://docs.python.org/3/builtins/functions.html#property);
 - write data classes in a few lines with `@dataclass`;
 - make objects work together: a client with its loans.
 
@@ -83,7 +83,7 @@ print(print.__name__, len.__doc__.splitlines()[0])
 print(int.__add__(2, 3), 2 + 3)                # + is a method call underneath
 ```
 
-**Objects of a library.** The objects of the libraries you use have attributes too. A `csv.DictReader` knows
+**Objects of a library.** The objects of the libraries you use have attributes too. A [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) knows
 its column names and the line it has read:
 
 ```python run
@@ -97,7 +97,7 @@ with open("data/loans.csv", encoding="utf-8") as file:
     print(reader.line_num, first["loan_id"])
 ```
 
-**Several types at once.** `isinstance` with a tuple tests for several types at once - the usual check of an
+**Several types at once.** [`isinstance`](https://docs.python.org/3/builtins/functions.html#isinstance) with a tuple tests for several types at once - the usual check of an
 input. One trap: `True` and `False` **are** integers in Python:
 
 ```python run
@@ -148,8 +148,8 @@ print(type(first), isinstance(first, Loan))
 
 - `class Loan:` - the name of a class is in **CamelCase** (PEP 8): `Loan`,
   `RatingGrade`, `DataError`.
-- `__init__` is the special method that runs when an object is **created**:
-  `Loan("L000001", ...)` creates a new, empty object and calls `__init__` with it.
+- [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) is the special method that runs when an object is **created**:
+  `Loan("L000001", ...)` creates a new, empty object and calls [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) with it.
 - `self` is that new object. `self.loan_id = loan_id` stores a value **in the
   object** - an **attribute**.
 - Each object has its own attributes: `first.outstanding` and `second.outstanding`
@@ -196,7 +196,7 @@ print(a.outstanding)
 
 (Dataclasses, section 7, compare by value.)
 
-`vars(obj)` shows that an object keeps its attributes in a dictionary - the same
+[`vars(obj)`](https://docs.python.org/3/builtins/functions.html#vars) shows that an object keeps its attributes in a dictionary - the same
 structure as the rows of [session 6](./06-dictionaries.md#a-row-as-a-dictionary), with a name and rules around it.
 
 ### Objects from a file
@@ -230,8 +230,8 @@ number.
 
 ### A trap: the wrong number of arguments
 
-The arguments of `Loan(...)` go to `__init__`: the same rules as for a function
-([session 4](./04-functions.md#positional-arguments)). The error message names `__init__`:
+The arguments of `Loan(...)` go to [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__): the same rules as for a function
+([session 4](./04-functions.md#positional-arguments)). The error message names [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__):
 
 ```python run
 class Loan:
@@ -323,7 +323,7 @@ print([l.loan_id for l in sorted(loans, key=lambda l: l.days_past_due, reverse=T
 ```
 
 **Late loans per product.** On the portfolio: the late loans per product, with the method doing the test and a
-`Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter)):
+[`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) ([lecture 7](./07-text-and-regex.md#counting-with-counter)):
 
 ```python run
 import csv
@@ -515,10 +515,10 @@ print([loan])
 
 Two special methods give an object a text form:
 
-- `__repr__` - for **developers**: unambiguous, ideally like the code that creates
+- [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) - for **developers**: unambiguous, ideally like the code that creates
   the object. Used in lists, in the REPL, in the debugger, with `!r`.
-- `__str__` - for **people**: a report line. Used by `print` and f-strings. Without
-  it, Python uses `__repr__`.
+- [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) - for **people**: a report line. Used by [`print`](https://docs.python.org/3/builtins/functions.html#print) and f-strings. Without
+  it, Python uses [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__).
 
 ```python run
 class Loan:
@@ -540,8 +540,8 @@ print([loan, Loan("L000003", 644.25)])     # a list shows __repr__ of the items
 print(f"{loan} | {loan!r}")
 ```
 
-**`__repr__` and `__str__` together.** Always write at least `__repr__` - the first time you debug a list of objects, you
-will be glad. With `__str__`, a report loop needs no formatting code of its own:
+**[`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) and [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) together.** Always write at least [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) - the first time you debug a list of objects, you
+will be glad. With [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__), a report loop needs no formatting code of its own:
 
 ```python run
 class Client:
@@ -563,7 +563,7 @@ for c in clients:
 print(clients)
 ```
 
-**A report in two lines.** With `__str__`, the largest loans of the file are a report in two lines:
+**A report in two lines.** With [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__), the largest loans of the file are a report in two lines:
 
 ```python run
 import csv
@@ -589,7 +589,7 @@ for loan in sorted(loans, key=lambda l: l.outstanding, reverse=True)[:3]:
 print(loans[:2])
 ```
 
-**A trap: print instead of return.** `__str__` and `__repr__` must **return** a string - not print it, and not return a
+**A trap: print instead of return.** [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) and [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) must **return** a string - not print it, and not return a
 number:
 
 ```python run
@@ -606,8 +606,8 @@ print(Loan(644.25))
 ```
 
 ::: tip Try it
-Write `__str__` for a `Client` with `client_id`, `segment` and `rating` so that
-`print(client)` shows `C0002 (sme, rating 5)`.
+Write [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) for a `Client` with `client_id`, `segment` and `rating` so that
+[`print(client)`](https://docs.python.org/3/builtins/functions.html#print) shows `C0002 (sme, rating 5)`.
 :::
 
 ## 5. Class attributes
@@ -741,7 +741,7 @@ a.pay(100)
 print(b.payments)                          # [100] - b "has" a's payment
 ```
 
-Create lists and dicts **in `__init__`**: `self.payments = []` (section 3).
+Create lists and dicts **in [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__)**: `self.payments = []` (section 3).
 :::
 
 ::: tip Try it
@@ -755,7 +755,7 @@ method again.
 ### Check the data when the object is created
 
 An object that holds wrong data is worse than no object: every report made from it
-is wrong. Check in `__init__`, and raise a clear error ([lecture 8](./08-errors-and-files.md#raise-stop-with-a-clear-message)):
+is wrong. Check in [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__), and raise a clear error ([lecture 8](./08-errors-and-files.md#raise-stop-with-a-clear-message)):
 
 ```python run
 class Loan:
@@ -812,7 +812,7 @@ print(len(loans), "loans;", rejected)
 
 ### `property`: a computed attribute
 
-First, the problem. A value computed **once** in `__init__` is a copy - it does not
+First, the problem. A value computed **once** in [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) is a copy - it does not
 follow a later change of the attributes it came from:
 
 ```python run
@@ -897,7 +897,7 @@ print(loan.outstanding_k)
 loan.outstanding_k = 5                          # AttributeError: a property without a setter is read-only
 ```
 
-**Attributes by name.** `hasattr` and `getattr` ask an object for an attribute by its **name** - handy for
+**Attributes by name.** [`hasattr`](https://docs.python.org/3/builtins/functions.html#hasattr) and [`getattr`](https://docs.python.org/3/builtins/functions.html#getattr) ask an object for an attribute by its **name** - handy for
 reports that take the list of columns from a setting:
 
 ```python run
@@ -959,8 +959,8 @@ attribute). Then add a setter for `days_past_due` that refuses negative values.
 
 ### A class in a few lines
 
-Most classes for data start with an `__init__` that only copies the parameters into
-attributes, and a `__repr__`. The module `dataclasses` writes them for you, from the
+Most classes for data start with an [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) that only copies the parameters into
+attributes, and a [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__). The module `dataclasses` writes them for you, from the
 **fields** with their type hints ([session 4](./04-functions.md#type-hints)):
 
 ```python run
@@ -984,7 +984,7 @@ print(loan.yearly_interest())
 print(loan == Loan("L000002", "investment", 651927.30, 5.44))     # a ready __eq__: by value
 ```
 
-`@dataclass` writes `__init__`, `__repr__` and `__eq__` (equal when all fields are
+`@dataclass` writes [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__), [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) and [`__eq__`](https://docs.python.org/3/reference/datamodel.html#object.__eq__) (equal when all fields are
 equal). Methods and properties are written as in a normal class.
 
 ::: warning Type hints are not checked
@@ -992,7 +992,7 @@ equal). Methods and properties are written as in a normal class.
 hints, [session 4](./04-functions.md#type-hints)). Check what matters in `__post_init__` (below).
 :::
 
-**From a row to a dataclass.** A row of `csv.DictReader` can go straight into a dataclass with `**` (it unpacks a
+**From a row to a dataclass.** A row of [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) can go straight into a dataclass with `**` (it unpacks a
 dictionary into keyword arguments: `Loan(**row)` is `Loan(loan_id=row["loan_id"], ...)`) - if
 the column names are the field names. Convert the types in `__post_init__` (below), or
 before:
@@ -1019,7 +1019,7 @@ print(type(scale[0].pd_min))            # still text - a dataclass does not conv
 ### Lists as fields: `field(default_factory=list)`
 
 A default list would be shared (section 5) - so a dataclass refuses `= []`. Use
-`field(default_factory=list)`: a new list for each object:
+[`field(default_factory=list)`](https://docs.python.org/3/library/dataclasses.html#dataclasses.field): a new list for each object:
 
 ```python run
 from dataclasses import dataclass, field
@@ -1039,7 +1039,7 @@ print(a, b, sep="\n")
 
 ### Validation: `__post_init__`
 
-`__post_init__` runs right after the written `__init__` - the place for checks and
+`__post_init__` runs right after the written [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) - the place for checks and
 for computed fields:
 
 ```python run
@@ -1091,7 +1091,7 @@ bbb.pd_max = 0.5                           # FrozenInstanceError
 ```
 
 **Frozen and hashable.** A frozen dataclass is also **hashable**: it can be a key of a dictionary or an item of
-a set ([session 6](./06-dictionaries.md#rules-for-keys-and-values)). To "change" it, make a new one with `dataclasses.replace`:
+a set ([session 6](./06-dictionaries.md#rules-for-keys-and-values)). To "change" it, make a new one with [`dataclasses.replace`](https://docs.python.org/3/library/dataclasses.html#dataclasses.replace):
 
 ```python run
 from dataclasses import dataclass, replace
@@ -1158,7 +1158,7 @@ print(by_grade["CCC"].pd_max)
 ```
 
 **Dataclass to dict or tuple.** Back to rows: `asdict` and `astuple` turn a dataclass into a dictionary or a tuple -
-ready for `csv.DictWriter` ([lecture 8](./08-errors-and-files.md#write-csv-writer-and-csv-dictwriter)) or JSON. `fields` lists the fields:
+ready for [`csv.DictWriter`](https://docs.python.org/3/library/csv.html#csv.DictWriter) ([lecture 8](./08-errors-and-files.md#write-csv-writer-and-csv-dictwriter)) or JSON. `fields` lists the fields:
 
 ```python run
 import csv
@@ -1183,7 +1183,7 @@ writer.writerows(asdict(l) for l in loans)
 print(buffer.getvalue())
 ```
 
-**Leave a field out.** A field can be left out of the `repr` or of the comparison - for example a long list,
+**Leave a field out.** A field can be left out of the [`repr`](https://docs.python.org/3/builtins/functions.html#repr) or of the comparison - for example a long list,
 or a note:
 
 ```python run
@@ -1207,7 +1207,7 @@ print(a == Client("C0002", 5, loan_ids=["L1", "L2"]))     # True: the note is no
 | names for the fields | keys | yes | yes | yes |
 | can change | yes | no | yes (or `frozen`) | yes |
 | methods and properties | no | a few | yes | yes |
-| validation | no | no | `__post_init__` | `__init__`, setters |
+| validation | no | no | `__post_init__` | [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__), setters |
 | best for | rows, lookups, JSON | light records | **records with rules** | complex behaviour |
 
 ::: tip Try it
@@ -1255,8 +1255,8 @@ client.add_loan(Loan("L000241", 4263650.04, 15))
 print(client.exposure, client.max_days_past_due, len(client.loans))
 ```
 
-`max(..., default=0)` gives `0` when the client has no loans. Without `default=`,
-`max` of an empty sequence stops with a `ValueError`.
+[`max(..., default=0)`](https://docs.python.org/3/builtins/functions.html#max) gives `0` when the client has no loans. Without `default=`,
+[`max`](https://docs.python.org/3/builtins/functions.html#max) of an empty sequence stops with a `ValueError`.
 
 **Clients with their loans.** All clients and loans from the two files - a dictionary of clients by id ([session 6](./06-dictionaries.md#a-dictionary-of-dictionaries-a-table-keyed-by-id)),
 then each loan is added to its client:
@@ -1301,7 +1301,7 @@ print(sum(1 for c in clients.values() if not c.loans), "clients without loans")
 ```
 
 **Reports from the objects.** From the objects, the usual reports - exposure per segment, and the share of the
-largest client in each segment (`defaultdict(list)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
+largest client in each segment ([`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
 
 ```python run
 import csv
@@ -1371,7 +1371,7 @@ print(f"{sum(l.expected_loss(pd_of) for l in loans):,.2f}")
 ```
 
 **A loan without a client.** The trap: a loan whose client is not in the clients file. `clients[r["client_id"]]`
-stops the whole load with a `KeyError`; `get` and a list of rejects ([lecture 8](./08-errors-and-files.md#the-reject-file-and-the-summary)) keep
+stops the whole load with a `KeyError`; [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) and a list of rejects ([lecture 8](./08-errors-and-files.md#the-reject-file-and-the-summary)) keep
 going and report it:
 
 ```python run
@@ -1417,14 +1417,14 @@ of stage 2 or 3. Print it for the five largest clients.
 | Topic | Remember |
 |-------|----------|
 | Objects | every value is an object of a class; a class is a blueprint, an object one thing made from it |
-| Class | `class Loan:` (CamelCase); `__init__(self, ...)` runs at creation |
-| Attributes | `self.x = x` stores per object; read with `obj.x`; `vars(obj)` |
+| Class | `class Loan:` (CamelCase); [`__init__(self, ...)`](https://docs.python.org/3/reference/datamodel.html#object.__init__) runs at creation |
+| Attributes | `self.x = x` stores per object; read with `obj.x`; [`vars(obj)`](https://docs.python.org/3/builtins/functions.html#vars) |
 | Methods | functions in the class, first parameter `self`; call `obj.method()`; inside: `self.other()` |
-| Text form | `__repr__` for developers (like code), `__str__` for people; write `__repr__` always |
+| Text form | [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) for developers (like code), [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) for people; write [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) always |
 | Class attributes | in the class body, shared by all objects; never a list or a dict there |
-| Validation | check in `__init__` (or `__post_init__`) and raise `ValueError` |
-| `property` | `@property` - a computed, read-only attribute; `@x.setter` checks every assignment |
-| Dataclass | `@dataclass` + fields with types; `field(default_factory=list)`; `frozen=True`; `order=True` |
+| Validation | check in [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) (or `__post_init__`) and raise `ValueError` |
+| [`property`](https://docs.python.org/3/builtins/functions.html#property) | `@property` - a computed, read-only attribute; `@x.setter` checks every assignment |
+| Dataclass | `@dataclass` + fields with types; [`field(default_factory=list)`](https://docs.python.org/3/library/dataclasses.html#dataclasses.field); `frozen=True`; `order=True` |
 | Together | a `Client` with a list of `Loan` objects; build from files with a dict by id |
 
 ## Practice
@@ -1438,10 +1438,10 @@ python 10-oop-classes/practice/task1-first-class.py
 
 | Task | File | What you do |
 |------|------|-------------|
-| 1 | `task1-first-class.py` | A `RatingGrade` class: attributes, a method, `__repr__` |
+| 1 | `task1-first-class.py` | A `RatingGrade` class: attributes, a method, [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) |
 | 2 | `task2-predict-objects.py` | Predict: attributes, class and object attributes, two names for one object |
 | 3 | `task3-loan-methods.py` | `Loan` with methods: repaid share, interest, is late, EL, pay |
-| 4 | `task4-validation-property.py` | Checks in `__init__`, properties, a setter that validates |
+| 4 | `task4-validation-property.py` | Checks in [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__), properties, a setter that validates |
 | 5 | `task5-dataclasses.py` | The same with `@dataclass`: defaults, `frozen`, `order`, `__post_init__` |
 | 6 | `task6-client-loans.py` (Optional) | `Client` with its loans, built from the two files |
 
@@ -1458,21 +1458,21 @@ python 10-oop-classes/practice/task1-first-class.py
 ## Self-study
 
 This part is not covered in class. It is for reading at home: objects that work with
-`sorted`, `len`, `in` and `for`, and named codes with `enum`.
+[`sorted`](https://docs.python.org/3/builtins/functions.html#sorted), [`len`](https://docs.python.org/3/builtins/functions.html#len), `in` and `for`, and named codes with `enum`.
 
 ### Special methods: objects that work with Python's operators
 
-The methods with two underscores on each side - `__init__`, `__repr__`, `__str__` -
+The methods with two underscores on each side - [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__), [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__), [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) -
 are **special methods**: Python calls them for you. There are many more. With them, a
 class works with the built-in functions and operators:
 
 | You write | Python calls |
 |---|---|
-| `a == b` | `a.__eq__(b)` |
-| `a < b`, `sorted(...)` | `a.__lt__(b)` |
-| `len(x)` | `x.__len__()` |
-| `item in x` | `x.__contains__(item)` |
-| `for item in x` | `x.__iter__()` |
+| `a == b` | [`a.__eq__(b)`](https://docs.python.org/3/reference/datamodel.html#object.__eq__) |
+| `a < b`, [`sorted(...)`](https://docs.python.org/3/builtins/functions.html#sorted) | [`a.__lt__(b)`](https://docs.python.org/3/reference/datamodel.html#object.__lt__) |
+| [`len(x)`](https://docs.python.org/3/builtins/functions.html#len) | [`x.__len__()`](https://docs.python.org/3/reference/datamodel.html#object.__len__) |
+| `item in x` | [`x.__contains__(item)`](https://docs.python.org/3/reference/datamodel.html#object.__contains__) |
+| `for item in x` | [`x.__iter__()`](https://docs.python.org/3/reference/datamodel.html#object.__iter__) |
 
 **A portfolio container.** A portfolio that behaves like a container of loans:
 
@@ -1508,8 +1508,8 @@ print(sum(l.outstanding for l in p))
 print([l.loan_id for l in sorted(p, key=lambda l: l.outstanding)])
 ```
 
-**Compare objects.** To compare objects of a normal class, write `__eq__` and `__lt__`;
-`functools.total_ordering` writes `<=`, `>`, `>=` from those two:
+**Compare objects.** To compare objects of a normal class, write [`__eq__`](https://docs.python.org/3/reference/datamodel.html#object.__eq__) and [`__lt__`](https://docs.python.org/3/reference/datamodel.html#object.__lt__);
+[`functools.total_ordering`](https://docs.python.org/3/library/functools.html#functools.total_ordering) writes `<=`, `>`, `>=` from those two:
 
 ```python run
 from functools import total_ordering
@@ -1537,7 +1537,7 @@ print(Grade("BBB") >= Grade("BB"), Grade("A") == Grade("A"))
 
 **Exercises**
 
-1. Add `__getitem__(self, loan_id)` to `Portfolio`, so that `p["L2"]` gives the loan.
+1. Add [`__getitem__(self, loan_id)`](https://docs.python.org/3/reference/datamodel.html#object.__getitem__) to `Portfolio`, so that `p["L2"]` gives the loan.
 2. Give `Portfolio` a `__add__` that returns a new portfolio with the loans of both.
 
 ::: details Answer
@@ -1585,7 +1585,7 @@ values, that refuses everything else.
 1. Make an `IntEnum` `Bucket` for the DPD buckets (`CURRENT = 0`, `UP_TO_30 = 1`,
    `UP_TO_90 = 2`, `OVER_90 = 3`) and a function that returns the bucket of a number of
    days.
-2. Count the loans of `loans.csv` per `Stage` member with a `Counter`.
+2. Count the loans of `loans.csv` per `Stage` member with a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter).
 
 ::: details Answer
 ```python
@@ -1613,7 +1613,7 @@ with open("data/loans.csv", encoding="utf-8") as file:
 - Python tutorial: [Classes](https://docs.python.org/3/tutorial/classes.html) (sections
   9.1 - 9.4 for today)
 - Reference: [`dataclasses`](https://docs.python.org/3/library/dataclasses.html),
-  [`property`](https://docs.python.org/3/library/functions.html#property),
+  [`property`](https://docs.python.org/3/builtins/functions.html#property),
   [`enum` HOWTO](https://docs.python.org/3/howto/enum.html)
 - Real Python: [Object-oriented programming in Python](https://realpython.com/python3-object-oriented-programming/),
   [Data classes in Python](https://realpython.com/python-data-classes/)

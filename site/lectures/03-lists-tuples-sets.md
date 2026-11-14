@@ -12,11 +12,11 @@ title: 3. Lists (basics), tuples and sets
 **Today you will learn to:**
 
 - keep many values in one **list**, and read them by index (from 0!) and by slices;
-- use the operations that all sequences share: `+`, `*`, `in`, `len`, `min`, `max`;
+- use the operations that all sequences share: `+`, `*`, `in`, [`len`](https://docs.python.org/3/builtins/functions.html#len), [`min`](https://docs.python.org/3/builtins/functions.html#min), [`max`](https://docs.python.org/3/builtins/functions.html#max);
 - change a list with its methods, and sort it;
 - understand why two names can show the same list - and how to make a copy;
 - use **tuples** as records that cannot change, and unpack them;
-- use `range` for sequences of numbers;
+- use [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) for sequences of numbers;
 - find unique values with **sets**, and compare groups the way SQL `UNION`,
   `INTERSECT` and `EXCEPT` do - the Python way.
 
@@ -57,7 +57,7 @@ containers that keep an **ordered** collection of values. The main sequence type
 |---|---|---|
 | `list` | `["mortgage", "consumer", "overdraft"]` | yes |
 | `tuple` | `("L000001", "investment", 1044231.30)` | no |
-| `range` | `range(1, 13)` | no |
+| [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) | [`range(1, 13)`](https://docs.python.org/3/builtins/stdtypes.html#range) | no |
 | `str` | `"L000001"` | no |
 
 ```python run
@@ -86,19 +86,19 @@ All sequences support the same **common operations** - you learn them once:
 
 | Operation | Example | Result |
 |---|---|---|
-| length | `len(s)` | the number of items |
+| length | [`len(s)`](https://docs.python.org/3/builtins/functions.html#len) | the number of items |
 | indexing | `s[0]`, `s[-1]` | the first, the last item |
 | slicing | `s[1:3]` | a part of the sequence |
-| concatenation | `s + t` | the two joined (not for `range`) |
-| repetition | `s * 3` | three times (not for `range`) |
+| concatenation | `s + t` | the two joined (not for [`range`](https://docs.python.org/3/builtins/stdtypes.html#range)) |
+| repetition | `s * 3` | three times (not for [`range`](https://docs.python.org/3/builtins/stdtypes.html#range)) |
 | membership | `x in s`, `x not in s` | `True` / `False` |
-| minimum, maximum | `min(s)`, `max(s)` | the smallest, the largest item |
-| counting | `s.count(x)` | how many times `x` is in `s` |
-| searching | `s.index(x)` | the index of the first `x` |
+| minimum, maximum | [`min(s)`](https://docs.python.org/3/builtins/functions.html#min), [`max(s)`](https://docs.python.org/3/builtins/functions.html#max) | the smallest, the largest item |
+| counting | [`s.count(x)`](https://docs.python.org/3/builtins/stdtypes.html#sequence.count) | how many times `x` is in `s` |
+| searching | [`s.index(x)`](https://docs.python.org/3/builtins/stdtypes.html#sequence.index) | the index of the first `x` |
 
 Each type also has its **own** methods: lists can be sorted and changed, strings
 can be made upper case. Reference:
-[Common sequence operations](https://docs.python.org/3/library/stdtypes.html#common-sequence-operations).
+[Common sequence operations](https://docs.python.org/3/builtins/stdtypes.html#common-sequence-operations).
 
 ## 2. Lists
 
@@ -242,7 +242,7 @@ print(known, "known ratings, the average is", total / known)
 ```
 
 The loop gives the items, not their positions. If you need the position, count it
-yourself ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item) shows `enumerate`, which does it for you):
+yourself ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item) shows [`enumerate`](https://docs.python.org/3/builtins/functions.html#enumerate), which does it for you):
 
 ```python run
 amounts = [800.0, 0.0, 15900.0, 0.0]
@@ -304,7 +304,7 @@ a[:stop]          items from the beginning up to stop - 1
 a[:]              all items - a copy of the whole sequence
 ```
 
-The rule "the stop is not included" is the same as in `range` ([session 2](./02-conditions-and-loops.md#range-a-sequence-of-numbers)). It has a
+The rule "the stop is not included" is the same as in [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) ([session 2](./02-conditions-and-loops.md#range-a-sequence-of-numbers)). It has a
 nice side: `a[:3]` is the first 3 items, `a[3:]` the rest, and `a[2:5]` has 5 - 2 = 3
 items.
 
@@ -405,7 +405,7 @@ print(alpha_list * 3)
 print([0.0] * 12)                 # 12 months, all 0.0 - a common start value
 ```
 
-Only strings, lists and tuples can be joined and repeated. A `range` cannot (but you
+Only strings, lists and tuples can be joined and repeated. A [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) cannot (but you
 can make a list of it first: `list(range(3)) * 2`).
 
 `+` makes a **new** list. Joining two lists one under the other is `UNION ALL` in
@@ -457,15 +457,15 @@ print(stages.count(1))          # how many times 1 is in the list
 print(stages.index(3))          # the index of the first 3
 ```
 
-`min` and `max` work on strings too (alphabetically, [session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)). `sum` only on
-numbers. `index` gives a `ValueError` when the value is not in the list - test with
+[`min`](https://docs.python.org/3/builtins/functions.html#min) and [`max`](https://docs.python.org/3/builtins/functions.html#max) work on strings too (alphabetically, [session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)). [`sum`](https://docs.python.org/3/builtins/functions.html#sum) only on
+numbers. [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index) gives a `ValueError` when the value is not in the list - test with
 `in` first.
 
 ## 5. Create lists from other values
 
 ### `list()`: a list from any sequence
 
-`list()` makes a new list from the items of any sequence (any *iterable*):
+[`list()`](https://docs.python.org/3/builtins/stdtypes.html#list) makes a new list from the items of any sequence (any *iterable*):
 
 ```python run
 l = list()                       # the same as l = []
@@ -483,7 +483,7 @@ print(list(user_name))           # from a string: one item per character
 
 ### From text: `split`
 
-`split()` ([session 1](./01-intro-syntax-types.md#a-first-look-at-string-methods)) cuts a string into a list of strings:
+[`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) ([session 1](./01-intro-syntax-types.md#a-first-look-at-string-methods)) cuts a string into a list of strings:
 
 ```python run
 row = "L000002,C0132,investment,EUR,2019-04-16,2029-04-16,1977400.00,651927.30,5.44,35,2"
@@ -498,7 +498,7 @@ print(text.split())              # without an argument: by spaces
 
 Start with an empty list and **append** a value in each iteration. It is the Python
 version of the SAS `OUTPUT` statement: in SAS, `OUTPUT` writes a row of the DATA step
-to the output data set; in Python, `append` adds an item to the list.
+to the output data set; in Python, [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append) adds an item to the list.
 
 ```python run
 late_loans = []
@@ -528,17 +528,17 @@ run;
 
 | Method | What it does |
 |---|---|
-| `lst.append(x)` | adds `x` at the end |
-| `lst.extend(other)` | adds all items of `other` at the end |
-| `lst.insert(i, x)` | inserts `x` before the index `i` |
-| `lst.pop()` | removes the last item and returns it |
-| `lst.pop(i)` | removes the item at index `i` and returns it |
-| `lst.remove(x)` | removes the first item equal to `x` (`ValueError` if there is none) |
-| `lst.clear()` | removes all items |
-| `lst.index(x)`, `lst.count(x)` | the index of the first `x`; how many `x` |
-| `lst.reverse()` | reverses the list in place |
-| `lst.sort()` | sorts the list in place; `sort(reverse=True)`: from the largest |
-| `lst.copy()` | a new list with the same items (section 7) |
+| [`lst.append(x)`](https://docs.python.org/3/builtins/stdtypes.html#list.append) | adds `x` at the end |
+| [`lst.extend(other)`](https://docs.python.org/3/builtins/stdtypes.html#list.extend) | adds all items of `other` at the end |
+| [`lst.insert(i, x)`](https://docs.python.org/3/builtins/stdtypes.html#list.insert) | inserts `x` before the index `i` |
+| [`lst.pop()`](https://docs.python.org/3/builtins/stdtypes.html#list.pop) | removes the last item and returns it |
+| [`lst.pop(i)`](https://docs.python.org/3/builtins/stdtypes.html#list.pop) | removes the item at index `i` and returns it |
+| [`lst.remove(x)`](https://docs.python.org/3/builtins/stdtypes.html#list.remove) | removes the first item equal to `x` (`ValueError` if there is none) |
+| [`lst.clear()`](https://docs.python.org/3/builtins/stdtypes.html#list.clear) | removes all items |
+| [`lst.index(x)`](https://docs.python.org/3/builtins/stdtypes.html#list.index), [`lst.count(x)`](https://docs.python.org/3/builtins/stdtypes.html#list.count) | the index of the first `x`; how many `x` |
+| [`lst.reverse()`](https://docs.python.org/3/builtins/stdtypes.html#list.reverse) | reverses the list in place |
+| [`lst.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) | sorts the list in place; [`sort(reverse=True)`](https://docs.python.org/3/builtins/stdtypes.html#list.sort): from the largest |
+| [`lst.copy()`](https://docs.python.org/3/builtins/stdtypes.html#list.copy) | a new list with the same items (section 7) |
 | `del lst[i]`, `del lst[i:j]` | removes an item, a slice |
 
 ```python run
@@ -615,7 +615,7 @@ print(non_zero)
 
 ### The methods change the list - and return `None`
 
-`append`, `sort`, `reverse` and the others change the list **in place**. They return
+[`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append), [`sort`](https://docs.python.org/3/builtins/stdtypes.html#list.sort), [`reverse`](https://docs.python.org/3/builtins/stdtypes.html#list.reverse) and the others change the list **in place**. They return
 `None`, not the list. A classic bug:
 
 ```python run
@@ -625,15 +625,15 @@ print(numbers)
 ```
 
 ::: details Answer
-`numbers.sort()` sorts the list and returns `None`, and `numbers = ...` binds the
-name to that `None` - the sorted list is lost. Write only `numbers.sort()`, or use
-`sorted()` (next).
+[`numbers.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) sorts the list and returns `None`, and `numbers = ...` binds the
+name to that `None` - the sorted list is lost. Write only [`numbers.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort), or use
+[`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted) (next).
 :::
 
 ### `sort()` or `sorted()`?
 
-- `lst.sort()` sorts **this** list. Only lists have it.
-- `sorted(x)` returns a **new**, sorted list, and does not change `x`. It works on any
+- [`lst.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) sorts **this** list. Only lists have it.
+- [`sorted(x)`](https://docs.python.org/3/builtins/functions.html#sorted) returns a **new**, sorted list, and does not change `x`. It works on any
   sequence: a tuple, a string, a set, a range.
 
 ```python run
@@ -655,10 +655,10 @@ print(sorted([3, "1", 2]))
 
 SAS `PROC SORT` and SQL `ORDER BY` can sort by a column, or by several. For records kept as
 tuples, put the column to sort by first (section 8, "Sort records"); the general
-way is `sorted(..., key=...)`: sessions 4 and 5.
+way is [`sorted(..., key=...)`](https://docs.python.org/3/builtins/functions.html#sorted): sessions 4 and 5.
 
 ::: info The same in pandas
-The methods of pandas work like `sorted()`: they return a **new** table and do not
+The methods of pandas work like [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted): they return a **new** table and do not
 change the old one ([lecture 13](./13-numpy-pandas-intro.md)). Keep the result in a name:
 
 ```python run
@@ -691,7 +691,7 @@ print(original is new_list, id(original) == id(new_list))
 
 `new_list = original` does not copy anything. Both names point to **the same list
 object** in memory, so a change through one name is seen through the other. `is` (and
-`id()`) shows it.
+[`id()`](https://docs.python.org/3/builtins/functions.html#id)) shows it.
 
 ::: info Animation
 **Lists and references:**
@@ -723,7 +723,7 @@ shows shallow and deep copies, with dictionaries.
 
 ::: tip Try it
 In the first example of this section, write `new_list = original.copy()` instead of
-`new_list = original`. Predict what `print(original)` and `original is new_list`
+`new_list = original`. Predict what [`print(original)`](https://docs.python.org/3/builtins/functions.html#print) and `original is new_list`
 show now, then run it.
 :::
 
@@ -737,7 +737,7 @@ be added, removed or replaced.
 - Good for fixed data: a record (one row of a table), a date, a pair of coordinates.
 - A tuple uses a little less memory than a list, and is a little faster.
 - Tuples can do everything a sequence can (section 1), but have only two methods:
-  `count` and `index`.
+  [`count`](https://docs.python.org/3/builtins/stdtypes.html#list.count) and [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index).
 
 ### Create a tuple
 
@@ -923,7 +923,7 @@ Tuples are also used for **several return values of a function** ([session 4](./
 ### Sort records: tuples compare item by item
 
 Tuples are compared like words, item by item: the **first** items first; only when
-they are equal, the second items, and so on. So `sorted` on a list of tuples sorts
+they are equal, the second items, and so on. So [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted) on a list of tuples sorts
 by the first item, then by the second - like `ORDER BY col1, col2` in SQL:
 
 ```python run
@@ -955,9 +955,9 @@ for outstanding, loan_id in sorted(by_size, reverse=True)[:2]:
 ```
 
 ::: warning Two pairs of brackets
-`by_size.append((outstanding, loan_id))`: the outer brackets belong to the call, the
-inner ones make the tuple. `append(outstanding, loan_id)` gives two values to
-`append` - a `TypeError`.
+[`by_size.append((outstanding, loan_id))`](https://docs.python.org/3/builtins/stdtypes.html#list.append): the outer brackets belong to the call, the
+inner ones make the tuple. [`append(outstanding, loan_id)`](https://docs.python.org/3/builtins/stdtypes.html#list.append) gives two values to
+[`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append) - a `TypeError`.
 :::
 
 ::: details Advanced: named tuples
@@ -1007,7 +1007,7 @@ Rule of thumb: a **list** for many values of the **same kind** (all loan ids), a
 
 ### Convert between them
 
-`list()` and `tuple()` convert in both directions:
+[`list()`](https://docs.python.org/3/builtins/stdtypes.html#list) and [`tuple()`](https://docs.python.org/3/builtins/stdtypes.html#tuple) convert in both directions:
 
 ```python run
 address = ("Bulgaria", "Sofia", "Nezabravka str", 14)
@@ -1025,7 +1025,7 @@ print(tuple("ada byron"))
 
 ### Syntax
 
-`range` gives an **immutable sequence of whole numbers**:
+[`range`](https://docs.python.org/3/builtins/stdtypes.html#range) gives an **immutable sequence of whole numbers**:
 
 ```text
 range(stop)
@@ -1038,7 +1038,7 @@ range(start, stop, step)
 - All three must be whole numbers. `step` can be negative, but not 0 (`ValueError`).
 - If the arguments give no numbers, the range is empty.
 
-Reference: [Ranges](https://docs.python.org/3/library/stdtypes.html#ranges).
+Reference: [Ranges](https://docs.python.org/3/builtins/stdtypes.html#ranges).
 
 ```python run
 print(list(range(0, 10)))        # 0 ... 9
@@ -1049,8 +1049,8 @@ print(list(range(-3, 4)))        # -3 ... 3
 print(list(range(9, -1, 1)))     # empty: you cannot go from 9 up to -1
 ```
 
-The SAS `DO` loops and their `range` are in the table of [session 2, section 10](./02-conditions-and-loops.md#_10-loops).
-New today: a backwards range, `do i = 10 to 1 by -1;` is `range(10, 0, -1)`.
+The SAS `DO` loops and their [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) are in the table of [session 2, section 10](./02-conditions-and-loops.md#_10-loops).
+New today: a backwards range, `do i = 10 to 1 by -1;` is [`range(10, 0, -1)`](https://docs.python.org/3/builtins/stdtypes.html#range).
 
 ### A range does not keep its numbers
 
@@ -1077,7 +1077,7 @@ print(sys.getsizeof(range(10)), sys.getsizeof(range(1_000_000_000)))
 print(sys.getsizeof(list(range(1000))))     # a list keeps every number
 ```
 
-`len`, indexes, slices and `in` work on a range, and fast:
+[`len`](https://docs.python.org/3/builtins/functions.html#len), indexes, slices and `in` work on a range, and fast:
 
 ```python run
 r = range(0, 1_000_000, 5)
@@ -1120,7 +1120,7 @@ set_of_mutables = {[1, 2, 3], ["a", "b"]}    # TypeError: a list is unhashable
 
 ::: warning `{}` is not an empty set
 `{}` is an empty **dictionary** ([session 6](./06-dictionaries.md#_1-what-is-a-dictionary)): a collection of `key: value` pairs,
-where a set has only values. An empty set is `set()`:
+where a set has only values. An empty set is [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set):
 
 ```python run
 print(type({}), type(set()))
@@ -1142,7 +1142,7 @@ proc sort data=loans(keep=product) out=products nodupkey;
 run;
 ```
 
-In Python, `set()` makes a set from any sequence - the duplicates disappear:
+In Python, [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set) makes a set from any sequence - the duplicates disappear:
 
 ```python run
 l1 = [1, 2, 1, 3, 2, 5, 3]
@@ -1169,8 +1169,8 @@ print(len(products), sorted(products))
 ::: warning The order of a set is not kept
 A set does not remember the order in which values came. Print the same set of strings
 in two runs of a program, and the order can be different. When the order matters -
-in a report, in a test - use `sorted(the_set)`. (To remove duplicates **and** keep the
-first order: `list(dict.fromkeys(items))`, [session 6](./06-dictionaries.md).)
+in a report, in a test - use [`sorted(the_set)`](https://docs.python.org/3/builtins/functions.html#sorted). (To remove duplicates **and** keep the
+first order: [`list(dict.fromkeys(items))`](https://docs.python.org/3/builtins/stdtypes.html#list), [session 6](./06-dictionaries.md).)
 :::
 
 ### Add and remove
@@ -1185,11 +1185,11 @@ my_set.discard(3)           # remove a value (no error if it is not there)
 print(my_set)
 ```
 
-`len`, `in`, `min`, `max`, `sum` and `for` work as with lists.
+[`len`](https://docs.python.org/3/builtins/functions.html#len), `in`, [`min`](https://docs.python.org/3/builtins/functions.html#min), [`max`](https://docs.python.org/3/builtins/functions.html#max), [`sum`](https://docs.python.org/3/builtins/functions.html#sum) and `for` work as with lists.
 
 ::: details Advanced: `remove`, `pop`, `clear`
-`remove(x)` removes `x` too, but stops with a `KeyError` when `x` is not in the
-set. `pop()` removes and returns some item (which one is not defined), `clear()`
+[`remove(x)`](https://docs.python.org/3/builtins/stdtypes.html#list.remove) removes `x` too, but stops with a `KeyError` when `x` is not in the
+set. [`pop()`](https://docs.python.org/3/builtins/stdtypes.html#list.pop) removes and returns some item (which one is not defined), [`clear()`](https://docs.python.org/3/builtins/stdtypes.html#list.clear)
 empties the set.
 
 ```python run
@@ -1248,10 +1248,10 @@ print(frozenset({"USD", "EUR"}) in pairs)      # the order does not matter
 
 | Operation | Operator | Method | Result | SQL (also SAS `PROC SQL`) |
 |---|---|---|---|---|
-| union | `a \| b` | `a.union(b)` | in `a` or in `b` | `UNION` |
-| intersection | `a & b` | `a.intersection(b)` | in both | `INTERSECT` |
-| difference | `a - b` | `a.difference(b)` | in `a`, not in `b` | `EXCEPT` (older Oracle: `MINUS`) |
-| symmetric difference | `a ^ b` | `a.symmetric_difference(b)` | in one of them, not in both | - |
+| union | `a \| b` | [`a.union(b)`](https://docs.python.org/3/builtins/stdtypes.html#set.union) | in `a` or in `b` | `UNION` |
+| intersection | `a & b` | [`a.intersection(b)`](https://docs.python.org/3/builtins/stdtypes.html#set.intersection) | in both | `INTERSECT` |
+| difference | `a - b` | [`a.difference(b)`](https://docs.python.org/3/builtins/stdtypes.html#set.difference) | in `a`, not in `b` | `EXCEPT` (older Oracle: `MINUS`) |
+| symmetric difference | `a ^ b` | [`a.symmetric_difference(b)`](https://docs.python.org/3/builtins/stdtypes.html#set.symmetric_difference) | in one of them, not in both | - |
 
 Each operation returns a **new** set.
 
@@ -1271,7 +1271,7 @@ row - that is joining two lists, `list_a + list_b` (section 4).
 :::
 
 ::: details Advanced: the methods accept any sequence
-The methods accept any sequence, the operators only sets. `a.isdisjoint(b)` is
+The methods accept any sequence, the operators only sets. [`a.isdisjoint(b)`](https://docs.python.org/3/builtins/stdtypes.html#set.isdisjoint) is
 `True` when the two sets have no common items.
 
 ```python run
@@ -1318,8 +1318,8 @@ print("Extra:   ", ", ".join(sorted(submitted - required)))
 
 | Test | Operator | Method |
 |---|---|---|
-| every item of `a` is in `b` | `a <= b` | `a.issubset(b)` |
-| `b` has every item of `a` | `b >= a` | `b.issuperset(a)` |
+| every item of `a` is in `b` | `a <= b` | [`a.issubset(b)`](https://docs.python.org/3/builtins/stdtypes.html#set.issubset) |
+| `b` has every item of `a` | `b >= a` | [`b.issuperset(a)`](https://docs.python.org/3/builtins/stdtypes.html#set.issuperset) |
 
 These are quick checks of the data, like the checks you write in SQL before a join:
 
@@ -1347,7 +1347,7 @@ print("loans of unknown clients:", loan_clients - clients)       # LEFT JOIN ...
 ```
 
 ::: info The same in pandas
-The same check on two tables before a join - with `set()` of a column, or with
+The same check on two tables before a join - with [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set) of a column, or with
 `isin` ([lecture 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there `merge(..., indicator=True)` shows the rows without a
 match):
 
@@ -1364,15 +1364,15 @@ print(loans["client_id"].isin(clients["client_id"]).all())    # every loan has a
 ## 13. Summary
 | Topic | Remember |
 |-------|----------|
-| Sequences | `list`, `tuple`, `range`, `str`: ordered; `len`, `in`, `+`, `*`, `min`, `max`, `count`, `index` |
+| Sequences | `list`, `tuple`, [`range`](https://docs.python.org/3/builtins/stdtypes.html#range), `str`: ordered; [`len`](https://docs.python.org/3/builtins/functions.html#len), `in`, `+`, `*`, [`min`](https://docs.python.org/3/builtins/functions.html#min), [`max`](https://docs.python.org/3/builtins/functions.html#max), [`count`](https://docs.python.org/3/builtins/stdtypes.html#list.count), [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index) |
 | Indexes | from **0**; `-1` is the last; a wrong index is an `IndexError` |
 | Slices | `s[start:stop:step]`, the stop is not included; `s[:3]` the first 3, `s[-3:]` the last 3, `s[::-1]` reversed, `s[:]` a copy |
-| Lists | `[...]`, mutable; `append`, `extend`, `insert`, `pop`, `remove`, `sort`; the methods return `None` |
-| Sorting | `lst.sort()` changes the list; `sorted(x)` returns a new list |
-| References | `b = a` is the same list with two names; a copy: `a[:]`, `a.copy()`, `list(a)` |
+| Lists | `[...]`, mutable; [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append), [`extend`](https://docs.python.org/3/builtins/stdtypes.html#list.extend), [`insert`](https://docs.python.org/3/builtins/stdtypes.html#list.insert), [`pop`](https://docs.python.org/3/builtins/stdtypes.html#list.pop), [`remove`](https://docs.python.org/3/builtins/stdtypes.html#list.remove), [`sort`](https://docs.python.org/3/builtins/stdtypes.html#list.sort); the methods return `None` |
+| Sorting | [`lst.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) changes the list; [`sorted(x)`](https://docs.python.org/3/builtins/functions.html#sorted) returns a new list |
+| References | `b = a` is the same list with two names; a copy: `a[:]`, [`a.copy()`](https://docs.python.org/3/builtins/stdtypes.html#list.copy), [`list(a)`](https://docs.python.org/3/builtins/stdtypes.html#list) |
 | Tuples | `(...)`, immutable, the comma makes it: `(99,)`; unpacking `a, b, c = t`, `_` for a value you do not need; records |
-| `range` | `range(start, stop, step)`, stop not included; small in memory |
-| Sets | `{...}` / `set()`, unique, unordered; `add`, `discard`; fast `in`; print with `sorted()` |
+| [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) | [`range(start, stop, step)`](https://docs.python.org/3/builtins/stdtypes.html#range), stop not included; small in memory |
+| Sets | `{...}` / [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set), unique, unordered; [`add`](https://docs.python.org/3/builtins/stdtypes.html#set.add), [`discard`](https://docs.python.org/3/builtins/stdtypes.html#set.discard); fast `in`; print with [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted) |
 | Set operations | `\|` is SQL `UNION`, `&` is `INTERSECT`, `-` is `EXCEPT`; `^` symmetric difference; `<=` subset |
 
 ## Practice
@@ -1395,17 +1395,17 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
 
 ::: tip Help for the tasks and the homework
 - **What each task needs.** Tasks 1 - 2: sections 1 - 5 (in task 1, the lines with
-  `(99,)`, `sort` / `sorted` and the sets need sections 6, 8, 11 and 12). Task 3:
+  `(99,)`, [`sort`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) / [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted) and the sets need sections 6, 8, 11 and 12). Task 3:
   sections 6 - 7. Task 4: section 8. Tasks 5 - 6 and the homework: sections 8 - 12.
   If a section was not covered in class yet, start with the tasks before it, or read
   the section first. A part you have not started prints `TODO`, not `FAIL`.
-- **Task 1:** `type(x).__name__` is the name of the type, as text: `"tuple"`,
+- **Task 1:** [`type(x).__name__`](https://docs.python.org/3/builtins/functions.html#type) is the name of the type, as text: `"tuple"`,
   `"list"`.
-- **Task 3:** make `backup` first, with `watch.copy()` - `backup = watch` would only
-  give the same list a second name (section 7). `extend` adds several items with one
-  call; `pop()` removes the last item **and returns it**; `sort(reverse=True)` sorts
+- **Task 3:** make `backup` first, with [`watch.copy()`](https://docs.python.org/3/builtins/stdtypes.html#list.copy) - `backup = watch` would only
+  give the same list a second name (section 7). [`extend`](https://docs.python.org/3/builtins/stdtypes.html#list.extend) adds several items with one
+  call; [`pop()`](https://docs.python.org/3/builtins/stdtypes.html#list.pop) removes the last item **and returns it**; [`sort(reverse=True)`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) sorts
   from the largest. The methods change `watch` and return `None`: write
-  `watch.sort()`, not `watch = watch.sort()` (section 6).
+  [`watch.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort), not `watch = watch.sort()` (section 6).
 - **Task 4, part 2:** `record[:-1]` is the record without its last item (a new
   tuple), `(40,)` is a tuple with one item (section 8), and `+` joins the two.
 - **Task 4, part 4:** all four results in one loop - before it, `total = 0.0` and
@@ -1426,7 +1426,7 @@ python 03-lists-tuples-sets/practice/task1-predict-sequences.py
 
 ### Notes on the tasks
 
-**Reading a file.** How `open` and `with` work comes in
+**Reading a file.** How [`open`](https://docs.python.org/3/builtins/functions.html#open) and `with` work comes in
 [lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this
 code. It is the loop of [session 2](./02-conditions-and-loops.md#the-rows-of-a-file),
 but it keeps each line as one list, `fields`, and you take a field by its index:
@@ -1459,8 +1459,8 @@ with open(DATA / "clients.csv", encoding="utf-8") as file:
         # your code for each client
 ```
 
-- All the fields are text. Convert the ones you need: `float(fields[7])` for
-  `outstanding`, `int(fields[10])` for `stage`.
+- All the fields are text. Convert the ones you need: [`float(fields[7])`](https://docs.python.org/3/builtins/functions.html#float) for
+  `outstanding`, [`int(fields[10])`](https://docs.python.org/3/builtins/functions.html#int) for `stage`.
 - `DATA / "loans.csv"` is the path of the file in the tasks: `DATA` is the `data/`
   folder of the repository (the tasks import it from `check.py`). The examples on
   this page use `"data/loans.csv"` - the same file.
@@ -1486,7 +1486,7 @@ Where you need it:
    `OK`.
 2. The practice tasks you did not finish in class.
 3. Optional: `names.py` asks how many names the user will enter, reads them with
-   `input()` in a loop into a list, and prints them sorted, without duplicates, and
+   [`input()`](https://docs.python.org/3/builtins/functions.html#input) in a loop into a list, and prints them sorted, without duplicates, and
    how many were duplicates.
 4. Optional: a word is a *palindrome* if it reads the same forwards and backwards,
    ignoring case (`"Racecar"`). Check it with a slice, for words typed by the user.
@@ -1498,8 +1498,8 @@ Where you need it:
 
 - Python tutorial: [Data structures](https://docs.python.org/3/tutorial/datastructures.html)
   (lists, `del`, tuples and sequences, sets)
-- Reference: [Sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range),
-  [Set types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset),
+- Reference: [Sequence types](https://docs.python.org/3/builtins/stdtypes.html#sequence-types-list-tuple-range),
+  [Set types](https://docs.python.org/3/builtins/stdtypes.html#set-types-set-frozenset),
   [`copy`](https://docs.python.org/3/library/copy.html)
 - Real Python: [Lists and tuples](https://realpython.com/python-lists-tuples/),
   [Sets](https://realpython.com/python-sets/)

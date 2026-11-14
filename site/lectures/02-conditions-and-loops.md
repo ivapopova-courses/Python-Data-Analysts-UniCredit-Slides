@@ -85,7 +85,7 @@ the rules you met in [session 1](./01-intro-syntax-types.md#to-bool-truthy-and-f
 | collections (lists, tuples, sets, dictionaries) | empty | not empty |
 | `None` | always | - |
 
-`bool()` shows the decision:
+[`bool()`](https://docs.python.org/3/builtins/functions.html#bool) shows the decision:
 
 ```python run
 print(bool(-42), bool(0), bool(0.00001))
@@ -165,7 +165,7 @@ Numbers of different types compare as you expect: `1 == 1.0` is `True`, and
 
 ::: tip Best practice
 Make sure you compare values of the **same type**. Convert the data first -
-`int()`, `float()`, `str()` ([session 1](./01-intro-syntax-types.md#_12-converting-between-types)) - and then compare.
+[`int()`](https://docs.python.org/3/builtins/functions.html#int), [`float()`](https://docs.python.org/3/builtins/functions.html#float), [`str()`](https://docs.python.org/3/builtins/stdtypes.html#str) ([session 1](./01-intro-syntax-types.md#_12-converting-between-types)) - and then compare.
 
 ```python run
 print("2" == str(2))
@@ -185,7 +185,7 @@ that does this, it is a bug in Python 3.
 Strings are compared **lexicographically**, like words in a dictionary: the first
 characters first; if they are equal, the second ones, and so on. Each character is
 compared by its number (its *code point*) in the Unicode table, and
-[`ord()`](https://docs.python.org/3/library/functions.html#ord) shows that number:
+[`ord()`](https://docs.python.org/3/builtins/functions.html#ord) shows that number:
 
 ```python run
 print("9" < "1000")          # False!
@@ -380,8 +380,8 @@ if False:
 print("3")
 ```
 
-`print("1")` and `print("2")` form the block: they run **only if the condition is
-true**. `print("3")` is not in the block - it always runs.
+[`print("1")`](https://docs.python.org/3/builtins/functions.html#print) and [`print("2")`](https://docs.python.org/3/builtins/functions.html#print) form the block: they run **only if the condition is
+true**. [`print("3")`](https://docs.python.org/3/builtins/functions.html#print) is not in the block - it always runs.
 
 ### `pass`: a block that does nothing
 
@@ -762,7 +762,7 @@ capture 'RETAIL' makes remaining patterns unreachable`. Write the values themsel
 ### Before Python 3.10: `if` - `elif` chains
 
 Older code (and older courses) write the same with `if` / `elif`. A typical
-program menu (this one needs `input()`, so try it in VS Code):
+program menu (this one needs [`input()`](https://docs.python.org/3/builtins/functions.html#input), so try it in VS Code):
 
 ```python
 print("Select a report:")
@@ -861,7 +861,7 @@ A **loop** runs a block of code **many times**. Each run of the block is an
 - `while` repeats **while a condition is true** - when you do not know in advance how
   many times (section 11);
 - `for` repeats **for each item** of a sequence - the rows of a file, the items of a
-  list, the numbers of a `range` (section 12).
+  list, the numbers of a [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) (section 12).
 
 You already use loops in SAS: the **DATA step is a loop** - it runs once for each
 row of the input data set, without you writing it. In Python you write the loop
@@ -904,7 +904,7 @@ while i <= 5:
 ```
 
 This is just a simple example. For a fixed number of iterations, a `for` loop with
-`range` is better (section 12).
+[`range`](https://docs.python.org/3/builtins/stdtypes.html#range) is better (section 12).
 
 ### An endless loop - find the problem
 
@@ -963,7 +963,7 @@ run;
 :::
 
 Another typical case is checking what a user types - the program asks again until
-the answer is right. With `input()`, so try it in VS Code:
+the answer is right. With [`input()`](https://docs.python.org/3/builtins/functions.html#input), so try it in VS Code:
 
 ```python
 # ask for a name until it has at least 3 characters
@@ -973,7 +973,7 @@ while len(user_name) < 3:
 print(f"Thank you, {user_name}!")
 ```
 
-The `input()` line is written twice - section 13 shows a cleaner way with
+The [`input()`](https://docs.python.org/3/builtins/functions.html#input) line is written twice - section 13 shows a cleaner way with
 `while True` and `break`.
 
 ## 12. The `for` loop
@@ -997,7 +997,7 @@ for letter in "ada":
 ### What `for` can loop over
 
 Anything that gives items one by one - an *iterable*. Today: a string (its
-characters), a `range` of numbers, a few values in square brackets, and the lines
+characters), a [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) of numbers, a few values in square brackets, and the lines
 of a file. The square brackets make a **list** - [session 3](./03-lists-tuples-sets.md#_2-lists) is all about lists; for
 now, read `[0, 35, 120]` simply as "these values, one by one". Tuples ([session 3](./03-lists-tuples-sets.md#_8-tuples))
 and dictionaries ([session 6](./06-dictionaries.md)) come later.
@@ -1015,7 +1015,7 @@ for item in [10, 20, 30]:           # a few values: a list (session 3)
 
 ### `range`: a sequence of numbers
 
-`range(stop)`, `range(start, stop)` and `range(start, stop, step)` give whole numbers
+[`range(stop)`](https://docs.python.org/3/builtins/stdtypes.html#range), [`range(start, stop)`](https://docs.python.org/3/builtins/stdtypes.html#range) and [`range(start, stop, step)`](https://docs.python.org/3/builtins/stdtypes.html#range) give whole numbers
 from `start` (0 if not given) up to **`stop - 1`** - the stop itself is **not**
 included. [Session 3](./03-lists-tuples-sets.md#_10-range) has the details.
 
@@ -1028,8 +1028,8 @@ for month in range(3, 13, 3):       # the quarter ends: 3, 6, 9, 12
 ```
 
 ::: warning SAS counts to the end, `range` stops before it
-`do month = 1 to 12;` runs 12 times, for 1 ... 12. In Python, `range(1, 12)` stops
-at 11: write `range(1, 13)`. `range(12)` also runs 12 times, but for 0 ... 11.
+`do month = 1 to 12;` runs 12 times, for 1 ... 12. In Python, [`range(1, 12)`](https://docs.python.org/3/builtins/stdtypes.html#range) stops
+at 11: write [`range(1, 13)`](https://docs.python.org/3/builtins/stdtypes.html#range). [`range(12)`](https://docs.python.org/3/builtins/stdtypes.html#range) also runs 12 times, but for 0 ... 11.
 :::
 
 ### Accumulators: sum, count, maximum
@@ -1140,7 +1140,7 @@ with open("data/loans.csv", encoding="utf-8") as file:
         break                           # only the first loan for now (section 13)
 ```
 
-`split(",")` cuts the line at the commas and gives the fields as strings, in square
+[`split(",")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) cuts the line at the commas and gives the fields as strings, in square
 brackets: a list ([session 3](./03-lists-tuples-sets.md#from-text-split)). The names on the left of `=` take them in
 order (as in "several names at once", [session 1](./01-intro-syntax-types.md#assignment-in-more-forms)) - then convert the ones you need:
 
@@ -1237,7 +1237,7 @@ while True:
         break
 ```
 
-The name check of section 11, without writing `input()` twice:
+The name check of section 11, without writing [`input()`](https://docs.python.org/3/builtins/functions.html#input) twice:
 
 ```python
 while True:
@@ -1487,7 +1487,7 @@ internal rate of return (IRR) of a cash flow.
 | Expressions | `a if condition else b`; statements do, expressions give a value |
 | `match` | one value against fixed cases; `\|` for "or", `case _:` for the rest; guards with `if` |
 | `while` | while a condition is true; something in the block must change it |
-| `for` | each item of a sequence: a string, a list, `range`, the lines of a file; `range(1, 13)` is 1 ... 12 |
+| `for` | each item of a sequence: a string, a list, [`range`](https://docs.python.org/3/builtins/stdtypes.html#range), the lines of a file; [`range(1, 13)`](https://docs.python.org/3/builtins/stdtypes.html#range) is 1 ... 12 |
 | `break` / `continue` | leave the loop / go to the next iteration; `while True` + `break` = `do until`; a flag for "not found" |
 
 ## Practice
@@ -1549,13 +1549,13 @@ run the file.
   section 15: `f"{'current':<8}{current_count:>6}"`, `:>18,.2f`, and `:>8.1%` for a
   percent ([session 1, section 13](./01-intro-syntax-types.md#_13-strings-and-f-strings)).
 - **Homework, part 4 - a `FAIL`:** the check compares the whole text, so one space
-  more or less is a `FAIL`. `print(report)`, then compare the `got:` and `expected:`
+  more or less is a `FAIL`. [`print(report)`](https://docs.python.org/3/builtins/functions.html#print), then compare the `got:` and `expected:`
   lines under the `FAIL` character by character - one line of the report at a time.
 :::
 
 ### Notes on the tasks
 
-**Reading a file.** How `open` and `with` work comes in
+**Reading a file.** How [`open`](https://docs.python.org/3/builtins/functions.html#open) and `with` work comes in
 [lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this
 code. It reads `loans.csv` line by line and gives each field of the line a name:
 
@@ -1568,8 +1568,8 @@ with open(DATA / "loans.csv", encoding="utf-8") as file:
         # your code for each loan
 ```
 
-- All the fields are text. Convert the ones you need: `float(outstanding)`,
-  `int(days_past_due)`. Compare `stage` with `"3"` (text), or convert it first.
+- All the fields are text. Convert the ones you need: [`float(outstanding)`](https://docs.python.org/3/builtins/functions.html#float),
+  [`int(days_past_due)`](https://docs.python.org/3/builtins/functions.html#int). Compare `stage` with `"3"` (text), or convert it first.
 - `DATA / "loans.csv"` is the path of the file in the tasks: `DATA` is the `data/`
   folder of the repository (the tasks import it from `check.py`). The examples on
   this page use `"data/loans.csv"` - the same file.
@@ -1592,7 +1592,7 @@ Where you need it:
    `OK`.
 2. The practice tasks you did not finish in class.
 3. Optional: a **loan calculator** in the terminal - `calculator.py` asks for the
-   amount, the yearly rate and the years with `input()`, asks **again** while a value
+   amount, the yearly rate and the years with [`input()`](https://docs.python.org/3/builtins/functions.html#input), asks **again** while a value
    is not valid (the amount must be more than 0, the rate between 0 and 50, the years
    between 1 and 30), and prints the repayment schedule of section 15. Add a menu
    with `match`: 1 - the schedule, 2 - only the total interest, 3 - quit; repeat
@@ -1606,10 +1606,10 @@ Where you need it:
 ## Read more
 
 - Python tutorial: [More control flow tools](https://docs.python.org/3/tutorial/controlflow.html)
-  (`if`, `for`, `range`, `break`, `continue`, `else` on loops, `pass`, `match`)
+  (`if`, `for`, [`range`](https://docs.python.org/3/builtins/stdtypes.html#range), `break`, `continue`, `else` on loops, `pass`, `match`)
 - Reference: [Boolean operations](https://docs.python.org/3/reference/expressions.html#boolean-operations),
   [Comparisons](https://docs.python.org/3/reference/expressions.html#comparisons),
-  [Truth value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing),
+  [Truth value testing](https://docs.python.org/3/builtins/stdtypes.html#truth-value-testing),
   [Operator precedence](https://docs.python.org/3/reference/expressions.html#operator-precedence)
 - `match`: [PEP 636 - the pattern matching tutorial](https://peps.python.org/pep-0636/)
 - Real Python: [Conditional statements](https://realpython.com/python-conditional-statements/),

@@ -98,7 +98,7 @@ print(type(empty), currencies == same == from_pairs)
 ```
 :::
 
-**From two lists.** The keys and the values, joined with `zip` ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):
+**From two lists.** The keys and the values, joined with [`zip`](https://docs.python.org/3/builtins/functions.html#zip) ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):
 
 ```python run
 grades = ["AAA", "AA", "A", "BBB"]
@@ -120,7 +120,7 @@ print(pd_of_grade["AAA"])
 print(pd_of_grade["CCC"])          # KeyError: 'CCC'
 ```
 
-**A default for a missing key.** `d.get(key)` gives `None` for a missing key, and `d.get(key, default)` gives the
+**A default for a missing key.** [`d.get(key)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) gives `None` for a missing key, and [`d.get(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) gives the
 default - like `OTHER=` in a SAS format:
 
 ```python run
@@ -132,7 +132,7 @@ print(pd_of_grade.get("AAA", 1.0))
 ```
 
 Which one to use? `d[key]` when a missing key is an **error** in the data and you
-want to know at once. `get` when a missing key is **normal**, and you know what to
+want to know at once. [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) when a missing key is **normal**, and you know what to
 use instead.
 
 ### `in` checks the keys
@@ -170,7 +170,7 @@ bad = {["retail", 1]: 120}                      # TypeError: a list is unhashabl
 
 ::: details Advanced: `fromkeys`: unique values and initial values
 
-Two useful forms of `dict.fromkeys`: unique values **in the order of their first
+Two useful forms of [`dict.fromkeys`](https://docs.python.org/3/builtins/stdtypes.html#dict.fromkeys): unique values **in the order of their first
 appearance** (a set loses the order), and many keys with one start value:
 
 ```python run
@@ -249,7 +249,7 @@ print(names.pop("leasing", None))          # a default: no KeyError
 
 ### `setdefault`: add only if missing
 
-`d.setdefault(key, value)` returns the value of the key; if the key is missing, it
+[`d.setdefault(key, value)`](https://docs.python.org/3/builtins/stdtypes.html#dict.setdefault) returns the value of the key; if the key is missing, it
 first adds it with `value`:
 
 ```python run
@@ -307,8 +307,8 @@ print(version_1 == version_3)
 
 ::: tip Try it
 Start from `rates = {"EUR": 3.5, "USD": 5.25}`. Add `"GBP": 4.75`, change `EUR` to
-`3.25`, remove `USD` with `pop`, and print the dict. What does
-`rates.pop("CHF", 0)` return? Then predict: what does `rates | {"CHF": 0.5}` give,
+`3.25`, remove `USD` with [`pop`](https://docs.python.org/3/builtins/stdtypes.html#dict.pop), and print the dict. What does
+[`rates.pop("CHF", 0)`](https://docs.python.org/3/builtins/stdtypes.html#dict.pop) return? Then predict: what does `rates | {"CHF": 0.5}` give,
 and is `rates` changed after it?
 :::
 
@@ -318,9 +318,9 @@ and is `rates` changed after it?
 
 When you loop through a dictionary with a `for` loop, it iterates over the **keys** by default. To loop over values or pairs instead, use explicit dictionary methods:
 
-- **`keys()`**: Returns all keys (this is identical to looping directly over the dictionary).
-- **`values()`**: Returns all values.
-- **`items()`**: Returns key-value pairs as `(key, value)` tuples, which you can unpack directly in the loop.
+- **[`keys()`](https://docs.python.org/3/builtins/stdtypes.html#dict.keys)**: Returns all keys (this is identical to looping directly over the dictionary).
+- **[`values()`](https://docs.python.org/3/builtins/stdtypes.html#dict.values)**: Returns all values.
+- **[`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items)**: Returns key-value pairs as `(key, value)` tuples, which you can unpack directly in the loop.
 
 ```python run
 outstanding = {"retail": 6.9, "sme": 39.5, "corporate": 85.0}     # EUR million
@@ -335,11 +335,11 @@ for segment, amount in outstanding.items():     # pairs - unpack them
     print(f"{segment:<10}{amount:>8.1f}")
 ```
 
-`items()` is the most common: it gives the key and the value together.
+[`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items) is the most common: it gives the key and the value together.
 
 ### Sort the keys
 
-`sorted(d)` returns a list of the keys in sorted order. It does not change `d`:
+[`sorted(d)`](https://docs.python.org/3/builtins/functions.html#sorted) returns a list of the keys in sorted order. It does not change `d`:
 
 ```python run
 names = {"overdraft": "Overdraft", "mortgage": "Mortgage loan"}
@@ -352,7 +352,7 @@ for code in sorted(names):
 ### Sorting and ranking by values
 
 The order of a dictionary is the order of insertion. To show it sorted, sort the
-`items()` - by the key, or by the value:
+[`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items) - by the key, or by the value:
 
 ```python run
 outstanding = {"sme": 39.5, "corporate": 85.0, "retail": 6.9}
@@ -372,10 +372,10 @@ outstanding = {"sme": 39.5, "corporate": 85.0, "retail": 6.9}
 print(max(outstanding, key=outstanding.get))
 ```
 
-(`key=outstanding.get` - the method itself, without brackets: `max` calls it for
+(`key=outstanding.get` - the method itself, without brackets: [`max`](https://docs.python.org/3/builtins/functions.html#max) calls it for
 each key.)
 
-**A ranked report.** Sort the segments by amount, largest first, and number them 1, 2, 3 with `enumerate(..., start=1)` ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)). Each line shows the rank, the segment, its amount and its share of the total:
+**A ranked report.** Sort the segments by amount, largest first, and number them 1, 2, 3 with [`enumerate(..., start=1)`](https://docs.python.org/3/builtins/functions.html#enumerate) ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)). Each line shows the rank, the segment, its amount and its share of the total:
 
 ```python run
 outstanding = {"sme": 39.5, "corporate": 85.0, "retail": 6.9}
@@ -388,7 +388,7 @@ for rank, (segment, amount) in enumerate(ranked, start=1):   # rank = 1, 2, 3 ..
 
 
 ::: details Advanced: the views are live
-`keys()`, `values()` and `items()` are **views**: they show the dictionary as it is
+[`keys()`](https://docs.python.org/3/builtins/stdtypes.html#dict.keys), [`values()`](https://docs.python.org/3/builtins/stdtypes.html#dict.values) and [`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items) are **views**: they show the dictionary as it is
 **now**, also after a change:
 
 ```python run
@@ -402,7 +402,7 @@ print(keys)                        # the view shows the new key too
 :::
 
 ::: details Advanced: keys behave like a set
-`keys()` supports the set operations of [session 3](./03-lists-tuples-sets.md#_12-set-operations-sql-union-intersect-except) - handy to compare two
+[`keys()`](https://docs.python.org/3/builtins/stdtypes.html#dict.keys) supports the set operations of [session 3](./03-lists-tuples-sets.md#_12-set-operations-sql-union-intersect-except) - handy to compare two
 nomenclatures:
 
 ```python run
@@ -417,7 +417,7 @@ print(new.keys() - old.keys())     # added
 
 ::: tip Try it
 From `outstanding = {"retail": 6.9, "sme": 39.5, "corporate": 85.0}`, print
-each segment and amount with `items()`. Then print the segment names alphabetically.
+each segment and amount with [`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items). Then print the segment names alphabetically.
 :::
 
 ## 4. Dict comprehensions
@@ -552,17 +552,17 @@ print(pd_of[rating_of[loan["client_id"]]])        # the same chain in one line
 ```
 
 `[]` needs every key to exist: a client that is not in `rating_of` raises
-`KeyError` (`get` with a default avoids that).
+`KeyError` ([`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) with a default avoids that).
 
 Each loan needs only two lookups, and a lookup is fast, however big the dictionary
 is (the Self-study explains why). Without a dictionary, you would loop over all the
 clients to find the client of each loan. A SAS programmer would do this with a hash object
-(`h.find()`); the dictionary is the same idea, with less code.
+([`h.find()`](https://docs.python.org/3/builtins/stdtypes.html#str.find)); the dictionary is the same idea, with less code.
 
 ::: tip Try it
 Change the loan to the client `C0001`. Predict the rating, the PD and the EL before
 you run it. What happens with a client that is not in `rating_of`, and how would
-`get` change that?
+[`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) change that?
 :::
 
 ### A use case: a dictionary on a pandas column
@@ -673,7 +673,7 @@ fields.
 ### Safe nested access
 
 With nested dictionaries, a missing level is a `KeyError` (or a `TypeError` on
-`None`). Chain `get` with an empty dictionary as the default:
+`None`). Chain [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) with an empty dictionary as the default:
 
 ```python run
 clients = {"C0002": {"segment": "sme", "region": "Ruse"}}
@@ -710,8 +710,8 @@ print(json.loads(text)["segments"]["sme"]["loans"])
 
 ### Copies of nested dictionaries
 
-The same rule as for the copies of lists ([session 3](./03-lists-tuples-sets.md#make-a-copy)): `d.copy()` and `dict(d)` are
-**shallow** - the inner dictionaries are shared. `copy.deepcopy` copies all levels:
+The same rule as for the copies of lists ([session 3](./03-lists-tuples-sets.md#make-a-copy)): [`d.copy()`](https://docs.python.org/3/builtins/stdtypes.html#dict.copy) and [`dict(d)`](https://docs.python.org/3/builtins/stdtypes.html#dict) are
+**shallow** - the inner dictionaries are shared. [`copy.deepcopy`](https://docs.python.org/3/library/copy.html#copy.deepcopy) copies all levels:
 
 ```python run
 import copy
@@ -736,10 +736,10 @@ clients with a rating of 6 or worse.
 | Topic | Remember |
 |-------|----------|
 | Dictionary | `{key: value}`; keys unique and hashable; keeps insertion order |
-| Read | `d[key]` for a required key; `d.get(key, default)` for an expected missing key; `key in d` |
-| Change | `d[key] = value` adds or changes; `pop(key, default)` removes and returns a value |
-| Loop | `for key in d`; `d.values()`; `for key, value in d.items()`; `sorted(d)` sorts the keys |
-| Comprehension | `{key: value for ... if ...}`; `dict(zip(keys, values))` pairs two lists |
+| Read | `d[key]` for a required key; [`d.get(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) for an expected missing key; `key in d` |
+| Change | `d[key] = value` adds or changes; [`pop(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.pop) removes and returns a value |
+| Loop | `for key in d`; [`d.values()`](https://docs.python.org/3/builtins/stdtypes.html#dict.values); `for key, value in d.items()`; [`sorted(d)`](https://docs.python.org/3/builtins/functions.html#sorted) sorts the keys |
+| Comprehension | `{key: value for ... if ...}`; [`dict(zip(keys, values))`](https://docs.python.org/3/builtins/stdtypes.html#dict) pairs two lists |
 | Lookups | A dictionary is like a SAS format or a SQL lookup table with unique keys |
 | Records | a row as a dict, a table as a list of dicts; `clients[id]["region"]` reads a nested field |
 
@@ -798,10 +798,10 @@ for region in sorted(table):
     print(f"{region:<14}{cells}{sum(row.values()):>8}")
 ```
 
-A `defaultdict` (from the module `collections`) is a dictionary that creates a
-missing key by itself: `defaultdict(int)` gives a new key the value `int()`, that is
-`0`. `defaultdict(lambda: defaultdict(int))`: a missing row is created as a new
-`defaultdict(int)` - so `table[region][segment] += 1` works for any new pair.
+A [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) (from the module `collections`) is a dictionary that creates a
+missing key by itself: [`defaultdict(int)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) gives a new key the value [`int()`](https://docs.python.org/3/builtins/functions.html#int), that is
+`0`. [`defaultdict(lambda: defaultdict(int))`](https://docs.python.org/3/library/collections.html#collections.defaultdict): a missing row is created as a new
+[`defaultdict(int)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) - so `table[region][segment] += 1` works for any new pair.
 
 **Back to rows.** From the cross table to rows (`region, segment, count`), the job of
 SAS `PROC TRANSPOSE`, or of `melt` in pandas ([lecture 15](./15-pandas-reports.md#_2-from-wide-to-long-melt)):
@@ -846,7 +846,7 @@ print(f"{'total':<16}" + "".join(f"{sum(table[p][s] for p in table):>12,.0f}" fo
 Why is `d[key]` fast, and why must keys not change?
 
 A dictionary keeps its pairs in a table of slots. To store a key, Python computes
-`hash(key)` - a big integer made from the value - and uses it to choose the slot. To
+[`hash(key)`](https://docs.python.org/3/builtins/functions.html#hash) - a big integer made from the value - and uses it to choose the slot. To
 find the key later, it computes the hash again. Different keys can lead to the
 same slot (a collision), so Python may need to check more than one slot and compare
 keys. Lookups take approximately constant time **on average**; they are not a
@@ -899,7 +899,7 @@ immutable values.
 
 - Python tutorial: [Dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries),
   [Looping techniques](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques)
-- Reference: [Mapping types - dict](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict),
+- Reference: [Mapping types - dict](https://docs.python.org/3/builtins/stdtypes.html#mapping-types-dict),
   [`collections.defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict)
 - Real Python: [Dictionaries in Python](https://realpython.com/python-dicts/)
 

@@ -225,7 +225,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:278
-msgid "[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) parsed dates one by one with `datetime.strptime`. `pd.to_datetime` does the whole column; `format=` says how, `errors=\"coerce\"` turns a bad date into `NaT` (the `NaN` of dates):"
+msgid "[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) parsed dates one by one with [`datetime.strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime). `pd.to_datetime` does the whole column; `format=` says how, `errors=\"coerce\"` turns a bad date into `NaT` (the `NaN` of dates):"
 msgstr ""
 
 #. paragraph

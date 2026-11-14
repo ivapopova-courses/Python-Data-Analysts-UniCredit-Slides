@@ -40,8 +40,8 @@ msgstr "пазите много стойности в един **list** и да 
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:15
-msgid "use the operations that all sequences share: `+`, `*`, `in`, `len`, `min`, `max`;"
-msgstr "използвате операциите, общи за всички поредици: `+`, `*`, `in`, `len`, `min`, `max`;"
+msgid "use the operations that all sequences share: `+`, `*`, `in`, [`len`](https://docs.python.org/3/builtins/functions.html#len), [`min`](https://docs.python.org/3/builtins/functions.html#min), [`max`](https://docs.python.org/3/builtins/functions.html#max);"
+msgstr "използвате операциите, общи за всички поредици: `+`, `*`, `in`, [`len`](https://docs.python.org/3/builtins/functions.html#len), [`min`](https://docs.python.org/3/builtins/functions.html#min), [`max`](https://docs.python.org/3/builtins/functions.html#max);"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:16
@@ -60,8 +60,8 @@ msgstr "използвате **tuples** като записи, които не �
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:19
-msgid "use `range` for sequences of numbers;"
-msgstr "използвате `range` за поредици от числа;"
+msgid "use [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) for sequences of numbers;"
+msgstr "използвате [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) за поредици от числа;"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:20
@@ -185,8 +185,8 @@ msgstr "конкатенация"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:92
-msgid "the two joined (not for `range`)"
-msgstr "двете, съединени (не за `range`)"
+msgid "the two joined (not for [`range`](https://docs.python.org/3/builtins/stdtypes.html#range))"
+msgstr "двете, съединени (не за [`range`](https://docs.python.org/3/builtins/stdtypes.html#range))"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:93
@@ -195,8 +195,8 @@ msgstr "повторение"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:93
-msgid "three times (not for `range`)"
-msgstr "три пъти (не за `range`)"
+msgid "three times (not for [`range`](https://docs.python.org/3/builtins/stdtypes.html#range))"
+msgstr "три пъти (не за [`range`](https://docs.python.org/3/builtins/stdtypes.html#range))"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:94
@@ -235,8 +235,8 @@ msgstr "индексът на първия `x`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:99
-msgid "Each type also has its **own** methods: lists can be sorted and changed, strings can be made upper case. Reference: [Common sequence operations](https://docs.python.org/3/library/stdtypes.html#common-sequence-operations)."
-msgstr "Всеки тип има и **собствени** методи: lists могат да се сортират и променят, strings могат да станат с главни букви. Reference: [Common sequence operations](https://docs.python.org/3/library/stdtypes.html#common-sequence-operations)."
+msgid "Each type also has its **own** methods: lists can be sorted and changed, strings can be made upper case. Reference: [Common sequence operations](https://docs.python.org/3/builtins/stdtypes.html#common-sequence-operations)."
+msgstr "Всеки тип има и **собствени** методи: lists могат да се сортират и променят, strings могат да станат с главни букви. Reference: [Common sequence operations](https://docs.python.org/3/builtins/stdtypes.html#common-sequence-operations)."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:103
@@ -340,8 +340,8 @@ msgstr "Прескочете елементите, които не искате,
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:244
-msgid "The loop gives the items, not their positions. If you need the position, count it yourself ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item) shows `enumerate`, which does it for you):"
-msgstr "Цикълът дава елементите, не позициите им. Ако ви трябва позицията, бройте я сами ([занятие 5](./05-lists-advanced.md#enumerate-the-number-of-each-item) показва `enumerate`, който го прави вместо вас):"
+msgid "The loop gives the items, not their positions. If you need the position, count it yourself ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item) shows [`enumerate`](https://docs.python.org/3/builtins/functions.html#enumerate), which does it for you):"
+msgstr "Цикълът дава елементите, не позициите им. Ако ви трябва позицията, бройте я сами ([занятие 5](./05-lists-advanced.md#enumerate-the-number-of-each-item) показва [`enumerate`](https://docs.python.org/3/builtins/functions.html#enumerate), който го прави вместо вас):"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:257
@@ -410,8 +410,8 @@ msgstr "`step` - взема всеки n-ти елемент; празно = 1. 
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:307
-msgid "The rule \"the stop is not included\" is the same as in `range` ([session 2](./02-conditions-and-loops.md#range-a-sequence-of-numbers)). It has a nice side: `a[:3]` is the first 3 items, `a[3:]` the rest, and `a[2:5]` has 5 - 2 = 3 items."
-msgstr "Правилото \"stop не е включен\" е същото като в `range` ([занятие 2](./02-conditions-and-loops.md#range-a-sequence-of-numbers)). То има хубава страна: `a[:3]` са първите 3 елемента, `a[3:]` - останалите, а `a[2:5]` има 5 - 2 = 3 елемента."
+msgid "The rule \"the stop is not included\" is the same as in [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) ([session 2](./02-conditions-and-loops.md#range-a-sequence-of-numbers)). It has a nice side: `a[:3]` is the first 3 items, `a[3:]` the rest, and `a[2:5]` has 5 - 2 = 3 items."
+msgstr "Правилото \"stop не е включен\" е същото като в [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) ([занятие 2](./02-conditions-and-loops.md#range-a-sequence-of-numbers)). То има хубава страна: `a[:3]` са първите 3 елемента, `a[3:]` - останалите, а `a[2:5]` има 5 - 2 = 3 елемента."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:311
@@ -490,8 +490,8 @@ msgstr "`+` съединява две поредици от **един и същ
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:408
-msgid "Only strings, lists and tuples can be joined and repeated. A `range` cannot (but you can make a list of it first: `list(range(3)) * 2`)."
-msgstr "Само strings, lists и tuples могат да се съединяват и повтарят. `range` не може (но можете първо да направите list от него: `list(range(3)) * 2`)."
+msgid "Only strings, lists and tuples can be joined and repeated. A [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) cannot (but you can make a list of it first: `list(range(3)) * 2`)."
+msgstr "Само strings, lists и tuples могат да се съединяват и повтарят. [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) не може (но можете първо да направите list от него: `list(range(3)) * 2`)."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:411
@@ -520,8 +520,8 @@ msgstr "При strings `in` търси част от string-а: `\"USD\" in \"EU
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:460
-msgid "`min` and `max` work on strings too (alphabetically, [session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)). `sum` only on numbers. `index` gives a `ValueError` when the value is not in the list - test with `in` first."
-msgstr "`min` и `max` работят и върху strings (по азбучен ред, [занятие 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)). `sum` - само върху числа. `index` дава `ValueError`, когато стойността не е в list-а - първо проверете с `in`."
+msgid "[`min`](https://docs.python.org/3/builtins/functions.html#min) and [`max`](https://docs.python.org/3/builtins/functions.html#max) work on strings too (alphabetically, [session 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)). [`sum`](https://docs.python.org/3/builtins/functions.html#sum) only on numbers. [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index) gives a `ValueError` when the value is not in the list - test with `in` first."
+msgstr "[`min`](https://docs.python.org/3/builtins/functions.html#min) и [`max`](https://docs.python.org/3/builtins/functions.html#max) работят и върху strings (по азбучен ред, [занятие 2](./02-conditions-and-loops.md#strings-are-compared-letter-by-letter)). [`sum`](https://docs.python.org/3/builtins/functions.html#sum) - само върху числа. [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index) дава `ValueError`, когато стойността не е в list-а - първо проверете с `in`."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:464
@@ -535,8 +535,8 @@ msgstr "`list()`: list от всяка поредица"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:468
-msgid "`list()` makes a new list from the items of any sequence (any *iterable*):"
-msgstr "`list()` прави нов list от елементите на всяка поредица (на всеки *iterable*):"
+msgid "[`list()`](https://docs.python.org/3/builtins/stdtypes.html#list) makes a new list from the items of any sequence (any *iterable*):"
+msgstr "[`list()`](https://docs.python.org/3/builtins/stdtypes.html#list) прави нов list от елементите на всяка поредица (на всеки *iterable*):"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:484
@@ -545,8 +545,8 @@ msgstr "От текст: `split`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:486
-msgid "`split()` ([session 1](./01-intro-syntax-types.md#a-first-look-at-string-methods)) cuts a string into a list of strings:"
-msgstr "`split()` ([занятие 1](./01-intro-syntax-types.md#a-first-look-at-string-methods)) нарязва string на list от strings:"
+msgid "[`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) ([session 1](./01-intro-syntax-types.md#a-first-look-at-string-methods)) cuts a string into a list of strings:"
+msgstr "[`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) ([занятие 1](./01-intro-syntax-types.md#a-first-look-at-string-methods)) нарязва string на list от strings:"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:497
@@ -555,8 +555,8 @@ msgstr "Събиране на стойности в цикъл: `append`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:499
-msgid "Start with an empty list and **append** a value in each iteration. It is the Python version of the SAS `OUTPUT` statement: in SAS, `OUTPUT` writes a row of the DATA step to the output data set; in Python, `append` adds an item to the list."
-msgstr "Започнете с празен list и **добавяйте** (append) стойност във всяка итерация. Това е версията на Python на statement-а `OUTPUT` от SAS: в SAS `OUTPUT` записва ред от DATA step-а в изходния набор от данни; в Python `append` добавя елемент в list-а."
+msgid "Start with an empty list and **append** a value in each iteration. It is the Python version of the SAS `OUTPUT` statement: in SAS, `OUTPUT` writes a row of the DATA step to the output data set; in Python, [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append) adds an item to the list."
+msgstr "Започнете с празен list и **добавяйте** (append) стойност във всяка итерация. Това е версията на Python на statement-а `OUTPUT` от SAS: в SAS `OUTPUT` записва ред от DATA step-а в изходния набор от данни; в Python [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append) добавя елемент в list-а."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:525
@@ -625,8 +625,8 @@ msgstr "обръща list-а на място"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:540
-msgid "sorts the list in place; `sort(reverse=True)`: from the largest"
-msgstr "сортира list-а на място; `sort(reverse=True)`: от най-големия"
+msgid "sorts the list in place; [`sort(reverse=True)`](https://docs.python.org/3/builtins/stdtypes.html#list.sort): from the largest"
+msgstr "сортира list-а на място; [`sort(reverse=True)`](https://docs.python.org/3/builtins/stdtypes.html#list.sort): от най-големия"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:541
@@ -675,8 +675,8 @@ msgstr "Методите променят list-а - и връщат `None`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:618
-msgid "`append`, `sort`, `reverse` and the others change the list **in place**. They return `None`, not the list. A classic bug:"
-msgstr "`append`, `sort`, `reverse` и другите променят list-а **на място**. Те връщат `None`, а не list-а. Класически бъг:"
+msgid "[`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append), [`sort`](https://docs.python.org/3/builtins/stdtypes.html#list.sort), [`reverse`](https://docs.python.org/3/builtins/stdtypes.html#list.reverse) and the others change the list **in place**. They return `None`, not the list. A classic bug:"
+msgstr "[`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append), [`sort`](https://docs.python.org/3/builtins/stdtypes.html#list.sort), [`reverse`](https://docs.python.org/3/builtins/stdtypes.html#list.reverse) и другите променят list-а **на място**. Те връщат `None`, а не list-а. Класически бъг:"
 
 #. box title
 #: site/lectures/03-lists-tuples-sets.md:627
@@ -685,8 +685,8 @@ msgstr "Отговор"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:628
-msgid "`numbers.sort()` sorts the list and returns `None`, and `numbers = ...` binds the name to that `None` - the sorted list is lost. Write only `numbers.sort()`, or use `sorted()` (next)."
-msgstr "`numbers.sort()` сортира list-а и връща `None`, а `numbers = ...` свързва името с този `None` - сортираният list е загубен. Пишете само `numbers.sort()` или използвайте `sorted()` (следва)."
+msgid "[`numbers.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) sorts the list and returns `None`, and `numbers = ...` binds the name to that `None` - the sorted list is lost. Write only [`numbers.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort), or use [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted) (next)."
+msgstr "[`numbers.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) сортира list-а и връща `None`, а `numbers = ...` свързва името с този `None` - сортираният list е загубен. Пишете само [`numbers.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) или използвайте [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted) (следва)."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:633
@@ -695,13 +695,13 @@ msgstr "`sort()` или `sorted()`?"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:635
-msgid "`lst.sort()` sorts **this** list. Only lists have it."
-msgstr "`lst.sort()` сортира **този** list. Има го само при lists."
+msgid "[`lst.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) sorts **this** list. Only lists have it."
+msgstr "[`lst.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) сортира **този** list. Има го само при lists."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:636
-msgid "`sorted(x)` returns a **new**, sorted list, and does not change `x`. It works on any sequence: a tuple, a string, a set, a range."
-msgstr "`sorted(x)` връща **нов**, сортиран list и не променя `x`. Работи върху всяка поредица: tuple, string, set, range."
+msgid "[`sorted(x)`](https://docs.python.org/3/builtins/functions.html#sorted) returns a **new**, sorted list, and does not change `x`. It works on any sequence: a tuple, a string, a set, a range."
+msgstr "[`sorted(x)`](https://docs.python.org/3/builtins/functions.html#sorted) връща **нов**, сортиран list и не променя `x`. Работи върху всяка поредица: tuple, string, set, range."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:648
@@ -710,13 +710,13 @@ msgstr "Сортирането сравнява елементите с `<` ([з
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:656
-msgid "SAS `PROC SORT` and SQL `ORDER BY` can sort by a column, or by several. For records kept as tuples, put the column to sort by first (section 8, \"Sort records\"); the general way is `sorted(..., key=...)`: sessions 4 and 5."
-msgstr "`PROC SORT` в SAS и `ORDER BY` в SQL могат да сортират по колона или по няколко. За записи, пазени като tuples, сложете колоната за сортиране първа (раздел 8, \"Сортиране на записи\"); общият начин е `sorted(..., key=...)`: занятия 4 и 5."
+msgid "SAS `PROC SORT` and SQL `ORDER BY` can sort by a column, or by several. For records kept as tuples, put the column to sort by first (section 8, \"Sort records\"); the general way is [`sorted(..., key=...)`](https://docs.python.org/3/builtins/functions.html#sorted): sessions 4 and 5."
+msgstr "`PROC SORT` в SAS и `ORDER BY` в SQL могат да сортират по колона или по няколко. За записи, пазени като tuples, сложете колоната за сортиране първа (раздел 8, \"Сортиране на записи\"); общият начин е [`sorted(..., key=...)`](https://docs.python.org/3/builtins/functions.html#sorted): занятия 4 и 5."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:661
-msgid "The methods of pandas work like `sorted()`: they return a **new** table and do not change the old one ([lecture 13](./13-numpy-pandas-intro.md)). Keep the result in a name:"
-msgstr "Методите на pandas работят като `sorted()`: връщат **нова** таблица и не променят старата ([лекция 13](./13-numpy-pandas-intro.md)). Запазете резултата в име:"
+msgid "The methods of pandas work like [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted): they return a **new** table and do not change the old one ([lecture 13](./13-numpy-pandas-intro.md)). Keep the result in a name:"
+msgstr "Методите на pandas работят като [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted): връщат **нова** таблица и не променят старата ([лекция 13](./13-numpy-pandas-intro.md)). Запазете резултата в име:"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:674
@@ -735,8 +735,8 @@ msgstr "[Занятие 1](./01-intro-syntax-types.md#names-not-boxes) пока�
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:692
-msgid "`new_list = original` does not copy anything. Both names point to **the same list object** in memory, so a change through one name is seen through the other. `is` (and `id()`) shows it."
-msgstr "`new_list = original` не копира нищо. Двете имена сочат към **един и същ обект list** в паметта, така че промяна през едното име се вижда през другото. `is` (и `id()`) го показва."
+msgid "`new_list = original` does not copy anything. Both names point to **the same list object** in memory, so a change through one name is seen through the other. `is` (and [`id()`](https://docs.python.org/3/builtins/functions.html#id)) shows it."
+msgstr "`new_list = original` не копира нищо. Двете имена сочат към **един и същ обект list** в паметта, така че промяна през едното име се вижда през другото. `is` (и [`id()`](https://docs.python.org/3/builtins/functions.html#id)) го показва."
 
 #. box title
 #: site/lectures/03-lists-tuples-sets.md:696 site/lectures/03-lists-tuples-sets.md:793
@@ -765,8 +765,8 @@ msgstr "Това са **плитки** (shallow) копия: новият list �
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:725
-msgid "In the first example of this section, write `new_list = original.copy()` instead of `new_list = original`. Predict what `print(original)` and `original is new_list` show now, then run it."
-msgstr "В първия пример на този раздел напишете `new_list = original.copy()` вместо `new_list = original`. Предскажете какво показват сега `print(original)` и `original is new_list`, после изпълнете кода."
+msgid "In the first example of this section, write `new_list = original.copy()` instead of `new_list = original`. Predict what [`print(original)`](https://docs.python.org/3/builtins/functions.html#print) and `original is new_list` show now, then run it."
+msgstr "В първия пример на този раздел напишете `new_list = original.copy()` вместо `new_list = original`. Предскажете какво показват сега [`print(original)`](https://docs.python.org/3/builtins/functions.html#print) и `original is new_list`, после изпълнете кода."
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:730
@@ -795,8 +795,8 @@ msgstr "Tuple използва малко по-малко памет от list �
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:739
-msgid "Tuples can do everything a sequence can (section 1), but have only two methods: `count` and `index`."
-msgstr "Tuples могат всичко, което може една поредица (раздел 1), но имат само два метода: `count` и `index`."
+msgid "Tuples can do everything a sequence can (section 1), but have only two methods: [`count`](https://docs.python.org/3/builtins/stdtypes.html#list.count) and [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index)."
+msgstr "Tuples могат всичко, което може една поредица (раздел 1), но имат само два метода: [`count`](https://docs.python.org/3/builtins/stdtypes.html#list.count) и [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index)."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:742
@@ -910,8 +910,8 @@ msgstr "Сортиране на записи: tuples се сравняват е�
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:925
-msgid "Tuples are compared like words, item by item: the **first** items first; only when they are equal, the second items, and so on. So `sorted` on a list of tuples sorts by the first item, then by the second - like `ORDER BY col1, col2` in SQL:"
-msgstr "Tuples се сравняват като думи, елемент по елемент: първо **първите** елементи; само когато са равни - вторите, и т.н. Затова `sorted` върху list от tuples сортира по първия елемент, после по втория - като `ORDER BY col1, col2` в SQL:"
+msgid "Tuples are compared like words, item by item: the **first** items first; only when they are equal, the second items, and so on. So [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted) on a list of tuples sorts by the first item, then by the second - like `ORDER BY col1, col2` in SQL:"
+msgstr "Tuples се сравняват като думи, елемент по елемент: първо **първите** елементи; само когато са равни - вторите, и т.н. Затова [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted) върху list от tuples сортира по първия елемент, после по втория - като `ORDER BY col1, col2` в SQL:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:938
@@ -925,8 +925,8 @@ msgstr "Два чифта скоби"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:958
-msgid "`by_size.append((outstanding, loan_id))`: the outer brackets belong to the call, the inner ones make the tuple. `append(outstanding, loan_id)` gives two values to `append` - a `TypeError`."
-msgstr "`by_size.append((outstanding, loan_id))`: външните скоби са на извикването, вътрешните правят tuple-а. `append(outstanding, loan_id)` дава две стойности на `append` - `TypeError`."
+msgid "[`by_size.append((outstanding, loan_id))`](https://docs.python.org/3/builtins/stdtypes.html#list.append): the outer brackets belong to the call, the inner ones make the tuple. [`append(outstanding, loan_id)`](https://docs.python.org/3/builtins/stdtypes.html#list.append) gives two values to [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append) - a `TypeError`."
+msgstr "[`by_size.append((outstanding, loan_id))`](https://docs.python.org/3/builtins/stdtypes.html#list.append): външните скоби са на извикването, вътрешните правят tuple-а. [`append(outstanding, loan_id)`](https://docs.python.org/3/builtins/stdtypes.html#list.append) дава две стойности на [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append) - `TypeError`."
 
 #. box title
 #: site/lectures/03-lists-tuples-sets.md:963
@@ -1025,8 +1025,8 @@ msgstr "Преобразуване между тях"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1010
-msgid "`list()` and `tuple()` convert in both directions:"
-msgstr "`list()` и `tuple()` преобразуват в двете посоки:"
+msgid "[`list()`](https://docs.python.org/3/builtins/stdtypes.html#list) and [`tuple()`](https://docs.python.org/3/builtins/stdtypes.html#tuple) convert in both directions:"
+msgstr "[`list()`](https://docs.python.org/3/builtins/stdtypes.html#list) и [`tuple()`](https://docs.python.org/3/builtins/stdtypes.html#tuple) преобразуват в двете посоки:"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1026
@@ -1035,8 +1035,8 @@ msgstr "Синтаксис"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1028
-msgid "`range` gives an **immutable sequence of whole numbers**:"
-msgstr "`range` дава **непроменима поредица от цели числа**:"
+msgid "[`range`](https://docs.python.org/3/builtins/stdtypes.html#range) gives an **immutable sequence of whole numbers**:"
+msgstr "[`range`](https://docs.python.org/3/builtins/stdtypes.html#range) дава **непроменима поредица от цели числа**:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1036
@@ -1060,13 +1060,13 @@ msgstr "Ако аргументите не дават числа, range-ът е 
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1041
-msgid "Reference: [Ranges](https://docs.python.org/3/library/stdtypes.html#ranges)."
-msgstr "Reference: [Ranges](https://docs.python.org/3/library/stdtypes.html#ranges)."
+msgid "Reference: [Ranges](https://docs.python.org/3/builtins/stdtypes.html#ranges)."
+msgstr "Reference: [Ranges](https://docs.python.org/3/builtins/stdtypes.html#ranges)."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1052
-msgid "The SAS `DO` loops and their `range` are in the table of [session 2, section 10](./02-conditions-and-loops.md#_10-loops). New today: a backwards range, `do i = 10 to 1 by -1;` is `range(10, 0, -1)`."
-msgstr "Циклите `DO` на SAS и техните `range` са в таблицата на [занятие 2, раздел 10](./02-conditions-and-loops.md#_10-loops). Ново днес: range назад - `do i = 10 to 1 by -1;` е `range(10, 0, -1)`."
+msgid "The SAS `DO` loops and their [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) are in the table of [session 2, section 10](./02-conditions-and-loops.md#_10-loops). New today: a backwards range, `do i = 10 to 1 by -1;` is [`range(10, 0, -1)`](https://docs.python.org/3/builtins/stdtypes.html#range)."
+msgstr "Циклите `DO` на SAS и техните [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) са в таблицата на [занятие 2, раздел 10](./02-conditions-and-loops.md#_10-loops). Ново днес: range назад - `do i = 10 to 1 by -1;` е [`range(10, 0, -1)`](https://docs.python.org/3/builtins/stdtypes.html#range)."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1055
@@ -1090,8 +1090,8 @@ msgstr "Range от милиард числа е толкова малък в п�
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1080
-msgid "`len`, indexes, slices and `in` work on a range, and fast:"
-msgstr "`len`, индекси, slices и `in` работят върху range, и то бързо:"
+msgid "[`len`](https://docs.python.org/3/builtins/functions.html#len), indexes, slices and `in` work on a range, and fast:"
+msgstr "[`len`](https://docs.python.org/3/builtins/functions.html#len), индекси, slices и `in` работят върху range, и то бързо:"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:1089
@@ -1150,8 +1150,8 @@ msgstr "`{}` не е празен set"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1122
-msgid "`{}` is an empty **dictionary** ([session 6](./06-dictionaries.md#_1-what-is-a-dictionary)): a collection of `key: value` pairs, where a set has only values. An empty set is `set()`:"
-msgstr "`{}` е празен **dictionary** ([занятие 6](./06-dictionaries.md#_1-what-is-a-dictionary)): колекция от двойки `key: value`, докато set има само стойности. Празният set е `set()`:"
+msgid "`{}` is an empty **dictionary** ([session 6](./06-dictionaries.md#_1-what-is-a-dictionary)): a collection of `key: value` pairs, where a set has only values. An empty set is [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set):"
+msgstr "`{}` е празен **dictionary** ([занятие 6](./06-dictionaries.md#_1-what-is-a-dictionary)): колекция от двойки `key: value`, докато set има само стойности. Празният set е [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set):"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1130
@@ -1165,8 +1165,8 @@ msgstr "В SQL `SELECT DISTINCT` дава всяка стойност на ко�
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1145
-msgid "In Python, `set()` makes a set from any sequence - the duplicates disappear:"
-msgstr "В Python `set()` прави set от всяка поредица - повторенията изчезват:"
+msgid "In Python, [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set) makes a set from any sequence - the duplicates disappear:"
+msgstr "В Python [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set) прави set от всяка поредица - повторенията изчезват:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1158
@@ -1180,8 +1180,8 @@ msgstr "Редът на set не се запазва"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1170
-msgid "A set does not remember the order in which values came. Print the same set of strings in two runs of a program, and the order can be different. When the order matters - in a report, in a test - use `sorted(the_set)`. (To remove duplicates **and** keep the first order: `list(dict.fromkeys(items))`, [session 6](./06-dictionaries.md).)"
-msgstr "Set не помни реда, в който са дошли стойностите. Отпечатайте един и същ set от strings при две пускания на програмата и редът може да е различен. Когато редът има значение - в отчет, в тест - използвайте `sorted(the_set)`. (За да премахнете повторенията **и** да запазите първоначалния ред: `list(dict.fromkeys(items))`, [занятие 6](./06-dictionaries.md).)"
+msgid "A set does not remember the order in which values came. Print the same set of strings in two runs of a program, and the order can be different. When the order matters - in a report, in a test - use [`sorted(the_set)`](https://docs.python.org/3/builtins/functions.html#sorted). (To remove duplicates **and** keep the first order: [`list(dict.fromkeys(items))`](https://docs.python.org/3/builtins/stdtypes.html#list), [session 6](./06-dictionaries.md).)"
+msgstr "Set не помни реда, в който са дошли стойностите. Отпечатайте един и същ set от strings при две пускания на програмата и редът може да е различен. Когато редът има значение - в отчет, в тест - използвайте [`sorted(the_set)`](https://docs.python.org/3/builtins/functions.html#sorted). (За да премахнете повторенията **и** да запазите първоначалния ред: [`list(dict.fromkeys(items))`](https://docs.python.org/3/builtins/stdtypes.html#list), [занятие 6](./06-dictionaries.md).)"
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1176
@@ -1190,8 +1190,8 @@ msgstr "Добавяне и премахване"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1188
-msgid "`len`, `in`, `min`, `max`, `sum` and `for` work as with lists."
-msgstr "`len`, `in`, `min`, `max`, `sum` и `for` работят както при lists."
+msgid "[`len`](https://docs.python.org/3/builtins/functions.html#len), `in`, [`min`](https://docs.python.org/3/builtins/functions.html#min), [`max`](https://docs.python.org/3/builtins/functions.html#max), [`sum`](https://docs.python.org/3/builtins/functions.html#sum) and `for` work as with lists."
+msgstr "[`len`](https://docs.python.org/3/builtins/functions.html#len), `in`, [`min`](https://docs.python.org/3/builtins/functions.html#min), [`max`](https://docs.python.org/3/builtins/functions.html#max), [`sum`](https://docs.python.org/3/builtins/functions.html#sum) и `for` работят както при lists."
 
 #. box title
 #: site/lectures/03-lists-tuples-sets.md:1190
@@ -1200,8 +1200,8 @@ msgstr "За напреднали: `remove`, `pop`, `clear`"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1191
-msgid "`remove(x)` removes `x` too, but stops with a `KeyError` when `x` is not in the set. `pop()` removes and returns some item (which one is not defined), `clear()` empties the set."
-msgstr "`remove(x)` също маха `x`, но спира с `KeyError`, когато `x` не е в set-а. `pop()` маха и връща някакъв елемент (кой - не е определено), `clear()` изпразва set-а."
+msgid "[`remove(x)`](https://docs.python.org/3/builtins/stdtypes.html#list.remove) removes `x` too, but stops with a `KeyError` when `x` is not in the set. [`pop()`](https://docs.python.org/3/builtins/stdtypes.html#list.pop) removes and returns some item (which one is not defined), [`clear()`](https://docs.python.org/3/builtins/stdtypes.html#list.clear) empties the set."
+msgstr "[`remove(x)`](https://docs.python.org/3/builtins/stdtypes.html#list.remove) също маха `x`, но спира с `KeyError`, когато `x` не е в set-а. [`pop()`](https://docs.python.org/3/builtins/stdtypes.html#list.pop) маха и връща някакъв елемент (кой - не е определено), [`clear()`](https://docs.python.org/3/builtins/stdtypes.html#list.clear) изпразва set-а."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1203
@@ -1325,8 +1325,8 @@ msgstr "За напреднали: методите приемат всяка п
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1274
-msgid "The methods accept any sequence, the operators only sets. `a.isdisjoint(b)` is `True` when the two sets have no common items."
-msgstr "Методите приемат всяка поредица, операторите - само sets. `a.isdisjoint(b)` е `True`, когато двата set-а нямат общи елементи."
+msgid "The methods accept any sequence, the operators only sets. [`a.isdisjoint(b)`](https://docs.python.org/3/builtins/stdtypes.html#set.isdisjoint) is `True` when the two sets have no common items."
+msgstr "Методите приемат всяка поредица, операторите - само sets. [`a.isdisjoint(b)`](https://docs.python.org/3/builtins/stdtypes.html#set.isdisjoint) е `True`, когато двата set-а нямат общи елементи."
 
 #. heading 3
 #: site/lectures/03-lists-tuples-sets.md:1285
@@ -1380,8 +1380,8 @@ msgstr "Това са бързи проверки на данните, като 
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1350
-msgid "The same check on two tables before a join - with `set()` of a column, or with `isin` ([lecture 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there `merge(..., indicator=True)` shows the rows without a match):"
-msgstr "Същата проверка на две таблици преди JOIN - със `set()` от колона или с `isin` ([лекция 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); там `merge(..., indicator=True)` показва редовете без съвпадение):"
+msgid "The same check on two tables before a join - with [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set) of a column, or with `isin` ([lecture 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there `merge(..., indicator=True)` shows the rows without a match):"
+msgstr "Същата проверка на две таблици преди JOIN - със [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set) от колона или с `isin` ([лекция 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); там `merge(..., indicator=True)` показва редовете без съвпадение):"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:1364
@@ -1405,8 +1405,8 @@ msgstr "Поредици"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1367
-msgid "`list`, `tuple`, `range`, `str`: ordered; `len`, `in`, `+`, `*`, `min`, `max`, `count`, `index`"
-msgstr "`list`, `tuple`, `range`, `str`: подредени; `len`, `in`, `+`, `*`, `min`, `max`, `count`, `index`"
+msgid "`list`, `tuple`, [`range`](https://docs.python.org/3/builtins/stdtypes.html#range), `str`: ordered; [`len`](https://docs.python.org/3/builtins/functions.html#len), `in`, `+`, `*`, [`min`](https://docs.python.org/3/builtins/functions.html#min), [`max`](https://docs.python.org/3/builtins/functions.html#max), [`count`](https://docs.python.org/3/builtins/stdtypes.html#list.count), [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index)"
+msgstr "`list`, `tuple`, [`range`](https://docs.python.org/3/builtins/stdtypes.html#range), `str`: подредени; [`len`](https://docs.python.org/3/builtins/functions.html#len), `in`, `+`, `*`, [`min`](https://docs.python.org/3/builtins/functions.html#min), [`max`](https://docs.python.org/3/builtins/functions.html#max), [`count`](https://docs.python.org/3/builtins/stdtypes.html#list.count), [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index)"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1368
@@ -1435,8 +1435,8 @@ msgstr "Lists"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1370
-msgid "`[...]`, mutable; `append`, `extend`, `insert`, `pop`, `remove`, `sort`; the methods return `None`"
-msgstr "`[...]`, mutable; `append`, `extend`, `insert`, `pop`, `remove`, `sort`; методите връщат `None`"
+msgid "`[...]`, mutable; [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append), [`extend`](https://docs.python.org/3/builtins/stdtypes.html#list.extend), [`insert`](https://docs.python.org/3/builtins/stdtypes.html#list.insert), [`pop`](https://docs.python.org/3/builtins/stdtypes.html#list.pop), [`remove`](https://docs.python.org/3/builtins/stdtypes.html#list.remove), [`sort`](https://docs.python.org/3/builtins/stdtypes.html#list.sort); the methods return `None`"
+msgstr "`[...]`, mutable; [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append), [`extend`](https://docs.python.org/3/builtins/stdtypes.html#list.extend), [`insert`](https://docs.python.org/3/builtins/stdtypes.html#list.insert), [`pop`](https://docs.python.org/3/builtins/stdtypes.html#list.pop), [`remove`](https://docs.python.org/3/builtins/stdtypes.html#list.remove), [`sort`](https://docs.python.org/3/builtins/stdtypes.html#list.sort); методите връщат `None`"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1371
@@ -1445,8 +1445,8 @@ msgstr "Сортиране"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1371
-msgid "`lst.sort()` changes the list; `sorted(x)` returns a new list"
-msgstr "`lst.sort()` променя list-а; `sorted(x)` връща нов list"
+msgid "[`lst.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) changes the list; [`sorted(x)`](https://docs.python.org/3/builtins/functions.html#sorted) returns a new list"
+msgstr "[`lst.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) променя list-а; [`sorted(x)`](https://docs.python.org/3/builtins/functions.html#sorted) връща нов list"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1372
@@ -1455,8 +1455,8 @@ msgstr "Референции"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1372
-msgid "`b = a` is the same list with two names; a copy: `a[:]`, `a.copy()`, `list(a)`"
-msgstr "`b = a` е същият list с две имена; копие: `a[:]`, `a.copy()`, `list(a)`"
+msgid "`b = a` is the same list with two names; a copy: `a[:]`, [`a.copy()`](https://docs.python.org/3/builtins/stdtypes.html#list.copy), [`list(a)`](https://docs.python.org/3/builtins/stdtypes.html#list)"
+msgstr "`b = a` е същият list с две имена; копие: `a[:]`, [`a.copy()`](https://docs.python.org/3/builtins/stdtypes.html#list.copy), [`list(a)`](https://docs.python.org/3/builtins/stdtypes.html#list)"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1373
@@ -1470,8 +1470,8 @@ msgstr "`(...)`, immutable, прави го запетаята: `(99,)`; раз�
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1374
-msgid "`range(start, stop, step)`, stop not included; small in memory"
-msgstr "`range(start, stop, step)`, stop не е включен; малък в паметта"
+msgid "[`range(start, stop, step)`](https://docs.python.org/3/builtins/stdtypes.html#range), stop not included; small in memory"
+msgstr "[`range(start, stop, step)`](https://docs.python.org/3/builtins/stdtypes.html#range), stop не е включен; малък в паметта"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1375
@@ -1480,8 +1480,8 @@ msgstr "Sets"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1375
-msgid "`{...}` / `set()`, unique, unordered; `add`, `discard`; fast `in`; print with `sorted()`"
-msgstr "`{...}` / `set()`, уникални, неподредени; `add`, `discard`; бърз `in`; отпечатване със `sorted()`"
+msgid "`{...}` / [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set), unique, unordered; [`add`](https://docs.python.org/3/builtins/stdtypes.html#set.add), [`discard`](https://docs.python.org/3/builtins/stdtypes.html#set.discard); fast `in`; print with [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted)"
+msgstr "`{...}` / [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set), уникални, неподредени; [`add`](https://docs.python.org/3/builtins/stdtypes.html#set.add), [`discard`](https://docs.python.org/3/builtins/stdtypes.html#set.discard); бърз `in`; отпечатване със [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted)"
 
 #. table cell
 #: site/lectures/03-lists-tuples-sets.md:1376
@@ -1555,18 +1555,18 @@ msgstr "Помощ за задачите и домашното"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1397
-msgid "**What each task needs.** Tasks 1 - 2: sections 1 - 5 (in task 1, the lines with `(99,)`, `sort` / `sorted` and the sets need sections 6, 8, 11 and 12). Task 3: sections 6 - 7. Task 4: section 8. Tasks 5 - 6 and the homework: sections 8 - 12. If a section was not covered in class yet, start with the tasks before it, or read the section first. A part you have not started prints `TODO`, not `FAIL`."
-msgstr "**Какво иска всяка задача.** Задачи 1 - 2: раздели 1 - 5 (в задача 1 редовете с `(99,)`, `sort` / `sorted` и sets искат раздели 6, 8, 11 и 12). Задача 3: раздели 6 - 7. Задача 4: раздел 8. Задачи 5 - 6 и домашното: раздели 8 - 12. Ако раздел още не е минат в час, започнете със задачите преди него или първо прочетете раздела. Част, която не сте започнали, показва `TODO`, а не `FAIL`."
+msgid "**What each task needs.** Tasks 1 - 2: sections 1 - 5 (in task 1, the lines with `(99,)`, [`sort`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) / [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted) and the sets need sections 6, 8, 11 and 12). Task 3: sections 6 - 7. Task 4: section 8. Tasks 5 - 6 and the homework: sections 8 - 12. If a section was not covered in class yet, start with the tasks before it, or read the section first. A part you have not started prints `TODO`, not `FAIL`."
+msgstr "**Какво иска всяка задача.** Задачи 1 - 2: раздели 1 - 5 (в задача 1 редовете с `(99,)`, [`sort`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) / [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted) и sets искат раздели 6, 8, 11 и 12). Задача 3: раздели 6 - 7. Задача 4: раздел 8. Задачи 5 - 6 и домашното: раздели 8 - 12. Ако раздел още не е минат в час, започнете със задачите преди него или първо прочетете раздела. Част, която не сте започнали, показва `TODO`, а не `FAIL`."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1402
-msgid "**Task 1:** `type(x).__name__` is the name of the type, as text: `\"tuple\"`, `\"list\"`."
-msgstr "**Задача 1:** `type(x).__name__` е името на типа, като текст: `\"tuple\"`, `\"list\"`."
+msgid "**Task 1:** [`type(x).__name__`](https://docs.python.org/3/builtins/functions.html#type) is the name of the type, as text: `\"tuple\"`, `\"list\"`."
+msgstr "**Задача 1:** [`type(x).__name__`](https://docs.python.org/3/builtins/functions.html#type) е името на типа, като текст: `\"tuple\"`, `\"list\"`."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1404
-msgid "**Task 3:** make `backup` first, with `watch.copy()` - `backup = watch` would only give the same list a second name (section 7). `extend` adds several items with one call; `pop()` removes the last item **and returns it**; `sort(reverse=True)` sorts from the largest. The methods change `watch` and return `None`: write `watch.sort()`, not `watch = watch.sort()` (section 6)."
-msgstr "**Задача 3:** първо направете `backup` с `watch.copy()` - `backup = watch` само би дало второ име на същия list (раздел 7). `extend` добавя няколко елемента с едно извикване; `pop()` маха последния елемент **и го връща**; `sort(reverse=True)` сортира от най-големия. Методите променят `watch` и връщат `None`: пишете `watch.sort()`, а не `watch = watch.sort()` (раздел 6)."
+msgid "**Task 3:** make `backup` first, with [`watch.copy()`](https://docs.python.org/3/builtins/stdtypes.html#list.copy) - `backup = watch` would only give the same list a second name (section 7). [`extend`](https://docs.python.org/3/builtins/stdtypes.html#list.extend) adds several items with one call; [`pop()`](https://docs.python.org/3/builtins/stdtypes.html#list.pop) removes the last item **and returns it**; [`sort(reverse=True)`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) sorts from the largest. The methods change `watch` and return `None`: write [`watch.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort), not `watch = watch.sort()` (section 6)."
+msgstr "**Задача 3:** първо направете `backup` с [`watch.copy()`](https://docs.python.org/3/builtins/stdtypes.html#list.copy) - `backup = watch` само би дало второ име на същия list (раздел 7). [`extend`](https://docs.python.org/3/builtins/stdtypes.html#list.extend) добавя няколко елемента с едно извикване; [`pop()`](https://docs.python.org/3/builtins/stdtypes.html#list.pop) маха последния елемент **и го връща**; [`sort(reverse=True)`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) сортира от най-големия. Методите променят `watch` и връщат `None`: пишете [`watch.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort), а не `watch = watch.sort()` (раздел 6)."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1409
@@ -1610,8 +1610,8 @@ msgstr "Бележки към задачите"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1429
-msgid "**Reading a file.** How `open` and `with` work comes in [lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this code. It is the loop of [session 2](./02-conditions-and-loops.md#the-rows-of-a-file), but it keeps each line as one list, `fields`, and you take a field by its index:"
-msgstr "**Четене на файл.** Как работят `open` и `with` ще видим в [лекция 8](./08-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Това е цикълът от [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file), но той пази всеки ред като един list, `fields`, и вземате поле по неговия индекс:"
+msgid "**Reading a file.** How [`open`](https://docs.python.org/3/builtins/functions.html#open) and `with` work comes in [lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this code. It is the loop of [session 2](./02-conditions-and-loops.md#the-rows-of-a-file), but it keeps each line as one list, `fields`, and you take a field by its index:"
+msgstr "**Четене на файл.** Как работят [`open`](https://docs.python.org/3/builtins/functions.html#open) и `with` ще видим в [лекция 8](./08-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Това е цикълът от [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file), но той пази всеки ред като един list, `fields`, и вземате поле по неговия индекс:"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1442
@@ -1625,8 +1625,8 @@ msgstr "За `clients.csv` сменете името на файла. Негов
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1462
-msgid "All the fields are text. Convert the ones you need: `float(fields[7])` for `outstanding`, `int(fields[10])` for `stage`."
-msgstr "Всички полета са текст. Преобразувайте тези, които ви трябват: `float(fields[7])` за `outstanding`, `int(fields[10])` за `stage`."
+msgid "All the fields are text. Convert the ones you need: [`float(fields[7])`](https://docs.python.org/3/builtins/functions.html#float) for `outstanding`, [`int(fields[10])`](https://docs.python.org/3/builtins/functions.html#int) for `stage`."
+msgstr "Всички полета са текст. Преобразувайте тези, които ви трябват: [`float(fields[7])`](https://docs.python.org/3/builtins/functions.html#float) за `outstanding`, [`int(fields[10])`](https://docs.python.org/3/builtins/functions.html#int) за `stage`."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1464
@@ -1675,8 +1675,8 @@ msgstr "Задачите за упражнение, които не сте до�
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1488
-msgid "Optional: `names.py` asks how many names the user will enter, reads them with `input()` in a loop into a list, and prints them sorted, without duplicates, and how many were duplicates."
-msgstr "По желание: `names.py` пита колко имена ще въведе потребителят, чете ги с `input()` в цикъл в list и ги отпечатва сортирани, без повторения, и колко са били повторенията."
+msgid "Optional: `names.py` asks how many names the user will enter, reads them with [`input()`](https://docs.python.org/3/builtins/functions.html#input) in a loop into a list, and prints them sorted, without duplicates, and how many were duplicates."
+msgstr "По желание: `names.py` пита колко имена ще въведе потребителят, чете ги с [`input()`](https://docs.python.org/3/builtins/functions.html#input) в цикъл в list и ги отпечатва сортирани, без повторения, и колко са били повторенията."
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1491
@@ -1700,8 +1700,8 @@ msgstr "Python tutorial: [Data structures](https://docs.python.org/3/tutorial/da
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1501
-msgid "Reference: [Sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range), [Set types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset), [`copy`](https://docs.python.org/3/library/copy.html)"
-msgstr "Reference: [Sequence types](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range), [Set types](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset), [`copy`](https://docs.python.org/3/library/copy.html)"
+msgid "Reference: [Sequence types](https://docs.python.org/3/builtins/stdtypes.html#sequence-types-list-tuple-range), [Set types](https://docs.python.org/3/builtins/stdtypes.html#set-types-set-frozenset), [`copy`](https://docs.python.org/3/library/copy.html)"
+msgstr "Reference: [Sequence types](https://docs.python.org/3/builtins/stdtypes.html#sequence-types-list-tuple-range), [Set types](https://docs.python.org/3/builtins/stdtypes.html#set-types-set-frozenset), [`copy`](https://docs.python.org/3/library/copy.html)"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1504

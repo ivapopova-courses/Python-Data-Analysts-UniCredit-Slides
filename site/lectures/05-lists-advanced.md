@@ -17,8 +17,8 @@ title: 5. Lists (advanced)
   Python version of SQL `SELECT expression ... WHERE condition`;
 - sum and count with a condition without building a list, with a **generator
   expression** - and see why it saves memory;
-- walk over several lists together with `zip`, and number the items with
-  `enumerate`.
+- walk over several lists together with [`zip`](https://docs.python.org/3/builtins/functions.html#zip), and number the items with
+  [`enumerate`](https://docs.python.org/3/builtins/functions.html#enumerate).
 
 From SQL to Python - the same question, two ways. The loans more than 30 days past
 due, in EUR thousands, the largest first:
@@ -44,13 +44,13 @@ late.sort(key=lambda loan: loan[1], reverse=True)                      # ORDER B
 print(late)
 ```
 
-Two lines do the work: a comprehension is the `SELECT ... WHERE`, and `sort` is the
+Two lines do the work: a comprehension is the `SELECT ... WHERE`, and [`sort`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) is the
 `ORDER BY`. By the end of today you can write both.
 
 ## 1. More list methods
 
 [Session 3](./03-lists-tuples-sets.md#_6-the-methods-of-a-list) has the table of all
-list methods. In class we used `append` and `extend`. Here are the others you need
+list methods. In class we used [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append) and [`extend`](https://docs.python.org/3/builtins/stdtypes.html#list.extend). Here are the others you need
 most: remove items, find an item, sort.
 
 ### Remove items: `remove`, `pop`, `del`
@@ -73,8 +73,8 @@ print(ids)
 
 | You know | Use |
 |---|---|
-| the value | `lst.remove(value)` |
-| the index, and you need the item | `item = lst.pop(index)` (`lst.pop()`: the last one) |
+| the value | [`lst.remove(value)`](https://docs.python.org/3/builtins/stdtypes.html#list.remove) |
+| the index, and you need the item | `item = lst.pop(index)` ([`lst.pop()`](https://docs.python.org/3/builtins/stdtypes.html#list.pop): the last one) |
 | the index, or a slice | `del lst[index]`, `del lst[start:stop]` |
 
 These change the list **in place** - there is no new list. In SQL it is a `DELETE`
@@ -82,7 +82,7 @@ on the table itself; in SAS you would write a new data set without the rows.
 
 ### `remove`: only the first one, and an error if it is not there
 
-`remove` removes **one** item - the first one equal to the value. When the value is
+[`remove`](https://docs.python.org/3/builtins/stdtypes.html#list.remove) removes **one** item - the first one equal to the value. When the value is
 not in the list, it stops with a `ValueError`. Test with `in` first
 ([session 3](./03-lists-tuples-sets.md#membership-in-not-in)):
 
@@ -117,8 +117,8 @@ after each group.
 
 ### `index`: the position of an item
 
-`lst.index(value)` gives the index of the **first** item equal to the value - and,
-like `remove`, a `ValueError` when there is none:
+[`lst.index(value)`](https://docs.python.org/3/builtins/stdtypes.html#list.index) gives the index of the **first** item equal to the value - and,
+like [`remove`](https://docs.python.org/3/builtins/stdtypes.html#list.remove), a `ValueError` when there is none:
 
 ```python run
 months = ["Jul", "Aug", "Sep", "Oct"]
@@ -130,23 +130,23 @@ print(i, outstanding[i])          # the outstanding in September
 print("Dec" in months)            # False - so do not call months.index("Dec")
 ```
 
-With two lists in the same order, `index` finds the position in one list, and the
-same position reads the other. (Section 4 shows `zip`, which walks over both lists
+With two lists in the same order, [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index) finds the position in one list, and the
+same position reads the other. (Section 4 shows [`zip`](https://docs.python.org/3/builtins/functions.html#zip), which walks over both lists
 together.)
 
-`lst.count(value)` ([session 3](./03-lists-tuples-sets.md#len-min-max-sum-count-index))
+[`lst.count(value)`](https://docs.python.org/3/builtins/stdtypes.html#list.count) ([session 3](./03-lists-tuples-sets.md#len-min-max-sum-count-index))
 says how many times the value is there; `count(x) > 0` is the same as `x in lst`.
 
 ::: tip Try it
-In the `index` example, find the outstanding of `"Oct"`. Then add `"Sep"` once more
+In the [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index) example, find the outstanding of `"Oct"`. Then add `"Sep"` once more
 at the end of `months` (and a value at the end of `outstanding`): which September
-does `index` find?
+does [`index`](https://docs.python.org/3/builtins/stdtypes.html#list.index) find?
 :::
 
 ### Sort a list: `sort()` and `sorted()`
 
-- `lst.sort()` sorts **this** list, in place. Only lists have it.
-- `sorted(x)` returns a **new**, sorted list and does not change `x`. It works on any
+- [`lst.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) sorts **this** list, in place. Only lists have it.
+- [`sorted(x)`](https://docs.python.org/3/builtins/functions.html#sorted) returns a **new**, sorted list and does not change `x`. It works on any
   sequence: a list, a tuple, a set, a string.
 - Both take `reverse=True`: from the largest.
 
@@ -167,11 +167,11 @@ Text sorts alphabetically, capital letters before small ones
 print(sorted(["overdraft", "Mortgage", "consumer"]))
 ```
 
-In SAS this is `PROC SORT` (it sorts the data set in place, like `sort()`, unless you
-give `OUT=`); in SQL `ORDER BY` (it returns new rows, like `sorted()`).
+In SAS this is `PROC SORT` (it sorts the data set in place, like [`sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort), unless you
+give `OUT=`); in SQL `ORDER BY` (it returns new rows, like [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted)).
 
 ::: warning The methods return `None`
-`sort`, `append`, `remove`, `clear` and the other methods change the list and return
+[`sort`](https://docs.python.org/3/builtins/stdtypes.html#list.sort), [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append), [`remove`](https://docs.python.org/3/builtins/stdtypes.html#list.remove), `clear` and the other methods change the list and return
 `None`, not the list. A classic bug:
 
 ```python run
@@ -180,8 +180,8 @@ amounts = amounts.sort()        # wrong!
 print(amounts)
 ```
 
-`amounts.sort()` sorts the list and returns `None`, and `amounts = ...` keeps that
-`None` - the list is lost. Write only `amounts.sort()`, or `amounts =
+[`amounts.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) sorts the list and returns `None`, and `amounts = ...` keeps that
+`None` - the list is lost. Write only [`amounts.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort), or `amounts =
 sorted(amounts)`.
 :::
 
@@ -207,7 +207,7 @@ loans.sort(key=lambda loan: loan[1])                                # ORDER BY p
 print([loan[1] for loan in loans])
 ```
 
-`max` and `min` take the same `key=`, and give back the **whole record**:
+[`max`](https://docs.python.org/3/builtins/functions.html#max) and [`min`](https://docs.python.org/3/builtins/functions.html#min) take the same `key=`, and give back the **whole record**:
 
 ```python run
 loans = [
@@ -236,7 +236,7 @@ for row in top3:
     print(row[0], row[2], row[7])
 ```
 
-The fields of a file are text: `float(row[7])` in the key compares the amounts as
+The fields of a file are text: [`float(row[7])`](https://docs.python.org/3/builtins/functions.html#float) in the key compares the amounts as
 numbers. Without it, `"9"` would be larger than `"10"`.
 
 ::: info The same in pandas
@@ -276,14 +276,14 @@ print(result, stages)
 ```
 
 ::: details Answer
-`None [1, 1, 2, 3]`. `sort()` sorted the list `stages` in place and returned `None`.
+`None [1, 1, 2, 3]`. [`sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) sorted the list `stages` in place and returned `None`.
 :::
 
 ## 2. List comprehensions
 
 ### From a loop to one line
 
-In sessions 2 and 3 you built lists with a loop and `append`:
+In sessions 2 and 3 you built lists with a loop and [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append):
 
 ```python run
 amounts = [1156900.0, 1977400.0, 800.0, 15900.0]
@@ -295,7 +295,7 @@ for amount in amounts:
 print(in_thousands)
 ```
 
-This pattern - an empty list, a loop, one `append` - is so common that Python has a
+This pattern - an empty list, a loop, one [`append`](https://docs.python.org/3/builtins/stdtypes.html#list.append) - is so common that Python has a
 short form for it, the **list comprehension**:
 
 ```python run
@@ -419,8 +419,8 @@ print(len(usd_k), usd_k[:5])
 ```
 
 The columns are still **text** - `row[10] == "3"`, not `== 3`. Convert where you need
-a number (`float(row[7])`), as in [session 2](./02-conditions-and-loops.md#the-rows-of-a-file).
-The position of a column is `header.index("stage")` (section 1).
+a number ([`float(row[7])`](https://docs.python.org/3/builtins/functions.html#float)), as in [session 2](./02-conditions-and-loops.md#the-rows-of-a-file).
+The position of a column is [`header.index("stage")`](https://docs.python.org/3/builtins/stdtypes.html#list.index) (section 1).
 
 ### `CASE WHEN` inside: `a if condition else b`
 
@@ -470,17 +470,17 @@ A comprehension is for **building a new list**. Use a normal loop when:
 You will meet them in other people's code. Both take a **function** and a list,
 and call the function for every item:
 
-- `map(function, items)` gives the result of the function for every item: as many
+- [`map(function, items)`](https://docs.python.org/3/builtins/functions.html#map) gives the result of the function for every item: as many
   items out as in, like the expression of a comprehension (SQL: `SELECT`
   expression).
-- `filter(function, items)` keeps the items for which the function returns
+- [`filter(function, items)`](https://docs.python.org/3/builtins/functions.html#filter) keeps the items for which the function returns
   something true: fewer items, like the `if` at the end of a comprehension (SQL:
   `WHERE`).
 
 ![map sends every item of days through d // 30 and gives 5 new values; filter tests every item with d > 30 and keeps only 35 and 120](/diagrams/map-filter.svg){.diagram width=920 height=400}
 
 Both give their values one by one, like a generator (section 3) - wrap them in
-`list()` to see them. A comprehension does the same job and reads better:
+[`list()`](https://docs.python.org/3/builtins/stdtypes.html#list) to see them. A comprehension does the same job and reads better:
 
 ```python run
 days = [0, 35, 0, 120, 15]
@@ -544,18 +544,18 @@ late_count = sum(1 for row in rows if int(row[9]) > 0)
 print(f"{total:,.2f}  {stage3_total:,.2f}  {late_count}")
 ```
 
-- `sum(x for ... if ...)` is SQL `SUM(x) ... WHERE ...`;
-- `sum(1 for ... if ...)` is SQL `COUNT(*) ... WHERE ...`: one `1` for each row
+- [`sum(x for ... if ...)`](https://docs.python.org/3/builtins/functions.html#sum) is SQL `SUM(x) ... WHERE ...`;
+- [`sum(1 for ... if ...)`](https://docs.python.org/3/builtins/functions.html#sum) is SQL `COUNT(*) ... WHERE ...`: one `1` for each row
   that passes.
 
 This is a **generator expression**. It works inside any function that takes many
-values: `sum`, `min`, `max`, `sorted`, `list`, `", ".join(...)`.
+values: [`sum`](https://docs.python.org/3/builtins/functions.html#sum), [`min`](https://docs.python.org/3/builtins/functions.html#min), [`max`](https://docs.python.org/3/builtins/functions.html#max), [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted), `list`, `", ".join(...)`.
 
 ### Why: a generator does not keep the values
 
 A list comprehension builds the **whole list** first, and keeps all its values in
 memory. A generator expression keeps **none** of them: it makes the next value only
-when `sum` asks for it, gives it, and forgets it.
+when [`sum`](https://docs.python.org/3/builtins/functions.html#sum) asks for it, gives it, and forgets it.
 
 ```python run
 import sys
@@ -570,7 +570,7 @@ print(sum(as_list), sum(as_generator))
 
 The result is the same; the memory is not. (On your computer the list takes
 about 8 MB; in the browser of this site about 4 MB. The numbers inside it take more
-memory again.) It is the idea of `range` in
+memory again.) It is the idea of [`range`](https://docs.python.org/3/builtins/stdtypes.html#range) in
 [session 3](./03-lists-tuples-sets.md#a-range-does-not-keep-its-numbers): a range of a
 billion numbers is small, because it does not keep them. A SAS DATA step works this
 way too: it reads one observation, processes it, and goes to the next.
@@ -622,7 +622,7 @@ print(sum(late))        # 170
 print(sum(late))        # 0 - already used up
 ```
 
-It also has no `len()` and no index (`late[0]` is an error). When you need the
+It also has no [`len()`](https://docs.python.org/3/builtins/functions.html#len) and no index (`late[0]` is an error). When you need the
 values more than once, or their number, make a **list** - that is what lists are
 for.
 
@@ -643,7 +643,7 @@ print(list(g), list(g))
 
 ### `zip`: several lists side by side
 
-`zip` takes several lists and gives **tuples**: the first items together, then the
+[`zip`](https://docs.python.org/3/builtins/functions.html#zip) takes several lists and gives **tuples**: the first items together, then the
 second items, and so on:
 
 ```python run
@@ -657,7 +657,7 @@ for loan_id, product, amount in zip(loan_ids, products, amounts):
 print(list(zip(loan_ids, amounts)))
 ```
 
-Each item of `zip` is a tuple, and `for loan_id, product, amount in ...` takes it
+Each item of [`zip`](https://docs.python.org/3/builtins/functions.html#zip) is a tuple, and `for loan_id, product, amount in ...` takes it
 apart into three names - the **unpacking** of [session 3](./03-lists-tuples-sets.md#unpacking),
 `loan_id, product, amount = ("L000001", "investment", 1044231.30)`, done for every
 item.
@@ -684,13 +684,13 @@ interest = [round(o * r / 100, 2) for o, r in zip(outstanding, rates)]
 print(interest)
 ```
 
-`zip` gives its pairs one by one, like a generator: `list(zip(...))` shows them all.
+[`zip`](https://docs.python.org/3/builtins/functions.html#zip) gives its pairs one by one, like a generator: [`list(zip(...))`](https://docs.python.org/3/builtins/stdtypes.html#list) shows them all.
 Two lists - the keys and the values - become a dictionary with `dict(zip(keys,
 values))` in [session 6](./06-dictionaries.md).
 
 ### A trap: the shortest list wins
 
-`zip` stops at the end of the **shortest** list - without an error. A missing value
+[`zip`](https://docs.python.org/3/builtins/functions.html#zip) stops at the end of the **shortest** list - without an error. A missing value
 in one list silently drops the last row:
 
 ```python run
@@ -701,13 +701,13 @@ print(list(zip(loan_ids, amounts)))                # L000003 is gone
 ```
 
 Check the lengths first when the lists come from different places:
-`len(loan_ids) == len(amounts)`.
+[`len(loan_ids) == len(amounts)`](https://docs.python.org/3/builtins/functions.html#len).
 
 ### `enumerate`: the number of each item
 
 Sometimes you need the **position** of each item, not only the item.
-[`enumerate(items, start=0)`](https://docs.python.org/3/library/functions.html#enumerate)
-gives pairs `(number, item)` - it is a `zip` of the numbers 0, 1, 2, ... and the
+[`enumerate(items, start=0)`](https://docs.python.org/3/builtins/functions.html#enumerate)
+gives pairs `(number, item)` - it is a [`zip`](https://docs.python.org/3/builtins/functions.html#zip) of the numbers 0, 1, 2, ... and the
 items:
 
 ```python run
@@ -738,7 +738,7 @@ In SAS, the number of the current row in a DATA step is `_N_`; in SQL, a rank is
 `ROW_NUMBER() OVER (ORDER BY outstanding DESC)`.
 
 ::: info The same in pandas
-In a DataFrame, the columns are already side by side - no `zip` is needed. A new
+In a DataFrame, the columns are already side by side - no [`zip`](https://docs.python.org/3/builtins/functions.html#zip) is needed. A new
 column from two columns is one line:
 
 ```python run
@@ -765,15 +765,15 @@ print(list(enumerate(b, start=10)))
 ## 5. Summary
 | Topic | Remember |
 |-------|----------|
-| Remove | `remove(value)` - the first one, `ValueError` if missing; `pop(i)` gives the item back; `del lst[i]`; `clear()` empties |
-| Find | `index(value)` - the first position, `ValueError` if missing: test with `in` first |
-| Sort | `lst.sort()` changes the list; `sorted(x)` gives a new one; `key=`, `reverse=True`; top N: `sorted(...)[:n]` |
+| Remove | [`remove(value)`](https://docs.python.org/3/builtins/stdtypes.html#list.remove) - the first one, `ValueError` if missing; [`pop(i)`](https://docs.python.org/3/builtins/stdtypes.html#list.pop) gives the item back; `del lst[i]`; [`clear()`](https://docs.python.org/3/builtins/stdtypes.html#list.clear) empties |
+| Find | [`index(value)`](https://docs.python.org/3/builtins/stdtypes.html#list.index) - the first position, `ValueError` if missing: test with `in` first |
+| Sort | [`lst.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) changes the list; [`sorted(x)`](https://docs.python.org/3/builtins/functions.html#sorted) gives a new one; `key=`, `reverse=True`; top N: `sorted(...)[:n]` |
 | `None` | the methods change the list and return `None`: never `x = x.sort()` |
 | Comprehension | `[expr for x in items if cond]` = `SELECT expr ... WHERE cond`; always a new list |
 | `if` position | `if` at the end filters; `a if c else b` at the start chooses a value (CASE) |
-| Generator expression | `sum(x for x in items)` - no list in memory; `sum(1 for ... if ...)` = `COUNT(*) ... WHERE`; used once |
-| `zip` | parallel lists -> tuples; stops at the shortest list |
-| `enumerate` | `(number, item)`; `start=1` for a rank |
+| Generator expression | [`sum(x for x in items)`](https://docs.python.org/3/builtins/functions.html#sum) - no list in memory; [`sum(1 for ... if ...)`](https://docs.python.org/3/builtins/functions.html#sum) = `COUNT(*) ... WHERE`; used once |
+| [`zip`](https://docs.python.org/3/builtins/functions.html#zip) | parallel lists -> tuples; stops at the shortest list |
+| [`enumerate`](https://docs.python.org/3/builtins/functions.html#enumerate) | `(number, item)`; `start=1` for a rank |
 
 ## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -788,9 +788,9 @@ python 05-lists-advanced/practice/task1-list-methods.py
 |------|------|-------------|
 | 1 | `task1-list-methods.py` | Remove, find and sort with the list methods; the top 3 |
 | 2 | `task2-comprehensions.py` | Derived lists, filters and `CASE WHEN` with comprehensions |
-| 3 | `task3-predict-lists.py` | Predict: `sort()` and `None`, the position of `if`, a used generator, `zip` |
+| 3 | `task3-predict-lists.py` | Predict: [`sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) and `None`, the position of `if`, a used generator, [`zip`](https://docs.python.org/3/builtins/functions.html#zip) |
 | 4 | `task4-generators.py` | Sums and counts with a condition, without a list; a file line by line |
-| 5 | `task5-zip.py` | Two lists side by side; a rank with `enumerate` |
+| 5 | `task5-zip.py` | Two lists side by side; a rank with [`enumerate`](https://docs.python.org/3/builtins/functions.html#enumerate) |
 | 6 | `task6-clean-a-list.py` (Optional) | Clean a list of loans step by step, then report on it |
 
 ## Homework
@@ -798,7 +798,7 @@ python 05-lists-advanced/practice/task1-list-methods.py
 1. `05-lists-advanced/homework.py` (in the homework repository): **a small list of
    loans** - clean it with the list methods, find the five largest exposures with a
    rank and their share of the total, sum and count with a condition, and compare
-   two years month by month with `zip`. Every check must print `OK`.
+   two years month by month with [`zip`](https://docs.python.org/3/builtins/functions.html#zip). Every check must print `OK`.
 2. The practice tasks you did not finish in class.
 
 ## Read more
@@ -807,8 +807,8 @@ python 05-lists-advanced/practice/task1-list-methods.py
   [List comprehensions](https://docs.python.org/3/tutorial/datastructures.html#list-comprehensions)
 - [Sorting techniques](https://docs.python.org/3/howto/sorting.html)
 - Reference: [generator expressions](https://docs.python.org/3/reference/expressions.html#generator-expressions),
-  [`zip`](https://docs.python.org/3/library/functions.html#zip),
-  [`enumerate`](https://docs.python.org/3/library/functions.html#enumerate)
+  [`zip`](https://docs.python.org/3/builtins/functions.html#zip),
+  [`enumerate`](https://docs.python.org/3/builtins/functions.html#enumerate)
 - Real Python: [When to use a list comprehension](https://realpython.com/list-comprehension-python/),
   [Python's `zip()` function](https://realpython.com/python-zip-function/)
 

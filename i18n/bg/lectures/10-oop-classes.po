@@ -55,7 +55,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:18
-msgid "check the data when an object is created, and compute values with `property`;"
+msgid "check the data when an object is created, and compute values with [`property`](https://docs.python.org/3/builtins/functions.html#property);"
 msgstr ""
 
 #. paragraph
@@ -105,12 +105,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:86
-msgid "**Objects of a library.** The objects of the libraries you use have attributes too. A `csv.DictReader` knows its column names and the line it has read:"
+msgid "**Objects of a library.** The objects of the libraries you use have attributes too. A [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) knows its column names and the line it has read:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:100
-msgid "**Several types at once.** `isinstance` with a tuple tests for several types at once - the usual check of an input. One trap: `True` and `False` **are** integers in Python:"
+msgid "**Several types at once.** [`isinstance`](https://docs.python.org/3/builtins/functions.html#isinstance) with a tuple tests for several types at once - the usual check of an input. One trap: `True` and `False` **are** integers in Python:"
 msgstr ""
 
 #. heading 3
@@ -190,7 +190,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:151
-msgid "`__init__` is the special method that runs when an object is **created**: `Loan(\"L000001\", ...)` creates a new, empty object and calls `__init__` with it."
+msgid "[`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) is the special method that runs when an object is **created**: `Loan(\"L000001\", ...)` creates a new, empty object and calls [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) with it."
 msgstr ""
 
 #. paragraph
@@ -225,7 +225,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:199
-msgid "`vars(obj)` shows that an object keeps its attributes in a dictionary - the same structure as the rows of [session 6](./06-dictionaries.md#a-row-as-a-dictionary), with a name and rules around it."
+msgid "[`vars(obj)`](https://docs.python.org/3/builtins/functions.html#vars) shows that an object keeps its attributes in a dictionary - the same structure as the rows of [session 6](./06-dictionaries.md#a-row-as-a-dictionary), with a name and rules around it."
 msgstr ""
 
 #. heading 3
@@ -250,7 +250,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:233
-msgid "The arguments of `Loan(...)` go to `__init__`: the same rules as for a function ([session 4](./04-functions.md#positional-arguments)). The error message names `__init__`:"
+msgid "The arguments of `Loan(...)` go to [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__): the same rules as for a function ([session 4](./04-functions.md#positional-arguments)). The error message names [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__):"
 msgstr ""
 
 #. heading 3
@@ -290,7 +290,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:325
-msgid "**Late loans per product.** On the portfolio: the late loans per product, with the method doing the test and a `Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter)):"
+msgid "**Late loans per product.** On the portfolio: the late loans per product, with the method doing the test and a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) ([lecture 7](./07-text-and-regex.md#counting-with-counter)):"
 msgstr ""
 
 #. paragraph
@@ -360,32 +360,32 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:518
-msgid "`__repr__` - for **developers**: unambiguous, ideally like the code that creates the object. Used in lists, in the REPL, in the debugger, with `!r`."
+msgid "[`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) - for **developers**: unambiguous, ideally like the code that creates the object. Used in lists, in the REPL, in the debugger, with `!r`."
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:520
-msgid "`__str__` - for **people**: a report line. Used by `print` and f-strings. Without it, Python uses `__repr__`."
+msgid "[`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) - for **people**: a report line. Used by [`print`](https://docs.python.org/3/builtins/functions.html#print) and f-strings. Without it, Python uses [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__)."
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:543
-msgid "**`__repr__` and `__str__` together.** Always write at least `__repr__` - the first time you debug a list of objects, you will be glad. With `__str__`, a report loop needs no formatting code of its own:"
+msgid "**[`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) and [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) together.** Always write at least [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) - the first time you debug a list of objects, you will be glad. With [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__), a report loop needs no formatting code of its own:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:566
-msgid "**A report in two lines.** With `__str__`, the largest loans of the file are a report in two lines:"
+msgid "**A report in two lines.** With [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__), the largest loans of the file are a report in two lines:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:592
-msgid "**A trap: print instead of return.** `__str__` and `__repr__` must **return** a string - not print it, and not return a number:"
+msgid "**A trap: print instead of return.** [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) and [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) must **return** a string - not print it, and not return a number:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:609
-msgid "Write `__str__` for a `Client` with `client_id`, `segment` and `rating` so that `print(client)` shows `C0002 (sme, rating 5)`."
+msgid "Write [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) for a `Client` with `client_id`, `segment` and `rating` so that [`print(client)`](https://docs.python.org/3/builtins/functions.html#print) shows `C0002 (sme, rating 5)`."
 msgstr ""
 
 #. heading 2
@@ -440,7 +440,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:744
-msgid "Create lists and dicts **in `__init__`**: `self.payments = []` (section 3)."
+msgid "Create lists and dicts **in [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__)**: `self.payments = []` (section 3)."
 msgstr ""
 
 #. paragraph
@@ -460,7 +460,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:757
-msgid "An object that holds wrong data is worse than no object: every report made from it is wrong. Check in `__init__`, and raise a clear error ([lecture 8](./08-errors-and-files.md#raise-stop-with-a-clear-message)):"
+msgid "An object that holds wrong data is worse than no object: every report made from it is wrong. Check in [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__), and raise a clear error ([lecture 8](./08-errors-and-files.md#raise-stop-with-a-clear-message)):"
 msgstr ""
 
 #. paragraph
@@ -480,7 +480,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:815
-msgid "First, the problem. A value computed **once** in `__init__` is a copy - it does not follow a later change of the attributes it came from:"
+msgid "First, the problem. A value computed **once** in [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) is a copy - it does not follow a later change of the attributes it came from:"
 msgstr ""
 
 #. paragraph
@@ -500,7 +500,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:900
-msgid "**Attributes by name.** `hasattr` and `getattr` ask an object for an attribute by its **name** - handy for reports that take the list of columns from a setting:"
+msgid "**Attributes by name.** [`hasattr`](https://docs.python.org/3/builtins/functions.html#hasattr) and [`getattr`](https://docs.python.org/3/builtins/functions.html#getattr) ask an object for an attribute by its **name** - handy for reports that take the list of columns from a setting:"
 msgstr ""
 
 #. heading 3
@@ -535,12 +535,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:962
-msgid "Most classes for data start with an `__init__` that only copies the parameters into attributes, and a `__repr__`. The module `dataclasses` writes them for you, from the **fields** with their type hints ([session 4](./04-functions.md#type-hints)):"
+msgid "Most classes for data start with an [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) that only copies the parameters into attributes, and a [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__). The module `dataclasses` writes them for you, from the **fields** with their type hints ([session 4](./04-functions.md#type-hints)):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:987
-msgid "`@dataclass` writes `__init__`, `__repr__` and `__eq__` (equal when all fields are equal). Methods and properties are written as in a normal class."
+msgid "`@dataclass` writes [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__), [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) and [`__eq__`](https://docs.python.org/3/reference/datamodel.html#object.__eq__) (equal when all fields are equal). Methods and properties are written as in a normal class."
 msgstr ""
 
 #. box title
@@ -555,7 +555,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:995
-msgid "**From a row to a dataclass.** A row of `csv.DictReader` can go straight into a dataclass with `**` (it unpacks a dictionary into keyword arguments: `Loan(**row)` is `Loan(loan_id=row[\"loan_id\"], ...)`) - if the column names are the field names. Convert the types in `__post_init__` (below), or before:"
+msgid "**From a row to a dataclass.** A row of [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) can go straight into a dataclass with `**` (it unpacks a dictionary into keyword arguments: `Loan(**row)` is `Loan(loan_id=row[\"loan_id\"], ...)`) - if the column names are the field names. Convert the types in `__post_init__` (below), or before:"
 msgstr ""
 
 #. heading 3
@@ -565,7 +565,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1021
-msgid "A default list would be shared (section 5) - so a dataclass refuses `= []`. Use `field(default_factory=list)`: a new list for each object:"
+msgid "A default list would be shared (section 5) - so a dataclass refuses `= []`. Use [`field(default_factory=list)`](https://docs.python.org/3/library/dataclasses.html#dataclasses.field): a new list for each object:"
 msgstr ""
 
 #. heading 3
@@ -575,7 +575,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1042
-msgid "`__post_init__` runs right after the written `__init__` - the place for checks and for computed fields:"
+msgid "`__post_init__` runs right after the written [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) - the place for checks and for computed fields:"
 msgstr ""
 
 #. heading 3
@@ -590,7 +590,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1093
-msgid "**Frozen and hashable.** A frozen dataclass is also **hashable**: it can be a key of a dictionary or an item of a set ([session 6](./06-dictionaries.md#rules-for-keys-and-values)). To \"change\" it, make a new one with `dataclasses.replace`:"
+msgid "**Frozen and hashable.** A frozen dataclass is also **hashable**: it can be a key of a dictionary or an item of a set ([session 6](./06-dictionaries.md#rules-for-keys-and-values)). To \"change\" it, make a new one with [`dataclasses.replace`](https://docs.python.org/3/library/dataclasses.html#dataclasses.replace):"
 msgstr ""
 
 #. heading 3
@@ -610,12 +610,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1160
-msgid "**Dataclass to dict or tuple.** Back to rows: `asdict` and `astuple` turn a dataclass into a dictionary or a tuple - ready for `csv.DictWriter` ([lecture 8](./08-errors-and-files.md#write-csv-writer-and-csv-dictwriter)) or JSON. `fields` lists the fields:"
+msgid "**Dataclass to dict or tuple.** Back to rows: `asdict` and `astuple` turn a dataclass into a dictionary or a tuple - ready for [`csv.DictWriter`](https://docs.python.org/3/library/csv.html#csv.DictWriter) ([lecture 8](./08-errors-and-files.md#write-csv-writer-and-csv-dictwriter)) or JSON. `fields` lists the fields:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1186
-msgid "**Leave a field out.** A field can be left out of the `repr` or of the comparison - for example a long list, or a note:"
+msgid "**Leave a field out.** A field can be left out of the [`repr`](https://docs.python.org/3/builtins/functions.html#repr) or of the comparison - for example a long list, or a note:"
 msgstr ""
 
 #. table cell
@@ -670,7 +670,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/10-oop-classes.md:1210
-msgid "`__init__`, setters"
+msgid "[`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__), setters"
 msgstr ""
 
 #. table cell
@@ -715,7 +715,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1258
-msgid "`max(..., default=0)` gives `0` when the client has no loans. Without `default=`, `max` of an empty sequence stops with a `ValueError`."
+msgid "[`max(..., default=0)`](https://docs.python.org/3/builtins/functions.html#max) gives `0` when the client has no loans. Without `default=`, [`max`](https://docs.python.org/3/builtins/functions.html#max) of an empty sequence stops with a `ValueError`."
 msgstr ""
 
 #. paragraph
@@ -725,7 +725,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1303
-msgid "**Reports from the objects.** From the objects, the usual reports - exposure per segment, and the share of the largest client in each segment (`defaultdict(list)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
+msgid "**Reports from the objects.** From the objects, the usual reports - exposure per segment, and the share of the largest client in each segment ([`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
 msgstr ""
 
 #. paragraph
@@ -735,7 +735,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1373
-msgid "**A loan without a client.** The trap: a loan whose client is not in the clients file. `clients[r[\"client_id\"]]` stops the whole load with a `KeyError`; `get` and a list of rejects ([lecture 8](./08-errors-and-files.md#the-reject-file-and-the-summary)) keep going and report it:"
+msgid "**A loan without a client.** The trap: a loan whose client is not in the clients file. `clients[r[\"client_id\"]]` stops the whole load with a `KeyError`; [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) and a list of rejects ([lecture 8](./08-errors-and-files.md#the-reject-file-and-the-summary)) keep going and report it:"
 msgstr ""
 
 #. paragraph
@@ -790,7 +790,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/10-oop-classes.md:1420
-msgid "`class Loan:` (CamelCase); `__init__(self, ...)` runs at creation"
+msgid "`class Loan:` (CamelCase); [`__init__(self, ...)`](https://docs.python.org/3/reference/datamodel.html#object.__init__) runs at creation"
 msgstr ""
 
 #. table cell
@@ -800,7 +800,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/10-oop-classes.md:1421
-msgid "`self.x = x` stores per object; read with `obj.x`; `vars(obj)`"
+msgid "`self.x = x` stores per object; read with `obj.x`; [`vars(obj)`](https://docs.python.org/3/builtins/functions.html#vars)"
 msgstr ""
 
 #. table cell
@@ -820,7 +820,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/10-oop-classes.md:1423
-msgid "`__repr__` for developers (like code), `__str__` for people; write `__repr__` always"
+msgid "[`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) for developers (like code), [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) for people; write [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) always"
 msgstr ""
 
 #. table cell
@@ -840,7 +840,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/10-oop-classes.md:1425
-msgid "check in `__init__` (or `__post_init__`) and raise `ValueError`"
+msgid "check in [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) (or `__post_init__`) and raise `ValueError`"
 msgstr ""
 
 #. table cell
@@ -855,7 +855,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/10-oop-classes.md:1427
-msgid "`@dataclass` + fields with types; `field(default_factory=list)`; `frozen=True`; `order=True`"
+msgid "`@dataclass` + fields with types; [`field(default_factory=list)`](https://docs.python.org/3/library/dataclasses.html#dataclasses.field); `frozen=True`; `order=True`"
 msgstr ""
 
 #. table cell
@@ -895,7 +895,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/10-oop-classes.md:1441
-msgid "A `RatingGrade` class: attributes, a method, `__repr__`"
+msgid "A `RatingGrade` class: attributes, a method, [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__)"
 msgstr ""
 
 #. table cell
@@ -910,7 +910,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/10-oop-classes.md:1444
-msgid "Checks in `__init__`, properties, a setter that validates"
+msgid "Checks in [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__), properties, a setter that validates"
 msgstr ""
 
 #. table cell
@@ -955,7 +955,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1460
-msgid "This part is not covered in class. It is for reading at home: objects that work with `sorted`, `len`, `in` and `for`, and named codes with `enum`."
+msgid "This part is not covered in class. It is for reading at home: objects that work with [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted), [`len`](https://docs.python.org/3/builtins/functions.html#len), `in` and `for`, and named codes with `enum`."
 msgstr ""
 
 #. heading 3
@@ -965,7 +965,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1465
-msgid "The methods with two underscores on each side - `__init__`, `__repr__`, `__str__` - are **special methods**: Python calls them for you. There are many more. With them, a class works with the built-in functions and operators:"
+msgid "The methods with two underscores on each side - [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__), [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__), [`__str__`](https://docs.python.org/3/reference/datamodel.html#object.__str__) - are **special methods**: Python calls them for you. There are many more. With them, a class works with the built-in functions and operators:"
 msgstr ""
 
 #. table cell
@@ -985,7 +985,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1511
-msgid "**Compare objects.** To compare objects of a normal class, write `__eq__` and `__lt__`; `functools.total_ordering` writes `<=`, `>`, `>=` from those two:"
+msgid "**Compare objects.** To compare objects of a normal class, write [`__eq__`](https://docs.python.org/3/reference/datamodel.html#object.__eq__) and [`__lt__`](https://docs.python.org/3/reference/datamodel.html#object.__lt__); [`functools.total_ordering`](https://docs.python.org/3/library/functools.html#functools.total_ordering) writes `<=`, `>`, `>=` from those two:"
 msgstr ""
 
 #. paragraph
@@ -995,7 +995,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1540
-msgid "Add `__getitem__(self, loan_id)` to `Portfolio`, so that `p[\"L2\"]` gives the loan."
+msgid "Add [`__getitem__(self, loan_id)`](https://docs.python.org/3/reference/datamodel.html#object.__getitem__) to `Portfolio`, so that `p[\"L2\"]` gives the loan."
 msgstr ""
 
 #. paragraph
@@ -1030,7 +1030,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1588
-msgid "Count the loans of `loans.csv` per `Stage` member with a `Counter`."
+msgid "Count the loans of `loans.csv` per `Stage` member with a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter)."
 msgstr ""
 
 #. heading 2
@@ -1045,7 +1045,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1615
-msgid "Reference: [`dataclasses`](https://docs.python.org/3/library/dataclasses.html), [`property`](https://docs.python.org/3/library/functions.html#property), [`enum` HOWTO](https://docs.python.org/3/howto/enum.html)"
+msgid "Reference: [`dataclasses`](https://docs.python.org/3/library/dataclasses.html), [`property`](https://docs.python.org/3/builtins/functions.html#property), [`enum` HOWTO](https://docs.python.org/3/howto/enum.html)"
 msgstr ""
 
 #. paragraph

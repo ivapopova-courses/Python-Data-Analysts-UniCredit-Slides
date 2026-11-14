@@ -572,7 +572,7 @@ print(pd.read_csv(io.StringIO(text)))                                  # 42, 123
 print(pd.read_csv(io.StringIO(text), dtype={"branch": str, "eik": str}))
 ```
 
-(`io.StringIO` makes a string behave like a file - [lecture 8](./08-errors-and-files.md).)
+([`io.StringIO`](https://docs.python.org/3/library/io.html#io.StringIO) makes a string behave like a file - [lecture 8](./08-errors-and-files.md).)
 
 ### Some columns, some rows; another encoding
 
@@ -676,7 +676,7 @@ procedures; in pandas, a few methods.
 
 | Question | SAS | pandas |
 |---|---|---|
-| how big? | `PROC CONTENTS` | `df.shape`, `len(df)` |
+| how big? | `PROC CONTENTS` | `df.shape`, [`len(df)`](https://docs.python.org/3/builtins/functions.html#len) |
 | which columns, which types? | `PROC CONTENTS` | `df.dtypes`, `df.info()` |
 | what do rows look like? | `PROC PRINT (OBS=10)` | `df.head(10)`, `df.sample(5)` |
 | numbers: n, mean, min, max? | `PROC MEANS` | `df.describe()` |
@@ -896,7 +896,7 @@ print(numbers.isna().sum(), "could not be read:", raw[numbers.isna()].tolist())
 ```
 
 **Read dates.** `pd.to_datetime` with a `format` reads dates - for a whole column, much faster than
-`strptime` in a loop ([lecture 7](./07-text-and-regex.md#from-text-to-a-date)):
+[`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) in a loop ([lecture 7](./07-text-and-regex.md#from-text-to-a-date)):
 
 ```python run
 import pandas as pd

@@ -275,7 +275,7 @@ print(q3.sort_values(["client_id", "month_end"]).head(4))
 
 ### Text to dates
 
-[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) parsed dates one by one with `datetime.strptime`. `pd.to_datetime` does the
+[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) parsed dates one by one with [`datetime.strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime). `pd.to_datetime` does the
 whole column; `format=` says how, `errors="coerce"` turns a bad date into `NaT` (the
 `NaN` of dates):
 

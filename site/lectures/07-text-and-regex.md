@@ -17,7 +17,7 @@ title: 7. Text processing and regular expressions
 - split a line into fields and join fields into a line - `SCAN` and `CATX` in SAS;
 - replace and remove parts of a text - `TRANWRD` and `COMPRESS` in SAS;
 - clean real identifiers: client ids, company names, EIKs, IBANs, city names;
-- count the values of a column with `Counter` - the Python version of `GROUP BY` with
+- count the values of a column with [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) - the Python version of `GROUP BY` with
   `COUNT(*)` in SQL and of `PROC FREQ` in SAS;
 - read a number and a date from text, with `float` and `datetime`;
 - describe the **shape** of a text with a regular expression, and find, check and
@@ -37,7 +37,7 @@ run;
 
 ::: info Reading a CSV file: `csv.DictReader`
 The examples of this lecture read the sample files with the module `csv` (it comes
-with Python). `csv.DictReader` gives each row of the file as a **dictionary**: the
+with Python). [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) gives each row of the file as a **dictionary**: the
 column name is the key, the value is **text** - a record as in
 [session 6](./06-dictionaries.md#a-row-as-a-dictionary). The pattern is always the same:
 
@@ -74,7 +74,7 @@ texts that have a shape, like an IBAN or a date.
 
 ## 1. Strings: a recap and the new data
 
-You know from [session 1](./01-intro-syntax-types.md#str-text) and 3: a string is a **sequence** of characters; `len(s)`,
+You know from [session 1](./01-intro-syntax-types.md#str-text) and 3: a string is a **sequence** of characters; [`len(s)`](https://docs.python.org/3/builtins/functions.html#len),
 `s[0]`, `s[-1]`, `s[2:5]` work like on a list; `s[2:5]` is `SUBSTR(s, 3, 3)` in SAS. And a
 string **cannot change** (it is immutable): every method returns a **new** string.
 
@@ -90,7 +90,7 @@ print(repr(client_id))
 
 The most common mistake beginners make: they call a method but do not save the
 result with `=`, so the variable stays the same. To see the spaces, print with
-`repr()` (or `!r` in an f-string): it shows the quotes around the string.
+[`repr()`](https://docs.python.org/3/builtins/functions.html#repr) (or `!r` in an f-string): it shows the quotes around the string.
 
 ### The data of today
 
@@ -139,9 +139,9 @@ print(name.capitalize())     # only the first letter of the string
 
 | SAS | SQL | Python |
 |---|---|---|
-| `UPCASE(s)` | `UPPER(s)` | `s.upper()` |
-| `LOWCASE(s)` | `LOWER(s)` | `s.lower()` |
-| `PROPCASE(s)` | `INITCAP(s)` (Oracle, PostgreSQL) | `s.title()` |
+| `UPCASE(s)` | `UPPER(s)` | [`s.upper()`](https://docs.python.org/3/builtins/stdtypes.html#str.upper) |
+| `LOWCASE(s)` | `LOWER(s)` | [`s.lower()`](https://docs.python.org/3/builtins/stdtypes.html#str.lower) |
+| `PROPCASE(s)` | `INITCAP(s)` (Oracle, PostgreSQL) | [`s.title()`](https://docs.python.org/3/builtins/stdtypes.html#str.title) |
 
 **Compare without the case.** To compare two texts without the case, make **both** sides lower case (or both upper
 case):
@@ -153,7 +153,7 @@ print(city.lower() == "sofia")
 ```
 
 ::: warning `title()` is not clever
-`title()` gives a capital after **every** character that is not a letter, and it
+[`title()`](https://docs.python.org/3/builtins/stdtypes.html#str.title) gives a capital after **every** character that is not a letter, and it
 does not know legal forms or abbreviations:
 
 ```python run
@@ -161,13 +161,13 @@ print("blue wines eood".title())      # 'Blue Wines Eood' - should be EOOD
 print("2nd floor".title())            # '2Nd Floor'
 ```
 
-Fix the known words after `title()` (section 5).
+Fix the known words after [`title()`](https://docs.python.org/3/builtins/stdtypes.html#str.title) (section 5).
 :::
 
 ### Remove spaces: `strip`
 
-`strip()` removes spaces (and tabs and new lines) at **both ends**; `lstrip()` only
-at the start, `rstrip()` only at the end:
+[`strip()`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) removes spaces (and tabs and new lines) at **both ends**; [`lstrip()`](https://docs.python.org/3/builtins/stdtypes.html#str.lstrip) only
+at the start, [`rstrip()`](https://docs.python.org/3/builtins/stdtypes.html#str.rstrip) only at the end:
 
 ```python run
 city = "  ruse "
@@ -177,7 +177,7 @@ print(repr(city.lstrip()))      # LEFT in SAS, LTRIM in SQL
 print(repr(city.rstrip()))      # TRIM in SAS, RTRIM in SQL
 ```
 
-**Strip given characters.** With an argument, `strip` removes **those characters** from the ends (any of them,
+**Strip given characters.** With an argument, [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) removes **those characters** from the ends (any of them,
 in any order) - not a word:
 
 ```python run
@@ -190,7 +190,7 @@ print("www.example.com".strip("w.com"))      # careful: characters, not a word!
 ### Spaces inside: `COMPBL` in SAS {#spaces-inside-compbl}
 
 In SAS, `COMPBL` ("compress blanks") replaces every group of spaces inside a text
-with one space. `strip` does not touch the spaces **inside** a text. `split()` without an argument
+with one space. [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) does not touch the spaces **inside** a text. [`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) without an argument
 cuts the text into words at every group of spaces, and `" ".join(...)` puts the words
 back with one space between them:
 
@@ -202,11 +202,11 @@ print(repr(" ".join(name.split())))        # COMPBL(STRIP(name)) in SAS
 ```
 
 `" ".join(s.split())` is the usual Python way to say "remove all extra spaces".
-Section 4 explains `split` and `join`.
+Section 4 explains [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split) and [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join).
 
 ::: tip Try it
-Clean `"  GREEN   build  ltd "` into `"Green Build Ltd"`. You need `split`, `join`
-and `title`.
+Clean `"  GREEN   build  ltd "` into `"Green Build Ltd"`. You need [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split), [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join)
+and [`title`](https://docs.python.org/3/builtins/stdtypes.html#str.title).
 :::
 
 ## 3. Find and test
@@ -223,7 +223,7 @@ print("eur" in comment)                        # case matters
 print("eur" in comment.lower())
 ```
 
-**Several prefixes at once.** `startswith` and `endswith` also take a **tuple** of options - "starts with one of
+**Several prefixes at once.** [`startswith`](https://docs.python.org/3/builtins/stdtypes.html#str.startswith) and [`endswith`](https://docs.python.org/3/builtins/stdtypes.html#str.endswith) also take a **tuple** of options - "starts with one of
 these":
 
 ```python run
@@ -236,7 +236,7 @@ print([f for f in files if f.lower().endswith((".csv", ".xlsx"))])
 
 ### Where is it? `find` and `count`
 
-`find` gives the position of the first match, or **-1** if there is none. `count`
+[`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find) gives the position of the first match, or **-1** if there is none. [`count`](https://docs.python.org/3/builtins/stdtypes.html#str.count)
 says how many times a text occurs:
 
 ```python run
@@ -263,9 +263,9 @@ for s in ["131234567", "12O.50", "EUR", "BG80", ""]:
 
 | Method | `True` when all characters are | SAS |
 |---|---|---|
-| `s.isdigit()` | digits | `NOTDIGIT(s) = 0` |
-| `s.isalpha()` | letters | `NOTALPHA(s) = 0` |
-| `s.isalnum()` | letters or digits | `NOTALNUM(s) = 0` |
+| [`s.isdigit()`](https://docs.python.org/3/builtins/stdtypes.html#str.isdigit) | digits | `NOTDIGIT(s) = 0` |
+| [`s.isalpha()`](https://docs.python.org/3/builtins/stdtypes.html#str.isalpha) | letters | `NOTALPHA(s) = 0` |
+| [`s.isalnum()`](https://docs.python.org/3/builtins/stdtypes.html#str.isalnum) | letters or digits | `NOTALNUM(s) = 0` |
 
 **Check a loan id.** Check an id by its parts - "an L and six digits":
 
@@ -278,7 +278,7 @@ print([is_loan_id(x) for x in ["L000001", "L00001", "l000001", "L00000A", "L9999
 
 ::: warning `isdigit` is not "is a number"
 `"12.50".isdigit()` and `"-5".isdigit()` are `False`: a point and a minus are not
-digits. Use `isdigit` for ids and codes. For numbers, convert with `float()`
+digits. Use [`isdigit`](https://docs.python.org/3/builtins/stdtypes.html#str.isdigit) for ids and codes. For numbers, convert with [`float()`](https://docs.python.org/3/builtins/functions.html#float)
 (section 6).
 :::
 
@@ -298,12 +298,12 @@ print(fields)
 print(fields[2])                  # SCAN(line, 3, ',') in SAS
 ```
 
-There are two kinds of `split`:
+There are two kinds of [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split):
 
-- `split(",")` with a separator: **every** comma cuts, so two commas give an
+- [`split(",")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) with a separator: **every** comma cuts, so two commas give an
   **empty** field. This is right for CSV, where an empty field means a missing
   value.
-- `split()` without an argument: every group of spaces, tabs and new lines cuts, and
+- [`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) without an argument: every group of spaces, tabs and new lines cuts, and
   there are no empty fields. This is right for words.
 
 ```python run
@@ -313,7 +313,7 @@ print("a  b".split())              # ['a', 'b']
 print("  Iron   Retail ".split())
 ```
 
-**Limit the cuts.** A second argument limits the number of cuts. `rsplit` cuts from the right - the last
+**Limit the cuts.** A second argument limits the number of cuts. [`rsplit`](https://docs.python.org/3/builtins/stdtypes.html#str.rsplit) cuts from the right - the last
 word of a company name is its legal form:
 
 ```python run
@@ -325,7 +325,7 @@ base, form = name.rsplit(" ", 1)
 print(base, "|", form)
 ```
 
-**Cut once: `partition`.** `partition` cuts at the **first** separator and always gives three parts: the text
+**Cut once: [`partition`](https://docs.python.org/3/builtins/stdtypes.html#str.partition).** [`partition`](https://docs.python.org/3/builtins/stdtypes.html#str.partition) cuts at the **first** separator and always gives three parts: the text
 before, the separator, the text after. It is handy for `key=value`:
 
 ```python run
@@ -341,7 +341,7 @@ value".)
 
 ### `join`: fields into a line
 
-`separator.join(list_of_strings)` - the separator comes **first**, the list goes in
+[`separator.join(list_of_strings)`](https://docs.python.org/3/builtins/stdtypes.html#str.join) - the separator comes **first**, the list goes in
 the brackets:
 
 ```python run
@@ -366,13 +366,13 @@ print(",".join(row))              # TypeError: sequence item 1: expected str ins
 
 ::: info Do not use `split(",")` to read a CSV file
 A field can contain a comma, inside quotes: `C0026,"Silver Textiles, Plovdiv",AD`.
-`split` does not know quotes; the `csv` module does. That is why the examples read
-files with `csv.DictReader` (see the box at the start of this lecture). [Lecture 8](./08-errors-and-files.md#_7-csv-files) covers the `csv` module.
+[`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split) does not know quotes; the `csv` module does. That is why the examples read
+files with [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) (see the box at the start of this lecture). [Lecture 8](./08-errors-and-files.md#_7-csv-files) covers the `csv` module.
 :::
 
 ### `replace`
 
-`replace(old, new)` replaces **every** occurrence. A third argument limits the
+[`replace(old, new)`](https://docs.python.org/3/builtins/stdtypes.html#str.replace) replaces **every** occurrence. A third argument limits the
 number:
 
 ```python run
@@ -382,7 +382,7 @@ print(iban.replace(" ", ""))             # remove all spaces: COMPRESS(iban) in 
 print("a-b-c".replace("-", "/", 1))      # only the first one
 ```
 
-**Replace in steps.** Several `replace` calls in a row run from left to right - each one works on the
+**Replace in steps.** Several [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace) calls in a row run from left to right - each one works on the
 result of the one before:
 
 ```python run
@@ -402,7 +402,7 @@ print("BG165960351".removeprefix("BG"))
 print("loans_2026-09.csv".removesuffix(".csv"))
 ```
 
-**A trap: `strip` is not `removeprefix`.** This is not the same as `strip("gr. ")`. `strip` removes the **characters** g, r, `.`
+**A trap: [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) is not [`removeprefix`](https://docs.python.org/3/builtins/stdtypes.html#str.removeprefix).** This is not the same as [`strip("gr. ")`](https://docs.python.org/3/builtins/stdtypes.html#str.strip). [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) removes the **characters** g, r, `.`
 and space from both ends, as long as it finds them:
 
 ```python run
@@ -412,7 +412,7 @@ print("gr. ruse".removeprefix("gr. "))  # 'ruse'
 
 ### `zfill`: zeros in front
 
-`zfill` adds zeros on the left until the text has the given length - the SAS format
+[`zfill`](https://docs.python.org/3/builtins/stdtypes.html#str.zfill) adds zeros on the left until the text has the given length - the SAS format
 `Z`:
 
 ```python run
@@ -437,8 +437,8 @@ print(reg["city"].str.strip().str.title().value_counts().head(4))
 
 ::: tip Try it
 `settings = "lgd=0.45;currency=EUR;report_date=2026-09-30"`. Turn it into a
-dictionary `{"lgd": "0.45", ...}`: `split(";")` gives the three parts, and
-`partition("=")` cuts each part into a key and a value. Then join the dictionary
+dictionary `{"lgd": "0.45", ...}`: [`split(";")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) gives the three parts, and
+[`partition("=")`](https://docs.python.org/3/builtins/stdtypes.html#str.partition) cuts each part into a key and a value. Then join the dictionary
 back into the same string.
 :::
 
@@ -560,15 +560,15 @@ for region in regions:
     print(region, counts)
 ```
 
-For a new region, `get(region, 0)` gives `0`. For a known region, it gives the count
+For a new region, [`get(region, 0)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) gives `0`. For a known region, it gives the count
 so far. Add one and store the new count under the same key.
 
 ::: info Animation
 **Grouping by hand:** [2. Count with `get`](../animations/groupingByHand.html#2){target="_blank"}
 :::
 
-**With `Counter`.** Counting is so common that the module `collections` (it comes with Python) has a
-dictionary made for it: **`Counter`**. Give it the values, and it counts them:
+**With [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter).** Counting is so common that the module `collections` (it comes with Python) has a
+dictionary made for it: **[`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter)**. Give it the values, and it counts them:
 
 ```python run
 from collections import Counter
@@ -582,9 +582,9 @@ print(counts["Sofia"], counts["Vidin"])       # a missing key counts 0 - no KeyE
 print(len(counts), "different regions")
 ```
 
-A `Counter` is a dictionary: `items()`, `sorted(...)` and `dict(counts)` work as in
+A [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) is a dictionary: [`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items), [`sorted(...)`](https://docs.python.org/3/builtins/functions.html#sorted) and [`dict(counts)`](https://docs.python.org/3/builtins/stdtypes.html#dict) work as in
 [session 6](./06-dictionaries.md#_3-iterating-over-a-dictionary). Two differences: a
-missing key gives `0` instead of a `KeyError`, and `most_common(n)` gives the `n`
+missing key gives `0` instead of a `KeyError`, and [`most_common(n)`](https://docs.python.org/3/library/collections.html#collections.Counter.most_common) gives the `n`
 largest counts, largest first.
 
 **Loans per product.** On the portfolio - the loans per product, from a generator expression
@@ -601,7 +601,7 @@ print(products.most_common())
 print(sum(products.values()), "loans")
 ```
 
-**Count in a loop.** You can also start with an empty `Counter()` and add one value at a time - useful in
+**Count in a loop.** You can also start with an empty [`Counter()`](https://docs.python.org/3/library/collections.html#collections.Counter) and add one value at a time - useful in
 a loop that does more than counting. `+= 1` works for a new key too, because the
 missing key starts at `0`. Two counters are equal (`==`) when they have the same
 values with the same counts:
@@ -640,7 +640,7 @@ print(loans["product"].value_counts())
 :::
 
 ::: tip Try it
-Count the loans per `stage` in `loans.csv` with a `Counter`. Which stage is the
+Count the loans per `stage` in `loans.csv` with a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter). Which stage is the
 largest? What does `counts["4"]` give - and why `"4"` and not `4`?
 :::
 
@@ -704,7 +704,7 @@ and count how many names were changed.
 
 ### Numbers
 
-`float()` understands only one format: a point for the decimals, and no separators
+[`float()`](https://docs.python.org/3/builtins/functions.html#float) understands only one format: a point for the decimals, and no separators
 between the thousands. Text from Excel, from reports and from people has other
 formats:
 
@@ -715,7 +715,7 @@ print(float("1 234 567,89"))     # ValueError: could not convert string to float
 ```
 
 **A known format.** When you know the format of the source, bring the text to the Python format with
-`replace`, then convert. The Bulgarian format has spaces between the thousands and a
+[`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace), then convert. The Bulgarian format has spaces between the thousands and a
 decimal comma:
 
 ```python run
@@ -737,7 +737,7 @@ format a source uses and write one function for it. Do not guess value by value.
 
 ### `date`: a day
 
-The module `datetime` has the types for dates and times. `date` is a day: a year, a
+The module `datetime` has the types for dates and times. [`date`](https://docs.python.org/3/library/datetime.html#datetime.date) is a day: a year, a
 month and a day.
 
 ```python run
@@ -752,7 +752,7 @@ print(date.today())                            # TODAY() in SAS
 ### From text to a date
 
 The ISO format `YYYY-MM-DD` is the format of the sample data, of databases and of
-JSON. It has its own method, `date.fromisoformat`:
+JSON. It has its own method, [`date.fromisoformat`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat):
 
 ```python run
 from datetime import date
@@ -763,7 +763,7 @@ print(start.isoformat())               # and back to text
 ```
 
 For any other format, describe it with **format codes**.
-`datetime.strptime(text, format)` reads a date from text, and `strftime(format)`
+[`datetime.strptime(text, format)`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) reads a date from text, and [`strftime(format)`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime)
 writes a date as text:
 
 | Code | Means | Example |
@@ -784,7 +784,7 @@ print(d.strftime("%d.%m.%Y"))                               # PUT(d, DDMMYYP10.)
 print(f"{d:%d.%m.%Y}")                                      # the codes work in f-strings too
 ```
 
-`strptime` gives a `datetime` (a day **and** a time); `.date()` keeps only the day.
+[`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) gives a `datetime` (a day **and** a time); [`.date()`](https://docs.python.org/3/library/datetime.html#datetime.datetime.date) keeps only the day.
 
 **A wrong date.** A text that does not fit the format is a `ValueError`. An impossible date is one
 too:
@@ -821,8 +821,8 @@ print(report_date + timedelta(days=30))           # 30 days later
 ```
 
 ::: tip Try it
-How many days are left from today to the end of this year? Use `date.today()` and
-`date(year, 12, 31)`.
+How many days are left from today to the end of this year? Use [`date.today()`](https://docs.python.org/3/library/datetime.html#datetime.date.today) and
+[`date(year, 12, 31)`](https://docs.python.org/3/library/datetime.html#datetime.date).
 :::
 
 ## 7. Regular expressions: a pattern for many strings
@@ -835,9 +835,9 @@ expression** (*regex*) describes a **set** of texts by their shape: "a date like
 
 | Want | String method | Regular expression |
 |---|---|---|
-| contains `EUR` | `"EUR" in s` | `re.search(r"EUR", s)` |
-| an L and 6 digits | `len(s) == 7 and s[0] == "L" and s[1:].isdigit()` | `re.fullmatch(r"L\d{6}", s)` |
-| every date `dd.mm.yyyy` inside a text | - (a loop with `find` and checks) | `re.findall(r"\d{2}\.\d{2}\.\d{4}", s)` |
+| contains `EUR` | `"EUR" in s` | [`re.search(r"EUR", s)`](https://docs.python.org/3/library/re.html#re.search) |
+| an L and 6 digits | [`len(s) == 7 and s[0] == "L" and s[1:].isdigit()`](https://docs.python.org/3/builtins/functions.html#len) | [`re.fullmatch(r"L\d{6}", s)`](https://docs.python.org/3/library/re.html#re.fullmatch) |
+| every date `dd.mm.yyyy` inside a text | - (a loop with [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find) and checks) | [`re.findall(r"\d{2}\.\d{2}\.\d{4}", s)`](https://docs.python.org/3/library/re.html#re.findall) |
 
 For a simple test, use the string methods - they are clearer. For a shape, use a
 regex. In SAS the same patterns work with `PRXMATCH`; in SQL, `LIKE` does a small
@@ -845,7 +845,7 @@ part of it and `REGEXP_LIKE` the rest.
 
 ### `re.search` and the match object
 
-The module `re` comes with Python. `re.search(pattern, text)` looks for the first
+The module `re` comes with Python. [`re.search(pattern, text)`](https://docs.python.org/3/library/re.html#re.search) looks for the first
 place where the pattern fits. It returns a **match object** - or `None` if the
 pattern fits nowhere:
 
@@ -942,7 +942,7 @@ print(re.findall(r"[^0-9]", "L000123"))
 print(re.findall(r"[A-Z][A-Z][A-Z]", "100 EUR and 50 USD and 7 eur"))
 ```
 
-`re.findall` returns a list with **all** the places where the pattern fits (section
+[`re.findall`](https://docs.python.org/3/library/re.html#re.findall) returns a list with **all** the places where the pattern fits (section
 9).
 
 The characters with a special meaning are `. ^ $ * + ? { } [ ] \ | ( )`. Put a `\` in
@@ -1025,9 +1025,9 @@ need so that `EURO` is not found?
 
 | Function | Where the pattern must fit | SAS / SQL |
 |---|---|---|
-| `re.search(p, s)` | anywhere in the text | `PRXMATCH(p, s) > 0` in SAS, `LIKE '%...%'` in SQL |
-| `re.match(p, s)` | at the **start** of the text | `LIKE '...%'` in SQL |
-| `re.fullmatch(p, s)` | the **whole** text | `LIKE '...'`, `REGEXP_LIKE(s, '^...$')` in SQL |
+| [`re.search(p, s)`](https://docs.python.org/3/library/re.html#re.search) | anywhere in the text | `PRXMATCH(p, s) > 0` in SAS, `LIKE '%...%'` in SQL |
+| [`re.match(p, s)`](https://docs.python.org/3/library/re.html#re.match) | at the **start** of the text | `LIKE '...%'` in SQL |
+| [`re.fullmatch(p, s)`](https://docs.python.org/3/library/re.html#re.fullmatch) | the **whole** text | `LIKE '...'`, `REGEXP_LIKE(s, '^...$')` in SQL |
 
 ```python run
 import re
@@ -1041,12 +1041,12 @@ for s in ["L000001", "L000001 ", "xL000001", "L0000012"]:
     print(f"{s!r:>12} search={found!s:<6} match={at_start!s:<6} fullmatch={whole}")
 ```
 
-To **validate** a value, use `fullmatch`. `search` says yes when the pattern is
+To **validate** a value, use [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch). [`search`](https://docs.python.org/3/library/re.html#re.search) says yes when the pattern is
 **somewhere** in the text, also with other characters around it.
 
 ### `findall`: all matches
 
-`findall` returns a **list of strings** - all the places where the pattern fits:
+[`findall`](https://docs.python.org/3/library/re.html#re.findall) returns a **list of strings** - all the places where the pattern fits:
 
 ```python run
 import re
@@ -1059,7 +1059,7 @@ print(len(re.findall(r"L\d{6}", comment)))          # how many: REGEXP_COUNT in 
 
 ### `sub`: replace
 
-`re.sub(pattern, replacement, text)` replaces **every** match - `PRXCHANGE` in SAS,
+[`re.sub(pattern, replacement, text)`](https://docs.python.org/3/library/re.html#re.sub) replaces **every** match - `PRXCHANGE` in SAS,
 `REGEXP_REPLACE` in SQL:
 
 ```python run
@@ -1087,7 +1087,7 @@ print(re.findall(r"\d+ EUR", text, flags=re.IGNORECASE))     # the short name: r
 
 ::: tip Try it
 Count the comments of `loan_comments.csv` that contain the word `review` in any
-case, with `re.search` and a flag. Then count them with a string method
+case, with [`re.search`](https://docs.python.org/3/library/re.html#re.search) and a flag. Then count them with a string method
 (`"review" in text.lower()`). Is it the same number?
 :::
 
@@ -1095,8 +1095,8 @@ case, with `re.search` and a flag. Then count them with a string method
 
 ### Groups: take the match apart
 
-Round brackets make a **group**. After a match, `group(1)`, `group(2)`, ... give the
-text of each group, and `groups()` gives all of them as a tuple:
+Round brackets make a **group**. After a match, [`group(1)`](https://docs.python.org/3/library/re.html#re.Match.group), [`group(2)`](https://docs.python.org/3/library/re.html#re.Match.group), ... give the
+text of each group, and [`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups) gives all of them as a tuple:
 
 ```python run
 import re
@@ -1112,7 +1112,7 @@ print(f"{year}-{month}-{day}")
 
 In SAS: `PRXPOSN(re, 1, text)` after `PRXMATCH`.
 
-**`findall` with groups.** With **one** group in the pattern, `findall` returns the text of the group. With
+**[`findall`](https://docs.python.org/3/library/re.html#re.findall) with groups.** With **one** group in the pattern, [`findall`](https://docs.python.org/3/library/re.html#re.findall) returns the text of the group. With
 **several** groups, it returns a list of tuples:
 
 ```python run
@@ -1136,7 +1136,7 @@ text = "Payment 1 250,00 EUR; payment 99,50 USD; fee 10,00 BGN"
 print(re.findall(r"\d+,\d{2} (EUR|USD)", text))
 ```
 
-**Brackets without a group.** The brackets also made a group, so `findall` returned only the currency. Write
+**Brackets without a group.** The brackets also made a group, so [`findall`](https://docs.python.org/3/library/re.html#re.findall) returned only the currency. Write
 `(?:...)` for brackets that only **keep parts together** and are not a group:
 
 ```python run
@@ -1152,14 +1152,14 @@ print(re.findall(r"\d+(?:\.\d+)?", "rates 12.97 and 13 and 4.5"))
 ::: tip Try it
 Write a pattern with three groups for `"Overdue 60 days. Reminder sent on
 2026-04-24."` that gives the year, the month and the day of the date with
-`groups()`.
+[`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups).
 :::
 
 ## 11. Validate and extract
 
 ### Validate: the patterns of our ids
 
-Each pattern describes the **shape** of a valid value. With `fullmatch`, the whole
+Each pattern describes the **shape** of a valid value. With [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch), the whole
 text must fit:
 
 ```python run
@@ -1212,7 +1212,7 @@ print(f"{ok} valid shape, {empty} empty, {len(ibans) - ok - empty} wrong")
 ::: warning The shape is not the meaning
 A regex checks the **form**. `31.09.2026` has the right shape, but there is no 31st
 of September. So: first the shape with a regex, then the real check - for a date,
-`strptime` (section 6).
+[`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) (section 6).
 :::
 
 ### Extract: values from free text
@@ -1277,7 +1277,7 @@ bad examples, as the checks of the tasks do. [regex101.com](https://regex101.com
 
 ::: tip Try it
 All loan ids that the comments **mention** in their text (`L` and 6 digits, whole
-words): collect them with `findall` from every comment. How many different ids are
+words): collect them with [`findall`](https://docs.python.org/3/library/re.html#re.findall) from every comment. How many different ids are
 there?
 :::
 
@@ -1286,21 +1286,21 @@ there?
 | Topic | Remember |
 |-------|----------|
 | Immutable | every method returns a new string: `s = s.strip()` |
-| Case | `upper`, `lower`, `title` (fix legal forms after it); compare with `.lower()` on both sides |
-| Spaces | `strip` / `lstrip` / `rstrip` at the ends; `" ".join(s.split())` = `COMPBL` |
-| Find and test | `in`; `startswith((...))`; `find` gives -1; `count`; `isdigit`, `isalpha`, `isalnum` |
-| Split and join | `split(",")` keeps empty fields; `split()` cuts at any spaces; `rsplit`, `partition`; `", ".join(strings)` |
-| Replace | `replace(old, new)`; `removeprefix` / `removesuffix`; `zfill` |
+| Case | [`upper`](https://docs.python.org/3/builtins/stdtypes.html#str.upper), [`lower`](https://docs.python.org/3/builtins/stdtypes.html#str.lower), [`title`](https://docs.python.org/3/builtins/stdtypes.html#str.title) (fix legal forms after it); compare with [`.lower()`](https://docs.python.org/3/builtins/stdtypes.html#str.lower) on both sides |
+| Spaces | [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) / [`lstrip`](https://docs.python.org/3/builtins/stdtypes.html#str.lstrip) / [`rstrip`](https://docs.python.org/3/builtins/stdtypes.html#str.rstrip) at the ends; `" ".join(s.split())` = `COMPBL` |
+| Find and test | `in`; [`startswith((...))`](https://docs.python.org/3/builtins/stdtypes.html#str.startswith); [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find) gives -1; [`count`](https://docs.python.org/3/builtins/stdtypes.html#str.count); [`isdigit`](https://docs.python.org/3/builtins/stdtypes.html#str.isdigit), [`isalpha`](https://docs.python.org/3/builtins/stdtypes.html#str.isalpha), [`isalnum`](https://docs.python.org/3/builtins/stdtypes.html#str.isalnum) |
+| Split and join | [`split(",")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) keeps empty fields; [`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) cuts at any spaces; [`rsplit`](https://docs.python.org/3/builtins/stdtypes.html#str.rsplit), [`partition`](https://docs.python.org/3/builtins/stdtypes.html#str.partition); `", ".join(strings)` |
+| Replace | [`replace(old, new)`](https://docs.python.org/3/builtins/stdtypes.html#str.replace); [`removeprefix`](https://docs.python.org/3/builtins/stdtypes.html#str.removeprefix) / [`removesuffix`](https://docs.python.org/3/builtins/stdtypes.html#str.removesuffix); [`zfill`](https://docs.python.org/3/builtins/stdtypes.html#str.zfill) |
 | Cleaning | one function per column, `None` for what cannot be fixed; check against a trusted source |
-| Counting | `Counter(values)` = `GROUP BY` + `COUNT(*)`, `PROC FREQ`; `most_common(n)`; a missing key counts 0; clean the key first |
-| Numbers | know the format of the source; `replace`, then `float` |
-| Dates | `date.fromisoformat`; `datetime.strptime(s, "%d.%m.%Y").date()`; `strftime`; `b - a` gives a `timedelta` |
+| Counting | [`Counter(values)`](https://docs.python.org/3/library/collections.html#collections.Counter) = `GROUP BY` + `COUNT(*)`, `PROC FREQ`; [`most_common(n)`](https://docs.python.org/3/library/collections.html#collections.Counter.most_common); a missing key counts 0; clean the key first |
+| Numbers | know the format of the source; [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace), then `float` |
+| Dates | [`date.fromisoformat`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat); [`datetime.strptime(s, "%d.%m.%Y").date()`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime); [`strftime`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime); `b - a` gives a `timedelta` |
 | Patterns | always `r"..."`; `.` any character, `\.` a point; `\d`, `\s`, `\w`; `[A-Z]`, `[^0-9]` |
 | Quantifiers | `+` `*` `?` `{n}` `{n,m}` |
 | Positions | `^` start, `$` end, `\b` word boundary |
-| Functions | `search` (anywhere), `match` (start), `fullmatch` (the whole text - to validate), `findall`, `sub`; `re.I` |
-| Groups | `( )` and `group(1)`, `groups()`; `findall` with groups; `a\|b`; `(?:...)` is not a group |
-| SAS / SQL | `PRXMATCH` = `search`; `PRXPOSN` = `group`; `PRXCHANGE` = `sub`; `LIKE` `_` / `%` = `.` / `.*` |
+| Functions | [`search`](https://docs.python.org/3/library/re.html#re.search) (anywhere), [`match`](https://docs.python.org/3/library/re.html#re.match) (start), [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch) (the whole text - to validate), [`findall`](https://docs.python.org/3/library/re.html#re.findall), [`sub`](https://docs.python.org/3/library/re.html#re.sub); `re.I` |
+| Groups | `( )` and [`group(1)`](https://docs.python.org/3/library/re.html#re.Match.group), [`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups); [`findall`](https://docs.python.org/3/library/re.html#re.findall) with groups; `a\|b`; `(?:...)` is not a group |
+| SAS / SQL | `PRXMATCH` = [`search`](https://docs.python.org/3/library/re.html#re.search); `PRXPOSN` = [`group`](https://docs.python.org/3/library/re.html#re.Match.group); `PRXCHANGE` = [`sub`](https://docs.python.org/3/library/re.html#re.sub); `LIKE` `_` / `%` = `.` / `.*` |
 
 ## Practice
 
@@ -1315,13 +1315,13 @@ python 07-text-and-regex/practice/task1-case-and-spaces.py
 | Task | File | What you do |
 |------|------|-------------|
 | 1 | `task1-case-and-spaces.py` | Normalise names, cities and codes: case, spaces, prefixes |
-| 2 | `task2-predict-strings.py` | Predict: `split`, `strip`, `find`, `join`, `replace`, slices |
+| 2 | `task2-predict-strings.py` | Predict: [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split), [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip), [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find), [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join), [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace), slices |
 | 3 | `task3-split-join.py` | Settings `key=value;...` into a dict and back; `SCAN`; a CSV line |
 | 4 | `task4-identifiers.py` | Clean client ids, EIKs, IBANs and e-mails |
 | 5 | `task5-dates.py` | Dates from text and back; days between; whole years |
 | 6 | `task6-first-patterns.py` | Write patterns: ids, codes, currencies, whole words |
-| 7 | `task7-predict-regex.py` | Predict `findall`, `search`, `fullmatch`, `sub` |
-| 8 | `task8-validate.py` | Validators with `fullmatch`: loan id, EIK, IBAN, e-mail, date |
+| 7 | `task7-predict-regex.py` | Predict [`findall`](https://docs.python.org/3/library/re.html#re.findall), [`search`](https://docs.python.org/3/library/re.html#re.search), [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch), [`sub`](https://docs.python.org/3/library/re.html#re.sub) |
+| 8 | `task8-validate.py` | Validators with [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch): loan id, EIK, IBAN, e-mail, date |
 | 9 | `task9-extract.py` (Optional) | Loan ids, dates, amounts and percents from comments |
 
 Three more files are for the [Self-study](#self-study) topics - do them after you
@@ -1329,7 +1329,7 @@ read the topic:
 
 | Task | File | Self-study topic |
 |------|------|------------------|
-| 10 | `task10-amounts.py` | Numbers in any format; `translate` |
+| 10 | `task10-amounts.py` | Numbers in any format; [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate) |
 | 11 | `task11-groups.py` | Named groups |
 | 12 | `task12-sub.py` | Greedy and lazy; back-references; a function as the replacement |
 
@@ -1355,7 +1355,7 @@ homework.
 
 ### Padding and alignment
 
-`rjust`, `ljust` and `center` pad to a width with any character:
+[`rjust`](https://docs.python.org/3/builtins/stdtypes.html#str.rjust), [`ljust`](https://docs.python.org/3/builtins/stdtypes.html#str.ljust) and [`center`](https://docs.python.org/3/builtins/stdtypes.html#str.center) pad to a width with any character:
 
 ```python run
 print(repr("EUR".ljust(6)), repr("EUR".rjust(6)), repr("EUR".center(7, "*")))
@@ -1390,7 +1390,7 @@ for row in loans:
 **Exercise**
 
 1. Print the numbers 1, 25 and 400 as loan ids `L000001`, `L000025`, `L000400` -
-   once with `zfill`, once with an f-string.
+   once with [`zfill`](https://docs.python.org/3/builtins/stdtypes.html#str.zfill), once with an f-string.
 
 ::: details Answer
 ```python
@@ -1401,7 +1401,7 @@ for n in [1, 25, 400]:
 
 ### `translate`: change or delete characters
 
-`str.maketrans` builds a table of character changes, `translate` applies it - in one
+[`str.maketrans`](https://docs.python.org/3/builtins/stdtypes.html#str.maketrans) builds a table of character changes, [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate) applies it - in one
 pass. The SAS `TRANSLATE` and `COMPRESS(s, chars)`:
 
 ```python run
@@ -1413,7 +1413,7 @@ print("C-00 26".translate(drop))
 print("131 234-567.".translate(drop))
 ```
 
-**A trap: two `replace` calls.** Why not two `replace` calls? Because the second call also changes the result of the
+**A trap: two [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace) calls.** Why not two [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace) calls? Because the second call also changes the result of the
 first one:
 
 ```python run
@@ -1423,7 +1423,7 @@ print(s.replace(",", "X").replace(".", ",").replace("X", " "))   # a temporary m
 ```
 
 **Back to the Bulgarian format.** And back: a number in the Bulgarian format for a report. The format spec gives the
-English format; then swap the characters with `translate`:
+English format; then swap the characters with [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate):
 
 ```python run
 def format_bg(value, decimals=2):
@@ -1438,7 +1438,7 @@ print(format_bg(-5000, 0))
 **Exercise**
 
 1. `"BG80 test 9661-1020 3456 78"`: make it upper case, without spaces and dashes -
-   in one line with `translate` and `upper`.
+   in one line with [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate) and [`upper`](https://docs.python.org/3/builtins/stdtypes.html#str.upper).
 
 ::: details Answer
 ```python
@@ -1556,8 +1556,8 @@ for raw in ["2014-06-08", "08.06.2014", "08/06/2014", "20140608", "8 Jun 2014"]:
 
 ::: details Advanced: month names and the language
 `%b` and `%B` follow the **locale**. By default Python uses English month names, but
-if a program (or a library) switches the locale with `locale.setlocale`, `%b` expects
-the month names of that language, and `strptime("8 Jun 2014", "%d %b %Y")` can fail.
+if a program (or a library) switches the locale with [`locale.setlocale`](https://docs.python.org/3/library/locale.html#locale.setlocale), `%b` expects
+the month names of that language, and [`strptime("8 Jun 2014", "%d %b %Y")`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) can fail.
 For data, prefer numeric formats. If a source has English month names, a small
 dictionary `{"Jan": 1, ...}` ([session 6](./06-dictionaries.md)) is the safe way.
 :::
@@ -1649,7 +1649,7 @@ data = "София".encode("cp1251")
 print(data.decode("utf-8"))          # UnicodeDecodeError
 ```
 
-That is why every `open()` in this course says `encoding="utf-8"`: without it, Python
+That is why every [`open()`](https://docs.python.org/3/builtins/functions.html#open) in this course says `encoding="utf-8"`: without it, Python
 3.12 - 3.14 on Windows uses the Windows encoding of the computer (often cp1252 or
 cp1251), and the same script gives different results on different computers. (From
 Python 3.15 on, UTF-8 is the default everywhere. Still write it: the script may run
@@ -1681,7 +1681,7 @@ with open("data/loans_export.csv", encoding="utf-8-sig") as file:
 
 **Exercises**
 
-1. Read `regions_bg.csv` with `csv.DictReader` and the right encoding, and build a
+1. Read `regions_bg.csv` with [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) and the right encoding, and build a
    dictionary `name_bg -> name_en`.
 2. Write the same rows into a new file `regions_utf8.csv` in UTF-8, and read it back.
 
@@ -1708,7 +1708,7 @@ with open("regions_utf8.csv", encoding="utf-8") as file:
 
 Bulgaria has an official transliteration (the Transliteration Act of 2009): `ж` ->
 `zh`, `ц` -> `ts`, `ч` -> `ch`, `ш` -> `sh`, `щ` -> `sht`, `ъ` -> `a`, `ю` -> `yu`, `я`
--> `ya`, ... A dictionary of single letters to strings, used with `translate`:
+-> `ya`, ... A dictionary of single letters to strings, used with [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate):
 
 ```python run
 LETTERS = {
@@ -1723,13 +1723,13 @@ for name in ["София", "Стара Загора", "Пловдив", "Шум�
     print(name, "->", name.translate(TABLE))
 ```
 
-`str.maketrans` accepts a dictionary of **one character -> any string**, so one
+[`str.maketrans`](https://docs.python.org/3/builtins/stdtypes.html#str.maketrans) accepts a dictionary of **one character -> any string**, so one
 letter can become two or three. (The full rules have a few exceptions, for example
 `-ия` at the end of a word is `-ia`: `София` -> `Sofia`, not `Sofiya`.)
 
 **One letter, two forms.** Another trap of text from many sources: the same letter can be stored in two ways -
 `"й"` as one character, or `"и"` plus a combining mark. They look the same, but are
-not `==`. `unicodedata.normalize("NFC", s)` brings both to the same form:
+not `==`. [`unicodedata.normalize("NFC", s)`](https://docs.python.org/3/library/unicodedata.html#unicodedata.normalize) brings both to the same form:
 
 ```python run
 import unicodedata
@@ -1743,7 +1743,7 @@ print(unicodedata.normalize("NFC", a) == unicodedata.normalize("NFC", b))
 **Exercise**
 
 1. Add the rule "`ия` at the end of a word -> `ia`" to the transliteration: first
-   replace it, then `translate`. Check it with `София` and `Мария`.
+   replace it, then [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate). Check it with `София` and `Мария`.
 
 ::: details Answer
 ```python
@@ -1757,12 +1757,12 @@ def to_latin(text):
 
 print(to_latin("София"), to_latin("Мария"))      # Sofia Maria
 ```
-(The ASCII letters `ia` pass through `translate` unchanged.)
+(The ASCII letters `ia` pass through [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate) unchanged.)
 :::
 
 ### Greedy and lazy quantifiers
 
-`*` also matches **nothing** - zero digits are "0 or more". With `findall`, that gives
+`*` also matches **nothing** - zero digits are "0 or more". With [`findall`](https://docs.python.org/3/library/re.html#re.findall), that gives
 empty strings between the matches:
 
 ```python run
@@ -1818,7 +1818,7 @@ print(re.findall(r"\(([^)]*)\)", text))  # two matches, without the brackets
 
 ### More functions of `re`
 
-**`finditer`: the match objects.** `finditer` gives the **match objects**, with their positions - when you need more
+**[`finditer`](https://docs.python.org/3/library/re.html#re.finditer): the match objects.** [`finditer`](https://docs.python.org/3/library/re.html#re.finditer) gives the **match objects**, with their positions - when you need more
 than the text:
 
 ```python run
@@ -1829,7 +1829,7 @@ for m in re.finditer(r"L\d{6}", comment):
     print(m.group(), "at", m.start())
 ```
 
-**`split` with a pattern.** `re.split` cuts at every match - when the separators vary:
+**[`split`](https://docs.python.org/3/library/re.html#re.split) with a pattern.** [`re.split`](https://docs.python.org/3/library/re.html#re.split) cuts at every match - when the separators vary:
 
 ```python run
 import re
@@ -1853,7 +1853,7 @@ print(re.findall(r"^\S+ ERROR (.*)$", log))                  # nothing: ^ is the
 print(re.findall(r"^\S+ ERROR (.*)$", log, flags=re.M))      # one per line
 ```
 
-**`re.compile`: a pattern used many times.** `re.compile` turns a pattern into an object with the same methods. Give it a name at
+**[`re.compile`](https://docs.python.org/3/library/re.html#re.compile): a pattern used many times.** [`re.compile`](https://docs.python.org/3/library/re.html#re.compile) turns a pattern into an object with the same methods. Give it a name at
 the top of the script, and use it in a loop - it reads well and is checked once:
 
 ```python run
@@ -1870,7 +1870,7 @@ others = [(loan, found) for loan, found in mentioned if found]
 print(len(others), "comments mention another loan, e.g.", others[:3])
 ```
 
-**`re.subn`: count the replacements.** `re.subn` works like `re.sub`, and also returns the number of replacements - useful in a
+**[`re.subn`](https://docs.python.org/3/library/re.html#re.subn): count the replacements.** [`re.subn`](https://docs.python.org/3/library/re.html#re.subn) works like [`re.sub`](https://docs.python.org/3/library/re.html#re.sub), and also returns the number of replacements - useful in a
 cleaning report:
 
 ```python run
@@ -1880,7 +1880,7 @@ text, n = re.subn(r"\s{2,}", " ", "a  b   c d")
 print(text, "|", n, "replacements")
 ```
 
-**`re.escape`.** When a text that you look for has special characters, `re.escape(text)` puts the backslashes for you:
+**[`re.escape`](https://docs.python.org/3/library/re.html#re.escape).** When a text that you look for has special characters, [`re.escape(text)`](https://docs.python.org/3/library/re.html#re.escape) puts the backslashes for you:
 
 ```python run
 import re
@@ -1892,7 +1892,7 @@ print(re.findall(re.escape("(net)"), "12.5% (net), 14% (gross), 3% (net)"))
 **Exercise**
 
 1. Split `"retail;sme , corporate,project"` into the four words with one
-   `re.split`, without spaces around the words.
+   [`re.split`](https://docs.python.org/3/library/re.html#re.split), without spaces around the words.
 
 ::: details Answer
 ```python
@@ -1931,7 +1931,7 @@ print(PAYMENT.search("paid 99,50").groups())          # the currency is missing
 print(PAYMENT.search("paid 99,50").groups("EUR"))     # a default for missing groups
 ```
 
-**Records from a text.** A list of records from a text - `finditer` with named groups and `groupdict()`, one
+**Records from a text.** A list of records from a text - [`finditer`](https://docs.python.org/3/library/re.html#re.finditer) with named groups and [`groupdict()`](https://docs.python.org/3/library/re.html#re.Match.groupdict), one
 dictionary per match ([session 6](./06-dictionaries.md)):
 
 ```python run
@@ -1971,7 +1971,7 @@ print(repr(re.sub(r"(\d{2})\.(\d{2})", r"\2/\1", "15.09")))   # '09/15'
 
 #### A function as the replacement
 
-When the new text must be **calculated**, give `sub` a function: it gets the match
+When the new text must be **calculated**, give [`sub`](https://docs.python.org/3/library/re.html#re.sub) a function: it gets the match
 object and returns the replacement. Every amount in a text, converted to thousands
 of EUR:
 
@@ -2014,7 +2014,7 @@ test. Python 3.11 added *possessive* quantifiers (`*+`, `++`) and atomic groups
 
 1. Write one pattern with named groups for `"Overdue 60 days. Reminder sent to
    radoslav.iliev@example.org on 2026-04-24."` that gives the days, the e-mail and
-   the date with `groupdict()`.
+   the date with [`groupdict()`](https://docs.python.org/3/library/re.html#re.Match.groupdict).
 
 ::: details Answer
 ```python
@@ -2203,7 +2203,7 @@ with open("data/loan_comments.csv", encoding="utf-8") as file:
 print(checked, "IBANs in comments,", differ, "differ from the register")
 ```
 
-(`re.sub(r"\D", "", ...)` keeps only the digits - section 9.)
+([`re.sub(r"\D", "", ...)`](https://docs.python.org/3/library/re.html#re.sub) keeps only the digits - section 9.)
 
 **EIKs in the comments.** The same check for the EIKs in the guarantee comments - are they EIKs of companies
 in the register?
@@ -2289,7 +2289,7 @@ print(bool(IBAN_BG.fullmatch("BG05TEST77018249464461")))
 2. Rewrite the e-mail pattern of section 11 with `re.VERBOSE` and a comment per part.
 
 ::: details Answer
-1. `re.findall(r"\d[\d ]*,\d{2}(?= EUR)", text)` gives `['2 069,77', '99,50']`.
+1. [`re.findall(r"\d[\d ]*,\d{2}(?= EUR)", text)`](https://docs.python.org/3/library/re.html#re.findall) gives `['2 069,77', '99,50']`.
 2.
 ```python
 EMAIL = re.compile(r"""
@@ -2369,7 +2369,7 @@ that a shape check cannot find.
 
 ## Read more
 
-- Reference: [String methods](https://docs.python.org/3/library/stdtypes.html#string-methods),
+- Reference: [String methods](https://docs.python.org/3/builtins/stdtypes.html#string-methods),
   [`datetime`](https://docs.python.org/3/library/datetime.html) (the table of
   [format codes](https://docs.python.org/3/library/datetime.html#format-codes)),
   [`re`](https://docs.python.org/3/library/re.html)

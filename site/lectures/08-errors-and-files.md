@@ -17,7 +17,7 @@ title: 8. Error handling and file handling
 - raise your own errors with a clear message when the data is wrong;
 - work with files and folders through `pathlib`;
 - read and write text, CSV, JSON and Excel files;
-- sum by group and collect the rows of each group with `defaultdict` - `GROUP BY`
+- sum by group and collect the rows of each group with [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) - `GROUP BY`
   with `SUM` in SQL;
 - load a file with bad rows: keep the good rows, write the bad ones to a reject file
   with the reason, and report a summary - the job of the SAS log, done properly.
@@ -97,8 +97,8 @@ Read it **from the bottom up**:
 
 | Exception | When | A data example |
 |---|---|---|
-| `ValueError` | the type is right, the value is wrong | `float("n/a")`, `int("12.5")`, `strptime("31.09.2026", ...)` |
-| `TypeError` | the type is wrong | `"5" + 1`, `float(None)`, `None * 2` |
+| `ValueError` | the type is right, the value is wrong | [`float("n/a")`](https://docs.python.org/3/builtins/functions.html#float), [`int("12.5")`](https://docs.python.org/3/builtins/functions.html#int), [`strptime("31.09.2026", ...)`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) |
+| `TypeError` | the type is wrong | `"5" + 1`, [`float(None)`](https://docs.python.org/3/builtins/functions.html#float), `None * 2` |
 | `KeyError` | a dictionary has no such key | `rating_of["C9999"]` |
 | `IndexError` | a list has no such position | `fields[5]` of a short row |
 | `ZeroDivisionError` | division by zero | the average of an empty group |
@@ -141,8 +141,8 @@ with open("data/regions_bg.csv", encoding="utf-8") as file:     # the file is cp
 | `ERROR:` in the log stops the step | an exception that nobody catches |
 
 ::: tip Try it
-Run each line alone, and name the exception before you run it: `int(" 42 ")`,
-`int("4 2")`, `float("1e3")`, `["a"].index("b")`, `"abc"[10]`.
+Run each line alone, and name the exception before you run it: [`int(" 42 ")`](https://docs.python.org/3/builtins/functions.html#int),
+[`int("4 2")`](https://docs.python.org/3/builtins/functions.html#int), [`float("1e3")`](https://docs.python.org/3/builtins/functions.html#float), `["a"].index("b")`, `"abc"[10]`.
 :::
 
 ## 2. `try` / `except`
@@ -166,7 +166,7 @@ The rest of the `try` block after the error does **not** run.
 
 ### `as error`: the message
 
-`except ValueError as error` gives the exception object a name. `str(error)` is the
+`except ValueError as error` gives the exception object a name. [`str(error)`](https://docs.python.org/3/builtins/stdtypes.html#str) is the
 message - write it into your report:
 
 ```python run
@@ -281,7 +281,7 @@ Rules:
 
 ::: tip Try it
 Change `to_float` so that it also accepts the Bulgarian format `"12,50"`: try
-`float(value)` first, and if that fails, try again with the comma replaced. Test it
+[`float(value)`](https://docs.python.org/3/builtins/functions.html#float) first, and if that fails, try again with the comma replaced. Test it
 with `"12,50"`, `"12.50"`, `"1 234,5"` and `"abc"`.
 :::
 
@@ -369,7 +369,7 @@ except KeyError:
 ```
 
 Both are fine. Python code often uses EAFP when the check would repeat the work
-(converting a number to see if it can be converted), and `if` / `get` when the check
+(converting a number to see if it can be converted), and `if` / [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) when the check
 is cheap and clear (a key in a dictionary).
 
 ::: tip Try it
@@ -547,7 +547,7 @@ print(loans_file.name, "|", loans_file.stem, "|", loans_file.suffix, "|", loans_
 |---|---|
 | `LIBNAME src "C:\data";` | `src = Path(r"C:\data")` |
 | `FILENAME f "C:\data\loans.csv";` | `f = src / "loans.csv"` |
-| `%SYSFUNC(FEXIST(f))` | `f.exists()` |
+| `%SYSFUNC(FEXIST(f))` | [`f.exists()`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.exists) |
 
 ::: warning Windows paths in Python code
 A Windows path in a normal string has backslashes - and `"\n"`, `"\t"` are special
@@ -572,7 +572,7 @@ for path in sorted(Path("data").iterdir()):
 
 ### Find files: `glob`
 
-`glob(pattern)` lists the files of a folder whose names fit a pattern - `*` is any
+[`glob(pattern)`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) lists the files of a folder whose names fit a pattern - `*` is any
 text (the shell kind of pattern, not a regex):
 
 ```python run
@@ -598,7 +598,7 @@ print(note.read_text(encoding="utf-8"))
 print(Path.cwd())                                # the current folder
 ```
 
-`exist_ok=True` makes `mkdir` safe to run every month. `parents=True` creates the
+`exist_ok=True` makes [`mkdir`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir) safe to run every month. `parents=True` creates the
 missing folders above it too.
 
 **Names of output files.** Build the names of output files from parts - the month in the name, another suffix
@@ -743,7 +743,7 @@ then read the file back and print the number of lines.
 
 ### Read: `csv.reader` and `csv.DictReader`
 
-You know `csv.DictReader` ([lecture 7](./07-text-and-regex.md), the box at the start). `csv.reader` gives each row as a **list**.
+You know [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) ([lecture 7](./07-text-and-regex.md), the box at the start). [`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) gives each row as a **list**.
 Both understand quotes, and both take a `delimiter` for files that are not
 comma-separated - like `;` in a Bulgarian Excel export:
 
@@ -773,7 +773,7 @@ for row in reader:
     print(row)
 ```
 
-(`io.StringIO` makes a string behave like an open file - handy for examples and
+([`io.StringIO`](https://docs.python.org/3/library/io.html#io.StringIO) makes a string behave like an open file - handy for examples and
 tests. Note the quoted `"1,250.00"`: one field, not two.)
 
 **Typed records.** The values are text. With `DictReader` and a dictionary of converters, a file becomes
@@ -904,19 +904,19 @@ print(Path("out/regions_for_excel.csv").read_text(encoding="utf-8-sig"))
 
 | SAS | Python |
 |---|---|
-| `PROC IMPORT DATAFILE=... DBMS=CSV` | `csv.DictReader(open(...))` |
+| `PROC IMPORT DATAFILE=... DBMS=CSV` | [`csv.DictReader(open(...))`](https://docs.python.org/3/library/csv.html#csv.DictReader) |
 | `DLM=';'` | `delimiter=";"` |
-| `PROC EXPORT ... DBMS=CSV` | `csv.writer(...)`, `writerows` |
+| `PROC EXPORT ... DBMS=CSV` | [`csv.writer(...)`](https://docs.python.org/3/library/csv.html#csv.writer), `writerows` |
 
 ::: tip Try it
 Read `regions_bg.csv` (cp1251) and write it again as `out/regions_utf8.csv` in UTF-8
-with `;` as the separator. Open the result with `read_text` to check it.
+with `;` as the separator. Open the result with [`read_text`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.read_text) to check it.
 :::
 
 ## 8. JSON files
 
-JSON ([session 6](./06-dictionaries.md#the-shape-of-json)) is the format of configuration files and of web APIs. `json.load`
-reads a file into dictionaries and lists; `json.dump` writes one:
+JSON ([session 6](./06-dictionaries.md#the-shape-of-json)) is the format of configuration files and of web APIs. [`json.load`](https://docs.python.org/3/library/json.html#json.load)
+reads a file into dictionaries and lists; [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) writes one:
 
 ```python run
 import json
@@ -930,7 +930,7 @@ print(config["output"]["folder"], type(config["output"]["excel"]))
 
 Settings in a file, not in the code: next month you change the file, not the script.
 
-**JSON from a string.** `json.loads` reads JSON from a **string** - for example the answer of a web service:
+**JSON from a string.** [`json.loads`](https://docs.python.org/3/library/json.html#json.loads) reads JSON from a **string** - for example the answer of a web service:
 
 ```python run
 import json
@@ -941,7 +941,7 @@ print(data["rates"]["USD"], type(data["rates"]))
 print(round(1000 * data["rates"]["GBP"], 2), "GBP for 1000 EUR")
 ```
 
-**Write JSON.** `json.dump` writes a dictionary to a file:
+**Write JSON.** [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) writes a dictionary to a file:
 
 ```python run
 import json
@@ -977,8 +977,8 @@ print(json.loads(text)["loans_by_product"]["mortgage"])
 
 ::: warning JSON knows only a few types
 Strings, numbers, `true` / `false`, `null` (`None`), lists and objects (dicts). A
-`date` is not one of them - `json.dump` raises a `TypeError`. Store dates as ISO text
-(`d.isoformat()`), and convert back after reading. Keys of JSON objects are always
+`date` is not one of them - [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) raises a `TypeError`. Store dates as ISO text
+([`d.isoformat()`](https://docs.python.org/3/library/datetime.html#datetime.date.isoformat)), and convert back after reading. Keys of JSON objects are always
 strings: `{1: 323}` comes back as `{"1": 323}`.
 
 ```python run
@@ -1217,8 +1217,8 @@ the file line (the header is line 1).
 
 The summary of the load needs the **total per currency** of the good payments - in
 SQL `SELECT currency, SUM(amount) ... GROUP BY currency`, in SAS `PROC MEANS SUM`
-with `CLASS currency`. A `Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter))
-counts; for a sum, use the same idea as counting with `get`, with the amount instead
+with `CLASS currency`. A [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) ([lecture 7](./07-text-and-regex.md#counting-with-counter))
+counts; for a sum, use the same idea as counting with [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get), with the amount instead
 of `1`:
 
 ```python run
@@ -1228,9 +1228,9 @@ for currency, amount in [("EUR", 100.0), ("USD", 20.0), ("EUR", 50.0)]:
 print(totals)
 ```
 
-**With `defaultdict`.** `defaultdict` (also from `collections`) does the `get(..., 0.0)` part for you. It is
+**With [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict).** [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) (also from `collections`) does the [`get(..., 0.0)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) part for you. It is
 a dictionary that **creates a missing key** when you read it with `[]`.
-`defaultdict(float)` gives the new key the value `float()`, which is `0.0`, so you can
+[`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) gives the new key the value [`float()`](https://docs.python.org/3/builtins/functions.html#float), which is `0.0`, so you can
 add to it straight away:
 
 ```python run
@@ -1243,8 +1243,8 @@ print(totals)
 print(dict(totals))
 ```
 
-Pass `float`, not `float()`: the dictionary calls it for each new key.
-`dict(totals)` makes a normal dictionary with the same pairs. Round only after
+Pass `float`, not [`float()`](https://docs.python.org/3/builtins/functions.html#float): the dictionary calls it for each new key.
+[`dict(totals)`](https://docs.python.org/3/builtins/stdtypes.html#dict) makes a normal dictionary with the same pairs. Round only after
 summing a group.
 
 ::: info Animation
@@ -1267,7 +1267,7 @@ for product, total in sorted(totals.items()):
 ```
 
 **The rows of each group.** Sometimes you need the **rows** of each group, not only a number - a dictionary of
-lists. `defaultdict(list)` gives each new key a new empty list:
+lists. [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) gives each new key a new empty list:
 
 ```python run
 from collections import defaultdict
@@ -1289,7 +1289,7 @@ print(len(loans_of["C0002"]), "loans for C0002")
 
 ::: warning Reading a missing key adds it
 `totals["GBP"]` does not raise a `KeyError` - it **adds** `"GBP"` with `0.0`. A typo
-in a key makes a new group without any error. To only look, use `in` or `get`:
+in a key makes a new group without any error. To only look, use `in` or [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get):
 
 ```python run
 from collections import defaultdict
@@ -1318,14 +1318,14 @@ for (product, currency), total in sorted(totals.items()):
 ```
 
 For several values per group (`COUNT`, `SUM`, `MAX`), keep a small list per key,
-for example `defaultdict(lambda: [0, 0.0])` for `[count, sum]`. `lambda: [0, 0.0]`
+for example [`defaultdict(lambda: [0, 0.0])`](https://docs.python.org/3/library/collections.html#collections.defaultdict) for `[count, sum]`. `lambda: [0, 0.0]`
 is a function without a name ([session 4](./04-functions.md#_10-lambda)) that makes a new list
 for each new key.
 :::
 
 ::: tip Try it
 Change the portfolio example: sum the `amount` per `currency` instead of the
-outstanding per product. Then make a `defaultdict(list)` of the loan ids per
+outstanding per product. Then make a [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) of the loan ids per
 `stage`. How many loans are in stage 3?
 :::
 
@@ -1432,12 +1432,12 @@ the new rule reject?
 | `else` / `finally` | `else` without an error; `finally` always |
 | `raise` | `raise DataError(f"... {value!r}")`; `class DataError(ValueError): pass`; `from None` / `from error` |
 | Stop or go on | bad rows: reject and report; bad inputs or settings: raise; bugs: let them stop |
-| `pathlib` | `Path("data") / "x.csv"`; `exists`, `name`, `stem`, `suffix`; `glob("*.csv")`; `mkdir(parents=True, exist_ok=True)` |
+| `pathlib` | `Path("data") / "x.csv"`; [`exists`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.exists), `name`, `stem`, `suffix`; [`glob("*.csv")`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob); [`mkdir(parents=True, exist_ok=True)`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir) |
 | Files | `with open(path, mode, encoding="utf-8")`; modes `r`, `w`, `a`, `x`; loop over the file for big files |
-| CSV | `csv.reader` / `DictReader`; `delimiter=";"`; write with `newline=""`; `utf-8-sig` for Excel |
-| JSON | `json.load(f)`, `json.dump(obj, f, indent=2)`; dates as ISO text |
+| CSV | [`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) / `DictReader`; `delimiter=";"`; write with `newline=""`; `utf-8-sig` for Excel |
+| JSON | [`json.load(f)`](https://docs.python.org/3/library/json.html#json.load), [`json.dump(obj, f, indent=2)`](https://docs.python.org/3/library/json.html#json.dump); dates as ISO text |
 | Excel | `load_workbook(...)`, `ws.iter_rows(values_only=True)`; `Workbook()`, `ws.append`, `wb.save` |
-| Sums by group | `defaultdict(float)`: `totals[key] += amount`; `defaultdict(list)`: `groups[key].append(x)`; reading a missing key adds it |
+| Sums by group | [`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): `totals[key] += amount`; [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): `groups[key].append(x)`; reading a missing key adds it |
 | Loader | one check per rule, one `try` per row, a reject file with the reason, a summary |
 
 ## Practice
@@ -1478,7 +1478,7 @@ scripts, and a loader for a whole folder of monthly files.
 
 ### `logging`: the SAS log for Python scripts
 
-`print` is fine while you develop. A script that runs every month needs a **log**:
+[`print`](https://docs.python.org/3/builtins/functions.html#print) is fine while you develop. A script that runs every month needs a **log**:
 lines with a time and a level, in a file, that you can read when something went
 wrong. The module `logging` comes with Python:
 
@@ -1512,18 +1512,18 @@ an earlier setup; in a script you call `basicConfig` once, at the start.)
 
 | SAS log | `logging` |
 |---|---|
-| `NOTE:` | `log.info(...)` |
-| `WARNING:` | `log.warning(...)` |
-| `ERROR:` | `log.error(...)`, `log.exception(...)` |
+| `NOTE:` | [`log.info(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.info) |
+| `WARNING:` | [`log.warning(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.warning) |
+| `ERROR:` | [`log.error(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.error), [`log.exception(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.exception) |
 | `OPTIONS MPRINT;` for more detail | `level=logging.DEBUG` |
 
 **Exercises**
 
 1. Rewrite the summary of the payments loader (section 10) with `logging` instead of
-   `print`: one INFO line per currency, a WARNING if more than 1% of the rows were
+   [`print`](https://docs.python.org/3/builtins/functions.html#print): one INFO line per currency, a WARNING if more than 1% of the rows were
    rejected.
 2. Add a second handler that also prints the WARNING lines on the screen. (Hint:
-   `logging.StreamHandler()`, `setLevel`, `log.addHandler`.)
+   [`logging.StreamHandler()`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler), [`setLevel`](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel), [`log.addHandler`](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler).)
 
 ::: details Answer
 ```python
@@ -1542,7 +1542,7 @@ logging.getLogger().addHandler(screen)
 ### A folder of monthly files
 
 A monthly process often reads **all** files of a folder: one per month, one per
-branch. `glob` finds them, a regex ([lecture 7](./07-text-and-regex.md)) takes the month from the name, and
+branch. [`glob`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) finds them, a regex ([lecture 7](./07-text-and-regex.md)) takes the month from the name, and
 the loader reads each - one bad file must not stop the others:
 
 ```python run
@@ -1586,7 +1586,7 @@ reported with the kind of error.
    then `totals[month] = sum(v for v in values if v is not None)` and
    `skipped[path.name] = values.count(None)`. The `UnicodeDecodeError` still needs the
    `try`.
-2. `sorted(folder.glob(...), key=lambda p: tuple(int(x) for x in re.search(r"(\d{4})-(\d{1,2})", p.name).groups()))`.
+2. [`sorted(folder.glob(...), key=lambda p: tuple(int(x) for x in re.search(r"(\d{4})-(\d{1,2})", p.name).groups()))`](https://docs.python.org/3/builtins/functions.html#sorted).
    Sorting by name puts `2026-10` before `2026-9`, because text is compared letter by
    letter - another reason for two-digit months in file names.
 :::

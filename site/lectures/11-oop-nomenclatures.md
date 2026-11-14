@@ -15,8 +15,8 @@ title: "11. OOP in practice: nomenclatures"
   class** that holds its codes, its metadata, its rules and its methods;
 - check a nomenclature when it is created, and check a dataset against it;
 - apply a nomenclature to a dataset, and report the values it does not know;
-- create objects in more than one way with `classmethod`, and write helpers with
-  `staticmethod`;
+- create objects in more than one way with [`classmethod`](https://docs.python.org/3/builtins/functions.html#classmethod), and write helpers with
+  [`staticmethod`](https://docs.python.org/3/builtins/functions.html#staticmethod);
 - build special kinds of nomenclatures - with **ranges** and with a **hierarchy** -
   by **inheritance**;
 - keep all nomenclatures in a **registry** and apply them in the same way to
@@ -109,7 +109,7 @@ for name, groups in [("A", GROUPS_REPORT_A), ("B", GROUPS_REPORT_B)]:
 ```
 
 **A copy with a typo.** And a copy with a typo - `"credit card"` instead of `"credit_card"` - loses a whole
-product, without an error (counted with a `Counter`, [lecture 7](./07-text-and-regex.md#counting-with-counter)):
+product, without an error (counted with a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter), [lecture 7](./07-text-and-regex.md#counting-with-counter)):
 
 ```python run
 import csv
@@ -199,7 +199,7 @@ for code, label in stages.codes.items():
 ```
 
 **Equal nomenclatures.** Two nomenclatures are **equal** when all their fields are equal - the dataclass
-`__eq__` of [lecture 10](./10-oop-classes.md). The same codes with another version are **not** the same
+[`__eq__`](https://docs.python.org/3/reference/datamodel.html#object.__eq__) of [lecture 10](./10-oop-classes.md). The same codes with another version are **not** the same
 nomenclature:
 
 ```python run
@@ -233,7 +233,7 @@ class Nomenclature:
 
 ### Behave like a container: `len`, `in`, `for`
 
-Three special methods ([lecture 10](./10-oop-classes.md#special-methods-objects-that-work-with-python-s-operators), Self-study) make the object work with `len()`,
+Three special methods ([lecture 10](./10-oop-classes.md#special-methods-objects-that-work-with-python-s-operators), Self-study) make the object work with [`len()`](https://docs.python.org/3/builtins/functions.html#len),
 `in` and `for` - like the dictionary inside it:
 
 ```python run
@@ -263,7 +263,7 @@ print(sorted(products))
 
 ### A readable `__repr__`
 
-The automatic `repr` of a dataclass prints **all** the codes - too long for a list of
+The automatic [`repr`](https://docs.python.org/3/builtins/functions.html#repr) of a dataclass prints **all** the codes - too long for a list of
 200 products. A short one, with the metadata:
 
 ```python run
@@ -285,12 +285,12 @@ class Nomenclature:
 print(Nomenclature("product", {"mortgage": "Mortgage loan", "overdraft": "Overdraft"}, "3", date(2026, 7, 1)))
 ```
 
-(A dataclass does not write `__repr__` if the class has its own.)
+(A dataclass does not write [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__) if the class has its own.)
 
 ### Protect the codes
 
 The dictionary of codes is **shared** with whoever passed it in - a change outside
-changes the nomenclature (references, [session 3](./03-lists-tuples-sets.md#_7-a-list-is-mutable-names-and-references)). Take a **copy** in `__post_init__`:
+changes the nomenclature (references, [session 3](./03-lists-tuples-sets.md#_7-a-list-is-mutable-names-and-references)). Take a **copy** in [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__):
 
 ```python run
 from dataclasses import dataclass
@@ -312,7 +312,7 @@ print("leasing" in products.codes)             # ... does not reach the nomencla
 
 **A read-only view.** A copy can still be changed through `nom.codes[...] = ...`. If nobody should change
 the codes after the nomenclature is created, keep them behind a **read-only view** -
-`types.MappingProxyType` looks like a dictionary, but refuses changes:
+[`types.MappingProxyType`](https://docs.python.org/3/library/types.html#types.MappingProxyType) looks like a dictionary, but refuses changes:
 
 ```python run
 from types import MappingProxyType
@@ -332,7 +332,7 @@ the owner `"Treasury"` and the version `"2026.2"`. Print it, and the label of `U
 ### Rules when the nomenclature is created
 
 A nomenclature with a duplicate code, an empty label or a malformed code must not
-exist at all. `__post_init__` checks it, and raises a clear error ([lecture 8](./08-errors-and-files.md#raise-stop-with-a-clear-message)):
+exist at all. [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__) checks it, and raises a clear error ([lecture 8](./08-errors-and-files.md#raise-stop-with-a-clear-message)):
 
 ```python run
 import re
@@ -601,7 +601,7 @@ print(Counter(r["group"] for r in rows))
 ```
 
 **A total per label.** The new column, then a total per label - the outstanding per stage name, the SQL
-`GROUP BY` (`defaultdict(float)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
+`GROUP BY` ([`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
 
 ```python run
 import csv
@@ -651,7 +651,7 @@ print(result is rows)          # the "result" is the same list
 ### The unmapped report
 
 `apply` should also tell what it could not map. Return the new rows **and** a
-`Counter` of the unknown values:
+[`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) of the unknown values:
 
 ```python run
 import csv
@@ -1171,11 +1171,11 @@ print(isinstance(dpd, BandedNomenclature), isinstance(dpd, Nomenclature))
 - `class BandedNomenclature(Nomenclature)` - the base class in brackets. The subclass
   **is a** `Nomenclature`: it has all its fields and methods.
 - `lookup` is **overridden**: the subclass has its own version, and every call of
-  `lookup` - also the one **inside** `apply` and `__contains__`, written in the base
+  `lookup` - also the one **inside** `apply` and [`__contains__`](https://docs.python.org/3/reference/datamodel.html#object.__contains__), written in the base
   class - uses it. This is the power of inheritance.
-- `super().__post_init__()` runs the checks of the base class first, then the new
+- [`super().__post_init__()`](https://docs.python.org/3/builtins/functions.html#super) runs the checks of the base class first, then the new
   checks. Without it, the base checks would be lost.
-- `zip(self.bands, self.bands[1:])` gives each band with the next one: the list
+- [`zip(self.bands, self.bands[1:])`](https://docs.python.org/3/builtins/functions.html#zip) gives each band with the next one: the list
   side by side with itself, one step later ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)).
   Each pair of bands is unpacked at once: `(_, high, _)` from the first band,
   `(low, _, _)` from the next.
@@ -1335,8 +1335,8 @@ mismatches = [r for r in ratings if grade_of_pd(pd_of_rating[r]) != grade_of_rat
 print(len(ratings), "clients,", len(mismatches), "mismatches")
 ```
 
-**Extend with `super()`.** An override can also **extend** the method of the base class with `super()` - here the
-`repr` gets the number of bands:
+**Extend with [`super()`](https://docs.python.org/3/builtins/functions.html#super).** An override can also **extend** the method of the base class with [`super()`](https://docs.python.org/3/builtins/functions.html#super) - here the
+[`repr`](https://docs.python.org/3/builtins/functions.html#repr) gets the number of bands:
 
 ```python run
 import sys
@@ -1402,7 +1402,7 @@ print(products.parent("Mortgage"), products.children("business"))
 print(products.lookup("project_finance"), len(products))
 ```
 
-Here nothing is overridden except `__post_init__` (with `super()`); the subclass only
+Here nothing is overridden except [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__) (with [`super()`](https://docs.python.org/3/builtins/functions.html#super)); the subclass only
 **adds**. Both are normal uses of inheritance.
 
 **Outstanding per product group.** On the portfolio: the outstanding per product **group**, through `parent`:
@@ -1437,8 +1437,8 @@ print({group: round(amount, 2) for group, amount in total.items()})
 ```
 
 ::: warning Forget `super()`, lose the checks
-A subclass with its own `__post_init__` **replaces** the one of the base class. Without
-`super().__post_init__()`, the checks of the base class do not run - an empty
+A subclass with its own [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__) **replaces** the one of the base class. Without
+[`super().__post_init__()`](https://docs.python.org/3/builtins/functions.html#super), the checks of the base class do not run - an empty
 nomenclature is created without a word:
 
 ```python run
@@ -1803,14 +1803,14 @@ one-line summary: `"v1 -> v2: 1 added, 1 removed, 1 changed"`.
 | Topic | Remember |
 |-------|----------|
 | The use case | one class for a nomenclature: data, metadata, validation rules, processing methods |
-| Data and metadata | `codes` + `name`, `version`, `valid_from`, `owner`; a short `__repr__`; a copy of the codes |
-| Container | `__len__`, `__contains__`, `__iter__` -> `len(nom)`, `code in nom`, `for code in nom` |
-| Rules | at creation in `__post_init__` (no codes, bad codes, empty labels); duplicates before the dict is built |
-| Dataset checks | `validate(values)` -> a `Counter` of the unknown values; a check report |
+| Data and metadata | `codes` + `name`, `version`, `valid_from`, `owner`; a short [`__repr__`](https://docs.python.org/3/reference/datamodel.html#object.__repr__); a copy of the codes |
+| Container | [`__len__`](https://docs.python.org/3/reference/datamodel.html#object.__len__), [`__contains__`](https://docs.python.org/3/reference/datamodel.html#object.__contains__), [`__iter__`](https://docs.python.org/3/reference/datamodel.html#object.__iter__) -> [`len(nom)`](https://docs.python.org/3/builtins/functions.html#len), `code in nom`, `for code in nom` |
+| Rules | at creation in [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__) (no codes, bad codes, empty labels); duplicates before the dict is built |
+| Dataset checks | `validate(values)` -> a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) of the unknown values; a check report |
 | Processing | `apply(rows, column, new_column)` -> new rows + the unmapped values; `strict=True` stops |
-| `classmethod` | `cls` as the first parameter; alternative constructors: `from_csv`, `from_pairs` |
-| `staticmethod` | no `self`, no `cls`: a helper that belongs to the class |
-| Inheritance | `class Banded(Nomenclature)`; override `lookup`; `super().__post_init__()`; "is a" |
+| [`classmethod`](https://docs.python.org/3/builtins/functions.html#classmethod) | `cls` as the first parameter; alternative constructors: `from_csv`, `from_pairs` |
+| [`staticmethod`](https://docs.python.org/3/builtins/functions.html#staticmethod) | no `self`, no `cls`: a helper that belongs to the class |
+| Inheritance | `class Banded(Nomenclature)`; override `lookup`; [`super().__post_init__()`](https://docs.python.org/3/builtins/functions.html#super); "is a" |
 | Composition | a `Registry` has nomenclatures; "has a" |
 | Consistency | one object for every dataset; the same report of what does not fit |
 | Versions | the metadata says which; a `diff` says what changed |
@@ -1826,8 +1826,8 @@ python 11-oop-nomenclatures/practice/task1-nomenclature-basics.py
 
 | Task | File | What you do |
 |------|------|-------------|
-| 1 | `task1-nomenclature-basics.py` | A `Nomenclature` dataclass with metadata, `lookup`, `len`, `in` |
-| 2 | `task2-predict-oop.py` | Predict: `classmethod`, `staticmethod`, overriding, `super()`, `isinstance` |
+| 1 | `task1-nomenclature-basics.py` | A `Nomenclature` dataclass with metadata, `lookup`, [`len`](https://docs.python.org/3/builtins/functions.html#len), `in` |
+| 2 | `task2-predict-oop.py` | Predict: [`classmethod`](https://docs.python.org/3/builtins/functions.html#classmethod), [`staticmethod`](https://docs.python.org/3/builtins/functions.html#staticmethod), overriding, [`super()`](https://docs.python.org/3/builtins/functions.html#super), [`isinstance`](https://docs.python.org/3/builtins/functions.html#isinstance) |
 | 3 | `task3-validation.py` | The rules at creation, duplicate codes, `validate(values)` |
 | 4 | `task4-apply.py` | `apply` to a list of rows, the unmapped report, `strict` |
 | 5 | `task5-banded.py` | `BandedNomenclature`: DPD buckets, PD -> grade, size classes |
@@ -1925,8 +1925,8 @@ A rating scale can be recalibrated; a product list changes in July. A report for
 **March** must use the version valid in March. A class that keeps several versions,
 each with its `valid_from`, and picks the right one for a date.
 
-To find that version, the class uses `bisect_right` from the standard module
-`bisect`. `bisect_right(starts, day)` takes a **sorted** list and returns how many
+To find that version, the class uses [`bisect_right`](https://docs.python.org/3/library/bisect.html#bisect.bisect_right) from the standard module
+`bisect`. [`bisect_right(starts, day)`](https://docs.python.org/3/library/bisect.html#bisect.bisect_right) takes a **sorted** list and returns how many
 items in it are `<=` `day`. With `i = bisect_right(starts, day)`, the version valid
 on `day` is the one at position `i - 1`: the last version that started on or before `day`. In SQL, this is the row
 with the biggest `valid_from <= day`. A result of `0` means that `day` is before
@@ -2008,9 +2008,9 @@ print(sum(1 for r in rows if grades.lookup(int(r["rating"]), date.fromisoformat(
 ## Read more
 
 - Python tutorial: [Classes - inheritance](https://docs.python.org/3/tutorial/classes.html#inheritance)
-- Reference: [`classmethod`](https://docs.python.org/3/library/functions.html#classmethod),
-  [`staticmethod`](https://docs.python.org/3/library/functions.html#staticmethod),
-  [`super`](https://docs.python.org/3/library/functions.html#super),
+- Reference: [`classmethod`](https://docs.python.org/3/builtins/functions.html#classmethod),
+  [`staticmethod`](https://docs.python.org/3/builtins/functions.html#staticmethod),
+  [`super`](https://docs.python.org/3/builtins/functions.html#super),
   [`abc`](https://docs.python.org/3/library/abc.html),
   [dataclasses - inheritance](https://docs.python.org/3/library/dataclasses.html#inheritance)
 - Real Python: [Inheritance and composition: a Python OOP guide](https://realpython.com/inheritance-composition-python/),

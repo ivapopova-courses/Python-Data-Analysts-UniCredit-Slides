@@ -64,9 +64,9 @@ the sample data: `clients`, `loans`, `rating_scale` and `ratings_history`.
 
 - A **driver** is a package that knows the network protocol of one kind of database:
   `oracledb` for Oracle, `pyodbc` for MS SQL Server, `psycopg` for PostgreSQL.
-- All drivers follow the same standard, the **DB-API** (PEP 249): `connect`,
-  `cursor`, `execute`, `fetchall`, `commit`, `close`. What you learn today with SQLite
-  works with your database too - only the `connect` line changes (section 5).
+- All drivers follow the same standard, the **DB-API** (PEP 249): [`connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect),
+  [`cursor`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.cursor), [`execute`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.execute), [`fetchall`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchall), [`commit`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit), [`close`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.close). What you learn today with SQLite
+  works with your database too - only the [`connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) line changes (section 5).
 - **SQLite** is a database in a single file. The module `sqlite3` comes with Python -
   nothing to install, no server. Perfect for learning, for tests and for small local
   data marts.
@@ -74,7 +74,7 @@ the sample data: `clients`, `loans`, `rating_scale` and `ratings_history`.
 | SAS | Python |
 |---|---|
 | `LIBNAME db ORACLE user=... path=...;` | `con = oracledb.connect(...)` |
-| `PROC SQL; CONNECT TO ORACLE (...);` (pass-through) | `con.execute("... SQL of the database ...")` |
+| `PROC SQL; CONNECT TO ORACLE (...);` (pass-through) | [`con.execute("... SQL of the database ...")`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.execute) |
 | a libref `db.loans` | a table name in the SQL text |
 
 ### What is in the database?
@@ -134,7 +134,7 @@ con.close()
 :::
 
 ::: details Advanced: a typo in the file name creates a new, empty database
-`sqlite3.connect` **creates** the file if it does not exist. A wrong path gives no
+[`sqlite3.connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) **creates** the file if it does not exist. A wrong path gives no
 error at the connect - only later, "no such table". To open an existing file only (and
 read-only), use a URI with `mode=ro`:
 
@@ -179,12 +179,12 @@ print(cur.fetchall())                              # all rows: a list of tuples
 con.close()                                        # close it at the end
 ```
 
-- `fetchone()` - the next row, or `None` at the end;
-- `fetchall()` - all (remaining) rows as a list;
-- `fetchmany(n)` - the next `n` rows (for big results - see the Self-study part).
+- [`fetchone()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchone) - the next row, or `None` at the end;
+- [`fetchall()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchall) - all (remaining) rows as a list;
+- [`fetchmany(n)`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchmany) - the next `n` rows (for big results - see the Self-study part).
 
-`con.execute(...)` is a shortcut of SQLite: it creates the cursor for you and returns
-it. With other drivers, use `con.cursor()` first.
+[`con.execute(...)`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.execute) is a shortcut of SQLite: it creates the cursor for you and returns
+it. With other drivers, use [`con.cursor()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.cursor) first.
 
 ### Loop over the rows
 
@@ -203,10 +203,10 @@ con.close()
 ```
 
 The values come back **typed**: `outstanding` is a `float`, `stage` an `int` - no
-`float(row[7])` as with a CSV file.
+[`float(row[7])`](https://docs.python.org/3/builtins/functions.html#float) as with a CSV file.
 
 ::: details Advanced: `fetchmany` and a second query on the same cursor
-`fetchmany(n)` takes the next `n` rows; a new `execute` on the same cursor starts a new
+[`fetchmany(n)`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchmany) takes the next `n` rows; a new [`execute`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.execute) on the same cursor starts a new
 result:
 
 ```python run
@@ -295,7 +295,7 @@ con.close()
 
 A connection holds resources on the database server (and a lock on an SQLite file).
 Close it also when the query fails: `try` / `finally` ([lecture 8](./08-errors-and-files.md#_3-else-and-finally)), or
-`contextlib.closing` in a `with`:
+[`contextlib.closing`](https://docs.python.org/3/library/contextlib.html#contextlib.closing) in a `with`:
 
 ```python run
 import sqlite3
@@ -308,7 +308,7 @@ print(n, "clients; the connection is closed")
 
 ::: warning `with sqlite3.connect(...)` does not close
 For `sqlite3`, `with con:` is a **transaction** (section 4), not a close. Use
-`closing(...)` - or `con.close()` in `finally` - to close. The short examples below
+[`closing(...)`](https://docs.python.org/3/library/contextlib.html#contextlib.closing) - or [`con.close()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.close) in `finally` - to close. The short examples below
 write `with sqlite3.connect(...) as con:` to save a line: the connection is closed
 when the example ends. In a script that runs for a long time, close it yourself.
 :::
@@ -498,7 +498,7 @@ with sqlite3.connect("data/portfolio.db") as con:
 ```
 
 The f-string builds only the **placeholders** - the values still go as parameters.
-(For thousands of values, `itertools.batched` of [lecture 9](./09-modules-and-git.md) cuts the list into
+(For thousands of values, [`itertools.batched`](https://docs.python.org/3/library/itertools.html#itertools.batched) of [lecture 9](./09-modules-and-git.md) cuts the list into
 pieces.)
 
 ### The same query, many values: `executemany`
@@ -526,7 +526,7 @@ sorted, with a parameter. Call it with `"C0030"` and with `"C0001' OR '1'='1"`.
 ### Work on a copy
 
 Never practise writes on a real database - and not on `data/portfolio.db` either. Make
-a copy: `con.backup` copies a whole SQLite database, even into memory:
+a copy: [`con.backup`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.backup) copies a whole SQLite database, even into memory:
 
 ```python run
 import sqlite3
@@ -564,9 +564,9 @@ con.close()
 
 ### Transactions: all or nothing
 
-A **transaction** groups changes: either **all** of them are saved (`commit`) or
-**none** (`rollback`). The DB-API starts a transaction by itself before the first
-change; nothing is saved until `commit()`:
+A **transaction** groups changes: either **all** of them are saved ([`commit`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit)) or
+**none** ([`rollback`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.rollback)). The DB-API starts a transaction by itself before the first
+change; nothing is saved until [`commit()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit):
 
 ```python run
 import sqlite3
@@ -613,8 +613,8 @@ updated completely, or not at all.
 
 | SQL / SAS | Python DB-API |
 |---|---|
-| `COMMIT;` | `con.commit()` |
-| `ROLLBACK;` | `con.rollback()` |
+| `COMMIT;` | [`con.commit()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit) |
+| `ROLLBACK;` | [`con.rollback()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.rollback) |
 | a failed `PROC APPEND` leaves the table as it was | `with con:` + an exception |
 | a constraint violation | `sqlite3.IntegrityError` (other drivers: their own `IntegrityError`) |
 
@@ -777,7 +777,7 @@ change the data of the bank.
 ::: tip Try it
 Set the environment variable `PORTFOLIO_DB` to `data/portfolio.db` in the code
 (`os.environ["PORTFOLIO_DB"] = ...`), then connect with
-`sqlite3.connect(os.environ["PORTFOLIO_DB"])` and count the clients. What happens
+[`sqlite3.connect(os.environ["PORTFOLIO_DB"])`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) and count the clients. What happens
 when the variable is not set?
 :::
 
@@ -785,15 +785,15 @@ when the variable is not set?
 
 | Topic | Remember |
 |-------|----------|
-| DB-API | `connect` -> `cursor` / `execute` -> `fetchone` / `fetchall` / loop -> `close`; the same for all databases |
+| DB-API | [`connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) -> [`cursor`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.cursor) / [`execute`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.execute) -> [`fetchone`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchone) / [`fetchall`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchall) / loop -> [`close`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.close); the same for all databases |
 | SQLite | a database in a file; `sqlite3` comes with Python; `:memory:` for tests; dates are ISO text |
 | Rows | tuples, typed; `cursor.description` for names; `row_factory = sqlite3.Row` for rows by name |
-| Close | `closing(...)` or `finally`; `with con:` in sqlite3 is a transaction, not a close |
+| Close | [`closing(...)`](https://docs.python.org/3/library/contextlib.html#contextlib.closing) or `finally`; `with con:` in sqlite3 is a transaction, not a close |
 | Parameters | `?` or `:name` + a tuple / dict; never f-strings with values (SQL injection); `IN` with one `?` per item |
-| Writing | `executemany`; `commit()`; `rowcount`; work on a copy (`con.backup`) |
-| Transactions | all or nothing; `rollback()`; `with con:` commits or rolls back; `IntegrityError` |
+| Writing | [`executemany`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.executemany); [`commit()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit); `rowcount`; work on a copy ([`con.backup`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.backup)) |
+| Transactions | all or nothing; [`rollback()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.rollback); `with con:` commits or rolls back; `IntegrityError` |
 | SQL or Python | filter, join, aggregate in SQL; rules, cleaning and the report in Python |
-| Your database | its driver follows the same DB-API; only the `connect` line and the placeholders change |
+| Your database | its driver follows the same DB-API; only the [`connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) line and the placeholders change |
 | Passwords | never in code: Windows login, environment variables, keyring; a read-only account |
 
 ## Practice
@@ -809,10 +809,10 @@ The tasks read `data/portfolio.db`; the ones that write work on a copy in memory
 
 | Task | File | What you do |
 |------|------|-------------|
-| 1 | `task1-first-queries.py` | Connect, count, fetch rows, column names, `sqlite3.Row` |
+| 1 | `task1-first-queries.py` | Connect, count, fetch rows, column names, [`sqlite3.Row`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Row) |
 | 2 | `task2-parameters.py` | Parameterised queries, `IN` lists, injection-safe functions |
 | 3 | `task3-aggregate-join.py` | `GROUP BY` and `JOIN` in SQL; the same numbers in Python |
-| 4 | `task4-write-transaction.py` | A copy, a new table, `executemany`, a rollback that keeps the table clean |
+| 4 | `task4-write-transaction.py` | A copy, a new table, [`executemany`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.executemany), a rollback that keeps the table clean |
 | 5 | `task5-migration.py` (Optional) | Rating migration between two month ends with a self join |
 
 ## Homework
@@ -865,8 +865,8 @@ except sqlite3.IntegrityError as error:
 con.close()
 ```
 
-**Rows of a CSV file into a table.** `executemany` also takes **dictionaries** with named parameters - the rows of
-`csv.DictReader` ([lecture 8](./08-errors-and-files.md#read-csv-reader-and-csv-dictreader)) go straight into a table:
+**Rows of a CSV file into a table.** [`executemany`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.executemany) also takes **dictionaries** with named parameters - the rows of
+[`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) ([lecture 8](./08-errors-and-files.md#read-csv-reader-and-csv-dictreader)) go straight into a table:
 
 ```python run
 import csv
@@ -898,7 +898,7 @@ print(run_id, con.execute("SELECT * FROM run_log").fetchall())
 con.close()
 ```
 
-**Save to a file.** To keep a changed copy, write it to a **file** - `backup` into a new database file:
+**Save to a file.** To keep a changed copy, write it to a **file** - [`backup`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.backup) into a new database file:
 
 ```python run
 import sqlite3
@@ -946,7 +946,7 @@ to your laptop to filter them there is slow. The rule: **filter, join and aggreg
 SQL**; take only the result into Python - the same idea as SAS pass-through.
 
 **Totals by stage, two ways.** The totals by stage, two ways - the same numbers. The Python way keeps a small list
-`[count, sum]` per stage in a `defaultdict` ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
+`[count, sum]` per stage in a [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
 
 ```python run
 import sqlite3
@@ -1167,8 +1167,8 @@ Better still: let the database aggregate (see above) - then the result is small.
 
 **Exercises**
 
-1. Count the rows of `ratings_history` per month with `fetchmany(200)` and a
-   `Counter`.
+1. Count the rows of `ratings_history` per month with [`fetchmany(200)`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchmany) and a
+   [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter).
 2. Why is `SELECT month_end, COUNT(*) ... GROUP BY month_end` better?
 
 ::: details Answer
@@ -1248,7 +1248,7 @@ SELECT * FROM (
   FROM loans)
 WHERE n = 1
 ```
-Run them with `con.execute(...).fetchall()`.
+Run them with [`con.execute(...).fetchall()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.execute).
 :::
 
 ## Read more

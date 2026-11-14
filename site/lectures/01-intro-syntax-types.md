@@ -15,12 +15,12 @@ title: 1. Introduction, syntax, data types and variables
 - say what Python is good for, next to SQL and SAS, and how it runs your code;
 - set up a project: Python, a virtual environment, `pip` and `requirements.txt`;
 - run Python code in VS Code, in the terminal and in a Jupyter notebook;
-- read the structure of a program: lines, indentation, comments, `print()`;
+- read the structure of a program: lines, indentation, comments, [`print()`](https://docs.python.org/3/builtins/functions.html#print);
 - work with the basic types: `int`, `float`, `str`, `bool`, `None`;
 - use variables, and understand what a name in Python really is;
 - calculate with the operators and the `math` module;
 - convert values between types and build text with f-strings;
-- calculate money values exactly with `Decimal`, and round them the way SAS and SQL do.
+- calculate money values exactly with [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal), and round them the way SAS and SQL do.
 
 From SQL to Python - the same question, two ways:
 
@@ -131,9 +131,9 @@ How SAS ideas map to Python (most of them come in the later sessions):
 | SAS | Python |
 |---|---|
 | DATA step | a loop over rows (sessions 2 - 6), or pandas (lectures 13 - 15) |
-| `PROC SORT` | `sorted()`, `DataFrame.sort_values()` |
-| `PROC MEANS`, `PROC SUMMARY` | `sum()`, `statistics`, `DataFrame.groupby().agg()` |
-| `PROC FREQ` | `collections.Counter`, `value_counts()`, `pd.crosstab()` |
+| `PROC SORT` | [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted), `DataFrame.sort_values()` |
+| `PROC MEANS`, `PROC SUMMARY` | [`sum()`](https://docs.python.org/3/builtins/functions.html#sum), `statistics`, `DataFrame.groupby().agg()` |
+| `PROC FREQ` | [`collections.Counter`](https://docs.python.org/3/library/collections.html#collections.Counter), `value_counts()`, `pd.crosstab()` |
 | `PROC TRANSPOSE` | `DataFrame.pivot()`, `melt()` |
 | formats (`COMMA12.2`, `PERCENT8.2`) | f-strings: `f"{x:,.2f}"`, `f"{x:.2%}"` - section 13 |
 | macros, `%LET` | functions ([session 4](./04-functions.md)), variables |
@@ -873,7 +873,7 @@ print("Performing")
 ```
 
 ::: details Answer
-`print("Performing")` is not indented, so it is not part of the `else` block: it
+[`print("Performing")`](https://docs.python.org/3/builtins/functions.html#print) is not indented, so it is not part of the `else` block: it
 runs always, also for a loan 120 days past due. It needs 4 spaces in front.
 :::
 
@@ -902,7 +902,7 @@ Style: [PEP 8 - Comments](https://peps.python.org/pep-0008/#comments).
 
 ### `print()`: show values
 
-[`print()`](https://docs.python.org/3/library/functions.html#print) writes values to
+[`print()`](https://docs.python.org/3/builtins/functions.html#print) writes values to
 the screen, separated by spaces, and ends with a new line. Two options change that:
 `sep` (the separator) and `end` (what comes at the end).
 
@@ -920,7 +920,7 @@ print("end")
 
 ### `input()`: ask the user
 
-[`input()`](https://docs.python.org/3/library/functions.html#input) shows a message,
+[`input()`](https://docs.python.org/3/builtins/functions.html#input) shows a message,
 waits for the user to type a line and press `Enter`, and returns what was typed - always
 as **text** (`str`), even when the user types a number. Convert it yourself (section
 12):
@@ -932,7 +932,7 @@ amount = float(amount_text)
 print("Amount with 10% fee:", amount * 1.1)
 ```
 
-`input()` does not work on this site - try it in VS Code (`python file.py`) or in a
+[`input()`](https://docs.python.org/3/builtins/functions.html#input) does not work on this site - try it in VS Code (`python file.py`) or in a
 notebook. In analysis work you seldom need it: the data comes from files and
 databases.
 
@@ -994,7 +994,7 @@ The basic types:
 | `bool` | `True`, `False` | `BOOLEAN`, `BIT` | 1 / 0 |
 | `NoneType` | `None` - "no value" | `NULL` | missing (`.`, `" "`) |
 
-`type()` gives the type of a value:
+[`type()`](https://docs.python.org/3/builtins/functions.html#type) gives the type of a value:
 
 ```python run
 for value in [42, 8.83, "EUR", True, None]:
@@ -1081,7 +1081,7 @@ print(type(is_late))
 ```
 
 A `bool` is a kind of `int`: `True` is `1` and `False` is `0`. So you can count with
-it - like `sum(dpd > 90)` in SAS SQL:
+it - like [`sum(dpd > 90)`](https://docs.python.org/3/builtins/functions.html#sum) in SAS SQL:
 
 ```python run
 print(True + True + False)
@@ -1136,7 +1136,7 @@ print(outstandng)
 In many languages a variable is a box that holds a value. In Python it is more
 exact to say: the value is an **object** in memory, and the variable is a **name**
 (a label) **bound** to that object. Assignment binds a name to an object;
-`id()` gives the identity of the object (in CPython, its memory address):
+[`id()`](https://docs.python.org/3/builtins/functions.html#id) gives the identity of the object (in CPython, its memory address):
 
 ```python run
 x = 5
@@ -1318,8 +1318,8 @@ If old code divides whole numbers, check which one it meant.
 
 ::: details Advanced: `//` and `%` with negative numbers
 `//` rounds **down**, towards minus infinity: `-7 // 2` is `-4`, not `-3`, and
-`-7 % 2` is `1`. SAS `INT()` and `int()` in Python cut the fraction towards zero:
-`int(-3.5)` is `-3`. For negative values, check which one you need.
+`-7 % 2` is `1`. SAS `INT()` and [`int()`](https://docs.python.org/3/builtins/functions.html#int) in Python cut the fraction towards zero:
+[`int(-3.5)`](https://docs.python.org/3/builtins/functions.html#int) is `-3`. For negative values, check which one you need.
 
 ```python run
 print(-7 // 2, -7 % 2, int(-7 / 2))
@@ -1450,7 +1450,7 @@ print("L000001,C0080,investment".split(","))
 print("  EUR ".strip())
 ```
 
-Reference: [String methods](https://docs.python.org/3/library/stdtypes.html#string-methods).
+Reference: [String methods](https://docs.python.org/3/builtins/stdtypes.html#string-methods).
 
 ### Built-in functions for numbers
 
@@ -1465,7 +1465,7 @@ print(sum([1044231.30, 651927.30, 644.25]))
 print(pow(2, 10))
 ```
 
-`round()` has a surprise for people from SAS and SQL - see section 14.
+[`round()`](https://docs.python.org/3/builtins/functions.html#round) has a surprise for people from SAS and SQL - see section 14.
 
 ### The `math` module
 
@@ -1491,14 +1491,14 @@ The name of a type is also a function that **converts** a value to it:
 
 | Function | Gives | Examples |
 |---|---|---|
-| `int(x)` | an `int` | `int("42")` -> `42`, `int(3.99)` -> `3` (cuts, does not round) |
-| `float(x)` | a `float` | `float("8.83")` -> `8.83`, `float(5)` -> `5.0` |
-| `str(x)` | a `str` | `str(1044231.3)` -> `"1044231.3"` |
-| `bool(x)` | a `bool` | `bool(0)` -> `False`, `bool("no")` -> `True` |
+| [`int(x)`](https://docs.python.org/3/builtins/functions.html#int) | an `int` | [`int("42")`](https://docs.python.org/3/builtins/functions.html#int) -> `42`, [`int(3.99)`](https://docs.python.org/3/builtins/functions.html#int) -> `3` (cuts, does not round) |
+| [`float(x)`](https://docs.python.org/3/builtins/functions.html#float) | a `float` | [`float("8.83")`](https://docs.python.org/3/builtins/functions.html#float) -> `8.83`, [`float(5)`](https://docs.python.org/3/builtins/functions.html#float) -> `5.0` |
+| [`str(x)`](https://docs.python.org/3/builtins/stdtypes.html#str) | a `str` | [`str(1044231.3)`](https://docs.python.org/3/builtins/stdtypes.html#str) -> `"1044231.3"` |
+| [`bool(x)`](https://docs.python.org/3/builtins/functions.html#bool) | a `bool` | [`bool(0)`](https://docs.python.org/3/builtins/functions.html#bool) -> `False`, [`bool("no")`](https://docs.python.org/3/builtins/functions.html#bool) -> `True` |
 
 ### Text to numbers
 
-Data from files, `input()`, Excel exports and the web often comes as **text**. A
+Data from files, [`input()`](https://docs.python.org/3/builtins/functions.html#input), Excel exports and the web often comes as **text**. A
 row of `loans.csv`, before any conversion, is only a string:
 
 ```python run
@@ -1521,7 +1521,7 @@ print(outstanding * rate / 100)
 print(days_past_due > 30)
 ```
 
-What `int()` and `float()` accept, and what not:
+What [`int()`](https://docs.python.org/3/builtins/functions.html#int) and [`float()`](https://docs.python.org/3/builtins/functions.html#float) accept, and what not:
 
 ```python run
 print(int("42"), int(" 42 "), int("0042"), int("-7"), int("1_000"))
@@ -1575,7 +1575,7 @@ print(f"Outstanding: {outstanding:.2f}")   # better: an f-string, section 13
 
 ### To `bool`: truthy and falsy
 
-`bool()` gives `False` for "empty" values and `True` for everything else:
+[`bool()`](https://docs.python.org/3/builtins/functions.html#bool) gives `False` for "empty" values and `True` for everything else:
 
 | `False` (falsy) | `True` (truthy) |
 |---|---|
@@ -1589,7 +1589,7 @@ print(bool(0), bool(0.0), bool(""), bool(None))
 print(bool(-1), bool("0"), bool("False"), bool(" "))
 ```
 
-`bool("False")` is `True`! To read "yes" / "no" or "True" / "False" from a file,
+[`bool("False")`](https://docs.python.org/3/builtins/functions.html#bool) is `True`! To read "yes" / "no" or "True" / "False" from a file,
 compare the text:
 
 ```python run
@@ -1709,7 +1709,7 @@ print(f"{'L000003':<10}{'credit_card':<13}{644.25:>15,.2f}{0.0479:>8.2%}")
 
 ### Older ways you will meet
 
-Code written before f-strings (Python 3.6, 2016) uses `str.format()` or `%`. Read
+Code written before f-strings (Python 3.6, 2016) uses [`str.format()`](https://docs.python.org/3/builtins/stdtypes.html#str.format) or `%`. Read
 them; write f-strings.
 
 ```python run
@@ -1735,7 +1735,7 @@ print(f"{0.1:.30f}")
 
 A `float` is stored in **binary**. Like 1/3 = 0.333... in decimal, 1/10 has no
 end in binary: it is cut after 53 binary digits, so `0.1` in memory is a tiny bit
-more than 0.1. Usually you do not see it, because `print()` shows the shortest
+more than 0.1. Usually you do not see it, because [`print()`](https://docs.python.org/3/builtins/functions.html#print) shows the shortest
 text that gives the same number. In sums of many values the small errors add up.
 Read more: [Floating Point Arithmetic: Issues and Limitations](https://docs.python.org/3/tutorial/floatingpoint.html).
 
@@ -1758,14 +1758,14 @@ print(round(0.5), round(1.5), round(2.5), round(3.5))
 print(round(2.675, 2))
 ```
 
-- `round()` rounds a 5 to the **even** neighbour: `round(2.5)` is `2`. This is
+- [`round()`](https://docs.python.org/3/builtins/functions.html#round) rounds a 5 to the **even** neighbour: [`round(2.5)`](https://docs.python.org/3/builtins/functions.html#round) is `2`. This is
   "banker's rounding" - it does not push sums up. SAS `ROUND`, and SQL `ROUND` on
   `DECIMAL` / `NUMERIC` values, round a 5 **away from zero** (`2.5` -> `3`).
-- `round(2.675, 2)` gives `2.67`, because `2.675` in binary is a tiny bit less
+- [`round(2.675, 2)`](https://docs.python.org/3/builtins/functions.html#round) gives `2.67`, because `2.675` in binary is a tiny bit less
   than 2.675.
 
 For results that must match SAS, SQL or the accounting system to the cent, use
-`Decimal`.
+[`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal).
 
 ### `Decimal`: exact decimal numbers
 
@@ -1781,7 +1781,7 @@ print(Decimal("0.1") + Decimal("0.2"))
 print(Decimal("0.1") + Decimal("0.2") == Decimal("0.3"))
 ```
 
-Create a `Decimal` **from a string**. From a float, it takes over the float's error -
+Create a [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) **from a string**. From a float, it takes over the float's error -
 and shows the exact value the float really has:
 
 ```python run
@@ -1793,7 +1793,7 @@ print(Decimal(0.1))
 
 ### Rounding money with `quantize`
 
-`quantize()` rounds to the places of the given value; `rounding` says how.
+[`quantize()`](https://docs.python.org/3/library/decimal.html#decimal.Decimal.quantize) rounds to the places of the given value; `rounding` says how.
 `ROUND_HALF_UP` is the rounding of SAS, SQL and the schoolbook:
 
 ```python run
@@ -1825,13 +1825,13 @@ for outstanding, rate in [("1044231.30", "8.83"), ("651927.30", "5.44"), ("644.2
 print("Total:", total)
 ```
 
-Rules for `Decimal`:
+Rules for [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal):
 
-- `Decimal` with `int` works; `Decimal` with `float` is a `TypeError` - convert the
-  float with `Decimal(str(x))`.
+- [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) with `int` works; [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) with `float` is a `TypeError` - convert the
+  float with [`Decimal(str(x))`](https://docs.python.org/3/library/decimal.html#decimal.Decimal).
 - The result of a division has up to 28 significant digits (the default
-  *precision*); round it with `quantize()` when you need cents.
-- `Decimal` is slower than `float`. Use it for **money that must add up** to the
+  *precision*); round it with [`quantize()`](https://docs.python.org/3/library/decimal.html#decimal.Decimal.quantize) when you need cents.
+- [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) is slower than `float`. Use it for **money that must add up** to the
   cent: balances, interest, reconciliations with the general ledger. For rates, PDs,
   statistics and models, `float` is right.
 - pandas works with `float`: there, round the **results** ([lecture 14](./14-pandas-select-aggregate-join.md)).
@@ -1851,12 +1851,12 @@ print(Decimal("100.50") * 1.1)      # TypeError: Decimal and float
 | Project setup | `py -m venv .venv`, activate, `pip install -r requirements.txt`; one venv per project |
 | Running code | `python file.py` in the terminal; the REPL `>>>`; Jupyter notebooks (the kernel keeps the variables) |
 | Syntax | one statement per line; blocks by indentation (4 spaces); comments with `#` |
-| Types | `int`, `float`, `str`, `bool`, `None`; `type(x)`; everything is an object |
+| Types | `int`, `float`, `str`, `bool`, `None`; [`type(x)`](https://docs.python.org/3/builtins/functions.html#type); everything is an object |
 | Variables | a name bound to an object; `=` binds; the type belongs to the object; `snake_case` |
 | Operators | `+ - * / // % **`; `/` gives a float; `== != < <= > >=`; `and or not` |
-| Conversions | `int()`, `float()`, `str()`, `bool()`; text never becomes a number by itself; `bool("False")` is `True` |
+| Conversions | [`int()`](https://docs.python.org/3/builtins/functions.html#int), [`float()`](https://docs.python.org/3/builtins/functions.html#float), [`str()`](https://docs.python.org/3/builtins/stdtypes.html#str), [`bool()`](https://docs.python.org/3/builtins/functions.html#bool); text never becomes a number by itself; [`bool("False")`](https://docs.python.org/3/builtins/functions.html#bool) is `True` |
 | f-strings | `f"{x:,.2f}"`, `f"{p:.2%}"`, `f"{n:05d}"`, `f"{s:<10}"`, `f"{x=}"` |
-| Money | floats are binary: `0.1 + 0.2 != 0.3`; `round()` rounds half to even; `Decimal("...")` + `quantize(..., ROUND_HALF_UP)` |
+| Money | floats are binary: `0.1 + 0.2 != 0.3`; [`round()`](https://docs.python.org/3/builtins/functions.html#round) rounds half to even; [`Decimal("...")`](https://docs.python.org/3/library/decimal.html#decimal.Decimal) + [`quantize(..., ROUND_HALF_UP)`](https://docs.python.org/3/library/decimal.html#decimal.Decimal.quantize) |
 
 ## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (first time: see [How to use these pages](/how-to#practice-and-homework); before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:
@@ -1876,7 +1876,7 @@ print `OK` or `FAIL`.
 | 3 | `task3-calculations.py` | The length of this course in hours; days past due in months and days; interest |
 | 4 | `task4-convert-text.py` | Convert the text fields of a CSV row, also a number in Bulgarian format |
 | 5 | `task5-fstrings.py` | Format amounts, percents and ids; a report line with fixed widths |
-| 6 | `task6-decimal.py` | Interest to the cent with `Decimal`, rounded the SAS way |
+| 6 | `task6-decimal.py` | Interest to the cent with [`Decimal`](https://docs.python.org/3/library/decimal.html#decimal.Decimal), rounded the SAS way |
 
 In `task2-predict-types.py`, replace each `"?"` with your prediction **before**
 you run the file - the point is to think first.
@@ -1889,7 +1889,7 @@ you run the file - the point is to think first.
 2. The practice tasks you did not finish in class - recommended, the next tasks
    build on them.
 3. Optional: write `payment.py`, which asks for the amount, the yearly rate in
-   percent and the number of years with `input()`, and prints the monthly payment
+   percent and the number of years with [`input()`](https://docs.python.org/3/builtins/functions.html#input), and prints the monthly payment
    (the formula is in `homework.py`), formatted with two decimals and a thousands
    separator. Run it in the terminal.
 4. Optional: create a notebook `01-practice.ipynb` in your Homework folder, read
@@ -1902,8 +1902,8 @@ you run the file - the point is to think first.
 ## Read more
 
 - Python: [the official tutorial](https://docs.python.org/3/tutorial/), chapters 1 - 3;
-  [Built-in types](https://docs.python.org/3/library/stdtypes.html);
-  [Built-in functions](https://docs.python.org/3/library/functions.html)
+  [Built-in types](https://docs.python.org/3/builtins/stdtypes.html);
+  [Built-in functions](https://docs.python.org/3/builtins/functions.html)
 - Style: [PEP 8](https://peps.python.org/pep-0008/)
 - Setup: [Virtual environments and packages](https://docs.python.org/3/tutorial/venv.html),
   [Installing packages](https://packaging.python.org/en/latest/tutorials/installing-packages/),

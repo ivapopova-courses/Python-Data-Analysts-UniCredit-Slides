@@ -80,7 +80,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:67
-msgid "All drivers follow the same standard, the **DB-API** (PEP 249): `connect`, `cursor`, `execute`, `fetchall`, `commit`, `close`. What you learn today with SQLite works with your database too - only the `connect` line changes (section 5)."
+msgid "All drivers follow the same standard, the **DB-API** (PEP 249): [`connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect), [`cursor`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.cursor), [`execute`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.execute), [`fetchall`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchall), [`commit`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit), [`close`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.close). What you learn today with SQLite works with your database too - only the [`connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) line changes (section 5)."
 msgstr ""
 
 #. paragraph
@@ -150,7 +150,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:137
-msgid "`sqlite3.connect` **creates** the file if it does not exist. A wrong path gives no error at the connect - only later, \"no such table\". To open an existing file only (and read-only), use a URI with `mode=ro`:"
+msgid "[`sqlite3.connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) **creates** the file if it does not exist. A wrong path gives no error at the connect - only later, \"no such table\". To open an existing file only (and read-only), use a URI with `mode=ro`:"
 msgstr ""
 
 #. box title
@@ -175,22 +175,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:182
-msgid "`fetchone()` - the next row, or `None` at the end;"
+msgid "[`fetchone()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchone) - the next row, or `None` at the end;"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:183
-msgid "`fetchall()` - all (remaining) rows as a list;"
+msgid "[`fetchall()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchall) - all (remaining) rows as a list;"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:184
-msgid "`fetchmany(n)` - the next `n` rows (for big results - see the Self-study part)."
+msgid "[`fetchmany(n)`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchmany) - the next `n` rows (for big results - see the Self-study part)."
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:186
-msgid "`con.execute(...)` is a shortcut of SQLite: it creates the cursor for you and returns it. With other drivers, use `con.cursor()` first."
+msgid "[`con.execute(...)`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.execute) is a shortcut of SQLite: it creates the cursor for you and returns it. With other drivers, use [`con.cursor()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.cursor) first."
 msgstr ""
 
 #. heading 3
@@ -205,7 +205,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:205
-msgid "The values come back **typed**: `outstanding` is a `float`, `stage` an `int` - no `float(row[7])` as with a CSV file."
+msgid "The values come back **typed**: `outstanding` is a `float`, `stage` an `int` - no [`float(row[7])`](https://docs.python.org/3/builtins/functions.html#float) as with a CSV file."
 msgstr ""
 
 #. box title
@@ -215,7 +215,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:209
-msgid "`fetchmany(n)` takes the next `n` rows; a new `execute` on the same cursor starts a new result:"
+msgid "[`fetchmany(n)`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchmany) takes the next `n` rows; a new [`execute`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.execute) on the same cursor starts a new result:"
 msgstr ""
 
 #. paragraph
@@ -255,7 +255,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:296
-msgid "A connection holds resources on the database server (and a lock on an SQLite file). Close it also when the query fails: `try` / `finally` ([lecture 8](./08-errors-and-files.md#_3-else-and-finally)), or `contextlib.closing` in a `with`:"
+msgid "A connection holds resources on the database server (and a lock on an SQLite file). Close it also when the query fails: `try` / `finally` ([lecture 8](./08-errors-and-files.md#_3-else-and-finally)), or [`contextlib.closing`](https://docs.python.org/3/library/contextlib.html#contextlib.closing) in a `with`:"
 msgstr ""
 
 #. box title
@@ -265,7 +265,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:310
-msgid "For `sqlite3`, `with con:` is a **transaction** (section 4), not a close. Use `closing(...)` - or `con.close()` in `finally` - to close. The short examples below write `with sqlite3.connect(...) as con:` to save a line: the connection is closed when the example ends. In a script that runs for a long time, close it yourself."
+msgid "For `sqlite3`, `with con:` is a **transaction** (section 4), not a close. Use [`closing(...)`](https://docs.python.org/3/library/contextlib.html#contextlib.closing) - or [`con.close()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.close) in `finally` - to close. The short examples below write `with sqlite3.connect(...) as con:` to save a line: the connection is closed when the example ends. In a script that runs for a long time, close it yourself."
 msgstr ""
 
 #. heading 3
@@ -400,7 +400,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:500
-msgid "The f-string builds only the **placeholders** - the values still go as parameters. (For thousands of values, `itertools.batched` of [lecture 9](./09-modules-and-git.md) cuts the list into pieces.)"
+msgid "The f-string builds only the **placeholders** - the values still go as parameters. (For thousands of values, [`itertools.batched`](https://docs.python.org/3/library/itertools.html#itertools.batched) of [lecture 9](./09-modules-and-git.md) cuts the list into pieces.)"
 msgstr ""
 
 #. heading 3
@@ -430,7 +430,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:528
-msgid "Never practise writes on a real database - and not on `data/portfolio.db` either. Make a copy: `con.backup` copies a whole SQLite database, even into memory:"
+msgid "Never practise writes on a real database - and not on `data/portfolio.db` either. Make a copy: [`con.backup`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.backup) copies a whole SQLite database, even into memory:"
 msgstr ""
 
 #. heading 3
@@ -445,7 +445,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:567
-msgid "A **transaction** groups changes: either **all** of them are saved (`commit`) or **none** (`rollback`). The DB-API starts a transaction by itself before the first change; nothing is saved until `commit()`:"
+msgid "A **transaction** groups changes: either **all** of them are saved ([`commit`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit)) or **none** ([`rollback`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.rollback)). The DB-API starts a transaction by itself before the first change; nothing is saved until [`commit()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit):"
 msgstr ""
 
 #. heading 3
@@ -645,7 +645,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:778
-msgid "Set the environment variable `PORTFOLIO_DB` to `data/portfolio.db` in the code (`os.environ[\"PORTFOLIO_DB\"] = ...`), then connect with `sqlite3.connect(os.environ[\"PORTFOLIO_DB\"])` and count the clients. What happens when the variable is not set?"
+msgid "Set the environment variable `PORTFOLIO_DB` to `data/portfolio.db` in the code (`os.environ[\"PORTFOLIO_DB\"] = ...`), then connect with [`sqlite3.connect(os.environ[\"PORTFOLIO_DB\"])`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) and count the clients. What happens when the variable is not set?"
 msgstr ""
 
 #. heading 2
@@ -670,7 +670,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/12-databases.md:788
-msgid "`connect` -> `cursor` / `execute` -> `fetchone` / `fetchall` / loop -> `close`; the same for all databases"
+msgid "[`connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) -> [`cursor`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.cursor) / [`execute`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.execute) -> [`fetchone`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchone) / [`fetchall`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchall) / loop -> [`close`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.close); the same for all databases"
 msgstr ""
 
 #. table cell
@@ -695,7 +695,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/12-databases.md:791
-msgid "`closing(...)` or `finally`; `with con:` in sqlite3 is a transaction, not a close"
+msgid "[`closing(...)`](https://docs.python.org/3/library/contextlib.html#contextlib.closing) or `finally`; `with con:` in sqlite3 is a transaction, not a close"
 msgstr ""
 
 #. table cell
@@ -715,7 +715,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/12-databases.md:793
-msgid "`executemany`; `commit()`; `rowcount`; work on a copy (`con.backup`)"
+msgid "[`executemany`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.executemany); [`commit()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit); `rowcount`; work on a copy ([`con.backup`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.backup))"
 msgstr ""
 
 #. table cell
@@ -725,7 +725,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/12-databases.md:794
-msgid "all or nothing; `rollback()`; `with con:` commits or rolls back; `IntegrityError`"
+msgid "all or nothing; [`rollback()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.rollback); `with con:` commits or rolls back; `IntegrityError`"
 msgstr ""
 
 #. table cell
@@ -745,7 +745,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/12-databases.md:796
-msgid "its driver follows the same DB-API; only the `connect` line and the placeholders change"
+msgid "its driver follows the same DB-API; only the [`connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) line and the placeholders change"
 msgstr ""
 
 #. table cell
@@ -790,7 +790,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/12-databases.md:812
-msgid "Connect, count, fetch rows, column names, `sqlite3.Row`"
+msgid "Connect, count, fetch rows, column names, [`sqlite3.Row`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Row)"
 msgstr ""
 
 #. table cell
@@ -805,7 +805,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/12-databases.md:815
-msgid "A copy, a new table, `executemany`, a rollback that keeps the table clean"
+msgid "A copy, a new table, [`executemany`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.executemany), a rollback that keeps the table clean"
 msgstr ""
 
 #. table cell
@@ -865,7 +865,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:868
-msgid "**Rows of a CSV file into a table.** `executemany` also takes **dictionaries** with named parameters - the rows of `csv.DictReader` ([lecture 8](./08-errors-and-files.md#read-csv-reader-and-csv-dictreader)) go straight into a table:"
+msgid "**Rows of a CSV file into a table.** [`executemany`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.executemany) also takes **dictionaries** with named parameters - the rows of [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) ([lecture 8](./08-errors-and-files.md#read-csv-reader-and-csv-dictreader)) go straight into a table:"
 msgstr ""
 
 #. paragraph
@@ -875,7 +875,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:901
-msgid "**Save to a file.** To keep a changed copy, write it to a **file** - `backup` into a new database file:"
+msgid "**Save to a file.** To keep a changed copy, write it to a **file** - [`backup`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.backup) into a new database file:"
 msgstr ""
 
 #. paragraph
@@ -910,7 +910,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:948
-msgid "**Totals by stage, two ways.** The totals by stage, two ways - the same numbers. The Python way keeps a small list `[count, sum]` per stage in a `defaultdict` ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
+msgid "**Totals by stage, two ways.** The totals by stage, two ways - the same numbers. The Python way keeps a small list `[count, sum]` per stage in a [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
 msgstr ""
 
 #. paragraph
@@ -1030,7 +1030,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:1170
-msgid "Count the rows of `ratings_history` per month with `fetchmany(200)` and a `Counter`."
+msgid "Count the rows of `ratings_history` per month with [`fetchmany(200)`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchmany) and a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter)."
 msgstr ""
 
 #. paragraph
@@ -1070,7 +1070,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:1251
-msgid "Run them with `con.execute(...).fetchall()`."
+msgid "Run them with [`con.execute(...).fetchall()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.execute)."
 msgstr ""
 
 #. heading 2

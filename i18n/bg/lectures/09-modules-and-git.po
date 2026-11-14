@@ -95,7 +95,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/09-modules-and-git.md:66
-msgid "you use a few things, and want the reader to see where they come from (`math.sqrt`)"
+msgid "you use a few things, and want the reader to see where they come from ([`math.sqrt`](https://docs.python.org/3/library/math.html#math.sqrt))"
 msgstr ""
 
 #. table cell
@@ -130,7 +130,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:101
-msgid "**What is in a module.** `dir(module)` lists its names; `help(module.function)` shows the docstring (session 4). The docstring is also in `__doc__`:"
+msgid "**What is in a module.** [`dir(module)`](https://docs.python.org/3/builtins/functions.html#dir) lists its names; [`help(module.function)`](https://docs.python.org/3/builtins/functions.html#help) shows the docstring (session 4). The docstring is also in `__doc__`:"
 msgstr ""
 
 #. paragraph
@@ -240,7 +240,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:314
-msgid "**Buckets of the portfolio.** The buckets of the whole portfolio, counted with the function of the module and a `Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter)):"
+msgid "**Buckets of the portfolio.** The buckets of the whole portfolio, counted with the function of the module and a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) ([lecture 7](./07-text-and-regex.md#counting-with-counter)):"
 msgstr ""
 
 #. box title
@@ -300,12 +300,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:412
-msgid "**Reload a module.** In a script or a running Python, `importlib.reload` reads a module again:"
+msgid "**Reload a module.** In a script or a running Python, [`importlib.reload`](https://docs.python.org/3/library/importlib.html#importlib.reload) reads a module again:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:429
-msgid "Add a function `stage(days_past_due, rating)` ([session 4](./04-functions.md)) to `portfolio_utils.py` with `write_text`, reload the module, and call it for `(45, 5)` and `(0, 10)`."
+msgid "Add a function `stage(days_past_due, rating)` ([session 4](./04-functions.md)) to `portfolio_utils.py` with [`write_text`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.write_text), reload the module, and call it for `(45, 5)` and `(0, 10)`."
 msgstr ""
 
 #. heading 2
@@ -420,7 +420,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:599
-msgid "[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) introduced `date`, `datetime` and `timedelta`. Month ends - the report dates - need the number of days of a month: `calendar.monthrange(year, month)` gives the weekday of the 1st and the number of days:"
+msgid "[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) introduced `date`, `datetime` and `timedelta`. Month ends - the report dates - need the number of days of a month: [`calendar.monthrange(year, month)`](https://docs.python.org/3/library/calendar.html#calendar.monthrange) gives the weekday of the 1st and the number of days:"
 msgstr ""
 
 #. paragraph
@@ -455,7 +455,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:690
-msgid "**Statistics by group.** By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists (`defaultdict(list)`, [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)) and `statistics` per group:"
+msgid "**Statistics by group.** By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists ([`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict), [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)) and `statistics` per group:"
 msgstr ""
 
 #. paragraph
@@ -465,7 +465,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:720
-msgid "`stdev` is the sample standard deviation (like SAS `STD`), `pstdev` the population one. `quantiles(..., n=4)` gives the quartiles; note that the methods of computing quantiles differ a little between SAS, SQL and Python."
+msgid "`stdev` is the sample standard deviation (like SAS `STD`), `pstdev` the population one. [`quantiles(..., n=4)`](https://docs.python.org/3/library/statistics.html#statistics.quantiles) gives the quartiles; note that the methods of computing quantiles differ a little between SAS, SQL and Python."
 msgstr ""
 
 #. heading 3
@@ -475,7 +475,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:726
-msgid "You know two containers of this module: `Counter` counts values ([lecture 7](./07-text-and-regex.md#counting-with-counter)), and `defaultdict` is a dictionary that creates a missing key ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)). Two more:"
+msgid "You know two containers of this module: [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) counts values ([lecture 7](./07-text-and-regex.md#counting-with-counter)), and [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) is a dictionary that creates a missing key ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)). Two more:"
 msgstr ""
 
 #. paragraph
@@ -495,7 +495,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:791
-msgid "**Compound growth.** `math.prod` multiplies - compound growth over several periods:"
+msgid "**Compound growth.** [`math.prod`](https://docs.python.org/3/library/math.html#math.prod) multiplies - compound growth over several periods:"
 msgstr ""
 
 #. heading 3
@@ -515,22 +515,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:822
-msgid "**A text template.** `string.Template` fills `$names` in a text - a mail or a report header that a colleague can edit without knowing Python:"
+msgid "**A text template.** [`string.Template`](https://docs.python.org/3/library/string.html#string.Template) fills `$names` in a text - a mail or a report header that a colleague can edit without knowing Python:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:832
-msgid "**`namedtuple` to dictionary.** `namedtuple` records turn into dictionaries (for `csv.DictWriter`) and can be copied with one field changed:"
+msgid "**`namedtuple` to dictionary.** `namedtuple` records turn into dictionaries (for [`csv.DictWriter`](https://docs.python.org/3/library/csv.html#csv.DictWriter)) and can be copied with one field changed:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:844
-msgid "**Ids in batches.** `itertools.batched` (Python 3.12+) cuts a list into pieces - for example ids for SQL `IN (...)` lists, which many databases limit to 1000 values:"
+msgid "**Ids in batches.** [`itertools.batched`](https://docs.python.org/3/library/itertools.html#itertools.batched) (Python 3.12+) cuts a list into pieces - for example ids for SQL `IN (...)` lists, which many databases limit to 1000 values:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:855
-msgid "**The closest match.** `difflib.get_close_matches` finds the most similar known value - a typo in a city or a product name:"
+msgid "**The closest match.** [`difflib.get_close_matches`](https://docs.python.org/3/library/difflib.html#difflib.get_close_matches) finds the most similar known value - a typo in a city or a product name:"
 msgstr ""
 
 #. heading 3
@@ -540,7 +540,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:868
-msgid "An auditor wants 10 loans chosen at random to check by hand. `random.seed` makes the choice **repeatable** - the same seed gives the same sample next week:"
+msgid "An auditor wants 10 loans chosen at random to check by hand. [`random.seed`](https://docs.python.org/3/library/random.html#random.seed) makes the choice **repeatable** - the same seed gives the same sample next week:"
 msgstr ""
 
 #. paragraph
@@ -595,7 +595,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:985
-msgid "Compute the quartiles of the outstanding amounts of the stage 1 loans with `statistics.quantiles(..., n=4)`. Then the median of the days past due of the loans that are late at all."
+msgid "Compute the quartiles of the outstanding amounts of the stage 1 loans with [`statistics.quantiles(..., n=4)`](https://docs.python.org/3/library/statistics.html#statistics.quantiles). Then the median of the days past due of the loans that are late at all."
 msgstr ""
 
 #. heading 2
@@ -795,7 +795,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:1248
-msgid "**What Git ignores.** The patterns of `.gitignore` are the same kind as `glob` ([lecture 8](./08-errors-and-files.md#find-files-glob)). The module `fnmatch` tests a name against them - which files of a project would Git ignore?"
+msgid "**What Git ignores.** The patterns of `.gitignore` are the same kind as [`glob`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) ([lecture 8](./08-errors-and-files.md#find-files-glob)). The module `fnmatch` tests a name against them - which files of a project would Git ignore?"
 msgstr ""
 
 #. heading 3
@@ -1000,7 +1000,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/09-modules-and-git.md:1387
-msgid "`calendar.monthrange` for month ends; `statistics`; `namedtuple`, `deque`; `math.fsum`, `isclose`; `os.getenv`"
+msgid "[`calendar.monthrange`](https://docs.python.org/3/library/calendar.html#calendar.monthrange) for month ends; `statistics`; `namedtuple`, `deque`; [`math.fsum`](https://docs.python.org/3/library/math.html#math.fsum), `isclose`; [`os.getenv`](https://docs.python.org/3/library/os.html#os.getenv)"
 msgstr ""
 
 #. table cell
@@ -1075,7 +1075,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/09-modules-and-git.md:1406
-msgid "Predict: module names, `__name__`, `dir`, what `import` returns"
+msgid "Predict: module names, `__name__`, [`dir`](https://docs.python.org/3/builtins/functions.html#dir), what `import` returns"
 msgstr ""
 
 #. table cell
@@ -1155,7 +1155,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:1460
-msgid "In a script, `parser.parse_args()` without a list reads `sys.argv`. A wrong date stops the script with a clear message - before any work is done."
+msgid "In a script, [`parser.parse_args()`](https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.parse_args) without a list reads `sys.argv`. A wrong date stops the script with a clear message - before any work is done."
 msgstr ""
 
 #. paragraph
@@ -1170,7 +1170,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:1478
-msgid "What happens with `parser.parse_args([\"--date\", \"30.09.2026\"])`? Why is that good?"
+msgid "What happens with [`parser.parse_args([\"--date\", \"30.09.2026\"])`](https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.parse_args)? Why is that good?"
 msgstr ""
 
 #. box title
@@ -1180,12 +1180,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:1481
-msgid "`parser.add_argument(\"--input\", type=Path, default=Path(\"data/loans.csv\"))`, then `print(args.input.exists())` (with `from pathlib import Path`)."
+msgid "[`parser.add_argument(\"--input\", type=Path, default=Path(\"data/loans.csv\"))`](https://docs.python.org/3/library/argparse.html#argparse.ArgumentParser.add_argument), then [`print(args.input.exists())`](https://docs.python.org/3/builtins/functions.html#print) (with `from pathlib import Path`)."
 msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:1483
-msgid "`argparse` calls `date.fromisoformat(\"30.09.2026\")`, which raises a `ValueError`; `argparse` turns it into the message *argument --date: invalid fromisoformat value* and stops with an error code - the report never runs with a wrong date."
+msgid "`argparse` calls [`date.fromisoformat(\"30.09.2026\")`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat), which raises a `ValueError`; `argparse` turns it into the message *argument --date: invalid fromisoformat value* and stops with an error code - the report never runs with a wrong date."
 msgstr ""
 
 #. heading 3

@@ -495,7 +495,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:575
-msgid "(`io.StringIO` makes a string behave like a file - [lecture 8](./08-errors-and-files.md).)"
+msgid "([`io.StringIO`](https://docs.python.org/3/library/io.html#io.StringIO) makes a string behave like a file - [lecture 8](./08-errors-and-files.md).)"
 msgstr ""
 
 #. heading 3
@@ -815,7 +815,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:898
-msgid "**Read dates.** `pd.to_datetime` with a `format` reads dates - for a whole column, much faster than `strptime` in a loop ([lecture 7](./07-text-and-regex.md#from-text-to-a-date)):"
+msgid "**Read dates.** `pd.to_datetime` with a `format` reads dates - for a whole column, much faster than [`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) in a loop ([lecture 7](./07-text-and-regex.md#from-text-to-a-date)):"
 msgstr ""
 
 #. heading 3

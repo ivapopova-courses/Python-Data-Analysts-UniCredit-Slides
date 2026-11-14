@@ -115,8 +115,8 @@ msgstr "За напреднали: други начини за създаван
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:101
-msgid "**From two lists.** The keys and the values, joined with `zip` ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):"
-msgstr "**От два lists.** Ключовете и стойностите, съединени със `zip` ([занятие 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):"
+msgid "**From two lists.** The keys and the values, joined with [`zip`](https://docs.python.org/3/builtins/functions.html#zip) ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):"
+msgstr "**От два lists.** Ключовете и стойностите, съединени със [`zip`](https://docs.python.org/3/builtins/functions.html#zip) ([занятие 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:111
@@ -130,13 +130,13 @@ msgstr "`d[key]` дава стойността. Ключ, който го ням
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:123
-msgid "**A default for a missing key.** `d.get(key)` gives `None` for a missing key, and `d.get(key, default)` gives the default - like `OTHER=` in a SAS format:"
-msgstr "**Стойност по подразбиране за липсващ ключ.** `d.get(key)` дава `None` за липсващ ключ, а `d.get(key, default)` дава стойността по подразбиране - като `OTHER=` в SAS format:"
+msgid "**A default for a missing key.** [`d.get(key)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) gives `None` for a missing key, and [`d.get(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) gives the default - like `OTHER=` in a SAS format:"
+msgstr "**Стойност по подразбиране за липсващ ключ.** [`d.get(key)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) дава `None` за липсващ ключ, а [`d.get(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) дава стойността по подразбиране - като `OTHER=` в SAS format:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:134
-msgid "Which one to use? `d[key]` when a missing key is an **error** in the data and you want to know at once. `get` when a missing key is **normal**, and you know what to use instead."
-msgstr "Кое да използвате? `d[key]`, когато липсващ ключ е **грешка** в данните и искате да разберете веднага. `get`, когато липсващ ключ е **нещо нормално** и знаете какво да използвате вместо него."
+msgid "Which one to use? `d[key]` when a missing key is an **error** in the data and you want to know at once. [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) when a missing key is **normal**, and you know what to use instead."
+msgstr "Кое да използвате? `d[key]`, когато липсващ ключ е **грешка** в данните и искате да разберете веднага. [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get), когато липсващ ключ е **нещо нормално** и знаете какво да използвате вместо него."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:138
@@ -190,8 +190,8 @@ msgstr "За напреднали: `fromkeys`: уникални и началн�
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:173
-msgid "Two useful forms of `dict.fromkeys`: unique values **in the order of their first appearance** (a set loses the order), and many keys with one start value:"
-msgstr "Две полезни форми на `dict.fromkeys`: уникални стойности **в реда на първото им срещане** (set губи реда) и много ключове с една начална стойност:"
+msgid "Two useful forms of [`dict.fromkeys`](https://docs.python.org/3/builtins/stdtypes.html#dict.fromkeys): unique values **in the order of their first appearance** (a set loses the order), and many keys with one start value:"
+msgstr "Две полезни форми на [`dict.fromkeys`](https://docs.python.org/3/builtins/stdtypes.html#dict.fromkeys): уникални стойности **в реда на първото им срещане** (set губи реда) и много ключове с една начална стойност:"
 
 #. box title
 #: site/lectures/06-dictionaries.md:185
@@ -250,8 +250,8 @@ msgstr "`setdefault`: добавя само ако липсва"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:252
-msgid "`d.setdefault(key, value)` returns the value of the key; if the key is missing, it first adds it with `value`:"
-msgstr "`d.setdefault(key, value)` връща стойността на ключа; ако ключът липсва, първо го добавя с `value`:"
+msgid "[`d.setdefault(key, value)`](https://docs.python.org/3/builtins/stdtypes.html#dict.setdefault) returns the value of the key; if the key is missing, it first adds it with `value`:"
+msgstr "[`d.setdefault(key, value)`](https://docs.python.org/3/builtins/stdtypes.html#dict.setdefault) връща стойността на ключа; ако ключът липсва, първо го добавя с `value`:"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:264
@@ -300,8 +300,8 @@ msgstr "Пробвайте"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:309
-msgid "Start from `rates = {\"EUR\": 3.5, \"USD\": 5.25}`. Add `\"GBP\": 4.75`, change `EUR` to `3.25`, remove `USD` with `pop`, and print the dict. What does `rates.pop(\"CHF\", 0)` return? Then predict: what does `rates | {\"CHF\": 0.5}` give, and is `rates` changed after it?"
-msgstr "Започнете от `rates = {\"EUR\": 3.5, \"USD\": 5.25}`. Добавете `\"GBP\": 4.75`, променете `EUR` на `3.25`, премахнете `USD` с `pop` и отпечатайте dict-а. Какво връща `rates.pop(\"CHF\", 0)`? После предскажете: какво дава `rates | {\"CHF\": 0.5}` и променен ли е `rates` след това?"
+msgid "Start from `rates = {\"EUR\": 3.5, \"USD\": 5.25}`. Add `\"GBP\": 4.75`, change `EUR` to `3.25`, remove `USD` with [`pop`](https://docs.python.org/3/builtins/stdtypes.html#dict.pop), and print the dict. What does [`rates.pop(\"CHF\", 0)`](https://docs.python.org/3/builtins/stdtypes.html#dict.pop) return? Then predict: what does `rates | {\"CHF\": 0.5}` give, and is `rates` changed after it?"
+msgstr "Започнете от `rates = {\"EUR\": 3.5, \"USD\": 5.25}`. Добавете `\"GBP\": 4.75`, променете `EUR` на `3.25`, премахнете `USD` с [`pop`](https://docs.python.org/3/builtins/stdtypes.html#dict.pop) и отпечатайте dict-а. Какво връща [`rates.pop(\"CHF\", 0)`](https://docs.python.org/3/builtins/stdtypes.html#dict.pop)? После предскажете: какво дава `rates | {\"CHF\": 0.5}` и променен ли е `rates` след това?"
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:315
@@ -320,23 +320,23 @@ msgstr "Когато обхождате dictionary с цикъл `for`, по п�
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:321
-msgid "**`keys()`**: Returns all keys (this is identical to looping directly over the dictionary)."
-msgstr "**`keys()`**: връща всички ключове (същото като директното обхождане на dictionary)."
+msgid "**[`keys()`](https://docs.python.org/3/builtins/stdtypes.html#dict.keys)**: Returns all keys (this is identical to looping directly over the dictionary)."
+msgstr "**[`keys()`](https://docs.python.org/3/builtins/stdtypes.html#dict.keys)**: връща всички ключове (същото като директното обхождане на dictionary)."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:322
-msgid "**`values()`**: Returns all values."
-msgstr "**`values()`**: връща всички стойности."
+msgid "**[`values()`](https://docs.python.org/3/builtins/stdtypes.html#dict.values)**: Returns all values."
+msgstr "**[`values()`](https://docs.python.org/3/builtins/stdtypes.html#dict.values)**: връща всички стойности."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:323
-msgid "**`items()`**: Returns key-value pairs as `(key, value)` tuples, which you can unpack directly in the loop."
-msgstr "**`items()`**: връща двойките ключ-стойност като tuple `(key, value)`, които можете да разопаковате направо в цикъла."
+msgid "**[`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items)**: Returns key-value pairs as `(key, value)` tuples, which you can unpack directly in the loop."
+msgstr "**[`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items)**: връща двойките ключ-стойност като tuple `(key, value)`, които можете да разопаковате направо в цикъла."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:338
-msgid "`items()` is the most common: it gives the key and the value together."
-msgstr "`items()` се използва най-често: дава ключа и стойността заедно."
+msgid "[`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items) is the most common: it gives the key and the value together."
+msgstr "[`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items) се използва най-често: дава ключа и стойността заедно."
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:340
@@ -345,8 +345,8 @@ msgstr "Сортиране на ключовете"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:342
-msgid "`sorted(d)` returns a list of the keys in sorted order. It does not change `d`:"
-msgstr "`sorted(d)` връща list с ключовете в сортиран ред. Не променя `d`:"
+msgid "[`sorted(d)`](https://docs.python.org/3/builtins/functions.html#sorted) returns a list of the keys in sorted order. It does not change `d`:"
+msgstr "[`sorted(d)`](https://docs.python.org/3/builtins/functions.html#sorted) връща list с ключовете в сортиран ред. Не променя `d`:"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:352
@@ -355,8 +355,8 @@ msgstr "Сортиране и класиране по стойности"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:354
-msgid "The order of a dictionary is the order of insertion. To show it sorted, sort the `items()` - by the key, or by the value:"
-msgstr "Редът на dictionary е редът на добавяне. За да го покажете сортиран, сортирайте `items()` - по ключа или по стойността:"
+msgid "The order of a dictionary is the order of insertion. To show it sorted, sort the [`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items) - by the key, or by the value:"
+msgstr "Редът на dictionary е редът на добавяне. За да го покажете сортиран, сортирайте [`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items) - по ключа или по стойността:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:367
@@ -365,13 +365,13 @@ msgstr "**Ключът с най-голямата стойност.** Напри
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:375
-msgid "(`key=outstanding.get` - the method itself, without brackets: `max` calls it for each key.)"
-msgstr "(`key=outstanding.get` - самият метод, без скоби: `max` го извиква за всеки ключ.)"
+msgid "(`key=outstanding.get` - the method itself, without brackets: [`max`](https://docs.python.org/3/builtins/functions.html#max) calls it for each key.)"
+msgstr "(`key=outstanding.get` - самият метод, без скоби: [`max`](https://docs.python.org/3/builtins/functions.html#max) го извиква за всеки ключ.)"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:378
-msgid "**A ranked report.** Sort the segments by amount, largest first, and number them 1, 2, 3 with `enumerate(..., start=1)` ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)). Each line shows the rank, the segment, its amount and its share of the total:"
-msgstr "**Отчет с ранг.** Сортирайте сегментите по сума, от най-голямата, и ги номерирайте 1, 2, 3 с `enumerate(..., start=1)` ([занятие 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)). Всеки ред показва ранга, сегмента, сумата му и дела му от общото:"
+msgid "**A ranked report.** Sort the segments by amount, largest first, and number them 1, 2, 3 with [`enumerate(..., start=1)`](https://docs.python.org/3/builtins/functions.html#enumerate) ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)). Each line shows the rank, the segment, its amount and its share of the total:"
+msgstr "**Отчет с ранг.** Сортирайте сегментите по сума, от най-голямата, и ги номерирайте 1, 2, 3 с [`enumerate(..., start=1)`](https://docs.python.org/3/builtins/functions.html#enumerate) ([занятие 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)). Всеки ред показва ранга, сегмента, сумата му и дела му от общото:"
 
 #. box title
 #: site/lectures/06-dictionaries.md:390
@@ -380,8 +380,8 @@ msgstr "За напреднали: изгледите (views) са живи"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:391
-msgid "`keys()`, `values()` and `items()` are **views**: they show the dictionary as it is **now**, also after a change:"
-msgstr "`keys()`, `values()` и `items()` са **views**: показват dictionary-то такова, каквото е **сега**, също и след промяна:"
+msgid "[`keys()`](https://docs.python.org/3/builtins/stdtypes.html#dict.keys), [`values()`](https://docs.python.org/3/builtins/stdtypes.html#dict.values) and [`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items) are **views**: they show the dictionary as it is **now**, also after a change:"
+msgstr "[`keys()`](https://docs.python.org/3/builtins/stdtypes.html#dict.keys), [`values()`](https://docs.python.org/3/builtins/stdtypes.html#dict.values) и [`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items) са **views**: показват dictionary-то такова, каквото е **сега**, също и след промяна:"
 
 #. box title
 #: site/lectures/06-dictionaries.md:404
@@ -390,13 +390,13 @@ msgstr "За напреднали: ключовете се държат като
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:405
-msgid "`keys()` supports the set operations of [session 3](./03-lists-tuples-sets.md#_12-set-operations-sql-union-intersect-except) - handy to compare two nomenclatures:"
-msgstr "`keys()` поддържа операциите със sets от [занятие 3](./03-lists-tuples-sets.md#_12-set-operations-sql-union-intersect-except) - удобно за сравняване на две номенклатури:"
+msgid "[`keys()`](https://docs.python.org/3/builtins/stdtypes.html#dict.keys) supports the set operations of [session 3](./03-lists-tuples-sets.md#_12-set-operations-sql-union-intersect-except) - handy to compare two nomenclatures:"
+msgstr "[`keys()`](https://docs.python.org/3/builtins/stdtypes.html#dict.keys) поддържа операциите със sets от [занятие 3](./03-lists-tuples-sets.md#_12-set-operations-sql-union-intersect-except) - удобно за сравняване на две номенклатури:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:419
-msgid "From `outstanding = {\"retail\": 6.9, \"sme\": 39.5, \"corporate\": 85.0}`, print each segment and amount with `items()`. Then print the segment names alphabetically."
-msgstr "От `outstanding = {\"retail\": 6.9, \"sme\": 39.5, \"corporate\": 85.0}` отпечатайте всеки сегмент и сумата му с `items()`. След това отпечатайте имената на сегментите по азбучен ред."
+msgid "From `outstanding = {\"retail\": 6.9, \"sme\": 39.5, \"corporate\": 85.0}`, print each segment and amount with [`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items). Then print the segment names alphabetically."
+msgstr "От `outstanding = {\"retail\": 6.9, \"sme\": 39.5, \"corporate\": 85.0}` отпечатайте всеки сегмент и сумата му с [`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items). След това отпечатайте имената на сегментите по азбучен ред."
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:423
@@ -510,18 +510,18 @@ msgstr "**Очакваната загуба на кредит.** С PD изчи�
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:554
-msgid "`[]` needs every key to exist: a client that is not in `rating_of` raises `KeyError` (`get` with a default avoids that)."
-msgstr "`[]` изисква всеки ключ да съществува: клиент, който не е в `rating_of`, предизвиква `KeyError` (`get` със стойност по подразбиране го избягва)."
+msgid "`[]` needs every key to exist: a client that is not in `rating_of` raises `KeyError` ([`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) with a default avoids that)."
+msgstr "`[]` изисква всеки ключ да съществува: клиент, който не е в `rating_of`, предизвиква `KeyError` ([`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) със стойност по подразбиране го избягва)."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:557
-msgid "Each loan needs only two lookups, and a lookup is fast, however big the dictionary is (the Self-study explains why). Without a dictionary, you would loop over all the clients to find the client of each loan. A SAS programmer would do this with a hash object (`h.find()`); the dictionary is the same idea, with less code."
-msgstr "На всеки кредит са нужни само два lookups, а lookup е бърз, колкото и голям да е dictionary-то (Самостоятелно изучаване обяснява защо). Без dictionary бихте обхождали всички клиенти, за да намерите клиента на всеки кредит. SAS програмист би направил това с hash object (`h.find()`); dictionary е същата идея, с по-малко код."
+msgid "Each loan needs only two lookups, and a lookup is fast, however big the dictionary is (the Self-study explains why). Without a dictionary, you would loop over all the clients to find the client of each loan. A SAS programmer would do this with a hash object ([`h.find()`](https://docs.python.org/3/builtins/stdtypes.html#str.find)); the dictionary is the same idea, with less code."
+msgstr "На всеки кредит са нужни само два lookups, а lookup е бърз, колкото и голям да е dictionary-то (Самостоятелно изучаване обяснява защо). Без dictionary бихте обхождали всички клиенти, за да намерите клиента на всеки кредит. SAS програмист би направил това с hash object ([`h.find()`](https://docs.python.org/3/builtins/stdtypes.html#str.find)); dictionary е същата идея, с по-малко код."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:563
-msgid "Change the loan to the client `C0001`. Predict the rating, the PD and the EL before you run it. What happens with a client that is not in `rating_of`, and how would `get` change that?"
-msgstr "Сменете кредита с клиента `C0001`. Предвидете рейтинга, PD и EL, преди да изпълните кода. Какво става с клиент, който не е в `rating_of`, и как `get` би променил това?"
+msgid "Change the loan to the client `C0001`. Predict the rating, the PD and the EL before you run it. What happens with a client that is not in `rating_of`, and how would [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) change that?"
+msgstr "Сменете кредита с клиента `C0001`. Предвидете рейтинга, PD и EL, преди да изпълните кода. Какво става с клиент, който не е в `rating_of`, и как [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) би променил това?"
 
 #. heading 3
 #: site/lectures/06-dictionaries.md:568
@@ -595,8 +595,8 @@ msgstr "Безопасен достъп до вложени нива"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:675
-msgid "With nested dictionaries, a missing level is a `KeyError` (or a `TypeError` on `None`). Chain `get` with an empty dictionary as the default:"
-msgstr "При вложени dictionaries липсващо ниво е `KeyError` (или `TypeError` върху `None`). Навържете `get` с празен dictionary като стойност по подразбиране:"
+msgid "With nested dictionaries, a missing level is a `KeyError` (or a `TypeError` on `None`). Chain [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) with an empty dictionary as the default:"
+msgstr "При вложени dictionaries липсващо ниво е `KeyError` (или `TypeError` върху `None`). Навържете [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) с празен dictionary като стойност по подразбиране:"
 
 #. box title
 #: site/lectures/06-dictionaries.md:686
@@ -625,8 +625,8 @@ msgstr "Копия на вложени dictionaries"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:713
-msgid "The same rule as for the copies of lists ([session 3](./03-lists-tuples-sets.md#make-a-copy)): `d.copy()` and `dict(d)` are **shallow** - the inner dictionaries are shared. `copy.deepcopy` copies all levels:"
-msgstr "Същото правило като за копията на lists ([занятие 3](./03-lists-tuples-sets.md#make-a-copy)): `d.copy()` и `dict(d)` са **плитки** копия - вътрешните dictionaries са общи. `copy.deepcopy` копира всички нива:"
+msgid "The same rule as for the copies of lists ([session 3](./03-lists-tuples-sets.md#make-a-copy)): [`d.copy()`](https://docs.python.org/3/builtins/stdtypes.html#dict.copy) and [`dict(d)`](https://docs.python.org/3/builtins/stdtypes.html#dict) are **shallow** - the inner dictionaries are shared. [`copy.deepcopy`](https://docs.python.org/3/library/copy.html#copy.deepcopy) copies all levels:"
+msgstr "Същото правило като за копията на lists ([занятие 3](./03-lists-tuples-sets.md#make-a-copy)): [`d.copy()`](https://docs.python.org/3/builtins/stdtypes.html#dict.copy) и [`dict(d)`](https://docs.python.org/3/builtins/stdtypes.html#dict) са **плитки** копия - вътрешните dictionaries са общи. [`copy.deepcopy`](https://docs.python.org/3/library/copy.html#copy.deepcopy) копира всички нива:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:729
@@ -665,8 +665,8 @@ msgstr "Четене"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:739
-msgid "`d[key]` for a required key; `d.get(key, default)` for an expected missing key; `key in d`"
-msgstr "`d[key]` за задължителен ключ; `d.get(key, default)` при очакван липсващ ключ; `key in d`"
+msgid "`d[key]` for a required key; [`d.get(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) for an expected missing key; `key in d`"
+msgstr "`d[key]` за задължителен ключ; [`d.get(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) при очакван липсващ ключ; `key in d`"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:740
@@ -675,8 +675,8 @@ msgstr "Промяна"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:740
-msgid "`d[key] = value` adds or changes; `pop(key, default)` removes and returns a value"
-msgstr "`d[key] = value` добавя или променя; `pop(key, default)` премахва и връща стойност"
+msgid "`d[key] = value` adds or changes; [`pop(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.pop) removes and returns a value"
+msgstr "`d[key] = value` добавя или променя; [`pop(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.pop) премахва и връща стойност"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:741
@@ -685,8 +685,8 @@ msgstr "Обхождане"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:741
-msgid "`for key in d`; `d.values()`; `for key, value in d.items()`; `sorted(d)` sorts the keys"
-msgstr "`for key in d`; `d.values()`; `for key, value in d.items()`; `sorted(d)` сортира ключовете"
+msgid "`for key in d`; [`d.values()`](https://docs.python.org/3/builtins/stdtypes.html#dict.values); `for key, value in d.items()`; [`sorted(d)`](https://docs.python.org/3/builtins/functions.html#sorted) sorts the keys"
+msgstr "`for key in d`; [`d.values()`](https://docs.python.org/3/builtins/stdtypes.html#dict.values); `for key, value in d.items()`; [`sorted(d)`](https://docs.python.org/3/builtins/functions.html#sorted) сортира ключовете"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:742
@@ -695,8 +695,8 @@ msgstr "Comprehension"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:742
-msgid "`{key: value for ... if ...}`; `dict(zip(keys, values))` pairs two lists"
-msgstr "`{key: value for ... if ...}`; `dict(zip(keys, values))` свързва два lists по двойки"
+msgid "`{key: value for ... if ...}`; [`dict(zip(keys, values))`](https://docs.python.org/3/builtins/stdtypes.html#dict) pairs two lists"
+msgstr "`{key: value for ... if ...}`; [`dict(zip(keys, values))`](https://docs.python.org/3/builtins/stdtypes.html#dict) свързва два lists по двойки"
 
 #. table cell
 #: site/lectures/06-dictionaries.md:743
@@ -795,8 +795,8 @@ msgstr "**Dictionary от dictionaries** е кръстосана таблица:
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:801
-msgid "A `defaultdict` (from the module `collections`) is a dictionary that creates a missing key by itself: `defaultdict(int)` gives a new key the value `int()`, that is `0`. `defaultdict(lambda: defaultdict(int))`: a missing row is created as a new `defaultdict(int)` - so `table[region][segment] += 1` works for any new pair."
-msgstr "`defaultdict` (от модула `collections`) е dictionary, който сам създава липсващ ключ: `defaultdict(int)` дава на нов ключ стойността `int()`, тоест `0`. `defaultdict(lambda: defaultdict(int))`: липсващ ред се създава като нов `defaultdict(int)` - затова `table[region][segment] += 1` работи за всяка нова двойка."
+msgid "A [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) (from the module `collections`) is a dictionary that creates a missing key by itself: [`defaultdict(int)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) gives a new key the value [`int()`](https://docs.python.org/3/builtins/functions.html#int), that is `0`. [`defaultdict(lambda: defaultdict(int))`](https://docs.python.org/3/library/collections.html#collections.defaultdict): a missing row is created as a new [`defaultdict(int)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) - so `table[region][segment] += 1` works for any new pair."
+msgstr "[`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) (от модула `collections`) е dictionary, който сам създава липсващ ключ: [`defaultdict(int)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) дава на нов ключ стойността [`int()`](https://docs.python.org/3/builtins/functions.html#int), тоест `0`. [`defaultdict(lambda: defaultdict(int))`](https://docs.python.org/3/library/collections.html#collections.defaultdict): липсващ ред се създава като нов [`defaultdict(int)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) - затова `table[region][segment] += 1` работи за всяка нова двойка."
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:806
@@ -835,8 +835,8 @@ msgstr "Защо `d[key]` е бързо и защо ключовете не тр
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:848
-msgid "A dictionary keeps its pairs in a table of slots. To store a key, Python computes `hash(key)` - a big integer made from the value - and uses it to choose the slot. To find the key later, it computes the hash again. Different keys can lead to the same slot (a collision), so Python may need to check more than one slot and compare keys. Lookups take approximately constant time **on average**; they are not a guaranteed single step or an identical runtime for every dictionary size:"
-msgstr "Dictionary пази двойките си в таблица от позиции. За да запише ключ, Python изчислява `hash(key)` - голямо цяло число, получено от стойността - и го използва, за да избере позиция. За да намери ключа по-късно, изчислява hash отново. Различни ключове могат да водят до една позиция (колизия), затова Python може да провери повече от една позиция и да сравни ключове. Lookups отнемат приблизително постоянно време **средно**; не са гарантирано една стъпка или еднакво време за всеки размер на dictionary:"
+msgid "A dictionary keeps its pairs in a table of slots. To store a key, Python computes [`hash(key)`](https://docs.python.org/3/builtins/functions.html#hash) - a big integer made from the value - and uses it to choose the slot. To find the key later, it computes the hash again. Different keys can lead to the same slot (a collision), so Python may need to check more than one slot and compare keys. Lookups take approximately constant time **on average**; they are not a guaranteed single step or an identical runtime for every dictionary size:"
+msgstr "Dictionary пази двойките си в таблица от позиции. За да запише ключ, Python изчислява [`hash(key)`](https://docs.python.org/3/builtins/functions.html#hash) - голямо цяло число, получено от стойността - и го използва, за да избере позиция. За да намери ключа по-късно, изчислява hash отново. Различни ключове могат да водят до една позиция (колизия), затова Python може да провери повече от една позиция и да сравни ключове. Lookups отнемат приблизително постоянно време **средно**; не са гарантирано една стъпка или еднакво време за всеки размер на dictionary:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:861
@@ -880,8 +880,8 @@ msgstr "Python tutorial: [Dictionaries](https://docs.python.org/3/tutorial/datas
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:902
-msgid "Reference: [Mapping types - dict](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict), [`collections.defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict)"
-msgstr "Справочник: [Mapping types - dict](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict), [`collections.defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict)"
+msgid "Reference: [Mapping types - dict](https://docs.python.org/3/builtins/stdtypes.html#mapping-types-dict), [`collections.defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict)"
+msgstr "Справочник: [Mapping types - dict](https://docs.python.org/3/builtins/stdtypes.html#mapping-types-dict), [`collections.defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict)"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:904

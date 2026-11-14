@@ -14,7 +14,7 @@ title: 4. Functions
 - define your own functions with `def`, and call them;
 - pass values to a function: by position, by name, with default values, and in any
   number with `*args`;
-- return one or several results with `return` - and see why `print` is not `return`;
+- return one or several results with `return` - and see why [`print`](https://docs.python.org/3/builtins/functions.html#print) is not `return`;
 - understand where a name is visible (scope), and why a function should get its
   data through parameters;
 - document a function with a docstring and type hints;
@@ -52,8 +52,8 @@ and **call** it - run it - as many times as you need, with different values. A g
 picture is a recipe in a cookbook: written once, cooked many times, with different
 amounts.
 
-You already call functions every day: `print()`, `len()`, `round()`, `sum()`,
-`sorted()`, `int()`. Today you write your own.
+You already call functions every day: [`print()`](https://docs.python.org/3/builtins/functions.html#print), [`len()`](https://docs.python.org/3/builtins/functions.html#len), [`round()`](https://docs.python.org/3/builtins/functions.html#round), [`sum()`](https://docs.python.org/3/builtins/functions.html#sum),
+[`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted), [`int()`](https://docs.python.org/3/builtins/functions.html#int). Today you write your own.
 
 Functions help to:
 
@@ -320,7 +320,7 @@ print(annuity_payment(amount=20000, yearly_rate=6, years=10))     # clear
 ```
 
 You know this from SAS macros with keyword parameters: `%report(data=loans, limit=90)`,
-and from `print(..., sep=";", end="")`.
+and from [`print(..., sep=";", end="")`](https://docs.python.org/3/builtins/functions.html#print).
 
 ### A trap: a list as a default value
 
@@ -369,7 +369,7 @@ foo(1, 2, 3)
 foo()
 ```
 
-`print()`, `max()` and `min()` work like this: `max(3, 8, 5)` takes any number of
+[`print()`](https://docs.python.org/3/builtins/functions.html#print), [`max()`](https://docs.python.org/3/builtins/functions.html#max) and [`min()`](https://docs.python.org/3/builtins/functions.html#min) work like this: [`max(3, 8, 5)`](https://docs.python.org/3/builtins/functions.html#max) takes any number of
 values. Your own:
 
 ```python run
@@ -502,9 +502,9 @@ print(expected_loss(0.02, 0.45, 100000))
 print(expected_loss(0.02, 0.45, 100000, rounded=True))
 ```
 
-`sorted(items, key=..., reverse=True)` is defined this way: `key` and `reverse` are
+[`sorted(items, key=..., reverse=True)`](https://docs.python.org/3/builtins/functions.html#sorted) is defined this way: `key` and `reverse` are
 keyword-only. A `/` means "everything before this must be given by position" - you see
-it in the help of many built-in functions, like `len(obj, /)`.
+it in the help of many built-in functions, like [`len(obj, /)`](https://docs.python.org/3/builtins/functions.html#len).
 :::
 
 ## 5. Return values
@@ -553,7 +553,7 @@ print(bar())
 
 ### `print` is not `return`
 
-The most common mistake with functions: `print` **shows** a value on the screen, but
+The most common mistake with functions: [`print`](https://docs.python.org/3/builtins/functions.html#print) **shows** a value on the screen, but
 the caller gets nothing. `return` **gives** the value to the caller - and shows nothing.
 
 ```python run
@@ -644,7 +644,7 @@ def foo():
 foo()
 ```
 
-(`globals()` shows many more names - the built-in ones of the module, like
+([`globals()`](https://docs.python.org/3/builtins/functions.html#globals) shows many more names - the built-in ones of the module, like
 `__name__`.)
 :::
 
@@ -873,14 +873,14 @@ the first one it finds:
 1. **L**ocal - the function that runs now;
 2. **E**nclosing - the functions around it, from the nearest one out;
 3. **G**lobal - the top level of the file (module);
-4. **B**uilt-in - the names of Python itself: `print`, `len`, `sum`, ...
+4. **B**uilt-in - the names of Python itself: [`print`](https://docs.python.org/3/builtins/functions.html#print), [`len`](https://docs.python.org/3/builtins/functions.html#len), [`sum`](https://docs.python.org/3/builtins/functions.html#sum), ...
 
 If the name is nowhere, it is a `NameError`.
 
 ![Four nested boxes: Built-in around Global around Enclosing around Local, with example names; Python looks for a name from the inside out](/diagrams/scope-legb.svg){.diagram width=920 height=400}
 
 This is also why you should not use built-in names for your variables: `sum = 0`
-**hides** the built-in `sum()` in that scope (a common habit from other languages):
+**hides** the built-in [`sum()`](https://docs.python.org/3/builtins/functions.html#sum) in that scope (a common habit from other languages):
 
 ```python run
 sum = 0                      # a global name sum hides the built-in sum
@@ -939,7 +939,7 @@ print(fees, new_fees)
 
 A **docstring** is a string right after the `def` line, in triple quotes. It says what
 the function does, what it takes and what it returns - for the people who will use it
-(you, in three months). Tools show it: `help()`, and VS Code when you hover over the
+(you, in three months). Tools show it: [`help()`](https://docs.python.org/3/builtins/functions.html#help), and VS Code when you hover over the
 name.
 
 ```python run
@@ -1061,7 +1061,7 @@ print(apply_function(cube, 5))
 ```
 
 A function that takes or returns a function is a **higher-order function**. You
-already know some: `sorted`, `min` and `max` take a function as `key` (section 10). A
+already know some: [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted), [`min`](https://docs.python.org/3/builtins/functions.html#min) and [`max`](https://docs.python.org/3/builtins/functions.html#max) take a function as `key` (section 10). A
 report that can use any rounding rule:
 
 ```python run
@@ -1168,7 +1168,7 @@ for a function you need **once, right here** - most often as the `key` of a sort
 
 ### Sorting by a key
 
-`sorted()` and `list.sort()` take a `key`: a function that is called for each item,
+[`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted) and [`list.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) take a `key`: a function that is called for each item,
 and the items are sorted by its result. This is SQL `ORDER BY` with any expression:
 
 ```python run
@@ -1192,7 +1192,7 @@ for loan in sorted(loans, key=lambda loan: loan[2], reverse=True):
 print(sorted(loans, key=lambda loan: (loan[1], loan[0]))[0])
 ```
 
-`key` also works with `min` and `max` - the loan with the largest outstanding amount,
+`key` also works with [`min`](https://docs.python.org/3/builtins/functions.html#min) and [`max`](https://docs.python.org/3/builtins/functions.html#max) - the loan with the largest outstanding amount,
 not only the amount:
 
 ```python run
@@ -1209,7 +1209,7 @@ print(sorted(["banana", "Cherry", "apple"], key=str.lower))    # ignore the case
 print(sorted(["cherry", "fig", "banana"], key=len))
 ```
 
-The top N with `sorted` is in [session 5](./05-lists-advanced.md#the-top-n). Reference:
+The top N with [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted) is in [session 5](./05-lists-advanced.md#the-top-n). Reference:
 [Sorting techniques](https://docs.python.org/3/howto/sorting.html).
 
 ## 11. From macros to functions: a report script
@@ -1282,12 +1282,12 @@ without running the report. Modules and `import` of your own files are the topic
 | Parameters | positional; defaults after the others; `name=value` in the call; `*args` a tuple |
 | Defaults | never a list or a dict as a default - use `None` |
 | `return` | ends the function and gives a value; no `return` -> `None`; `return a, b` gives a tuple |
-| `print` / `return` | `print` shows, `return` gives - calculating functions return |
+| [`print`](https://docs.python.org/3/builtins/functions.html#print) / `return` | [`print`](https://docs.python.org/3/builtins/functions.html#print) shows, `return` gives - calculating functions return |
 | Scope | names assigned in a function are local; LEGB: local, enclosing, global, built-in; avoid `global` - values in through parameters, out through `return` |
 | References | a list passed to a function can be changed by it - return a new list instead |
 | Documentation | a docstring in triple quotes; type hints `x: float -> float` are not checked at run time |
 | Functions as values | pass a function as an argument; `lambda x: ...` for a short `key` |
-| Sorting | `sorted(items, key=lambda item: item[2], reverse=True)` - SQL `ORDER BY` any expression |
+| Sorting | [`sorted(items, key=lambda item: item[2], reverse=True)`](https://docs.python.org/3/builtins/functions.html#sorted) - SQL `ORDER BY` any expression |
 | SAS macros | a macro writes code; a function runs and returns a value |
 
 ## Practice
@@ -1358,7 +1358,7 @@ So `dpd_bucket(90)` is `"31-90"`. The checks do not test 90, so check it yoursel
 A higher number is a worse rating (1 is the best, 10 is default).
 
 **Task 6, Part 1: the largest first.** Two steps. First sort the loans (the whole
-tuples) with `sorted()`, `key=lambda ...` and `reverse=True`. Then make the list of
+tuples) with [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted), `key=lambda ...` and `reverse=True`. Then make the list of
 the ids: a loop over the sorted loans that appends the `loan_id` of each one to a new
 list.
 
@@ -1373,10 +1373,10 @@ list.
    - **Part 1:** `loans.csv` has 11 columns. Take only these 6, in this order:
      `(loan_id, client_id, product, outstanding, days_past_due, stage)`. Skip the
      other columns (`currency`, `start_date`, `maturity_date`, `amount`,
-     `interest_rate`). Convert the numbers: `outstanding` with `float()`,
-     `days_past_due` and `stage` with `int()`. The first line of the file is the
+     `interest_rate`). Convert the numbers: `outstanding` with [`float()`](https://docs.python.org/3/builtins/functions.html#float),
+     `days_past_due` and `stage` with [`int()`](https://docs.python.org/3/builtins/functions.html#int). The first line of the file is the
      header, not a loan: skip it. You should get 400 tuples.
-   - **Parts 1 - 3: reading a file in a function.** How `open` and `with` work
+   - **Parts 1 - 3: reading a file in a function.** How [`open`](https://docs.python.org/3/builtins/functions.html#open) and `with` work
      comes in [lecture 8](./08-errors-and-files.md#open-read-close-with). Until
      then, copy this code. It is the loop of
      [session 3](./03-lists-tuples-sets.md#notes-on-the-tasks), inside the
@@ -1466,7 +1466,7 @@ greet()
 #### Arguments and the return value
 
 The wrapper must pass the arguments on, and return the result of the original.
-`*args, **kwargs` (section 4) take any arguments; `functools.wraps` keeps the name and
+`*args, **kwargs` (section 4) take any arguments; [`functools.wraps`](https://docs.python.org/3/library/functools.html#functools.wraps) keeps the name and
 the docstring of the original. A useful decorator - how long each step of a report
 takes:
 
@@ -1540,4 +1540,4 @@ Read more: [Primer on Python decorators](https://realpython.com/primer-on-python
   (Visually Explained)
 
 **Next session:** lists, advanced - more list methods (remove, find, sort), list
-comprehensions, generator expressions, `zip` and `enumerate`.
+comprehensions, generator expressions, [`zip`](https://docs.python.org/3/builtins/functions.html#zip) and [`enumerate`](https://docs.python.org/3/builtins/functions.html#enumerate).

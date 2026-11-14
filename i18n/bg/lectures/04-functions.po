@@ -45,8 +45,8 @@ msgstr "подавате стойности на функция: по позиц
 
 #. paragraph
 #: site/lectures/04-functions.md:17
-msgid "return one or several results with `return` - and see why `print` is not `return`;"
-msgstr "връщате един или няколко резултата с `return` - и да видите защо `print` не е `return`;"
+msgid "return one or several results with `return` - and see why [`print`](https://docs.python.org/3/builtins/functions.html#print) is not `return`;"
+msgstr "връщате един или няколко резултата с `return` - и да видите защо [`print`](https://docs.python.org/3/builtins/functions.html#print) не е `return`;"
 
 #. paragraph
 #: site/lectures/04-functions.md:18
@@ -85,8 +85,8 @@ msgstr "**Функцията** е **именуван блок от код**, к�
 
 #. paragraph
 #: site/lectures/04-functions.md:55
-msgid "You already call functions every day: `print()`, `len()`, `round()`, `sum()`, `sorted()`, `int()`. Today you write your own."
-msgstr "Вече извиквате функции всеки ден: `print()`, `len()`, `round()`, `sum()`, `sorted()`, `int()`. Днес пишете свои."
+msgid "You already call functions every day: [`print()`](https://docs.python.org/3/builtins/functions.html#print), [`len()`](https://docs.python.org/3/builtins/functions.html#len), [`round()`](https://docs.python.org/3/builtins/functions.html#round), [`sum()`](https://docs.python.org/3/builtins/functions.html#sum), [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted), [`int()`](https://docs.python.org/3/builtins/functions.html#int). Today you write your own."
+msgstr "Вече извиквате функции всеки ден: [`print()`](https://docs.python.org/3/builtins/functions.html#print), [`len()`](https://docs.python.org/3/builtins/functions.html#len), [`round()`](https://docs.python.org/3/builtins/functions.html#round), [`sum()`](https://docs.python.org/3/builtins/functions.html#sum), [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted), [`int()`](https://docs.python.org/3/builtins/functions.html#int). Днес пишете свои."
 
 #. paragraph
 #: site/lectures/04-functions.md:58
@@ -400,8 +400,8 @@ msgstr "Именуваните аргументи правят четими из
 
 #. paragraph
 #: site/lectures/04-functions.md:322
-msgid "You know this from SAS macros with keyword parameters: `%report(data=loans, limit=90)`, and from `print(..., sep=\";\", end=\"\")`."
-msgstr "Познавате това от SAS macros с keyword параметри: `%report(data=loans, limit=90)`, и от `print(..., sep=\";\", end=\"\")`."
+msgid "You know this from SAS macros with keyword parameters: `%report(data=loans, limit=90)`, and from [`print(..., sep=\";\", end=\"\")`](https://docs.python.org/3/builtins/functions.html#print)."
+msgstr "Познавате това от SAS macros с keyword параметри: `%report(data=loans, limit=90)`, и от [`print(..., sep=\";\", end=\"\")`](https://docs.python.org/3/builtins/functions.html#print)."
 
 #. heading 3
 #: site/lectures/04-functions.md:325
@@ -435,8 +435,8 @@ msgstr "Параметър със звездичка `*` събира **всич
 
 #. paragraph
 #: site/lectures/04-functions.md:372
-msgid "`print()`, `max()` and `min()` work like this: `max(3, 8, 5)` takes any number of values. Your own:"
-msgstr "`print()`, `max()` и `min()` работят така: `max(3, 8, 5)` приема произволен брой стойности. Ваша собствена:"
+msgid "[`print()`](https://docs.python.org/3/builtins/functions.html#print), [`max()`](https://docs.python.org/3/builtins/functions.html#max) and [`min()`](https://docs.python.org/3/builtins/functions.html#min) work like this: [`max(3, 8, 5)`](https://docs.python.org/3/builtins/functions.html#max) takes any number of values. Your own:"
+msgstr "[`print()`](https://docs.python.org/3/builtins/functions.html#print), [`max()`](https://docs.python.org/3/builtins/functions.html#max) и [`min()`](https://docs.python.org/3/builtins/functions.html#min) работят така: [`max(3, 8, 5)`](https://docs.python.org/3/builtins/functions.html#max) приема произволен брой стойности. Ваша собствена:"
 
 #. paragraph
 #: site/lectures/04-functions.md:387
@@ -495,8 +495,8 @@ msgstr "Самостоятелна `*` в дефиницията означав�
 
 #. paragraph
 #: site/lectures/04-functions.md:505
-msgid "`sorted(items, key=..., reverse=True)` is defined this way: `key` and `reverse` are keyword-only. A `/` means \"everything before this must be given by position\" - you see it in the help of many built-in functions, like `len(obj, /)`."
-msgstr "`sorted(items, key=..., reverse=True)` е дефинирана така: `key` и `reverse` са keyword-only. `/` означава \"всичко преди това трябва да се дава по позиция\" - виждате го в help-а на много вградени функции, като `len(obj, /)`."
+msgid "[`sorted(items, key=..., reverse=True)`](https://docs.python.org/3/builtins/functions.html#sorted) is defined this way: `key` and `reverse` are keyword-only. A `/` means \"everything before this must be given by position\" - you see it in the help of many built-in functions, like [`len(obj, /)`](https://docs.python.org/3/builtins/functions.html#len)."
+msgstr "[`sorted(items, key=..., reverse=True)`](https://docs.python.org/3/builtins/functions.html#sorted) е дефинирана така: `key` и `reverse` са keyword-only. `/` означава \"всичко преди това трябва да се дава по позиция\" - виждате го в help-а на много вградени функции, като [`len(obj, /)`](https://docs.python.org/3/builtins/functions.html#len)."
 
 #. heading 2
 #: site/lectures/04-functions.md:510
@@ -530,8 +530,8 @@ msgstr "`print` не е `return`"
 
 #. paragraph
 #: site/lectures/04-functions.md:556
-msgid "The most common mistake with functions: `print` **shows** a value on the screen, but the caller gets nothing. `return` **gives** the value to the caller - and shows nothing."
-msgstr "Най-честата грешка с функциите: `print` **показва** стойност на екрана, но извикващият не получава нищо. `return` **дава** стойността на извикващия - и не показва нищо."
+msgid "The most common mistake with functions: [`print`](https://docs.python.org/3/builtins/functions.html#print) **shows** a value on the screen, but the caller gets nothing. `return` **gives** the value to the caller - and shows nothing."
+msgstr "Най-честата грешка с функциите: [`print`](https://docs.python.org/3/builtins/functions.html#print) **показва** стойност на екрана, но извикващият не получава нищо. `return` **дава** стойността на извикващия - и не показва нищо."
 
 #. paragraph
 #: site/lectures/04-functions.md:573
@@ -590,8 +590,8 @@ msgstr "**Scope** е частта от кода, в която един namespac
 
 #. paragraph
 #: site/lectures/04-functions.md:647
-msgid "(`globals()` shows many more names - the built-in ones of the module, like `__name__`.)"
-msgstr "(`globals()` показва много повече имена - вградените на модула, като `__name__`.)"
+msgid "([`globals()`](https://docs.python.org/3/builtins/functions.html#globals) shows many more names - the built-in ones of the module, like `__name__`.)"
+msgstr "([`globals()`](https://docs.python.org/3/builtins/functions.html#globals) показва много повече имена - вградените на модула, като `__name__`.)"
 
 #. heading 3
 #: site/lectures/04-functions.md:651
@@ -750,8 +750,8 @@ msgstr "**G**lobal - най-горното ниво на файла (модул�
 
 #. paragraph
 #: site/lectures/04-functions.md:876
-msgid "**B**uilt-in - the names of Python itself: `print`, `len`, `sum`, ..."
-msgstr "**B**uilt-in - имената на самия Python: `print`, `len`, `sum`, ..."
+msgid "**B**uilt-in - the names of Python itself: [`print`](https://docs.python.org/3/builtins/functions.html#print), [`len`](https://docs.python.org/3/builtins/functions.html#len), [`sum`](https://docs.python.org/3/builtins/functions.html#sum), ..."
+msgstr "**B**uilt-in - имената на самия Python: [`print`](https://docs.python.org/3/builtins/functions.html#print), [`len`](https://docs.python.org/3/builtins/functions.html#len), [`sum`](https://docs.python.org/3/builtins/functions.html#sum), ..."
 
 #. paragraph
 #: site/lectures/04-functions.md:878
@@ -765,8 +765,8 @@ msgstr "![Четири вложени кутии: Built-in около Global о�
 
 #. paragraph
 #: site/lectures/04-functions.md:882
-msgid "This is also why you should not use built-in names for your variables: `sum = 0` **hides** the built-in `sum()` in that scope (a common habit from other languages):"
-msgstr "Затова не бива да използвате вградени имена за своите променливи: `sum = 0` **скрива** вградената `sum()` в този scope (чест навик от други езици):"
+msgid "This is also why you should not use built-in names for your variables: `sum = 0` **hides** the built-in [`sum()`](https://docs.python.org/3/builtins/functions.html#sum) in that scope (a common habit from other languages):"
+msgstr "Затова не бива да използвате вградени имена за своите променливи: `sum = 0` **скрива** вградената [`sum()`](https://docs.python.org/3/builtins/functions.html#sum) в този scope (чест навик от други езици):"
 
 #. table cell
 #: site/lectures/04-functions.md:893
@@ -835,8 +835,8 @@ msgstr "Docstrings"
 
 #. paragraph
 #: site/lectures/04-functions.md:940
-msgid "A **docstring** is a string right after the `def` line, in triple quotes. It says what the function does, what it takes and what it returns - for the people who will use it (you, in three months). Tools show it: `help()`, and VS Code when you hover over the name."
-msgstr "**Docstring** е string точно след реда с `def`, в тройни кавички. Той казва какво прави функцията, какво приема и какво връща - за хората, които ще я използват (вие, след три месеца). Инструментите го показват: `help()`, и VS Code, когато задържите мишката над името."
+msgid "A **docstring** is a string right after the `def` line, in triple quotes. It says what the function does, what it takes and what it returns - for the people who will use it (you, in three months). Tools show it: [`help()`](https://docs.python.org/3/builtins/functions.html#help), and VS Code when you hover over the name."
+msgstr "**Docstring** е string точно след реда с `def`, в тройни кавички. Той казва какво прави функцията, какво приема и какво връща - за хората, които ще я използват (вие, след три месеца). Инструментите го показват: [`help()`](https://docs.python.org/3/builtins/functions.html#help), и VS Code, когато задържите мишката над името."
 
 #. paragraph
 #: site/lectures/04-functions.md:959
@@ -950,8 +950,8 @@ msgstr "Функция като аргумент"
 
 #. paragraph
 #: site/lectures/04-functions.md:1063
-msgid "A function that takes or returns a function is a **higher-order function**. You already know some: `sorted`, `min` and `max` take a function as `key` (section 10). A report that can use any rounding rule:"
-msgstr "Функция, която приема или връща функция, е **функция от по-висок ред** (higher-order function). Вече познавате някои: `sorted`, `min` и `max` приемат функция като `key` (раздел 10). Отчет, който може да използва всяко правило за закръгляне:"
+msgid "A function that takes or returns a function is a **higher-order function**. You already know some: [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted), [`min`](https://docs.python.org/3/builtins/functions.html#min) and [`max`](https://docs.python.org/3/builtins/functions.html#max) take a function as `key` (section 10). A report that can use any rounding rule:"
+msgstr "Функция, която приема или връща функция, е **функция от по-висок ред** (higher-order function). Вече познавате някои: [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted), [`min`](https://docs.python.org/3/builtins/functions.html#min) и [`max`](https://docs.python.org/3/builtins/functions.html#max) приемат функция като `key` (раздел 10). Отчет, който може да използва всяко правило за закръгляне:"
 
 #. box title
 #: site/lectures/04-functions.md:1082
@@ -1030,13 +1030,13 @@ msgstr "Сортиране по ключ"
 
 #. paragraph
 #: site/lectures/04-functions.md:1171
-msgid "`sorted()` and `list.sort()` take a `key`: a function that is called for each item, and the items are sorted by its result. This is SQL `ORDER BY` with any expression:"
-msgstr "`sorted()` и `list.sort()` приемат `key`: функция, която се извиква за всеки елемент, и елементите се сортират по нейния резултат. Това е `ORDER BY` от SQL с произволен израз:"
+msgid "[`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted) and [`list.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) take a `key`: a function that is called for each item, and the items are sorted by its result. This is SQL `ORDER BY` with any expression:"
+msgstr "[`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted) и [`list.sort()`](https://docs.python.org/3/builtins/stdtypes.html#list.sort) приемат `key`: функция, която се извиква за всеки елемент, и елементите се сортират по нейния резултат. Това е `ORDER BY` от SQL с произволен израз:"
 
 #. paragraph
 #: site/lectures/04-functions.md:1195
-msgid "`key` also works with `min` and `max` - the loan with the largest outstanding amount, not only the amount:"
-msgstr "`key` работи и с `min` и `max` - кредитът с най-голяма непогасена сума, а не само сумата:"
+msgid "`key` also works with [`min`](https://docs.python.org/3/builtins/functions.html#min) and [`max`](https://docs.python.org/3/builtins/functions.html#max) - the loan with the largest outstanding amount, not only the amount:"
+msgstr "`key` работи и с [`min`](https://docs.python.org/3/builtins/functions.html#min) и [`max`](https://docs.python.org/3/builtins/functions.html#max) - кредитът с най-голяма непогасена сума, а не само сумата:"
 
 #. paragraph
 #: site/lectures/04-functions.md:1204
@@ -1045,8 +1045,8 @@ msgstr "Именувана функция също работи като клю�
 
 #. paragraph
 #: site/lectures/04-functions.md:1212
-msgid "The top N with `sorted` is in [session 5](./05-lists-advanced.md#the-top-n). Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
-msgstr "Първите N със `sorted` са в [занятие 5](./05-lists-advanced.md#the-top-n). Справка: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
+msgid "The top N with [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted) is in [session 5](./05-lists-advanced.md#the-top-n). Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
+msgstr "Първите N със [`sorted`](https://docs.python.org/3/builtins/functions.html#sorted) са в [занятие 5](./05-lists-advanced.md#the-top-n). Справка: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
 
 #. heading 2
 #: site/lectures/04-functions.md:1215
@@ -1115,8 +1115,8 @@ msgstr "приключва функцията и дава стойност; бе
 
 #. table cell
 #: site/lectures/04-functions.md:1285
-msgid "`print` shows, `return` gives - calculating functions return"
-msgstr "`print` показва, `return` дава - изчисляващите функции връщат"
+msgid "[`print`](https://docs.python.org/3/builtins/functions.html#print) shows, `return` gives - calculating functions return"
+msgstr "[`print`](https://docs.python.org/3/builtins/functions.html#print) показва, `return` дава - изчисляващите функции връщат"
 
 #. table cell
 #: site/lectures/04-functions.md:1286
@@ -1165,8 +1165,8 @@ msgstr "Сортиране"
 
 #. table cell
 #: site/lectures/04-functions.md:1290
-msgid "`sorted(items, key=lambda item: item[2], reverse=True)` - SQL `ORDER BY` any expression"
-msgstr "`sorted(items, key=lambda item: item[2], reverse=True)` - `ORDER BY` от SQL по произволен израз"
+msgid "[`sorted(items, key=lambda item: item[2], reverse=True)`](https://docs.python.org/3/builtins/functions.html#sorted) - SQL `ORDER BY` any expression"
+msgstr "[`sorted(items, key=lambda item: item[2], reverse=True)`](https://docs.python.org/3/builtins/functions.html#sorted) - `ORDER BY` от SQL по произволен израз"
 
 #. table cell
 #: site/lectures/04-functions.md:1291
@@ -1325,8 +1325,8 @@ msgstr "**Задача 4, част 2: етапът.** \"Rating 7 or worse\" (р�
 
 #. paragraph
 #: site/lectures/04-functions.md:1360
-msgid "**Task 6, Part 1: the largest first.** Two steps. First sort the loans (the whole tuples) with `sorted()`, `key=lambda ...` and `reverse=True`. Then make the list of the ids: a loop over the sorted loans that appends the `loan_id` of each one to a new list."
-msgstr "**Задача 6, част 1: първо най-големите.** Две стъпки. Първо сортирайте кредитите (целите tuples) със `sorted()`, `key=lambda ...` и `reverse=True`. После направете списъка с идентификаторите: цикъл по сортираните кредити, който добавя `loan_id` на всеки от тях в нов списък."
+msgid "**Task 6, Part 1: the largest first.** Two steps. First sort the loans (the whole tuples) with [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted), `key=lambda ...` and `reverse=True`. Then make the list of the ids: a loop over the sorted loans that appends the `loan_id` of each one to a new list."
+msgstr "**Задача 6, част 1: първо най-големите.** Две стъпки. Първо сортирайте кредитите (целите tuples) със [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted), `key=lambda ...` и `reverse=True`. После направете списъка с идентификаторите: цикъл по сортираните кредити, който добавя `loan_id` на всеки от тях в нов списък."
 
 #. heading 2
 #: site/lectures/04-functions.md:1365
@@ -1345,13 +1345,13 @@ msgstr "Бележки към домашното:"
 
 #. paragraph
 #: site/lectures/04-functions.md:1373
-msgid "**Part 1:** `loans.csv` has 11 columns. Take only these 6, in this order: `(loan_id, client_id, product, outstanding, days_past_due, stage)`. Skip the other columns (`currency`, `start_date`, `maturity_date`, `amount`, `interest_rate`). Convert the numbers: `outstanding` with `float()`, `days_past_due` and `stage` with `int()`. The first line of the file is the header, not a loan: skip it. You should get 400 tuples."
-msgstr "**Част 1:** `loans.csv` има 11 колони. Вземете само тези 6, в този ред: `(loan_id, client_id, product, outstanding, days_past_due, stage)`. Пропуснете другите колони (`currency`, `start_date`, `maturity_date`, `amount`, `interest_rate`). Преобразувайте числата: `outstanding` с `float()`, `days_past_due` и `stage` с `int()`. Първият ред на файла е заглавният ред, а не кредит: пропуснете го. Трябва да получите 400 tuples."
+msgid "**Part 1:** `loans.csv` has 11 columns. Take only these 6, in this order: `(loan_id, client_id, product, outstanding, days_past_due, stage)`. Skip the other columns (`currency`, `start_date`, `maturity_date`, `amount`, `interest_rate`). Convert the numbers: `outstanding` with [`float()`](https://docs.python.org/3/builtins/functions.html#float), `days_past_due` and `stage` with [`int()`](https://docs.python.org/3/builtins/functions.html#int). The first line of the file is the header, not a loan: skip it. You should get 400 tuples."
+msgstr "**Част 1:** `loans.csv` има 11 колони. Вземете само тези 6, в този ред: `(loan_id, client_id, product, outstanding, days_past_due, stage)`. Пропуснете другите колони (`currency`, `start_date`, `maturity_date`, `amount`, `interest_rate`). Преобразувайте числата: `outstanding` с [`float()`](https://docs.python.org/3/builtins/functions.html#float), `days_past_due` и `stage` с [`int()`](https://docs.python.org/3/builtins/functions.html#int). Първият ред на файла е заглавният ред, а не кредит: пропуснете го. Трябва да получите 400 tuples."
 
 #. paragraph
 #: site/lectures/04-functions.md:1379
-msgid "**Parts 1 - 3: reading a file in a function.** How `open` and `with` work comes in [lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this code. It is the loop of [session 3](./03-lists-tuples-sets.md#notes-on-the-tasks), inside the function: the file is `path`, the parameter, and the function returns the list after the `with` block."
-msgstr "**Части 1 - 3: четене на файл във функция.** Как работят `open` и `with` ще видим в [лекция 8](./08-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Това е цикълът от [занятие 3](./03-lists-tuples-sets.md#notes-on-the-tasks), вътре във функцията: файлът е `path`, параметърът, а функцията връща list-а след блока `with`."
+msgid "**Parts 1 - 3: reading a file in a function.** How [`open`](https://docs.python.org/3/builtins/functions.html#open) and `with` work comes in [lecture 8](./08-errors-and-files.md#open-read-close-with). Until then, copy this code. It is the loop of [session 3](./03-lists-tuples-sets.md#notes-on-the-tasks), inside the function: the file is `path`, the parameter, and the function returns the list after the `with` block."
+msgstr "**Части 1 - 3: четене на файл във функция.** Как работят [`open`](https://docs.python.org/3/builtins/functions.html#open) и `with` ще видим в [лекция 8](./08-errors-and-files.md#open-read-close-with). Дотогава копирайте този код. Това е цикълът от [занятие 3](./03-lists-tuples-sets.md#notes-on-the-tasks), вътре във функцията: файлът е `path`, параметърът, а функцията връща list-а след блока `with`."
 
 #. paragraph
 #: site/lectures/04-functions.md:1398
@@ -1420,8 +1420,8 @@ msgstr "Аргументите и върнатата стойност"
 
 #. paragraph
 #: site/lectures/04-functions.md:1468
-msgid "The wrapper must pass the arguments on, and return the result of the original. `*args, **kwargs` (section 4) take any arguments; `functools.wraps` keeps the name and the docstring of the original. A useful decorator - how long each step of a report takes:"
-msgstr "Обвиващата функция (wrapper) трябва да предаде аргументите нататък и да върне резултата на оригинала. `*args, **kwargs` (раздел 4) приемат всякакви аргументи; `functools.wraps` запазва името и docstring-а на оригинала. Полезен декоратор - колко време отнема всяка стъпка на един отчет:"
+msgid "The wrapper must pass the arguments on, and return the result of the original. `*args, **kwargs` (section 4) take any arguments; [`functools.wraps`](https://docs.python.org/3/library/functools.html#functools.wraps) keeps the name and the docstring of the original. A useful decorator - how long each step of a report takes:"
+msgstr "Обвиващата функция (wrapper) трябва да предаде аргументите нататък и да върне резултата на оригинала. `*args, **kwargs` (раздел 4) приемат всякакви аргументи; [`functools.wraps`](https://docs.python.org/3/library/functools.html#functools.wraps) запазва името и docstring-а на оригинала. Полезен декоратор - колко време отнема всяка стъпка на един отчет:"
 
 #. paragraph
 #: site/lectures/04-functions.md:1498
@@ -1470,8 +1470,8 @@ msgstr "Видеа: [Python tutorial for beginners 8: functions](https://www.you
 
 #. paragraph
 #: site/lectures/04-functions.md:1542
-msgid "**Next session:** lists, advanced - more list methods (remove, find, sort), list comprehensions, generator expressions, `zip` and `enumerate`."
-msgstr "**Следващото занятие:** lists за напреднали - още методи на list (премахване, търсене, сортиране), list comprehensions, generator expressions, `zip` и `enumerate`."
+msgid "**Next session:** lists, advanced - more list methods (remove, find, sort), list comprehensions, generator expressions, [`zip`](https://docs.python.org/3/builtins/functions.html#zip) and [`enumerate`](https://docs.python.org/3/builtins/functions.html#enumerate)."
+msgstr "**Следващото занятие:** lists за напреднали - още методи на list (премахване, търсене, сортиране), list comprehensions, generator expressions, [`zip`](https://docs.python.org/3/builtins/functions.html#zip) и [`enumerate`](https://docs.python.org/3/builtins/functions.html#enumerate)."
 
 #~ msgid "Sorting is covered in depth in [session 5](./05-lists-advanced.md#_4-sorting-and-the-top-n). Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
 #~ msgstr "Сортирането е разгледано в дълбочина в [занятие 5](./05-lists-advanced.md#_4-sorting-and-the-top-n). Reference: [Sorting techniques](https://docs.python.org/3/howto/sorting.html)."
