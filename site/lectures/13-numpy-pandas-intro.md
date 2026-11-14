@@ -12,9 +12,9 @@ title: 13. NumPy and introduction to pandas
 **Today you will learn to:**
 
 - calculate on a whole column at once with **NumPy** arrays - no loops;
-- choose values with `np.where` and `np.select`, the vector version of SQL `CASE WHEN`;
-- work with the two objects of **pandas**: the `Series` (a column) and the
-  `DataFrame` (a table);
+- choose values with [`np.where`](https://numpy.org/doc/stable/reference/generated/numpy.where.html) and [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html), the vector version of SQL `CASE WHEN`;
+- work with the two objects of **pandas**: the [`Series`](https://pandas.pydata.org/docs/reference/api/pandas.Series.html) (a column) and the
+  [`DataFrame`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) (a table);
 - read CSV and Excel files with the options real files need: separators, decimal
   commas, encodings, dates, missing values;
 - look at a new dataset the way `PROC CONTENTS`, `PROC MEANS` and `PROC FREQ` do;
@@ -174,10 +174,10 @@ print(np.percentile(outstanding, [25, 50, 75]))
 print(np.median(outstanding))
 ```
 
-`ddof=1` matters: NumPy's default `std()` is the **population** standard deviation,
+`ddof=1` matters: NumPy's default [`std()`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.std.html) is the **population** standard deviation,
 SAS and pandas use the sample one (`n - 1`).
 
-**`cumsum` and `diff`.** Running totals and differences - `RETAIN` and `LAG` of a SAS DATA step, for a whole array:
+**[`cumsum`](https://numpy.org/doc/stable/reference/generated/numpy.cumsum.html) and [`diff`](https://numpy.org/doc/stable/reference/generated/numpy.diff.html).** Running totals and differences - `RETAIN` and `LAG` of a SAS DATA step, for a whole array:
 
 ```python run
 import numpy as np
@@ -200,7 +200,7 @@ order = np.argsort(outstanding)[::-1]             # the positions, largest first
 print(ids[order[:3]], outstanding[order[:3]])
 ```
 
-**Keep inside limits.** `np.clip` keeps values inside limits - a PD after a stress must stay between 0 and 1:
+**Keep inside limits.** [`np.clip`](https://numpy.org/doc/stable/reference/generated/numpy.clip.html) keeps values inside limits - a PD after a stress must stay between 0 and 1:
 
 ```python run
 import numpy as np
@@ -212,7 +212,7 @@ print(np.clip(pd_stressed, 0, 1))
 
 ### `np.where`: `CASE WHEN` with two branches
 
-`np.where(condition, value_if_true, value_if_false)` - for every element:
+[`np.where(condition, value_if_true, value_if_false)`](https://numpy.org/doc/stable/reference/generated/numpy.where.html) - for every element:
 
 ```python run
 import numpy as np
@@ -277,7 +277,7 @@ by `SUM`. In NumPy, `nan` is not skipped - in pandas it is, section 7.)
 
 ::: tip Try it
 With `days` and `outstanding` of the mask example: the share of the outstanding that
-is more than 30 days past due. Then the DPD bucket of each loan with `np.select`.
+is more than 30 days past due. Then the DPD bucket of each loan with [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html).
 :::
 
 ## 3. `Series`
@@ -432,7 +432,7 @@ print(loans.sample(3, random_state=1)[["loan_id", "product"]])   # random rows, 
 loans.sort_values("outstanding", ascending=False).head(3)[["loan_id", "product", "outstanding"]]
 ```
 
-`sort_values` is SAS `PROC SORT` / SQL `ORDER BY`; selection with conditions (SQL `WHERE`) and
+[`sort_values`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html) is SAS `PROC SORT` / SQL `ORDER BY`; selection with conditions (SQL `WHERE`) and
 `loc` are [lecture 14](./14-pandas-select-aggregate-join.md#loc-rows-and-columns-by-label).
 
 ### The index
@@ -451,14 +451,14 @@ print(clients.index[:3].tolist())
 ::: tip Try it
 Read `clients.csv` and add a column `years_client`: 2026 minus the year of
 `client_since` (hint: `loans["start_date"].str[:4].astype(int)` takes the year from the
-text). Show the 3 oldest clients with `sort_values`.
+text). Show the 3 oldest clients with [`sort_values`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html).
 :::
 
 ## 5. Reading CSV files
 
 ### The defaults
 
-`pd.read_csv(path)` guesses a lot: the header in the first line, the separator `,`,
+[`pd.read_csv(path)`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) guesses a lot: the header in the first line, the separator `,`,
 the decimal point `.`, numbers as numbers, everything else as text. For `loans.csv`
 that is right. For files from other systems, the options tell pandas how to read:
 
@@ -613,7 +613,7 @@ with the right options. How many rows have no product?
 
 ### `read_excel`
 
-`pd.read_excel` reads a sheet of an `.xlsx` file (with openpyxl underneath, [lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)):
+[`pd.read_excel`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html) reads a sheet of an `.xlsx` file (with openpyxl underneath, [lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)):
 
 ```python run
 import pandas as pd
@@ -634,7 +634,7 @@ for name, df in sheets.items():
     print(name, len(df), "days, USD from", df["USD"].min(), "to", df["USD"].max())
 ```
 
-**All sheets in one table.** To put the sheets under each other in one table, `pd.concat` ([lecture 14](./14-pandas-select-aggregate-join.md#concat-one-table-under-another) explains it):
+**All sheets in one table.** To put the sheets under each other in one table, [`pd.concat`](https://pandas.pydata.org/docs/reference/api/pandas.concat.html) ([lecture 14](./14-pandas-select-aggregate-join.md#concat-one-table-under-another) explains it):
 
 ```python run
 import pandas as pd
@@ -677,12 +677,12 @@ procedures; in pandas, a few methods.
 | Question | SAS | pandas |
 |---|---|---|
 | how big? | `PROC CONTENTS` | `df.shape`, [`len(df)`](https://docs.python.org/3/builtins/functions.html#len) |
-| which columns, which types? | `PROC CONTENTS` | `df.dtypes`, `df.info()` |
-| what do rows look like? | `PROC PRINT (OBS=10)` | `df.head(10)`, `df.sample(5)` |
-| numbers: n, mean, min, max? | `PROC MEANS` | `df.describe()` |
-| categories: how many of each? | `PROC FREQ` | `df["col"].value_counts()` |
-| missing values? | `PROC MEANS NMISS` | `df.isna().sum()` |
-| duplicates? | `PROC SORT NODUPKEY` + the log | `df.duplicated().sum()` |
+| which columns, which types? | `PROC CONTENTS` | `df.dtypes`, [`df.info()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html) |
+| what do rows look like? | `PROC PRINT (OBS=10)` | [`df.head(10)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html), [`df.sample(5)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sample.html) |
+| numbers: n, mean, min, max? | `PROC MEANS` | [`df.describe()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) |
+| categories: how many of each? | `PROC FREQ` | [`df["col"].value_counts()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html) |
+| missing values? | `PROC MEANS NMISS` | [`df.isna().sum()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isna.html) |
+| duplicates? | `PROC SORT NODUPKEY` + the log | [`df.duplicated().sum()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.duplicated.html) |
 
 ### `info()`: `PROC CONTENTS`
 
@@ -705,7 +705,7 @@ loans = pd.read_csv("data/loans.csv")
 loans.describe().round(2)
 ```
 
-**Text columns.** For the text columns: `describe(include="object")` in pandas 2.2, `include="str"` in
+**Text columns.** For the text columns: [`describe(include="object")`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) in pandas 2.2, `include="str"` in
 pandas 3 - or simply `include="all"` (works in both):
 
 ```python run
@@ -736,7 +736,7 @@ print(loans["stage"].value_counts(normalize=True).sort_index().round(3))
 print(loans["currency"].value_counts(dropna=False))      # also count the missing ones
 ```
 
-**Counts by range.** A number in ranges - `value_counts(bins=...)` - a first histogram as a table:
+**Counts by range.** A number in ranges - [`value_counts(bins=...)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html) - a first histogram as a table:
 
 ```python run
 import pandas as pd
@@ -745,7 +745,7 @@ loans = pd.read_csv("data/loans.csv")
 loans["interest_rate"].value_counts(bins=[0, 4, 8, 12, 16]).sort_index()
 ```
 
-**A two-way table.** Two variables - `TABLES stage * currency` - is `pd.crosstab` ([lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares)):
+**A two-way table.** Two variables - `TABLES stage * currency` - is [`pd.crosstab`](https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html) ([lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares)):
 
 ```python run
 import pandas as pd
@@ -767,10 +767,10 @@ print(export.duplicated().sum(), "rows are exact copies of an earlier row")
 print(export["Loan ID"].duplicated().sum(), "loan ids appear more than once")
 ```
 
-`isna()` gives a DataFrame of `True` / `False`; `.sum()` counts the `True` per column -
+[`isna()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isna.html) gives a DataFrame of `True` / `False`; [`.sum()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sum.html) counts the `True` per column -
 the masks of section 2, for a whole table.
 
-**Remove copies.** To remove the exact copies, `drop_duplicates()` - like SAS `PROC SORT NODUPRECS`, but it
+**Remove copies.** To remove the exact copies, [`drop_duplicates()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html) - like SAS `PROC SORT NODUPRECS`, but it
 keeps the order of the rows (the first copy stays):
 
 ```python run
@@ -782,7 +782,7 @@ print(len(export), "->", len(unique_rows), "rows")
 print(unique_rows["Loan ID"].duplicated().sum(), "loan ids appear more than once now")
 ```
 
-`drop_duplicates(subset=["Loan ID"])` compares only that column (`NODUPKEY`). A new
+[`drop_duplicates(subset=["Loan ID"])`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html) compares only that column (`NODUPKEY`). A new
 DataFrame comes back; the old one does not change.
 
 ### Dates: the range
@@ -795,7 +795,7 @@ print(loans["start_date"].min(), loans["start_date"].max())
 print(loans["maturity_date"].dt.year.value_counts().sort_index().head())
 ```
 
-`.dt` gives the date parts of a whole column ([lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends) uses it a lot).
+[`.dt`](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.html) gives the date parts of a whole column ([lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends) uses it a lot).
 
 ### A profile function
 
@@ -844,8 +844,8 @@ print(loans.dtypes.value_counts())
 print(loans["loan_id"].dtype)          # str in pandas 3, object in pandas 2.2
 ```
 
-**Count with `True`.** A comparison gives a `bool` column - and `True` counts as 1, so `sum` counts and
-`mean` gives the share:
+**Count with `True`.** A comparison gives a `bool` column - and `True` counts as 1, so [`sum`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sum.html) counts and
+[`mean`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mean.html) gives the share:
 
 ```python run
 import pandas as pd
@@ -882,7 +882,7 @@ print((buckets > "1-30").tolist())
 
 ### Text to numbers and dates: `to_numeric`, `to_datetime`
 
-`astype(float)` stops at the first bad value. `pd.to_numeric(..., errors="coerce")`
+[`astype(float)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html) stops at the first bad value. [`pd.to_numeric(..., errors="coerce")`](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html)
 turns bad values into `NaN` - the `??` informat of SAS ([lecture 8](./08-errors-and-files.md)) - so you can count
 them:
 
@@ -895,7 +895,7 @@ print(numbers)
 print(numbers.isna().sum(), "could not be read:", raw[numbers.isna()].tolist())
 ```
 
-**Read dates.** `pd.to_datetime` with a `format` reads dates - for a whole column, much faster than
+**Read dates.** [`pd.to_datetime`](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html) with a `format` reads dates - for a whole column, much faster than
 [`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) in a loop ([lecture 7](./07-text-and-regex.md#from-text-to-a-date)):
 
 ```python run
@@ -945,17 +945,17 @@ loader of [lecture 8](./08-errors-and-files.md#_10-loading-data-with-bad-records
 ## 9. Summary
 | Topic | Remember |
 |-------|----------|
-| NumPy | `np.array`; one `dtype`; operations on whole arrays; masks `a[a > 90]`; `&`, `\|`, `~` with brackets |
-| Aggregates | `sum`, `mean`, `min`, `max`, `argmax`, `np.percentile`; `std(ddof=1)` for the sample |
-| `CASE WHEN` | `np.where(cond, a, b)`; `np.select([conds], [choices], default=...)` - the first true wins |
+| NumPy | [`np.array`](https://numpy.org/doc/stable/reference/generated/numpy.array.html); one `dtype`; operations on whole arrays; masks `a[a > 90]`; `&`, `\|`, `~` with brackets |
+| Aggregates | [`sum`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.sum.html), [`mean`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.mean.html), [`min`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.min.html), [`max`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.max.html), [`argmax`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.argmax.html), [`np.percentile`](https://numpy.org/doc/stable/reference/generated/numpy.percentile.html); [`std(ddof=1)`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.std.html) for the sample |
+| `CASE WHEN` | [`np.where(cond, a, b)`](https://numpy.org/doc/stable/reference/generated/numpy.where.html); [`np.select([conds], [choices], default=...)`](https://numpy.org/doc/stable/reference/generated/numpy.select.html) - the first true wins |
 | Broadcasting | a scalar or a smaller array is stretched; `axis=0` down, `axis=1` across |
-| `NaN` | spreads in NumPy (`np.nansum`); not equal to itself; ints cannot hold it |
-| Series | values + index; operations match labels (alignment); `value_counts` |
+| `NaN` | spreads in NumPy ([`np.nansum`](https://numpy.org/doc/stable/reference/generated/numpy.nansum.html)); not equal to itself; ints cannot hold it |
+| Series | values + index; operations match labels (alignment); [`value_counts`](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html) |
 | DataFrame | columns of Series with one index; `df["a"]` a Series, `df[["a", "b"]]` a DataFrame; new columns from others |
-| `read_csv` | `sep`, `decimal`, `thousands`, `encoding`, `dtype`, `parse_dates` + `dayfirst`, `na_values`, `usecols`, `nrows` |
-| `read_excel` | `sheet_name=...`; `None` for all sheets (a dict); `read_sas` for SAS datasets |
-| First look | `shape`, `info()`, `head()`, `describe()`, `value_counts()`, `nunique()`, `isna().sum()`, `duplicated().sum()` |
-| Types | int64, float64, str / object, bool, datetime64, category, Int64; `astype`; `to_numeric` / `to_datetime` with `errors="coerce"` |
+| [`read_csv`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) | `sep`, `decimal`, `thousands`, `encoding`, `dtype`, `parse_dates` + `dayfirst`, `na_values`, `usecols`, `nrows` |
+| [`read_excel`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html) | `sheet_name=...`; `None` for all sheets (a dict); [`read_sas`](https://pandas.pydata.org/docs/reference/api/pandas.read_sas.html) for SAS datasets |
+| First look | `shape`, [`info()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.info.html), [`head()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html), [`describe()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html), [`value_counts()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html), [`nunique()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nunique.html), [`isna().sum()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isna.html), [`duplicated().sum()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.duplicated.html) |
+| Types | int64, float64, str / object, bool, datetime64, category, Int64; [`astype`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html); [`to_numeric`](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html) / [`to_datetime`](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html) with `errors="coerce"` |
 
 ## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -971,7 +971,7 @@ python 13-numpy-pandas-intro/practice/task1-numpy-arrays.py
 |------|------|-------------|
 | 1 | `task1-numpy-arrays.py` | Arrays, masks and aggregates on the outstanding amounts |
 | 2 | `task2-predict-numpy.py` | Predict shapes, types, broadcasting, `NaN`, alignment |
-| 3 | `task3-where-select.py` | `np.where` and `np.select` for buckets, flags and PDs |
+| 3 | `task3-where-select.py` | [`np.where`](https://numpy.org/doc/stable/reference/generated/numpy.where.html) and [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html) for buckets, flags and PDs |
 | 4 | `task4-read-export.py` | Read `loans_export.csv` with all the right options |
 | 5 | `task5-profile.py` | The profile of a dataset: shape, types, describe, counts, missing values |
 | 6 | `task6-excel-sheets.py` (Optional) | All sheets of `fx_rates.xlsx`; the monthly averages |
@@ -1075,13 +1075,13 @@ plt.show()
 
 ### Reading SAS datasets
 
-`pd.read_sas` reads `.sas7bdat` (and `.xpt`) files without SAS. Points to know:
+[`pd.read_sas`](https://pandas.pydata.org/docs/reference/api/pandas.read_sas.html) reads `.sas7bdat` (and `.xpt`) files without SAS. Points to know:
 
 - **Encoding:** give `encoding=` (the SAS session encoding, often `latin-1` or
   `utf-8`); without it, text columns come as bytes (`b'...'`).
 - **Dates:** SAS date variables with a date format arrive as `datetime64`; without a
   format, as numbers of days since 1960-01-01 - convert with
-  `pd.to_datetime(x, unit="D", origin="1960-01-01")`.
+  [`pd.to_datetime(x, unit="D", origin="1960-01-01")`](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html).
 - **Missing values:** `.` and the special missing values `.A` - `.Z` become `NaN`.
 - **Big files:** `chunksize=` gives pieces ([lecture 12](./12-databases.md#big-tables-in-pieces), Self-study).
 - **Labels and formats:** `pyreadstat.read_sas7bdat(path)` returns `(df, meta)`;
@@ -1122,5 +1122,5 @@ print((pd.Timestamp("2026-09-30") - pd.Timestamp("1960-01-01")).days)     # 2437
   McKinney, the author of pandas - free online
 
 **Next lecture:** pandas - selection with `loc` and masks, new columns with
-`np.select` and `pd.cut`, `groupby` (the SQL `GROUP BY` and SAS `PROC MEANS` of
-pandas), `merge` (the SQL `JOIN`), and missing values.
+[`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html) and [`pd.cut`](https://pandas.pydata.org/docs/reference/api/pandas.cut.html), [`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) (the SQL `GROUP BY` and SAS `PROC MEANS` of
+pandas), [`merge`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html) (the SQL `JOIN`), and missing values.

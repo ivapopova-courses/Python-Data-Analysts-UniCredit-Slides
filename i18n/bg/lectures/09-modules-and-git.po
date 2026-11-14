@@ -445,7 +445,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/09-modules-and-git.md:672
-msgid "(pandas has all of this built in - `pd.offsets.MonthEnd`, `Period` - [lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends).)"
+msgid "(pandas has all of this built in - [`pd.offsets.MonthEnd`](https://pandas.pydata.org/docs/reference/api/pandas.tseries.offsets.MonthEnd.html), `Period` - [lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends).)"
 msgstr ""
 
 #. heading 3

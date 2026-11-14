@@ -567,7 +567,7 @@ you run it. What happens with a client that is not in `rating_of`, and how would
 
 ### A use case: a dictionary on a pandas column
 
-The same dictionaries work in pandas. `Series.map(dictionary)` looks up every value
+The same dictionaries work in pandas. [`Series.map(dictionary)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html) looks up every value
 of a column in the dictionary - a SAS format applied to a whole column. A value
 that is not a key becomes `NaN` (empty), and `fillna` gives it a default, like
 `OTHER=` in a SAS format:

@@ -530,8 +530,8 @@ msgstr "Приложение: dictionary върху колона в pandas"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:570
-msgid "The same dictionaries work in pandas. `Series.map(dictionary)` looks up every value of a column in the dictionary - a SAS format applied to a whole column. A value that is not a key becomes `NaN` (empty), and `fillna` gives it a default, like `OTHER=` in a SAS format:"
-msgstr "Същите dictionaries работят и в pandas. `Series.map(dictionary)` търси всяка стойност от колоната в dictionary-то - SAS format, приложен върху цяла колона. Стойност, която не е ключ, става `NaN` (празна), а `fillna` ѝ дава стойност по подразбиране, като `OTHER=` в SAS format:"
+msgid "The same dictionaries work in pandas. [`Series.map(dictionary)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html) looks up every value of a column in the dictionary - a SAS format applied to a whole column. A value that is not a key becomes `NaN` (empty), and `fillna` gives it a default, like `OTHER=` in a SAS format:"
+msgstr "Същите dictionaries работят и в pandas. [`Series.map(dictionary)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html) търси всяка стойност от колоната в dictionary-то - SAS format, приложен върху цяла колона. Стойност, която не е ключ, става `NaN` (празна), а `fillna` ѝ дава стойност по подразбиране, като `OTHER=` в SAS format:"
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:583

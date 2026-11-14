@@ -11,13 +11,13 @@ title: "14. pandas: selection, aggregation, joins"
 
 **Today you will learn to:**
 
-- select rows and columns with masks, `loc`, `iloc` and `query` - the SQL `WHERE` of
+- select rows and columns with masks, `loc`, `iloc` and [`query`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.query.html) - the SQL `WHERE` of
   pandas;
-- add new columns: formulas, SQL `CASE WHEN` with `np.select`, bands with `pd.cut`,
-  codes with `map`;
+- add new columns: formulas, SQL `CASE WHEN` with [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html), bands with [`pd.cut`](https://pandas.pydata.org/docs/reference/api/pandas.cut.html),
+  codes with [`map`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html);
 - sort and take the top N;
-- group and aggregate with `groupby` and `agg` - SQL `GROUP BY` and SAS `PROC MEANS`;
-- join tables with `merge` and stack them with `concat` - SQL `JOIN`, SAS `MERGE` and
+- group and aggregate with [`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) and [`agg`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.agg.html) - SQL `GROUP BY` and SAS `PROC MEANS`;
+- join tables with [`merge`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html) and stack them with [`concat`](https://pandas.pydata.org/docs/reference/api/pandas.concat.html) - SQL `JOIN`, SAS `MERGE` and
   `SET`;
 - handle missing values in all of these;
 - read the result of an SQL query straight into a DataFrame, with pandas and
@@ -61,7 +61,7 @@ one.
 ### Columns: `KEEP` and `DROP`
 
 You know `df["col"]` (a Series) and `df[["a", "b"]]` (a DataFrame) from [lecture 13](./13-numpy-pandas-intro.md#columns).
-`drop` removes columns - SAS `DROP=`:
+[`drop`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html) removes columns - SAS `DROP=`:
 
 ```python run
 import pandas as pd
@@ -170,7 +170,7 @@ itself matters (the first row, the last 5).
 
 ### `query`: the `WHERE` as text
 
-`query` takes the condition as a string - shorter, and close to SQL. `@name` uses a
+[`query`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.query.html) takes the condition as a string - shorter, and close to SQL. `@name` uses a
 Python variable (like `&macro_var` in SAS):
 
 ```python run
@@ -182,12 +182,12 @@ limit = 1_000_000
 loans.query("outstanding > @limit and product in ['investment', 'project_finance']")[["loan_id", "product", "outstanding"]].head()
 ```
 
-`and`, `or`, `not` and `in` are allowed inside `query`. Column names with spaces go
+`and`, `or`, `not` and `in` are allowed inside [`query`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.query.html). Column names with spaces go
 in backticks: `` query("`Days past due` > 90") ``.
 
 ### Change a filtered table: make a copy
 
-A filtered DataFrame is a new table. If you want to change it, say so with `.copy()`:
+A filtered DataFrame is a new table. If you want to change it, say so with [`.copy()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.copy.html):
 
 ```python run
 import pandas as pd
@@ -199,9 +199,9 @@ print(late[["loan_id", "flag"]].head(3))
 print("flag" in loans.columns)                       # the original did not change
 ```
 
-Without `.copy()`, pandas 2.2 shows a `SettingWithCopyWarning` (it cannot know if you
+Without [`.copy()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.copy.html), pandas 2.2 shows a `SettingWithCopyWarning` (it cannot know if you
 wanted to change `loans` too). pandas 3 has **copy-on-write**: a filtered table always
-behaves as a copy, and the warning is gone - `.copy()` is still clear, and works in
+behaves as a copy, and the warning is gone - [`.copy()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.copy.html) is still clear, and works in
 both.
 
 **Change the original.** To change rows **of the original**, use one `loc` with the mask and the column:
@@ -221,7 +221,7 @@ lost (pandas 3 warns with `ChainedAssignmentError`). Always one `loc[mask, colum
 :::
 
 ::: tip Try it
-Select the USD and GBP loans of stage 2 or 3 with a mask, then with `query`. Do you
+Select the USD and GBP loans of stage 2 or 3 with a mask, then with [`query`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.query.html). Do you
 get the same number of rows? What is their total outstanding?
 :::
 
@@ -241,7 +241,7 @@ loans["yearly_interest"] = loans["outstanding"] * loans["interest_rate"] / 100
 loans[["loan_id", "amount", "outstanding", "repaid_pct", "yearly_interest"]].head(3)
 ```
 
-**A new DataFrame instead.** `assign` does the same, but returns a new DataFrame - handy in a chain (and the
+**A new DataFrame instead.** [`assign`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.assign.html) does the same, but returns a new DataFrame - handy in a chain (and the
 original stays as it was):
 
 ```python run
@@ -280,7 +280,7 @@ loans["size"].value_counts()
 
 ### Bands: `pd.cut`
 
-`pd.cut` puts numbers into intervals - the DPD buckets of homework 2, or a format
+[`pd.cut`](https://pandas.pydata.org/docs/reference/api/pandas.cut.html) puts numbers into intervals - the DPD buckets of homework 2, or a format
 with ranges (`PROC FORMAT; VALUE dpd 0='current' 1-30='1-30' ...`):
 
 ```python run
@@ -316,7 +316,7 @@ alphabetical), which is right for a report.
 
 ### Codes and descriptions: `map`
 
-`map` with a dictionary replaces each value by its description - `PUT(code, $fmt.)`
+[`map`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html) with a dictionary replaces each value by its description - `PUT(code, $fmt.)`
 with a SAS format, or the dictionary lookup of [session 6](./06-dictionaries.md#_5-lookup-tables-and-nomenclatures):
 
 ```python run
@@ -345,7 +345,7 @@ clients[["client_id", "rating", "grade"]].head()
 
 ### Text and dates in a column
 
-The `.str` methods of [lecture 7](./07-text-and-regex.md) and the `.dt` date parts work on a whole column:
+The [`.str`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.html) methods of [lecture 7](./07-text-and-regex.md) and the [`.dt`](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.html) date parts work on a whole column:
 
 ```python run
 import pandas as pd
@@ -359,7 +359,7 @@ loans[["product_name", "start_year", "years"]].head()
 
 ### `apply`: the last resort
 
-`apply(func, axis=1)` calls a Python function for every row - easy to write, but it
+[`apply(func, axis=1)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html) calls a Python function for every row - easy to write, but it
 is a hidden loop:
 
 ```python run
@@ -380,17 +380,17 @@ print(f"apply: {middle - start:.3f} s, np.where: {end - middle:.4f} s")
 print((slow == fast).all())
 ```
 
-Look for a column operation first (`np.where`, `np.select`, `pd.cut`, `map`, `.str`,
-`.dt`); `apply` only when the rule really needs Python code per row.
+Look for a column operation first ([`np.where`](https://numpy.org/doc/stable/reference/generated/numpy.where.html), [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html), [`pd.cut`](https://pandas.pydata.org/docs/reference/api/pandas.cut.html), [`map`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html), [`.str`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.html),
+[`.dt`](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.html)); [`apply`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.apply.html) only when the rule really needs Python code per row.
 
 ::: tip Try it
-Add a column `pd_band` to `clients.csv` with `pd.cut` on the rating: 1 - 3 "low",
+Add a column `pd_band` to `clients.csv` with [`pd.cut`](https://pandas.pydata.org/docs/reference/api/pandas.cut.html) on the rating: 1 - 3 "low",
 4 - 6 "medium", 7 - 9 "high", 10 "default". How many clients are in each band?
 :::
 
 ## 3. Sorting and the top N
 
-`sort_values` with several columns and directions - SQL `ORDER BY a, b DESC`:
+[`sort_values`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html) with several columns and directions - SQL `ORDER BY a, b DESC`:
 
 ```python run
 import pandas as pd
@@ -400,7 +400,7 @@ ordered = loans.sort_values(["stage", "outstanding"], ascending=[False, False])
 ordered[["loan_id", "stage", "outstanding"]].head()
 ```
 
-**Only the largest.** The top N without sorting everything: `nlargest` / `nsmallest`:
+**Only the largest.** The top N without sorting everything: [`nlargest`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nlargest.html) / [`nsmallest`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nsmallest.html):
 
 ```python run
 import pandas as pd
@@ -409,7 +409,7 @@ loans = pd.read_csv("data/loans.csv")
 loans.nlargest(5, "outstanding")[["loan_id", "client_id", "product", "outstanding"]]
 ```
 
-**The rank.** `rank` gives the place of every row - SAS `PROC RANK`, or SQL `RANK() OVER (ORDER BY ...)`:
+**The rank.** [`rank`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rank.html) gives the place of every row - SAS `PROC RANK`, or SQL `RANK() OVER (ORDER BY ...)`:
 
 ```python run
 import pandas as pd
@@ -419,7 +419,7 @@ loans["size_rank"] = loans["outstanding"].rank(ascending=False, method="min").as
 loans.sort_values("size_rank")[["loan_id", "outstanding", "size_rank"]].head(3)
 ```
 
-After a sort, the index keeps the old row numbers. `reset_index(drop=True)` numbers
+After a sort, the index keeps the old row numbers. [`reset_index(drop=True)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html) numbers
 the rows again from 0 - do it when the old numbers mean nothing.
 
 **Missing values in a sort.** Missing values go **last** in pandas (SAS sorts its `.` first) - `na_position` changes
@@ -434,16 +434,16 @@ print(export.sort_values("Outstanding", na_position="first")[["Loan ID", "Outsta
 ```
 
 ::: details Check yourself: what is the difference between `sort_values("outstanding").head(5)` and `nlargest(5, "outstanding")`?
-`sort_values` sorts ascending by default, so `.head(5)` gives the 5 **smallest**.
-`nlargest(5, ...)` gives the 5 largest, largest first - the same as
-`sort_values("outstanding", ascending=False).head(5)`.
+[`sort_values`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html) sorts ascending by default, so [`.head(5)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html) gives the 5 **smallest**.
+[`nlargest(5, ...)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nlargest.html) gives the 5 largest, largest first - the same as
+[`sort_values("outstanding", ascending=False).head(5)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html).
 :::
 
 ## 4. `groupby`: GROUP BY and PROC MEANS
 
 ### One key, one value
 
-`groupby` splits the table into groups, applies a function to each, and combines the
+[`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) splits the table into groups, applies a function to each, and combines the
 results - split, apply, combine:
 
 ```python run
@@ -498,7 +498,7 @@ loans.groupby("product").agg(
 
 Each item is `new_name=(column, function)`. This is the form to use in reports.
 
-**`describe` per group.** The full SAS `PROC MEANS` output for every group - `describe` after `groupby`:
+**[`describe`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) per group.** The full SAS `PROC MEANS` output for every group - [`describe`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) after [`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html):
 
 ```python run
 import pandas as pd
@@ -518,8 +518,8 @@ print(by_two)
 print(by_two.loc[("EUR", 3)])                 # a value by its two keys
 ```
 
-**A flat table.** The index has two levels now (a `MultiIndex`). For a flat table - columns as in SQL -
-use `as_index=False` or `reset_index()`:
+**A flat table.** The index has two levels now (a [`MultiIndex`](https://pandas.pydata.org/docs/reference/api/pandas.MultiIndex.html)). For a flat table - columns as in SQL -
+use `as_index=False` or [`reset_index()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reset_index.html):
 
 ```python run
 import pandas as pd
@@ -531,7 +531,7 @@ print(loans.groupby(["currency", "stage"])["outstanding"].sum().reset_index().eq
 ```
 
 **Share in the segment.** The share of each stage **in its segment** - a group total of a group result
-(`transform`, below, explains the second line):
+([`transform`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.transform.html), below, explains the second line):
 
 ```python run
 import pandas as pd
@@ -548,7 +548,7 @@ table
 
 ### `size` and `count`
 
-`size()` counts the rows of each group (SQL `COUNT(*)`); `count()` counts the values
+[`size()`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.size.html) counts the rows of each group (SQL `COUNT(*)`); [`count()`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.count.html) counts the values
 that are not missing (SQL `COUNT(col)`):
 
 ```python run
@@ -573,7 +573,7 @@ print(per_client.query("outstanding > 5_000_000").round(2))         # HAVING SUM
 
 ### `PROC FREQ` with two variables
 
-`value_counts` on several columns counts the combinations:
+[`value_counts`](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html) on several columns counts the combinations:
 
 ```python run
 import pandas as pd
@@ -583,13 +583,13 @@ print(clients.value_counts(["segment", "region"]).head(6))
 print(clients.groupby("segment")["region"].value_counts(normalize=True).round(3).head(7))
 ```
 
-(`pd.crosstab` - the two-way table with rows and columns - is [lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares).)
+([`pd.crosstab`](https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html) - the two-way table with rows and columns - is [lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares).)
 
 ### The share inside a group: `transform`
 
 The share of each loan in its client's total needs the group total **on every row**.
 In SQL that is a window function: `SUM(outstanding) OVER (PARTITION BY client_id)`.
-In pandas, `transform`:
+In pandas, [`transform`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.transform.html):
 
 ```python run
 import pandas as pd
@@ -600,7 +600,7 @@ loans["share_of_client"] = (loans["outstanding"] / loans["client_total"]).round(
 loans.loc[loans["client_id"] == "C0080", ["loan_id", "outstanding", "client_total", "share_of_client"]]
 ```
 
-**`transform`.** `agg` gives one row per group; `transform` gives one value per **row** (the group
+**[`transform`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.transform.html).** [`agg`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.agg.html) gives one row per group; [`transform`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.transform.html) gives one value per **row** (the group
 result repeated) - so it fits as a new column. Other window functions in the same
 way:
 
@@ -616,7 +616,7 @@ loans.sort_values(["client_id", "rank_in_client"])[["client_id", "loan_id", "out
 
 ### Groups from bands
 
-Group by a column made with `pd.cut`. For category columns, `observed=True` shows
+Group by a column made with [`pd.cut`](https://pandas.pydata.org/docs/reference/api/pandas.cut.html). For category columns, `observed=True` shows
 only the bands that have rows (the default in pandas 3; pandas 2.2 warns if you do not
 say it):
 
@@ -632,8 +632,8 @@ loans.groupby("dpd_bucket", observed=True).agg(loans=("loan_id", "count"),
 
 ::: info `groupby` and SAS
 SAS `PROC MEANS DATA=loans; CLASS segment stage; VAR outstanding; OUTPUT OUT=...` is
-`groupby(["segment", "stage"]).agg(...)`. There is no need to sort first (in SAS,
-`BY` needs `PROC SORT`; `groupby` does not), and the groups come out sorted by the keys.
+[`groupby(["segment", "stage"]).agg(...)`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.agg.html). There is no need to sort first (in SAS,
+`BY` needs `PROC SORT`; [`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) does not), and the groups come out sorted by the keys.
 :::
 
 ::: tip Try it
@@ -781,7 +781,7 @@ Rule: on a lookup join, write `validate="many_to_one"` (or check
 
 ### `concat`: one table under another
 
-`pd.concat` puts tables under each other - SAS `SET a b;`, SQL `UNION ALL`. The
+[`pd.concat`](https://pandas.pydata.org/docs/reference/api/pandas.concat.html) puts tables under each other - SAS `SET a b;`, SQL `UNION ALL`. The
 columns are matched by name:
 
 ```python run
@@ -805,7 +805,7 @@ new = pd.DataFrame({"loan_id": ["L3"], "outstanding": [50.0], "stage": [2]})
 print(pd.concat([old, new], keys=["old_system", "new_system"]))
 ```
 
-(SQL `UNION` without `ALL` = `concat` + `drop_duplicates()`.)
+(SQL `UNION` without `ALL` = [`concat`](https://pandas.pydata.org/docs/reference/api/pandas.concat.html) + [`drop_duplicates()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html).)
 
 ::: tip Try it
 Join `loans.csv` with `client_register.csv` on `client_id` with `how="left"` and
@@ -819,7 +819,7 @@ Join `loans.csv` with `client_register.csv` on `client_id` with `how="left"` and
 
 pandas marks a missing value with `NaN` in number columns, and with `NaN` or `None`
 in text columns (pandas 3: `NaN` in the `str` type). Nullable types (`Int64`,
-[lecture 13](./13-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64)) use `pd.NA`. Do not compare with them - use `isna()` / `notna()`:
+[lecture 13](./13-numpy-pandas-intro.md#whole-numbers-with-missing-values-int64)) use `pd.NA`. Do not compare with them - use [`isna()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isna.html) / [`notna()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.notna.html):
 
 ```python run
 import pandas as pd
@@ -833,7 +833,7 @@ print(s == np.nan)                         # all False: NaN is not equal to anyt
 
 ### Aggregates skip them
 
-Unlike NumPy ([lecture 13](./13-numpy-pandas-intro.md#missing-values-in-numpy-nan)), pandas skips `NaN` in `sum`, `mean`, `min`, `max` - like
+Unlike NumPy ([lecture 13](./13-numpy-pandas-intro.md#missing-values-in-numpy-nan)), pandas skips `NaN` in [`sum`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sum.html), [`mean`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mean.html), [`min`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.min.html), [`max`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.max.html) - like
 SQL and SAS `PROC MEANS`:
 
 ```python run
@@ -847,7 +847,7 @@ print(round(amounts.sum(skipna=False), 2))                     # NaN: what NumPy
 ```
 
 ::: warning A mean that skips is a different mean
-`mean()` divides by the values that are there (398 here), not by all rows. If a
+[`mean()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mean.html) divides by the values that are there (398 here), not by all rows. If a
 missing amount means 0, fill it first - that changes the mean. Decide what a missing
 value means before you aggregate.
 :::
@@ -887,10 +887,10 @@ export = pd.read_csv("data/loans_export.csv", sep=";", decimal=",", encoding="ut
 print(len(export), len(export.dropna()), len(export.dropna(subset=["Outstanding"])))
 ```
 
-`dropna()` without `subset` drops a row with **any** missing value - often too much.
+[`dropna()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html) without `subset` drops a row with **any** missing value - often too much.
 Name the columns that matter.
 
-**Missing values per column.** How complete is each column? `isna().mean()` is the share of missing values - the
+**Missing values per column.** How complete is each column? [`isna().mean()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isna.html) is the share of missing values - the
 first table of a data quality report:
 
 ```python run
@@ -913,8 +913,8 @@ print(export.groupby("Product")["Outstanding"].size().sum(), "rows in the groups
 print(export.groupby("Product", dropna=False)["Outstanding"].size().tail(2))
 ```
 
-**`NaN` traps.** `!=` is `True` for `NaN` (SQL would give `NULL`, and drop the row); `groupby` drops
-the `NaN` key unless `dropna=False`. In `merge`, `NaN` keys **match each other** -
+**`NaN` traps.** `!=` is `True` for `NaN` (SQL would give `NULL`, and drop the row); [`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) drops
+the `NaN` key unless `dropna=False`. In [`merge`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html), `NaN` keys **match each other** -
 unlike SQL, where `NULL = NULL` is not true:
 
 ```python run
@@ -928,7 +928,7 @@ print(a.merge(b, on="key"))            # the None rows are joined - drop them fi
 ### Repair the export from a trusted source
 
 The 8 missing amounts of the export are in `loans.csv`. A left join brings the
-reference value next to each row, `fillna` takes it where the export has none:
+reference value next to each row, [`fillna`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html) takes it where the export has none:
 
 ```python run
 import pandas as pd
@@ -948,7 +948,7 @@ The totals agree: 131,370,708.60.
 ::: tip Try it
 How many rows of the export have **some** missing value? Fill the missing interest
 rates with the mean rate of the same product (hint:
-`groupby("Product")["Interest rate %"].transform("mean")`).
+[`groupby("Product")["Interest rate %"].transform("mean")`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.transform.html)).
 :::
 
 ## 7. From a database into a DataFrame
@@ -956,7 +956,7 @@ rates with the mean rate of the same product (hint:
 ### The result of a query as a DataFrame
 
 In [lecture 12](./12-databases.md) the rows of a query came back as tuples.
-`pd.read_sql(sql, connection)` runs the query and returns a **DataFrame**, with the
+[`pd.read_sql(sql, connection)`](https://pandas.pydata.org/docs/reference/api/pandas.read_sql.html) runs the query and returns a **DataFrame**, with the
 column names of the query:
 
 ```python run
@@ -1001,7 +1001,7 @@ print(df["maturity_date"].max())
 ```
 
 ::: details Advanced: a DataFrame back to Python rows
-A DataFrame goes back to Python rows when you need them - `to_dict("records")` gives
+A DataFrame goes back to Python rows when you need them - [`to_dict("records")`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_dict.html) gives
 a list of dictionaries ([session 6](./06-dictionaries.md#a-row-as-a-dictionary)):
 
 ```python run
@@ -1133,14 +1133,14 @@ work.close()
 :::
 
 ::: info pandas 2 and pandas 3
-`pd.read_sql` with a `sqlite3` connection works in both. With any **other** DB-API
+[`pd.read_sql`](https://pandas.pydata.org/docs/reference/api/pandas.read_sql.html) with a `sqlite3` connection works in both. With any **other** DB-API
 connection (oracledb, pyodbc), pandas shows a `UserWarning` and asks for an SQLAlchemy
 engine - use one.
 :::
 
 ::: tip Try it
 Read `ratings_history` for `2026-09-30` into a DataFrame with a parameter, and print
-its `shape`. Then count the clients per rating with `df["rating"].value_counts()`.
+its `shape`. Then count the clients per rating with [`df["rating"].value_counts()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html).
 :::
 
 ## 8. The final project
@@ -1154,21 +1154,21 @@ to start.
 ## 9. Summary
 | SQL / SAS | pandas |
 |-----------|--------|
-| `SELECT a, b` / `KEEP=` | `df[["a", "b"]]`; `df.drop(columns=[...])` |
-| `WHERE` | `df[mask]`, `df.loc[mask, cols]`, `df.query("...")`; `&`, `\|`, `~` with brackets |
-| `IN`, `BETWEEN`, `LIKE 'x%'` | `isin`, `between`, `.str.startswith` |
+| `SELECT a, b` / `KEEP=` | `df[["a", "b"]]`; [`df.drop(columns=[...])`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop.html) |
+| `WHERE` | `df[mask]`, `df.loc[mask, cols]`, [`df.query("...")`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.query.html); `&`, `\|`, `~` with brackets |
+| `IN`, `BETWEEN`, `LIKE 'x%'` | [`isin`](https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html), [`between`](https://pandas.pydata.org/docs/reference/api/pandas.Series.between.html), [`.str.startswith`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.startswith.html) |
 | `UPDATE ... SET ... WHERE` | `df.loc[mask, "col"] = value` (one `loc`, never two brackets) |
-| derived column, `CASE WHEN` | `df["new"] = ...`, `assign`, `np.where`, `np.select` |
-| `PROC FORMAT` ranges / values | `pd.cut(bins, labels)`; `map(dict)` |
-| `ORDER BY`, top N, `RANK` | `sort_values`, `nlargest`, `rank` |
-| `GROUP BY`, `PROC MEANS CLASS` | `groupby(keys).agg(name=(col, func))`; `as_index=False` |
-| `COUNT(*)` / `COUNT(col)` | `size()` / `count()` |
+| derived column, `CASE WHEN` | `df["new"] = ...`, [`assign`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.assign.html), [`np.where`](https://numpy.org/doc/stable/reference/generated/numpy.where.html), [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html) |
+| `PROC FORMAT` ranges / values | [`pd.cut(bins, labels)`](https://pandas.pydata.org/docs/reference/api/pandas.cut.html); [`map(dict)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html) |
+| `ORDER BY`, top N, `RANK` | [`sort_values`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html), [`nlargest`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.nlargest.html), [`rank`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rank.html) |
+| `GROUP BY`, `PROC MEANS CLASS` | [`groupby(keys).agg(name=(col, func))`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.agg.html); `as_index=False` |
+| `COUNT(*)` / `COUNT(col)` | [`size()`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.size.html) / [`count()`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.count.html) |
 | `HAVING` | a mask on the grouped result |
-| `SUM() OVER (PARTITION BY)` | `groupby(...)[col].transform("sum")` |
-| `JOIN`, `MERGE BY` + `IN=` | `merge(on, how)`, `indicator=True`; `validate="many_to_one"` |
-| `SET a b`, `UNION ALL` | `pd.concat([a, b])` |
-| `NULL`, `.`, `COALESCE`, `NMISS` | `NaN`; `isna`; aggregates skip it; `fillna`, `dropna(subset=...)` |
-| a query from Python | `pd.read_sql(sql, con, params=..., parse_dates=...)`; SQLAlchemy `create_engine(url)`; `df.to_sql(...)` |
+| `SUM() OVER (PARTITION BY)` | [`groupby(...)[col].transform("sum")`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.transform.html) |
+| `JOIN`, `MERGE BY` + `IN=` | [`merge(on, how)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html), `indicator=True`; `validate="many_to_one"` |
+| `SET a b`, `UNION ALL` | [`pd.concat([a, b])`](https://pandas.pydata.org/docs/reference/api/pandas.concat.html) |
+| `NULL`, `.`, `COALESCE`, `NMISS` | `NaN`; [`isna`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isna.html); aggregates skip it; [`fillna`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html), [`dropna(subset=...)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.dropna.html) |
+| a query from Python | [`pd.read_sql(sql, con, params=..., parse_dates=...)`](https://pandas.pydata.org/docs/reference/api/pandas.read_sql.html); SQLAlchemy `create_engine(url)`; [`df.to_sql(...)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_sql.html) |
 
 ## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1181,13 +1181,13 @@ python 14-pandas-select-aggregate-join/practice/task1-select.py
 
 | Task | File | What you do |
 |------|------|-------------|
-| 1 | `task1-select.py` | Rows and columns: masks, `loc`, `iloc`, `isin`, `between`, `query` |
+| 1 | `task1-select.py` | Rows and columns: masks, `loc`, `iloc`, [`isin`](https://pandas.pydata.org/docs/reference/api/pandas.Series.isin.html), [`between`](https://pandas.pydata.org/docs/reference/api/pandas.Series.between.html), [`query`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.query.html) |
 | 2 | `task2-predict-pandas.py` | Predict: masks, groups, joins, missing values |
-| 3 | `task3-new-columns.py` | New columns with `np.select`, `pd.cut`, `map` and `assign` |
-| 4 | `task4-groupby.py` | Totals by group, named aggregation, `HAVING`, shares with `transform` |
+| 3 | `task3-new-columns.py` | New columns with [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html), [`pd.cut`](https://pandas.pydata.org/docs/reference/api/pandas.cut.html), [`map`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html) and [`assign`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.assign.html) |
+| 4 | `task4-groupby.py` | Totals by group, named aggregation, `HAVING`, shares with [`transform`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.transform.html) |
 | 5 | `task5-merge.py` | Joins with clients and the rating scale, the anti-join, the EL |
 | 6 | `task6-missing.py` (Optional) | Missing values in the export: count, fill, drop, repair |
-| 7 | `task7-read-sql.py` | `pd.read_sql` with parameters; shape, columns, a total |
+| 7 | `task7-read-sql.py` | [`pd.read_sql`](https://pandas.pydata.org/docs/reference/api/pandas.read_sql.html) with parameters; shape, columns, a total |
 
 ## Homework
 
@@ -1222,10 +1222,10 @@ print(len(largest), "clients")
 largest[["client_id", "loan_id", "outstanding"]].head()
 ```
 
-`groupby("client_id").head(1)` does the same, and `.head(2)` keeps the first two of each
+[`groupby("client_id").head(1)`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.head.html) does the same, and [`.head(2)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html) keeps the first two of each
 group - not possible with SAS `FIRST.` alone. `keep="last"` is SAS `LAST.`.
 
-**`NODUPKEY`** - `drop_duplicates(subset=[...])` ([lecture 13](./13-numpy-pandas-intro.md#distinct-values-missing-values-duplicates)); `duplicated(keep=False)`
+**`NODUPKEY`** - [`drop_duplicates(subset=[...])`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html) ([lecture 13](./13-numpy-pandas-intro.md#distinct-values-missing-values-duplicates)); [`duplicated(keep=False)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.duplicated.html)
 marks **all** copies, to look at them:
 
 ```python run
@@ -1251,7 +1251,7 @@ history["downgrades_so_far"] = history.groupby("client_id")["downgrades"].cumsum
 history.loc[history["client_id"] == "C0002", ["month_end", "rating", "prev_rating", "change", "downgrades_so_far"]]
 ```
 
-`shift(1)` inside the group gives `NaN` on the first row of each client - exactly
+[`shift(1)`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.shift.html) inside the group gives `NaN` on the first row of each client - exactly
 what SAS `LAG` with `IF FIRST.client_id THEN prev = .` does, without the trap of
 `LAG` in a condition.
 
@@ -1322,8 +1322,8 @@ test.
 
 **Exercise**
 
-Write one chain: the loans of stage 1 in EUR, with the client's rating (`merge`), a
-column `rating_band` with `pd.cut` (1 - 3, 4 - 6, 7 - 10), and per band the number of
+Write one chain: the loans of stage 1 in EUR, with the client's rating ([`merge`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html)), a
+column `rating_band` with [`pd.cut`](https://pandas.pydata.org/docs/reference/api/pandas.cut.html) (1 - 3, 4 - 6, 7 - 10), and per band the number of
 loans and the mean interest rate, sorted by the band.
 
 ::: details Answer
@@ -1342,7 +1342,7 @@ clients = pd.read_csv("data/clients.csv")
  .round(2))
 ```
 
-`groupby` on a category column sorts by the order of the labels, so no `sort_values`
+[`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) on a category column sorts by the order of the labels, so no [`sort_values`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html)
 is needed.
 :::
 
@@ -1358,5 +1358,5 @@ is needed.
   (the official tables)
 
 **Next lecture:** pandas for reports - pivot tables (SAS `PROC TABULATE` /
-`TRANSPOSE`), `melt`, dates and month ends, a rating migration matrix, an Excel file
+`TRANSPOSE`), [`melt`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.melt.html), dates and month ends, a rating migration matrix, an Excel file
 with several sheets, charts - and the start of the final project.

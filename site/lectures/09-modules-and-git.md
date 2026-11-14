@@ -669,7 +669,7 @@ import calendar
 print(calendar.month(2026, 9))
 ```
 
-(pandas has all of this built in - `pd.offsets.MonthEnd`, `Period` - [lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends).)
+(pandas has all of this built in - [`pd.offsets.MonthEnd`](https://pandas.pydata.org/docs/reference/api/pandas.tseries.offsets.MonthEnd.html), `Period` - [lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends).)
 
 ### `statistics`: `PROC MEANS` and `PROC UNIVARIATE` for a list
 

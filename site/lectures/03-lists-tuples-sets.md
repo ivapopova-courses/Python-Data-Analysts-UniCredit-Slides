@@ -373,7 +373,7 @@ make **new** strings.
 
 ::: info The same in pandas
 pandas ([lecture 13](./13-numpy-pandas-intro.md)) uses the same rules. `iloc` takes rows and columns by
-position - from 0, without the stop; `.str[...]` takes the same slice of every text
+position - from 0, without the stop; [`.str[...]`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.html) takes the same slice of every text
 in a column:
 
 ```python run
@@ -1348,7 +1348,7 @@ print("loans of unknown clients:", loan_clients - clients)       # LEFT JOIN ...
 
 ::: info The same in pandas
 The same check on two tables before a join - with [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set) of a column, or with
-`isin` ([lecture 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there `merge(..., indicator=True)` shows the rows without a
+`isin` ([lecture 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there [`merge(..., indicator=True)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html) shows the rows without a
 match):
 
 ```python run

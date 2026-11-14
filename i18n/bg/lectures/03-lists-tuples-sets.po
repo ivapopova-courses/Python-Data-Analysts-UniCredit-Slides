@@ -470,8 +470,8 @@ msgstr "Същото в pandas"
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:375
-msgid "pandas ([lecture 13](./13-numpy-pandas-intro.md)) uses the same rules. `iloc` takes rows and columns by position - from 0, without the stop; `.str[...]` takes the same slice of every text in a column:"
-msgstr "pandas ([лекция 13](./13-numpy-pandas-intro.md)) използва същите правила. `iloc` взима редове и колони по позиция - от 0, без stop; `.str[...]` взима един и същ slice от всеки текст в колоната:"
+msgid "pandas ([lecture 13](./13-numpy-pandas-intro.md)) uses the same rules. `iloc` takes rows and columns by position - from 0, without the stop; [`.str[...]`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.html) takes the same slice of every text in a column:"
+msgstr "pandas ([лекция 13](./13-numpy-pandas-intro.md)) използва същите правила. `iloc` взима редове и колони по позиция - от 0, без stop; [`.str[...]`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.html) взима един и същ slice от всеки текст в колоната:"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:388
@@ -1380,8 +1380,8 @@ msgstr "Това са бързи проверки на данните, като 
 
 #. paragraph
 #: site/lectures/03-lists-tuples-sets.md:1350
-msgid "The same check on two tables before a join - with [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set) of a column, or with `isin` ([lecture 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there `merge(..., indicator=True)` shows the rows without a match):"
-msgstr "Същата проверка на две таблици преди JOIN - със [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set) от колона или с `isin` ([лекция 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); там `merge(..., indicator=True)` показва редовете без съвпадение):"
+msgid "The same check on two tables before a join - with [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set) of a column, or with `isin` ([lecture 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); there [`merge(..., indicator=True)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html) shows the rows without a match):"
+msgstr "Същата проверка на две таблици преди JOIN - със [`set()`](https://docs.python.org/3/builtins/stdtypes.html#set) от колона или с `isin` ([лекция 14](./14-pandas-select-aggregate-join.md#in-of-sas-indicator-true); там [`merge(..., indicator=True)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html) показва редовете без съвпадение):"
 
 #. heading 2
 #: site/lectures/03-lists-tuples-sets.md:1364

@@ -655,7 +655,7 @@ in the Self-study part.
 :::
 
 ::: info The result of a query as a DataFrame
-`pd.read_sql(sql, connection)` gives the result of a query as a pandas table. It comes
+[`pd.read_sql(sql, connection)`](https://pandas.pydata.org/docs/reference/api/pandas.read_sql.html) gives the result of a query as a pandas table. It comes
 in [lecture 14](./14-pandas-select-aggregate-join.md#_7-from-a-database-into-a-dataframe), when you know DataFrames.
 :::
 

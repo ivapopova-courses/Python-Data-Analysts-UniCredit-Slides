@@ -248,8 +248,9 @@ print(comment.count("0"))            # how many times
 ```
 
 The SAS functions `INDEX` and `FIND` count from **1** and give **0** when nothing is
-found. Python counts from 0 and gives -1. A classic bug: `if s.find("x"):` is true
-for -1, and false when `"x"` is at position 0. Use `in` for "is it there?".
+found. Python counts from 0 and gives -1.   
+A classic bug: `if s.find("x"):` is true for -1, and false when `"x"` is at position 0. 
+Use `in` for "is it there?".
 
 ### What kind of characters?
 
@@ -423,8 +424,8 @@ print("C" + "C17"[1:].zfill(4))       # 'C0017' - pad the digits, then add the C
 ```
 
 ::: info The same in pandas
-In pandas, every string method works on a whole column with `.str`:
-`loans["product"].str.upper()`, `names.str.split()`, `ids.str.startswith("L")`
+In pandas, every string method works on a whole column with [`.str`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.html):
+[`loans["product"].str.upper()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.upper.html), [`names.str.split()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.split.html), [`ids.str.startswith("L")`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.startswith.html)
 ([lecture 14](./14-pandas-select-aggregate-join.md#text-and-dates-in-a-column)):
 
 ```python run
@@ -1255,8 +1256,8 @@ print(count, "payments in September, total", f"{total:,.2f} EUR")
 ```
 
 ::: info The same in pandas and SQL
-pandas: `df["iban"].str.fullmatch(pattern)` gives a column of `True` / `False`;
-`str.contains`, `str.extract` and `str.replace(..., regex=True)` use patterns too
+pandas: [`df["iban"].str.fullmatch(pattern)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.fullmatch.html) gives a column of `True` / `False`;
+[`str.contains`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.contains.html), [`str.extract`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.extract.html) and [`str.replace(..., regex=True)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.replace.html) use patterns too
 ([lecture 14](./14-pandas-select-aggregate-join.md#text-and-dates-in-a-column)). Most databases have regex functions: `REGEXP_LIKE` (Oracle, MySQL),
 `~` (PostgreSQL); MS SQL Server only since version 2025.
 

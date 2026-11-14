@@ -40,12 +40,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:15
-msgid "choose values with `np.where` and `np.select`, the vector version of SQL `CASE WHEN`;"
+msgid "choose values with [`np.where`](https://numpy.org/doc/stable/reference/generated/numpy.where.html) and [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html), the vector version of SQL `CASE WHEN`;"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:16
-msgid "work with the two objects of **pandas**: the `Series` (a column) and the `DataFrame` (a table);"
+msgid "work with the two objects of **pandas**: the [`Series`](https://pandas.pydata.org/docs/reference/api/pandas.Series.html) (a column) and the [`DataFrame`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.html) (a table);"
 msgstr ""
 
 #. paragraph
@@ -180,12 +180,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:177
-msgid "`ddof=1` matters: NumPy's default `std()` is the **population** standard deviation, SAS and pandas use the sample one (`n - 1`)."
+msgid "`ddof=1` matters: NumPy's default [`std()`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.std.html) is the **population** standard deviation, SAS and pandas use the sample one (`n - 1`)."
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:180
-msgid "**`cumsum` and `diff`.** Running totals and differences - `RETAIN` and `LAG` of a SAS DATA step, for a whole array:"
+msgid "**[`cumsum`](https://numpy.org/doc/stable/reference/generated/numpy.cumsum.html) and [`diff`](https://numpy.org/doc/stable/reference/generated/numpy.diff.html).** Running totals and differences - `RETAIN` and `LAG` of a SAS DATA step, for a whole array:"
 msgstr ""
 
 #. paragraph
@@ -195,7 +195,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:203
-msgid "**Keep inside limits.** `np.clip` keeps values inside limits - a PD after a stress must stay between 0 and 1:"
+msgid "**Keep inside limits.** [`np.clip`](https://numpy.org/doc/stable/reference/generated/numpy.clip.html) keeps values inside limits - a PD after a stress must stay between 0 and 1:"
 msgstr ""
 
 #. heading 3
@@ -205,7 +205,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:215
-msgid "`np.where(condition, value_if_true, value_if_false)` - for every element:"
+msgid "[`np.where(condition, value_if_true, value_if_false)`](https://numpy.org/doc/stable/reference/generated/numpy.where.html) - for every element:"
 msgstr ""
 
 #. heading 3
@@ -250,7 +250,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:279
-msgid "With `days` and `outstanding` of the mask example: the share of the outstanding that is more than 30 days past due. Then the DPD bucket of each loan with `np.select`."
+msgid "With `days` and `outstanding` of the mask example: the share of the outstanding that is more than 30 days past due. Then the DPD bucket of each loan with [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html)."
 msgstr ""
 
 #. paragraph
@@ -335,7 +335,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:435
-msgid "`sort_values` is SAS `PROC SORT` / SQL `ORDER BY`; selection with conditions (SQL `WHERE`) and `loc` are [lecture 14](./14-pandas-select-aggregate-join.md#loc-rows-and-columns-by-label)."
+msgid "[`sort_values`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html) is SAS `PROC SORT` / SQL `ORDER BY`; selection with conditions (SQL `WHERE`) and `loc` are [lecture 14](./14-pandas-select-aggregate-join.md#loc-rows-and-columns-by-label)."
 msgstr ""
 
 #. heading 3
@@ -350,7 +350,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:452
-msgid "Read `clients.csv` and add a column `years_client`: 2026 minus the year of `client_since` (hint: `loans[\"start_date\"].str[:4].astype(int)` takes the year from the text). Show the 3 oldest clients with `sort_values`."
+msgid "Read `clients.csv` and add a column `years_client`: 2026 minus the year of `client_since` (hint: `loans[\"start_date\"].str[:4].astype(int)` takes the year from the text). Show the 3 oldest clients with [`sort_values`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html)."
 msgstr ""
 
 #. heading 2
@@ -365,7 +365,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:461
-msgid "`pd.read_csv(path)` guesses a lot: the header in the first line, the separator `,`, the decimal point `.`, numbers as numbers, everything else as text. For `loans.csv` that is right. For files from other systems, the options tell pandas how to read:"
+msgid "[`pd.read_csv(path)`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) guesses a lot: the header in the first line, the separator `,`, the decimal point `.`, numbers as numbers, everything else as text. For `loans.csv` that is right. For files from other systems, the options tell pandas how to read:"
 msgstr ""
 
 #. table cell
@@ -530,7 +530,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:616
-msgid "`pd.read_excel` reads a sheet of an `.xlsx` file (with openpyxl underneath, [lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)):"
+msgid "[`pd.read_excel`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html) reads a sheet of an `.xlsx` file (with openpyxl underneath, [lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)):"
 msgstr ""
 
 #. paragraph
@@ -540,7 +540,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:637
-msgid "**All sheets in one table.** To put the sheets under each other in one table, `pd.concat` ([lecture 14](./14-pandas-select-aggregate-join.md#concat-one-table-under-another) explains it):"
+msgid "**All sheets in one table.** To put the sheets under each other in one table, [`pd.concat`](https://pandas.pydata.org/docs/reference/api/pandas.concat.html) ([lecture 14](./14-pandas-select-aggregate-join.md#concat-one-table-under-another) explains it):"
 msgstr ""
 
 #. paragraph
@@ -640,7 +640,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:708
-msgid "**Text columns.** For the text columns: `describe(include=\"object\")` in pandas 2.2, `include=\"str\"` in pandas 3 - or simply `include=\"all\"` (works in both):"
+msgid "**Text columns.** For the text columns: [`describe(include=\"object\")`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html) in pandas 2.2, `include=\"str\"` in pandas 3 - or simply `include=\"all\"` (works in both):"
 msgstr ""
 
 #. paragraph
@@ -650,12 +650,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:739
-msgid "**Counts by range.** A number in ranges - `value_counts(bins=...)` - a first histogram as a table:"
+msgid "**Counts by range.** A number in ranges - [`value_counts(bins=...)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html) - a first histogram as a table:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:748
-msgid "**A two-way table.** Two variables - `TABLES stage * currency` - is `pd.crosstab` ([lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares)):"
+msgid "**A two-way table.** Two variables - `TABLES stage * currency` - is [`pd.crosstab`](https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html) ([lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares)):"
 msgstr ""
 
 #. heading 3
@@ -665,17 +665,17 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:770
-msgid "`isna()` gives a DataFrame of `True` / `False`; `.sum()` counts the `True` per column - the masks of section 2, for a whole table."
+msgid "[`isna()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.isna.html) gives a DataFrame of `True` / `False`; [`.sum()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sum.html) counts the `True` per column - the masks of section 2, for a whole table."
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:773
-msgid "**Remove copies.** To remove the exact copies, `drop_duplicates()` - like SAS `PROC SORT NODUPRECS`, but it keeps the order of the rows (the first copy stays):"
+msgid "**Remove copies.** To remove the exact copies, [`drop_duplicates()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html) - like SAS `PROC SORT NODUPRECS`, but it keeps the order of the rows (the first copy stays):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:785
-msgid "`drop_duplicates(subset=[\"Loan ID\"])` compares only that column (`NODUPKEY`). A new DataFrame comes back; the old one does not change."
+msgid "[`drop_duplicates(subset=[\"Loan ID\"])`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.drop_duplicates.html) compares only that column (`NODUPKEY`). A new DataFrame comes back; the old one does not change."
 msgstr ""
 
 #. heading 3
@@ -685,7 +685,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:798
-msgid "`.dt` gives the date parts of a whole column ([lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends) uses it a lot)."
+msgid "[`.dt`](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.html) gives the date parts of a whole column ([lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends) uses it a lot)."
 msgstr ""
 
 #. heading 3
@@ -790,7 +790,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:847
-msgid "**Count with `True`.** A comparison gives a `bool` column - and `True` counts as 1, so `sum` counts and `mean` gives the share:"
+msgid "**Count with `True`.** A comparison gives a `bool` column - and `True` counts as 1, so [`sum`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sum.html) counts and [`mean`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.mean.html) gives the share:"
 msgstr ""
 
 #. heading 3
@@ -810,12 +810,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:885
-msgid "`astype(float)` stops at the first bad value. `pd.to_numeric(..., errors=\"coerce\")` turns bad values into `NaN` - the `??` informat of SAS ([lecture 8](./08-errors-and-files.md)) - so you can count them:"
+msgid "[`astype(float)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html) stops at the first bad value. [`pd.to_numeric(..., errors=\"coerce\")`](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html) turns bad values into `NaN` - the `??` informat of SAS ([lecture 8](./08-errors-and-files.md)) - so you can count them:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:898
-msgid "**Read dates.** `pd.to_datetime` with a `format` reads dates - for a whole column, much faster than [`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) in a loop ([lecture 7](./07-text-and-regex.md#from-text-to-a-date)):"
+msgid "**Read dates.** [`pd.to_datetime`](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html) with a `format` reads dates - for a whole column, much faster than [`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) in a loop ([lecture 7](./07-text-and-regex.md#from-text-to-a-date)):"
 msgstr ""
 
 #. heading 3
@@ -865,17 +865,17 @@ msgstr ""
 
 #. table cell
 #: site/lectures/13-numpy-pandas-intro.md:948
-msgid "`np.array`; one `dtype`; operations on whole arrays; masks `a[a > 90]`; `&`, `\\|`, `~` with brackets"
+msgid "[`np.array`](https://numpy.org/doc/stable/reference/generated/numpy.array.html); one `dtype`; operations on whole arrays; masks `a[a > 90]`; `&`, `\\|`, `~` with brackets"
 msgstr ""
 
 #. table cell
 #: site/lectures/13-numpy-pandas-intro.md:949
-msgid "`sum`, `mean`, `min`, `max`, `argmax`, `np.percentile`; `std(ddof=1)` for the sample"
+msgid "[`sum`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.sum.html), [`mean`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.mean.html), [`min`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.min.html), [`max`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.max.html), [`argmax`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.argmax.html), [`np.percentile`](https://numpy.org/doc/stable/reference/generated/numpy.percentile.html); [`std(ddof=1)`](https://numpy.org/doc/stable/reference/generated/numpy.ndarray.std.html) for the sample"
 msgstr ""
 
 #. table cell
 #: site/lectures/13-numpy-pandas-intro.md:950
-msgid "`np.where(cond, a, b)`; `np.select([conds], [choices], default=...)` - the first true wins"
+msgid "[`np.where(cond, a, b)`](https://numpy.org/doc/stable/reference/generated/numpy.where.html); [`np.select([conds], [choices], default=...)`](https://numpy.org/doc/stable/reference/generated/numpy.select.html) - the first true wins"
 msgstr ""
 
 #. table cell
@@ -890,7 +890,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/13-numpy-pandas-intro.md:952
-msgid "spreads in NumPy (`np.nansum`); not equal to itself; ints cannot hold it"
+msgid "spreads in NumPy ([`np.nansum`](https://numpy.org/doc/stable/reference/generated/numpy.nansum.html)); not equal to itself; ints cannot hold it"
 msgstr ""
 
 #. table cell
@@ -900,7 +900,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/13-numpy-pandas-intro.md:953
-msgid "values + index; operations match labels (alignment); `value_counts`"
+msgid "values + index; operations match labels (alignment); [`value_counts`](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html)"
 msgstr ""
 
 #. table cell
@@ -915,7 +915,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/13-numpy-pandas-intro.md:956
-msgid "`sheet_name=...`; `None` for all sheets (a dict); `read_sas` for SAS datasets"
+msgid "`sheet_name=...`; `None` for all sheets (a dict); [`read_sas`](https://pandas.pydata.org/docs/reference/api/pandas.read_sas.html) for SAS datasets"
 msgstr ""
 
 #. table cell
@@ -930,7 +930,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/13-numpy-pandas-intro.md:958
-msgid "int64, float64, str / object, bool, datetime64, category, Int64; `astype`; `to_numeric` / `to_datetime` with `errors=\"coerce\"`"
+msgid "int64, float64, str / object, bool, datetime64, category, Int64; [`astype`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.astype.html); [`to_numeric`](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html) / [`to_datetime`](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html) with `errors=\"coerce\"`"
 msgstr ""
 
 #. heading 2
@@ -970,7 +970,7 @@ msgstr ""
 
 #. table cell
 #: site/lectures/13-numpy-pandas-intro.md:974
-msgid "`np.where` and `np.select` for buckets, flags and PDs"
+msgid "[`np.where`](https://numpy.org/doc/stable/reference/generated/numpy.where.html) and [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html) for buckets, flags and PDs"
 msgstr ""
 
 #. table cell
@@ -1100,7 +1100,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:1078
-msgid "`pd.read_sas` reads `.sas7bdat` (and `.xpt`) files without SAS. Points to know:"
+msgid "[`pd.read_sas`](https://pandas.pydata.org/docs/reference/api/pandas.read_sas.html) reads `.sas7bdat` (and `.xpt`) files without SAS. Points to know:"
 msgstr ""
 
 #. paragraph
@@ -1110,7 +1110,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:1082
-msgid "**Dates:** SAS date variables with a date format arrive as `datetime64`; without a format, as numbers of days since 1960-01-01 - convert with `pd.to_datetime(x, unit=\"D\", origin=\"1960-01-01\")`."
+msgid "**Dates:** SAS date variables with a date format arrive as `datetime64`; without a format, as numbers of days since 1960-01-01 - convert with [`pd.to_datetime(x, unit=\"D\", origin=\"1960-01-01\")`](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html)."
 msgstr ""
 
 #. paragraph
@@ -1170,5 +1170,5 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:1124
-msgid "**Next lecture:** pandas - selection with `loc` and masks, new columns with `np.select` and `pd.cut`, `groupby` (the SQL `GROUP BY` and SAS `PROC MEANS` of pandas), `merge` (the SQL `JOIN`), and missing values."
+msgid "**Next lecture:** pandas - selection with `loc` and masks, new columns with [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html) and [`pd.cut`](https://pandas.pydata.org/docs/reference/api/pandas.cut.html), [`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) (the SQL `GROUP BY` and SAS `PROC MEANS` of pandas), [`merge`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html) (the SQL `JOIN`), and missing values."
 msgstr ""

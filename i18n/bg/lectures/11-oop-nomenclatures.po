@@ -530,7 +530,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:765
-msgid "A nomenclature's dictionary works directly with `Series.map` ([lecture 14](./14-pandas-select-aggregate-join.md#codes-and-descriptions-map)); the unknown values become `NaN` and are easy to count:"
+msgid "A nomenclature's dictionary works directly with [`Series.map`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html) ([lecture 14](./14-pandas-select-aggregate-join.md#codes-and-descriptions-map)); the unknown values become `NaN` and are easy to count:"
 msgstr ""
 
 #. paragraph

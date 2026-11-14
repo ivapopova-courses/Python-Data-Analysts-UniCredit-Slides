@@ -131,10 +131,10 @@ How SAS ideas map to Python (most of them come in the later sessions):
 | SAS | Python |
 |---|---|
 | DATA step | a loop over rows (sessions 2 - 6), or pandas (lectures 13 - 15) |
-| `PROC SORT` | [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted), `DataFrame.sort_values()` |
-| `PROC MEANS`, `PROC SUMMARY` | [`sum()`](https://docs.python.org/3/builtins/functions.html#sum), `statistics`, `DataFrame.groupby().agg()` |
-| `PROC FREQ` | [`collections.Counter`](https://docs.python.org/3/library/collections.html#collections.Counter), `value_counts()`, `pd.crosstab()` |
-| `PROC TRANSPOSE` | `DataFrame.pivot()`, `melt()` |
+| `PROC SORT` | [`sorted()`](https://docs.python.org/3/builtins/functions.html#sorted), [`DataFrame.sort_values()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html) |
+| `PROC MEANS`, `PROC SUMMARY` | [`sum()`](https://docs.python.org/3/builtins/functions.html#sum), `statistics`, [`DataFrame.groupby().agg()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) |
+| `PROC FREQ` | [`collections.Counter`](https://docs.python.org/3/library/collections.html#collections.Counter), [`value_counts()`](https://pandas.pydata.org/docs/reference/api/pandas.Series.value_counts.html), [`pd.crosstab()`](https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html) |
+| `PROC TRANSPOSE` | [`DataFrame.pivot()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html), [`melt()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.melt.html) |
 | formats (`COMMA12.2`, `PERCENT8.2`) | f-strings: `f"{x:,.2f}"`, `f"{x:.2%}"` - section 13 |
 | macros, `%LET` | functions ([session 4](./04-functions.md)), variables |
 | `LIBNAME` | file paths, database connections |
@@ -1894,7 +1894,7 @@ you run the file - the point is to think first.
    separator. Run it in the terminal.
 4. Optional: create a notebook `01-practice.ipynb` in your Homework folder, read
    `data/loans.csv` with pandas (as at the top of this page), and show
-   `loans.head()` and `loans.describe()`.
+   [`loans.head()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html) and [`loans.describe()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html).
 5. Optional: `01-intro-syntax-types/notebook.ipynb` - short extra tasks on the topics of
    today in a Jupyter notebook, each with a check cell. Open it in VS Code and
    select the `.venv` kernel.

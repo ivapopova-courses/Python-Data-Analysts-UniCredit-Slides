@@ -3195,8 +3195,8 @@ msgstr "По желание: напишете `payment.py`, който пита 
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1895
-msgid "Optional: create a notebook `01-practice.ipynb` in your Homework folder, read `data/loans.csv` with pandas (as at the top of this page), and show `loans.head()` and `loans.describe()`."
-msgstr "По желание: създайте notebook `01-practice.ipynb` в папката си Homework, прочетете `data/loans.csv` с pandas (както в началото на тази страница) и покажете `loans.head()` и `loans.describe()`."
+msgid "Optional: create a notebook `01-practice.ipynb` in your Homework folder, read `data/loans.csv` with pandas (as at the top of this page), and show [`loans.head()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html) and [`loans.describe()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html)."
+msgstr "По желание: създайте notebook `01-practice.ipynb` в папката си Homework, прочетете `data/loans.csv` с pandas (както в началото на тази страница) и покажете [`loans.head()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.head.html) и [`loans.describe()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.describe.html)."
 
 #. paragraph
 #: site/lectures/01-intro-syntax-types.md:1898

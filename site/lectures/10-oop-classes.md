@@ -68,7 +68,7 @@ print(type(len), type(Exception("x")))
 **Classes you already use.** A **class** is the blueprint of a type: `str`, `list`, `dict` are classes. An
 **object** (or **instance**) is one thing made from the blueprint: `"c0014"` is an
 instance of `str`. A DataFrame ([lecture 13](./13-numpy-pandas-intro.md#_4-dataframe)) is an instance of the class `DataFrame`,
-and `df.groupby(...)` is one of its methods.
+and [`df.groupby(...)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) is one of its methods.
 
 ```python run
 print(isinstance("c0014", str), isinstance([1, 2], list), isinstance(5, float))

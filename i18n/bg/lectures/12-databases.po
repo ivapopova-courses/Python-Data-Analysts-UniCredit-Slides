@@ -525,7 +525,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:658
-msgid "`pd.read_sql(sql, connection)` gives the result of a query as a pandas table. It comes in [lecture 14](./14-pandas-select-aggregate-join.md#_7-from-a-database-into-a-dataframe), when you know DataFrames."
+msgid "[`pd.read_sql(sql, connection)`](https://pandas.pydata.org/docs/reference/api/pandas.read_sql.html) gives the result of a query as a pandas table. It comes in [lecture 14](./14-pandas-select-aggregate-join.md#_7-from-a-database-into-a-dataframe), when you know DataFrames."
 msgstr ""
 
 #. heading 2

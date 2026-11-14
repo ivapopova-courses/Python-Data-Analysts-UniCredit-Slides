@@ -492,7 +492,7 @@ fields = ["1156900.00", "1044231.30", "8.83"]
 print(list(map(float, fields)))           # short when the function has a name
 ```
 
-In pandas, `map` comes back: `series.map(function)` or `series.map(dictionary)`
+In pandas, `map` comes back: [`series.map(function)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html) or [`series.map(dictionary)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html)
 (lectures 6 and 14).
 :::
 
@@ -597,7 +597,7 @@ in memory. For `loans.csv` (400 rows) both are fine. For a file of 10 million ro
 the generator still works on a laptop.
 
 ::: info The same in pandas
-`pd.read_csv` reads the **whole** file into memory. For a file larger than the
+[`pd.read_csv`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) reads the **whole** file into memory. For a file larger than the
 memory, `chunksize=` reads it in pieces, and you add up the pieces - the same idea:
 
 ```python run

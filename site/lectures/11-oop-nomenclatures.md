@@ -762,7 +762,7 @@ This is "apply consistently across datasets": one definition, many inputs, and t
 same report of what did not fit.
 
 ::: info The same in pandas
-A nomenclature's dictionary works directly with `Series.map` ([lecture 14](./14-pandas-select-aggregate-join.md#codes-and-descriptions-map)); the unknown
+A nomenclature's dictionary works directly with [`Series.map`](https://pandas.pydata.org/docs/reference/api/pandas.Series.map.html) ([lecture 14](./14-pandas-select-aggregate-join.md#codes-and-descriptions-map)); the unknown
 values become `NaN` and are easy to count:
 
 ```python run

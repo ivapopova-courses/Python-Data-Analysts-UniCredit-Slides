@@ -1075,7 +1075,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:1414
-msgid "pandas has options for bad lines (`pd.read_csv(..., on_bad_lines=\"skip\")`) and turns bad numbers into `NaN` with `pd.to_numeric(..., errors=\"coerce\")` ([lecture 14](./14-pandas-select-aggregate-join.md)). They are faster - but they do not tell you **why** a row is bad. For an input you must explain to someone, the loader of this section is the better tool."
+msgid "pandas has options for bad lines ([`pd.read_csv(..., on_bad_lines=\"skip\")`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)) and turns bad numbers into `NaN` with [`pd.to_numeric(..., errors=\"coerce\")`](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html) ([lecture 14](./14-pandas-select-aggregate-join.md)). They are faster - but they do not tell you **why** a row is bad. For an input you must explain to someone, the loader of this section is the better tool."
 msgstr ""
 
 #. paragraph

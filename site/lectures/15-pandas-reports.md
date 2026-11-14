@@ -11,8 +11,8 @@ title: "15. pandas: reports"
 
 **Today you will learn to:**
 
-- turn a long table into a report table with `pivot_table` and `pd.crosstab` - and
-  back with `melt`;
+- turn a long table into a report table with [`pivot_table`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot_table.html) and [`pd.crosstab`](https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html) - and
+  back with [`melt`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.melt.html);
 - work with dates: month ends, months between two dates, periods;
 - compare each month with the previous one - the `LAG` and `RETAIN` of a SAS DATA step;
 - build a rating migration matrix;
@@ -46,7 +46,7 @@ Lectures 13 and 14 gave you the data and the numbers. Today they become a report
 
 ### `pivot_table`: groups in rows and columns
 
-`pivot_table` is a `groupby` with two keys, where the second key goes into the
+[`pivot_table`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot_table.html) is a [`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) with two keys, where the second key goes into the
 columns - SAS `PROC TABULATE`, or Excel's pivot table:
 
 ```python run
@@ -106,7 +106,7 @@ with pd.option_context("display.float_format", "{:,.0f}".format):   # this forma
     print(table)
 ```
 
-**The order of the rows.** The rows in the order of the report, not alphabetical: `reindex` with the list of
+**The order of the rows.** The rows in the order of the report, not alphabetical: [`reindex`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reindex.html) with the list of
 labels:
 
 ```python run
@@ -122,7 +122,7 @@ print(table.reindex(["retail", "sme", "corporate"]))                     # the o
 
 ### `unstack`: a pivot from a `groupby`
 
-A `groupby` with two keys ([lecture 14](./14-pandas-select-aggregate-join.md#several-keys)) gives a long Series; `unstack` moves the last
+A [`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html) with two keys ([lecture 14](./14-pandas-select-aggregate-join.md#several-keys)) gives a long Series; [`unstack`](https://pandas.pydata.org/docs/reference/api/pandas.Series.unstack.html) moves the last
 key into the columns - the same table:
 
 ```python run
@@ -137,7 +137,7 @@ wide
 
 ### `pivot` without aggregation
 
-`pivot` only reshapes: every (row, column) pair must appear **once**. It is the right
+[`pivot`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html) only reshapes: every (row, column) pair must appear **once**. It is the right
 tool for a monthly history - one row per client, one column per month (SAS `PROC
 TRANSPOSE`):
 
@@ -150,13 +150,13 @@ print(wide.shape)
 wide.iloc[:5, -4:]                           # 5 clients, the last 4 months
 ```
 
-If a pair appears twice, `pivot` stops with `ValueError: Index contains duplicate
+If a pair appears twice, [`pivot`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html) stops with `ValueError: Index contains duplicate
 entries` - a good check. `pivot_table` would aggregate them silently (the mean, by
 default).
 
 ### `pd.crosstab`: counts and shares
 
-`pd.crosstab` counts the combinations of two columns - SAS `PROC FREQ; TABLES a * b;`:
+[`pd.crosstab`](https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html) counts the combinations of two columns - SAS `PROC FREQ; TABLES a * b;`:
 
 ```python run
 import pandas as pd
@@ -169,10 +169,10 @@ pd.crosstab(loans["product"], loans["dpd_bucket"], normalize="index").round(3)  
 ```
 
 `normalize="index"` gives the share of each row (each row sums to 1), `"columns"` of
-each column, `True` of the whole table. With `values=` and `aggfunc=`, `crosstab`
+each column, `True` of the whole table. With `values=` and `aggfunc=`, [`crosstab`](https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html)
 sums amounts instead of counting rows.
 
-**Amounts in a crosstab.** `crosstab` with amounts - the outstanding by product and DPD bucket, in EUR
+**Amounts in a crosstab.** [`crosstab`](https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html) with amounts - the outstanding by product and DPD bucket, in EUR
 thousands:
 
 ```python run
@@ -188,7 +188,7 @@ amounts
 
 ### Percentages of the total
 
-Divide a table by its row totals with `div(..., axis=0)`:
+Divide a table by its row totals with [`div(..., axis=0)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.div.html):
 
 ```python run
 import pandas as pd
@@ -201,7 +201,7 @@ shares = table.div(table.sum(axis=1), axis=0)          # each row / its total
 (shares * 100).round(1)
 ```
 
-**One level of names.** Two-level column names (a `pivot_table` with several values) are awkward in Excel
+**One level of names.** Two-level column names (a [`pivot_table`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot_table.html) with several values) are awkward in Excel
 and in later code. Join them into one level:
 
 ```python run
@@ -224,7 +224,7 @@ Which region has the most corporate clients?
 
 ## 2. From wide to long: `melt`
 
-`melt` is the opposite of `pivot`: columns become rows - SAS `PROC TRANSPOSE` back, or
+[`melt`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.melt.html) is the opposite of [`pivot`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html): columns become rows - SAS `PROC TRANSPOSE` back, or
 SQL `UNPIVOT`. A budget in Excel often comes wide, one column per month:
 
 ```python run
@@ -240,8 +240,8 @@ long = budget.melt(id_vars="segment", var_name="month", value_name="plan_m_eur")
 long
 ```
 
-**Back to wide: `pivot`.** Long data is what `groupby`, `merge` and charts want: one row per fact. The way back
-is `pivot`:
+**Back to wide: [`pivot`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html).** Long data is what [`groupby`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.groupby.html), [`merge`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.merge.html) and charts want: one row per fact. The way back
+is [`pivot`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html):
 
 ```python run
 import pandas as pd
@@ -275,7 +275,7 @@ print(q3.sort_values(["client_id", "month_end"]).head(4))
 
 ### Text to dates
 
-[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) parsed dates one by one with [`datetime.strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime). `pd.to_datetime` does the
+[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) parsed dates one by one with [`datetime.strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime). [`pd.to_datetime`](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html) does the
 whole column; `format=` says how, `errors="coerce"` turns a bad date into `NaT` (the
 `NaN` of dates):
 
@@ -288,8 +288,8 @@ print(dates)
 print(dates.isna().sum(), "bad or missing")
 ```
 
-**The `.dt` methods.** `read_csv(parse_dates=...)` ([lecture 13](./13-numpy-pandas-intro.md)) does the same while reading. A date column
-has the `.dt` methods:
+**The [`.dt`](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.html) methods.** [`read_csv(parse_dates=...)`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html) ([lecture 13](./13-numpy-pandas-intro.md)) does the same while reading. A date column
+has the [`.dt`](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.html) methods:
 
 ```python run
 import pandas as pd
@@ -323,7 +323,7 @@ print(pd.DataFrame({"raw": raw, "parsed": parsed}).drop_duplicates("raw").head(6
 
 ### Month ends: `INTNX`
 
-`pd.offsets.MonthEnd` moves a date to a month end - SAS `INTNX('month', date, n, 'end')`:
+[`pd.offsets.MonthEnd`](https://pandas.pydata.org/docs/reference/api/pandas.tseries.offsets.MonthEnd.html) moves a date to a month end - SAS `INTNX('month', date, n, 'end')`:
 
 ```python run
 import pandas as pd
@@ -339,7 +339,7 @@ print(pd.Timestamp("2026-01-31") + pd.DateOffset(months=1))  # one month later: 
 ::: warning `MonthEnd(1)` means "the next month end"
 From the 15th, the next month end is the end of **this** month; from the 30th of
 September, it is the end of October. To get the end of the month of any date, use
-`MonthEnd(0)`.
+[`MonthEnd(0)`](https://pandas.pydata.org/docs/reference/api/pandas.tseries.offsets.MonthEnd.html).
 :::
 
 **Dates around the report date.** The usual report dates from one report date - the start of the year, the end of the
@@ -368,7 +368,7 @@ print(ends.strftime("%Y-%m-%d").tolist())
 (`freq="ME"` is "month end" since pandas 2.2; older code writes `"M"`, which now gives
 a warning.)
 
-**A date range.** Filter rows by a date range - `between` works with dates too (both ends included):
+**A date range.** Filter rows by a date range - [`between`](https://pandas.pydata.org/docs/reference/api/pandas.Series.between.html) works with dates too (both ends included):
 
 ```python run
 import pandas as pd
@@ -400,7 +400,7 @@ loans["left_months"] = months_between(report_date, loans["maturity_date"].dt)
 loans[["loan_id", "start_date", "maturity_date", "age_months", "left_months"]].head()
 ```
 
-**Age bands.** Bands of the loan age - `pd.cut` ([lecture 14](./14-pandas-select-aggregate-join.md#bands-pd-cut)) on the months:
+**Age bands.** Bands of the loan age - [`pd.cut`](https://pandas.pydata.org/docs/reference/api/pandas.cut.html) ([lecture 14](./14-pandas-select-aggregate-join.md#bands-pd-cut)) on the months:
 
 ```python run
 import pandas as pd
@@ -413,7 +413,7 @@ bands = pd.cut(age, bins=[-1, 6, 12, 36, 60, float("inf")],
 loans.groupby(bands, observed=True)["outstanding"].agg(["count", "sum"]).round(0)
 ```
 
-**Days, not months.** The difference of two dates is a `Timedelta` - days, not months:
+**Days, not months.** The difference of two dates is a [`Timedelta`](https://pandas.pydata.org/docs/reference/api/pandas.Timedelta.html) - days, not months:
 
 ```python run
 import pandas as pd
@@ -426,7 +426,7 @@ print((term.dt.days / 365.25).round(1).head(3).tolist())       # years
 
 ### Periods: a month as a value
 
-`to_period("M")` turns a date into its month - good for grouping and for labels
+[`to_period("M")`](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.to_period.html) turns a date into its month - good for grouping and for labels
 (`2026-09`):
 
 ```python run
@@ -475,12 +475,12 @@ monthly["change_pct"] = (monthly["outstanding"].pct_change() * 100).round(2)
 monthly[["loans", "outstanding_m", "change_m", "change_pct"]]
 ```
 
-`diff()` is the value minus the previous row (`DIF`), `pct_change()` the relative
+[`diff()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.diff.html) is the value minus the previous row (`DIF`), [`pct_change()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pct_change.html) the relative
 change. The first month has no previous one: `NaN`.
 
 ### LAG by loan
 
-For each loan, the value of the previous month: sort, then `shift` inside the group -
+For each loan, the value of the previous month: sort, then [`shift`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.shift.html) inside the group -
 SAS `LAG` with `BY loan_id`, or SQL `LAG() OVER (PARTITION BY loan_id ORDER BY month_end)`:
 
 ```python run
@@ -496,7 +496,7 @@ balances.loc[balances["loan_id"] == "L000002", ["month_end", "outstanding", "pre
 ```
 
 ::: warning Sort first
-`shift(1)` takes the previous **row**. If the rows are not in month order inside each
+[`shift(1)`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.shift.html) takes the previous **row**. If the rows are not in month order inside each
 loan, it takes a wrong month - and nothing warns you. Always `sort_values([key,
 date])` first (in SAS, `PROC SORT` before `BY`).
 :::
@@ -528,7 +528,7 @@ print(first_month.value_counts().sort_index().tail(4))
 
 ### Running totals: `RETAIN`
 
-`cumsum`, `cummax`, `cumcount` inside a group - a SAS `RETAIN` variable that restarts
+[`cumsum`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.cumsum.html), [`cummax`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.cummax.html), `cumcount` inside a group - a SAS `RETAIN` variable that restarts
 with each `BY` group:
 
 ```python run
@@ -568,7 +568,7 @@ pd.crosstab(balances["month_end"].dt.strftime("%Y-%m"), bucket).tail(6)
 
 ### Moving averages and a date index
 
-`rolling(3)` looks at the last 3 rows - a 3-month average smooths the monthly
+[`rolling(3)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rolling.html) looks at the last 3 rows - a 3-month average smooths the monthly
 noise:
 
 ```python run
@@ -580,7 +580,7 @@ trend = pd.DataFrame({"total_m": total.round(2), "avg_3m": total.rolling(3).mean
 trend.tail(5)
 ```
 
-**By quarter.** With dates in the index, `resample` groups by calendar periods - here, quarters
+**By quarter.** With dates in the index, [`resample`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.resample.html) groups by calendar periods - here, quarters
 (`QE` = quarter end):
 
 ```python run
@@ -650,7 +650,7 @@ print("default rate:", round((pairs["rating_end"] == 10).mean(), 4))
 ```
 
 **A full square matrix.** With the grades as labels, and all ratings in the rows and columns even when a
-rating has no client (`reindex`, `fill_value=0`) - the matrix keeps its square shape
+rating has no client ([`reindex`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.reindex.html), `fill_value=0`) - the matrix keeps its square shape
 every month:
 
 ```python run
@@ -701,8 +701,8 @@ stronger than for the whole year? Why would it be?
 
 ### `ExcelWriter`
 
-One `to_excel` writes one sheet. For several sheets in one file, open a
-`pd.ExcelWriter` and write each table with its `sheet_name` - `ODS EXCEL` with
+One [`to_excel`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html) writes one sheet. For several sheets in one file, open a
+[`pd.ExcelWriter`](https://pandas.pydata.org/docs/reference/api/pandas.ExcelWriter.html) and write each table with its `sheet_name` - `ODS EXCEL` with
 `SHEET_NAME=`:
 
 ```python run
@@ -844,7 +844,7 @@ Add a third sheet "migration" with the migration matrix of section 5 to
 
 ## 7. Charts
 
-pandas draws with **matplotlib**: `df.plot(...)` makes the chart, `plt.savefig`
+pandas draws with **matplotlib**: [`df.plot(...)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html) makes the chart, `plt.savefig`
 writes it to a file. Import `matplotlib.pyplot` yourself (on the site, that also loads
 it):
 
@@ -1074,18 +1074,18 @@ Rules that make a report reliable:
 ## 9. Summary
 | SQL / SAS | pandas |
 |-----------|--------|
-| `PROC TABULATE`, `PIVOT` | `pivot_table(index, columns, values, aggfunc, margins=True, fill_value=0)` |
-| `PROC TRANSPOSE` | `pivot` (no aggregation), `unstack`; back: `melt` |
-| `PROC FREQ; TABLES a * b` | `pd.crosstab(a, b, normalize="index", margins=True)` |
-| SAS dates, `INPUT(x, ddmmyy10.)` | `pd.to_datetime(format=..., errors="coerce")`, `.dt` |
-| `INTNX('month', d, 0, 'end')` | `d + pd.offsets.MonthEnd(0)`; `pd.date_range(freq="ME")` |
+| `PROC TABULATE`, `PIVOT` | [`pivot_table(index, columns, values, aggfunc, margins=True, fill_value=0)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot_table.html) |
+| `PROC TRANSPOSE` | [`pivot`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html) (no aggregation), [`unstack`](https://pandas.pydata.org/docs/reference/api/pandas.Series.unstack.html); back: [`melt`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.melt.html) |
+| `PROC FREQ; TABLES a * b` | [`pd.crosstab(a, b, normalize="index", margins=True)`](https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html) |
+| SAS dates, `INPUT(x, ddmmyy10.)` | [`pd.to_datetime(format=..., errors="coerce")`](https://pandas.pydata.org/docs/reference/api/pandas.to_datetime.html), [`.dt`](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.html) |
+| `INTNX('month', d, 0, 'end')` | `d + pd.offsets.MonthEnd(0)`; [`pd.date_range(freq="ME")`](https://pandas.pydata.org/docs/reference/api/pandas.date_range.html) |
 | `INTCK('month', a, b)` | `(b.year - a.year) * 12 + (b.month - a.month)` |
-| `MONYY7.` | `.dt.to_period("M")`, `.dt.strftime("%b %Y")` |
-| `LAG`, `DIF` by group | `sort_values`, then `groupby(key)[col].shift(1)` / `diff()` |
-| `RETAIN` | `groupby(key)[col].cumsum()` / `cummax()` |
-| migration matrix | merge two month ends, `pd.crosstab(start, end)` |
-| `ODS EXCEL`, `PROC EXPORT` | `pd.ExcelWriter` + `to_excel(writer, sheet_name=...)`; openpyxl for formats |
-| `PROC SGPLOT` | `df.plot(kind=...)`, `plt.savefig` |
+| `MONYY7.` | [`.dt.to_period("M")`](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.to_period.html), [`.dt.strftime("%b %Y")`](https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.strftime.html) |
+| `LAG`, `DIF` by group | [`sort_values`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.sort_values.html), then [`groupby(key)[col].shift(1)`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.shift.html) / [`diff()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.diff.html) |
+| `RETAIN` | [`groupby(key)[col].cumsum()`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.cumsum.html) / [`cummax()`](https://pandas.pydata.org/docs/reference/api/pandas.api.typing.DataFrameGroupBy.cummax.html) |
+| migration matrix | merge two month ends, [`pd.crosstab(start, end)`](https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html) |
+| `ODS EXCEL`, `PROC EXPORT` | [`pd.ExcelWriter`](https://pandas.pydata.org/docs/reference/api/pandas.ExcelWriter.html) + [`to_excel(writer, sheet_name=...)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html); openpyxl for formats |
+| `PROC SGPLOT` | [`df.plot(kind=...)`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.plot.html), `plt.savefig` |
 
 ## Practice
 Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
@@ -1100,7 +1100,7 @@ The tasks that write files write them into `out/` (ignored by Git).
 
 | Task | File | What you do |
 |------|------|-------------|
-| 1 | `task1-pivot.py` | `pivot_table` with totals, `crosstab` with shares, `melt` back |
+| 1 | `task1-pivot.py` | [`pivot_table`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot_table.html) with totals, [`crosstab`](https://pandas.pydata.org/docs/reference/api/pandas.crosstab.html) with shares, [`melt`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.melt.html) back |
 | 2 | `task2-dates.py` | Parse dates, month ends, months between, periods |
 | 3 | `task3-monthly-history.py` | LAG by loan, monthly totals, months in arrears |
 | 4 | `task4-migration.py` | The migration matrix, upgrades and downgrades, the default rate |
