@@ -290,8 +290,10 @@ Changing only the **values** of existing keys in a loop is fine.
 
 ### Compare two dictionaries
 
-`==` compares the pairs - the order does not matter. A quick check that a
-nomenclature did not change between two versions:
+`==` compares the pairs - the order does not matter.
+
+**A nomenclature check.** Test that a nomenclature did not change between two
+versions:
 
 ```python run
 version_1 = {"mortgage": "Mortgage loan", "overdraft": "Overdraft"}
@@ -373,7 +375,7 @@ print(max(outstanding, key=outstanding.get))
 (`key=outstanding.get` - the method itself, without brackets: `max` calls it for
 each key.)
 
-A ranked report: sort the segments by amount, largest first, and number them 1, 2, 3 with `enumerate(..., start=1)` ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)). Each line shows the rank, the segment, its amount and its share of the total:
+**A ranked report.** Sort the segments by amount, largest first, and number them 1, 2, 3 with `enumerate(..., start=1)` ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)). Each line shows the rank, the segment, its amount and its share of the total:
 
 ```python run
 outstanding = {"sme": 39.5, "corporate": 85.0, "retail": 6.9}
@@ -529,8 +531,10 @@ the other:
 2. the rating -> its PD (in `pd_of`).
 
 In SQL, these are two joins: the loan to its client by `client_id`, then the
-client to the rating scale by `rating`. With the PD, the example computes the
-expected loss of the loan: EL = PD x LGD x outstanding. On small made-up tables:
+client to the rating scale by `rating`.
+
+**The expected loss of a loan.** With the PD, compute EL = PD x LGD x outstanding,
+on small made-up tables:
 
 ```python run
 rating_of = {"C0001": 3, "C0002": 7}              # client_id -> rating
