@@ -90,27 +90,27 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:59
-msgid "Where a combination has no rows, the cell is `NaN`. `fill_value=0` writes 0 instead, and `margins=True` adds the totals (the `ALL` of SAS `PROC TABULATE`):"
+msgid "**Zeros and totals.** Where a combination has no rows, the cell is `NaN`. `fill_value=0` writes 0 instead, and `margins=True` adds the totals (the `ALL` of SAS `PROC TABULATE`):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:70
-msgid "Several values and several functions give a column header with two levels:"
+msgid "**Two-level headers.** Several values and several functions give a column header with two levels:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:84
-msgid "Large numbers come out as `1.101848e+08`. A display format for the whole session - only the display changes, not the values:"
+msgid "**A display format.** Large numbers come out as `1.101848e+08`. A display format for the whole session - only the display changes, not the values:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:96
-msgid "A list of functions - the count and the sum side by side (`N` and `SUM` in SAS `PROC TABULATE`):"
+msgid "**Count and sum.** A list of functions - the count and the sum side by side (`N` and `SUM` in SAS `PROC TABULATE`):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:109
-msgid "The rows in the order of the report, not alphabetical: `reindex` with the list of labels:"
+msgid "**The order of the rows.** The rows in the order of the report, not alphabetical: `reindex` with the list of labels:"
 msgstr ""
 
 #. heading 3
@@ -155,7 +155,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:175
-msgid "`crosstab` with amounts - the outstanding by product and DPD bucket, in EUR thousands:"
+msgid "**Amounts in a crosstab.** `crosstab` with amounts - the outstanding by product and DPD bucket, in EUR thousands:"
 msgstr ""
 
 #. heading 3
@@ -170,7 +170,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:204
-msgid "Two-level column names (a `pivot_table` with several values) are awkward in Excel and in later code. Join them into one level:"
+msgid "**One level of names.** Two-level column names (a `pivot_table` with several values) are awkward in Excel and in later code. Join them into one level:"
 msgstr ""
 
 #. box title
@@ -195,12 +195,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:243
-msgid "Long data is what `groupby`, `merge` and charts want: one row per fact. The way back is `pivot`:"
+msgid "**Back to wide: `pivot`.** Long data is what `groupby`, `merge` and charts want: one row per fact. The way back is `pivot`:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:255
-msgid "`value_vars` melts only some of the columns. The monthly ratings, wide (section 1), back to long - the same table as the file:"
+msgid "**Melt some columns.** `value_vars` melts only some of the columns. The monthly ratings, wide (section 1), back to long - the same table as the file:"
 msgstr ""
 
 #. box title
@@ -230,12 +230,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:291
-msgid "`read_csv(parse_dates=...)` ([lecture 13](./13-numpy-pandas-intro.md)) does the same while reading. A date column has the `.dt` methods:"
+msgid "**The `.dt` methods.** `read_csv(parse_dates=...)` ([lecture 13](./13-numpy-pandas-intro.md)) does the same while reading. A date column has the `.dt` methods:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:308
-msgid "Real files mix formats. `client_register.csv` has the registration date in four formats ([lecture 7](./07-text-and-regex.md#several-date-formats-and-month-ends)). Try one format after another, and keep the first that works - a SQL `COALESCE` of the parsing attempts:"
+msgid "**Several date formats.** Real files mix formats. `client_register.csv` has the registration date in four formats ([lecture 7](./07-text-and-regex.md#several-date-formats-and-month-ends)). Try one format after another, and keep the first that works - a SQL `COALESCE` of the parsing attempts:"
 msgstr ""
 
 #. heading 3
@@ -260,12 +260,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:345
-msgid "The usual report dates from one report date - the start of the year, the end of the previous month, the same day one year ago:"
+msgid "**Dates around the report date.** The usual report dates from one report date - the start of the year, the end of the previous month, the same day one year ago:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:358
-msgid "All the month ends of a period - the report dates of a year:"
+msgid "**Report dates of a year.** All the month ends of a period - the report dates of a year:"
 msgstr ""
 
 #. paragraph
@@ -275,7 +275,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:371
-msgid "Filter rows by a date range - `between` works with dates too (both ends included):"
+msgid "**A date range.** Filter rows by a date range - `between` works with dates too (both ends included):"
 msgstr ""
 
 #. heading 3
@@ -290,12 +290,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:403
-msgid "Bands of the loan age - `pd.cut` ([lecture 14](./14-pandas-select-aggregate-join.md#bands-pd-cut)) on the months:"
+msgid "**Age bands.** Bands of the loan age - `pd.cut` ([lecture 14](./14-pandas-select-aggregate-join.md#bands-pd-cut)) on the months:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:416
-msgid "The difference of two dates is a `Timedelta` - days, not months:"
+msgid "**Days, not months.** The difference of two dates is a `Timedelta` - days, not months:"
 msgstr ""
 
 #. heading 3
@@ -310,7 +310,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:442
-msgid "Periods can be added and subtracted - a month plus one, the months between two periods:"
+msgid "**Period arithmetic.** Periods can be added and subtracted - a month plus one, the months between two periods:"
 msgstr ""
 
 #. paragraph
@@ -360,12 +360,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:504
-msgid "A loan that **crossed** 30 days past due this month - the flow into arrears:"
+msgid "**The flow into arrears.** A loan that **crossed** 30 days past due this month - the flow into arrears:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:516
-msgid "The last month of each loan - SAS `LAST.loan_id` - and the month a loan first appears in the history (new loans per month):"
+msgid "**Last and first month.** The last month of each loan - SAS `LAST.loan_id` - and the month a loan first appears in the history (new loans per month):"
 msgstr ""
 
 #. heading 3
@@ -380,12 +380,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:544
-msgid "The portfolio by month and segment - a pivot with the months in the rows, the shape for a chart:"
+msgid "**By month and segment.** The portfolio by month and segment - a pivot with the months in the rows, the shape for a chart:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:558
-msgid "The DPD buckets per month - how the arrears move over the year:"
+msgid "**Buckets per month.** The DPD buckets per month - how the arrears move over the year:"
 msgstr ""
 
 #. heading 3
@@ -400,7 +400,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:583
-msgid "With dates in the index, `resample` groups by calendar periods - here, quarters (`QE` = quarter end):"
+msgid "**By quarter.** With dates in the index, `resample` groups by calendar periods - here, quarters (`QE` = quarter end):"
 msgstr ""
 
 #. paragraph
@@ -420,22 +420,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:617
-msgid "The diagonal is \"no change\"; above it, the client got a worse rating (a higher number); below it, a better one. As shares of each row - the probability of moving from one rating to another:"
+msgid "**Shares per row.** The diagonal is \"no change\"; above it, the client got a worse rating (a higher number); below it, a better one. As shares of each row - the probability of moving from one rating to another:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:633
-msgid "The summary - upgrades, downgrades, stable - is a comparison of the two columns, no matrix needed:"
+msgid "**Upgrades and downgrades.** The summary - upgrades, downgrades, stable - is a comparison of the two columns, no matrix needed:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:652
-msgid "With the grades as labels, and all ratings in the rows and columns even when a rating has no client (`reindex`, `fill_value=0`) - the matrix keeps its square shape every month:"
+msgid "**A full square matrix.** With the grades as labels, and all ratings in the rows and columns even when a rating has no client (`reindex`, `fill_value=0`) - the matrix keeps its square shape every month:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:672
-msgid "The same matrix weighted by **exposure** - how much money moved, not how many clients:"
+msgid "**Weighted by exposure.** The same matrix weighted by **exposure** - how much money moved, not how many clients:"
 msgstr ""
 
 #. box title
@@ -485,22 +485,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:766
-msgid "Several tables on **one** sheet - each with its `startrow`, one under another:"
+msgid "**One sheet, many tables.** Several tables on **one** sheet - each with its `startrow`, one under another:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:784
-msgid "Add or replace one sheet of an existing file - `mode=\"a\"` with `if_sheet_exists`:"
+msgid "**Add a sheet.** Add or replace one sheet of an existing file - `mode=\"a\"` with `if_sheet_exists`:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:800
-msgid "A report is often a dictionary of tables - one loop writes them all, in order:"
+msgid "**A dictionary of tables.** A report is often a dictionary of tables - one loop writes them all, in order:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:820
-msgid "For a system that wants CSV - the export side of [lecture 13](./13-numpy-pandas-intro.md): `;`, decimal comma, a BOM so that Excel shows the Cyrillic right:"
+msgid "**A CSV for another system.** For a system that wants CSV - the export side of [lecture 13](./13-numpy-pandas-intro.md): `;`, decimal comma, a BOM so that Excel shows the Cyrillic right:"
 msgstr ""
 
 #. box title
@@ -530,27 +530,27 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:869
-msgid "A line over time - the monthly total of section 4:"
+msgid "**A line chart.** A line over time - the monthly total of section 4:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:887
-msgid "Save the chart as a file for the report or a presentation:"
+msgid "**A chart as a file.** Save the chart as a file for the report or a presentation:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:904
-msgid "The distribution of one column - a histogram (SAS `PROC UNIVARIATE` with `HISTOGRAM`):"
+msgid "**One distribution.** The distribution of one column - a histogram (SAS `PROC UNIVARIATE` with `HISTOGRAM`):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:918
-msgid "Two columns against each other - a scatter plot:"
+msgid "**A scatter plot.** Two columns against each other - a scatter plot:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:931
-msgid "Several charts in a loop - `plt.close()` after each saved file:"
+msgid "**Charts in a loop.** Several charts in a loop - `plt.close()` after each saved file:"
 msgstr ""
 
 #. paragraph
@@ -585,7 +585,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/15-pandas-reports.md:1025
-msgid "The same shape, small enough to run here - every step a function, the date a parameter:"
+msgid "**A small version.** The same shape, small enough to run here - every step a function, the date a parameter:"
 msgstr ""
 
 #. paragraph

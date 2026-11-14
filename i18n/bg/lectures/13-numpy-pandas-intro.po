@@ -135,7 +135,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:105
-msgid "Arrays without typing the values - ranges, zeros, a 2D table:"
+msgid "**Ranges and zeros.** Arrays without typing the values - ranges, zeros, a 2D table:"
 msgstr ""
 
 #. heading 3
@@ -185,17 +185,17 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:180
-msgid "Running totals and differences - `RETAIN` and `LAG` of a SAS DATA step, for a whole array:"
+msgid "**`cumsum` and `diff`.** Running totals and differences - `RETAIN` and `LAG` of a SAS DATA step, for a whole array:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:190
-msgid "Sort, and the positions of the largest - the top N of [session 5](./05-lists-advanced.md#the-top-n):"
+msgid "**The top N.** Sort, and the positions of the largest - the top N of [session 5](./05-lists-advanced.md#the-top-n):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:203
-msgid "`np.clip` keeps values inside limits - a PD after a stress must stay between 0 and 1:"
+msgid "**Keep inside limits.** `np.clip` keeps values inside limits - a PD after a stress must stay between 0 and 1:"
 msgstr ""
 
 #. heading 3
@@ -260,12 +260,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:298
-msgid "From a dictionary, the keys become the index:"
+msgid "**Keys become the index.** From a dictionary, the keys become the index:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:309
-msgid "A column of a file is a Series too - with the same methods:"
+msgid "**A Series from a file.** A column of a file is a Series too - with the same methods:"
 msgstr ""
 
 #. heading 3
@@ -305,7 +305,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:376
-msgid "From a list of dictionaries (the rows of [session 6](./06-dictionaries.md#a-row-as-a-dictionary)):"
+msgid "**Rows as dictionaries.** From a list of dictionaries (the rows of [session 6](./06-dictionaries.md#a-row-as-a-dictionary)):"
 msgstr ""
 
 #. heading 3
@@ -320,12 +320,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:400
-msgid "A new column from other columns - a derived variable of a SAS DATA step, for all rows at once:"
+msgid "**A derived variable.** A new column from other columns - a derived variable of a SAS DATA step, for all rows at once:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:412
-msgid "Remove and rename columns - `DROP=` and `RENAME=` of a SAS DATA step:"
+msgid "**Fewer columns, new names.** Remove and rename columns - `DROP=` and `RENAME=` of a SAS DATA step:"
 msgstr ""
 
 #. heading 3
@@ -450,7 +450,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:492
-msgid "One column with everything in it - the separator was not a comma. With the right options:"
+msgid "**The wrong separator.** One column with everything in it - the separator was not a comma. With the right options:"
 msgstr ""
 
 #. paragraph
@@ -475,12 +475,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:531
-msgid "A thousands separator and a title above the table - `thousands=` and `skiprows=`:"
+msgid "**Thousands and a title.** A thousands separator and a title above the table - `thousands=` and `skiprows=`:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:548
-msgid "Several texts can mean \"missing\" - list them all:"
+msgid "**Many kinds of missing.** Several texts can mean \"missing\" - list them all:"
 msgstr ""
 
 #. heading 3
@@ -535,12 +535,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:626
-msgid "`sheet_name=None` reads **all** sheets into a dictionary `name -> DataFrame`:"
+msgid "**All sheets.** `sheet_name=None` reads **all** sheets into a dictionary `name -> DataFrame`:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:637
-msgid "To put the sheets under each other in one table, `pd.concat` ([lecture 14](./14-pandas-select-aggregate-join.md#concat-one-table-under-another) explains it):"
+msgid "**All sheets in one table.** To put the sheets under each other in one table, `pd.concat` ([lecture 14](./14-pandas-select-aggregate-join.md#concat-one-table-under-another) explains it):"
 msgstr ""
 
 #. paragraph
@@ -640,22 +640,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:708
-msgid "For the text columns: `describe(include=\"object\")` in pandas 2.2, `include=\"str\"` in pandas 3 - or simply `include=\"all\"` (works in both):"
+msgid "**Text columns.** For the text columns: `describe(include=\"object\")` in pandas 2.2, `include=\"str\"` in pandas 3 - or simply `include=\"all\"` (works in both):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:718
-msgid "`count`, `unique`, `top` (the most frequent value) and `freq` for text; the numeric statistics for numbers. Other percentiles - the tails matter in risk:"
+msgid "**Other percentiles.** `count`, `unique`, `top` (the most frequent value) and `freq` for text; the numeric statistics for numbers. Other percentiles - the tails matter in risk:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:739
-msgid "A number in ranges - `value_counts(bins=...)` - a first histogram as a table:"
+msgid "**Counts by range.** A number in ranges - `value_counts(bins=...)` - a first histogram as a table:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:748
-msgid "Two variables - `TABLES stage * currency` - is `pd.crosstab` ([lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares)):"
+msgid "**A two-way table.** Two variables - `TABLES stage * currency` - is `pd.crosstab` ([lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares)):"
 msgstr ""
 
 #. heading 3
@@ -670,7 +670,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:773
-msgid "To remove the exact copies, `drop_duplicates()` - like SAS `PROC SORT NODUPRECS`, but it keeps the order of the rows (the first copy stays):"
+msgid "**Remove copies.** To remove the exact copies, `drop_duplicates()` - like SAS `PROC SORT NODUPRECS`, but it keeps the order of the rows (the first copy stays):"
 msgstr ""
 
 #. paragraph
@@ -790,7 +790,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:847
-msgid "A comparison gives a `bool` column - and `True` counts as 1, so `sum` counts and `mean` gives the share:"
+msgid "**Count with `True`.** A comparison gives a `bool` column - and `True` counts as 1, so `sum` counts and `mean` gives the share:"
 msgstr ""
 
 #. heading 3
@@ -800,7 +800,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:870
-msgid "A category can have an **order** - then comparisons and sorting follow it, not the alphabet:"
+msgid "**An ordered category.** A category can have an **order** - then comparisons and sorting follow it, not the alphabet:"
 msgstr ""
 
 #. heading 3
@@ -815,7 +815,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:898
-msgid "`pd.to_datetime` with a `format` reads dates - for a whole column, much faster than `strptime` in a loop ([lecture 7](./07-text-and-regex.md#from-text-to-a-date)):"
+msgid "**Read dates.** `pd.to_datetime` with a `format` reads dates - for a whole column, much faster than `strptime` in a loop ([lecture 7](./07-text-and-regex.md#from-text-to-a-date)):"
 msgstr ""
 
 #. heading 3
@@ -1050,7 +1050,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:1006
-msgid "NumPy does all scenarios at once - a 10,000 x 400 array of random numbers:"
+msgid "**All scenarios at once.** NumPy does all scenarios at once - a 10,000 x 400 array of random numbers:"
 msgstr ""
 
 #. paragraph
@@ -1060,7 +1060,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/13-numpy-pandas-intro.md:1038
-msgid "A histogram (charts: [lecture 15](./15-pandas-reports.md#_7-charts)):"
+msgid "**The scenarios as a histogram.** A histogram (charts: [lecture 15](./15-pandas-reports.md#_7-charts)):"
 msgstr ""
 
 #. paragraph

@@ -102,7 +102,7 @@ print(stages.dtype)
 An array holds values of **one** type (`dtype`): `float64`, `int64`, `bool`, ... A
 list can mix anything; an array cannot - that is why it is fast.
 
-Arrays without typing the values - ranges, zeros, a 2D table:
+**Ranges and zeros.** Arrays without typing the values - ranges, zeros, a 2D table:
 
 ```python run
 import numpy as np
@@ -177,7 +177,7 @@ print(np.median(outstanding))
 `ddof=1` matters: NumPy's default `std()` is the **population** standard deviation,
 SAS and pandas use the sample one (`n - 1`).
 
-Running totals and differences - `RETAIN` and `LAG` of a SAS DATA step, for a whole array:
+**`cumsum` and `diff`.** Running totals and differences - `RETAIN` and `LAG` of a SAS DATA step, for a whole array:
 
 ```python run
 import numpy as np
@@ -187,7 +187,7 @@ print(np.cumsum([1200, 800, 1500, 900]))          # a running total
 print(np.round(np.diff(monthly_outstanding), 1))  # the change from month to month
 ```
 
-Sort, and the positions of the largest - the top N of [session 5](./05-lists-advanced.md#the-top-n):
+**The top N.** Sort, and the positions of the largest - the top N of [session 5](./05-lists-advanced.md#the-top-n):
 
 ```python run
 import numpy as np
@@ -200,7 +200,7 @@ order = np.argsort(outstanding)[::-1]             # the positions, largest first
 print(ids[order[:3]], outstanding[order[:3]])
 ```
 
-`np.clip` keeps values inside limits - a PD after a stress must stay between 0 and 1:
+**Keep inside limits.** `np.clip` keeps values inside limits - a PD after a stress must stay between 0 and 1:
 
 ```python run
 import numpy as np
@@ -295,7 +295,7 @@ print(outstanding["L000002"], outstanding.index.tolist(), outstanding.values)
 print((outstanding / 1000).round(1))
 ```
 
-From a dictionary, the keys become the index:
+**Keys become the index.** From a dictionary, the keys become the index:
 
 ```python run
 import pandas as pd
@@ -306,7 +306,7 @@ print(by_segment.sum(), by_segment.idxmax())
 print((by_segment / by_segment.sum()).round(4))
 ```
 
-A column of a file is a Series too - with the same methods:
+**A Series from a file.** A column of a file is a Series too - with the same methods:
 
 ```python run
 import pandas as pd
@@ -373,7 +373,7 @@ print(loans)
 print(loans.shape, list(loans.columns))
 ```
 
-From a list of dictionaries (the rows of [session 6](./06-dictionaries.md#a-row-as-a-dictionary)):
+**Rows as dictionaries.** From a list of dictionaries (the rows of [session 6](./06-dictionaries.md#a-row-as-a-dictionary)):
 
 ```python run
 import pandas as pd
@@ -397,7 +397,7 @@ print(loans["outstanding"].sum().round(2))
 loans[["loan_id", "product", "outstanding"]].head(3)
 ```
 
-A new column from other columns - a derived variable of a SAS DATA step, for all rows
+**A derived variable.** A new column from other columns - a derived variable of a SAS DATA step, for all rows
 at once:
 
 ```python run
@@ -409,7 +409,7 @@ loans["yearly_interest"] = (loans["outstanding"] * loans["interest_rate"] / 100)
 loans[["loan_id", "amount", "outstanding", "repaid_share", "yearly_interest"]].head()
 ```
 
-Remove and rename columns - `DROP=` and `RENAME=` of a SAS DATA step:
+**Fewer columns, new names.** Remove and rename columns - `DROP=` and `RENAME=` of a SAS DATA step:
 
 ```python run
 import pandas as pd
@@ -489,7 +489,7 @@ print(raw.columns[:3].tolist())
 raw.head(2)
 ```
 
-One column with everything in it - the separator was not a comma. With the right
+**The wrong separator.** One column with everything in it - the separator was not a comma. With the right
 options:
 
 ```python run
@@ -528,7 +528,7 @@ print(loans.columns.tolist()[-3:])
 
 `loans.columns.str` gives the string methods of [lecture 7](./07-text-and-regex.md) for all names at once.
 
-A thousands separator and a title above the table - `thousands=` and `skiprows=`:
+**Thousands and a title.** A thousands separator and a title above the table - `thousands=` and `skiprows=`:
 
 ```python run
 import io
@@ -545,7 +545,7 @@ print(df)
 print(df["outstanding"].dtype, df["outstanding"].sum())
 ```
 
-Several texts can mean "missing" - list them all:
+**Many kinds of missing.** Several texts can mean "missing" - list them all:
 
 ```python run
 import io
@@ -623,7 +623,7 @@ print(september.shape, september.dtypes.to_dict())
 september.head(3)
 ```
 
-`sheet_name=None` reads **all** sheets into a dictionary `name -> DataFrame`:
+**All sheets.** `sheet_name=None` reads **all** sheets into a dictionary `name -> DataFrame`:
 
 ```python run
 import pandas as pd
@@ -634,7 +634,7 @@ for name, df in sheets.items():
     print(name, len(df), "days, USD from", df["USD"].min(), "to", df["USD"].max())
 ```
 
-To put the sheets under each other in one table, `pd.concat` ([lecture 14](./14-pandas-select-aggregate-join.md#concat-one-table-under-another) explains it):
+**All sheets in one table.** To put the sheets under each other in one table, `pd.concat` ([lecture 14](./14-pandas-select-aggregate-join.md#concat-one-table-under-another) explains it):
 
 ```python run
 import pandas as pd
@@ -705,7 +705,7 @@ loans = pd.read_csv("data/loans.csv")
 loans.describe().round(2)
 ```
 
-For the text columns: `describe(include="object")` in pandas 2.2, `include="str"` in
+**Text columns.** For the text columns: `describe(include="object")` in pandas 2.2, `include="str"` in
 pandas 3 - or simply `include="all"` (works in both):
 
 ```python run
@@ -715,7 +715,7 @@ clients = pd.read_csv("data/clients.csv")
 clients.describe(include="all")
 ```
 
-`count`, `unique`, `top` (the most frequent value) and `freq` for text; the numeric
+**Other percentiles.** `count`, `unique`, `top` (the most frequent value) and `freq` for text; the numeric
 statistics for numbers. Other percentiles - the tails matter in risk:
 
 ```python run
@@ -736,7 +736,7 @@ print(loans["stage"].value_counts(normalize=True).sort_index().round(3))
 print(loans["currency"].value_counts(dropna=False))      # also count the missing ones
 ```
 
-A number in ranges - `value_counts(bins=...)` - a first histogram as a table:
+**Counts by range.** A number in ranges - `value_counts(bins=...)` - a first histogram as a table:
 
 ```python run
 import pandas as pd
@@ -745,7 +745,7 @@ loans = pd.read_csv("data/loans.csv")
 loans["interest_rate"].value_counts(bins=[0, 4, 8, 12, 16]).sort_index()
 ```
 
-Two variables - `TABLES stage * currency` - is `pd.crosstab` ([lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares)):
+**A two-way table.** Two variables - `TABLES stage * currency` - is `pd.crosstab` ([lecture 15](./15-pandas-reports.md#pd-crosstab-counts-and-shares)):
 
 ```python run
 import pandas as pd
@@ -770,7 +770,7 @@ print(export["Loan ID"].duplicated().sum(), "loan ids appear more than once")
 `isna()` gives a DataFrame of `True` / `False`; `.sum()` counts the `True` per column -
 the masks of section 2, for a whole table.
 
-To remove the exact copies, `drop_duplicates()` - like SAS `PROC SORT NODUPRECS`, but it
+**Remove copies.** To remove the exact copies, `drop_duplicates()` - like SAS `PROC SORT NODUPRECS`, but it
 keeps the order of the rows (the first copy stays):
 
 ```python run
@@ -844,7 +844,7 @@ print(loans.dtypes.value_counts())
 print(loans["loan_id"].dtype)          # str in pandas 3, object in pandas 2.2
 ```
 
-A comparison gives a `bool` column - and `True` counts as 1, so `sum` counts and
+**Count with `True`.** A comparison gives a `bool` column - and `True` counts as 1, so `sum` counts and
 `mean` gives the share:
 
 ```python run
@@ -867,7 +867,7 @@ print(loans[["stage", "product"]].dtypes)
 print(loans["product"].cat.categories.tolist())
 ```
 
-A category can have an **order** - then comparisons and sorting follow it, not the
+**An ordered category.** A category can have an **order** - then comparisons and sorting follow it, not the
 alphabet:
 
 ```python run
@@ -895,7 +895,7 @@ print(numbers)
 print(numbers.isna().sum(), "could not be read:", raw[numbers.isna()].tolist())
 ```
 
-`pd.to_datetime` with a `format` reads dates - for a whole column, much faster than
+**Read dates.** `pd.to_datetime` with a `format` reads dates - for a whole column, much faster than
 `strptime` in a loop ([lecture 7](./07-text-and-regex.md#from-text-to-a-date)):
 
 ```python run
@@ -1003,7 +1003,7 @@ the **distribution** of the loss: how bad can a year be? A simple simulation:
 2. The loss of the year is the sum of `LGD x EAD` of the defaulted loans.
 3. Repeat 10,000 times; look at the distribution of the 10,000 losses.
 
-NumPy does all scenarios at once - a 10,000 x 400 array of random numbers:
+**All scenarios at once.** NumPy does all scenarios at once - a 10,000 x 400 array of random numbers:
 
 ```python run
 import numpy as np
@@ -1035,7 +1035,7 @@ two large project finance loans that default together make a bad year. (This sim
 model treats the defaults as independent; real credit portfolio models add a common
 factor for the economy.)
 
-A histogram (charts: [lecture 15](./15-pandas-reports.md#_7-charts)):
+**The scenarios as a histogram.** A histogram (charts: [lecture 15](./15-pandas-reports.md#_7-charts)):
 
 ```python run
 import numpy as np

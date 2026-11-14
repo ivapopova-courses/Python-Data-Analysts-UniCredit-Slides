@@ -56,7 +56,7 @@ loans = pd.read_csv("data/loans.csv")
 loans.pivot_table(index="product", columns="currency", values="outstanding", aggfunc="sum").round(0)
 ```
 
-Where a combination has no rows, the cell is `NaN`. `fill_value=0` writes 0 instead,
+**Zeros and totals.** Where a combination has no rows, the cell is `NaN`. `fill_value=0` writes 0 instead,
 and `margins=True` adds the totals (the `ALL` of SAS `PROC TABULATE`):
 
 ```python run
@@ -67,7 +67,7 @@ loans.pivot_table(index="product", columns="stage", values="loan_id", aggfunc="c
                   fill_value=0, margins=True, margins_name="total")
 ```
 
-Several values and several functions give a column header with two levels:
+**Two-level headers.** Several values and several functions give a column header with two levels:
 
 ```python run
 import pandas as pd
@@ -81,7 +81,7 @@ print(table.columns.tolist()[:3])            # (value, currency) pairs
 print(table["outstanding"].round(2))         # one block of columns
 ```
 
-Large numbers come out as `1.101848e+08`. A display format for the whole session -
+**A display format.** Large numbers come out as `1.101848e+08`. A display format for the whole session -
 only the display changes, not the values:
 
 ```python run
@@ -93,7 +93,7 @@ print(loans.pivot_table(index="currency", columns="stage", values="outstanding",
 pd.reset_option("display.float_format")                      # back to the default
 ```
 
-A list of functions - the count and the sum side by side (`N` and `SUM` in SAS
+**Count and sum.** A list of functions - the count and the sum side by side (`N` and `SUM` in SAS
 `PROC TABULATE`):
 
 ```python run
@@ -106,7 +106,7 @@ with pd.option_context("display.float_format", "{:,.0f}".format):   # this forma
     print(table)
 ```
 
-The rows in the order of the report, not alphabetical: `reindex` with the list of
+**The order of the rows.** The rows in the order of the report, not alphabetical: `reindex` with the list of
 labels:
 
 ```python run
@@ -172,7 +172,7 @@ pd.crosstab(loans["product"], loans["dpd_bucket"], normalize="index").round(3)  
 each column, `True` of the whole table. With `values=` and `aggfunc=`, `crosstab`
 sums amounts instead of counting rows.
 
-`crosstab` with amounts - the outstanding by product and DPD bucket, in EUR
+**Amounts in a crosstab.** `crosstab` with amounts - the outstanding by product and DPD bucket, in EUR
 thousands:
 
 ```python run
@@ -201,7 +201,7 @@ shares = table.div(table.sum(axis=1), axis=0)          # each row / its total
 (shares * 100).round(1)
 ```
 
-Two-level column names (a `pivot_table` with several values) are awkward in Excel
+**One level of names.** Two-level column names (a `pivot_table` with several values) are awkward in Excel
 and in later code. Join them into one level:
 
 ```python run
@@ -240,7 +240,7 @@ long = budget.melt(id_vars="segment", var_name="month", value_name="plan_m_eur")
 long
 ```
 
-Long data is what `groupby`, `merge` and charts want: one row per fact. The way back
+**Back to wide: `pivot`.** Long data is what `groupby`, `merge` and charts want: one row per fact. The way back
 is `pivot`:
 
 ```python run
@@ -252,7 +252,7 @@ print(long.groupby("month")["plan"].sum())                     # easy in long fo
 print(long.pivot(index="segment", columns="month", values="plan"))
 ```
 
-`value_vars` melts only some of the columns. The monthly ratings, wide (section 1),
+**Melt some columns.** `value_vars` melts only some of the columns. The monthly ratings, wide (section 1),
 back to long - the same table as the file:
 
 ```python run
@@ -288,7 +288,7 @@ print(dates)
 print(dates.isna().sum(), "bad or missing")
 ```
 
-`read_csv(parse_dates=...)` ([lecture 13](./13-numpy-pandas-intro.md)) does the same while reading. A date column
+**The `.dt` methods.** `read_csv(parse_dates=...)` ([lecture 13](./13-numpy-pandas-intro.md)) does the same while reading. A date column
 has the `.dt` methods:
 
 ```python run
@@ -305,7 +305,7 @@ parts = pd.DataFrame({
 parts.head()
 ```
 
-Real files mix formats. `client_register.csv` has the registration date in four
+**Several date formats.** Real files mix formats. `client_register.csv` has the registration date in four
 formats ([lecture 7](./07-text-and-regex.md#several-date-formats-and-month-ends)). Try one format after another, and keep the first that works -
 a SQL `COALESCE` of the parsing attempts:
 
@@ -342,7 +342,7 @@ September, it is the end of October. To get the end of the month of any date, us
 `MonthEnd(0)`.
 :::
 
-The usual report dates from one report date - the start of the year, the end of the
+**Dates around the report date.** The usual report dates from one report date - the start of the year, the end of the
 previous month, the same day one year ago:
 
 ```python run
@@ -355,7 +355,7 @@ print(report_date - pd.DateOffset(years=1))       # 2025-09-30  one year ago
 print(report_date + pd.offsets.QuarterEnd(0))     # 2026-09-30  the end of this quarter
 ```
 
-All the month ends of a period - the report dates of a year:
+**Report dates of a year.** All the month ends of a period - the report dates of a year:
 
 ```python run
 import pandas as pd
@@ -368,7 +368,7 @@ print(ends.strftime("%Y-%m-%d").tolist())
 (`freq="ME"` is "month end" since pandas 2.2; older code writes `"M"`, which now gives
 a warning.)
 
-Filter rows by a date range - `between` works with dates too (both ends included):
+**A date range.** Filter rows by a date range - `between` works with dates too (both ends included):
 
 ```python run
 import pandas as pd
@@ -400,7 +400,7 @@ loans["left_months"] = months_between(report_date, loans["maturity_date"].dt)
 loans[["loan_id", "start_date", "maturity_date", "age_months", "left_months"]].head()
 ```
 
-Bands of the loan age - `pd.cut` ([lecture 14](./14-pandas-select-aggregate-join.md#bands-pd-cut)) on the months:
+**Age bands.** Bands of the loan age - `pd.cut` ([lecture 14](./14-pandas-select-aggregate-join.md#bands-pd-cut)) on the months:
 
 ```python run
 import pandas as pd
@@ -413,7 +413,7 @@ bands = pd.cut(age, bins=[-1, 6, 12, 36, 60, float("inf")],
 loans.groupby(bands, observed=True)["outstanding"].agg(["count", "sum"]).round(0)
 ```
 
-The difference of two dates is a `Timedelta` - days, not months:
+**Days, not months.** The difference of two dates is a `Timedelta` - days, not months:
 
 ```python run
 import pandas as pd
@@ -439,7 +439,7 @@ print(recent.groupby("start_month")["amount"].sum().round(0))
 print(pd.Period("2026-09", freq="M").end_time.date())              # back to the last day
 ```
 
-Periods can be added and subtracted - a month plus one, the months between two
+**Period arithmetic.** Periods can be added and subtracted - a month plus one, the months between two
 periods:
 
 ```python run
@@ -501,7 +501,7 @@ loan, it takes a wrong month - and nothing warns you. Always `sort_values([key,
 date])` first (in SAS, `PROC SORT` before `BY`).
 :::
 
-A loan that **crossed** 30 days past due this month - the flow into arrears:
+**The flow into arrears.** A loan that **crossed** 30 days past due this month - the flow into arrears:
 
 ```python run
 import pandas as pd
@@ -513,7 +513,7 @@ print(len(new_late), "times a loan crossed 30 days past due")
 new_late.groupby("month_end").size()
 ```
 
-The last month of each loan - SAS `LAST.loan_id` - and the month a loan first appears
+**Last and first month.** The last month of each loan - SAS `LAST.loan_id` - and the month a loan first appears
 in the history (new loans per month):
 
 ```python run
@@ -541,7 +541,7 @@ balances["worst_dpd"] = balances.groupby("loan_id")["days_past_due"].cummax()   
 balances[balances["loan_id"] == "L000002"][["month_end", "days_past_due", "months_late", "worst_dpd"]]
 ```
 
-The portfolio by month and segment - a pivot with the months in the rows, the shape
+**By month and segment.** The portfolio by month and segment - a pivot with the months in the rows, the shape
 for a chart:
 
 ```python run
@@ -555,7 +555,7 @@ by_month = monthly.pivot_table(index="month_end", columns="segment", values="out
 by_month.round(2).tail(4)
 ```
 
-The DPD buckets per month - how the arrears move over the year:
+**Buckets per month.** The DPD buckets per month - how the arrears move over the year:
 
 ```python run
 import pandas as pd
@@ -580,7 +580,7 @@ trend = pd.DataFrame({"total_m": total.round(2), "avg_3m": total.rolling(3).mean
 trend.tail(5)
 ```
 
-With dates in the index, `resample` groups by calendar periods - here, quarters
+**By quarter.** With dates in the index, `resample` groups by calendar periods - here, quarters
 (`QE` = quarter end):
 
 ```python run
@@ -614,7 +614,7 @@ matrix = pd.crosstab(pairs["rating_start"], pairs["rating_end"])
 matrix
 ```
 
-The diagonal is "no change"; above it, the client got a worse rating (a higher
+**Shares per row.** The diagonal is "no change"; above it, the client got a worse rating (a higher
 number); below it, a better one. As shares of each row - the probability of moving
 from one rating to another:
 
@@ -630,7 +630,7 @@ shares = pd.crosstab(pairs["rating_start"], pairs["rating_end"], normalize="inde
 (shares * 100).round(0)
 ```
 
-The summary - upgrades, downgrades, stable - is a comparison of the two columns, no
+**Upgrades and downgrades.** The summary - upgrades, downgrades, stable - is a comparison of the two columns, no
 matrix needed:
 
 ```python run
@@ -649,7 +649,7 @@ print(pairs["move"].value_counts())
 print("default rate:", round((pairs["rating_end"] == 10).mean(), 4))
 ```
 
-With the grades as labels, and all ratings in the rows and columns even when a
+**A full square matrix.** With the grades as labels, and all ratings in the rows and columns even when a
 rating has no client (`reindex`, `fill_value=0`) - the matrix keeps its square shape
 every month:
 
@@ -669,7 +669,7 @@ matrix.columns = matrix.columns.map(grade)
 matrix
 ```
 
-The same matrix weighted by **exposure** - how much money moved, not how many
+**Weighted by exposure.** The same matrix weighted by **exposure** - how much money moved, not how many
 clients:
 
 ```python run
@@ -763,7 +763,7 @@ The numbers stay numbers in Excel (they can be summed); only their display chang
 (More formatting - bold headers, frozen panes, colours, a chart inside the file - in
 Self-study.)
 
-Several tables on **one** sheet - each with its `startrow`, one under another:
+**One sheet, many tables.** Several tables on **one** sheet - each with its `startrow`, one under another:
 
 ```python run
 from pathlib import Path
@@ -781,7 +781,7 @@ with pd.ExcelWriter("out/one_sheet.xlsx") as writer:
 print(pd.read_excel("out/one_sheet.xlsx", header=None))
 ```
 
-Add or replace one sheet of an existing file - `mode="a"` with `if_sheet_exists`:
+**Add a sheet.** Add or replace one sheet of an existing file - `mode="a"` with `if_sheet_exists`:
 
 ```python run
 from pathlib import Path
@@ -797,7 +797,7 @@ with pd.ExcelWriter("out/book.xlsx", mode="a", if_sheet_exists="replace") as wri
 {name: df.shape for name, df in pd.read_excel("out/book.xlsx", sheet_name=None).items()}
 ```
 
-A report is often a dictionary of tables - one loop writes them all, in order:
+**A dictionary of tables.** A report is often a dictionary of tables - one loop writes them all, in order:
 
 ```python run
 from pathlib import Path
@@ -817,7 +817,7 @@ with pd.ExcelWriter("out/report_loop.xlsx") as writer:
 list(pd.read_excel("out/report_loop.xlsx", sheet_name=None))
 ```
 
-For a system that wants CSV - the export side of [lecture 13](./13-numpy-pandas-intro.md): `;`, decimal comma, a
+**A CSV for another system.** For a system that wants CSV - the export side of [lecture 13](./13-numpy-pandas-intro.md): `;`, decimal comma, a
 BOM so that Excel shows the Cyrillic right:
 
 ```python run
@@ -866,7 +866,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-A line over time - the monthly total of section 4:
+**A line chart.** A line over time - the monthly total of section 4:
 
 ```python run
 import matplotlib.pyplot as plt
@@ -884,7 +884,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-Save the chart as a file for the report or a presentation:
+**A chart as a file.** Save the chart as a file for the report or a presentation:
 
 ```python run
 from pathlib import Path
@@ -901,7 +901,7 @@ plt.savefig("out/products.png", dpi=150)
 print(Path("out/products.png").stat().st_size > 0)
 ```
 
-The distribution of one column - a histogram (SAS `PROC UNIVARIATE` with `HISTOGRAM`):
+**One distribution.** The distribution of one column - a histogram (SAS `PROC UNIVARIATE` with `HISTOGRAM`):
 
 ```python run
 import matplotlib.pyplot as plt
@@ -915,7 +915,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-Two columns against each other - a scatter plot:
+**A scatter plot.** Two columns against each other - a scatter plot:
 
 ```python run
 import matplotlib.pyplot as plt
@@ -928,7 +928,7 @@ plt.tight_layout()
 plt.show()
 ```
 
-Several charts in a loop - `plt.close()` after each saved file:
+**Charts in a loop.** Several charts in a loop - `plt.close()` after each saved file:
 
 ```python run
 from pathlib import Path
@@ -1022,7 +1022,7 @@ if __name__ == "__main__":
     main(pd.Timestamp(sys.argv[1] if len(sys.argv) > 1 else "2026-09-30"))
 ```
 
-The same shape, small enough to run here - every step a function, the date a
+**A small version.** The same shape, small enough to run here - every step a function, the date a
 parameter:
 
 ```python run
