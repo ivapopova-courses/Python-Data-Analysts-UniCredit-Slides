@@ -34,7 +34,7 @@ run;
    _ERROR_=1 _N_=34 */
 ```
 
-Python stops at the first bad value - unless you tell it what to do:
+**One bad value.** Python stops at the first bad value - unless you tell it what to do:
 
 ```python run
 import csv
@@ -119,13 +119,15 @@ for test in tests:
 
 (This loop already uses `try` / `except` - the next section.)
 
-Two more that come from the data, not from your code - a value that is `None`, and a
+**Errors from the data.** Two more that come from the data, not from your code - a value that is `None`, and a
 file in another encoding:
 
 ```python run
 city = None                       # a missing value from a lookup
 print(city.strip())               # AttributeError: 'NoneType' object has no attribute 'strip'
 ```
+
+**A file in another encoding.** The file is saved in cp1251, but read as UTF-8:
 
 ```python run
 with open("data/regions_bg.csv", encoding="utf-8") as file:     # the file is cp1251
@@ -194,6 +196,8 @@ def to_eur(amount_text, currency):
 print(to_eur("100", "USD"), to_eur("abc", "USD"), to_eur("100", "BGN"))
 ```
 
+**A number, or `None`.** One helper for empty, missing and bad values:
+
 ```python run
 def to_float(value):
     """A number from text; None for empty, None or bad values."""
@@ -209,7 +213,7 @@ print([to_float(v) for v in ["12.5", "", None, "n/a", " 7 "]])
 like an informat with the `??` modifier in SAS, which reads a bad value as missing
 without a note.
 
-On a real column - the `Outstanding` of `loans_export.csv`, with its decimal commas
+**Outstanding from the export.** On a real column - the `Outstanding` of `loans_export.csv`, with its decimal commas
 and a SAS-style `.` for missing values. Convert, count what failed:
 
 ```python run
@@ -296,6 +300,8 @@ finally:
     runs ALWAYS - after an error, without one, even after a return
 ```
 
+**All four parts at work.** One good value and one bad value:
+
 ```python run
 for text in ["12.50", "abc"]:
     try:
@@ -312,7 +318,7 @@ for text in ["12.50", "abc"]:
 **uses** the result is in `else`. `finally` is for clean-up that must happen
 whatever comes - closing a connection ([lecture 12](./12-databases.md#close-the-connection-always)), writing the last log line.
 
-A monthly file that may not be there yet - the error is expected, the work on the
+**A missing monthly file.** A monthly file that may not be there yet - the error is expected, the work on the
 file is in `else`:
 
 ```python run
@@ -326,7 +332,7 @@ for name in ["data/loans.csv", "data/loans_2026-10.csv"]:
             print(name, "->", sum(1 for line in file) - 1, "rows")
 ```
 
-`finally` runs even when the error is **not** caught - the clean-up happens, then the
+**`finally` with an uncaught error.** `finally` runs even when the error is **not** caught - the clean-up happens, then the
 error goes on:
 
 ```python run
@@ -403,7 +409,7 @@ print(check_stage(4))
 A good message names the **value** and the **rule**. "Error" alone helps nobody at
 the end of a month.
 
-A wrong **setting** must stop the report before it starts - a report for the wrong
+**Stop on a wrong setting.** A wrong **setting** must stop the report before it starts - a report for the wrong
 month is worse than no report:
 
 ```python run
@@ -595,7 +601,7 @@ print(Path.cwd())                                # the current folder
 `exist_ok=True` makes `mkdir` safe to run every month. `parents=True` creates the
 missing folders above it too.
 
-Build the names of output files from parts - the month in the name, another suffix
+**Names of output files.** Build the names of output files from parts - the month in the name, another suffix
 for the same name:
 
 ```python run
@@ -609,7 +615,7 @@ print([out / f"loans_2026-{m:02d}.csv" for m in (7, 8, 9)])
 print(report.parts)
 ```
 
-A missing input file is a `FileNotFoundError` - catch it and say **which** file is
+**Say which file is missing.** A missing input file is a `FileNotFoundError` - catch it and say **which** file is
 missing:
 
 ```python run
@@ -645,7 +651,7 @@ The **mode** says what you want to do:
 | `"a"` | append at the end |
 | `"x"` | write a new file - an error if it exists |
 
-Always give the `encoding` ([lecture 7](./07-text-and-regex.md)):
+**Write a file.** Always give the `encoding` ([lecture 7](./07-text-and-regex.md)):
 
 ```python run
 from pathlib import Path
@@ -699,7 +705,7 @@ print(count, "lines")
 
 For big files, loop over the file object: only one line is in memory at a time.
 
-The mode `"x"` protects a file that must not be overwritten - the second run fails
+**Do not overwrite: `"x"`.** The mode `"x"` protects a file that must not be overwritten - the second run fails
 instead of destroying the first result:
 
 ```python run
@@ -717,7 +723,7 @@ except FileExistsError as error:
     print("not written:", error)
 ```
 
-Write and read Cyrillic text - the same `encoding` on both sides:
+**Cyrillic text.** Write and read Cyrillic text - the same `encoding` on both sides:
 
 ```python run
 from pathlib import Path
@@ -755,7 +761,7 @@ print(first)
 
 (`utf-8-sig` removes the BOM that Excel writes at the start - [lecture 7](./07-text-and-regex.md#encodings-utf-8-cp1251-and-cyrillic), Self-study.)
 
-A file **without** a header line: give the column names with `fieldnames`:
+**No header line.** A file **without** a header line: give the column names with `fieldnames`:
 
 ```python run
 import csv
@@ -770,7 +776,7 @@ for row in reader:
 (`io.StringIO` makes a string behave like an open file - handy for examples and
 tests. Note the quoted `"1,250.00"`: one field, not two.)
 
-The values are text. With `DictReader` and a dictionary of converters, a file becomes
+**Typed records.** The values are text. With `DictReader` and a dictionary of converters, a file becomes
 typed records:
 
 ```python run
@@ -807,7 +813,7 @@ grade, pd_value = scale[7]
 print(grade, pd_value)
 ```
 
-The trap: without `int`, the keys are the strings `"1"`, `"2"`, ... and
+**Text keys.** The trap: without `int`, the keys are the strings `"1"`, `"2"`, ... and
 `scale[4]` raises `KeyError` - the rating `4` of a client is an int:
 
 ```python run
@@ -845,7 +851,7 @@ with open("out/segments.csv", "w", encoding="utf-8", newline="") as file:
 print(Path("out/segments.csv").read_text(encoding="utf-8"))
 ```
 
-`DictWriter` writes dictionaries; `fieldnames` gives the columns and their order:
+**Write dictionaries.** `DictWriter` writes dictionaries; `fieldnames` gives the columns and their order:
 
 ```python run
 import csv
@@ -862,7 +868,7 @@ with open("out/watch_list.csv", "w", encoding="utf-8", newline="") as file:
 print(Path("out/watch_list.csv").read_text(encoding="utf-8"))
 ```
 
-The comma inside `"late, 35 days"` is quoted automatically, so the file reads back
+**Quote every field.** The comma inside `"late, 35 days"` is quoted automatically, so the file reads back
 correctly. Some systems want **every** field in quotes - `quoting=csv.QUOTE_ALL`:
 
 ```python run
@@ -924,7 +930,7 @@ print(config["output"]["folder"], type(config["output"]["excel"]))
 
 Settings in a file, not in the code: next month you change the file, not the script.
 
-`json.loads` reads JSON from a **string** - for example the answer of a web service:
+**JSON from a string.** `json.loads` reads JSON from a **string** - for example the answer of a web service:
 
 ```python run
 import json
@@ -934,6 +940,8 @@ data = json.loads(answer)
 print(data["rates"]["USD"], type(data["rates"]))
 print(round(1000 * data["rates"]["GBP"], 2), "GBP for 1000 EUR")
 ```
+
+**Write JSON.** `json.dump` writes a dictionary to a file:
 
 ```python run
 import json
@@ -949,7 +957,7 @@ with open("out/summary.json", "w", encoding="utf-8") as file:
 print(Path("out/summary.json").read_text(encoding="utf-8"))
 ```
 
-A summary made from the portfolio - the number of loans per product, written
+**A summary as JSON.** A summary made from the portfolio - the number of loans per product, written
 with `sort_keys=True` so that the file looks the same in every run (easy to compare in
 Git, [lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code)):
 
@@ -1014,7 +1022,7 @@ wb.close()
 `values_only=True` gives the values as tuples. The cells are **typed**: a date
 cell gives a `datetime`, a number a `float` - no conversion from text.
 
-A single cell by its address, and the size of a sheet:
+**One cell.** A single cell by its address, and the size of a sheet:
 
 ```python run
 from openpyxl import load_workbook
@@ -1025,7 +1033,7 @@ print(ws["A1"].value, ws["B2"].value, ws.cell(row=2, column=1).value)
 print(ws.max_row - 1, "days,", ws.max_column, "columns")
 ```
 
-All sheets into one dictionary **date -> USD rate**:
+**USD rates from all sheets.** All sheets into one dictionary **date -> USD rate**:
 
 ```python run
 from openpyxl import load_workbook
@@ -1071,7 +1079,7 @@ wb.save("out/stages.xlsx")
 print(wb.sheetnames, "-> out/stages.xlsx saved")
 ```
 
-Read it back - the number format is stored in the file, the value stays a number:
+**The number format is kept.** Read it back - the number format is stored in the file, the value stays a number:
 
 ```python run
 from pathlib import Path
@@ -1126,7 +1134,7 @@ The rules of a valid payment:
 4. the amount is a number greater than 0;
 5. the currency is EUR or USD.
 
-A quick profile of the good rows first - how many payments per currency, and the
+**Profile the good rows.** A quick profile of the good rows first - how many payments per currency, and the
 range of the dates, for the rows that convert without problems:
 
 ```python run
@@ -1220,7 +1228,7 @@ for currency, amount in [("EUR", 100.0), ("USD", 20.0), ("EUR", 50.0)]:
 print(totals)
 ```
 
-`defaultdict` (also from `collections`) does the `get(..., 0.0)` part for you. It is
+**With `defaultdict`.** `defaultdict` (also from `collections`) does the `get(..., 0.0)` part for you. It is
 a dictionary that **creates a missing key** when you read it with `[]`.
 `defaultdict(float)` gives the new key the value `float()`, which is `0.0`, so you can
 add to it straight away:
@@ -1243,7 +1251,7 @@ summing a group.
 **Grouping by hand:** [3. Sum with `defaultdict`](../animations/groupingByHand.html#3){target="_blank"}
 :::
 
-On the portfolio - the outstanding per product:
+**Outstanding per product.** On the portfolio - the outstanding per product:
 
 ```python run
 import csv
@@ -1258,7 +1266,7 @@ for product, total in sorted(totals.items()):
     print(f"{product:<16}{total:>18,.2f}")
 ```
 
-Sometimes you need the **rows** of each group, not only a number - a dictionary of
+**The rows of each group.** Sometimes you need the **rows** of each group, not only a number - a dictionary of
 lists. `defaultdict(list)` gives each new key a new empty list:
 
 ```python run
@@ -1387,7 +1395,7 @@ if share > 0.01:
 This is the pattern for every input of a monthly process: **never stop on a bad row,
 never lose a bad row, always report**.
 
-The reject file is a normal CSV - the next person reads it with the same tools:
+**Read the reject file.** The reject file is a normal CSV - the next person reads it with the same tools:
 
 ```python run
 import csv

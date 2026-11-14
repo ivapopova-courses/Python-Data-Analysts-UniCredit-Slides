@@ -83,7 +83,7 @@ print(type(math), math.__name__)
 print([name for name in dir(math) if not name.startswith("_")][:12])
 ```
 
-See it with a module of your own that prints when it runs - imported twice, it prints
+**Imported once.** See it with a module of your own that prints when it runs - imported twice, it prints
 once:
 
 ```python run
@@ -98,7 +98,7 @@ import hello_module                        # taken from sys.modules: no print
 print(hello_module.RATE)
 ```
 
-`dir(module)` lists its names; `help(module.function)` shows the docstring (session
+**What is in a module.** `dir(module)` lists its names; `help(module.function)` shows the docstring (session
 4). The docstring is also in `__doc__`:
 
 ```python run
@@ -108,7 +108,7 @@ print(statistics.median.__doc__.splitlines()[0])
 print(statistics.__doc__.splitlines()[0])
 ```
 
-An imported name is a normal variable of **your** file. Giving it a new value changes
+**Your own copy of the name.** An imported name is a normal variable of **your** file. Giving it a new value changes
 it only in your file, not in the module:
 
 ```python run
@@ -119,7 +119,7 @@ pi = 3                       # your name pi now means 3
 print(pi, math.pi)           # the module is not changed
 ```
 
-A module can also be imported by a name that is only known when the script runs -
+**Import by name.** A module can also be imported by a name that is only known when the script runs -
 for example from a setting:
 
 ```python run
@@ -149,7 +149,7 @@ for folder in sys.path[:4]:
     print(repr(folder))
 ```
 
-Which file was imported, and which version? `__file__` and `__version__` answer "is
+**Which pandas?** Which file was imported, and which version? `__file__` and `__version__` answer "is
 this the pandas of my virtual environment?" - the first question when a script works
 on one computer and not on another:
 
@@ -237,7 +237,7 @@ from portfolio_utils import dpd_bucket, expected_loss
 print(dpd_bucket(45), expected_loss(0.02, 100000))
 ```
 
-On this page, an example can write the file and import it - every example has the
+**Write the module.** On this page, an example can write the file and import it - every example has the
 same folder:
 
 ```python run
@@ -278,7 +278,7 @@ print(portfolio_utils.LGD, portfolio_utils.is_loan_id("L000001"))
 print(portfolio_utils.__file__)
 ```
 
-Now any example can import it - like a script in the same folder:
+**Import it.** Now any example can import it - like a script in the same folder:
 
 ```python run
 from portfolio_utils import dpd_bucket, is_loan_id
@@ -293,7 +293,7 @@ print(sorted({dpd_bucket(int(l["days_past_due"])) for l in loans}))
 
 (Run the example above first - it writes the file.)
 
-What is in the module, and the expected loss of the portfolio by stage with its
+**EL by stage.** What is in the module, and the expected loss of the portfolio by stage with its
 functions:
 
 ```python run
@@ -311,7 +311,7 @@ with open("data/loans.csv", encoding="utf-8") as file:
 print({s: round(v, 2) for s, v in sorted(el_by_stage.items())})
 ```
 
-The buckets of the whole portfolio, counted with the function of the module and a
+**Buckets of the portfolio.** The buckets of the whole portfolio, counted with the function of the module and a
 `Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter)):
 
 ```python run
@@ -360,6 +360,8 @@ if __name__ == "__main__":
     print("portfolio_utils: all checks passed")
 ```
 
+**Try the guard.** Write a small module with a guard, then import it - the guard code does not run:
+
 ```python run
 import sys
 from pathlib import Path
@@ -378,7 +380,7 @@ import guard_demo                          # the guard code does not run
 print(guard_demo.double(21))
 ```
 
-And **run** as a script - `runpy` does from Python what `python guard_demo.py` does in
+**Run it as a script.** And **run** as a script - `runpy` does from Python what `python guard_demo.py` does in
 the terminal:
 
 ```python run
@@ -407,7 +409,7 @@ switch on automatic reloading once, at the top of the notebook:
 from portfolio_utils import dpd_bucket      # now picks up every saved change
 ```
 
-In a script or a running Python, `importlib.reload` reads a module again:
+**Reload a module.** In a script or a running Python, `importlib.reload` reads a module again:
 
 ```python run
 import importlib
@@ -451,6 +453,8 @@ from portfolio import cleaning
 print(dpd_bucket(45), cleaning.parse_amount("1 234,56"))
 ```
 
+**Build the package.** On this page, an example writes the package folder and imports from it:
+
 ```python run
 from pathlib import Path
 import sys
@@ -468,7 +472,7 @@ from portfolio.rules import dpd_bucket
 print([dpd_bucket(d) for d in (0, 15, 45, 120)])
 ```
 
-What is in a package - its modules, found by `pkgutil` (after the example above):
+**The modules of a package.** What is in a package - its modules, found by `pkgutil` (after the example above):
 
 ```python run
 import pkgutil
@@ -478,7 +482,7 @@ print(portfolio.__path__)
 print([module.name for module in pkgutil.iter_modules(portfolio.__path__)])
 ```
 
-`__init__.py` can **re-export** the most used names, so that users write
+**Re-export names.** `__init__.py` can **re-export** the most used names, so that users write
 `from portfolio import dpd_bucket` without knowing the module inside:
 
 ```python run
@@ -535,7 +539,7 @@ python -m portfolio.rules
 ```
 :::
 
-A small script can make the skeleton of a new project - the same folders every time:
+**A project skeleton.** A small script can make the skeleton of a new project - the same folders every time:
 
 ```python run
 from pathlib import Path
@@ -626,7 +630,7 @@ print(add_months(report_date, 1), add_months(report_date, -1), add_months(report
 print([add_months(report_date, -k) for k in range(3)])           # the last three month ends
 ```
 
-The months between two dates - `INTCK('month', a, b)`:
+**Months between dates.** The months between two dates - `INTCK('month', a, b)`:
 
 ```python run
 from datetime import date
@@ -637,7 +641,7 @@ def months_between(a, b):
 print(months_between(date(2019, 4, 16), date(2026, 9, 30)))
 ```
 
-Quarter ends, and the working days between two dates:
+**Calendar helpers.** Quarter ends, and the working days between two dates:
 
 ```python run
 import calendar
@@ -657,7 +661,7 @@ print(working_days(date(2026, 9, 1), date(2026, 9, 30)))
 print(date(2026, 9, 30).isocalendar())          # ISO year, week, weekday
 ```
 
-`calendar` also prints a month - handy to check a date in a hurry:
+**Print a month.** `calendar` also prints a month - handy to check a date in a hurry:
 
 ```python run
 import calendar
@@ -683,7 +687,7 @@ print("stdev  ", round(st.stdev(rates), 3))          # the sample standard devia
 print("deciles", [round(q, 2) for q in st.quantiles(rates, n=10)])
 ```
 
-By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists (`defaultdict(list)`,
+**Statistics by group.** By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists (`defaultdict(list)`,
 [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)) and `statistics` per group:
 
 ```python run
@@ -700,7 +704,7 @@ for stage, rates in sorted(rates_of.items()):
     print(f"stage {stage}: n={len(rates):>3}  mean={st.mean(rates):5.2f}  median={st.median(rates):5.2f}")
 ```
 
-Since Python 3.10, `statistics` also has `correlation` and `linear_regression`:
+**Correlation and regression.** Since Python 3.10, `statistics` also has `correlation` and `linear_regression`:
 
 ```python run
 import csv
@@ -736,7 +740,7 @@ for month_total in [128.4, 129.1, 130.2, 129.6, 131.4]:
 print(list(last_three), round(sum(last_three) / 3, 2))  # a 3-month moving average
 ```
 
-A `namedtuple` is a tuple with names for its positions - a light record ([session 3](./03-lists-tuples-sets.md#tuples-as-records),
+**`namedtuple` records.** A `namedtuple` is a tuple with names for its positions - a light record ([session 3](./03-lists-tuples-sets.md#tuples-as-records),
 Advanced). Classes ([lecture 10](./10-oop-classes.md)) do the same with more power. Rows of a CSV file as
 named tuples:
 
@@ -753,7 +757,7 @@ print(scale[3])
 print(scale[3].grade, scale[3].pd_max)
 ```
 
-`ChainMap` looks up a key in several dictionaries, in order - the layers of the
+**Layers of settings.** `ChainMap` looks up a key in several dictionaries, in order - the layers of the
 settings of a report: the command line wins over the environment, which wins over the
 config file:
 
@@ -784,7 +788,7 @@ print(total == 1.0, math.isclose(total, 1.0))           # compare floats with a 
 print(round(math.log(1.05), 6), math.exp(0.05))         # continuous rates
 ```
 
-`math.prod` multiplies - compound growth over several periods:
+**Compound growth.** `math.prod` multiplies - compound growth over several periods:
 
 ```python run
 import math
@@ -805,7 +809,7 @@ with open("data/report_config.json", encoding="utf-8") as file:
     pprint(json.load(file), width=60)
 ```
 
-Dates in file names - ISO order, so that the files sort by date:
+**ISO dates sort right.** Dates in file names - ISO order, so that the files sort by date:
 
 ```python run
 from datetime import date
@@ -815,7 +819,7 @@ print(f"portfolio_report_{report_date:%Y-%m}.xlsx")
 print(f"rejected_{report_date:%Y%m%d}.csv")
 ```
 
-`string.Template` fills `$names` in a text - a mail or a report header that a
+**A text template.** `string.Template` fills `$names` in a text - a mail or a report header that a
 colleague can edit without knowing Python:
 
 ```python run
@@ -825,7 +829,7 @@ text = Template("Report $report_date: $loans loans, outstanding EUR $outstanding
 print(text.substitute(report_date="30.09.2026", loans=400, outstanding="131,370,708.60"))
 ```
 
-`namedtuple` records turn into dictionaries (for `csv.DictWriter`) and can be copied
+**`namedtuple` to dictionary.** `namedtuple` records turn into dictionaries (for `csv.DictWriter`) and can be copied
 with one field changed:
 
 ```python run
@@ -837,7 +841,7 @@ print(loan._asdict())
 print(loan._replace(stage=3), loan)            # a new record; the old one is unchanged
 ```
 
-`itertools.batched` (Python 3.12+) cuts a list into pieces - for example ids for SQL
+**Ids in batches.** `itertools.batched` (Python 3.12+) cuts a list into pieces - for example ids for SQL
 `IN (...)` lists, which many databases limit to 1000 values:
 
 ```python run
@@ -848,7 +852,7 @@ for chunk in batched(loan_ids, 1000):
     print(len(chunk), chunk[0], "...", chunk[-1])
 ```
 
-`difflib.get_close_matches` finds the most similar known value - a typo in a city or a
+**The closest match.** `difflib.get_close_matches` finds the most similar known value - a typo in a city or a
 product name:
 
 ```python run
@@ -942,7 +946,7 @@ python report.py
 ```
 :::
 
-Old code often uses `os.path` instead of `pathlib` - the same jobs, as functions on
+**`os.path` and `pathlib`.** Old code often uses `os.path` instead of `pathlib` - the same jobs, as functions on
 strings:
 
 ```python run
@@ -966,7 +970,7 @@ archive = shutil.make_archive("out/inputs_2026-09", "zip", root_dir="data")
 print(Path("out/rating_scale_backup.csv").exists(), Path(archive).name, Path(archive).stat().st_size, "bytes")
 ```
 
-And look into the archive with `zipfile`:
+**Look into the archive.** And look into the archive with `zipfile`:
 
 ```python run
 import zipfile
@@ -1031,7 +1035,7 @@ for package in ["pandas", "numpy", "python-dateutil"]:
         print(f"{package:<16}not installed")
 ```
 
-Which packages does a package need? The same as `pip show` lists under `Requires`:
+**Requirements of a package.** Which packages does a package need? The same as `pip show` lists under `Requires`:
 
 ```python run
 import importlib.metadata as md
@@ -1045,7 +1049,7 @@ for requirement in md.requires("pandas"):
 The part after `;` is a condition: `tzdata` is needed only on Windows (and on this
 site).
 
-Does the environment match `requirements.txt`? A check at the start of a monthly
+**Check the environment.** Does the environment match `requirements.txt`? A check at the start of a monthly
 script saves an hour of searching later:
 
 ```python run
@@ -1063,7 +1067,7 @@ for line in requirements.splitlines():
     print(f"{name:<8} needs >= {minimum:<6} has {installed:<8} {'ok' if ok else 'TOO OLD'}")
 ```
 
-Are you in a virtual environment at all? In a `.venv`, `sys.prefix` (the environment)
+**In a virtual environment?** Are you in a virtual environment at all? In a `.venv`, `sys.prefix` (the environment)
 differs from `sys.base_prefix` (the Python it was made from):
 
 ```python run
@@ -1171,7 +1175,7 @@ CURRENCY = "EUR"
 print("".join(difflib.unified_diff(before, after, "a/rules.py", "b/rules.py")))
 ```
 
-The same for a data file: what changed between two versions of the rating scale?
+**Changes in a data file.** The same for a data file: what changed between two versions of the rating scale?
 `n=0` shows only the changed lines, without context:
 
 ```python run
@@ -1241,7 +1245,7 @@ Path("out/.gitignore").write_text(rules, encoding="utf-8")
 print(Path("out/.gitignore").read_text(encoding="utf-8").splitlines())
 ```
 
-The patterns of `.gitignore` are the same kind as `glob` ([lecture 8](./08-errors-and-files.md#find-files-glob)). The module
+**What Git ignores.** The patterns of `.gitignore` are the same kind as `glob` ([lecture 8](./08-errors-and-files.md#find-files-glob)). The module
 `fnmatch` tests a name against them - which files of a project would Git ignore?
 
 ```python run
@@ -1427,7 +1431,7 @@ takes the report date from the command line, and the Git commands that undo thin
 A monthly script should not need an edit every month. Give it the report date when
 you start it: `python report.py --date 2026-09-30`.
 
-The arguments are in `sys.argv` - a list of strings; the first is the script name:
+**`sys.argv`.** The arguments are in `sys.argv` - a list of strings; the first is the script name:
 
 ```python run
 import sys
@@ -1436,7 +1440,7 @@ sys.argv = ["report.py", "--date", "2026-09-30", "--lgd", "0.4"]    # as if star
 print(sys.argv)
 ```
 
-The module `argparse` reads them properly: names, types, defaults, and a `--help`
+**`argparse`.** The module `argparse` reads them properly: names, types, defaults, and a `--help`
 text for free:
 
 ```python run

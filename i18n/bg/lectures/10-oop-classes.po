@@ -95,22 +95,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:68
-msgid "A **class** is the blueprint of a type: `str`, `list`, `dict` are classes. An **object** (or **instance**) is one thing made from the blueprint: `\"c0014\"` is an instance of `str`. A DataFrame ([lecture 13](./13-numpy-pandas-intro.md#_4-dataframe)) is an instance of the class `DataFrame`, and `df.groupby(...)` is one of its methods."
+msgid "**Classes you already use.** A **class** is the blueprint of a type: `str`, `list`, `dict` are classes. An **object** (or **instance**) is one thing made from the blueprint: `\"c0014\"` is an instance of `str`. A DataFrame ([lecture 13](./13-numpy-pandas-intro.md#_4-dataframe)) is an instance of the class `DataFrame`, and `df.groupby(...)` is one of its methods."
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:78
-msgid "Even numbers and functions are objects, with attributes and methods:"
+msgid "**Everything is an object.** Even numbers and functions are objects, with attributes and methods:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:86
-msgid "The objects of the libraries you use have attributes too. A `csv.DictReader` knows its column names and the line it has read:"
+msgid "**Objects of a library.** The objects of the libraries you use have attributes too. A `csv.DictReader` knows its column names and the line it has read:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:100
-msgid "`isinstance` with a tuple tests for several types at once - the usual check of an input. One trap: `True` and `False` **are** integers in Python:"
+msgid "**Several types at once.** `isinstance` with a tuple tests for several types at once - the usual check of an input. One trap: `True` and `False` **are** integers in Python:"
 msgstr ""
 
 #. heading 3
@@ -215,7 +215,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:178
-msgid "Two objects with the same data are still **two** objects. And two names can point to **one** object ([session 3](./03-lists-tuples-sets.md#two-names-one-list)) - a change through one name is seen through the other:"
+msgid "**Two objects, or one?** Two objects with the same data are still **two** objects. And two names can point to **one** object ([session 3](./03-lists-tuples-sets.md#two-names-one-list)) - a change through one name is seen through the other:"
 msgstr ""
 
 #. paragraph
@@ -285,22 +285,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:305
-msgid "`loan.is_late(limit=90)` is, inside, `Loan.is_late(loan, limit=90)`: Python passes the object as `self`. That is why the definition has one parameter more than the call:"
+msgid "**What `self` is.** `loan.is_late(limit=90)` is, inside, `Loan.is_late(loan, limit=90)`: Python passes the object as `self`. That is why the definition has one parameter more than the call:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:325
-msgid "On the portfolio: the late loans per product, with the method doing the test and a `Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter)):"
+msgid "**Late loans per product.** On the portfolio: the late loans per product, with the method doing the test and a `Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter)):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:349
-msgid "Two traps with methods. A method written **without** `self` cannot be called on an object - Python passes the object anyway:"
+msgid "**A trap: no `self`.** Two traps with methods. A method written **without** `self` cannot be called on an object - Python passes the object anyway:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:365
-msgid "And a method **without the brackets** is not called - you get the method itself, and no error:"
+msgid "**A trap: no brackets.** And a method **without the brackets** is not called - you get the method itself, and no error:"
 msgstr ""
 
 #. heading 3
@@ -370,17 +370,17 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:543
-msgid "Always write at least `__repr__` - the first time you debug a list of objects, you will be glad. With `__str__`, a report loop needs no formatting code of its own:"
+msgid "**`__repr__` and `__str__` together.** Always write at least `__repr__` - the first time you debug a list of objects, you will be glad. With `__str__`, a report loop needs no formatting code of its own:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:566
-msgid "With `__str__`, the largest loans of the file are a report in two lines:"
+msgid "**A report in two lines.** With `__str__`, the largest loans of the file are a report in two lines:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:592
-msgid "`__str__` and `__repr__` must **return** a string - not print it, and not return a number:"
+msgid "**A trap: print instead of return.** `__str__` and `__repr__` must **return** a string - not print it, and not return a number:"
 msgstr ""
 
 #. paragraph
@@ -410,12 +410,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:644
-msgid "On the whole portfolio - the expected loss with a stage-based PD, then a stress scenario with a higher LGD for **all** loans, changed in one place:"
+msgid "**EL and a stress scenario.** On the whole portfolio - the expected loss with a stage-based PD, then a stress scenario with a higher LGD for **all** loans, changed in one place:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:671
-msgid "A class attribute is a good place for the **nomenclature** a method needs - one copy for all objects:"
+msgid "**A nomenclature in the class.** A class attribute is a good place for the **nomenclature** a method needs - one copy for all objects:"
 msgstr ""
 
 #. heading 3
@@ -470,7 +470,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:785
-msgid "With a file, the loader of [lecture 8](./08-errors-and-files.md#_10-loading-data-with-bad-records) decides what to do with a row that fails: one `try` per row, and a list of the rejected rows:"
+msgid "**Load a file with checks.** With a file, the loader of [lecture 8](./08-errors-and-files.md#_10-loading-data-with-bad-records) decides what to do with a row that fails: one `try` per row, and a list of the rejected rows:"
 msgstr ""
 
 #. heading 3
@@ -485,22 +485,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:832
-msgid "`@property` above a method makes it look like an **attribute** - no brackets. Use it for values computed from the other attributes:"
+msgid "**A computed attribute.** `@property` above a method makes it look like an **attribute** - no brackets. Use it for values computed from the other attributes:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:858
-msgid "On the file - how many loans are defaulted, and their outstanding, from the property:"
+msgid "**Defaulted loans.** On the file - how many loans are defaulted, and their outstanding, from the property:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:881
-msgid "`@property` is a **decorator** (lecture 4, Self-study): it turns the method into a read-only attribute. A computed value never gets out of date, because it is computed each time it is read - like a computed column of a SQL view."
+msgid "**A read-only attribute.** `@property` is a **decorator** (lecture 4, Self-study): it turns the method into a read-only attribute. A computed value never gets out of date, because it is computed each time it is read - like a computed column of a SQL view."
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:900
-msgid "`hasattr` and `getattr` ask an object for an attribute by its **name** - handy for reports that take the list of columns from a setting:"
+msgid "**Attributes by name.** `hasattr` and `getattr` ask an object for an attribute by its **name** - handy for reports that take the list of columns from a setting:"
 msgstr ""
 
 #. heading 3
@@ -555,7 +555,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:995
-msgid "A row of `csv.DictReader` can go straight into a dataclass with `**` (it unpacks a dictionary into keyword arguments: `Loan(**row)` is `Loan(loan_id=row[\"loan_id\"], ...)`) - if the column names are the field names. Convert the types in `__post_init__` (below), or before:"
+msgid "**From a row to a dataclass.** A row of `csv.DictReader` can go straight into a dataclass with `**` (it unpacks a dictionary into keyword arguments: `Loan(**row)` is `Loan(loan_id=row[\"loan_id\"], ...)`) - if the column names are the field names. Convert the types in `__post_init__` (below), or before:"
 msgstr ""
 
 #. heading 3
@@ -590,7 +590,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1093
-msgid "A frozen dataclass is also **hashable**: it can be a key of a dictionary or an item of a set ([session 6](./06-dictionaries.md#rules-for-keys-and-values)). To \"change\" it, make a new one with `dataclasses.replace`:"
+msgid "**Frozen and hashable.** A frozen dataclass is also **hashable**: it can be a key of a dictionary or an item of a set ([session 6](./06-dictionaries.md#rules-for-keys-and-values)). To \"change\" it, make a new one with `dataclasses.replace`:"
 msgstr ""
 
 #. heading 3
@@ -610,12 +610,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1160
-msgid "Back to rows: `asdict` and `astuple` turn a dataclass into a dictionary or a tuple - ready for `csv.DictWriter` ([lecture 8](./08-errors-and-files.md#write-csv-writer-and-csv-dictwriter)) or JSON. `fields` lists the fields:"
+msgid "**Dataclass to dict or tuple.** Back to rows: `asdict` and `astuple` turn a dataclass into a dictionary or a tuple - ready for `csv.DictWriter` ([lecture 8](./08-errors-and-files.md#write-csv-writer-and-csv-dictwriter)) or JSON. `fields` lists the fields:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1186
-msgid "A field can be left out of the `repr` or of the comparison - for example a long list, or a note:"
+msgid "**Leave a field out.** A field can be left out of the `repr` or of the comparison - for example a long list, or a note:"
 msgstr ""
 
 #. table cell
@@ -720,22 +720,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1261
-msgid "All clients and loans from the two files - a dictionary of clients by id ([session 6](./06-dictionaries.md#a-dictionary-of-dictionaries-a-table-keyed-by-id)), then each loan is added to its client:"
+msgid "**Clients with their loans.** All clients and loans from the two files - a dictionary of clients by id ([session 6](./06-dictionaries.md#a-dictionary-of-dictionaries-a-table-keyed-by-id)), then each loan is added to its client:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1303
-msgid "From the objects, the usual reports - exposure per segment, and the share of the largest client in each segment (`defaultdict(list)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
+msgid "**Reports from the objects.** From the objects, the usual reports - exposure per segment, and the share of the largest client in each segment (`defaultdict(list)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1338
-msgid "The link can go both ways: each loan keeps its **client object**, so `loan.client.rating` reads the rating through the link - like a join that is done once. The EL of homework 4 again, 1,140,106.56:"
+msgid "**A link both ways.** The link can go both ways: each loan keeps its **client object**, so `loan.client.rating` reads the rating through the link - like a join that is done once. The EL of homework 4 again, 1,140,106.56:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1373
-msgid "The trap: a loan whose client is not in the clients file. `clients[r[\"client_id\"]]` stops the whole load with a `KeyError`; `get` and a list of rejects ([lecture 8](./08-errors-and-files.md#the-reject-file-and-the-summary)) keep going and report it:"
+msgid "**A loan without a client.** The trap: a loan whose client is not in the clients file. `clients[r[\"client_id\"]]` stops the whole load with a `KeyError`; `get` and a list of rejects ([lecture 8](./08-errors-and-files.md#the-reject-file-and-the-summary)) keep going and report it:"
 msgstr ""
 
 #. paragraph
@@ -980,12 +980,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1477
-msgid "A portfolio that behaves like a container of loans:"
+msgid "**A portfolio container.** A portfolio that behaves like a container of loans:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/10-oop-classes.md:1511
-msgid "To compare objects of a normal class, write `__eq__` and `__lt__`; `functools.total_ordering` writes `<=`, `>`, `>=` from those two:"
+msgid "**Compare objects.** To compare objects of a normal class, write `__eq__` and `__lt__`; `functools.total_ordering` writes `<=`, `>`, `>=` from those two:"
 msgstr ""
 
 #. paragraph

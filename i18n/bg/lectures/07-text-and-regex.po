@@ -120,7 +120,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:94
-msgid "The columns of the new file:"
+msgid "**The new file.** The columns of the new file:"
 msgstr ""
 
 #. table cell
@@ -205,7 +205,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:137
-msgid "To compare two texts without the case, make **both** sides lower case (or both upper case):"
+msgid "**Compare without the case.** To compare two texts without the case, make **both** sides lower case (or both upper case):"
 msgstr ""
 
 #. box title
@@ -235,7 +235,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:171
-msgid "With an argument, `strip` removes **those characters** from the ends (any of them, in any order) - not a word:"
+msgid "**Strip given characters.** With an argument, `strip` removes **those characters** from the ends (any of them, in any order) - not a word:"
 msgstr ""
 
 #. heading 3
@@ -275,7 +275,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:216
-msgid "`startswith` and `endswith` also take a **tuple** of options - \"starts with one of these\":"
+msgid "**Several prefixes at once.** `startswith` and `endswith` also take a **tuple** of options - \"starts with one of these\":"
 msgstr ""
 
 #. heading 3
@@ -330,7 +330,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:260
-msgid "Check an id by its parts - \"an L and six digits\":"
+msgid "**Check a loan id.** Check an id by its parts - \"an L and six digits\":"
 msgstr ""
 
 #. box title
@@ -375,12 +375,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:306
-msgid "A second argument limits the number of cuts. `rsplit` cuts from the right - the last word of a company name is its legal form:"
+msgid "**Limit the cuts.** A second argument limits the number of cuts. `rsplit` cuts from the right - the last word of a company name is its legal form:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:318
-msgid "`partition` cuts at the **first** separator and always gives three parts: the text before, the separator, the text after. It is handy for `key=value`:"
+msgid "**Cut once: `partition`.** `partition` cuts at the **first** separator and always gives three parts: the text before, the separator, the text after. It is handy for `key=value`:"
 msgstr ""
 
 #. paragraph
@@ -430,7 +430,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:375
-msgid "Several `replace` calls in a row run from left to right - each one works on the result of the one before:"
+msgid "**Replace in steps.** Several `replace` calls in a row run from left to right - each one works on the result of the one before:"
 msgstr ""
 
 #. heading 3
@@ -445,7 +445,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:395
-msgid "This is not the same as `strip(\"gr. \")`. `strip` removes the **characters** g, r, `.` and space from both ends, as long as it finds them:"
+msgid "**A trap: `strip` is not `removeprefix`.** This is not the same as `strip(\"gr. \")`. `strip` removes the **characters** g, r, `.` and space from both ends, as long as it finds them:"
 msgstr ""
 
 #. heading 3
@@ -490,7 +490,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:458
-msgid "On the whole file - how many ids needed a fix, and are they unique now?"
+msgid "**How many ids were fixed.** On the whole file - how many ids needed a fix, and are they unique now?"
 msgstr ""
 
 #. heading 3
@@ -515,7 +515,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:519
-msgid "People write an IBAN in groups of 4; systems want it without spaces. A Bulgarian IBAN has 22 characters and starts with `BG`:"
+msgid "**Clean an IBAN.** People write an IBAN in groups of 4; systems want it without spaces. A Bulgarian IBAN has 22 characters and starts with `BG`:"
 msgstr ""
 
 #. paragraph
@@ -535,7 +535,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:543
-msgid "By hand first, on a small list, so you can follow each step:"
+msgid "**Counting by hand.** By hand first, on a small list, so you can follow each step:"
 msgstr ""
 
 #. paragraph
@@ -555,7 +555,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:560
-msgid "Counting is so common that the module `collections` (it comes with Python) has a dictionary made for it: **`Counter`**. Give it the values, and it counts them:"
+msgid "**With `Counter`.** Counting is so common that the module `collections` (it comes with Python) has a dictionary made for it: **`Counter`**. Give it the values, and it counts them:"
 msgstr ""
 
 #. paragraph
@@ -565,17 +565,17 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:580
-msgid "On the portfolio - the loans per product, from a generator expression ([session 5](./05-lists-advanced.md#_3-generator-expressions-no-list-in-memory)), without a list in memory:"
+msgid "**Loans per product.** On the portfolio - the loans per product, from a generator expression ([session 5](./05-lists-advanced.md#_3-generator-expressions-no-list-in-memory)), without a list in memory:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:594
-msgid "You can also start with an empty `Counter()` and add one value at a time - useful in a loop that does more than counting. `+= 1` works for a new key too, because the missing key starts at `0`. Two counters are equal (`==`) when they have the same values with the same counts:"
+msgid "**Count in a loop.** You can also start with an empty `Counter()` and add one value at a time - useful in a loop that does more than counting. `+= 1` works for a new key too, because the missing key starts at `0`. Two counters are equal (`==`) when they have the same values with the same counts:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:610
-msgid "The trap: `\"Sofia\"`, `\"sofia\"` and `\"Sofia \"` are three different keys. A `GROUP BY` in SQL has the same problem. Clean the key **before** you count:"
+msgid "**Clean before you count.** The trap: `\"Sofia\"`, `\"sofia\"` and `\"Sofia \"` are three different keys. A `GROUP BY` in SQL has the same problem. Clean the key **before** you count:"
 msgstr ""
 
 #. box title
@@ -605,7 +605,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:663
-msgid "Compare with `clients.csv`, where the region is clean: the counts must be the same."
+msgid "**Check against `clients.csv`.** Compare with `clients.csv`, where the region is clean: the counts must be the same."
 msgstr ""
 
 #. paragraph
@@ -635,7 +635,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:707
-msgid "When you know the format of the source, bring the text to the Python format with `replace`, then convert. The Bulgarian format has spaces between the thousands and a decimal comma:"
+msgid "**A known format.** When you know the format of the source, bring the text to the Python format with `replace`, then convert. The Bulgarian format has spaces between the thousands and a decimal comma:"
 msgstr ""
 
 #. box title
@@ -710,7 +710,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:779
-msgid "A text that does not fit the format is a `ValueError`. An impossible date is one too:"
+msgid "**A wrong date.** A text that does not fit the format is a `ValueError`. An impossible date is one too:"
 msgstr ""
 
 #. paragraph
@@ -815,12 +815,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:858
-msgid "In an `if`, a match object counts as true and `None` as false. So `if re.search(...):` asks \"is it there?\" - like `if prxmatch(...) > 0` in SAS:"
+msgid "**A match in an `if`.** In an `if`, a match object counts as true and `None` as false. So `if re.search(...):` asks \"is it there?\" - like `if prxmatch(...) > 0` in SAS:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:871
-msgid "The same test on the loan portfolio. The file `loan_comments.csv` (new today) has the comments of the credit officers. How many of them mention a date in the format `dd.mm.yyyy`?"
+msgid "**Dates in the comments.** The same test on the loan portfolio. The file `loan_comments.csv` (new today) has the comments of the credit officers. How many of them mention a date in the format `dd.mm.yyyy`?"
 msgstr ""
 
 #. heading 3
@@ -970,7 +970,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:963
-msgid "On the client register: the names typed with two or more spaces in a row - `\\s{2,}`:"
+msgid "**Double spaces in names.** On the client register: the names typed with two or more spaces in a row - `\\s{2,}`:"
 msgstr ""
 
 #. heading 3
@@ -1165,7 +1165,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1105
-msgid "With **one** group in the pattern, `findall` returns the text of the group. With **several** groups, it returns a list of tuples:"
+msgid "**`findall` with groups.** With **one** group in the pattern, `findall` returns the text of the group. With **several** groups, it returns a list of tuples:"
 msgstr ""
 
 #. heading 3
@@ -1180,7 +1180,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1129
-msgid "The brackets also made a group, so `findall` returned only the currency. Write `(?:...)` for brackets that only **keep parts together** and are not a group:"
+msgid "**Brackets without a group.** The brackets also made a group, so `findall` returned only the currency. Write `(?:...)` for brackets that only **keep parts together** and are not a group:"
 msgstr ""
 
 #. paragraph
@@ -1215,7 +1215,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1184
-msgid "A whole column - the IBANs of the register. Clean them as in section 5, then check the shape:"
+msgid "**All IBANs of the register.** A whole column - the IBANs of the register. Clean them as in section 5, then check the shape:"
 msgstr ""
 
 #. box title
@@ -1240,7 +1240,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1226
-msgid "On the file: the total of the payments received in September 2026."
+msgid "**The September payments.** On the file: the total of the payments received in September 2026."
 msgstr ""
 
 #. box title
@@ -1560,12 +1560,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1354
-msgid "A fixed-width line - some old systems still want them. The f-string format spec of [session 1](./01-intro-syntax-types.md#formatting-the-values) does the same, and is easier to read:"
+msgid "**Aligned columns.** A fixed-width line - some old systems still want them. The f-string format spec of [session 1](./01-intro-syntax-types.md#formatting-the-values) does the same, and is easier to read:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1365
-msgid "The same on the loan portfolio - a small text report with a title, a header and the amounts aligned on the right:"
+msgid "**A text report.** The same on the loan portfolio - a small text report with a title, a header and the amounts aligned on the right:"
 msgstr ""
 
 #. paragraph
@@ -1595,12 +1595,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1406
-msgid "Why not two `replace` calls? Because the second call also changes the result of the first one:"
+msgid "**A trap: two `replace` calls.** Why not two `replace` calls? Because the second call also changes the result of the first one:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1415
-msgid "And back: a number in the Bulgarian format for a report. The format spec gives the English format; then swap the characters with `translate`:"
+msgid "**Back to the Bulgarian format.** And back: a number in the Bulgarian format for a report. The format spec gives the English format; then swap the characters with `translate`:"
 msgstr ""
 
 #. paragraph
@@ -1660,7 +1660,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1452
-msgid "The rule: the **last** of `,` and `.` is the decimal separator - if it has one to two digits after it; everything else is a thousands separator."
+msgid "**The rule in code.** The rule: the **last** of `,` and `.` is the decimal separator - if it has one to two digits after it; everything else is a thousands separator."
 msgstr ""
 
 #. box title
@@ -1680,7 +1680,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1483
-msgid "On the file - the total turnover of the companies:"
+msgid "**The total turnover.** On the file - the total turnover of the companies:"
 msgstr ""
 
 #. paragraph
@@ -1715,7 +1715,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1555
-msgid "The first and the last day of a month - the **report dates** of risk reporting:"
+msgid "**Month start and month end.** The first and the last day of a month - the **report dates** of risk reporting:"
 msgstr ""
 
 #. paragraph
@@ -1725,7 +1725,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1570
-msgid "On the file - how long each client has been a client:"
+msgid "**Client tenure.** On the file - how long each client has been a client:"
 msgstr ""
 
 #. paragraph
@@ -1755,7 +1755,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1631
-msgid "Reading with the wrong encoding gives either an error, or **mojibake** - wrong letters:"
+msgid "**Mojibake.** Reading with the wrong encoding gives either an error, or **mojibake** - wrong letters:"
 msgstr ""
 
 #. paragraph
@@ -1765,7 +1765,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1648
-msgid "The file `regions_bg.csv` is saved in **cp1251**:"
+msgid "**Read a cp1251 file.** The file `regions_bg.csv` is saved in **cp1251**:"
 msgstr ""
 
 #. paragraph
@@ -1775,7 +1775,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1661
-msgid "One more detail: Excel saves \"CSV UTF-8\" with a **BOM** - three bytes `EF BB BF` at the start. Read such a file with `encoding=\"utf-8-sig\"`, or the first column name gets an invisible character in front:"
+msgid "**The BOM of Excel.** One more detail: Excel saves \"CSV UTF-8\" with a **BOM** - three bytes `EF BB BF` at the start. Read such a file with `encoding=\"utf-8-sig\"`, or the first column name gets an invisible character in front:"
 msgstr ""
 
 #. paragraph
@@ -1815,7 +1815,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1720
-msgid "Another trap of text from many sources: the same letter can be stored in two ways - `\"й\"` as one character, or `\"и\"` plus a combining mark. They look the same, but are not `==`. `unicodedata.normalize(\"NFC\", s)` brings both to the same form:"
+msgid "**One letter, two forms.** Another trap of text from many sources: the same letter can be stored in two ways - `\"й\"` as one character, or `\"и\"` plus a combining mark. They look the same, but are not `==`. `unicodedata.normalize(\"NFC\", s)` brings both to the same form:"
 msgstr ""
 
 #. paragraph
@@ -1845,12 +1845,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1767
-msgid "Quantifiers are **greedy**: they take as much text as they can, and give back only what is needed for the rest of the pattern to match:"
+msgid "**Greedy.** Quantifiers are **greedy**: they take as much text as they can, and give back only what is needed for the rest of the pattern to match:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1777
-msgid "A `?` after the quantifier makes it **lazy**: as little as possible."
+msgid "**Lazy.** A `?` after the quantifier makes it **lazy**: as little as possible."
 msgstr ""
 
 #. box title
@@ -1925,12 +1925,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1912
-msgid "A group that did not take part in the match gives `None` - for example an optional part:"
+msgid "**An optional group.** A group that did not take part in the match gives `None` - for example an optional part:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1924
-msgid "A list of records from a text - `finditer` with named groups and `groupdict()`, one dictionary per match ([session 6](./06-dictionaries.md)):"
+msgid "**Records from a text.** A list of records from a text - `finditer` with named groups and `groupdict()`, one dictionary per match ([session 6](./06-dictionaries.md)):"
 msgstr ""
 
 #. heading 4
@@ -1965,7 +1965,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:1979
-msgid "Normalise all legal forms in company names with one pattern and a dictionary:"
+msgid "**Legal forms.** Normalise all legal forms in company names with one pattern and a dictionary:"
 msgstr ""
 
 #. box title
@@ -1995,7 +1995,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:2037
-msgid "Classify every comment with a dictionary **type -> pattern**: the first pattern that matches gives the type - like a `CASE WHEN ... LIKE` chain in SQL:"
+msgid "**Classify the comments.** Classify every comment with a dictionary **type -> pattern**: the first pattern that matches gives the type - like a `CASE WHEN ... LIKE` chain in SQL:"
 msgstr ""
 
 #. heading 4
@@ -2010,12 +2010,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:2081
-msgid "Amounts are written in different styles: `2 069,77 EUR`, `20,960.03 EUR`, `99,400 EUR`. One pattern for \"digits with spaces, commas and points, then a currency\", and the `parse_amount` of [Numbers in any format](#numbers-in-any-format) for the number:"
+msgid "**Amounts in any style.** Amounts are written in different styles: `2 069,77 EUR`, `20,960.03 EUR`, `99,400 EUR`. One pattern for \"digits with spaces, commas and points, then a currency\", and the `parse_amount` of [Numbers in any format](#numbers-in-any-format) for the number:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:2106
-msgid "The total of the payments received in September 2026:"
+msgid "**The September payments.** The total of the payments received in September 2026:"
 msgstr ""
 
 #. heading 4
@@ -2055,7 +2055,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:2198
-msgid "The same check for the EIKs in the guarantee comments - are they EIKs of companies in the register?"
+msgid "**EIKs in the comments.** The same check for the EIKs in the guarantee comments - are they EIKs of companies in the register?"
 msgstr ""
 
 #. paragraph
@@ -2105,7 +2105,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:2257
-msgid "Long patterns are hard to read. With `re.VERBOSE` (`re.X`), spaces in the pattern are ignored and `#` starts a comment - the pattern can be written on several lines:"
+msgid "**A readable pattern.** Long patterns are hard to read. With `re.VERBOSE` (`re.X`), spaces in the pattern are ignored and `#` starts a comment - the pattern can be written on several lines:"
 msgstr ""
 
 #. paragraph

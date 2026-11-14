@@ -71,7 +71,7 @@ print(loans[["loan_id", "product", "outstanding"]].head(3))      # KEEP=
 print(loans.drop(columns=["amount", "maturity_date"]).columns.tolist())   # DROP=
 ```
 
-Columns by their type, and new names - `RENAME=`:
+**By type, and new names.** Columns by their type, and new names - `RENAME=`:
 
 ```python run
 import pandas as pd
@@ -96,7 +96,7 @@ print(late.sum(), "loans more than 90 days past due")
 loans[late][["loan_id", "product", "outstanding", "days_past_due"]].head()
 ```
 
-Several conditions: `&` (and), `|` (or), `~` (not), each comparison in brackets -
+**`&`, `|` and `~`.** Several conditions: `&` (and), `|` (or), `~` (not), each comparison in brackets -
 the rule of [lecture 13](./13-numpy-pandas-intro.md):
 
 ```python run
@@ -108,7 +108,7 @@ print(mask.sum(), "rows")
 print(loans.loc[mask, "outstanding"].sum().round(2))
 ```
 
-SQL `IN (...)`, `BETWEEN` and `LIKE 'abc%'` have their own methods:
+**`IN`, `BETWEEN`, `LIKE`.** SQL `IN (...)`, `BETWEEN` and `LIKE 'abc%'` have their own methods:
 
 ```python run
 import pandas as pd
@@ -136,7 +136,7 @@ loans = pd.read_csv("data/loans.csv")
 loans.loc[loans["stage"] == 3, ["loan_id", "client_id", "outstanding"]].head()
 ```
 
-With an index of ids ([lecture 13](./13-numpy-pandas-intro.md#the-index)), `loc` takes the labels - like a lookup in a
+**Rows by label.** With an index of ids ([lecture 13](./13-numpy-pandas-intro.md#the-index)), `loc` takes the labels - like a lookup in a
 dictionary:
 
 ```python run
@@ -204,7 +204,7 @@ wanted to change `loans` too). pandas 3 has **copy-on-write**: a filtered table 
 behaves as a copy, and the warning is gone - `.copy()` is still clear, and works in
 both.
 
-To change rows **of the original**, use one `loc` with the mask and the column:
+**Change the original.** To change rows **of the original**, use one `loc` with the mask and the column:
 
 ```python run
 import pandas as pd
@@ -241,7 +241,7 @@ loans["yearly_interest"] = loans["outstanding"] * loans["interest_rate"] / 100
 loans[["loan_id", "amount", "outstanding", "repaid_pct", "yearly_interest"]].head(3)
 ```
 
-`assign` does the same, but returns a new DataFrame - handy in a chain (and the
+**A new DataFrame instead.** `assign` does the same, but returns a new DataFrame - handy in a chain (and the
 original stays as it was):
 
 ```python run
@@ -299,7 +299,7 @@ loans["dpd_bucket"].value_counts(sort=False)
 The empty band `61-90` is still listed (with 0): the labels are fixed in advance, like
 the values of a format.
 
-The bins are `(a, b]`: open on the left, closed on the right - `(0, 30]` is 1 - 30.
+**The edges of the bins.** The bins are `(a, b]`: open on the left, closed on the right - `(0, 30]` is 1 - 30.
 That is why the first edge is `-1`: `(-1, 0]` holds the 0. `right=False` turns them
 into `[a, b)`:
 
@@ -329,7 +329,7 @@ loans["group"] = loans["product"].map(product_group)
 print(loans["group"].value_counts(dropna=False))     # working_capital is not in the dict: NaN
 ```
 
-A value that is not a key gives `NaN` - check for it, like the "unknown code" of a
+**A missing code.** A value that is not a key gives `NaN` - check for it, like the "unknown code" of a
 nomenclature ([lecture 11](./11-oop-nomenclatures.md)). The lookup can come from a table: a Series with the codes
 as its index:
 
@@ -400,7 +400,7 @@ ordered = loans.sort_values(["stage", "outstanding"], ascending=[False, False])
 ordered[["loan_id", "stage", "outstanding"]].head()
 ```
 
-The top N without sorting everything: `nlargest` / `nsmallest`:
+**Only the largest.** The top N without sorting everything: `nlargest` / `nsmallest`:
 
 ```python run
 import pandas as pd
@@ -409,7 +409,7 @@ loans = pd.read_csv("data/loans.csv")
 loans.nlargest(5, "outstanding")[["loan_id", "client_id", "product", "outstanding"]]
 ```
 
-`rank` gives the place of every row - SAS `PROC RANK`, or SQL `RANK() OVER (ORDER BY ...)`:
+**The rank.** `rank` gives the place of every row - SAS `PROC RANK`, or SQL `RANK() OVER (ORDER BY ...)`:
 
 ```python run
 import pandas as pd
@@ -422,7 +422,7 @@ loans.sort_values("size_rank")[["loan_id", "outstanding", "size_rank"]].head(3)
 After a sort, the index keeps the old row numbers. `reset_index(drop=True)` numbers
 the rows again from 0 - do it when the old numbers mean nothing.
 
-Missing values go **last** in pandas (SAS sorts its `.` first) - `na_position` changes
+**Missing values in a sort.** Missing values go **last** in pandas (SAS sorts its `.` first) - `na_position` changes
 it:
 
 ```python run
@@ -453,7 +453,7 @@ loans = pd.read_csv("data/loans.csv")
 loans.groupby("stage")["outstanding"].sum()
 ```
 
-The totals per stage (`110184825.28`, `16884527.04`, `4301356.28`) - in one
+**Totals per stage.** The totals per stage (`110184825.28`, `16884527.04`, `4301356.28`) - in one
 line. The result is a Series with the groups as its index. Compare with the sum by
 group by hand, with a dictionary:
 
@@ -498,7 +498,7 @@ loans.groupby("product").agg(
 
 Each item is `new_name=(column, function)`. This is the form to use in reports.
 
-The full SAS `PROC MEANS` output for every group - `describe` after `groupby`:
+**`describe` per group.** The full SAS `PROC MEANS` output for every group - `describe` after `groupby`:
 
 ```python run
 import pandas as pd
@@ -518,7 +518,7 @@ print(by_two)
 print(by_two.loc[("EUR", 3)])                 # a value by its two keys
 ```
 
-The index has two levels now (a `MultiIndex`). For a flat table - columns as in SQL -
+**A flat table.** The index has two levels now (a `MultiIndex`). For a flat table - columns as in SQL -
 use `as_index=False` or `reset_index()`:
 
 ```python run
@@ -530,7 +530,7 @@ print(flat.head())
 print(loans.groupby(["currency", "stage"])["outstanding"].sum().reset_index().equals(flat))
 ```
 
-The share of each stage **in its segment** - a group total of a group result
+**Share in the segment.** The share of each stage **in its segment** - a group total of a group result
 (`transform`, below, explains the second line):
 
 ```python run
@@ -600,7 +600,7 @@ loans["share_of_client"] = (loans["outstanding"] / loans["client_total"]).round(
 loans.loc[loans["client_id"] == "C0080", ["loan_id", "outstanding", "client_total", "share_of_client"]]
 ```
 
-`agg` gives one row per group; `transform` gives one value per **row** (the group
+**`transform`.** `agg` gives one row per group; `transform` gives one value per **row** (the group
 result repeated) - so it fits as a new column. Other window functions in the same
 way:
 
@@ -727,6 +727,8 @@ print(len(worse), "clients got a worse rating")
 worse.head()
 ```
 
+**Different key names.** `left_on` and `right_on` - the `currency` of the loans against the `code` of a small table:
+
 ```python run
 import pandas as pd
 
@@ -735,7 +737,7 @@ codes = pd.DataFrame({"code": ["EUR", "USD", "GBP"], "currency_name": ["euro", "
 loans.merge(codes, left_on="currency", right_on="code", how="left")[["loan_id", "currency", "currency_name"]].head(3)
 ```
 
-A key of **two** columns - `on=[...]`, like `BY loan_id month_end` or `ON a.x = b.x AND
+**Loan and month as the key.** A key of **two** columns - `on=[...]`, like `BY loan_id month_end` or `ON a.x = b.x AND
 a.y = b.y`. The monthly balance of each loan with the rating of its client in the same
 month:
 
@@ -792,7 +794,7 @@ print(together.shape)
 print(together["month_end"].value_counts().sort_index())
 ```
 
-`keys=` labels where each part came from (like `INDSNAME=` in SAS), and a missing
+**Where each part came from.** `keys=` labels where each part came from (like `INDSNAME=` in SAS), and a missing
 column is filled with `NaN`:
 
 ```python run
@@ -864,6 +866,8 @@ filled = export.fillna({"Product": "unknown", "Interest rate %": 0.0})
 print(filled[["Product", "Interest rate %"]].isna().sum().to_dict())
 ```
 
+**From another column.** Fill the gaps of one column with the values of another:
+
 ```python run
 import pandas as pd
 
@@ -886,7 +890,7 @@ print(len(export), len(export.dropna()), len(export.dropna(subset=["Outstanding"
 `dropna()` without `subset` drops a row with **any** missing value - often too much.
 Name the columns that matter.
 
-How complete is each column? `isna().mean()` is the share of missing values - the
+**Missing values per column.** How complete is each column? `isna().mean()` is the share of missing values - the
 first table of a data quality report:
 
 ```python run
@@ -909,7 +913,7 @@ print(export.groupby("Product")["Outstanding"].size().sum(), "rows in the groups
 print(export.groupby("Product", dropna=False)["Outstanding"].size().tail(2))
 ```
 
-`!=` is `True` for `NaN` (SQL would give `NULL`, and drop the row); `groupby` drops
+**`NaN` traps.** `!=` is `True` for `NaN` (SQL would give `NULL`, and drop the row); `groupby` drops
 the `NaN` key unless `dropna=False`. In `merge`, `NaN` keys **match each other** -
 unlike SQL, where `NULL = NULL` is not true:
 
@@ -967,7 +971,7 @@ print(list(df.columns))
 df.head()
 ```
 
-Parameters work the same way as in lecture 12 - a `?` in the SQL and the values in
+**`?` parameters.** Parameters work the same way as in lecture 12 - a `?` in the SQL and the values in
 `params`:
 
 ```python run
@@ -983,7 +987,7 @@ with sqlite3.connect("data/portfolio.db") as con:
 df
 ```
 
-`parse_dates` turns the text dates of SQLite into real dates:
+**Real dates.** `parse_dates` turns the text dates of SQLite into real dates:
 
 ```python run
 import sqlite3
@@ -1031,7 +1035,7 @@ with engine.connect() as con:                               # also without panda
 engine.dispose()
 ```
 
-A DataFrame from the engine with **named** parameters - `text()` and a dictionary:
+**Named parameters.** A DataFrame from the engine with **named** parameters - `text()` and a dictionary:
 
 ```python run
 import pandas as pd
@@ -1075,7 +1079,7 @@ print(inspector.get_pk_constraint("ratings_history")["constrained_columns"])
 engine.dispose()
 ```
 
-With an engine, pandas reads a whole table by its name:
+**A whole table.** With an engine, pandas reads a whole table by its name:
 
 ```python run
 import pandas as pd

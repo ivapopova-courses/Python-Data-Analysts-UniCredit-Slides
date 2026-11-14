@@ -92,7 +92,7 @@ for name, sql in con.execute("SELECT name, sql FROM sqlite_master WHERE type = '
 con.close()
 ```
 
-The column names and types of one table - `PRAGMA table_info` (in SAS: `PROC
+**The columns of a table.** The column names and types of one table - `PRAGMA table_info` (in SAS: `PROC
 CONTENTS`):
 
 ```python run
@@ -104,7 +104,7 @@ for cid, name, col_type, notnull, default, pk in con.execute("PRAGMA table_info(
 con.close()
 ```
 
-The number of rows of every table - the table names come from **your** fixed list, so
+**Rows per table.** The number of rows of every table - the table names come from **your** fixed list, so
 they can be put into the SQL text (values never - section 3):
 
 ```python run
@@ -222,7 +222,7 @@ con.close()
 ```
 :::
 
-A mistake in the SQL is an exception like any other ([lecture 8](./08-errors-and-files.md#_1-errors-and-exceptions)) - in SQLite an
+**An error in the SQL.** A mistake in the SQL is an exception like any other ([lecture 8](./08-errors-and-files.md#_1-errors-and-exceptions)) - in SQLite an
 `OperationalError`, with the message of the database:
 
 ```python run
@@ -277,7 +277,7 @@ print([dict(zip(columns, row)) for row in rows])
 con.close()
 ```
 
-Or let SQLite give each row **by name** - `row_factory = sqlite3.Row`:
+**Rows by name.** Or let SQLite give each row **by name** - `row_factory = sqlite3.Row`:
 
 ```python run
 import sqlite3
@@ -329,7 +329,7 @@ print(start, type(start))
 print((date(2026, 9, 30) - date.fromisoformat(start)).days, "days")
 ```
 
-(`start, = ...` unpacks a tuple of one value.) `NULL` comes back as `None`:
+**`NULL` and `None`.** (`start, = ...` unpacks a tuple of one value.) `NULL` comes back as `None`:
 
 ```python run
 import sqlite3
@@ -362,7 +362,7 @@ with sqlite3.connect("data/portfolio.db") as con:
 print(rows)
 ```
 
-A one-value tuple needs the comma: `(3,)`. With many parameters, named ones are easier
+**Named parameters.** A one-value tuple needs the comma: `(3,)`. With many parameters, named ones are easier
 to read - `:name` and a dictionary:
 
 ```python run
@@ -402,7 +402,7 @@ print(n_old, n_month, len(first_ids))
 ```
 :::
 
-A query with parameters inside a function is a reusable report - the function of
+**A reusable report.** A query with parameters inside a function is a reusable report - the function of
 [session 4](./04-functions.md), the SQL of today:
 
 ```python run
@@ -751,7 +751,7 @@ print(url)                                            # the password is masked
 print(url.render_as_string(hide_password=True))
 ```
 
-The path of the database is a setting too: from an environment variable, with a
+**The path as a setting.** The path of the database is a setting too: from an environment variable, with a
 default - the script runs unchanged on another computer:
 
 ```python run
@@ -850,7 +850,7 @@ print(con.execute("SELECT COUNT(*), ROUND(SUM(outstanding), 2) FROM stage3").fet
 con.close()
 ```
 
-A `NOT NULL` column refuses a missing value - the database checks the data too:
+**`NOT NULL`.** A `NOT NULL` column refuses a missing value - the database checks the data too:
 
 ```python run
 import sqlite3
@@ -865,7 +865,7 @@ except sqlite3.IntegrityError as error:
 con.close()
 ```
 
-`executemany` also takes **dictionaries** with named parameters - the rows of
+**Rows of a CSV file into a table.** `executemany` also takes **dictionaries** with named parameters - the rows of
 `csv.DictReader` ([lecture 8](./08-errors-and-files.md#read-csv-reader-and-csv-dictreader)) go straight into a table:
 
 ```python run
@@ -882,7 +882,7 @@ print(con.execute("SELECT grade, pd_max FROM rating_scale WHERE rating >= 8").fe
 con.close()
 ```
 
-A log table with an automatic id - `INTEGER PRIMARY KEY` numbers the rows; `lastrowid`
+**An automatic id.** A log table with an automatic id - `INTEGER PRIMARY KEY` numbers the rows; `lastrowid`
 gives the id of the row just inserted:
 
 ```python run
@@ -898,7 +898,7 @@ print(run_id, con.execute("SELECT * FROM run_log").fetchall())
 con.close()
 ```
 
-To keep a changed copy, write it to a **file** - `backup` into a new database file:
+**Save to a file.** To keep a changed copy, write it to a **file** - `backup` into a new database file:
 
 ```python run
 import sqlite3
@@ -945,7 +945,7 @@ With a real database, the data is on a server, often millions of rows. Moving al
 to your laptop to filter them there is slow. The rule: **filter, join and aggregate in
 SQL**; take only the result into Python - the same idea as SAS pass-through.
 
-The totals by stage, two ways - the same numbers. The Python way keeps a small list
+**Totals by stage, two ways.** The totals by stage, two ways - the same numbers. The Python way keeps a small list
 `[count, sum]` per stage in a `defaultdict` ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
 
 ```python run
@@ -965,7 +965,7 @@ print(in_sql)
 print([(s, n, round(t, 2)) for s, (n, t) in sorted(totals.items())])
 ```
 
-`HAVING` and `CASE WHEN` (in Python: [session 2](./02-conditions-and-loops.md#case-when-in-python)), run by the database:
+**Filters and labels in SQL.** `HAVING` and `CASE WHEN` (in Python: [session 2](./02-conditions-and-loops.md#case-when-in-python)), run by the database:
 
 ```python run
 import sqlite3
@@ -986,7 +986,7 @@ with sqlite3.connect("data/portfolio.db") as con:
         print(row)
 ```
 
-How much faster is the database? A small test - with 400 rows the difference is small,
+**The speed.** How much faster is the database? A small test - with 400 rows the difference is small,
 with millions on a server it is minutes against seconds:
 
 ```python run
@@ -1087,7 +1087,7 @@ with sqlite3.connect("data/portfolio.db") as con:
 A common pattern: SQL for the **data** (filter, join, aggregate), Python for the
 **rules** and the **report**.
 
-Two sources together: the exposure per client from the database, the names from the
+**The database and a file.** Two sources together: the exposure per client from the database, the names from the
 register file of [lecture 7](./07-text-and-regex.md#_5-cleaning-identifiers-and-names) - joined in Python with a dictionary:
 
 ```python run
@@ -1148,7 +1148,7 @@ with sqlite3.connect("data/portfolio.db") as con:
 print(pieces, "pieces,", rows, "rows,", f"{total:,.2f}")
 ```
 
-pandas does the same with `chunksize`: `read_sql` then returns the DataFrames one by
+**In pandas.** pandas does the same with `chunksize`: `read_sql` then returns the DataFrames one by
 one:
 
 ```python run
@@ -1209,7 +1209,7 @@ with sqlite3.connect("data/portfolio.db") as con:
         print(row)
 ```
 
-A running total per client - in SAS, `RETAIN` with `BY`:
+**A window function.** A running total per client - in SAS, `RETAIN` with `BY`:
 
 ```python run
 import sqlite3

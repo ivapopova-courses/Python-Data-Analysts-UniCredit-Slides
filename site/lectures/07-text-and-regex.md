@@ -91,7 +91,7 @@ print(repr(client_id))
 This is the most common mistake of today: a method call without `=`. `repr()` (or
 `!r` in an f-string) shows the quotes, so you can see the spaces.
 
-The columns of the new file:
+**The new file.** The columns of the new file:
 
 ```python run
 import csv
@@ -134,7 +134,7 @@ print(name.capitalize())     # only the first letter of the string
 | `LOWCASE(s)` | `LOWER(s)` | `s.lower()` |
 | `PROPCASE(s)` | `INITCAP(s)` (Oracle, PostgreSQL) | `s.title()` |
 
-To compare two texts without the case, make **both** sides lower case (or both upper
+**Compare without the case.** To compare two texts without the case, make **both** sides lower case (or both upper
 case):
 
 ```python run
@@ -168,7 +168,7 @@ print(repr(city.lstrip()))      # LEFT in SAS, LTRIM in SQL
 print(repr(city.rstrip()))      # TRIM in SAS, RTRIM in SQL
 ```
 
-With an argument, `strip` removes **those characters** from the ends (any of them,
+**Strip given characters.** With an argument, `strip` removes **those characters** from the ends (any of them,
 in any order) - not a word:
 
 ```python run
@@ -213,7 +213,7 @@ print("eur" in comment)                        # case matters
 print("eur" in comment.lower())
 ```
 
-`startswith` and `endswith` also take a **tuple** of options - "starts with one of
+**Several prefixes at once.** `startswith` and `endswith` also take a **tuple** of options - "starts with one of
 these":
 
 ```python run
@@ -257,7 +257,7 @@ for s in ["131234567", "12O.50", "EUR", "BG80", ""]:
 | `s.isalpha()` | letters | `NOTALPHA(s) = 0` |
 | `s.isalnum()` | letters or digits | `NOTALNUM(s) = 0` |
 
-Check an id by its parts - "an L and six digits":
+**Check a loan id.** Check an id by its parts - "an L and six digits":
 
 ```python run
 def is_loan_id(s):
@@ -303,7 +303,7 @@ print("a  b".split())              # ['a', 'b']
 print("  Iron   Retail ".split())
 ```
 
-A second argument limits the number of cuts. `rsplit` cuts from the right - the last
+**Limit the cuts.** A second argument limits the number of cuts. `rsplit` cuts from the right - the last
 word of a company name is its legal form:
 
 ```python run
@@ -315,7 +315,7 @@ base, form = name.rsplit(" ", 1)
 print(base, "|", form)
 ```
 
-`partition` cuts at the **first** separator and always gives three parts: the text
+**Cut once: `partition`.** `partition` cuts at the **first** separator and always gives three parts: the text
 before, the separator, the text after. It is handy for `key=value`:
 
 ```python run
@@ -372,7 +372,7 @@ print(iban.replace(" ", ""))             # remove all spaces: COMPRESS(iban) in 
 print("a-b-c".replace("-", "/", 1))      # only the first one
 ```
 
-Several `replace` calls in a row run from left to right - each one works on the
+**Replace in steps.** Several `replace` calls in a row run from left to right - each one works on the
 result of the one before:
 
 ```python run
@@ -392,7 +392,7 @@ print("BG165960351".removeprefix("BG"))
 print("loans_2026-09.csv".removesuffix(".csv"))
 ```
 
-This is not the same as `strip("gr. ")`. `strip` removes the **characters** g, r, `.`
+**A trap: `strip` is not `removeprefix`.** This is not the same as `strip("gr. ")`. `strip` removes the **characters** g, r, `.`
 and space from both ends, as long as it finds them:
 
 ```python run
@@ -455,7 +455,7 @@ for raw in ["c0014", "C 0009", "C-0026", "C17", " C0011", "X0001", "C"]:
     print(f"{raw!r:>10} -> {clean_client_id(raw)}")
 ```
 
-On the whole file - how many ids needed a fix, and are they unique now?
+**How many ids were fixed.** On the whole file - how many ids needed a fix, and are they unique now?
 
 ```python run
 import csv
@@ -516,7 +516,7 @@ for raw in ["175591301", "144 229 539", "BG165960351", "1965730713386", "1234567
     print(f"{raw!r:>18} -> {clean_eik(raw)}")
 ```
 
-People write an IBAN in groups of 4; systems want it without spaces. A Bulgarian
+**Clean an IBAN.** People write an IBAN in groups of 4; systems want it without spaces. A Bulgarian
 IBAN has 22 characters and starts with `BG`:
 
 ```python run
@@ -540,7 +540,7 @@ Is the cleaning done? Count the values: how many different spellings, how many r
 each. In SQL this is `SELECT city, COUNT(*) ... GROUP BY city`; in SAS it is
 `PROC FREQ`. The result is a table **value -> count** - in Python, a dictionary.
 
-By hand first, on a small list, so you can follow each step:
+**Counting by hand.** By hand first, on a small list, so you can follow each step:
 
 ```python run
 regions = ["Ruse", "Varna", "Ruse"]
@@ -557,7 +557,7 @@ so far. Add one and store the new count under the same key.
 **Grouping by hand:** [2. Count with `get`](../animations/groupingByHand.html#2){target="_blank"}
 :::
 
-Counting is so common that the module `collections` (it comes with Python) has a
+**With `Counter`.** Counting is so common that the module `collections` (it comes with Python) has a
 dictionary made for it: **`Counter`**. Give it the values, and it counts them:
 
 ```python run
@@ -577,7 +577,7 @@ A `Counter` is a dictionary: `items()`, `sorted(...)` and `dict(counts)` work as
 missing key gives `0` instead of a `KeyError`, and `most_common(n)` gives the `n`
 largest counts, largest first.
 
-On the portfolio - the loans per product, from a generator expression
+**Loans per product.** On the portfolio - the loans per product, from a generator expression
 ([session 5](./05-lists-advanced.md#_3-generator-expressions-no-list-in-memory)), without a list in memory:
 
 ```python run
@@ -591,7 +591,7 @@ print(products.most_common())
 print(sum(products.values()), "loans")
 ```
 
-You can also start with an empty `Counter()` and add one value at a time - useful in
+**Count in a loop.** You can also start with an empty `Counter()` and add one value at a time - useful in
 a loop that does more than counting. `+= 1` works for a new key too, because the
 missing key starts at `0`. Two counters are equal (`==`) when they have the same
 values with the same counts:
@@ -607,7 +607,7 @@ print(late)
 print(late == Counter(["consumer", "overdraft"]))
 ```
 
-The trap: `"Sofia"`, `"sofia"` and `"Sofia "` are three different keys. A `GROUP BY` in
+**Clean before you count.** The trap: `"Sofia"`, `"sofia"` and `"Sofia "` are three different keys. A `GROUP BY` in
 SQL has the same problem. Clean the key **before** you count:
 
 ```python run
@@ -660,7 +660,7 @@ clean = Counter(clean_city(c) for c in cities)
 print(len(clean), "after:", dict(clean))
 ```
 
-Compare with `clients.csv`, where the region is clean: the counts must be the same.
+**Check against `clients.csv`.** Compare with `clients.csv`, where the region is clean: the counts must be the same.
 
 ```python run
 import csv
@@ -704,7 +704,7 @@ print(float(" 1234567.89 "))     # spaces at the ends are fine
 print(float("1 234 567,89"))     # ValueError: could not convert string to float
 ```
 
-When you know the format of the source, bring the text to the Python format with
+**A known format.** When you know the format of the source, bring the text to the Python format with
 `replace`, then convert. The Bulgarian format has spaces between the thousands and a
 decimal comma:
 
@@ -776,7 +776,7 @@ print(f"{d:%d.%m.%Y}")                                      # the codes work in 
 
 `strptime` gives a `datetime` (a day **and** a time); `.date()` keeps only the day.
 
-A text that does not fit the format is a `ValueError`. An impossible date is one
+**A wrong date.** A text that does not fit the format is a `ValueError`. An impossible date is one
 too:
 
 ```python run
@@ -855,7 +855,7 @@ print(re.search(r"USD", comment))     # None
 The pattern `\d{2}\.\d{2}\.\d{4}` reads: two digits, a point, two digits, a point,
 four digits. Section 8 explains every part.
 
-In an `if`, a match object counts as true and `None` as false. So `if
+**A match in an `if`.** In an `if`, a match object counts as true and `None` as false. So `if
 re.search(...):` asks "is it there?" - like `if prxmatch(...) > 0` in SAS:
 
 ```python run
@@ -868,7 +868,7 @@ for comment in ["Payment of 1 250,00 EUR received.", "Annual review done; no fin
         print("no amount:     ", comment)
 ```
 
-The same test on the loan portfolio. The file `loan_comments.csv` (new today) has the
+**Dates in the comments.** The same test on the loan portfolio. The file `loan_comments.csv` (new today) has the
 comments of the credit officers. How many of them mention a date in the format
 `dd.mm.yyyy`?
 
@@ -960,7 +960,7 @@ print(re.findall(r"BG\d{2}", "BG80 bg12 BG7"))
 print(re.findall(r"colou?r", "color colour"))                       # the u is optional
 ```
 
-On the client register: the names typed with two or more spaces in a row - `\s{2,}`:
+**Double spaces in names.** On the client register: the names typed with two or more spaces in a row - `\s{2,}`:
 
 ```python run
 import csv
@@ -1102,7 +1102,7 @@ print(f"{year}-{month}-{day}")
 
 In SAS: `PRXPOSN(re, 1, text)` after `PRXMATCH`.
 
-With **one** group in the pattern, `findall` returns the text of the group. With
+**`findall` with groups.** With **one** group in the pattern, `findall` returns the text of the group. With
 **several** groups, it returns a list of tuples:
 
 ```python run
@@ -1126,7 +1126,7 @@ text = "Payment 1 250,00 EUR; payment 99,50 USD; fee 10,00 BGN"
 print(re.findall(r"\d+,\d{2} (EUR|USD)", text))
 ```
 
-The brackets also made a group, so `findall` returned only the currency. Write
+**Brackets without a group.** The brackets also made a group, so `findall` returned only the currency. Write
 `(?:...)` for brackets that only **keep parts together** and are not a group:
 
 ```python run
@@ -1181,7 +1181,7 @@ for name, values in tests.items():
   such characters, a point, 2 or more letters. This is a practical pattern, not the
   full official rule.
 
-A whole column - the IBANs of the register. Clean them as in section 5, then check
+**All IBANs of the register.** A whole column - the IBANs of the register. Clean them as in section 5, then check
 the shape:
 
 ```python run
@@ -1223,7 +1223,7 @@ amount = float(m.group(1).replace(" ", "").replace(",", "."))
 print(amount, m.group(3), m.group(4))
 ```
 
-On the file: the total of the payments received in September 2026.
+**The September payments.** On the file: the total of the payments received in September 2026.
 
 ```python run
 import csv
@@ -1351,7 +1351,7 @@ homework.
 print(repr("EUR".ljust(6)), repr("EUR".rjust(6)), repr("EUR".center(7, "*")))
 ```
 
-A fixed-width line - some old systems still want them. The f-string format spec of
+**Aligned columns.** A fixed-width line - some old systems still want them. The f-string format spec of
 [session 1](./01-intro-syntax-types.md#formatting-the-values) does the same, and is easier to read:
 
 ```python run
@@ -1362,7 +1362,7 @@ for loan_id, product, amount in rows:
     print(f"{loan_id:<8}{product:<14}{amount:>14.2f}")
 ```
 
-The same on the loan portfolio - a small text report with a title, a header and the
+**A text report.** The same on the loan portfolio - a small text report with a title, a header and the
 amounts aligned on the right:
 
 ```python run
@@ -1403,7 +1403,7 @@ print("C-00 26".translate(drop))
 print("131 234-567.".translate(drop))
 ```
 
-Why not two `replace` calls? Because the second call also changes the result of the
+**A trap: two `replace` calls.** Why not two `replace` calls? Because the second call also changes the result of the
 first one:
 
 ```python run
@@ -1412,7 +1412,7 @@ print(s.replace(",", ".").replace(".", ","))     # '1,234,56' - wrong
 print(s.replace(",", "X").replace(".", ",").replace("X", " "))   # a temporary marker
 ```
 
-And back: a number in the Bulgarian format for a report. The format spec gives the
+**Back to the Bulgarian format.** And back: a number in the Bulgarian format for a report. The format spec gives the
 English format; then swap the characters with `translate`:
 
 ```python run
@@ -1449,7 +1449,7 @@ The `turnover` column of the register has several formats:
 | `1234567.89` | plain | 1234567.89 |
 | `EUR 7 729 271` | a currency, no decimals | 7729271.0 |
 
-The rule: the **last** of `,` and `.` is the decimal separator - if it has one to two
+**The rule in code.** The rule: the **last** of `,` and `.` is the decimal separator - if it has one to two
 digits after it; everything else is a thousands separator.
 
 ```python run
@@ -1480,7 +1480,7 @@ write it down - do not guess per value.
 The SAS informats do the same with a fixed rule per column: `COMMA12.` for
 `1,234,567.89` and `COMMAX12.` for `1.234.567,89`.
 
-On the file - the total turnover of the companies:
+**The total turnover.** On the file - the total turnover of the companies:
 
 ```python run
 import csv
@@ -1552,7 +1552,7 @@ For data, prefer numeric formats. If a source has English month names, a small
 dictionary `{"Jan": 1, ...}` ([session 6](./06-dictionaries.md)) is the safe way.
 :::
 
-The first and the last day of a month - the **report dates** of risk reporting:
+**Month start and month end.** The first and the last day of a month - the **report dates** of risk reporting:
 
 ```python run
 from datetime import date, timedelta
@@ -1567,7 +1567,7 @@ print(first, last)
 (Adding **months** is not in `datetime`: a month has no fixed length. [Lecture 15](./15-pandas-reports.md#month-ends-intnx)
 does it with pandas; [lecture 9](./09-modules-and-git.md#datetime-and-calendar-report-dates) shows the standard library.)
 
-On the file - how long each client has been a client:
+**Client tenure.** On the file - how long each client has been a client:
 
 ```python run
 import csv
@@ -1628,7 +1628,7 @@ print(utf8.decode("utf-8"), cp1251.decode("cp1251"))
 - **cp1251** (Windows-1251) - the old Windows encoding for Cyrillic. Exports from old
   systems and Excel files saved as "CSV" on a Bulgarian Windows are often cp1251.
 
-Reading with the wrong encoding gives either an error, or **mojibake** - wrong
+**Mojibake.** Reading with the wrong encoding gives either an error, or **mojibake** - wrong
 letters:
 
 ```python run
@@ -1645,7 +1645,7 @@ cp1251), and the same script gives different results on different computers. (Fr
 Python 3.15 on, UTF-8 is the default everywhere. Still write it: the script may run
 on an older Python.)
 
-The file `regions_bg.csv` is saved in **cp1251**:
+**Read a cp1251 file.** The file `regions_bg.csv` is saved in **cp1251**:
 
 ```python run
 with open("data/regions_bg.csv", encoding="cp1251") as file:
@@ -1658,7 +1658,7 @@ with open("data/regions_bg.csv", encoding="utf-8", errors="replace") as file:
 `errors="replace"` puts `?` (or `�`) instead of a byte that cannot be read,
 instead of stopping. Use it only to **look** at a file, never to load data.
 
-One more detail: Excel saves "CSV UTF-8" with a **BOM** - three bytes `EF BB BF` at the
+**The BOM of Excel.** One more detail: Excel saves "CSV UTF-8" with a **BOM** - three bytes `EF BB BF` at the
 start. Read such a file with `encoding="utf-8-sig"`, or the first column name gets an
 invisible character in front:
 
@@ -1717,7 +1717,7 @@ for name in ["София", "Стара Загора", "Пловдив", "Шум�
 letter can become two or three. (The full rules have a few exceptions, for example
 `-ия` at the end of a word is `-ia`: `София` -> `Sofia`, not `Sofiya`.)
 
-Another trap of text from many sources: the same letter can be stored in two ways -
+**One letter, two forms.** Another trap of text from many sources: the same letter can be stored in two ways -
 `"й"` as one character, or `"и"` plus a combining mark. They look the same, but are
 not `==`. `unicodedata.normalize("NFC", s)` brings both to the same form:
 
@@ -1764,7 +1764,7 @@ print(re.findall(r"\d+", "a12b3"))       # ['12', '3'] - what was meant
 
 When you want "at least one", write `+`, not `*`.
 
-Quantifiers are **greedy**: they take as much text as they can, and give back only
+**Greedy.** Quantifiers are **greedy**: they take as much text as they can, and give back only
 what is needed for the rest of the pattern to match:
 
 ```python run
@@ -1774,7 +1774,7 @@ text = 'name="North Hotels" form="ET"'
 print(re.findall(r'".*"', text))       # from the first " to the LAST "
 ```
 
-A `?` after the quantifier makes it **lazy**: as little as possible.
+**Lazy.** A `?` after the quantifier makes it **lazy**: as little as possible.
 
 ```python run
 import re
@@ -1909,7 +1909,7 @@ print(m.groupdict())                    # all groups as a dictionary
 print(float(m["new"]) - float(m["old"]))     # m["new"] is the same as m.group("new")
 ```
 
-A group that did not take part in the match gives `None` - for example an optional
+**An optional group.** A group that did not take part in the match gives `None` - for example an optional
 part:
 
 ```python run
@@ -1921,7 +1921,7 @@ print(PAYMENT.search("paid 99,50").groups())          # the currency is missing
 print(PAYMENT.search("paid 99,50").groups("EUR"))     # a default for missing groups
 ```
 
-A list of records from a text - `finditer` with named groups and `groupdict()`, one
+**Records from a text.** A list of records from a text - `finditer` with named groups and `groupdict()`, one
 dictionary per match ([session 6](./06-dictionaries.md)):
 
 ```python run
@@ -1976,7 +1976,7 @@ text = "Payment of 2 069,77 EUR received; then 45 544,40 EUR."
 print(re.sub(r"(\d[\d ]*,\d{2}) EUR", to_thousands, text))
 ```
 
-Normalise all legal forms in company names with one pattern and a dictionary:
+**Legal forms.** Normalise all legal forms in company names with one pattern and a dictionary:
 
 ```python run
 import re
@@ -2034,7 +2034,7 @@ for c in comments[:6]:
     print(c["comment"])
 ```
 
-Classify every comment with a dictionary **type -> pattern**: the first pattern
+**Classify the comments.** Classify every comment with a dictionary **type -> pattern**: the first pattern
 that matches gives the type - like a `CASE WHEN ... LIKE` chain in SQL:
 
 ```python run
@@ -2078,7 +2078,7 @@ print(re.findall(BG_AMOUNT, text))
 print([bool(re.fullmatch(BG_AMOUNT, s)) for s in ["1 234,56", "1234,56", "12 34,56", "1 234,5"]])
 ```
 
-Amounts are written in different styles: `2 069,77 EUR`, `20,960.03 EUR`, `99,400
+**Amounts in any style.** Amounts are written in different styles: `2 069,77 EUR`, `20,960.03 EUR`, `99,400
 EUR`. One pattern for "digits with spaces, commas and points, then a currency", and
 the `parse_amount` of [Numbers in any format](#numbers-in-any-format) for the number:
 
@@ -2103,7 +2103,7 @@ for text in ["Payment of 2 069,77 EUR received on 26.04.2026.",
         print(f"{number!r:<14}{currency} -> {parse_amount(number)}")
 ```
 
-The total of the payments received in September 2026:
+**The September payments.** The total of the payments received in September 2026:
 
 ```python run
 import csv
@@ -2195,7 +2195,7 @@ print(checked, "IBANs in comments,", differ, "differ from the register")
 
 (`re.sub(r"\D", "", ...)` keeps only the digits - section 9.)
 
-The same check for the EIKs in the guarantee comments - are they EIKs of companies
+**EIKs in the comments.** The same check for the EIKs in the guarantee comments - are they EIKs of companies
 in the register?
 
 ```python run
@@ -2254,7 +2254,7 @@ print(re.findall(r"\d+\.\d{2}(?!%)\b", text))          # numbers not followed by
 print(re.findall(r"(?<=IBAN )\S+", "to IBAN BG46FAKE96787581635390 confirmed"))
 ```
 
-Long patterns are hard to read. With `re.VERBOSE` (`re.X`), spaces in the pattern are
+**A readable pattern.** Long patterns are hard to read. With `re.VERBOSE` (`re.X`), spaces in the pattern are
 ignored and `#` starts a comment - the pattern can be written on several lines:
 
 ```python run

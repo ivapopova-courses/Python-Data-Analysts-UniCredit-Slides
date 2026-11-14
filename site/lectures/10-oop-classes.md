@@ -65,7 +65,7 @@ print(amounts)
 print(type(len), type(Exception("x")))
 ```
 
-A **class** is the blueprint of a type: `str`, `list`, `dict` are classes. An
+**Classes you already use.** A **class** is the blueprint of a type: `str`, `list`, `dict` are classes. An
 **object** (or **instance**) is one thing made from the blueprint: `"c0014"` is an
 instance of `str`. A DataFrame ([lecture 13](./13-numpy-pandas-intro.md#_4-dataframe)) is an instance of the class `DataFrame`,
 and `df.groupby(...)` is one of its methods.
@@ -75,7 +75,7 @@ print(isinstance("c0014", str), isinstance([1, 2], list), isinstance(5, float))
 print(str.upper("abc"), "abc".upper())          # a method is a function of the class
 ```
 
-Even numbers and functions are objects, with attributes and methods:
+**Everything is an object.** Even numbers and functions are objects, with attributes and methods:
 
 ```python run
 print((651927).bit_length(), (2.5).is_integer(), (3.0).is_integer())
@@ -83,7 +83,7 @@ print(print.__name__, len.__doc__.splitlines()[0])
 print(int.__add__(2, 3), 2 + 3)                # + is a method call underneath
 ```
 
-The objects of the libraries you use have attributes too. A `csv.DictReader` knows
+**Objects of a library.** The objects of the libraries you use have attributes too. A `csv.DictReader` knows
 its column names and the line it has read:
 
 ```python run
@@ -97,7 +97,7 @@ with open("data/loans.csv", encoding="utf-8") as file:
     print(reader.line_num, first["loan_id"])
 ```
 
-`isinstance` with a tuple tests for several types at once - the usual check of an
+**Several types at once.** `isinstance` with a tuple tests for several types at once - the usual check of an
 input. One trap: `True` and `False` **are** integers in Python:
 
 ```python run
@@ -175,7 +175,7 @@ print(loan.outstanding, loan.comment)
 print(vars(loan))                         # all attributes of the object, as a dict
 ```
 
-Two objects with the same data are still **two** objects. And two names can point
+**Two objects, or one?** Two objects with the same data are still **two** objects. And two names can point
 to **one** object ([session 3](./03-lists-tuples-sets.md#two-names-one-list)) - a change through one name is seen through the other:
 
 ```python run
@@ -302,7 +302,7 @@ loan = Loan("L000002", 1977400.0, 651927.30, 5.44, days_past_due=35)
 print(loan.repaid_share(), loan.yearly_interest(), loan.is_late(), loan.is_late(limit=90))
 ```
 
-`loan.is_late(limit=90)` is, inside, `Loan.is_late(loan, limit=90)`: Python passes the
+**What `self` is.** `loan.is_late(limit=90)` is, inside, `Loan.is_late(loan, limit=90)`: Python passes the
 object as `self`. That is why the definition has one parameter more than the call:
 
 ```python run
@@ -322,7 +322,7 @@ print([l.loan_id for l in loans if l.is_late()])
 print([l.loan_id for l in sorted(loans, key=lambda l: l.days_past_due, reverse=True)])
 ```
 
-On the portfolio: the late loans per product, with the method doing the test and a
+**Late loans per product.** On the portfolio: the late loans per product, with the method doing the test and a
 `Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter)):
 
 ```python run
@@ -346,7 +346,7 @@ print(Counter(l.product for l in loans if l.is_late()))
 print(Counter(l.product for l in loans if l.is_late(limit=90)))
 ```
 
-Two traps with methods. A method written **without** `self` cannot be called on an
+**A trap: no `self`.** Two traps with methods. A method written **without** `self` cannot be called on an
 object - Python passes the object anyway:
 
 ```python run
@@ -362,7 +362,7 @@ Loan(651927.30).outstanding_k()
 # TypeError: Loan.outstanding_k() takes 0 positional arguments but 1 was given
 ```
 
-And a method **without the brackets** is not called - you get the method itself, and
+**A trap: no brackets.** And a method **without the brackets** is not called - you get the method itself, and
 no error:
 
 ```python run
@@ -540,7 +540,7 @@ print([loan, Loan("L000003", 644.25)])     # a list shows __repr__ of the items
 print(f"{loan} | {loan!r}")
 ```
 
-Always write at least `__repr__` - the first time you debug a list of objects, you
+**`__repr__` and `__str__` together.** Always write at least `__repr__` - the first time you debug a list of objects, you
 will be glad. With `__str__`, a report loop needs no formatting code of its own:
 
 ```python run
@@ -563,7 +563,7 @@ for c in clients:
 print(clients)
 ```
 
-With `__str__`, the largest loans of the file are a report in two lines:
+**A report in two lines.** With `__str__`, the largest loans of the file are a report in two lines:
 
 ```python run
 import csv
@@ -589,7 +589,7 @@ for loan in sorted(loans, key=lambda l: l.outstanding, reverse=True)[:3]:
 print(loans[:2])
 ```
 
-`__str__` and `__repr__` must **return** a string - not print it, and not return a
+**A trap: print instead of return.** `__str__` and `__repr__` must **return** a string - not print it, and not return a
 number:
 
 ```python run
@@ -641,7 +641,7 @@ print(a.expected_loss(0.02), b.expected_loss(0.02))
 `self.LGD` finds the class attribute, because the object has no own `LGD`: Python
 looks in the object first, then in its class.
 
-On the whole portfolio - the expected loss with a stage-based PD, then a stress
+**EL and a stress scenario.** On the whole portfolio - the expected loss with a stage-based PD, then a stress
 scenario with a higher LGD for **all** loans, changed in one place:
 
 ```python run
@@ -668,7 +668,7 @@ Loan.LGD = 0.60
 print(f"stress LGD {Loan.LGD:.2f}: {sum(l.expected_loss() for l in loans):>14,.2f}")
 ```
 
-A class attribute is a good place for the **nomenclature** a method needs - one copy
+**A nomenclature in the class.** A class attribute is a good place for the **nomenclature** a method needs - one copy
 for all objects:
 
 ```python run
@@ -782,7 +782,7 @@ for args in [("X1", 100.0, 50.0), ("L000002", 100.0, 150.0)]:
 This is the "validation rules" part of the client's nomenclature idea: the rules sit
 in the class, and **every** object that exists has passed them.
 
-With a file, the loader of [lecture 8](./08-errors-and-files.md#_10-loading-data-with-bad-records) decides what to do with a row that fails: one
+**Load a file with checks.** With a file, the loader of [lecture 8](./08-errors-and-files.md#_10-loading-data-with-bad-records) decides what to do with a row that fails: one
 `try` per row, and a list of the rejected rows:
 
 ```python run
@@ -829,7 +829,7 @@ loan.outstanding = 0.0                            # the loan is paid off
 print(loan.repaid)                                # still 10024.89 - out of date
 ```
 
-`@property` above a method makes it look like an **attribute** - no brackets. Use it
+**A computed attribute.** `@property` above a method makes it look like an **attribute** - no brackets. Use it
 for values computed from the other attributes:
 
 ```python run
@@ -855,7 +855,7 @@ loan.days_past_due = 120
 print(loan.dpd_bucket, loan.is_defaulted)       # always up to date
 ```
 
-On the file - how many loans are defaulted, and their outstanding, from the property:
+**Defaulted loans.** On the file - how many loans are defaulted, and their outstanding, from the property:
 
 ```python run
 import csv
@@ -878,7 +878,7 @@ defaulted = [l for l in loans if l.is_defaulted]
 print(len(defaulted), "defaulted loans,", f"{sum(l.outstanding for l in defaulted):,.2f} EUR")
 ```
 
-`@property` is a **decorator** (lecture 4, Self-study): it turns the method into a
+**A read-only attribute.** `@property` is a **decorator** (lecture 4, Self-study): it turns the method into a
 read-only attribute. A computed value never gets out of date, because it is computed
 each time it is read - like a computed column of a SQL view.
 
@@ -897,7 +897,7 @@ print(loan.outstanding_k)
 loan.outstanding_k = 5                          # AttributeError: a property without a setter is read-only
 ```
 
-`hasattr` and `getattr` ask an object for an attribute by its **name** - handy for
+**Attributes by name.** `hasattr` and `getattr` ask an object for an attribute by its **name** - handy for
 reports that take the list of columns from a setting:
 
 ```python run
@@ -992,7 +992,7 @@ equal). Methods and properties are written as in a normal class.
 hints, [session 4](./04-functions.md#type-hints)). Check what matters in `__post_init__` (below).
 :::
 
-A row of `csv.DictReader` can go straight into a dataclass with `**` (it unpacks a
+**From a row to a dataclass.** A row of `csv.DictReader` can go straight into a dataclass with `**` (it unpacks a
 dictionary into keyword arguments: `Loan(**row)` is `Loan(loan_id=row["loan_id"], ...)`) - if
 the column names are the field names. Convert the types in `__post_init__` (below), or
 before:
@@ -1090,7 +1090,7 @@ print(bbb, bbb.pd_mid)
 bbb.pd_max = 0.5                           # FrozenInstanceError
 ```
 
-A frozen dataclass is also **hashable**: it can be a key of a dictionary or an item of
+**Frozen and hashable.** A frozen dataclass is also **hashable**: it can be a key of a dictionary or an item of
 a set ([session 6](./06-dictionaries.md#rules-for-keys-and-values)). To "change" it, make a new one with `dataclasses.replace`:
 
 ```python run
@@ -1157,7 +1157,7 @@ by_grade = {g.grade: g for g in scale}
 print(by_grade["CCC"].pd_max)
 ```
 
-Back to rows: `asdict` and `astuple` turn a dataclass into a dictionary or a tuple -
+**Dataclass to dict or tuple.** Back to rows: `asdict` and `astuple` turn a dataclass into a dictionary or a tuple -
 ready for `csv.DictWriter` ([lecture 8](./08-errors-and-files.md#write-csv-writer-and-csv-dictwriter)) or JSON. `fields` lists the fields:
 
 ```python run
@@ -1183,7 +1183,7 @@ writer.writerows(asdict(l) for l in loans)
 print(buffer.getvalue())
 ```
 
-A field can be left out of the `repr` or of the comparison - for example a long list,
+**Leave a field out.** A field can be left out of the `repr` or of the comparison - for example a long list,
 or a note:
 
 ```python run
@@ -1258,7 +1258,7 @@ print(client.exposure, client.max_days_past_due, len(client.loans))
 `max(..., default=0)` gives `0` when the client has no loans. Without `default=`,
 `max` of an empty sequence stops with a `ValueError`.
 
-All clients and loans from the two files - a dictionary of clients by id ([session 6](./06-dictionaries.md#a-dictionary-of-dictionaries-a-table-keyed-by-id)),
+**Clients with their loans.** All clients and loans from the two files - a dictionary of clients by id ([session 6](./06-dictionaries.md#a-dictionary-of-dictionaries-a-table-keyed-by-id)),
 then each loan is added to its client:
 
 ```python run
@@ -1300,7 +1300,7 @@ for c in top:
 print(sum(1 for c in clients.values() if not c.loans), "clients without loans")
 ```
 
-From the objects, the usual reports - exposure per segment, and the share of the
+**Reports from the objects.** From the objects, the usual reports - exposure per segment, and the share of the
 largest client in each segment (`defaultdict(list)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
 
 ```python run
@@ -1335,7 +1335,7 @@ for segment, members in sorted(by_segment.items()):
     print(f"{segment:<10}{total:>18,.2f}  largest {largest.client_id} {largest.exposure / total:6.1%}")
 ```
 
-The link can go both ways: each loan keeps its **client object**, so `loan.client.rating`
+**A link both ways.** The link can go both ways: each loan keeps its **client object**, so `loan.client.rating`
 reads the rating through the link - like a join that is done once. The EL of
 homework 4 again, 1,140,106.56:
 
@@ -1370,7 +1370,7 @@ print(loans[0].client, loans[0].client.rating)
 print(f"{sum(l.expected_loss(pd_of) for l in loans):,.2f}")
 ```
 
-The trap: a loan whose client is not in the clients file. `clients[r["client_id"]]`
+**A loan without a client.** The trap: a loan whose client is not in the clients file. `clients[r["client_id"]]`
 stops the whole load with a `KeyError`; `get` and a list of rejects ([lecture 8](./08-errors-and-files.md#the-reject-file-and-the-summary)) keep
 going and report it:
 
@@ -1474,7 +1474,7 @@ class works with the built-in functions and operators:
 | `item in x` | `x.__contains__(item)` |
 | `for item in x` | `x.__iter__()` |
 
-A portfolio that behaves like a container of loans:
+**A portfolio container.** A portfolio that behaves like a container of loans:
 
 ```python run
 from dataclasses import dataclass
@@ -1508,7 +1508,7 @@ print(sum(l.outstanding for l in p))
 print([l.loan_id for l in sorted(p, key=lambda l: l.outstanding)])
 ```
 
-To compare objects of a normal class, write `__eq__` and `__lt__`;
+**Compare objects.** To compare objects of a normal class, write `__eq__` and `__lt__`;
 `functools.total_ordering` writes `<=`, `>`, `>=` from those two:
 
 ```python run

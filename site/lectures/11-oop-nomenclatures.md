@@ -89,7 +89,7 @@ a SQL `CASE WHEN` there, a lookup table in a third place. Then:
   "Other";
 - every new dataset needs the mapping written again.
 
-Two reports with their own copy of the product groups - one copy has the new product,
+**Two copies, two totals.** Two reports with their own copy of the product groups - one copy has the new product,
 the other does not. The same loans, two different totals:
 
 ```python run
@@ -108,7 +108,7 @@ for name, groups in [("A", GROUPS_REPORT_A), ("B", GROUPS_REPORT_B)]:
     print(f"report {name}: business exposure {business:,.2f}")
 ```
 
-And a copy with a typo - `"credit card"` instead of `"credit_card"` - loses a whole
+**A copy with a typo.** And a copy with a typo - `"credit card"` instead of `"credit_card"` - loses a whole
 product, without an error (counted with a `Counter`, [lecture 7](./07-text-and-regex.md#counting-with-counter)):
 
 ```python run
@@ -173,7 +173,7 @@ print(stages)
 print(stages.lookup(3), stages.lookup(4, "unknown"))
 ```
 
-`date | None` means "a date, or `None`" ([session 4](./04-functions.md#type-hints); Python 3.10+). The metadata does
+**Metadata in every report.** `date | None` means "a date, or `None`" ([session 4](./04-functions.md#type-hints); Python 3.10+). The metadata does
 not change how the codes work - but it is printed with every report that uses them,
 so anybody can see **which** list was used:
 
@@ -198,7 +198,7 @@ for code, label in stages.codes.items():
     print(f"{code:<6}{label}")
 ```
 
-Two nomenclatures are **equal** when all their fields are equal - the dataclass
+**Equal nomenclatures.** Two nomenclatures are **equal** when all their fields are equal - the dataclass
 `__eq__` of [lecture 10](./10-oop-classes.md). The same codes with another version are **not** the same
 nomenclature:
 
@@ -218,7 +218,7 @@ c = Nomenclature("stage", {1: "performing", 2: "under-performing"}, "2026.2")
 print(a == b, a == c, a.codes == c.codes)
 ```
 
-A trap of dataclasses: an empty dictionary as a default is refused - it would be one
+**A trap: a dictionary as a default.** A trap of dataclasses: an empty dictionary as a default is refused - it would be one
 dictionary for all objects ([lecture 10](./10-oop-classes.md#_5-class-attributes)):
 
 ```python run
@@ -310,7 +310,7 @@ mapping["leasing"] = "Leasing"                 # a change outside ...
 print("leasing" in products.codes)             # ... does not reach the nomenclature
 ```
 
-A copy can still be changed through `nom.codes[...] = ...`. If nobody should change
+**A read-only view.** A copy can still be changed through `nom.codes[...] = ...`. If nobody should change
 the codes after the nomenclature is created, keep them behind a **read-only view** -
 `types.MappingProxyType` looks like a dictionary, but refuses changes:
 
@@ -365,7 +365,7 @@ for codes in [{"SOF": "Sofia", "Var": "Varna"}, {"SOF": ""}, {}]:
         print("rejected:", error)
 ```
 
-The pattern of the product codes: lower-case words with `_` - "Credit Card" is refused
+**A pattern for the codes.** The pattern of the product codes: lower-case words with `_` - "Credit Card" is refused
 at once, not discovered in a report a month later:
 
 ```python run
@@ -444,7 +444,7 @@ The check found a gap in the **nomenclature**, not in the data: `project_finance
 real product that the list does not know. Without the check, 21 loans - the largest of
 the portfolio - would get no product name in the report.
 
-The register of [lecture 7](./07-text-and-regex.md#cities-a-mapping-of-variants) against a nomenclature of the region names - first the raw
+**City names in the register.** The register of [lecture 7](./07-text-and-regex.md#cities-a-mapping-of-variants) against a nomenclature of the region names - first the raw
 city column, then after the cleaning function of [lecture 7](./07-text-and-regex.md#cities-a-mapping-of-variants):
 
 ```python run
@@ -567,7 +567,7 @@ print("stage_name" in loans[1])                 # the input rows are not changed
 
 `row | {...}` ([session 6](./06-dictionaries.md#several-at-once-update-and)) makes a **new** dictionary - the input stays as it was.
 
-The new column is ready for the usual reports - the number of loans per product
+**Reports with the new column.** The new column is ready for the usual reports - the number of loans per product
 **name**, and two nomenclatures one after the other (name, then group):
 
 ```python run
@@ -600,7 +600,7 @@ print(Counter(r["product_name"] for r in rows).most_common(3))
 print(Counter(r["group"] for r in rows))
 ```
 
-The new column, then a total per label - the outstanding per stage name, the SQL
+**A total per label.** The new column, then a total per label - the outstanding per stage name, the SQL
 `GROUP BY` (`defaultdict(float)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
 
 ```python run
@@ -881,7 +881,7 @@ bg_to_en = Nomenclature.from_csv("data/regions_bg.csv", "name_bg", "name_en", "r
 print(en_to_code.codes["Stara Zagora"], bg_to_en.codes["Русе"])
 ```
 
-A class method can also build a **first draft** of a nomenclature from the data itself -
+**A first draft from the data.** A class method can also build a **first draft** of a nomenclature from the data itself -
 the distinct values of a column, each code its own label. The owner then writes the
 real labels:
 
@@ -905,7 +905,7 @@ with open("data/clients.csv", encoding="utf-8") as file:
 print(len(regions.codes), list(regions.codes))
 ```
 
-The trap: a normal method called on the **class** has no object for `self`:
+**A trap: no object for `self`.** The trap: a normal method called on the **class** has no object for `self`:
 
 ```python run
 from dataclasses import dataclass
@@ -972,7 +972,7 @@ print(Nomenclature.clean_text("  credit   card "))       # usable without an obj
 `normalize` needs `self` (it reads `self.case`), so it is a normal method; `clean_text`
 needs nothing, so it is static.
 
-A class method knows **which** class it was called on - a subclass gets objects of the
+**Class methods and subclasses.** A class method knows **which** class it was called on - a subclass gets objects of the
 subclass, without writing its own `from_pairs`:
 
 ```python run
@@ -1121,7 +1121,7 @@ proc format;
 run;
 ```
 
-Everything else stays the same: a name, metadata, codes with labels, `apply`,
+**A subclass for bands.** Everything else stays the same: a name, metadata, codes with labels, `apply`,
 `validate`. Only `lookup` works differently. That is what **inheritance** is for: a
 **subclass** takes everything of its **base class**, and changes or adds only what is
 different:
@@ -1180,7 +1180,7 @@ print(isinstance(dpd, BandedNomenclature), isinstance(dpd, Nomenclature))
   Each pair of bands is unpacked at once: `(_, high, _)` from the first band,
   `(low, _, _)` from the next.
 
-The checks of the subclass find a gap between two bands - a value in the gap would get
+**A gap between bands.** The checks of the subclass find a gap between two bands - a value in the gap would get
 no bucket:
 
 ```python run
@@ -1209,7 +1209,7 @@ except ValueError as error:
     print(error)
 ```
 
-Python looks for a method first in the class of the object, then in its base classes,
+**The MRO.** Python looks for a method first in the class of the object, then in its base classes,
 in an order called the **MRO** (method resolution order):
 
 ```python run
@@ -1235,7 +1235,7 @@ print("lookup" in vars(BandedNomenclature), "apply" in vars(BandedNomenclature),
 `lookup` is found in `BandedNomenclature` itself; `apply` is not there, so Python takes
 it from `Nomenclature`. (`object` is the base of every class in Python.)
 
-`apply` was never written for bands - it comes from the base class and works:
+**`apply` from the base class.** `apply` was never written for bands - it comes from the base class and works:
 
 ```python run
 import csv
@@ -1314,7 +1314,7 @@ for pd_value in (0.0003, 0.0043, 0.02, 0.15, 1.0):
 `cls(...)` in the class method makes a `BandedNomenclature` - the class it was called
 on.
 
-A consistency check of the data: the PD of each client's rating (the middle of its
+**The PD maps back to the grade.** A consistency check of the data: the PD of each client's rating (the middle of its
 band) must map back to the client's own grade:
 
 ```python run
@@ -1335,7 +1335,7 @@ mismatches = [r for r in ratings if grade_of_pd(pd_of_rating[r]) != grade_of_rat
 print(len(ratings), "clients,", len(mismatches), "mismatches")
 ```
 
-An override can also **extend** the method of the base class with `super()` - here the
+**Extend with `super()`.** An override can also **extend** the method of the base class with `super()` - here the
 `repr` gets the number of bands:
 
 ```python run
@@ -1405,7 +1405,7 @@ print(products.lookup("project_finance"), len(products))
 Here nothing is overridden except `__post_init__` (with `super()`); the subclass only
 **adds**. Both are normal uses of inheritance.
 
-On the portfolio: the outstanding per product **group**, through `parent`:
+**Outstanding per product group.** On the portfolio: the outstanding per product **group**, through `parent`:
 
 ```python run
 import csv
@@ -1530,7 +1530,7 @@ print(rows[1])
 print({column: dict(c) for column, c in report.items()})
 ```
 
-Ask the registry what it knows - `in` and a list of the names, with special methods of
+**What the registry knows.** Ask the registry what it knows - `in` and a list of the names, with special methods of
 the registry itself:
 
 ```python run
@@ -1561,7 +1561,7 @@ print(registry.names(), "stage" in registry, "product" in registry)
 | in the code | `class B(A):` | an attribute that holds objects |
 | use it when | the new thing is a special kind of the old | the new thing uses or collects the old |
 
-The registry holds the **objects**, not copies. Change a nomenclature once - a new
+**One change, seen everywhere.** The registry holds the **objects**, not copies. Change a nomenclature once - a new
 code - and every dataset that the registry maps sees the change:
 
 ```python run
@@ -1622,7 +1622,7 @@ for name, (rows, plan) in datasets.items():
 `grades` maps the ratings of `clients.csv` **and** of `ratings_history.csv` - one
 definition, one version, one place to change it.
 
-With a registry and a plan per dataset, the check of the two loan files becomes one
+**Check two files in one loop.** With a registry and a plan per dataset, the check of the two loan files becomes one
 loop - and the report for the data owner lists every column that did not map:
 
 ```python run
@@ -1653,7 +1653,7 @@ for file_name, (options, plan) in plans.items():
 print("checked", len(plans), "files")
 ```
 
-And the product nomenclature with `case="lower"` maps the export of another system as
+**Codes in capitals.** And the product nomenclature with `case="lower"` maps the export of another system as
 well, where a code could come in capitals - the normalisation is part of the
 nomenclature, not of each report:
 
@@ -1713,7 +1713,7 @@ print(f"{v1.name}: v{v1.version} ({v1.valid_from}) -> v{v2.version} ({v2.valid_f
 print(diff(v1, v2))
 ```
 
-The rating scale of the file against a recalibrated copy - what would the owner sign?
+**Compare two versions.** The rating scale of the file against a recalibrated copy - what would the owner sign?
 
 ```python run
 import csv
@@ -1729,7 +1729,7 @@ changed = {g: (current.codes[g], proposal.codes[g]) for g in current.codes if cu
 print(f"v{current.version} -> v{proposal.version}: {changed}")
 ```
 
-Before a new version goes live: which **loans** change their label? The impact on the
+**The impact on the loans.** Before a new version goes live: which **loans** change their label? The impact on the
 data, not only on the list:
 
 ```python run
@@ -1749,7 +1749,7 @@ moved = [l for l in loans if v1.lookup(l["product"]) != v2.lookup(l["product"])]
 print(len(moved), "loans get another label, outstanding", f"{sum(float(l['outstanding']) for l in moved):,.2f}")
 ```
 
-And a code **removed** in the new version, but still used by the data, must stop the
+**A removed code.** And a code **removed** in the new version, but still used by the data, must stop the
 release - `validate` of the new version on the current data finds it:
 
 ```python run
@@ -1767,7 +1767,7 @@ with open("data/loans.csv", encoding="utf-8") as file:
 print(f"v{proposal.version} would leave unmapped:", dict(proposal.validate(products)))
 ```
 
-A nomenclature can also be **saved** with its metadata - a small CSV with the version
+**Save a nomenclature.** A nomenclature can also be **saved** with its metadata - a small CSV with the version
 in the file name, read back with `from_csv`:
 
 ```python run

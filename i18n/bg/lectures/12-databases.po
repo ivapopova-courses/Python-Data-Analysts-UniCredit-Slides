@@ -125,12 +125,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:95
-msgid "The column names and types of one table - `PRAGMA table_info` (in SAS: `PROC CONTENTS`):"
+msgid "**The columns of a table.** The column names and types of one table - `PRAGMA table_info` (in SAS: `PROC CONTENTS`):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:107
-msgid "The number of rows of every table - the table names come from **your** fixed list, so they can be put into the SQL text (values never - section 3):"
+msgid "**Rows per table.** The number of rows of every table - the table names come from **your** fixed list, so they can be put into the SQL text (values never - section 3):"
 msgstr ""
 
 #. box title
@@ -220,7 +220,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:225
-msgid "A mistake in the SQL is an exception like any other ([lecture 8](./08-errors-and-files.md#_1-errors-and-exceptions)) - in SQLite an `OperationalError`, with the message of the database:"
+msgid "**An error in the SQL.** A mistake in the SQL is an exception like any other ([lecture 8](./08-errors-and-files.md#_1-errors-and-exceptions)) - in SQLite an `OperationalError`, with the message of the database:"
 msgstr ""
 
 #. box title
@@ -245,7 +245,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:280
-msgid "Or let SQLite give each row **by name** - `row_factory = sqlite3.Row`:"
+msgid "**Rows by name.** Or let SQLite give each row **by name** - `row_factory = sqlite3.Row`:"
 msgstr ""
 
 #. heading 3
@@ -280,7 +280,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:332
-msgid "(`start, = ...` unpacks a tuple of one value.) `NULL` comes back as `None`:"
+msgid "**`NULL` and `None`.** (`start, = ...` unpacks a tuple of one value.) `NULL` comes back as `None`:"
 msgstr ""
 
 #. paragraph
@@ -305,7 +305,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:365
-msgid "A one-value tuple needs the comma: `(3,)`. With many parameters, named ones are easier to read - `:name` and a dictionary:"
+msgid "**Named parameters.** A one-value tuple needs the comma: `(3,)`. With many parameters, named ones are easier to read - `:name` and a dictionary:"
 msgstr ""
 
 #. paragraph
@@ -325,7 +325,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:405
-msgid "A query with parameters inside a function is a reusable report - the function of [session 4](./04-functions.md), the SQL of today:"
+msgid "**A reusable report.** A query with parameters inside a function is a reusable report - the function of [session 4](./04-functions.md), the SQL of today:"
 msgstr ""
 
 #. box title
@@ -635,7 +635,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:754
-msgid "The path of the database is a setting too: from an environment variable, with a default - the script runs unchanged on another computer:"
+msgid "**The path as a setting.** The path of the database is a setting too: from an environment variable, with a default - the script runs unchanged on another computer:"
 msgstr ""
 
 #. paragraph
@@ -860,22 +860,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:853
-msgid "A `NOT NULL` column refuses a missing value - the database checks the data too:"
+msgid "**`NOT NULL`.** A `NOT NULL` column refuses a missing value - the database checks the data too:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:868
-msgid "`executemany` also takes **dictionaries** with named parameters - the rows of `csv.DictReader` ([lecture 8](./08-errors-and-files.md#read-csv-reader-and-csv-dictreader)) go straight into a table:"
+msgid "**Rows of a CSV file into a table.** `executemany` also takes **dictionaries** with named parameters - the rows of `csv.DictReader` ([lecture 8](./08-errors-and-files.md#read-csv-reader-and-csv-dictreader)) go straight into a table:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:885
-msgid "A log table with an automatic id - `INTEGER PRIMARY KEY` numbers the rows; `lastrowid` gives the id of the row just inserted:"
+msgid "**An automatic id.** A log table with an automatic id - `INTEGER PRIMARY KEY` numbers the rows; `lastrowid` gives the id of the row just inserted:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:901
-msgid "To keep a changed copy, write it to a **file** - `backup` into a new database file:"
+msgid "**Save to a file.** To keep a changed copy, write it to a **file** - `backup` into a new database file:"
 msgstr ""
 
 #. paragraph
@@ -910,17 +910,17 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:948
-msgid "The totals by stage, two ways - the same numbers. The Python way keeps a small list `[count, sum]` per stage in a `defaultdict` ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
+msgid "**Totals by stage, two ways.** The totals by stage, two ways - the same numbers. The Python way keeps a small list `[count, sum]` per stage in a `defaultdict` ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:968
-msgid "`HAVING` and `CASE WHEN` (in Python: [session 2](./02-conditions-and-loops.md#case-when-in-python)), run by the database:"
+msgid "**Filters and labels in SQL.** `HAVING` and `CASE WHEN` (in Python: [session 2](./02-conditions-and-loops.md#case-when-in-python)), run by the database:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:989
-msgid "How much faster is the database? A small test - with 400 rows the difference is small, with millions on a server it is minutes against seconds:"
+msgid "**The speed.** How much faster is the database? A small test - with 400 rows the difference is small, with millions on a server it is minutes against seconds:"
 msgstr ""
 
 #. heading 4
@@ -990,7 +990,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:1090
-msgid "Two sources together: the exposure per client from the database, the names from the register file of [lecture 7](./07-text-and-regex.md#_5-cleaning-identifiers-and-names) - joined in Python with a dictionary:"
+msgid "**The database and a file.** Two sources together: the exposure per client from the database, the names from the register file of [lecture 7](./07-text-and-regex.md#_5-cleaning-identifiers-and-names) - joined in Python with a dictionary:"
 msgstr ""
 
 #. paragraph
@@ -1015,7 +1015,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:1151
-msgid "pandas does the same with `chunksize`: `read_sql` then returns the DataFrames one by one:"
+msgid "**In pandas.** pandas does the same with `chunksize`: `read_sql` then returns the DataFrames one by one:"
 msgstr ""
 
 #. paragraph
@@ -1055,7 +1055,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:1212
-msgid "A running total per client - in SAS, `RETAIN` with `BY`:"
+msgid "**A window function.** A running total per client - in SAS, `RETAIN` with `BY`:"
 msgstr ""
 
 #. paragraph

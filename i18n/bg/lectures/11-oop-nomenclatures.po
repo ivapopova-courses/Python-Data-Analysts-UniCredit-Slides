@@ -195,12 +195,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:92
-msgid "Two reports with their own copy of the product groups - one copy has the new product, the other does not. The same loans, two different totals:"
+msgid "**Two copies, two totals.** Two reports with their own copy of the product groups - one copy has the new product, the other does not. The same loans, two different totals:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:111
-msgid "And a copy with a typo - `\"credit card\"` instead of `\"credit_card\"` - loses a whole product, without an error (counted with a `Counter`, [lecture 7](./07-text-and-regex.md#counting-with-counter)):"
+msgid "**A copy with a typo.** And a copy with a typo - `\"credit card\"` instead of `\"credit_card\"` - loses a whole product, without an error (counted with a `Counter`, [lecture 7](./07-text-and-regex.md#counting-with-counter)):"
 msgstr ""
 
 #. heading 3
@@ -310,17 +310,17 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:176
-msgid "`date | None` means \"a date, or `None`\" ([session 4](./04-functions.md#type-hints); Python 3.10+). The metadata does not change how the codes work - but it is printed with every report that uses them, so anybody can see **which** list was used:"
+msgid "**Metadata in every report.** `date | None` means \"a date, or `None`\" ([session 4](./04-functions.md#type-hints); Python 3.10+). The metadata does not change how the codes work - but it is printed with every report that uses them, so anybody can see **which** list was used:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:201
-msgid "Two nomenclatures are **equal** when all their fields are equal - the dataclass `__eq__` of [lecture 10](./10-oop-classes.md). The same codes with another version are **not** the same nomenclature:"
+msgid "**Equal nomenclatures.** Two nomenclatures are **equal** when all their fields are equal - the dataclass `__eq__` of [lecture 10](./10-oop-classes.md). The same codes with another version are **not** the same nomenclature:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:221
-msgid "A trap of dataclasses: an empty dictionary as a default is refused - it would be one dictionary for all objects ([lecture 10](./10-oop-classes.md#_5-class-attributes)):"
+msgid "**A trap: a dictionary as a default.** A trap of dataclasses: an empty dictionary as a default is refused - it would be one dictionary for all objects ([lecture 10](./10-oop-classes.md#_5-class-attributes)):"
 msgstr ""
 
 #. heading 3
@@ -360,7 +360,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:313
-msgid "A copy can still be changed through `nom.codes[...] = ...`. If nobody should change the codes after the nomenclature is created, keep them behind a **read-only view** - `types.MappingProxyType` looks like a dictionary, but refuses changes:"
+msgid "**A read-only view.** A copy can still be changed through `nom.codes[...] = ...`. If nobody should change the codes after the nomenclature is created, keep them behind a **read-only view** - `types.MappingProxyType` looks like a dictionary, but refuses changes:"
 msgstr ""
 
 #. paragraph
@@ -385,7 +385,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:368
-msgid "The pattern of the product codes: lower-case words with `_` - \"Credit Card\" is refused at once, not discovered in a report a month later:"
+msgid "**A pattern for the codes.** The pattern of the product codes: lower-case words with `_` - \"Credit Card\" is refused at once, not discovered in a report a month later:"
 msgstr ""
 
 #. heading 3
@@ -420,7 +420,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:447
-msgid "The register of [lecture 7](./07-text-and-regex.md#cities-a-mapping-of-variants) against a nomenclature of the region names - first the raw city column, then after the cleaning function of [lecture 7](./07-text-and-regex.md#cities-a-mapping-of-variants):"
+msgid "**City names in the register.** The register of [lecture 7](./07-text-and-regex.md#cities-a-mapping-of-variants) against a nomenclature of the region names - first the raw city column, then after the cleaning function of [lecture 7](./07-text-and-regex.md#cities-a-mapping-of-variants):"
 msgstr ""
 
 #. box title
@@ -470,12 +470,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:570
-msgid "The new column is ready for the usual reports - the number of loans per product **name**, and two nomenclatures one after the other (name, then group):"
+msgid "**Reports with the new column.** The new column is ready for the usual reports - the number of loans per product **name**, and two nomenclatures one after the other (name, then group):"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:603
-msgid "The new column, then a total per label - the outstanding per stage name, the SQL `GROUP BY` (`defaultdict(float)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
+msgid "**A total per label.** The new column, then a total per label - the outstanding per stage name, the SQL `GROUP BY` (`defaultdict(float)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
 msgstr ""
 
 #. box title
@@ -575,12 +575,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:884
-msgid "A class method can also build a **first draft** of a nomenclature from the data itself - the distinct values of a column, each code its own label. The owner then writes the real labels:"
+msgid "**A first draft from the data.** A class method can also build a **first draft** of a nomenclature from the data itself - the distinct values of a column, each code its own label. The owner then writes the real labels:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:908
-msgid "The trap: a normal method called on the **class** has no object for `self`:"
+msgid "**A trap: no object for `self`.** The trap: a normal method called on the **class** has no object for `self`:"
 msgstr ""
 
 #. heading 3
@@ -670,7 +670,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:975
-msgid "A class method knows **which** class it was called on - a subclass gets objects of the subclass, without writing its own `from_pairs`:"
+msgid "**Class methods and subclasses.** A class method knows **which** class it was called on - a subclass gets objects of the subclass, without writing its own `from_pairs`:"
 msgstr ""
 
 #. heading 3
@@ -705,7 +705,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1124
-msgid "Everything else stays the same: a name, metadata, codes with labels, `apply`, `validate`. Only `lookup` works differently. That is what **inheritance** is for: a **subclass** takes everything of its **base class**, and changes or adds only what is different:"
+msgid "**A subclass for bands.** Everything else stays the same: a name, metadata, codes with labels, `apply`, `validate`. Only `lookup` works differently. That is what **inheritance** is for: a **subclass** takes everything of its **base class**, and changes or adds only what is different:"
 msgstr ""
 
 #. paragraph
@@ -730,12 +730,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1183
-msgid "The checks of the subclass find a gap between two bands - a value in the gap would get no bucket:"
+msgid "**A gap between bands.** The checks of the subclass find a gap between two bands - a value in the gap would get no bucket:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1212
-msgid "Python looks for a method first in the class of the object, then in its base classes, in an order called the **MRO** (method resolution order):"
+msgid "**The MRO.** Python looks for a method first in the class of the object, then in its base classes, in an order called the **MRO** (method resolution order):"
 msgstr ""
 
 #. paragraph
@@ -745,7 +745,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1238
-msgid "`apply` was never written for bands - it comes from the base class and works:"
+msgid "**`apply` from the base class.** `apply` was never written for bands - it comes from the base class and works:"
 msgstr ""
 
 #. heading 3
@@ -765,12 +765,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1317
-msgid "A consistency check of the data: the PD of each client's rating (the middle of its band) must map back to the client's own grade:"
+msgid "**The PD maps back to the grade.** A consistency check of the data: the PD of each client's rating (the middle of its band) must map back to the client's own grade:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1338
-msgid "An override can also **extend** the method of the base class with `super()` - here the `repr` gets the number of bands:"
+msgid "**Extend with `super()`.** An override can also **extend** the method of the base class with `super()` - here the `repr` gets the number of bands:"
 msgstr ""
 
 #. heading 3
@@ -790,7 +790,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1408
-msgid "On the portfolio: the outstanding per product **group**, through `parent`:"
+msgid "**Outstanding per product group.** On the portfolio: the outstanding per product **group**, through `parent`:"
 msgstr ""
 
 #. box title
@@ -835,7 +835,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1533
-msgid "Ask the registry what it knows - `in` and a list of the names, with special methods of the registry itself:"
+msgid "**What the registry knows.** Ask the registry what it knows - `in` and a list of the names, with special methods of the registry itself:"
 msgstr ""
 
 #. table cell
@@ -890,7 +890,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1564
-msgid "The registry holds the **objects**, not copies. Change a nomenclature once - a new code - and every dataset that the registry maps sees the change:"
+msgid "**One change, seen everywhere.** The registry holds the **objects**, not copies. Change a nomenclature once - a new code - and every dataset that the registry maps sees the change:"
 msgstr ""
 
 #. heading 3
@@ -910,12 +910,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1625
-msgid "With a registry and a plan per dataset, the check of the two loan files becomes one loop - and the report for the data owner lists every column that did not map:"
+msgid "**Check two files in one loop.** With a registry and a plan per dataset, the check of the two loan files becomes one loop - and the report for the data owner lists every column that did not map:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1656
-msgid "And the product nomenclature with `case=\"lower\"` maps the export of another system as well, where a code could come in capitals - the normalisation is part of the nomenclature, not of each report:"
+msgid "**Codes in capitals.** And the product nomenclature with `case=\"lower\"` maps the export of another system as well, where a code could come in capitals - the normalisation is part of the nomenclature, not of each report:"
 msgstr ""
 
 #. paragraph
@@ -935,22 +935,22 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1716
-msgid "The rating scale of the file against a recalibrated copy - what would the owner sign?"
+msgid "**Compare two versions.** The rating scale of the file against a recalibrated copy - what would the owner sign?"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1732
-msgid "Before a new version goes live: which **loans** change their label? The impact on the data, not only on the list:"
+msgid "**The impact on the loans.** Before a new version goes live: which **loans** change their label? The impact on the data, not only on the list:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1752
-msgid "And a code **removed** in the new version, but still used by the data, must stop the release - `validate` of the new version on the current data finds it:"
+msgid "**A removed code.** And a code **removed** in the new version, but still used by the data, must stop the release - `validate` of the new version on the current data finds it:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1770
-msgid "A nomenclature can also be **saved** with its metadata - a small CSV with the version in the file name, read back with `from_csv`:"
+msgid "**Save a nomenclature.** A nomenclature can also be **saved** with its metadata - a small CSV with the version in the file name, read back with `from_csv`:"
 msgstr ""
 
 #. paragraph
