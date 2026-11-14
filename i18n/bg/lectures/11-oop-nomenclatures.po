@@ -1174,7 +1174,7 @@ msgid "The error comes when the object is **created**, not later in the middle o
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-nomenclatures.md:1908 site/lectures/11-oop-nomenclatures.md:1967
+#: site/lectures/11-oop-nomenclatures.md:1908 site/lectures/11-oop-nomenclatures.md:1986
 msgid "**Exercises**"
 msgstr ""
 
@@ -1189,7 +1189,7 @@ msgid "Can you create a `BaseNomenclature(\"x\")` directly? Try it, and explain 
 msgstr ""
 
 #. box title
-#: site/lectures/11-oop-nomenclatures.md:1914 site/lectures/11-oop-nomenclatures.md:1974
+#: site/lectures/11-oop-nomenclatures.md:1914 site/lectures/11-oop-nomenclatures.md:1993
 msgid "Answer"
 msgstr ""
 
@@ -1210,50 +1210,60 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1924
-msgid "A rating scale can be recalibrated; a product list changes in July. A report for **March** must use the version valid in March. A class that keeps several versions, each with its `valid_from`, and picks the right one for a date:"
+msgid "A rating scale can be recalibrated; a product list changes in July. A report for **March** must use the version valid in March. A class that keeps several versions, each with its `valid_from`, and picks the right one for a date."
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-nomenclatures.md:1964
-msgid "With `ratings_history.csv`, each month end is mapped with the version of **that** month - a report for any past month gives the same result as when it was first made."
+#: site/lectures/11-oop-nomenclatures.md:1928
+msgid "To find that version, the class uses `bisect_right` from the standard module `bisect`. `bisect_right(starts, day)` takes a **sorted** list and returns how many items in it are `<=` `day`. With `i = bisect_right(starts, day)`, the version valid on `day` is the one at position `i - 1`: the last version that started on or before `day`. In SQL, this is the row with the biggest `valid_from <= day`. A result of `0` means that `day` is before the first version:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-nomenclatures.md:1969
-msgid "Map the ratings of `ratings_history.csv` with `grades` above, using the `month_end` of each row. How many rows get `\"BBB-\"`?"
-msgstr ""
-
-#. paragraph
-#: site/lectures/11-oop-nomenclatures.md:1971
-msgid "What should `version_at` do for a date before the first version? Is raising an error the right choice for a report?"
+#: site/lectures/11-oop-nomenclatures.md:1944
+msgid "`bisect` halves the list at each step, so it is fast even for many versions. The list must be sorted - this is why the class sorts the versions first:"
 msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:1983
+msgid "With `ratings_history.csv`, each month end is mapped with the version of **that** month - a report for any past month gives the same result as when it was first made."
+msgstr ""
+
+#. paragraph
+#: site/lectures/11-oop-nomenclatures.md:1988
+msgid "Map the ratings of `ratings_history.csv` with `grades` above, using the `month_end` of each row. How many rows get `\"BBB-\"`?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/11-oop-nomenclatures.md:1990
+msgid "What should `version_at` do for a date before the first version? Is raising an error the right choice for a report?"
+msgstr ""
+
+#. paragraph
+#: site/lectures/11-oop-nomenclatures.md:2002
 msgid "(The rows with rating 5 from April 2026 on.) 2. Yes for a report: a date without a valid version means the report would use an    unknown mapping, which is worse than stopping ([lecture 8](./08-errors-and-files.md#when-to-stop-when-to-go-on): wrong settings stop the    report)."
 msgstr ""
 
 #. heading 2
-#: site/lectures/11-oop-nomenclatures.md:1989
+#: site/lectures/11-oop-nomenclatures.md:2008
 msgid "Read more"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-nomenclatures.md:1991
+#: site/lectures/11-oop-nomenclatures.md:2010
 msgid "Python tutorial: [Classes - inheritance](https://docs.python.org/3/tutorial/classes.html#inheritance)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-nomenclatures.md:1992
+#: site/lectures/11-oop-nomenclatures.md:2011
 msgid "Reference: [`classmethod`](https://docs.python.org/3/library/functions.html#classmethod), [`staticmethod`](https://docs.python.org/3/library/functions.html#staticmethod), [`super`](https://docs.python.org/3/library/functions.html#super), [`abc`](https://docs.python.org/3/library/abc.html), [dataclasses - inheritance](https://docs.python.org/3/library/dataclasses.html#inheritance)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-nomenclatures.md:1997
+#: site/lectures/11-oop-nomenclatures.md:2016
 msgid "Real Python: [Inheritance and composition: a Python OOP guide](https://realpython.com/inheritance-composition-python/), [Python's instance, class, and static methods demystified](https://realpython.com/instance-class-and-static-methods-demystified/)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/11-oop-nomenclatures.md:2000
+#: site/lectures/11-oop-nomenclatures.md:2019
 msgid "**Next session:** databases - SQL from Python: connect, query with parameters, transactions. In the same session we start NumPy and pandas."
 msgstr ""

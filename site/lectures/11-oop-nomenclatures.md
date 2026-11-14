@@ -1923,7 +1923,26 @@ The error comes when the object is **created**, not later in the middle of a rep
 
 A rating scale can be recalibrated; a product list changes in July. A report for
 **March** must use the version valid in March. A class that keeps several versions,
-each with its `valid_from`, and picks the right one for a date:
+each with its `valid_from`, and picks the right one for a date.
+
+To find that version, the class uses `bisect_right` from the standard module
+`bisect`. `bisect_right(starts, day)` takes a **sorted** list and returns how many
+items in it are `<=` `day`. With `i = bisect_right(starts, day)`, the version valid
+on `day` is the one at position `i - 1`: the last version that started on or before `day`. In SQL, this is the row
+with the biggest `valid_from <= day`. A result of `0` means that `day` is before
+the first version:
+
+```python run
+from bisect import bisect_right
+
+starts = [2020, 2023, 2026]             # the years the versions start, sorted
+print(bisect_right(starts, 2024))       # 2 -> version 1 (started in 2023)
+print(bisect_right(starts, 2026))       # 3 -> version 2 (started in 2026)
+print(bisect_right(starts, 2019))       # 0 -> no version yet
+```
+
+`bisect` halves the list at each step, so it is fast even for many versions. The
+list must be sorted - this is why the class sorts the versions first:
 
 ```python run
 from bisect import bisect_right
@@ -1943,7 +1962,7 @@ class VersionedNomenclature:
         self.versions = sorted(versions, key=lambda v: v.valid_from)
 
     def version_at(self, day):
-        i = bisect_right([v.valid_from for v in self.versions], day)     # session 6, Advanced
+        i = bisect_right([v.valid_from for v in self.versions], day)     # see above
         if i == 0:
             raise ValueError(f"{self.name}: no version valid on {day}")
         return self.versions[i - 1]
