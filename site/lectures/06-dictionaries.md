@@ -98,7 +98,7 @@ print(type(empty), currencies == same == from_pairs)
 ```
 :::
 
-From two lists - the keys and the values - with `zip` ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):
+**From two lists.** The keys and the values, joined with `zip` ([session 5](./05-lists-advanced.md#zip-several-lists-side-by-side)):
 
 ```python run
 grades = ["AAA", "AA", "A", "BBB"]
@@ -120,7 +120,7 @@ print(pd_of_grade["AAA"])
 print(pd_of_grade["CCC"])          # KeyError: 'CCC'
 ```
 
-`d.get(key)` gives `None` for a missing key, and `d.get(key, default)` gives the
+**A default for a missing key.** `d.get(key)` gives `None` for a missing key, and `d.get(key, default)` gives the
 default - like `OTHER=` in a SAS format:
 
 ```python run
@@ -223,8 +223,8 @@ print(base | {"USD": "US dollar"})       # a NEW dict; base is not changed
 print(base)
 ```
 
-`|` is the safe way to add a column to a record (section 6) without changing the
-original row - a new dictionary with one more pair:
+**Add a column to a record.** `|` is the safe way to do it (section 6): the
+original row does not change - you get a new dictionary with one more pair:
 
 ```python run
 row = {"loan_id": "L000001", "stage": "1"}
@@ -273,7 +273,7 @@ for loan_id in balances:
         del balances[loan_id]       # RuntimeError: dictionary changed size during iteration
 ```
 
-Loop over a **copy of the keys**, or build a new dictionary (section 4):
+**The fix.** Loop over a **copy of the keys**, or build a new dictionary (section 4):
 
 ```python run
 balances = {"L000001": 1044231.30, "L000002": 0.0, "L000003": 644.25}
@@ -364,7 +364,7 @@ for segment, amount in sorted(outstanding.items(), key=lambda kv: kv[1], reverse
     print(segment, amount)                                                # by value DESC
 ```
 
-The key with the largest value:
+**The key with the largest value.** For example, the segment with the most outstanding:
 
 ```python run
 outstanding = {"sme": 39.5, "corporate": 85.0, "retail": 6.9}
@@ -438,8 +438,8 @@ print(in_bp)
 print(low_risk)
 ```
 
-In SQL terms: `SELECT key, expression FROM ... WHERE ...` into a lookup table. Common forms, on a
-small list of clients:
+**Common forms, on a small list of clients.** In SQL terms: `SELECT key, expression
+FROM ... WHERE ...` into a lookup table:
 
 ```python run
 clients = [("C0001", "retail", "Sofia"), ("C0002", "sme", "Ruse"), ("C0003", "corporate", "Varna")]
@@ -667,7 +667,8 @@ print(loans[1])
 print(sum(l["outstanding"] for l in loans if l["stage"] == 3))
 ```
 
-Sort a list of records by one or more fields - SQL `ORDER BY` with column names:
+**Sort records by their fields.** Sort a list of records by one or more fields - SQL
+`ORDER BY` with column names:
 
 ```python run
 loans = [
@@ -837,7 +838,7 @@ missing key by itself: `defaultdict(int)` gives a new key the value `int()`, tha
 `0`. `defaultdict(lambda: defaultdict(int))`: a missing row is created as a new
 `defaultdict(int)` - so `table[region][segment] += 1` works for any new pair.
 
-And back - from the cross table to rows (`region, segment, count`), the job of
+**Back to rows.** From the cross table to rows (`region, segment, count`), the job of
 SAS `PROC TRANSPOSE`, or of `melt` in pandas ([lecture 15](./15-pandas-reports.md#_2-from-wide-to-long-melt)):
 
 ```python run
@@ -899,7 +900,7 @@ immutable values.
 The hash of a string changes **between runs** of Python (a security feature), but
 not during one run. Never save hashes to a file.
 
-The speed, measured:
+**The speed, measured.** Search for the same id in a list and in a dictionary:
 
 ```python run
 import time
