@@ -12,7 +12,8 @@ const footerMessage = 'Created for'
 
 // all lectures are listed in the side menu; in `npm run build` (the public site)
 // only the released ones are links, the others plain text - see released.mjs
-const showAll = process.env.TRAINER === '1' || process.argv.includes('dev')
+const isDev = process.argv.includes('dev')
+const showAll = process.env.TRAINER === '1' || isDev
 const lectureNo = link => Number(link.match(/(?:^|\/)lectures\/(\d\d)-/)?.[1] || 0)
 const isReleased = link => showAll || lectureNo(link) <= releasedUpTo
 
@@ -113,4 +114,18 @@ dataLinks(course)
 
 // withLocales: adds the Bulgarian version (site/bg/, generated from i18n/bg/*.po)
 // and the EN / BG button - see i18n/README.md
-export default await withLocales(course, { footerMessage })
+const config = await withLocales(course, { footerMessage })
+
+// dev server only (`vitepress build` is not changed by these two):
+// - no markdown cache: VitePress keeps the rendered page for every version of its
+//   source text (up to 1024), so each save of a long lecture kept a few MB more and
+//   a long editing day ended with "JavaScript heap out of memory";
+// - no local search: building its index renders every page (EN and BG) before the
+//   server starts (5 - 18 s instead of about 1 s). `SEARCH=1 npm run dev` keeps it.
+// withLocales sets the search, so this comes after it.
+if (isDev) {
+  config.markdown = { ...config.markdown, cache: false }
+  if (process.env.SEARCH !== '1') delete config.themeConfig.search
+}
+
+export default config

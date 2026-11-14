@@ -27,6 +27,13 @@ npm run dev          # live preview at http://localhost:5173, reloads on save
 npm run build        # static site in site/.vitepress/dist (for GitHub Pages)
 ```
 
+In `npm run dev` and `npm run dev:trainer` the search box is off, so the server
+starts in about a second (building the search index renders every page first).
+To test the search, start it with `SEARCH=1 npm run dev`. The dev server also does
+not cache the rendered pages, so its memory does not grow with every save. Both
+settings are at the end of `site/.vitepress/config.mjs`; `npm run build` keeps
+the search and the cache.
+
 ## In class
 
 - **Present** (button in the top bar, or key `P`): bigger text, no side panels -
