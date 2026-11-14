@@ -373,14 +373,14 @@ print(max(outstanding, key=outstanding.get))
 (`key=outstanding.get` - the method itself, without brackets: `max` calls it for
 each key.)
 
-A ranked report: `enumerate` over the sorted items ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)):
+A ranked report: sort the segments by amount, largest first, and number them 1, 2, 3 with `enumerate(..., start=1)` ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)). Each line shows the rank, the segment, its amount and its share of the total:
 
 ```python run
 outstanding = {"sme": 39.5, "corporate": 85.0, "retail": 6.9}
 total = sum(outstanding.values())
 
 ranked = sorted(outstanding.items(), key=lambda kv: kv[1], reverse=True)
-for rank, (segment, amount) in enumerate(ranked, start=1):
+for rank, (segment, amount) in enumerate(ranked, start=1):   # rank = 1, 2, 3 ...
     print(f"{rank}. {segment:<10}{amount:>7.1f}{amount / total:>8.1%}")
 ```
 

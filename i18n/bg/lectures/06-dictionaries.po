@@ -365,8 +365,8 @@ msgstr "(`key=outstanding.get` - самият метод, без скоби: `ma
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:376
-msgid "A ranked report: `enumerate` over the sorted items ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)):"
-msgstr "Отчет с ранг: `enumerate` върху сортираните двойки ([занятие 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)):"
+msgid "A ranked report: sort the segments by amount, largest first, and number them 1, 2, 3 with `enumerate(..., start=1)` ([session 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)). Each line shows the rank, the segment, its amount and its share of the total:"
+msgstr "Отчет с ранг: сортирайте сегментите по сума, от най-голямата, и ги номерирайте 1, 2, 3 с `enumerate(..., start=1)` ([занятие 5](./05-lists-advanced.md#enumerate-the-number-of-each-item)). Всеки ред показва ранга, сегмента, сумата му и дела му от общото:"
 
 #. box title
 #: site/lectures/06-dictionaries.md:388
