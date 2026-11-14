@@ -2,6 +2,7 @@ import { posix } from 'node:path'
 import { defineCourse } from '@sciscend/course-kit/config'
 import { withLocales } from '../../i18n/i18n.mjs'
 import { pythonRun } from './pythonRun.mjs'
+import { dataLinks } from './dataLinks.mjs'
 import { releasedUpTo } from './released.mjs'
 
 // the footer (shown only on the home page - VitePress hides it next to the side
@@ -105,6 +106,10 @@ if (!showAll) {
 // ```python run blocks: Run / Edit / Reset with Python in the browser (Pyodide),
 // see pythonRun.mjs and theme/PyRunCode.vue
 pythonRun(course)
+
+// `clients.csv` in the text: a link to the preview of the file on the Sample data
+// page, in a new tab - see dataLinks.mjs
+dataLinks(course)
 
 // withLocales: adds the Bulgarian version (site/bg/, generated from i18n/bg/*.po)
 // and the EN / BG button - see i18n/README.md

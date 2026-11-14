@@ -5,8 +5,9 @@
 // statements of a database) and a Download button. In Markdown:
 //   <DataFile file="loans.csv" />
 // The file is read in the browser by dataPreview.js. The labels are in Bulgarian on
-// the /bg/ pages.
-import { ref, computed, watch, nextTick, onBeforeUnmount } from 'vue'
+// the /bg/ pages. A page opened with ?file=<file> (the links of dataLinks.mjs)
+// opens the preview of that file at once.
+import { ref, computed, watch, nextTick, onMounted, onBeforeUnmount } from 'vue'
 import { useData } from 'vitepress'
 import { dataFiles } from './dataFiles.js'
 import { parseData } from './dataPreview.js'
@@ -107,6 +108,17 @@ function onClick(e) {
 }
 
 onBeforeUnmount(onClose)
+
+// ?file=<file>: open this preview; the address loses ?file=, so a reload does not
+// open it again
+onMounted(() => {
+  const params = new URLSearchParams(location.search)
+  if (params.get('file') !== props.file) return
+  params.delete('file')
+  const search = params.toString()
+  history.replaceState(history.state, '', location.pathname + (search ? '?' + search : '') + location.hash)
+  show()
+})
 
 const cellText = v => (v == null ? 'NULL' : String(v))
 const cellClass = (v, j) => ({ num: current.value.numeric[j], null: v == null, blank: v === '' })
