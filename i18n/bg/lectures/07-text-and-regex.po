@@ -255,12 +255,12 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:192
-msgid "In SAS, `COMPBL` (\"compress blanks\") replaces every group of spaces inside a text with one space. [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) does not touch the spaces **inside** a text. [`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) without an argument cuts the text into words at every group of spaces, and `\" \".join(...)` puts the words back with one space between them:"
+msgid "In SAS, `COMPBL` (\"compress blanks\") replaces every group of spaces inside a text with one space. [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) does not touch the spaces **inside** a text. The usual Python way to say \"remove all extra spaces\" is `\" \".join(s.split())`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:204
-msgid "`\" \".join(s.split())` is the usual Python way to say \"remove all extra spaces\". Section 4 explains [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split) and [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join)."
+#: site/lectures/07-text-and-regex.md:203
+msgid "[`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) without an argument cuts the text into words at every group of spaces, and `\" \".join(...)` puts the words back with one space between them. Section 4 explains [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split) and [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join) in detail."
 msgstr ""
 
 #. box title

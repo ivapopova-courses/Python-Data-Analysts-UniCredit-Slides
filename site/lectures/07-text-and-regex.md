@@ -190,9 +190,8 @@ print("www.example.com".strip("w.com"))      # careful: characters, not a word!
 ### Spaces inside: `COMPBL` in SAS {#spaces-inside-compbl}
 
 In SAS, `COMPBL` ("compress blanks") replaces every group of spaces inside a text
-with one space. [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) does not touch the spaces **inside** a text. [`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) without an argument
-cuts the text into words at every group of spaces, and `" ".join(...)` puts the words
-back with one space between them:
+with one space. [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) does not touch the spaces **inside** a text.
+The usual Python way to say "remove all extra spaces" is `" ".join(s.split())`:
 
 ```python run
 name = "  Iron   Retail  ET "
@@ -201,8 +200,9 @@ print(repr(name.strip()))
 print(repr(" ".join(name.split())))        # COMPBL(STRIP(name)) in SAS
 ```
 
-`" ".join(s.split())` is the usual Python way to say "remove all extra spaces".
-Section 4 explains [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split) and [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join).
+[`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) without an argument cuts the text into words at every group
+of spaces, and `" ".join(...)` puts the words back with one space between them.
+Section 4 explains [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split) and [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join) in detail.
 
 ::: tip Try it
 Clean `"  GREEN   build  ltd "` into `"Green Build Ltd"`. You need [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split), [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join)
