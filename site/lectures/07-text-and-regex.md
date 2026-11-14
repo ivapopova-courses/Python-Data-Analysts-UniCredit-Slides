@@ -88,10 +88,16 @@ client_id = client_id.strip()   # keep the result
 print(repr(client_id))
 ```
 
-This is the most common mistake of today: a method call without `=`. `repr()` (or
-`!r` in an f-string) shows the quotes, so you can see the spaces.
+The most common mistake beginners make: they call a method but do not save the
+result with `=`, so the variable stays the same. To see the spaces, print with
+`repr()` (or `!r` in an f-string): it shows the quotes around the string.
 
-**The new file.** The columns of the new file:
+### The data of today
+
+Today we clean real-looking text data. The file `client_register.csv` holds the 150
+clients of the sample data, as many people typed them over many years. First, let us
+look at what is in it: the code prints the number of rows, the column names and
+three rows.
 
 ```python run
 import csv
@@ -103,6 +109,9 @@ print(len(rows), "rows; columns:", list(rows[0]))
 for row in rows[1:4]:
     print(row)
 ```
+
+Every column has its own problems. The table lists them. The rest of the lecture
+fixes them one by one.
 
 | Column | What is wrong in it |
 |---|---|
