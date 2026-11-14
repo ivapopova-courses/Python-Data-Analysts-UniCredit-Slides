@@ -565,49 +565,12 @@ you run it. What happens with a client that is not in `rating_of`, and how would
 `get` change that?
 :::
 
-:::: details Advanced: ranges and `bisect`
+### A use case: a dictionary on a pandas column
 
-### Ranges are not keys
-
-A dictionary needs the **exact** key. PD bands, days-past-due buckets, amount
-ranges - a value **between** two limits - are not a dictionary lookup. Use a
-function with `if` (sessions 2 and 4), or a list of limits:
-
-```python run
-BUCKETS = [(0, "current"), (30, "1-30"), (90, "31-90")]        # upper limit -> name
-
-def dpd_bucket(days):
-    for limit, name in BUCKETS:
-        if days <= limit:
-            return name
-    return "90+"
-
-print([dpd_bucket(d) for d in [0, 15, 45, 200]])
-```
-
-::: details Advanced: `bisect` for many ranges
-For a long, sorted list of limits, the module `bisect` finds the position of a value
-by halving the list, not by checking every limit:
-
-```python run
-import bisect
-
-pd_limits = [0.0005, 0.001, 0.0025, 0.006, 0.015, 0.04, 0.1, 0.25, 0.9999]   # the pd_max of grades 1 - 9
-grades = ["AAA", "AA", "A", "BBB", "BB", "B", "CCC", "CC", "C", "D"]
-
-def grade_of_pd(pd_value):
-    return grades[bisect.bisect_left(pd_limits, pd_value)]
-
-print([grade_of_pd(p) for p in [0.0003, 0.0043, 0.02, 0.5, 1.0]])
-```
-
-In pandas, `pd.cut` does the same for a whole column ([lecture 14](./14-pandas-select-aggregate-join.md#bands-pd-cut)).
-:::
-::::
-
-::: details Advanced: the same in pandas
-`Series.map(dictionary)` applies a dictionary to a whole column - a SAS format on a
-column. Missing keys become `NaN`:
+The same dictionaries work in pandas. `Series.map(dictionary)` looks up every value
+of a column in the dictionary - a SAS format applied to a whole column. A value
+that is not a key becomes `NaN` (empty), and `fillna` gives it a default, like
+`OTHER=` in a SAS format:
 
 ```python run
 import pandas as pd
@@ -616,7 +579,9 @@ names = {"mortgage": "Mortgage loan", "overdraft": "Overdraft"}
 loans = pd.read_csv("data/loans.csv")
 print(loans["product"].map(names).fillna("Other").head())
 ```
-:::
+
+pandas comes in [lecture 13](./13-numpy-pandas-intro.md); `map` is in
+[lecture 14](./14-pandas-select-aggregate-join.md#codes-and-descriptions-map).
 
 ## 6. Nested dictionaries and records
 
