@@ -17,6 +17,8 @@ title: 8. Error handling and file handling
 - raise your own errors with a clear message when the data is wrong;
 - work with files and folders through `pathlib`;
 - read and write text, CSV, JSON and Excel files;
+- sum by group and collect the rows of each group with `defaultdict` - `GROUP BY`
+  with `SUM` in SQL;
 - load a file with bad rows: keep the good rows, write the bad ones to a reject file
   with the reason, and report a summary - the job of the SAS log, done properly.
 
@@ -1203,6 +1205,122 @@ for line_no, text, reason in rejected:
 `reader.line_num` is the line number in the file - like `_N_` in the SAS log, but for
 the file line (the header is line 1).
 
+### Sums by group: `defaultdict`
+
+The summary of the load needs the **total per currency** of the good payments - in
+SQL `SELECT currency, SUM(amount) ... GROUP BY currency`, in SAS `PROC MEANS SUM`
+with `CLASS currency`. A `Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter))
+counts; for a sum, use the same idea as counting with `get`, with the amount instead
+of `1`:
+
+```python run
+totals = {}
+for currency, amount in [("EUR", 100.0), ("USD", 20.0), ("EUR", 50.0)]:
+    totals[currency] = totals.get(currency, 0.0) + amount
+print(totals)
+```
+
+`defaultdict` (also from `collections`) does the `get(..., 0.0)` part for you. It is
+a dictionary that **creates a missing key** when you read it with `[]`.
+`defaultdict(float)` gives the new key the value `float()`, which is `0.0`, so you can
+add to it straight away:
+
+```python run
+from collections import defaultdict
+
+totals = defaultdict(float)
+for currency, amount in [("EUR", 100.0), ("USD", 20.0), ("EUR", 50.0)]:
+    totals[currency] += amount
+print(totals)
+print(dict(totals))
+```
+
+Pass `float`, not `float()`: the dictionary calls it for each new key.
+`dict(totals)` makes a normal dictionary with the same pairs. Round only after
+summing a group.
+
+::: info Animation
+**Grouping by hand:** [3. Sum with `defaultdict`](../animations/groupingByHand.html#3){target="_blank"}
+:::
+
+On the portfolio - the outstanding per product:
+
+```python run
+import csv
+from collections import defaultdict
+
+totals = defaultdict(float)
+with open("data/loans.csv", encoding="utf-8") as file:
+    for row in csv.DictReader(file):
+        totals[row["product"]] += float(row["outstanding"])
+
+for product, total in sorted(totals.items()):
+    print(f"{product:<16}{total:>18,.2f}")
+```
+
+Sometimes you need the **rows** of each group, not only a number - a dictionary of
+lists. `defaultdict(list)` gives each new key a new empty list:
+
+```python run
+from collections import defaultdict
+
+loans = [("L000001", "C0002"), ("L000002", "C0001"), ("L000003", "C0002"),
+         ("L000004", "C0003"), ("L000005", "C0002")]        # loan_id, client_id
+
+loans_of = defaultdict(list)
+for loan_id, client_id in loans:
+    loans_of[client_id].append(loan_id)
+
+print(dict(loans_of))
+print(len(loans_of["C0002"]), "loans for C0002")
+```
+
+::: info Animation
+**Grouping by hand:** [4. Group into lists](../animations/groupingByHand.html#4){target="_blank"}
+:::
+
+::: warning Reading a missing key adds it
+`totals["GBP"]` does not raise a `KeyError` - it **adds** `"GBP"` with `0.0`. A typo
+in a key makes a new group without any error. To only look, use `in` or `get`:
+
+```python run
+from collections import defaultdict
+
+totals = defaultdict(float, {"EUR": 150.0})
+print("GBP" in totals, totals.get("GBP"))      # only looks
+print(totals["GBP"])                           # adds the key!
+print(dict(totals))
+```
+:::
+
+::: details Advanced: two keys, and several values per group
+A **tuple** is a key too - `GROUP BY product, currency`:
+
+```python run
+from collections import defaultdict
+
+loans = [("mortgage", "EUR", 120000.0), ("consumer", "EUR", 8500.0),
+         ("mortgage", "USD", 40000.0), ("mortgage", "EUR", 250000.0)]
+
+totals = defaultdict(float)
+for product, currency, amount in loans:
+    totals[(product, currency)] += amount
+for (product, currency), total in sorted(totals.items()):
+    print(f"{product:<10}{currency:<5}{total:>12,.2f}")
+```
+
+For several values per group (`COUNT`, `SUM`, `MAX`), keep a small list per key,
+for example `defaultdict(lambda: [0, 0.0])` for `[count, sum]`. `lambda: [0, 0.0]`
+is a function without a name ([session 4](./04-functions.md#_10-lambda)) that makes a new list
+for each new key.
+:::
+
+::: tip Try it
+Change the portfolio example: sum the `amount` per `currency` instead of the
+outstanding per product. Then make a `defaultdict(list)` of the loan ids per
+`stage`. How many loans are in stage 3?
+:::
+
 ### The reject file and the summary
 
 The rejected rows go into their own file, with the reason - so that the source system
@@ -1311,6 +1429,7 @@ the new rule reject?
 | CSV | `csv.reader` / `DictReader`; `delimiter=";"`; write with `newline=""`; `utf-8-sig` for Excel |
 | JSON | `json.load(f)`, `json.dump(obj, f, indent=2)`; dates as ISO text |
 | Excel | `load_workbook(...)`, `ws.iter_rows(values_only=True)`; `Workbook()`, `ws.append`, `wb.save` |
+| Sums by group | `defaultdict(float)`: `totals[key] += amount`; `defaultdict(list)`: `groups[key].append(x)`; reading a missing key adds it |
 | Loader | one check per rule, one `try` per row, a reject file with the reason, a summary |
 
 ## Practice

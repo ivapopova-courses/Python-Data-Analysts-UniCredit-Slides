@@ -312,7 +312,7 @@ print({s: round(v, 2) for s, v in sorted(el_by_stage.items())})
 ```
 
 The buckets of the whole portfolio, counted with the function of the module and a
-`Counter`:
+`Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter)):
 
 ```python run
 import csv
@@ -683,8 +683,8 @@ print("stdev  ", round(st.stdev(rates), 3))          # the sample standard devia
 print("deciles", [round(q, 2) for q in st.quantiles(rates, n=10)])
 ```
 
-By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists (`defaultdict(list)`) and
-`statistics` per group:
+By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists (`defaultdict(list)`,
+[lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)) and `statistics` per group:
 
 ```python run
 import csv
@@ -719,7 +719,9 @@ quantiles differ a little between SAS, SQL and Python.
 
 ### `collections`: more containers
 
-`Counter` (counts values) and `defaultdict` (a dictionary that creates a missing key) are in this module. Two more:
+You know two containers of this module: `Counter` counts values
+([lecture 7](./07-text-and-regex.md#counting-with-counter)), and `defaultdict` is a dictionary that
+creates a missing key ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)). Two more:
 
 ```python run
 from collections import namedtuple, deque

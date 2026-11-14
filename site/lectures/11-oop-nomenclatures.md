@@ -109,7 +109,7 @@ for name, groups in [("A", GROUPS_REPORT_A), ("B", GROUPS_REPORT_B)]:
 ```
 
 And a copy with a typo - `"credit card"` instead of `"credit_card"` - loses a whole
-product, without an error:
+product, without an error (counted with a `Counter`, [lecture 7](./07-text-and-regex.md#counting-with-counter)):
 
 ```python run
 import csv
@@ -601,7 +601,7 @@ print(Counter(r["group"] for r in rows))
 ```
 
 The new column, then a total per label - the outstanding per stage name, the SQL
-`GROUP BY`:
+`GROUP BY` (`defaultdict(float)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
 
 ```python run
 import csv

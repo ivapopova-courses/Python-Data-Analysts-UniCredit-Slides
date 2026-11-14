@@ -322,7 +322,8 @@ print([l.loan_id for l in loans if l.is_late()])
 print([l.loan_id for l in sorted(loans, key=lambda l: l.days_past_due, reverse=True)])
 ```
 
-On the portfolio: the late loans per product, with the method doing the test:
+On the portfolio: the late loans per product, with the method doing the test and a
+`Counter` ([lecture 7](./07-text-and-regex.md#counting-with-counter)):
 
 ```python run
 import csv
@@ -1300,7 +1301,7 @@ print(sum(1 for c in clients.values() if not c.loans), "clients without loans")
 ```
 
 From the objects, the usual reports - exposure per segment, and the share of the
-largest client in each segment:
+largest client in each segment (`defaultdict(list)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
 
 ```python run
 import csv

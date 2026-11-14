@@ -200,7 +200,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:111
-msgid "And a copy with a typo - `\"credit card\"` instead of `\"credit_card\"` - loses a whole product, without an error:"
+msgid "And a copy with a typo - `\"credit card\"` instead of `\"credit_card\"` - loses a whole product, without an error (counted with a `Counter`, [lecture 7](./07-text-and-regex.md#counting-with-counter)):"
 msgstr ""
 
 #. heading 3
@@ -475,7 +475,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/11-oop-nomenclatures.md:603
-msgid "The new column, then a total per label - the outstanding per stage name, the SQL `GROUP BY`:"
+msgid "The new column, then a total per label - the outstanding per stage name, the SQL `GROUP BY` (`defaultdict(float)`: [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
 msgstr ""
 
 #. box title

@@ -107,3 +107,8 @@ msgstr "Занятие 6 - Dictionaries"
 #: site/under-the-hood.md:84
 msgid "**[Grouping by hand](animations/groupingByHand.html){target=\"_blank\"}** - a dictionary as a lookup table, and as the result of a `GROUP BY` that grows row by row: a lookup with a default, counting with `get`, sums with `defaultdict`, groups of rows in lists, and a join by key. [1. A lookup](animations/groupingByHand.html#1){target=\"_blank\"}, [2. Count with `get`](animations/groupingByHand.html#2){target=\"_blank\"}, [3. Sum with `defaultdict`](animations/groupingByHand.html#3){target=\"_blank\"}, [4. Group into lists](animations/groupingByHand.html#4){target=\"_blank\"}, [5. The join by key](animations/groupingByHand.html#5){target=\"_blank\"}"
 msgstr "**[Групиране на ръка](animations/groupingByHand.html){target=\"_blank\"}** - dictionary като таблица за търсене (lookup table) и като резултат от `GROUP BY`, който расте ред по ред: търсене със стойност по подразбиране, броене с `get`, суми с `defaultdict`, групи от редове в lists и join по ключ. [1. Търсене](animations/groupingByHand.html#1){target=\"_blank\"}, [2. Броене с `get`](animations/groupingByHand.html#2){target=\"_blank\"}, [3. Сума с `defaultdict`](animations/groupingByHand.html#3){target=\"_blank\"}, [4. Групиране в lists](animations/groupingByHand.html#4){target=\"_blank\"}, [5. Join по ключ](animations/groupingByHand.html#5){target=\"_blank\"}"
+
+#. paragraph
+#: site/under-the-hood.md:94
+msgid "Steps 2 - 4 belong to later sessions: counting in session 7 (`Counter`), sums and groups of rows in session 8 (`defaultdict`)."
+msgstr "Стъпки 2 - 4 са от по-късни занятия: броенето - в занятие 7 (`Counter`), сумите и групите от редове - в занятие 8 (`defaultdict`)."

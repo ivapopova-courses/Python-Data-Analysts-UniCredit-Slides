@@ -90,3 +90,6 @@ rows in lists, and a join by key.
 [3. Sum with `defaultdict`](animations/groupingByHand.html#3){target="_blank"},
 [4. Group into lists](animations/groupingByHand.html#4){target="_blank"},
 [5. The join by key](animations/groupingByHand.html#5){target="_blank"}
+
+Steps 2 - 4 belong to later sessions: counting in session 7 (`Counter`), sums and
+groups of rows in session 8 (`defaultdict`).

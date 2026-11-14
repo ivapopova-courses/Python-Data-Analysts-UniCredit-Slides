@@ -945,7 +945,8 @@ With a real database, the data is on a server, often millions of rows. Moving al
 to your laptop to filter them there is slow. The rule: **filter, join and aggregate in
 SQL**; take only the result into Python - the same idea as SAS pass-through.
 
-The totals by stage, two ways - the same numbers:
+The totals by stage, two ways - the same numbers. The Python way keeps a small list
+`[count, sum]` per stage in a `defaultdict` ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
 
 ```python run
 import sqlite3
@@ -964,7 +965,7 @@ print(in_sql)
 print([(s, n, round(t, 2)) for s, (n, t) in sorted(totals.items())])
 ```
 
-`HAVING` and `CASE WHEN` - the SQL of [session 2](./02-conditions-and-loops.md#case-when-in-python) and 6, run by the database:
+`HAVING` and `CASE WHEN` (in Python: [session 2](./02-conditions-and-loops.md#case-when-in-python)), run by the database:
 
 ```python run
 import sqlite3

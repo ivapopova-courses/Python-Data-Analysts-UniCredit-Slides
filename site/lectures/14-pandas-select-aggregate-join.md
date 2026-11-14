@@ -462,7 +462,7 @@ import pandas as pd
 
 loans = pd.read_csv("data/loans.csv")
 
-totals = {}                                   # session 6: GROUP BY by hand
+totals = {}                                   # lecture 8: GROUP BY by hand
 for stage, amount in zip(loans["stage"], loans["outstanding"]):
     totals[stage] = totals.get(stage, 0) + amount
 

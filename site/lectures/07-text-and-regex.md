@@ -17,6 +17,8 @@ title: 7. Text processing and regular expressions
 - split a line into fields and join fields into a line - `SCAN` and `CATX` in SAS;
 - replace and remove parts of a text - `TRANWRD` and `COMPRESS` in SAS;
 - clean real identifiers: client ids, company names, EIKs, IBANs, city names;
+- count the values of a column with `Counter` - the Python version of `GROUP BY` with
+  `COUNT(*)` in SQL and of `PROC FREQ` in SAS;
 - read a number and a date from text, with `float` and `datetime`;
 - describe the **shape** of a text with a regular expression, and find, check and
   extract with the `re` module - the Python version of SAS `PRXMATCH` and of SQL
@@ -531,6 +533,106 @@ print(clean_iban(""))
 
 Both checks are only the **shape**. A real EIK and a real IBAN also have **check
 digits** that catch typing errors - see [Check digits](#check-digits-iban-and-eik) in the Self-study part.
+
+### Counting with `Counter`
+
+Is the cleaning done? Count the values: how many different spellings, how many rows
+each. In SQL this is `SELECT city, COUNT(*) ... GROUP BY city`; in SAS it is
+`PROC FREQ`. The result is a table **value -> count** - in Python, a dictionary.
+
+By hand first, on a small list, so you can follow each step:
+
+```python run
+regions = ["Ruse", "Varna", "Ruse"]
+counts = {}
+for region in regions:
+    counts[region] = counts.get(region, 0) + 1
+    print(region, counts)
+```
+
+For a new region, `get(region, 0)` gives `0`. For a known region, it gives the count
+so far. Add one and store the new count under the same key.
+
+::: info Animation
+**Grouping by hand:** [2. Count with `get`](../animations/groupingByHand.html#2){target="_blank"}
+:::
+
+Counting is so common that the module `collections` (it comes with Python) has a
+dictionary made for it: **`Counter`**. Give it the values, and it counts them:
+
+```python run
+from collections import Counter
+
+regions = ["Ruse", "Varna", "Sofia", "Ruse", "Burgas", "Varna", "Ruse", "Plovdiv"]
+counts = Counter(regions)
+
+print(counts)
+print(counts.most_common(3))                  # PROC FREQ ORDER=FREQ, the top 3
+print(counts["Sofia"], counts["Vidin"])       # a missing key counts 0 - no KeyError
+print(len(counts), "different regions")
+```
+
+A `Counter` is a dictionary: `items()`, `sorted(...)` and `dict(counts)` work as in
+[session 6](./06-dictionaries.md#_3-iterating-over-a-dictionary). Two differences: a
+missing key gives `0` instead of a `KeyError`, and `most_common(n)` gives the `n`
+largest counts, largest first.
+
+On the portfolio - the loans per product, from a generator expression
+([session 5](./05-lists-advanced.md#_3-generator-expressions-no-list-in-memory)), without a list in memory:
+
+```python run
+import csv
+from collections import Counter
+
+with open("data/loans.csv", encoding="utf-8") as file:
+    products = Counter(row["product"] for row in csv.DictReader(file))
+
+print(products.most_common())
+print(sum(products.values()), "loans")
+```
+
+You can also start with an empty `Counter()` and add one value at a time - useful in
+a loop that does more than counting. `+= 1` works for a new key too, because the
+missing key starts at `0`. Two counters are equal (`==`) when they have the same
+values with the same counts:
+
+```python run
+from collections import Counter
+
+late = Counter()
+for product, days in [("mortgage", 0), ("consumer", 45), ("consumer", 12), ("overdraft", 95)]:
+    if days > 30:
+        late[product] += 1
+print(late)
+print(late == Counter(["consumer", "overdraft"]))
+```
+
+The trap: `"Sofia"`, `"sofia"` and `"Sofia "` are three different keys. A `GROUP BY` in
+SQL has the same problem. Clean the key **before** you count:
+
+```python run
+from collections import Counter
+
+cities = ["Sofia", "sofia", "Sofia ", "Varna", "VARNA"]
+print(Counter(cities))
+print(Counter(c.strip().title() for c in cities))
+```
+
+::: details Advanced: the same in pandas
+`value_counts` counts the values of a column (lecture 13):
+
+```python run
+import pandas as pd
+
+loans = pd.read_csv("data/loans.csv")
+print(loans["product"].value_counts())
+```
+:::
+
+::: tip Try it
+Count the loans per `stage` in `loans.csv` with a `Counter`. Which stage is the
+largest? What does `counts["4"]` give - and why `"4"` and not `4`?
+:::
 
 ### Cities: a mapping of variants
 
@@ -1180,6 +1282,7 @@ there?
 | Split and join | `split(",")` keeps empty fields; `split()` cuts at any spaces; `rsplit`, `partition`; `", ".join(strings)` |
 | Replace | `replace(old, new)`; `removeprefix` / `removesuffix`; `zfill` |
 | Cleaning | one function per column, `None` for what cannot be fixed; check against a trusted source |
+| Counting | `Counter(values)` = `GROUP BY` + `COUNT(*)`, `PROC FREQ`; `most_common(n)`; a missing key counts 0; clean the key first |
 | Numbers | know the format of the source; `replace`, then `float` |
 | Dates | `date.fromisoformat`; `datetime.strptime(s, "%d.%m.%Y").date()`; `strftime`; `b - a` gives a `timedelta` |
 | Patterns | always `r"..."`; `.` any character, `\.` a point; `\d`, `\s`, `\w`; `[A-Z]`, `[^0-9]` |
