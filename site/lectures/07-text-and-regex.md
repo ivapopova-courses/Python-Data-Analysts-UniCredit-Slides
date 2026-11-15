@@ -1342,7 +1342,7 @@ print(m.groups())                 # ('EUR',): now the currency is group 1
 
 `(?:\.\d+)?` reads: "a point and digits, 0 or 1 time" - an optional decimal part.
 
-### `LIKE` and regex
+### SQL `LIKE` and regex
 
 | SQL `LIKE` | Regex | |
 |---|---|---|
@@ -1654,8 +1654,7 @@ print(iban.str.fullmatch(r"BG\d{2}[A-Z]{4}\d{6}[A-Z0-9]{8}").value_counts())
 
 ::: warning A regex is code: test it
 A pattern that looks right can fit too much or too little. Test it on good **and**
-bad examples, as the checks of the tasks do. [regex101.com](https://regex101.com)
-(section 7) shows what each part of a pattern fits.
+bad examples, as the checks of the tasks do. [regex101.com](https://regex101.com) shows what each part of a pattern fits.
 :::
 
 ::: tip Try it
