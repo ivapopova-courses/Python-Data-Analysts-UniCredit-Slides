@@ -1105,7 +1105,7 @@ for client_id, exposure in top:
     print(f"{client_id} {name_of.get(client_id, '?'):<28}{exposure:>16,.2f}")
 ```
 
-The names are as they were typed into the register - the `clean_name` of [lecture 7](./07-text-and-regex.md#company-and-person-names)
+The names are as they were typed into the register - the `clean_name` of [lecture 7](./07-text-and-regex.md#clean-company-and-person-names)
 would fix them. That is the Python part of the job.
 
 **Exercise**

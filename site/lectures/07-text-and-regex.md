@@ -209,6 +209,16 @@ Clean `"  GREEN   build  ltd "` into `"Green Build Ltd"`. You need [`split`](htt
 and [`title`](https://docs.python.org/3/builtins/stdtypes.html#str.title).
 :::
 
+::: details Answer
+```python run
+name = "  GREEN   build  ltd "
+print(" ".join(name.split()).title())
+```
+
+[`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) removes all the spaces (at the ends and the extra ones inside), `" ".join`
+puts one space between the words, and [`title()`](https://docs.python.org/3/builtins/stdtypes.html#str.title) gives each word a capital.
+:::
+
 ## 3. Find and test
 
 ### Is it in there?
@@ -286,6 +296,23 @@ digits. Use [`isdigit`](https://docs.python.org/3/builtins/stdtypes.html#str.isd
 ::: tip Try it
 Write `is_client_id(s)`: `"C"` and four digits. Test it on `"C0001"`, `"c0001"`,
 `"C001"`, `"C00010"`. Then change it to accept a lower-case `c` too.
+:::
+
+::: details Answer
+```python run
+def is_client_id(s):
+    return len(s) == 5 and s[0] == "C" and s[1:].isdigit()
+
+print([is_client_id(x) for x in ["C0001", "c0001", "C001", "C00010"]])
+
+def is_client_id(s):
+    return len(s) == 5 and s[0] in ("C", "c") and s[1:].isdigit()
+
+print([is_client_id(x) for x in ["C0001", "c0001", "C001", "C00010"]])
+```
+
+Check the length first: for an empty string, `s[0]` is an `IndexError`, but
+`len(s) == 5` is `False`, and `and` stops there.
 :::
 
 ## 4. Split, join and replace
@@ -415,6 +442,25 @@ dictionary `{"lgd": "0.45", ...}`: [`split(";")`](https://docs.python.org/3/buil
 back into the same string.
 :::
 
+::: details Answer
+```python run
+settings = "lgd=0.45;currency=EUR;report_date=2026-09-30"
+
+params = {}
+for part in settings.split(";"):
+    key, value = part.split("=")
+    params[key] = value
+print(params)
+
+back = ";".join(f"{key}={value}" for key, value in params.items())
+print(back)
+print(back == settings)
+```
+
+The values stay text: `params["lgd"]` is `"0.45"`. Convert with [`float()`](https://docs.python.org/3/builtins/functions.html#float) when you
+need a number.
+:::
+
 ## 5. Cleaning identifiers and names
 
 Now the real file. One **function per column**: it takes the raw text and returns
@@ -468,7 +514,7 @@ print("unique: ", len(set(clean_ids)) == len(clean_ids))
 last one: cleaning can turn two different spellings into the same id.
 :::
 
-### Company and person names
+### Clean company and person names
 
 Spaces, case, quotes, and the legal form at the end:
 
@@ -624,7 +670,23 @@ print(loans["product"].value_counts())
 
 ::: tip Try it
 Count the loans per `stage` in `loans.csv` with a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter). Which stage is the
-largest? What does `counts["4"]` give - and why `"4"` and not `4`?
+largest?
+:::
+
+::: details Answer
+```python run
+import csv
+from collections import Counter
+
+with open("data/loans.csv", encoding="utf-8") as file:
+    stages = Counter(row["stage"] for row in csv.DictReader(file))
+
+print(stages)
+print(stages.most_common(1))
+```
+
+Stage 1 is the largest: 323 of the 400 loans. The keys are the text `"1"`, `"2"`,
+`"3"`, not numbers: a CSV file gives every value as text.
 :::
 
 ### Cities: a mapping of variants
@@ -681,6 +743,38 @@ than any amount of looking at the data.
 Change `clean_name` so that it also removes a comma before the legal form
 (`"Rila Print, EAD"` -> `"Rila Print EAD"`). Then run it on all names of the file
 and count how many names were changed.
+:::
+
+::: details Answer
+```python run
+import csv
+
+LEGAL_FORMS = {"OOD", "EOOD", "AD", "EAD", "ET"}
+
+def clean_name(raw):
+    words = raw.replace('"', "").split()
+    result = []
+    for word in words:
+        bare = word.replace(".", "").upper()
+        if bare in LEGAL_FORMS:
+            if result:                                   # a word before the legal form
+                result[-1] = result[-1].rstrip(",")      # remove its comma
+            result.append(bare)
+        else:
+            result.append(word.title())
+    return " ".join(result)
+
+print(clean_name("Rila Print, EAD"))
+print(clean_name("Silver Textiles, Plovdiv AD"))      # this comma stays
+
+with open("data/client_register.csv", encoding="utf-8") as file:
+    names = [row["name"] for row in csv.DictReader(file)]
+
+print(sum(1 for name in names if clean_name(name) != name), "of", len(names), "names changed")
+```
+
+The comma is removed only from the word **right before** a legal form. A simple
+`raw.replace(",", "")` would also remove the comma in `"Silver Textiles, Plovdiv"`.
 :::
 
 ## 6. Numbers and dates from text
@@ -808,6 +902,19 @@ How many days are left from today to the end of this year? Use [`date.today()`](
 [`date(year, 12, 31)`](https://docs.python.org/3/library/datetime.html#datetime.date).
 :::
 
+::: details Answer
+```python run
+from datetime import date
+
+today = date.today()
+end_of_year = date(today.year, 12, 31)
+print((end_of_year - today).days, "days left")
+```
+
+`today.year` takes the year of today, so the code works in every year. The number
+changes every day.
+:::
+
 ## 7. Regular expressions: a pattern for many strings
 
 ### What a regular expression is
@@ -894,6 +1001,18 @@ Rule: **always write a pattern as a raw string**, `r"..."`.
 Change the pattern of the first block of this section to find the amount
 (`1 250,00`) instead of the date. Hint: digits, a space, digits, a comma, two digits:
 `r"\d+ \d+,\d{2}"`.
+:::
+
+::: details Answer
+```python run
+import re
+
+comment = "Payment of 1 250,00 EUR received on 15.09.2026."
+
+m = re.search(r"\d+ \d+,\d{2}", comment)
+print(m.group())
+print(m.start(), m.end())
+```
 :::
 
 ## 8. Writing a pattern
@@ -1002,6 +1121,19 @@ Write a pattern that finds the three-letter currency codes (`EUR`, `USD`, ...) i
 need so that `EURO` is not found?
 :::
 
+::: details Answer
+```python run
+import re
+
+text = "100 EUR, 50 usd, 20 GBP and EURO"
+print(re.findall(r"[A-Z]{3}", text))           # 'EUR' from EURO too
+print(re.findall(r"\b[A-Z]{3}\b", text))       # only whole words
+```
+
+You need `\b` at both ends. Without them, the first three letters of `EURO` fit
+too. `usd` is not found, because `[A-Z]` is only the capital letters.
+:::
+
 ## 9. The functions of `re`
 
 ### `search`, `match`, `fullmatch`: where must the pattern fit?
@@ -1074,6 +1206,22 @@ case, with [`re.search`](https://docs.python.org/3/library/re.html#re.search) an
 (`"review" in text.lower()`). Is it the same number?
 :::
 
+::: details Answer
+```python run
+import csv
+import re
+
+with open("data/loan_comments.csv", encoding="utf-8") as file:
+    texts = [row["comment"] for row in csv.DictReader(file)]
+
+print(sum(1 for text in texts if re.search(r"review", text, flags=re.IGNORECASE)))
+print(sum(1 for text in texts if "review" in text.lower()))
+```
+
+The same number: 56. For one fixed word, the string method is simpler. The regex
+is worth it when the text has a shape (digits, a date, whole words with `\b`).
+:::
+
 ## 10. Groups and alternatives
 
 ### Groups: take the match apart
@@ -1136,6 +1284,20 @@ print(re.findall(r"\d+(?:\.\d+)?", "rates 12.97 and 13 and 4.5"))
 Write a pattern with three groups for `"Overdue 60 days. Reminder sent on
 2026-04-24."` that gives the year, the month and the day of the date with
 [`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups).
+:::
+
+::: details Answer
+```python run
+import re
+
+m = re.search(r"(\d{4})-(\d{2})-(\d{2})", "Overdue 60 days. Reminder sent on 2026-04-24.")
+print(m.groups())
+
+year, month, day = m.groups()
+print(year, month, day)
+```
+
+The `60` does not fit: the pattern needs four digits and a `-` first.
 :::
 
 ## 11. Validate and extract
@@ -1262,6 +1424,26 @@ bad examples, as the checks of the tasks do. [regex101.com](https://regex101.com
 All loan ids that the comments **mention** in their text (`L` and 6 digits, whole
 words): collect them with [`findall`](https://docs.python.org/3/library/re.html#re.findall) from every comment. How many different ids are
 there?
+:::
+
+::: details Answer
+```python run
+import csv
+import re
+
+with open("data/loan_comments.csv", encoding="utf-8") as file:
+    comments = list(csv.DictReader(file))
+
+mentioned = []
+for c in comments:
+    mentioned += re.findall(r"\bL\d{6}\b", c["comment"])
+
+print(len(mentioned), "mentions,", len(set(mentioned)), "different ids")
+print(sorted(set(mentioned))[:5])
+```
+
+29 mentions of 28 different ids: one id is mentioned twice. [`set`](https://docs.python.org/3/builtins/stdtypes.html#set) removes the
+repeats, as `COUNT(DISTINCT ...)` in SQL.
 :::
 
 ## 12. Summary

@@ -995,7 +995,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:1108
-msgid "The names are as they were typed into the register - the `clean_name` of [lecture 7](./07-text-and-regex.md#company-and-person-names) would fix them. That is the Python part of the job."
+msgid "The names are as they were typed into the register - the `clean_name` of [lecture 7](./07-text-and-regex.md#clean-company-and-person-names) would fix them. That is the Python part of the job."
 msgstr ""
 
 #. paragraph
