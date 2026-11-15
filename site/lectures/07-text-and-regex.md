@@ -438,8 +438,14 @@ for raw in ["c0014", "C 0009", "C-0026", "C17", " C0011", "X0001", "C"]:
     print(f"{raw!r:>10} -> {clean_client_id(raw)}")
 ```
 
-**How many ids were fixed.** On the whole file - how many ids needed a fix, and are they unique now?
+::: tip Try it
+Clean the whole file: read the `client_id` column of `client_register.csv` (as in
+the box "Reading a CSV file" at the start of this lecture) and clean every id with
+`clean_client_id`. How many ids change? How many are `None`? Are the clean ids
+unique?
+:::
 
+::: details Answer
 ```python run
 import csv
 
@@ -457,6 +463,10 @@ print("changed:", sum(1 for raw, clean in zip(raw_ids, clean_ids) if raw != clea
 print("invalid:", clean_ids.count(None))
 print("unique: ", len(set(clean_ids)) == len(clean_ids))
 ```
+
+55 ids change, none is `None`, and the 150 clean ids are unique. Always check the
+last one: cleaning can turn two different spellings into the same id.
+:::
 
 ### Company and person names
 
