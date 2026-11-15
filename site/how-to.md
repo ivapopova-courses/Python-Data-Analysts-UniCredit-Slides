@@ -120,6 +120,23 @@ Some companies block the extension Marketplace or allow only approved extensions
 If **Install** does not work, ask your IT for the extensions in the table.
 :::
 
+### Optional extensions {#optional-extensions}
+
+You do not need these extensions for the course, but they make the work easier.
+They are not in `extensions.json`: install the ones you want one at a time, from
+the **Extensions** view.
+
+| Extension | By | What for |
+|---|---|---|
+| **Path Intellisense** | Christian Kohler | completes the names of files and folders while you type a path in a string: type `"./data/"` and choose `loans.csv` from the list |
+
+::: warning Path Intellisense and the current folder
+Path Intellisense completes a path from the folder of the file you edit. Python
+opens a relative path from the current folder - the folder the program runs in
+(`Path.cwd()`, lecture 8). If the two folders are not the same, a path from the
+list stops with `FileNotFoundError`.
+:::
+
 ### Linter and formatter: Ruff {#ruff}
 
 Two tools help you write clean code:
