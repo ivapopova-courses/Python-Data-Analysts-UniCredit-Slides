@@ -1258,7 +1258,11 @@ import re
 for text in ["loan L000391;", "LL000391", "L0003915"]:
     inside = re.search(r"L\d{6}", text)          # also inside longer words
     word = re.search(r"\bL\d{6}\b", text)        # only a whole word
-    print(f"{text!r:<16} {inside.group() if inside else None!s:<9} {word.group() if word else None}")
+    print("Text:", text)
+    if inside:
+        print("  inside:    ", inside.group())
+    if word:
+        print("  whole word:", word.group())
 ```
 
 `L0003915` has 7 digits: `L\d{6}` still finds the first 6, `\bL\d{6}\b` does not.
