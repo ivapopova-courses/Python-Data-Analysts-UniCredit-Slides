@@ -264,7 +264,7 @@ msgid "[`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) w
 msgstr "[`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) без аргумент разрязва текста на думи при всяка група от интервали, а `\" \".join(...)` съединява думите обратно с по един интервал между тях. Раздел 4 обяснява [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split) и [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join) подробно."
 
 #. box title
-#: site/lectures/07-text-and-regex.md:207 site/lectures/07-text-and-regex.md:296 site/lectures/07-text-and-regex.md:438 site/lectures/07-text-and-regex.md:487 site/lectures/07-text-and-regex.md:671 site/lectures/07-text-and-regex.md:742 site/lectures/07-text-and-regex.md:900 site/lectures/07-text-and-regex.md:1000 site/lectures/07-text-and-regex.md:1118 site/lectures/07-text-and-regex.md:1203 site/lectures/07-text-and-regex.md:1283 site/lectures/07-text-and-regex.md:1423
+#: site/lectures/07-text-and-regex.md:207 site/lectures/07-text-and-regex.md:296 site/lectures/07-text-and-regex.md:438 site/lectures/07-text-and-regex.md:487 site/lectures/07-text-and-regex.md:541 site/lectures/07-text-and-regex.md:709 site/lectures/07-text-and-regex.md:900 site/lectures/07-text-and-regex.md:1000 site/lectures/07-text-and-regex.md:1118 site/lectures/07-text-and-regex.md:1203 site/lectures/07-text-and-regex.md:1283 site/lectures/07-text-and-regex.md:1423
 msgid "Try it"
 msgstr "Пробвайте"
 
@@ -274,7 +274,7 @@ msgid "Clean `\"  GREEN   build  ltd \"` into `\"Green Build Ltd\"`. You need [`
 msgstr "Почистете `\"  GREEN   build  ltd \"` до `\"Green Build Ltd\"`. Трябват ви [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split), [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join) и [`title`](https://docs.python.org/3/builtins/stdtypes.html#str.title)."
 
 #. box title
-#: site/lectures/07-text-and-regex.md:212 site/lectures/07-text-and-regex.md:301 site/lectures/07-text-and-regex.md:445 site/lectures/07-text-and-regex.md:494 site/lectures/07-text-and-regex.md:676 site/lectures/07-text-and-regex.md:748 site/lectures/07-text-and-regex.md:905 site/lectures/07-text-and-regex.md:1006 site/lectures/07-text-and-regex.md:1124 site/lectures/07-text-and-regex.md:1209 site/lectures/07-text-and-regex.md:1289 site/lectures/07-text-and-regex.md:1429 site/lectures/07-text-and-regex.md:1560 site/lectures/07-text-and-regex.md:1608 site/lectures/07-text-and-regex.md:1687 site/lectures/07-text-and-regex.md:1778 site/lectures/07-text-and-regex.md:1853 site/lectures/07-text-and-regex.md:1913 site/lectures/07-text-and-regex.md:1973 site/lectures/07-text-and-regex.md:2062 site/lectures/07-text-and-regex.md:2184 site/lectures/07-text-and-regex.md:2398 site/lectures/07-text-and-regex.md:2456 site/lectures/07-text-and-regex.md:2519
+#: site/lectures/07-text-and-regex.md:212 site/lectures/07-text-and-regex.md:301 site/lectures/07-text-and-regex.md:445 site/lectures/07-text-and-regex.md:494 site/lectures/07-text-and-regex.md:547 site/lectures/07-text-and-regex.md:714 site/lectures/07-text-and-regex.md:905 site/lectures/07-text-and-regex.md:1006 site/lectures/07-text-and-regex.md:1124 site/lectures/07-text-and-regex.md:1209 site/lectures/07-text-and-regex.md:1289 site/lectures/07-text-and-regex.md:1429 site/lectures/07-text-and-regex.md:1560 site/lectures/07-text-and-regex.md:1608 site/lectures/07-text-and-regex.md:1687 site/lectures/07-text-and-regex.md:1778 site/lectures/07-text-and-regex.md:1853 site/lectures/07-text-and-regex.md:1913 site/lectures/07-text-and-regex.md:1973 site/lectures/07-text-and-regex.md:2062 site/lectures/07-text-and-regex.md:2184 site/lectures/07-text-and-regex.md:2398 site/lectures/07-text-and-regex.md:2456 site/lectures/07-text-and-regex.md:2519
 msgid "Answer"
 msgstr "Отговор"
 
@@ -522,130 +522,130 @@ msgstr "Почистване на имена на фирми и на хора"
 msgid "Spaces, case, quotes, and the legal form at the end:"
 msgstr "Интервали, регистър, кавички и правната форма в края:"
 
+#. paragraph
+#: site/lectures/07-text-and-regex.md:542
+msgid "Change `clean_name` above so that it also removes a comma before the legal form (`\"Rila Print, EAD\"` -> `\"Rila Print EAD\"`). Then run it on the `name` column of `client_register.csv` and count how many names were changed."
+msgstr "Променете `clean_name` по-горе така, че да премахва и запетая пред правната форма (`\"Rila Print, EAD\"` -> `\"Rila Print EAD\"`). После я изпълнете върху колоната `name` на `client_register.csv` и пребройте колко имена са се променили."
+
+#. paragraph
+#: site/lectures/07-text-and-regex.md:575
+msgid "The comma is removed only from the word **right before** a legal form. A simple `raw.replace(\",\", \"\")` would also remove the comma in `\"Silver Textiles, Plovdiv\"`."
+msgstr "Запетаята се премахва само от думата **точно преди** правната форма. Простото `raw.replace(\",\", \"\")` би премахнало и запетаята в `\"Silver Textiles, Plovdiv\"`."
+
 #. heading 3
-#: site/lectures/07-text-and-regex.md:541
+#: site/lectures/07-text-and-regex.md:579
 msgid "EIK and IBAN"
 msgstr "ЕИК и IBAN"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:543
+#: site/lectures/07-text-and-regex.md:581
 msgid "The EIK (the company id of the Bulgarian register) has 9 digits, or 13 for a branch. With `BG` in front it is a VAT number. Keep the digits only, then check the length:"
 msgstr "ЕИК (номерът на фирмата в българския регистър) има 9 цифри или 13 за клон. С `BG` отпред това е номер по ДДС. Запазете само цифрите, после проверете дължината:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:558
+#: site/lectures/07-text-and-regex.md:596
 msgid "**Clean an IBAN.** People write an IBAN in groups of 4; systems want it without spaces. A Bulgarian IBAN has 22 characters and starts with `BG`:"
 msgstr "**Почистване на IBAN.** Хората пишат IBAN на групи по 4; системите го искат без интервали. Българският IBAN има 22 символа и започва с `BG`:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:573
+#: site/lectures/07-text-and-regex.md:611
 msgid "Both checks are only the **shape**. A real EIK and a real IBAN also have **check digits** that catch typing errors - see [Check digits](#check-digits-iban-and-eik) in the Self-study part."
 msgstr "И двете проверки са само за **формата**. Истинският ЕИК и истинският IBAN имат и **контролни цифри**, които хващат грешките при въвеждане - вижте [Контролни цифри](#check-digits-iban-and-eik) в частта за самостоятелно изучаване."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:576
+#: site/lectures/07-text-and-regex.md:614
 msgid "Counting with `Counter`"
 msgstr "Броене с `Counter`"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:578
+#: site/lectures/07-text-and-regex.md:616
 msgid "Is the cleaning done? Count the values: how many different spellings, how many rows each. In SQL this is `SELECT city, COUNT(*) ... GROUP BY city`; in SAS it is `PROC FREQ`. The result is a table **value -> count** - in Python, a dictionary."
 msgstr "Свършено ли е почистването? Пребройте стойностите: колко различни изписвания, колко реда за всяко. В SQL това е `SELECT city, COUNT(*) ... GROUP BY city`; в SAS е `PROC FREQ`. Резултатът е таблица **стойност -> брой** - в Python, dictionary."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:582
+#: site/lectures/07-text-and-regex.md:620
 msgid "**Counting by hand.** By hand first, on a small list, so you can follow each step:"
 msgstr "**Броене на ръка.** Първо на ръка, върху малък list, за да можете да проследите всяка стъпка:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:592
+#: site/lectures/07-text-and-regex.md:630
 msgid "For a new region, [`get(region, 0)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) gives `0`. For a known region, it gives the count so far. Add one and store the new count under the same key."
 msgstr "За нов регион [`get(region, 0)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) дава `0`. За познат регион дава броя дотук. Добавете едно и запишете новия брой под същия ключ."
 
 #. box title
-#: site/lectures/07-text-and-regex.md:595
+#: site/lectures/07-text-and-regex.md:633
 msgid "Animation"
 msgstr "Анимация"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:596
+#: site/lectures/07-text-and-regex.md:634
 msgid "**Grouping by hand:** [2. Count with `get`](../animations/groupingByHand.html#2){target=\"_blank\"}"
 msgstr "**Групиране на ръка:** [2. Броене с `get`](../animations/groupingByHand.html#2){target=\"_blank\"}"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:599
+#: site/lectures/07-text-and-regex.md:637
 msgid "**With [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter).** Counting is so common that the module `collections` (it comes with Python) has a dictionary made for it: **[`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter)**. Give it the values, and it counts them:"
 msgstr "**С [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter).** Броенето е толкова често, че модулът `collections` (той идва с Python) има dictionary, направен точно за него: **[`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter)**. Подайте му стойностите и той ги преброява:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:614
+#: site/lectures/07-text-and-regex.md:652
 msgid "A [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) is a dictionary: [`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items), [`sorted(...)`](https://docs.python.org/3/builtins/functions.html#sorted) and [`dict(counts)`](https://docs.python.org/3/builtins/stdtypes.html#dict) work as in [session 6](./06-dictionaries.md#_3-iterating-over-a-dictionary). Two differences: a missing key gives `0` instead of a `KeyError`, and [`most_common(n)`](https://docs.python.org/3/library/collections.html#collections.Counter.most_common) gives the `n` largest counts, largest first."
 msgstr "[`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) е dictionary: [`items()`](https://docs.python.org/3/builtins/stdtypes.html#dict.items), [`sorted(...)`](https://docs.python.org/3/builtins/functions.html#sorted) и [`dict(counts)`](https://docs.python.org/3/builtins/stdtypes.html#dict) работят както в [занятие 6](./06-dictionaries.md#_3-iterating-over-a-dictionary). Две разлики: липсващ ключ дава `0` вместо `KeyError`, а [`most_common(n)`](https://docs.python.org/3/library/collections.html#collections.Counter.most_common) дава `n`-те най-големи бройки, от най-голямата."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:619
+#: site/lectures/07-text-and-regex.md:657
 msgid "**Loans per product.** On the portfolio - the loans per product, from a generator expression ([session 5](./05-lists-advanced.md#_3-generator-expressions-no-list-in-memory)), without a list in memory:"
 msgstr "**Кредити по продукт.** Върху портфейла - кредитите по продукт, от generator expression ([занятие 5](./05-lists-advanced.md#_3-generator-expressions-no-list-in-memory)), без list в паметта:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:633
+#: site/lectures/07-text-and-regex.md:671
 msgid "**Count in a loop.** You can also start with an empty [`Counter()`](https://docs.python.org/3/library/collections.html#collections.Counter) and add one value at a time - useful in a loop that does more than counting. `+= 1` works for a new key too, because the missing key starts at `0`. Two counters are equal (`==`) when they have the same values with the same counts:"
 msgstr "**Броене в цикъл.** Можете да започнете и с празен [`Counter()`](https://docs.python.org/3/library/collections.html#collections.Counter) и да добавяте по една стойност - полезно в цикъл, който прави повече от броене. `+= 1` работи и за нов ключ, защото липсващият ключ започва от `0`. Два Counter-а са равни (`==`), когато имат едни и същи стойности с едни и същи бройки:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:649
+#: site/lectures/07-text-and-regex.md:687
 msgid "**Clean before you count.** The trap: `\"Sofia\"`, `\"sofia\"` and `\"Sofia \"` are three different keys. A `GROUP BY` in SQL has the same problem. Clean the key **before** you count:"
 msgstr "**Почистете, преди да броите.** Капанът: `\"Sofia\"`, `\"sofia\"` и `\"Sofia \"` са три различни ключа. `GROUP BY` в SQL има същия проблем. Почистете ключа **преди** да броите:"
 
 #. box title
-#: site/lectures/07-text-and-regex.md:660
+#: site/lectures/07-text-and-regex.md:698
 msgid "Advanced: the same in pandas"
 msgstr "За напреднали: същото в pandas"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:661
+#: site/lectures/07-text-and-regex.md:699
 msgid "`value_counts` counts the values of a column (lecture 13):"
 msgstr "`value_counts` брои стойностите на колона (лекция 13):"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:672
+#: site/lectures/07-text-and-regex.md:710
 msgid "Count the loans per `stage` in `loans.csv` with a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter). Which stage is the largest?"
 msgstr "Пребройте кредитите по `stage` в `loans.csv` с [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter). Кой етап е най-голям?"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:688
+#: site/lectures/07-text-and-regex.md:726
 msgid "Stage 1 is the largest: 323 of the 400 loans. The keys are the text `\"1\"`, `\"2\"`, `\"3\"`, not numbers: a CSV file gives every value as text."
 msgstr "Най-голям е етап 1: 323 от 400-те кредита. Ключовете са текстът `\"1\"`, `\"2\"`, `\"3\"`, а не числа: CSV файлът дава всяка стойност като текст."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:692
+#: site/lectures/07-text-and-regex.md:730
 msgid "Cities: a mapping of variants"
 msgstr "Градове: съответствие на вариантите"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:694
+#: site/lectures/07-text-and-regex.md:732
 msgid "Some variants differ only by case and spaces; some have a prefix; some are in Cyrillic. Clean what string methods can clean. Then a **dictionary** ([session 6](./06-dictionaries.md#_5-lookup-tables-and-nomenclatures)) maps the Cyrillic names:"
 msgstr "Някои варианти се различават само по регистъра и интервалите; някои имат префикс; някои са на кирилица. Почистете каквото могат да почистят методите на string. После **dictionary** ([занятие 6](./06-dictionaries.md#_5-lookup-tables-and-nomenclatures)) съпоставя имената на кирилица:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:718
+#: site/lectures/07-text-and-regex.md:756
 msgid "**Check against `clients.csv`.** Compare with `clients.csv`, where the region is clean: the counts must be the same."
 msgstr "**Проверка спрямо `clients.csv`.** Сравнете с `clients.csv`, където регионът е чист: бройките трябва да са същите."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:739
+#: site/lectures/07-text-and-regex.md:777
 msgid "A check like this - \"the cleaned data agrees with a trusted source\" - is worth more than any amount of looking at the data."
 msgstr "Проверка като тази - \"почистените данни съвпадат с надежден източник\" - струва повече от колкото и да е разглеждане на данните."
-
-#. paragraph
-#: site/lectures/07-text-and-regex.md:743
-msgid "Change `clean_name` so that it also removes a comma before the legal form (`\"Rila Print, EAD\"` -> `\"Rila Print EAD\"`). Then run it on all names of the file and count how many names were changed."
-msgstr "Променете `clean_name` така, че да премахва и запетая пред правната форма (`\"Rila Print, EAD\"` -> `\"Rila Print EAD\"`). После я изпълнете върху всички имена във файла и пребройте колко имена са се променили."
-
-#. paragraph
-#: site/lectures/07-text-and-regex.md:776
-msgid "The comma is removed only from the word **right before** a legal form. A simple `raw.replace(\",\", \"\")` would also remove the comma in `\"Silver Textiles, Plovdiv\"`."
-msgstr "Запетаята се премахва само от думата **точно преди** правната форма. Простото `raw.replace(\",\", \"\")` би премахнало и запетаята в `\"Silver Textiles, Plovdiv\"`."
 
 #. heading 2
 #: site/lectures/07-text-and-regex.md:780
@@ -2246,6 +2246,9 @@ msgstr "Real Python: [Strings and character data](https://realpython.com/python-
 #: site/lectures/07-text-and-regex.md:2550
 msgid "**Next session:** errors and files - catch errors instead of stopping, read and write CSV, JSON and Excel files, and load data with bad rows the way a SAS log would report them."
 msgstr "**Следващото занятие:** грешки и файлове - хващане на грешки, вместо програмата да спре, четене и записване на CSV, JSON и Excel файлове и зареждане на данни с лоши редове така, както би ги отчел SAS log."
+
+#~ msgid "Change `clean_name` so that it also removes a comma before the legal form (`\"Rila Print, EAD\"` -> `\"Rila Print EAD\"`). Then run it on all names of the file and count how many names were changed."
+#~ msgstr "Променете `clean_name` така, че да премахва и запетая пред правната форма (`\"Rila Print, EAD\"` -> `\"Rila Print EAD\"`). После я изпълнете върху всички имена във файла и пребройте колко имена са се променили."
 
 #~ msgid "Count the loans per `stage` in `loans.csv` with a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter). Which stage is the largest? What does `counts[\"4\"]` give - and why `\"4\"` and not `4`?"
 #~ msgstr "Пребройте кредитите по `stage` в `loans.csv` с [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter). Кой етап е най-голям? Какво дава `counts[\"4\"]` - и защо `\"4\"`, а не `4`?"

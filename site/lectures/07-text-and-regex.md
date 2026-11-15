@@ -538,6 +538,44 @@ for raw in ["  BLACK SEA DESIGN ET", 'rila print ead', '"Silver Textiles" AD',
     print(f"{raw!r:<26} -> {clean_name(raw)}")
 ```
 
+::: tip Try it
+Change `clean_name` above so that it also removes a comma before the legal form
+(`"Rila Print, EAD"` -> `"Rila Print EAD"`). Then run it on the `name` column of
+`client_register.csv` and count how many names were changed.
+:::
+
+::: details Answer
+```python run
+import csv
+
+LEGAL_FORMS = {"OOD", "EOOD", "AD", "EAD", "ET"}
+
+def clean_name(raw):
+    words = raw.replace('"', "").split()
+    result = []
+    for word in words:
+        bare = word.replace(".", "").upper()
+        if bare in LEGAL_FORMS:
+            if result:                                   # a word before the legal form
+                result[-1] = result[-1].rstrip(",")      # remove its comma
+            result.append(bare)
+        else:
+            result.append(word.title())
+    return " ".join(result)
+
+print(clean_name("Rila Print, EAD"))
+print(clean_name("Silver Textiles, Plovdiv AD"))      # this comma stays
+
+with open("data/client_register.csv", encoding="utf-8") as file:
+    names = [row["name"] for row in csv.DictReader(file)]
+
+print(sum(1 for name in names if clean_name(name) != name), "of", len(names), "names changed")
+```
+
+The comma is removed only from the word **right before** a legal form. A simple
+`raw.replace(",", "")` would also remove the comma in `"Silver Textiles, Plovdiv"`.
+:::
+
 ### EIK and IBAN
 
 The EIK (the company id of the Bulgarian register) has 9 digits, or 13 for a branch.
@@ -738,44 +776,6 @@ print(from_register == from_clients)
 
 A check like this - "the cleaned data agrees with a trusted source" - is worth more
 than any amount of looking at the data.
-
-::: tip Try it
-Change `clean_name` so that it also removes a comma before the legal form
-(`"Rila Print, EAD"` -> `"Rila Print EAD"`). Then run it on all names of the file
-and count how many names were changed.
-:::
-
-::: details Answer
-```python run
-import csv
-
-LEGAL_FORMS = {"OOD", "EOOD", "AD", "EAD", "ET"}
-
-def clean_name(raw):
-    words = raw.replace('"', "").split()
-    result = []
-    for word in words:
-        bare = word.replace(".", "").upper()
-        if bare in LEGAL_FORMS:
-            if result:                                   # a word before the legal form
-                result[-1] = result[-1].rstrip(",")      # remove its comma
-            result.append(bare)
-        else:
-            result.append(word.title())
-    return " ".join(result)
-
-print(clean_name("Rila Print, EAD"))
-print(clean_name("Silver Textiles, Plovdiv AD"))      # this comma stays
-
-with open("data/client_register.csv", encoding="utf-8") as file:
-    names = [row["name"] for row in csv.DictReader(file)]
-
-print(sum(1 for name in names if clean_name(name) != name), "of", len(names), "names changed")
-```
-
-The comma is removed only from the word **right before** a legal form. A simple
-`raw.replace(",", "")` would also remove the comma in `"Silver Textiles, Plovdiv"`.
-:::
 
 ## 6. Numbers and dates from text
 
