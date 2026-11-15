@@ -551,7 +551,7 @@ print(loans_file.name, "|", loans_file.stem, "|", loans_file.suffix, "|", loans_
 
 ::: warning Windows paths in Python code
 A Windows path in a normal string has backslashes - and `"\n"`, `"\t"` are special
-characters ([lecture 7](./07-text-and-regex.md#raw-strings-r)). Use a raw string, or forward slashes, which Windows also
+characters ([lecture 7](./07-text-and-regex.md#writing-a-regex-in-python)). Use a raw string, or forward slashes, which Windows also
 accepts:
 
 ```python
