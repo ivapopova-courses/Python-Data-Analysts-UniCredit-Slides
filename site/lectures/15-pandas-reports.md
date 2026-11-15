@@ -306,7 +306,7 @@ parts.head()
 ```
 
 **Several date formats.** Real files mix formats. `client_register.csv` has the registration date in four
-formats ([lecture 7](./07-text-and-regex.md#several-date-formats-and-month-ends)). Try one format after another, and keep the first that works -
+formats ([lecture 7](./07-text-and-regex.md#several-date-formats)). Try one format after another, and keep the first that works -
 a SQL `COALESCE` of the parsing attempts:
 
 ```python run

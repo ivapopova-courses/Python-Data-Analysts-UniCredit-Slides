@@ -89,12 +89,12 @@ msgid "**SQLite** is a database in a single file. The module `sqlite3` comes wit
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:74 site/lectures/12-databases.md:458
+#: site/lectures/12-databases.md:74 site/lectures/12-databases.md:462
 msgid "SAS"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:74 site/lectures/12-databases.md:458
+#: site/lectures/12-databases.md:74 site/lectures/12-databases.md:462
 msgid "Python"
 msgstr ""
 
@@ -154,7 +154,7 @@ msgid "[`sqlite3.connect`](https://docs.python.org/3/library/sqlite3.html#sqlite
 msgstr ""
 
 #. box title
-#: site/lectures/12-databases.md:160 site/lectures/12-databases.md:341 site/lectures/12-databases.md:519 site/lectures/12-databases.md:642 site/lectures/12-databases.md:777
+#: site/lectures/12-databases.md:160 site/lectures/12-databases.md:345 site/lectures/12-databases.md:523 site/lectures/12-databases.md:646 site/lectures/12-databases.md:781
 msgid "Try it"
 msgstr ""
 
@@ -280,830 +280,835 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/12-databases.md:332
+msgid "(A date minus a date is a [`timedelta`](https://docs.python.org/3/library/datetime.html#datetime.timedelta) - a length of time; its `.days` is the number of days, like `b - a` or `INTCK('day', a, b)` in SAS. And a date minus `timedelta(days=1)` is the day before.)"
+msgstr ""
+
+#. paragraph
+#: site/lectures/12-databases.md:336
 msgid "**`NULL` and `None`.** (`start, = ...` unpacks a tuple of one value.) `NULL` comes back as `None`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:342
+#: site/lectures/12-databases.md:346
 msgid "Write a query for the 5 clients with the most loans (`GROUP BY client_id`), and print them with `row_factory = sqlite3.Row` as `C0030: 5 loans`."
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-databases.md:346
+#: site/lectures/12-databases.md:350
 msgid "3. Parameterised queries"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:348
+#: site/lectures/12-databases.md:352
 msgid "`?` - the value goes separately"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:350
+#: site/lectures/12-databases.md:354
 msgid "A query with a value from your program - a stage, a region, a report date. Write a `?` in the SQL, and pass the values as a **tuple**, separately:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:365
+#: site/lectures/12-databases.md:369
 msgid "**Named parameters.** A one-value tuple needs the comma: `(3,)`. With many parameters, named ones are easier to read - `:name` and a dictionary:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:382
+#: site/lectures/12-databases.md:386
 msgid "(Other drivers use other placeholders: `%s` for psycopg and pyodbc's `?`, `:name` for oracledb. The idea is the same.)"
 msgstr ""
 
 #. box title
-#: site/lectures/12-databases.md:385
+#: site/lectures/12-databases.md:389
 msgid "Advanced: dates and `LIKE` patterns as parameters"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:386
+#: site/lectures/12-databases.md:390
 msgid "Dates go as ISO text into SQLite (other drivers accept `date` objects directly), and `LIKE` patterns are values too:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:405
+#: site/lectures/12-databases.md:409
 msgid "**A reusable report.** A query with parameters inside a function is a reusable report - the function of [session 4](./04-functions.md), the SQL of today:"
 msgstr ""
 
 #. box title
-#: site/lectures/12-databases.md:422
+#: site/lectures/12-databases.md:426
 msgid "`(\"C0002\")` is not a tuple"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:423
+#: site/lectures/12-databases.md:427
 msgid "Without the comma, the brackets do nothing: the parameter is the **string**, and a string is a sequence of 5 characters - 5 values for one `?`:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:436
+#: site/lectures/12-databases.md:440
 msgid "Why never an f-string: SQL injection"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:438
+#: site/lectures/12-databases.md:442
 msgid "It is tempting to build the SQL text with an f-string. Do not - with values from outside (a file, a form, a parameter of a script), the text can **change the query**:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:454
+#: site/lectures/12-databases.md:458
 msgid "With a parameter, the driver sends the value **as a value** - it can never become SQL. Parameters also handle quotes in names (`O'Neil`), dates and numbers correctly, and let the database reuse the query plan."
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:460
+#: site/lectures/12-databases.md:464
 msgid "`where region = \"&region\"` (macro text)"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:461
+#: site/lectures/12-databases.md:465
 msgid "`%superq`, quoting functions"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:461
+#: site/lectures/12-databases.md:465
 msgid "not needed: the value is never text of the query"
 msgstr ""
 
 #. box title
-#: site/lectures/12-databases.md:463
+#: site/lectures/12-databases.md:467
 msgid "Values: parameters. Names: your own code only"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:464
+#: site/lectures/12-databases.md:468
 msgid "Parameters work for **values**. Table and column names cannot be parameters - if a script must choose a table, take the name from a fixed list in your code, never directly from an input."
 msgstr ""
 
 #. box title
-#: site/lectures/12-databases.md:469
+#: site/lectures/12-databases.md:473
 msgid "Advanced: a parameter in the place of a name"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:470
+#: site/lectures/12-databases.md:474
 msgid "A parameter in the place of a **name** does not fail - it is worse: `ORDER BY ?` sorts by the constant text `\"outstanding\"`, which is the same for every row, so the order is not what you asked for:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:483
+#: site/lectures/12-databases.md:487
 msgid "`IN` lists"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:485
+#: site/lectures/12-databases.md:489
 msgid "`WHERE x IN (?)` with a list does not work - one `?` is one value. Make one `?` per item:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:500
+#: site/lectures/12-databases.md:504
 msgid "The f-string builds only the **placeholders** - the values still go as parameters. (For thousands of values, [`itertools.batched`](https://docs.python.org/3/library/itertools.html#itertools.batched) of [lecture 9](./09-modules-and-git.md) cuts the list into pieces.)"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:504
+#: site/lectures/12-databases.md:508
 msgid "The same query, many values: `executemany`"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:516
+#: site/lectures/12-databases.md:520
 msgid "`\":memory:\"` creates a database that lives only while the connection is open - for examples and tests."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:520
+#: site/lectures/12-databases.md:524
 msgid "Write a function `loans_of(con, client_id)` that returns the loan ids of a client, sorted, with a parameter. Call it with `\"C0030\"` and with `\"C0001' OR '1'='1\"`."
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-databases.md:524
+#: site/lectures/12-databases.md:528
 msgid "4. Writing and transactions"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:526
+#: site/lectures/12-databases.md:530
 msgid "Work on a copy"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:528
+#: site/lectures/12-databases.md:532
 msgid "Never practise writes on a real database - and not on `data/portfolio.db` either. Make a copy: [`con.backup`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.backup) copies a whole SQLite database, even into memory:"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:543
+#: site/lectures/12-databases.md:547
 msgid "Create a table, insert rows, commit"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:565
+#: site/lectures/12-databases.md:569
 msgid "Transactions: all or nothing"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:567
+#: site/lectures/12-databases.md:571
 msgid "A **transaction** groups changes: either **all** of them are saved ([`commit`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit)) or **none** ([`rollback`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.rollback)). The DB-API starts a transaction by itself before the first change; nothing is saved until [`commit()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit):"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:586
+#: site/lectures/12-databases.md:590
 msgid "`with con:` - commit or roll back by itself"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:588
+#: site/lectures/12-databases.md:592
 msgid "For `sqlite3`, a connection used in `with` **commits** at the end of the block - or **rolls back** if an exception happens inside. A payment run that must not be half done:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:610
+#: site/lectures/12-databases.md:614
 msgid "The duplicate `P1` broke the **primary key**; the whole batch was rolled back - not two rows of three. In a monthly load, this is what you want: the table is either updated completely, or not at all."
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:614
+#: site/lectures/12-databases.md:618
 msgid "SQL / SAS"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:614
+#: site/lectures/12-databases.md:618
 msgid "Python DB-API"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:618
+#: site/lectures/12-databases.md:622
 msgid "a failed `PROC APPEND` leaves the table as it was"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:618
+#: site/lectures/12-databases.md:622
 msgid "`with con:` + an exception"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:619
+#: site/lectures/12-databases.md:623
 msgid "a constraint violation"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:619
+#: site/lectures/12-databases.md:623
 msgid "`sqlite3.IntegrityError` (other drivers: their own `IntegrityError`)"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:621
+#: site/lectures/12-databases.md:625
 msgid "`UPDATE` and `DELETE` with parameters"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:639
+#: site/lectures/12-databases.md:643
 msgid "`cursor.rowcount` is the number of rows the statement changed - check it: an `UPDATE` that changes 0 rows (or 40,000) is often a bug."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:643
+#: site/lectures/12-databases.md:647
 msgid "In a copy of the database, create a table `client_flags (client_id, flag)` and insert the clients with rating 8 or worse with the flag `\"watch\"`, in one `with con:` block. Then try to insert one of them again: what happens to the transaction?"
 msgstr ""
 
 #. box title
-#: site/lectures/12-databases.md:648
+#: site/lectures/12-databases.md:652
 msgid "SQL or Python?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:649
+#: site/lectures/12-databases.md:653
 msgid "With a real database the data is on a server, often millions of rows. **Filter, join and aggregate in SQL** and take only the result into Python - the same idea as SAS pass-through. Python is the better place for the rules that are hard in SQL (text cleaning, checks with clear messages), for data from several sources, and for the report itself. More: [What to do in SQL, what in Python](#what-to-do-in-sql-what-in-python) in the Self-study part."
 msgstr ""
 
 #. box title
-#: site/lectures/12-databases.md:657
+#: site/lectures/12-databases.md:661
 msgid "The result of a query as a DataFrame"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:658
+#: site/lectures/12-databases.md:662
 msgid "[`pd.read_sql(sql, connection)`](https://pandas.pydata.org/docs/reference/api/pandas.read_sql.html) gives the result of a query as a pandas table. It comes in [lecture 14](./14-pandas-select-aggregate-join.md#_7-from-a-database-into-a-dataframe), when you know DataFrames."
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-databases.md:662
+#: site/lectures/12-databases.md:666
 msgid "5. Your database: drivers and passwords"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:664
+#: site/lectures/12-databases.md:668
 msgid "The drivers"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:666
+#: site/lectures/12-databases.md:670
 msgid "On this page everything is SQLite. At work, the same code runs against your database - with its driver and its connection string. The common ones:"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:669
+#: site/lectures/12-databases.md:673
 msgid "Database"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:669
+#: site/lectures/12-databases.md:673
 msgid "Driver (`pip install`)"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:671
+#: site/lectures/12-databases.md:675
 msgid "Oracle"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:672
+#: site/lectures/12-databases.md:676
 msgid "MS SQL Server"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:672
+#: site/lectures/12-databases.md:676
 msgid "`pyodbc` (+ the Microsoft ODBC driver)"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:673
+#: site/lectures/12-databases.md:677
 msgid "PostgreSQL"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:674
+#: site/lectures/12-databases.md:678
 msgid "Teradata"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:675 site/lectures/12-databases.md:789
+#: site/lectures/12-databases.md:679 site/lectures/12-databases.md:793
 msgid "SQLite"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:675
+#: site/lectures/12-databases.md:679
 msgid "(comes with Python)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:677
+#: site/lectures/12-databases.md:681
 msgid "The DB-API calls of sections 2 - 4 are the same; the differences are the placeholder style (`?`, `%s`, `:name`) and the SQL dialect of the database. Your IT department says which driver and which server; on a corporate laptop the driver may need to be installed by IT."
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:707
+#: site/lectures/12-databases.md:711
 msgid "Never a password in the code"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:709
+#: site/lectures/12-databases.md:713
 msgid "A password in a script, a notebook or a config file ends up in Git, in e-mails and in backups ([lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code)). Ways to keep it out:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:712
+#: site/lectures/12-databases.md:716
 msgid "**Windows login** (trusted connection, Kerberos) - no password at all, if your database supports it; the best option."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:714
+#: site/lectures/12-databases.md:718
 msgid "**environment variables** ([lecture 9](./09-modules-and-git.md#os-and-sys-the-environment)) - set per user, read with `os.environ`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:715
+#: site/lectures/12-databases.md:719
 msgid "the **keyring** package - stores the password in the Windows Credential Manager."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:716
+#: site/lectures/12-databases.md:720
 msgid "a `.env` file **listed in `.gitignore`**, read with the `python-dotenv` package."
 msgstr ""
 
 #. box title
-#: site/lectures/12-databases.md:741
+#: site/lectures/12-databases.md:745
 msgid "Advanced: SQLAlchemy URLs without a password in the code"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:742
+#: site/lectures/12-databases.md:746
 msgid "SQLAlchemy builds a URL from its parts - and hides the password when the URL is printed (into a log, say):"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:754
+#: site/lectures/12-databases.md:758
 msgid "**The path as a setting.** The path of the database is a setting too: from an environment variable, with a default - the script runs unchanged on another computer:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:774
+#: site/lectures/12-databases.md:778
 msgid "Ask for a **read-only** account for analysis: a script with a bug can then never change the data of the bank."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:778
+#: site/lectures/12-databases.md:782
 msgid "Set the environment variable `PORTFOLIO_DB` to `data/portfolio.db` in the code (`os.environ[\"PORTFOLIO_DB\"] = ...`), then connect with [`sqlite3.connect(os.environ[\"PORTFOLIO_DB\"])`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) and count the clients. What happens when the variable is not set?"
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-databases.md:784
+#: site/lectures/12-databases.md:788
 msgid "6. Summary"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:786
+#: site/lectures/12-databases.md:790
 msgid "Topic"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:786
+#: site/lectures/12-databases.md:790
 msgid "Remember"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:788
+#: site/lectures/12-databases.md:792
 msgid "DB-API"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:788
+#: site/lectures/12-databases.md:792
 msgid "[`connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) -> [`cursor`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.cursor) / [`execute`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.execute) -> [`fetchone`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchone) / [`fetchall`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchall) / loop -> [`close`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.close); the same for all databases"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:789
+#: site/lectures/12-databases.md:793
 msgid "a database in a file; `sqlite3` comes with Python; `:memory:` for tests; dates are ISO text"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:790
+#: site/lectures/12-databases.md:794
 msgid "Rows"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:790
+#: site/lectures/12-databases.md:794
 msgid "tuples, typed; `cursor.description` for names; `row_factory = sqlite3.Row` for rows by name"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:791
+#: site/lectures/12-databases.md:795
 msgid "Close"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:791
+#: site/lectures/12-databases.md:795
 msgid "[`closing(...)`](https://docs.python.org/3/library/contextlib.html#contextlib.closing) or `finally`; `with con:` in sqlite3 is a transaction, not a close"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:792
+#: site/lectures/12-databases.md:796
 msgid "Parameters"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:792
+#: site/lectures/12-databases.md:796
 msgid "`?` or `:name` + a tuple / dict; never f-strings with values (SQL injection); `IN` with one `?` per item"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:793
+#: site/lectures/12-databases.md:797
 msgid "Writing"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:793
+#: site/lectures/12-databases.md:797
 msgid "[`executemany`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.executemany); [`commit()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.commit); `rowcount`; work on a copy ([`con.backup`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.backup))"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:794
+#: site/lectures/12-databases.md:798
 msgid "Transactions"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:794
+#: site/lectures/12-databases.md:798
 msgid "all or nothing; [`rollback()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.rollback); `with con:` commits or rolls back; `IntegrityError`"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:795
+#: site/lectures/12-databases.md:799
 msgid "SQL or Python"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:795
+#: site/lectures/12-databases.md:799
 msgid "filter, join, aggregate in SQL; rules, cleaning and the report in Python"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:796
+#: site/lectures/12-databases.md:800
 msgid "Your database"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:796
+#: site/lectures/12-databases.md:800
 msgid "its driver follows the same DB-API; only the [`connect`](https://docs.python.org/3/library/sqlite3.html#sqlite3.connect) line and the placeholders change"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:797
+#: site/lectures/12-databases.md:801
 msgid "Passwords"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:797
+#: site/lectures/12-databases.md:801
 msgid "never in code: Windows login, environment variables, keyring; a read-only account"
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-databases.md:799
+#: site/lectures/12-databases.md:803
 msgid "Practice"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:800
+#: site/lectures/12-databases.md:804
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:808
+#: site/lectures/12-databases.md:812
 msgid "The tasks read `data/portfolio.db`; the ones that write work on a copy in memory."
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:810
+#: site/lectures/12-databases.md:814
 msgid "Task"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:810
+#: site/lectures/12-databases.md:814
 msgid "File"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:810
+#: site/lectures/12-databases.md:814
 msgid "What you do"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:812
+#: site/lectures/12-databases.md:816
 msgid "Connect, count, fetch rows, column names, [`sqlite3.Row`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Row)"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:813
+#: site/lectures/12-databases.md:817
 msgid "Parameterised queries, `IN` lists, injection-safe functions"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:814
+#: site/lectures/12-databases.md:818
 msgid "`GROUP BY` and `JOIN` in SQL; the same numbers in Python"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:815
+#: site/lectures/12-databases.md:819
 msgid "A copy, a new table, [`executemany`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.executemany), a rollback that keeps the table clean"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:816
+#: site/lectures/12-databases.md:820
 msgid "`task5-migration.py` (Optional)"
 msgstr ""
 
 #. table cell
-#: site/lectures/12-databases.md:816
+#: site/lectures/12-databases.md:820
 msgid "Rating migration between two month ends with a self join"
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-databases.md:818
+#: site/lectures/12-databases.md:822
 msgid "Homework"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:820
+#: site/lectures/12-databases.md:824
 msgid "`12-databases/homework.py` (in the homework repository): **a monthly report from the database** - parameterised by the report date: the exposure and the EL by segment and stage in SQL, the clients that moved to a worse rating since the month before, and a table of rule breaks written in one transaction to a copy of the database. Every check must print `OK`."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:825
+#: site/lectures/12-databases.md:829
 msgid "The practice tasks you did not finish in class."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:826
+#: site/lectures/12-databases.md:830
 msgid "Optional: find out which database your team uses, which Python driver it needs, and whether you can get a read-only account - we use the answer in [lecture 15](./15-pandas-reports.md)."
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-databases.md:829
+#: site/lectures/12-databases.md:833
 msgid "Self-study"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:831
+#: site/lectures/12-databases.md:835
 msgid "This part is not covered in class. It is for reading at home: more about writing, what to do in SQL and what in Python, tables too big for memory, and window functions - `LAG`, `RETAIN` and `FIRST.` of SAS, in SQL."
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:834
+#: site/lectures/12-databases.md:838
 msgid "More about writing: constraints, a log table, a file"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:836
+#: site/lectures/12-databases.md:840
 msgid "`INSERT INTO ... SELECT` works too - the database does it all without sending the rows to Python:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:853
+#: site/lectures/12-databases.md:857
 msgid "**`NOT NULL`.** A `NOT NULL` column refuses a missing value - the database checks the data too:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:868
+#: site/lectures/12-databases.md:872
 msgid "**Rows of a CSV file into a table.** [`executemany`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.executemany) also takes **dictionaries** with named parameters - the rows of [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) ([lecture 8](./08-errors-and-files.md#read-csv-reader-and-csv-dictreader)) go straight into a table:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:885
+#: site/lectures/12-databases.md:889
 msgid "**An automatic id.** A log table with an automatic id - `INTEGER PRIMARY KEY` numbers the rows; `lastrowid` gives the id of the row just inserted:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:901
+#: site/lectures/12-databases.md:905
 msgid "**Save to a file.** To keep a changed copy, write it to a **file** - [`backup`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.backup) into a new database file:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:918 site/lectures/12-databases.md:1111
+#: site/lectures/12-databases.md:922 site/lectures/12-databases.md:1115
 msgid "**Exercise**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:920
+#: site/lectures/12-databases.md:924
 msgid "In a database in memory, create a table `flags (client_id TEXT PRIMARY KEY, flag TEXT NOT NULL)`. Insert two rows in one `with con:` block, where the second row has `None` as the flag. How many rows does the table have after the error?"
 msgstr ""
 
 #. box title
-#: site/lectures/12-databases.md:924 site/lectures/12-databases.md:1116 site/lectures/12-databases.md:1174 site/lectures/12-databases.md:1234
+#: site/lectures/12-databases.md:928 site/lectures/12-databases.md:1120 site/lectures/12-databases.md:1178 site/lectures/12-databases.md:1238
 msgid "Answer"
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:940
+#: site/lectures/12-databases.md:944
 msgid "What to do in SQL, what in Python"
 msgstr ""
 
 #. heading 4
-#: site/lectures/12-databases.md:942
+#: site/lectures/12-databases.md:946
 msgid "Let the database do the heavy work"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:944
+#: site/lectures/12-databases.md:948
 msgid "With a real database, the data is on a server, often millions of rows. Moving all rows to your laptop to filter them there is slow. The rule: **filter, join and aggregate in SQL**; take only the result into Python - the same idea as SAS pass-through."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:948
+#: site/lectures/12-databases.md:952
 msgid "**Totals by stage, two ways.** The totals by stage, two ways - the same numbers. The Python way keeps a small list `[count, sum]` per stage in a [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:968
+#: site/lectures/12-databases.md:972
 msgid "**Filters and labels in SQL.** `HAVING` and `CASE WHEN` (in Python: [session 2](./02-conditions-and-loops.md#case-when-in-python)), run by the database:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:989
+#: site/lectures/12-databases.md:993
 msgid "**The speed.** How much faster is the database? A small test - with 400 rows the difference is small, with millions on a server it is minutes against seconds:"
 msgstr ""
 
 #. heading 4
-#: site/lectures/12-databases.md:1010
+#: site/lectures/12-databases.md:1014
 msgid "A join in SQL"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1012
+#: site/lectures/12-databases.md:1016
 msgid "The expected loss of the portfolio - the number of homework 4, 6 and 10 - in **one** query, with two joins:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1028
+#: site/lectures/12-databases.md:1032
 msgid "1,140,106.56 again: loops (4), dictionaries (6), objects (10) and SQL agree."
 msgstr ""
 
 #. heading 4
-#: site/lectures/12-databases.md:1030
+#: site/lectures/12-databases.md:1034
 msgid "The rating migration: a self join"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1032
+#: site/lectures/12-databases.md:1036
 msgid "Which clients changed their rating from August to September? A join of `ratings_history` with itself:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1055
+#: site/lectures/12-databases.md:1059
 msgid "([Lecture 15](./15-pandas-reports.md#_5-the-rating-migration-matrix) turns this into a full **migration matrix** with pandas.)"
 msgstr ""
 
 #. heading 4
-#: site/lectures/12-databases.md:1057
+#: site/lectures/12-databases.md:1061
 msgid "Step by step: `WITH`"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1059
+#: site/lectures/12-databases.md:1063
 msgid "A long query reads better in named steps - a **common table expression** (`WITH`), like a chain of SAS `PROC SQL` steps that create temporary tables. The share of the 10 largest clients in the portfolio:"
 msgstr ""
 
 #. heading 4
-#: site/lectures/12-databases.md:1080
+#: site/lectures/12-databases.md:1084
 msgid "When Python is the better place"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1082
+#: site/lectures/12-databases.md:1086
 msgid "logic that is hard in SQL: text cleaning with regex (lecture 7), nomenclature classes (lecture 11), checks with clear error messages (lecture 8);"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1084
+#: site/lectures/12-databases.md:1088
 msgid "combining data from several sources: a database, a CSV, an Excel file;"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1085
+#: site/lectures/12-databases.md:1089
 msgid "the report itself: Excel, charts, files."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1087
+#: site/lectures/12-databases.md:1091
 msgid "A common pattern: SQL for the **data** (filter, join, aggregate), Python for the **rules** and the **report**."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1090
+#: site/lectures/12-databases.md:1094
 msgid "**The database and a file.** Two sources together: the exposure per client from the database, the names from the register file of [lecture 7](./07-text-and-regex.md#_5-cleaning-identifiers-and-names) - joined in Python with a dictionary:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1108
+#: site/lectures/12-databases.md:1112
 msgid "The names are as they were typed into the register - the `clean_name` of [lecture 7](./07-text-and-regex.md#clean-company-and-person-names) would fix them. That is the Python part of the job."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1113
+#: site/lectures/12-databases.md:1117
 msgid "Write one SQL query for the outstanding per segment and stage (`GROUP BY` two columns) and print its rows."
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:1129
+#: site/lectures/12-databases.md:1133
 msgid "Big tables: in pieces"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1131
+#: site/lectures/12-databases.md:1135
 msgid "A query that returns 50 million rows does not fit into a list or a DataFrame on a laptop. Read it **in pieces**, and keep only what you need from each piece:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1151
+#: site/lectures/12-databases.md:1155
 msgid "**In pandas.** pandas does the same with `chunksize`: `read_sql` then returns the DataFrames one by one:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1166
+#: site/lectures/12-databases.md:1170
 msgid "Better still: let the database aggregate (see above) - then the result is small."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1168 site/lectures/12-databases.md:1227
+#: site/lectures/12-databases.md:1172 site/lectures/12-databases.md:1231
 msgid "**Exercises**"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1170
+#: site/lectures/12-databases.md:1174
 msgid "Count the rows of `ratings_history` per month with [`fetchmany(200)`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Cursor.fetchmany) and a [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter)."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1172
+#: site/lectures/12-databases.md:1176
 msgid "Why is `SELECT month_end, COUNT(*) ... GROUP BY month_end` better?"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1185
+#: site/lectures/12-databases.md:1189
 msgid "The database sends 12 rows instead of 1,800 - and it uses its indexes. Pieces are for when you really need every row (an export, a model)."
 msgstr ""
 
 #. heading 3
-#: site/lectures/12-databases.md:1189
+#: site/lectures/12-databases.md:1193
 msgid "Window functions: `LAG`, `RETAIN` and `FIRST.` in SQL"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1191
+#: site/lectures/12-databases.md:1195
 msgid "SQLite (3.25+), Oracle, MS SQL Server and PostgreSQL have **window functions**: a value from **other rows** of the same group, without collapsing the rows like `GROUP BY` does. Three SAS habits in SQL:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1212
+#: site/lectures/12-databases.md:1216
 msgid "**A window function.** A running total per client - in SAS, `RETAIN` with `BY`:"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1229
+#: site/lectures/12-databases.md:1233
 msgid "With `LAG` (the SQL window function), find all (client, month) rows where the rating got **worse** by 2 or more notches in one month."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1231
+#: site/lectures/12-databases.md:1235
 msgid "With `ROW_NUMBER() ... ORDER BY outstanding DESC`, keep only the largest loan of each client (the SAS `FIRST.` of a sorted BY group)."
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1251
+#: site/lectures/12-databases.md:1255
 msgid "Run them with [`con.execute(...).fetchall()`](https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.execute)."
 msgstr ""
 
 #. heading 2
-#: site/lectures/12-databases.md:1254
+#: site/lectures/12-databases.md:1258
 msgid "Read more"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1256
+#: site/lectures/12-databases.md:1260
 msgid "Reference: [`sqlite3`](https://docs.python.org/3/library/sqlite3.html) (with a good tutorial at the top), [PEP 249 - DB-API 2.0](https://peps.python.org/pep-0249/)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1258
+#: site/lectures/12-databases.md:1262
 msgid "pandas: [`read_sql`](https://pandas.pydata.org/docs/reference/api/pandas.read_sql.html), [`to_sql`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_sql.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1260
+#: site/lectures/12-databases.md:1264
 msgid "SQLAlchemy: [Establishing connectivity - the engine](https://docs.sqlalchemy.org/en/20/tutorial/engine.html), [Database URLs](https://docs.sqlalchemy.org/en/20/core/engines.html#database-urls)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1262
+#: site/lectures/12-databases.md:1266
 msgid "Drivers: [python-oracledb](https://python-oracledb.readthedocs.io/), [pyodbc](https://github.com/mkleehammer/pyodbc/wiki), [psycopg](https://www.psycopg.org/psycopg3/docs/)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1265
+#: site/lectures/12-databases.md:1269
 msgid "SQLite: [Window functions](https://www.sqlite.org/windowfunctions.html)"
 msgstr ""
 
 #. paragraph
-#: site/lectures/12-databases.md:1267
+#: site/lectures/12-databases.md:1271
 msgid "**Next lecture** (it starts in the same session): NumPy and pandas - arrays that calculate a whole column at once, and the DataFrame: read CSV and Excel files, and look at a dataset the way SAS `PROC CONTENTS`, `PROC MEANS` and `PROC FREQ` do."
 msgstr ""

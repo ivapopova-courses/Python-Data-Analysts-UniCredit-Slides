@@ -329,6 +329,10 @@ print(start, type(start))
 print((date(2026, 9, 30) - date.fromisoformat(start)).days, "days")
 ```
 
+(A date minus a date is a [`timedelta`](https://docs.python.org/3/library/datetime.html#datetime.timedelta) - a length of time; its `.days` is the number of
+days, like `b - a` or `INTCK('day', a, b)` in SAS. And a date minus
+`timedelta(days=1)` is the day before.)
+
 **`NULL` and `None`.** (`start, = ...` unpacks a tuple of one value.) `NULL` comes back as `None`:
 
 ```python run

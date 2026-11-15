@@ -264,7 +264,7 @@ msgid "[`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) w
 msgstr "[`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) без аргумент разрязва текста на думи при всяка група от интервали, а `\" \".join(...)` съединява думите обратно с по един интервал между тях. Раздел 4 обяснява [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split) и [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join) подробно."
 
 #. box title
-#: site/lectures/07-text-and-regex.md:207 site/lectures/07-text-and-regex.md:296 site/lectures/07-text-and-regex.md:438 site/lectures/07-text-and-regex.md:487 site/lectures/07-text-and-regex.md:541 site/lectures/07-text-and-regex.md:709 site/lectures/07-text-and-regex.md:900 site/lectures/07-text-and-regex.md:1000 site/lectures/07-text-and-regex.md:1118 site/lectures/07-text-and-regex.md:1203 site/lectures/07-text-and-regex.md:1283 site/lectures/07-text-and-regex.md:1423
+#: site/lectures/07-text-and-regex.md:207 site/lectures/07-text-and-regex.md:296 site/lectures/07-text-and-regex.md:438 site/lectures/07-text-and-regex.md:487 site/lectures/07-text-and-regex.md:541 site/lectures/07-text-and-regex.md:709 site/lectures/07-text-and-regex.md:894 site/lectures/07-text-and-regex.md:994 site/lectures/07-text-and-regex.md:1112 site/lectures/07-text-and-regex.md:1197 site/lectures/07-text-and-regex.md:1277 site/lectures/07-text-and-regex.md:1417
 msgid "Try it"
 msgstr "Пробвайте"
 
@@ -274,7 +274,7 @@ msgid "Clean `\"  GREEN   build  ltd \"` into `\"Green Build Ltd\"`. You need [`
 msgstr "Почистете `\"  GREEN   build  ltd \"` до `\"Green Build Ltd\"`. Трябват ви [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split), [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join) и [`title`](https://docs.python.org/3/builtins/stdtypes.html#str.title)."
 
 #. box title
-#: site/lectures/07-text-and-regex.md:212 site/lectures/07-text-and-regex.md:301 site/lectures/07-text-and-regex.md:445 site/lectures/07-text-and-regex.md:494 site/lectures/07-text-and-regex.md:547 site/lectures/07-text-and-regex.md:714 site/lectures/07-text-and-regex.md:905 site/lectures/07-text-and-regex.md:1006 site/lectures/07-text-and-regex.md:1124 site/lectures/07-text-and-regex.md:1209 site/lectures/07-text-and-regex.md:1289 site/lectures/07-text-and-regex.md:1429 site/lectures/07-text-and-regex.md:1560 site/lectures/07-text-and-regex.md:1608 site/lectures/07-text-and-regex.md:1687 site/lectures/07-text-and-regex.md:1778 site/lectures/07-text-and-regex.md:1853 site/lectures/07-text-and-regex.md:1913 site/lectures/07-text-and-regex.md:1973 site/lectures/07-text-and-regex.md:2062 site/lectures/07-text-and-regex.md:2184 site/lectures/07-text-and-regex.md:2398 site/lectures/07-text-and-regex.md:2456 site/lectures/07-text-and-regex.md:2519
+#: site/lectures/07-text-and-regex.md:212 site/lectures/07-text-and-regex.md:301 site/lectures/07-text-and-regex.md:445 site/lectures/07-text-and-regex.md:494 site/lectures/07-text-and-regex.md:547 site/lectures/07-text-and-regex.md:714 site/lectures/07-text-and-regex.md:899 site/lectures/07-text-and-regex.md:1000 site/lectures/07-text-and-regex.md:1118 site/lectures/07-text-and-regex.md:1203 site/lectures/07-text-and-regex.md:1283 site/lectures/07-text-and-regex.md:1423 site/lectures/07-text-and-regex.md:1554 site/lectures/07-text-and-regex.md:1602 site/lectures/07-text-and-regex.md:1681 site/lectures/07-text-and-regex.md:1755 site/lectures/07-text-and-regex.md:1830 site/lectures/07-text-and-regex.md:1890 site/lectures/07-text-and-regex.md:1950 site/lectures/07-text-and-regex.md:2039 site/lectures/07-text-and-regex.md:2161 site/lectures/07-text-and-regex.md:2375 site/lectures/07-text-and-regex.md:2433 site/lectures/07-text-and-regex.md:2496
 msgid "Answer"
 msgstr "Отговор"
 
@@ -653,7 +653,7 @@ msgid "6. Numbers and dates from text"
 msgstr "6. Числа и дати от текст"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:782 site/lectures/07-text-and-regex.md:1461
+#: site/lectures/07-text-and-regex.md:782 site/lectures/07-text-and-regex.md:1455
 msgid "Numbers"
 msgstr "Числа"
 
@@ -687,1565 +687,1575 @@ msgstr "`date`: един ден"
 msgid "The module `datetime` has the types for dates and times. [`date`](https://docs.python.org/3/library/datetime.html#datetime.date) is a day: a year, a month and a day."
 msgstr "Модулът `datetime` съдържа типовете за дати и часове. [`date`](https://docs.python.org/3/library/datetime.html#datetime.date) е един ден: година, месец и ден."
 
-#. heading 3
+#. paragraph
 #: site/lectures/07-text-and-regex.md:829
+msgid "**Compare dates.** Dates compare like numbers: the earlier date is the smaller one. So a due date before the report date means \"overdue\":"
+msgstr "**Сравняване на дати.** Датите се сравняват като числа: по-ранната дата е по-малката. Затова падеж преди отчетната дата означава \"просрочен\":"
+
+#. heading 3
+#: site/lectures/07-text-and-regex.md:840
 msgid "From text to a date"
 msgstr "От текст към дата"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:831
+#: site/lectures/07-text-and-regex.md:842
 msgid "The ISO format `YYYY-MM-DD` is the format of the sample data, of databases and of JSON. It has its own method, [`date.fromisoformat`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat):"
 msgstr "ISO форматът `YYYY-MM-DD` е форматът на примерните данни, на базите данни и на JSON. Той има собствен метод, [`date.fromisoformat`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat):"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:842
+#: site/lectures/07-text-and-regex.md:853
 msgid "For any other format, describe it with **format codes**. [`datetime.strptime(text, format)`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) reads a date from text, and [`strftime(format)`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime) writes a date as text:"
 msgstr "Всеки друг формат опишете с **кодове за формат**. [`datetime.strptime(text, format)`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) чете дата от текст, а [`strftime(format)`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime) записва дата като текст:"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:846
+#: site/lectures/07-text-and-regex.md:857
 msgid "Code"
 msgstr "Код"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:846 site/lectures/07-text-and-regex.md:1057 site/lectures/07-text-and-regex.md:2416
+#: site/lectures/07-text-and-regex.md:857 site/lectures/07-text-and-regex.md:1051 site/lectures/07-text-and-regex.md:2393
 msgid "Means"
 msgstr "Означава"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:846
+#: site/lectures/07-text-and-regex.md:857
 msgid "Example"
 msgstr "Пример"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:848
+#: site/lectures/07-text-and-regex.md:859
 msgid "year, 4 digits"
 msgstr "година, 4 цифри"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:849
+#: site/lectures/07-text-and-regex.md:860
 msgid "month, 2 digits"
 msgstr "месец, 2 цифри"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:850
+#: site/lectures/07-text-and-regex.md:861
 msgid "day, 2 digits"
 msgstr "ден, 2 цифри"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:864
+#: site/lectures/07-text-and-regex.md:875
 msgid "[`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) gives a `datetime` (a day **and** a time); [`.date()`](https://docs.python.org/3/library/datetime.html#datetime.datetime.date) keeps only the day."
 msgstr "[`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) дава `datetime` (ден **и** час); [`.date()`](https://docs.python.org/3/library/datetime.html#datetime.datetime.date) запазва само деня."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:866
+#: site/lectures/07-text-and-regex.md:877
 msgid "**A wrong date.** A text that does not fit the format is a `ValueError`. An impossible date is one too:"
 msgstr "**Грешна дата.** Текст, който не отговаря на формата, дава `ValueError`. Невъзможна дата - също:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:875
+#: site/lectures/07-text-and-regex.md:886
 msgid "(How to catch such an error and go on with the next row: [lecture 8](./08-errors-and-files.md#_2-try-except).)"
 msgstr "(Как да хванете такава грешка и да продължите със следващия ред: [лекция 8](./08-errors-and-files.md#_2-try-except).)"
 
 #. box title
-#: site/lectures/07-text-and-regex.md:877
+#: site/lectures/07-text-and-regex.md:888
 msgid "`08/06/2014` - June or August?"
 msgstr "`08/06/2014` - юни или август?"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:878
+#: site/lectures/07-text-and-regex.md:889
 msgid "In Bulgaria and most of Europe it is the 8th of June; in the USA it is the 6th of August. Python does not guess: you choose `%d/%m` or `%m/%d`. As with numbers: know the source."
 msgstr "В България и в по-голямата част от Европа това е 8 юни; в САЩ е 6 август. Python не гадае: вие избирате `%d/%m` или `%m/%d`. Както при числата: познавайте източника."
 
-#. heading 3
-#: site/lectures/07-text-and-regex.md:883
-msgid "Days between two dates"
-msgstr "Дни между две дати"
+#. paragraph
+#: site/lectures/07-text-and-regex.md:895
+msgid "Read `\"08/06/2014\"` once with `\"%d/%m/%Y\"` and once with `\"%m/%d/%Y\"`, and print both dates. Predict them first. Then try `\"13/06/2014\"` with `\"%m/%d/%Y\"`."
+msgstr "Прочетете `\"08/06/2014\"` веднъж с `\"%d/%m/%Y\"` и веднъж с `\"%m/%d/%Y\"` и отпечатайте двете дати. Първо предскажете резултата. След това опитайте `\"13/06/2014\"` с `\"%m/%d/%Y\"`."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:885
-msgid "Subtracting two dates gives a `timedelta` - a length of time. Its `.days` is the number of days - `INTCK('day', a, b)`, or `b - a`, in SAS:"
-msgstr "Изваждането на две дати дава `timedelta` - продължителност. Неговото `.days` е броят дни - `INTCK('day', a, b)` или `b - a` в SAS:"
-
-#. paragraph
-#: site/lectures/07-text-and-regex.md:901
-msgid "How many days are left from today to the end of this year? Use [`date.today()`](https://docs.python.org/3/library/datetime.html#datetime.date.today) and [`date(year, 12, 31)`](https://docs.python.org/3/library/datetime.html#datetime.date)."
-msgstr "Колко дни остават от днес до края на тази година? Използвайте [`date.today()`](https://docs.python.org/3/library/datetime.html#datetime.date.today) и [`date(year, 12, 31)`](https://docs.python.org/3/library/datetime.html#datetime.date)."
-
-#. paragraph
-#: site/lectures/07-text-and-regex.md:914
-msgid "`today.year` takes the year of today, so the code works in every year. The number changes every day."
-msgstr "`today.year` взема годината на днешната дата, така че кодът работи всяка година. Числото се променя всеки ден."
+#: site/lectures/07-text-and-regex.md:908
+msgid "The same text gives two different dates. Only a day above 12 shows which format a file uses - and only for that one row."
+msgstr "Един и същ текст дава две различни дати. Само ден над 12 показва кой формат използва даден файл - и то само за този един ред."
 
 #. heading 2
-#: site/lectures/07-text-and-regex.md:918
+#: site/lectures/07-text-and-regex.md:912
 msgid "7. Regular expressions: a pattern for many strings"
 msgstr "7. Регулярни изрази: един pattern за много strings"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:920
+#: site/lectures/07-text-and-regex.md:914
 msgid "What a regular expression is"
 msgstr "Какво е регулярен израз"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:922
+#: site/lectures/07-text-and-regex.md:916
 msgid "The string methods look for **one** exact text: `\"EUR\" in s`. A **regular expression** (*regex*) describes a **set** of texts by their shape: \"a date like 30.09.2026\" covers every date in that format."
 msgstr "Методите на string търсят **един** точен текст: `\"EUR\" in s`. **Регулярният израз** (*regex*) описва **множество** от текстове по тяхната форма: \"дата като 30.09.2026\" покрива всяка дата в този формат."
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:926
+#: site/lectures/07-text-and-regex.md:920
 msgid "Want"
 msgstr "Искате"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:926
+#: site/lectures/07-text-and-regex.md:920
 msgid "String method"
 msgstr "Метод на string"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:926
+#: site/lectures/07-text-and-regex.md:920
 msgid "Regular expression"
 msgstr "Регулярен израз"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:928
+#: site/lectures/07-text-and-regex.md:922
 msgid "contains `EUR`"
 msgstr "съдържа `EUR`"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:929
+#: site/lectures/07-text-and-regex.md:923
 msgid "an L and 6 digits"
 msgstr "L и 6 цифри"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:930
+#: site/lectures/07-text-and-regex.md:924
 msgid "every date `dd.mm.yyyy` inside a text"
 msgstr "всяка дата `dd.mm.yyyy` в даден текст"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:930
+#: site/lectures/07-text-and-regex.md:924
 msgid "- (a loop with [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find) and checks)"
 msgstr "- (цикъл с [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find) и проверки)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:932
+#: site/lectures/07-text-and-regex.md:926
 msgid "For a simple test, use the string methods - they are clearer. For a shape, use a regex. In SAS the same patterns work with `PRXMATCH`; in SQL, `LIKE` does a small part of it and `REGEXP_LIKE` the rest."
 msgstr "За проста проверка използвайте методите на string - те са по-ясни. За форма използвайте regex. В SAS същите patterns работят с `PRXMATCH`; в SQL `LIKE` прави малка част от това, а `REGEXP_LIKE` - останалото."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:936
+#: site/lectures/07-text-and-regex.md:930
 msgid "`re.search` and the match object"
 msgstr "`re.search` и match обектът"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:938
+#: site/lectures/07-text-and-regex.md:932
 msgid "The module `re` comes with Python. [`re.search(pattern, text)`](https://docs.python.org/3/library/re.html#re.search) looks for the first place where the pattern fits. It returns a **match object** - or `None` if the pattern fits nowhere:"
 msgstr "Модулът `re` идва с Python. [`re.search(pattern, text)`](https://docs.python.org/3/library/re.html#re.search) търси първото място, където pattern-ът пасва. Връща **match обект** - или `None`, ако pattern-ът не пасва никъде:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:955
+#: site/lectures/07-text-and-regex.md:949
 msgid "The pattern `\\d{2}\\.\\d{2}\\.\\d{4}` reads: two digits, a point, two digits, a point, four digits. Section 8 explains every part."
 msgstr "Pattern-ът `\\d{2}\\.\\d{2}\\.\\d{4}` се чете: две цифри, точка, две цифри, точка, четири цифри. Раздел 8 обяснява всяка част."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:958
+#: site/lectures/07-text-and-regex.md:952
 msgid "**A match in an `if`.** In an `if`, a match object counts as true and `None` as false. So `if re.search(...):` asks \"is it there?\" - like `if prxmatch(...) > 0` in SAS:"
 msgstr "**Match в `if`.** В `if` match обектът се брои за истина, а `None` - за лъжа. Така `if re.search(...):` пита \"има ли го?\" - като `if prxmatch(...) > 0` в SAS:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:971
+#: site/lectures/07-text-and-regex.md:965
 msgid "**Dates in the comments.** The same test on the loan portfolio. The file `loan_comments.csv` (new today) has the comments of the credit officers. How many of them mention a date in the format `dd.mm.yyyy`?"
 msgstr "**Дати в коментарите.** Същата проверка върху кредитния портфейл. Файлът `loan_comments.csv` (нов днес) съдържа коментарите на кредитните служители. Колко от тях споменават дата във формат `dd.mm.yyyy`?"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:987
+#: site/lectures/07-text-and-regex.md:981
 msgid "Raw strings: `r\"...\"`"
 msgstr "Raw strings: `r\"...\"`"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:989
+#: site/lectures/07-text-and-regex.md:983
 msgid "Patterns use many backslashes: `\\d`, `\\.`, `\\s`. In a normal string, Python itself reads some pairs with a backslash first (`\\n` is a new line, `\\t` is a tab). A **raw string** `r\"...\"` gives every backslash to the `re` module unchanged:"
 msgstr "Patterns използват много обратни наклонени черти: `\\d`, `\\.`, `\\s`. В нормален string Python сам първо прочита някои двойки с обратна наклонена черта (`\\n` е нов ред, `\\t` е табулация). **Raw string** `r\"...\"` подава всяка обратна наклонена черта на модула `re` непроменена:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:998
+#: site/lectures/07-text-and-regex.md:992
 msgid "Rule: **always write a pattern as a raw string**, `r\"...\"`."
 msgstr "Правило: **винаги пишете pattern като raw string**, `r\"...\"`."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1001
+#: site/lectures/07-text-and-regex.md:995
 msgid "Change the pattern of the first block of this section to find the amount (`1 250,00`) instead of the date. Hint: digits, a space, digits, a comma, two digits: `r\"\\d+ \\d+,\\d{2}\"`."
 msgstr "Променете pattern-а от първия блок на този раздел така, че да намира сумата (`1 250,00`) вместо датата. Подсказка: цифри, интервал, цифри, запетая, две цифри: `r\"\\d+ \\d+,\\d{2}\"`."
 
 #. heading 2
-#: site/lectures/07-text-and-regex.md:1018
+#: site/lectures/07-text-and-regex.md:1012
 msgid "8. Writing a pattern"
 msgstr "8. Писане на pattern"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1020
+#: site/lectures/07-text-and-regex.md:1014
 msgid "One character"
 msgstr "Един символ"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1022
+#: site/lectures/07-text-and-regex.md:1016
 msgid "Letters and digits in a pattern mean themselves. These parts mean **one character** of a kind:"
 msgstr "Буквите и цифрите в pattern означават себе си. Тези части означават **един символ** от даден вид:"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1025
+#: site/lectures/07-text-and-regex.md:1019
 msgid "Pattern"
 msgstr "Pattern"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1025
+#: site/lectures/07-text-and-regex.md:1019
 msgid "One character that is"
 msgstr "Един символ, който е"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1027
+#: site/lectures/07-text-and-regex.md:1021
 msgid "any character"
 msgstr "произволен символ"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1028
+#: site/lectures/07-text-and-regex.md:1022
 msgid "a point (the backslash removes the special meaning)"
 msgstr "точка (обратната наклонена черта премахва специалното значение)"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1029
+#: site/lectures/07-text-and-regex.md:1023
 msgid "a digit"
 msgstr "цифра"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1030
+#: site/lectures/07-text-and-regex.md:1024
 msgid "a space, a tab or a new line"
 msgstr "интервал, табулация или нов ред"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1031
+#: site/lectures/07-text-and-regex.md:1025
 msgid "a letter, a digit or `_`"
 msgstr "буква, цифра или `_`"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1032
+#: site/lectures/07-text-and-regex.md:1026
 msgid "`a`, `b` or `c`"
 msgstr "`a`, `b` или `c`"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1033
+#: site/lectures/07-text-and-regex.md:1027
 msgid "a capital Latin letter"
 msgstr "главна латинска буква"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1034
+#: site/lectures/07-text-and-regex.md:1028
 msgid "a capital Latin letter or a digit"
 msgstr "главна латинска буква или цифра"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1035
+#: site/lectures/07-text-and-regex.md:1029
 msgid "**not** a digit (`^` first inside the brackets)"
 msgstr "**не** цифра (`^` първо в скобите)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1047
+#: site/lectures/07-text-and-regex.md:1041
 msgid "[`re.findall`](https://docs.python.org/3/library/re.html#re.findall) returns a list with **all** the places where the pattern fits (section 9)."
 msgstr "[`re.findall`](https://docs.python.org/3/library/re.html#re.findall) връща list с **всички** места, където pattern-ът пасва (раздел 9)."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1050
+#: site/lectures/07-text-and-regex.md:1044
 msgid "The characters with a special meaning are `. ^ $ * + ? { } [ ] \\ | ( )`. Put a `\\` in front when you mean the character itself: `\\.`, `\\(`, `\\+`."
 msgstr "Символите със специално значение са `. ^ $ * + ? { } [ ] \\ | ( )`. Сложете `\\` отпред, когато имате предвид самия символ: `\\.`, `\\(`, `\\+`."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1053
+#: site/lectures/07-text-and-regex.md:1047
 msgid "How many times"
 msgstr "Колко пъти"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1055
+#: site/lectures/07-text-and-regex.md:1049
 msgid "A **quantifier** after a character says how many times it repeats:"
 msgstr "**Квантификатор** (quantifier) след символ казва колко пъти той се повтаря:"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1057
+#: site/lectures/07-text-and-regex.md:1051
 msgid "Quantifier"
 msgstr "Квантификатор"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1059
+#: site/lectures/07-text-and-regex.md:1053
 msgid "1 or more"
 msgstr "1 или повече"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1060
+#: site/lectures/07-text-and-regex.md:1054
 msgid "0 or more"
 msgstr "0 или повече"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1061
+#: site/lectures/07-text-and-regex.md:1055
 msgid "0 or 1 (optional)"
 msgstr "0 или 1 (незадължително)"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1062
+#: site/lectures/07-text-and-regex.md:1056
 msgid "exactly 3"
 msgstr "точно 3"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1063
+#: site/lectures/07-text-and-regex.md:1057
 msgid "2 to 4"
 msgstr "от 2 до 4"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1064
+#: site/lectures/07-text-and-regex.md:1058
 msgid "2 or more"
 msgstr "2 или повече"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1075
+#: site/lectures/07-text-and-regex.md:1069
 msgid "**Double spaces in names.** On the client register: the names typed with two or more spaces in a row - `\\s{2,}`:"
 msgstr "**Двойни интервали в имената.** Върху регистъра на клиентите: имената, въведени с два или повече интервала един след друг - `\\s{2,}`:"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1088
+#: site/lectures/07-text-and-regex.md:1082
 msgid "Where: `^`, `$`, `\\b`"
 msgstr "Къде: `^`, `$`, `\\b`"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1090
+#: site/lectures/07-text-and-regex.md:1084
 msgid "These parts fit a **position**, not a character:"
 msgstr "Тези части пасват на **позиция**, а не на символ:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1092
+#: site/lectures/07-text-and-regex.md:1086
 msgid "`^` - the start of the text;"
 msgstr "`^` - началото на текста;"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1093
+#: site/lectures/07-text-and-regex.md:1087
 msgid "`$` - the end of the text;"
 msgstr "`$` - краят на текста;"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1094
+#: site/lectures/07-text-and-regex.md:1088
 msgid "`\\b` - a word boundary: the place between a word character (`\\w`) and another character."
 msgstr "`\\b` - граница на дума: мястото между символ от дума (`\\w`) и друг символ."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1108
+#: site/lectures/07-text-and-regex.md:1102
 msgid "`LIKE` and regex"
 msgstr "`LIKE` и regex"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1110
+#: site/lectures/07-text-and-regex.md:1104
 msgid "SQL `LIKE`"
 msgstr "SQL `LIKE`"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1110
+#: site/lectures/07-text-and-regex.md:1104
 msgid "Regex"
 msgstr "Regex"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1112
+#: site/lectures/07-text-and-regex.md:1106
 msgid "any one character"
 msgstr "произволен един символ"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1113
+#: site/lectures/07-text-and-regex.md:1107
 msgid "any text, also empty"
 msgstr "произволен текст, също и празен"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1114
+#: site/lectures/07-text-and-regex.md:1108
 msgid "starts with L"
 msgstr "започва с L"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1115
+#: site/lectures/07-text-and-regex.md:1109
 msgid "ends with EUR"
 msgstr "завършва с EUR"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1116
+#: site/lectures/07-text-and-regex.md:1110
 msgid "contains EUR"
 msgstr "съдържа EUR"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1119
+#: site/lectures/07-text-and-regex.md:1113
 msgid "Write a pattern that finds the three-letter currency codes (`EUR`, `USD`, ...) in `\"100 EUR, 50 usd, 20 GBP and EURO\"` - whole words in capitals only. What do you need so that `EURO` is not found?"
 msgstr "Напишете pattern, който намира трибуквените кодове на валути (`EUR`, `USD`, ...) в `\"100 EUR, 50 usd, 20 GBP and EURO\"` - само цели думи с главни букви. Какво ви трябва, за да не бъде намерено `EURO`?"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1133
+#: site/lectures/07-text-and-regex.md:1127
 msgid "You need `\\b` at both ends. Without them, the first three letters of `EURO` fit too. `usd` is not found, because `[A-Z]` is only the capital letters."
 msgstr "Трябва ви `\\b` в двата края. Без тях първите три букви на `EURO` също пасват. `usd` не се намира, защото `[A-Z]` са само главните букви."
 
 #. heading 2
-#: site/lectures/07-text-and-regex.md:1137
+#: site/lectures/07-text-and-regex.md:1131
 msgid "9. The functions of `re`"
 msgstr "9. Функциите на `re`"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1139
+#: site/lectures/07-text-and-regex.md:1133
 msgid "`search`, `match`, `fullmatch`: where must the pattern fit?"
 msgstr "`search`, `match`, `fullmatch`: къде трябва да пасва pattern-ът?"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1141
+#: site/lectures/07-text-and-regex.md:1135
 msgid "Function"
 msgstr "Функция"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1141
+#: site/lectures/07-text-and-regex.md:1135
 msgid "Where the pattern must fit"
 msgstr "Къде трябва да пасва pattern-ът"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1141 site/lectures/07-text-and-regex.md:1468
+#: site/lectures/07-text-and-regex.md:1135 site/lectures/07-text-and-regex.md:1462
 msgid "SAS / SQL"
 msgstr "SAS / SQL"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1143
+#: site/lectures/07-text-and-regex.md:1137
 msgid "anywhere in the text"
 msgstr "навсякъде в текста"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1143
+#: site/lectures/07-text-and-regex.md:1137
 msgid "`PRXMATCH(p, s) > 0` in SAS, `LIKE '%...%'` in SQL"
 msgstr "`PRXMATCH(p, s) > 0` в SAS, `LIKE '%...%'` в SQL"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1144
+#: site/lectures/07-text-and-regex.md:1138
 msgid "at the **start** of the text"
 msgstr "в **началото** на текста"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1144
+#: site/lectures/07-text-and-regex.md:1138
 msgid "`LIKE '...%'` in SQL"
 msgstr "`LIKE '...%'` в SQL"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1145
+#: site/lectures/07-text-and-regex.md:1139
 msgid "the **whole** text"
 msgstr "**целия** текст"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1145
+#: site/lectures/07-text-and-regex.md:1139
 msgid "`LIKE '...'`, `REGEXP_LIKE(s, '^...$')` in SQL"
 msgstr "`LIKE '...'`, `REGEXP_LIKE(s, '^...$')` в SQL"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1159
+#: site/lectures/07-text-and-regex.md:1153
 msgid "To **validate** a value, use [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch). [`search`](https://docs.python.org/3/library/re.html#re.search) says yes when the pattern is **somewhere** in the text, also with other characters around it."
 msgstr "За да **валидирате** стойност, използвайте [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch). [`search`](https://docs.python.org/3/library/re.html#re.search) казва да, когато pattern-ът е **някъде** в текста, също и с други символи около него."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1162
+#: site/lectures/07-text-and-regex.md:1156
 msgid "`findall`: all matches"
 msgstr "`findall`: всички съвпадения"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1164
+#: site/lectures/07-text-and-regex.md:1158
 msgid "[`findall`](https://docs.python.org/3/library/re.html#re.findall) returns a **list of strings** - all the places where the pattern fits:"
 msgstr "[`findall`](https://docs.python.org/3/library/re.html#re.findall) връща **list от strings** - всички места, където pattern-ът пасва:"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1175
+#: site/lectures/07-text-and-regex.md:1169
 msgid "`sub`: replace"
 msgstr "`sub`: замяна"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1177
+#: site/lectures/07-text-and-regex.md:1171
 msgid "[`re.sub(pattern, replacement, text)`](https://docs.python.org/3/library/re.html#re.sub) replaces **every** match - `PRXCHANGE` in SAS, `REGEXP_REPLACE` in SQL:"
 msgstr "[`re.sub(pattern, replacement, text)`](https://docs.python.org/3/library/re.html#re.sub) заменя **всяко** съвпадение - `PRXCHANGE` в SAS, `REGEXP_REPLACE` в SQL:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1188
+#: site/lectures/07-text-and-regex.md:1182
 msgid "`\\D` is \"not a digit\": a capital letter turns the meaning around (`\\S` is \"not a space\", `\\W` is \"not a word character\")."
 msgstr "`\\D` е \"не цифра\": главната буква обръща значението (`\\S` е \"не интервал\", `\\W` е \"не символ от дума\")."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1191
+#: site/lectures/07-text-and-regex.md:1185
 msgid "Ignore the case: `re.IGNORECASE`"
 msgstr "Без значение на регистъра: `re.IGNORECASE`"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1193
+#: site/lectures/07-text-and-regex.md:1187
 msgid "A **flag** changes how a pattern works. The most useful one ignores the case:"
 msgstr "**Флаг** (flag) променя начина, по който работи pattern. Най-полезният не обръща внимание на регистъра:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1204
+#: site/lectures/07-text-and-regex.md:1198
 msgid "Count the comments of `loan_comments.csv` that contain the word `review` in any case, with [`re.search`](https://docs.python.org/3/library/re.html#re.search) and a flag. Then count them with a string method (`\"review\" in text.lower()`). Is it the same number?"
 msgstr "Пребройте коментарите в `loan_comments.csv`, които съдържат думата `review` в произволен регистър, с [`re.search`](https://docs.python.org/3/library/re.html#re.search) и флаг. После ги пребройте с метод на string (`\"review\" in text.lower()`). Същото число ли е?"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1221
+#: site/lectures/07-text-and-regex.md:1215
 msgid "The same number: 56. For one fixed word, the string method is simpler. The regex is worth it when the text has a shape (digits, a date, whole words with `\\b`)."
 msgstr "Същото число: 56. За една фиксирана дума методът на string е по-прост. Regex си струва, когато текстът има форма (цифри, дата, цели думи с `\\b`)."
 
 #. heading 2
-#: site/lectures/07-text-and-regex.md:1225
+#: site/lectures/07-text-and-regex.md:1219
 msgid "10. Groups and alternatives"
 msgstr "10. Groups и алтернативи"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1227
+#: site/lectures/07-text-and-regex.md:1221
 msgid "Groups: take the match apart"
 msgstr "Groups: разглобете съвпадението"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1229
+#: site/lectures/07-text-and-regex.md:1223
 msgid "Round brackets make a **group**. After a match, [`group(1)`](https://docs.python.org/3/library/re.html#re.Match.group), [`group(2)`](https://docs.python.org/3/library/re.html#re.Match.group), ... give the text of each group, and [`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups) gives all of them as a tuple:"
 msgstr "Кръглите скоби правят **group**. След съвпадение [`group(1)`](https://docs.python.org/3/library/re.html#re.Match.group), [`group(2)`](https://docs.python.org/3/library/re.html#re.Match.group), ... дават текста на всяка group, а [`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups) ги дава всичките като tuple:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1244
+#: site/lectures/07-text-and-regex.md:1238
 msgid "In SAS: `PRXPOSN(re, 1, text)` after `PRXMATCH`."
 msgstr "В SAS: `PRXPOSN(re, 1, text)` след `PRXMATCH`."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1246
+#: site/lectures/07-text-and-regex.md:1240
 msgid "**[`findall`](https://docs.python.org/3/library/re.html#re.findall) with groups.** With **one** group in the pattern, [`findall`](https://docs.python.org/3/library/re.html#re.findall) returns the text of the group. With **several** groups, it returns a list of tuples:"
 msgstr "**[`findall`](https://docs.python.org/3/library/re.html#re.findall) с groups.** С **една** group в pattern-а [`findall`](https://docs.python.org/3/library/re.html#re.findall) връща текста на group-ата. С **няколко** groups връща list от tuples:"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1258
+#: site/lectures/07-text-and-regex.md:1252
 msgid "Alternatives: `|`"
 msgstr "Алтернативи: `|`"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1260
+#: site/lectures/07-text-and-regex.md:1254
 msgid "`a|b` fits `a` or `b`. Put the options in brackets when they are only one part of the pattern:"
 msgstr "`a|b` пасва на `a` или на `b`. Сложете вариантите в скоби, когато те са само една част от pattern-а:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1270
+#: site/lectures/07-text-and-regex.md:1264
 msgid "**Brackets without a group.** The brackets also made a group, so [`findall`](https://docs.python.org/3/library/re.html#re.findall) returned only the currency. Write `(?:...)` for brackets that only **keep parts together** and are not a group:"
 msgstr "**Скоби без group.** Скобите направиха и group, затова [`findall`](https://docs.python.org/3/library/re.html#re.findall) върна само валутата. Пишете `(?:...)` за скоби, които само **държат частите заедно** и не са group:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1284
+#: site/lectures/07-text-and-regex.md:1278
 msgid "Write a pattern with three groups for `\"Overdue 60 days. Reminder sent on 2026-04-24.\"` that gives the year, the month and the day of the date with [`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups)."
 msgstr "Напишете pattern с три groups за `\"Overdue 60 days. Reminder sent on 2026-04-24.\"`, който дава годината, месеца и деня на датата с [`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups)."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1300
+#: site/lectures/07-text-and-regex.md:1294
 msgid "The `60` does not fit: the pattern needs four digits and a `-` first."
 msgstr "`60` не пасва: pattern-ът иска първо четири цифри и `-`."
 
 #. heading 2
-#: site/lectures/07-text-and-regex.md:1303
+#: site/lectures/07-text-and-regex.md:1297
 msgid "11. Validate and extract"
 msgstr "11. Валидиране и извличане"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1305
+#: site/lectures/07-text-and-regex.md:1299
 msgid "Validate: the patterns of our ids"
 msgstr "Валидиране: patterns на нашите идентификатори"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1307
+#: site/lectures/07-text-and-regex.md:1301
 msgid "Each pattern describes the **shape** of a valid value. With [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch), the whole text must fit:"
 msgstr "Всеки pattern описва **формата** на валидна стойност. С [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch) целият текст трябва да пасва:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1333
+#: site/lectures/07-text-and-regex.md:1327
 msgid "The Bulgarian IBAN: `BG`, 2 check digits, 4 letters of the bank, 6 digits (the branch and the account type), 8 letters or digits of the account - 22 characters."
 msgstr "Българският IBAN: `BG`, 2 контролни цифри, 4 букви за банката, 6 цифри (клонът и видът на сметката), 8 букви или цифри за сметката - 22 символа."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1335
+#: site/lectures/07-text-and-regex.md:1329
 msgid "The e-mail: some characters that are not `@` and not a space, an `@`, some more such characters, a point, 2 or more letters. This is a practical pattern, not the full official rule."
 msgstr "E-mail адресът: няколко символа, които не са `@` и не са интервал, `@`, още няколко такива символа, точка, 2 или повече букви. Това е практичен pattern, а не пълното официално правило."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1339
+#: site/lectures/07-text-and-regex.md:1333
 msgid "**All IBANs of the register.** A whole column - the IBANs of the register. Clean them as in section 5, then check the shape:"
 msgstr "**Всички IBAN в регистъра.** Цяла колона - IBAN-ите в регистъра. Почистете ги както в раздел 5, после проверете формата:"
 
 #. box title
-#: site/lectures/07-text-and-regex.md:1357
+#: site/lectures/07-text-and-regex.md:1351
 msgid "The shape is not the meaning"
 msgstr "Формата не е смисълът"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1358
+#: site/lectures/07-text-and-regex.md:1352
 msgid "A regex checks the **form**. `31.09.2026` has the right shape, but there is no 31st of September. So: first the shape with a regex, then the real check - for a date, [`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) (section 6)."
 msgstr "Regex проверява **формата**. `31.09.2026` има правилна форма, но няма 31 септември. Затова: първо формата с regex, после истинската проверка - за дата, [`strptime`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) (раздел 6)."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1363
+#: site/lectures/07-text-and-regex.md:1357
 msgid "Extract: values from free text"
 msgstr "Извличане: стойности от свободен текст"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1365
+#: site/lectures/07-text-and-regex.md:1359
 msgid "The comments of the credit officers are free text. A payment comment looks like `Payment of 2 069,77 EUR received on 26.04.2026.` One pattern with groups takes the amount and the parts of the date:"
 msgstr "Коментарите на кредитните служители са свободен текст. Коментар за плащане изглежда като `Payment of 2 069,77 EUR received on 26.04.2026.` Един pattern с groups взема сумата и частите на датата:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1381
+#: site/lectures/07-text-and-regex.md:1375
 msgid "**The September payments.** On the file: the total of the payments received in September 2026."
 msgstr "**Плащанията през септември.** Върху файла: сумата на плащанията, получени през септември 2026."
 
 #. box title
-#: site/lectures/07-text-and-regex.md:1402
+#: site/lectures/07-text-and-regex.md:1396
 msgid "The same in pandas and SQL"
 msgstr "Същото в pandas и SQL"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1403
+#: site/lectures/07-text-and-regex.md:1397
 msgid "pandas: [`df[\"iban\"].str.fullmatch(pattern)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.fullmatch.html) gives a column of `True` / `False`; [`str.contains`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.contains.html), [`str.extract`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.extract.html) and [`str.replace(..., regex=True)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.replace.html) use patterns too ([lecture 14](./14-pandas-select-aggregate-join.md#text-and-dates-in-a-column)). Most databases have regex functions: `REGEXP_LIKE` (Oracle, MySQL), `~` (PostgreSQL); MS SQL Server only since version 2025."
 msgstr "pandas: [`df[\"iban\"].str.fullmatch(pattern)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.fullmatch.html) дава колона от `True` / `False`; [`str.contains`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.contains.html), [`str.extract`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.extract.html) и [`str.replace(..., regex=True)`](https://pandas.pydata.org/docs/reference/api/pandas.Series.str.replace.html) също използват patterns ([лекция 14](./14-pandas-select-aggregate-join.md#text-and-dates-in-a-column)). Повечето бази данни имат regex функции: `REGEXP_LIKE` (Oracle, MySQL), `~` (PostgreSQL); MS SQL Server - едва от версия 2025."
 
 #. box title
-#: site/lectures/07-text-and-regex.md:1417
+#: site/lectures/07-text-and-regex.md:1411
 msgid "A regex is code: test it"
 msgstr "Regex е код: тествайте го"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1418
+#: site/lectures/07-text-and-regex.md:1412
 msgid "A pattern that looks right can fit too much or too little. Test it on good **and** bad examples, as the checks of the tasks do. [regex101.com](https://regex101.com) (choose the flavour *Python*) shows what each part of a pattern fits."
 msgstr "Pattern, който изглежда правилен, може да пасва на твърде много или на твърде малко. Тествайте го върху добри **и** лоши примери, както правят проверките в задачите. [regex101.com](https://regex101.com) (изберете варианта *Python*) показва на какво пасва всяка част от pattern-а."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1424
+#: site/lectures/07-text-and-regex.md:1418
 msgid "All loan ids that the comments **mention** in their text (`L` and 6 digits, whole words): collect them with [`findall`](https://docs.python.org/3/library/re.html#re.findall) from every comment. How many different ids are there?"
 msgstr "Всички номера на кредити, които коментарите **споменават** в текста си (`L` и 6 цифри, цели думи): съберете ги с [`findall`](https://docs.python.org/3/library/re.html#re.findall) от всеки коментар. Колко различни номера има?"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1445
+#: site/lectures/07-text-and-regex.md:1439
 msgid "29 mentions of 28 different ids: one id is mentioned twice. [`set`](https://docs.python.org/3/builtins/stdtypes.html#set) removes the repeats, as `COUNT(DISTINCT ...)` in SQL."
 msgstr "29 споменавания на 28 различни номера: един номер е споменат два пъти. [`set`](https://docs.python.org/3/builtins/stdtypes.html#set) премахва повторенията, както `COUNT(DISTINCT ...)` в SQL."
 
 #. heading 2
-#: site/lectures/07-text-and-regex.md:1449
+#: site/lectures/07-text-and-regex.md:1443
 msgid "12. Summary"
 msgstr "12. Обобщение"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1451
+#: site/lectures/07-text-and-regex.md:1445
 msgid "Topic"
 msgstr "Тема"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1451
+#: site/lectures/07-text-and-regex.md:1445
 msgid "Remember"
 msgstr "Запомнете"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1453
+#: site/lectures/07-text-and-regex.md:1447
 msgid "Immutable"
 msgstr "Immutable"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1453
+#: site/lectures/07-text-and-regex.md:1447
 msgid "every method returns a new string: `s = s.strip()`"
 msgstr "всеки метод връща нов string: `s = s.strip()`"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1454
+#: site/lectures/07-text-and-regex.md:1448
 msgid "Case"
 msgstr "Регистър"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1454
+#: site/lectures/07-text-and-regex.md:1448
 msgid "[`upper`](https://docs.python.org/3/builtins/stdtypes.html#str.upper), [`lower`](https://docs.python.org/3/builtins/stdtypes.html#str.lower), [`title`](https://docs.python.org/3/builtins/stdtypes.html#str.title) (fix legal forms after it); compare with [`.lower()`](https://docs.python.org/3/builtins/stdtypes.html#str.lower) on both sides"
 msgstr "[`upper`](https://docs.python.org/3/builtins/stdtypes.html#str.upper), [`lower`](https://docs.python.org/3/builtins/stdtypes.html#str.lower), [`title`](https://docs.python.org/3/builtins/stdtypes.html#str.title) (след него оправете правните форми); сравнявайте с [`.lower()`](https://docs.python.org/3/builtins/stdtypes.html#str.lower) от двете страни"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1455
+#: site/lectures/07-text-and-regex.md:1449
 msgid "Spaces"
 msgstr "Интервали"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1455
+#: site/lectures/07-text-and-regex.md:1449
 msgid "[`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) / [`lstrip`](https://docs.python.org/3/builtins/stdtypes.html#str.lstrip) / [`rstrip`](https://docs.python.org/3/builtins/stdtypes.html#str.rstrip) at the ends; `\" \".join(s.split())` = `COMPBL`"
 msgstr "[`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip) / [`lstrip`](https://docs.python.org/3/builtins/stdtypes.html#str.lstrip) / [`rstrip`](https://docs.python.org/3/builtins/stdtypes.html#str.rstrip) в краищата; `\" \".join(s.split())` = `COMPBL`"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1456
+#: site/lectures/07-text-and-regex.md:1450
 msgid "Find and test"
 msgstr "Търсене и проверка"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1456
+#: site/lectures/07-text-and-regex.md:1450
 msgid "`in`; [`startswith((...))`](https://docs.python.org/3/builtins/stdtypes.html#str.startswith); [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find) gives -1; [`count`](https://docs.python.org/3/builtins/stdtypes.html#str.count); [`isdigit`](https://docs.python.org/3/builtins/stdtypes.html#str.isdigit), [`isalpha`](https://docs.python.org/3/builtins/stdtypes.html#str.isalpha), [`isalnum`](https://docs.python.org/3/builtins/stdtypes.html#str.isalnum)"
 msgstr "`in`; [`startswith((...))`](https://docs.python.org/3/builtins/stdtypes.html#str.startswith); [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find) дава -1; [`count`](https://docs.python.org/3/builtins/stdtypes.html#str.count); [`isdigit`](https://docs.python.org/3/builtins/stdtypes.html#str.isdigit), [`isalpha`](https://docs.python.org/3/builtins/stdtypes.html#str.isalpha), [`isalnum`](https://docs.python.org/3/builtins/stdtypes.html#str.isalnum)"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1457
+#: site/lectures/07-text-and-regex.md:1451
 msgid "Split and join"
 msgstr "Разделяне и съединяване"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1457
+#: site/lectures/07-text-and-regex.md:1451
 msgid "[`split(\",\")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) keeps empty fields; [`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) cuts at any spaces; `\", \".join(strings)`"
 msgstr "[`split(\",\")`](https://docs.python.org/3/builtins/stdtypes.html#str.split) запазва празните полета; [`split()`](https://docs.python.org/3/builtins/stdtypes.html#str.split) разрязва при произволни интервали; `\", \".join(strings)`"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1458
+#: site/lectures/07-text-and-regex.md:1452
 msgid "Replace"
 msgstr "Замяна"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1459
+#: site/lectures/07-text-and-regex.md:1453
 msgid "Cleaning"
 msgstr "Почистване"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1459
+#: site/lectures/07-text-and-regex.md:1453
 msgid "one function per column, `None` for what cannot be fixed; check against a trusted source"
 msgstr "по една функция за колона, `None` за това, което не може да се оправи; проверка спрямо надежден източник"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1460
+#: site/lectures/07-text-and-regex.md:1454
 msgid "Counting"
 msgstr "Броене"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1460
+#: site/lectures/07-text-and-regex.md:1454
 msgid "[`Counter(values)`](https://docs.python.org/3/library/collections.html#collections.Counter) = `GROUP BY` + `COUNT(*)`, `PROC FREQ`; [`most_common(n)`](https://docs.python.org/3/library/collections.html#collections.Counter.most_common); a missing key counts 0; clean the key first"
 msgstr "[`Counter(values)`](https://docs.python.org/3/library/collections.html#collections.Counter) = `GROUP BY` + `COUNT(*)`, `PROC FREQ`; [`most_common(n)`](https://docs.python.org/3/library/collections.html#collections.Counter.most_common); липсващ ключ дава 0; първо почистете ключа"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1461
+#: site/lectures/07-text-and-regex.md:1455
 msgid "know the format of the source; [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace), then `float`"
 msgstr "познавайте формата на източника; [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace), после `float`"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1462
+#: site/lectures/07-text-and-regex.md:1456
 msgid "Dates"
 msgstr "Дати"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1462
-msgid "[`date.fromisoformat`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat); [`datetime.strptime(s, \"%d.%m.%Y\").date()`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime); [`strftime`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime); `b - a` gives a `timedelta`"
-msgstr "[`date.fromisoformat`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat); [`datetime.strptime(s, \"%d.%m.%Y\").date()`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime); [`strftime`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime); `b - a` дава `timedelta`"
-
-#. table cell
-#: site/lectures/07-text-and-regex.md:1463
+#: site/lectures/07-text-and-regex.md:1457
 msgid "Patterns"
 msgstr "Patterns"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1463
+#: site/lectures/07-text-and-regex.md:1457
 msgid "always `r\"...\"`; `.` any character, `\\.` a point; `\\d`, `\\s`, `\\w`; `[A-Z]`, `[^0-9]`"
 msgstr "винаги `r\"...\"`; `.` произволен символ, `\\.` точка; `\\d`, `\\s`, `\\w`; `[A-Z]`, `[^0-9]`"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1464
+#: site/lectures/07-text-and-regex.md:1458
 msgid "Quantifiers"
 msgstr "Квантификатори"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1465
+#: site/lectures/07-text-and-regex.md:1459
 msgid "Positions"
 msgstr "Позиции"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1465
+#: site/lectures/07-text-and-regex.md:1459
 msgid "`^` start, `$` end, `\\b` word boundary"
 msgstr "`^` начало, `$` край, `\\b` граница на дума"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1466
+#: site/lectures/07-text-and-regex.md:1460
 msgid "Functions"
 msgstr "Функции"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1466
+#: site/lectures/07-text-and-regex.md:1460
 msgid "[`search`](https://docs.python.org/3/library/re.html#re.search) (anywhere), [`match`](https://docs.python.org/3/library/re.html#re.match) (start), [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch) (the whole text - to validate), [`findall`](https://docs.python.org/3/library/re.html#re.findall), [`sub`](https://docs.python.org/3/library/re.html#re.sub); `re.I`"
 msgstr "[`search`](https://docs.python.org/3/library/re.html#re.search) (навсякъде), [`match`](https://docs.python.org/3/library/re.html#re.match) (в началото), [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch) (целият текст - за валидиране), [`findall`](https://docs.python.org/3/library/re.html#re.findall), [`sub`](https://docs.python.org/3/library/re.html#re.sub); `re.I`"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1467
+#: site/lectures/07-text-and-regex.md:1461
 msgid "Groups"
 msgstr "Groups"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1467
+#: site/lectures/07-text-and-regex.md:1461
 msgid "`( )` and [`group(1)`](https://docs.python.org/3/library/re.html#re.Match.group), [`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups); [`findall`](https://docs.python.org/3/library/re.html#re.findall) with groups; `a\\|b`; `(?:...)` is not a group"
 msgstr "`( )` и [`group(1)`](https://docs.python.org/3/library/re.html#re.Match.group), [`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups); [`findall`](https://docs.python.org/3/library/re.html#re.findall) с groups; `a\\|b`; `(?:...)` не е group"
 
 #. heading 2
-#: site/lectures/07-text-and-regex.md:1470
+#: site/lectures/07-text-and-regex.md:1464
 msgid "Practice"
 msgstr "Упражнения"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1472
+#: site/lectures/07-text-and-regex.md:1466
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
 msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и изпълнявайте задачите от терминала, в главната папка на repository-то:"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1480 site/lectures/07-text-and-regex.md:1495
+#: site/lectures/07-text-and-regex.md:1474 site/lectures/07-text-and-regex.md:1489
 msgid "Task"
 msgstr "Задача"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1480 site/lectures/07-text-and-regex.md:1495
+#: site/lectures/07-text-and-regex.md:1474 site/lectures/07-text-and-regex.md:1489
 msgid "File"
 msgstr "Файл"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1480
+#: site/lectures/07-text-and-regex.md:1474
 msgid "What you do"
 msgstr "Какво правите"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1482
+#: site/lectures/07-text-and-regex.md:1476
 msgid "Normalise names, cities and codes: case, spaces, prefixes"
 msgstr "Нормализиране на имена, градове и кодове: регистър, интервали, префикси"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1483
+#: site/lectures/07-text-and-regex.md:1477
 msgid "Predict: [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split), [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip), [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find), [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join), [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace), slices"
 msgstr "Предвидете: [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split), [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip), [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find), [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join), [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace), slices"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1484
+#: site/lectures/07-text-and-regex.md:1478
 msgid "Settings `key=value;...` into a dict and back; `SCAN`; a CSV line"
 msgstr "Настройки `key=value;...` в dict и обратно; `SCAN`; ред от CSV"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1485
+#: site/lectures/07-text-and-regex.md:1479
 msgid "Clean client ids, EIKs, IBANs and e-mails"
 msgstr "Почистване на номера на клиенти, ЕИК, IBAN и e-mail адреси"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1486
-msgid "Dates from text and back; days between; whole years"
-msgstr "Дати от текст и обратно; дни между дати; цели години"
+#: site/lectures/07-text-and-regex.md:1480
+msgid "Dates from text and back; whole years"
+msgstr "Дати от текст и обратно; цели години"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1487
+#: site/lectures/07-text-and-regex.md:1481
 msgid "Write patterns: ids, codes, currencies, whole words"
 msgstr "Писане на patterns: идентификатори, кодове, валути, цели думи"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1488
+#: site/lectures/07-text-and-regex.md:1482
 msgid "Predict [`findall`](https://docs.python.org/3/library/re.html#re.findall), [`search`](https://docs.python.org/3/library/re.html#re.search), [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch), [`sub`](https://docs.python.org/3/library/re.html#re.sub)"
 msgstr "Предвидете [`findall`](https://docs.python.org/3/library/re.html#re.findall), [`search`](https://docs.python.org/3/library/re.html#re.search), [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch), [`sub`](https://docs.python.org/3/library/re.html#re.sub)"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1489
+#: site/lectures/07-text-and-regex.md:1483
 msgid "Validators with [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch): loan id, EIK, IBAN, e-mail, date"
 msgstr "Валидатори с [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch): номер на кредит, ЕИК, IBAN, e-mail, дата"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1490
+#: site/lectures/07-text-and-regex.md:1484
 msgid "`task9-extract.py` (Optional)"
 msgstr "`task9-extract.py` (по желание)"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1490
+#: site/lectures/07-text-and-regex.md:1484
 msgid "Loan ids, dates, amounts and percents from comments"
 msgstr "Номера на кредити, дати, суми и проценти от коментари"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1492
+#: site/lectures/07-text-and-regex.md:1486
 msgid "Three more files are for the [Self-study](#self-study) topics - do them after you read the topic:"
 msgstr "Още три файла са за темите от [Самостоятелно изучаване](#self-study) - решете ги, след като прочетете темата:"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1495
+#: site/lectures/07-text-and-regex.md:1489
 msgid "Self-study topic"
 msgstr "Тема за самостоятелно изучаване"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1497
+#: site/lectures/07-text-and-regex.md:1491
 msgid "Numbers in any format; [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate)"
 msgstr "Числа в произволен формат; [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate)"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1498
+#: site/lectures/07-text-and-regex.md:1492
 msgid "Named groups"
 msgstr "Именувани groups (named groups)"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1499
+#: site/lectures/07-text-and-regex.md:1493
 msgid "Greedy and lazy; back-references; a function as the replacement"
 msgstr "Greedy и lazy; обратни препратки (back-references); функция като заместител"
 
 #. heading 2
-#: site/lectures/07-text-and-regex.md:1501
+#: site/lectures/07-text-and-regex.md:1495
 msgid "Homework"
 msgstr "Домашно"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1503
+#: site/lectures/07-text-and-regex.md:1497
 msgid "`07-text-and-regex/homework.py` (in the homework repository): **clean the client register** - a function for each column of `client_register.csv`, then the whole file as a list of clean records, with a summary: how many values were fixed and how many could not be fixed, per column. The last part takes the payments out of the comments with a regular expression. Every check must print `OK`."
 msgstr "`07-text-and-regex/homework.py` (в homework repository): **почистете регистъра на клиентите** - функция за всяка колона на `client_register.csv`, после целият файл като list от чисти записи, с обобщение: колко стойности са оправени и колко не са могли да се оправят, по колони. Последната част извлича плащанията от коментарите с регулярен израз. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1508
+#: site/lectures/07-text-and-regex.md:1502
 msgid "The practice tasks you did not finish in class."
 msgstr "Задачите за упражнение, които не сте довършили в клас."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1509
+#: site/lectures/07-text-and-regex.md:1503
 msgid "Optional: `07-text-and-regex/homework2-comments.py` - **read the comments**: find the type of every comment of `loan_comments.csv`, take out the amounts of the payments, the new maturities and the IBANs, and compare the IBANs with the register."
 msgstr "По желание: `07-text-and-regex/homework2-comments.py` - **прочетете коментарите**: намерете типа на всеки коментар в `loan_comments.csv`, извлечете сумите на плащанията, новите падежи и IBAN-ите и сравнете IBAN-ите с регистъра."
 
 #. heading 2
-#: site/lectures/07-text-and-regex.md:1514
+#: site/lectures/07-text-and-regex.md:1508
 msgid "Self-study"
 msgstr "Самостоятелно изучаване"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1516
+#: site/lectures/07-text-and-regex.md:1510
 msgid "This part is not covered in class. It is for reading at home. The first six topics continue the string methods and the dates; the last six continue the regular expressions. Nothing here is needed for the practice tasks 1 - 9 or for the homework."
 msgstr "Тази част не се разглежда в час. Тя е за четене вкъщи. Първите шест теми продължават методите на string и датите; последните шест продължават регулярните изрази. Нищо от тук не е нужно за задачите за упражнение 1 - 9 или за домашното."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1521
+#: site/lectures/07-text-and-regex.md:1515
 msgid "Padding and alignment"
 msgstr "Допълване и подравняване"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1523
+#: site/lectures/07-text-and-regex.md:1517
 msgid "[`rjust`](https://docs.python.org/3/builtins/stdtypes.html#str.rjust), [`ljust`](https://docs.python.org/3/builtins/stdtypes.html#str.ljust) and [`center`](https://docs.python.org/3/builtins/stdtypes.html#str.center) pad to a width with any character:"
 msgstr "[`rjust`](https://docs.python.org/3/builtins/stdtypes.html#str.rjust), [`ljust`](https://docs.python.org/3/builtins/stdtypes.html#str.ljust) и [`center`](https://docs.python.org/3/builtins/stdtypes.html#str.center) допълват до дадена ширина с произволен символ:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1529
+#: site/lectures/07-text-and-regex.md:1523
 msgid "**Aligned columns.** A fixed-width line - some old systems still want them. The f-string format spec of [session 1](./01-intro-syntax-types.md#formatting-the-values) does the same, and is easier to read:"
 msgstr "**Подравнени колони.** Ред с фиксирана ширина - някои стари системи още ги искат. Форматът във f-string от [занятие 1](./01-intro-syntax-types.md#formatting-the-values) прави същото и се чете по-лесно:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1540
+#: site/lectures/07-text-and-regex.md:1534
 msgid "**A text report.** The same on the loan portfolio - a small text report with a title, a header and the amounts aligned on the right:"
 msgstr "**Текстов отчет.** Същото върху кредитния портфейл - малък текстов отчет със заглавие, заглавен ред и суми, подравнени вдясно:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1555 site/lectures/07-text-and-regex.md:1603 site/lectures/07-text-and-regex.md:1682 site/lectures/07-text-and-regex.md:1773 site/lectures/07-text-and-regex.md:1908 site/lectures/07-text-and-regex.md:1968 site/lectures/07-text-and-regex.md:2057 site/lectures/07-text-and-regex.md:2178 site/lectures/07-text-and-regex.md:2393
+#: site/lectures/07-text-and-regex.md:1549 site/lectures/07-text-and-regex.md:1597 site/lectures/07-text-and-regex.md:1676 site/lectures/07-text-and-regex.md:1750 site/lectures/07-text-and-regex.md:1885 site/lectures/07-text-and-regex.md:1945 site/lectures/07-text-and-regex.md:2034 site/lectures/07-text-and-regex.md:2155 site/lectures/07-text-and-regex.md:2370
 msgid "**Exercise**"
 msgstr "**Упражнение**"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1557
+#: site/lectures/07-text-and-regex.md:1551
 msgid "Print the numbers 1, 25 and 400 as loan ids `L000001`, `L000025`, `L000400` - once with [`zfill`](https://docs.python.org/3/builtins/stdtypes.html#str.zfill), once with an f-string."
 msgstr "Отпечатайте числата 1, 25 и 400 като номера на кредити `L000001`, `L000025`, `L000400` - веднъж със [`zfill`](https://docs.python.org/3/builtins/stdtypes.html#str.zfill) и веднъж с f-string."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1567
+#: site/lectures/07-text-and-regex.md:1561
 msgid "`translate`: change or delete characters"
 msgstr "`translate`: замяна или изтриване на символи"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1569
+#: site/lectures/07-text-and-regex.md:1563
 msgid "[`str.maketrans`](https://docs.python.org/3/builtins/stdtypes.html#str.maketrans) builds a table of character changes, [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate) applies it - in one pass. The SAS `TRANSLATE` and `COMPRESS(s, chars)`:"
 msgstr "[`str.maketrans`](https://docs.python.org/3/builtins/stdtypes.html#str.maketrans) създава таблица със замени на символи, а [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate) я прилага - с едно минаване. SAS `TRANSLATE` и `COMPRESS(s, chars)`:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1581
+#: site/lectures/07-text-and-regex.md:1575
 msgid "**A trap: two [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace) calls.** Why not two [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace) calls? Because the second call also changes the result of the first one:"
 msgstr "**Капан: две извиквания на [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace).** Защо не две извиквания на [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace)? Защото второто извикване променя и резултата от първото:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1590
+#: site/lectures/07-text-and-regex.md:1584
 msgid "**Back to the Bulgarian format.** And back: a number in the Bulgarian format for a report. The format spec gives the English format; then swap the characters with [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate):"
 msgstr "**Обратно към българския формат.** И обратно: число в български формат за отчет. Форматът дава английския формат; после разменете символите с [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate):"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1605
+#: site/lectures/07-text-and-regex.md:1599
 msgid "`\"BG80 test 9661-1020 3456 78\"`: make it upper case, without spaces and dashes - in one line with [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate) and [`upper`](https://docs.python.org/3/builtins/stdtypes.html#str.upper)."
 msgstr "`\"BG80 test 9661-1020 3456 78\"`: направете го с главни букви, без интервали и тирета - на един ред с [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate) и [`upper`](https://docs.python.org/3/builtins/stdtypes.html#str.upper)."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1615
+#: site/lectures/07-text-and-regex.md:1609
 msgid "Numbers in any format"
 msgstr "Числа в произволен формат"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1617
+#: site/lectures/07-text-and-regex.md:1611
 msgid "The `turnover` column of the register has several formats:"
 msgstr "Колоната `turnover` в регистъра има няколко формата:"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1619
+#: site/lectures/07-text-and-regex.md:1613
 msgid "Text"
 msgstr "Текст"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1619
+#: site/lectures/07-text-and-regex.md:1613
 msgid "Style"
 msgstr "Стил"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1619
+#: site/lectures/07-text-and-regex.md:1613
 msgid "Value"
 msgstr "Стойност"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1621
+#: site/lectures/07-text-and-regex.md:1615
 msgid "Bulgarian: space, comma"
 msgstr "български: интервал, запетая"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1622
+#: site/lectures/07-text-and-regex.md:1616
 msgid "German / Bulgarian Excel: point, comma"
 msgstr "немски / български Excel: точка, запетая"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1623
+#: site/lectures/07-text-and-regex.md:1617
 msgid "English: comma, point"
 msgstr "английски: запетая, точка"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1624
+#: site/lectures/07-text-and-regex.md:1618
 msgid "plain"
 msgstr "обикновен"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:1625
+#: site/lectures/07-text-and-regex.md:1619
 msgid "a currency, no decimals"
 msgstr "валута, без десетични знаци"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1627
+#: site/lectures/07-text-and-regex.md:1621
 msgid "**The rule in code.** The rule: the **last** of `,` and `.` is the decimal separator - if it has one to two digits after it; everything else is a thousands separator."
 msgstr "**Правилото в код.** Правилото: **последният** от `,` и `.` е десетичният разделител - ако след него има една до две цифри; всичко останало е разделител на хилядите."
 
 #. box title
-#: site/lectures/07-text-and-regex.md:1648
+#: site/lectures/07-text-and-regex.md:1642
 msgid "A number without decimals is ambiguous"
 msgstr "Число без десетични знаци е двусмислено"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1649
+#: site/lectures/07-text-and-regex.md:1643
 msgid "`\"1,234\"` - is it one thousand two hundred thirty-four (English), or one point two three four (Bulgarian)? The rule above says 1234, because three digits after the separator are thousands. In your own data, **ask** which format a source uses, and write it down - do not guess per value."
 msgstr "`\"1,234\"` - хиляда двеста тридесет и четири ли е (английски) или едно цяло двеста тридесет и четири хилядни (български)? Правилото по-горе казва 1234, защото три цифри след разделителя са хиляди. С вашите собствени данни **попитайте** какъв формат използва източникът и го запишете - не гадайте за всяка стойност."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1655
+#: site/lectures/07-text-and-regex.md:1649
 msgid "The SAS informats do the same with a fixed rule per column: `COMMA12.` for `1,234,567.89` and `COMMAX12.` for `1.234.567,89`."
 msgstr "SAS informats правят същото с фиксирано правило за колона: `COMMA12.` за `1,234,567.89` и `COMMAX12.` за `1.234.567,89`."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1658
+#: site/lectures/07-text-and-regex.md:1652
 msgid "**The total turnover.** On the file - the total turnover of the companies:"
 msgstr "**Общият оборот.** Върху файла - общият оборот на фирмите:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1684
+#: site/lectures/07-text-and-regex.md:1678
 msgid "What does `parse_amount(\"12,5\")` give? And `parse_amount(\"1,234\")`? Predict, then run. Which of the two answers would be wrong for a source in the English format?"
 msgstr "Какво дава `parse_amount(\"12,5\")`? А `parse_amount(\"1,234\")`? Предвидете, после изпълнете. Кой от двата отговора би бил грешен за източник в английски формат?"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1688
+#: site/lectures/07-text-and-regex.md:1682
 msgid "`parse_amount(\"12,5\")` gives `12.5`: one digit after the comma, so the comma is the decimal separator. `parse_amount(\"1,234\")` gives `1234.0`: three digits after the comma, so the comma separates the thousands. For a source in the English format the first answer is wrong: there `12,5` cannot be a number at all, and a rule that accepts it hides a typing error."
 msgstr "`parse_amount(\"12,5\")` дава `12.5`: една цифра след запетаята, значи запетаята е десетичният разделител. `parse_amount(\"1,234\")` дава `1234.0`: три цифри след запетаята, значи запетаята разделя хилядите. За източник в английски формат първият отговор е грешен: там `12,5` изобщо не може да е число, а правило, което го приема, скрива грешка при въвеждане."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1695
-msgid "Several date formats, and month ends"
-msgstr "Няколко формата на дати и краища на месеци"
+#: site/lectures/07-text-and-regex.md:1689
+msgid "Several date formats"
+msgstr "Няколко формата на дати"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1697
+#: site/lectures/07-text-and-regex.md:1691
 msgid "The `registered` column of the register has five formats. Decide the format by the **shape** of the text, then read it:"
 msgstr "Колоната `registered` в регистъра има пет формата. Определете формата по **формата на текста**, после го прочетете:"
 
 #. box title
-#: site/lectures/07-text-and-regex.md:1722
+#: site/lectures/07-text-and-regex.md:1716
 msgid "Advanced: month names and the language"
 msgstr "За напреднали: имената на месеците и езикът"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1723
+#: site/lectures/07-text-and-regex.md:1717
 msgid "`%b` and `%B` follow the **locale**. By default Python uses English month names, but if a program (or a library) switches the locale with [`locale.setlocale`](https://docs.python.org/3/library/locale.html#locale.setlocale), `%b` expects the month names of that language, and [`strptime(\"8 Jun 2014\", \"%d %b %Y\")`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) can fail. For data, prefer numeric formats. If a source has English month names, a small dictionary `{\"Jan\": 1, ...}` ([session 6](./06-dictionaries.md)) is the safe way."
 msgstr "`%b` и `%B` следват **locale**. По подразбиране Python използва английските имена на месеците, но ако програма (или библиотека) смени locale с [`locale.setlocale`](https://docs.python.org/3/library/locale.html#locale.setlocale), `%b` очаква имената на месеците на този език и [`strptime(\"8 Jun 2014\", \"%d %b %Y\")`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) може да даде грешка. За данни предпочитайте числови формати. Ако източник има английски имена на месеци, малко dictionary `{\"Jan\": 1, ...}` ([занятие 6](./06-dictionaries.md)) е сигурният начин."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1730
-msgid "**Month start and month end.** The first and the last day of a month - the **report dates** of risk reporting:"
-msgstr "**Начало и край на месец.** Първият и последният ден на месеца - **отчетните дати** в рисковата отчетност:"
+#: site/lectures/07-text-and-regex.md:1724
+msgid "**On the file.** The registration dates of all clients - the oldest, the newest, and the clients per year:"
+msgstr "**Върху файла.** Датите на регистрация на всички клиенти - най-старата, най-новата и броят клиенти за всяка година:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1742
-msgid "(Adding **months** is not in `datetime`: a month has no fixed length. [Lecture 15](./15-pandas-reports.md#month-ends-intnx) does it with pandas; [lecture 9](./09-modules-and-git.md#datetime-and-calendar-report-dates) shows the standard library.)"
-msgstr "(Добавянето на **месеци** го няма в `datetime`: месецът няма фиксирана дължина. [Лекция 15](./15-pandas-reports.md#month-ends-intnx) го прави с pandas; [лекция 9](./09-modules-and-git.md#datetime-and-calendar-report-dates) показва стандартната библиотека.)"
-
-#. paragraph
-#: site/lectures/07-text-and-regex.md:1745
-msgid "**Client tenure.** On the file - how long each client has been a client:"
-msgstr "**Стаж на клиента.** Върху файла - откога всеки клиент е клиент:"
-
-#. paragraph
-#: site/lectures/07-text-and-regex.md:1775
+#: site/lectures/07-text-and-regex.md:1752
 msgid "Check the parsed dates against `clients.csv`, where `client_since` is a clean ISO date: are all 150 equal?"
 msgstr "Проверете прочетените дати спрямо `clients.csv`, където `client_since` е чиста ISO дата: равни ли са всичките 150?"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1786
+#: site/lectures/07-text-and-regex.md:1763
 msgid "Encodings: UTF-8, cp1251 and Cyrillic"
 msgstr "Кодировки: UTF-8, cp1251 и кирилица"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1788
+#: site/lectures/07-text-and-regex.md:1765
 msgid "A file on disk is **bytes**, not text. An **encoding** is the rule that turns text into bytes and back. The same text gives different bytes in different encodings:"
 msgstr "Файлът на диска е **байтове**, а не текст. **Кодировката** (encoding) е правилото, което превръща текста в байтове и обратно. Един и същ текст дава различни байтове в различни кодировки:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1801
+#: site/lectures/07-text-and-regex.md:1778
 msgid "**UTF-8** - every character of every language; the standard of the web, of Python source files and of most new files."
 msgstr "**UTF-8** - всеки символ от всеки език; стандартът на уеб, на файловете с код на Python и на повечето нови файлове."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1803
+#: site/lectures/07-text-and-regex.md:1780
 msgid "**cp1251** (Windows-1251) - the old Windows encoding for Cyrillic. Exports from old systems and Excel files saved as \"CSV\" on a Bulgarian Windows are often cp1251."
 msgstr "**cp1251** (Windows-1251) - старата кодировка на Windows за кирилица. Експортите от стари системи и файловете на Excel, запазени като \"CSV\" на български Windows, често са в cp1251."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1806
+#: site/lectures/07-text-and-regex.md:1783
 msgid "**Mojibake.** Reading with the wrong encoding gives either an error, or **mojibake** - wrong letters:"
 msgstr "**Mojibake.** Четенето с грешна кодировка дава или грешка, или **mojibake** - грешни букви:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1817
+#: site/lectures/07-text-and-regex.md:1794
 msgid "That is why every [`open()`](https://docs.python.org/3/builtins/functions.html#open) in this course says `encoding=\"utf-8\"`: without it, Python 3.12 - 3.14 on Windows uses the Windows encoding of the computer (often cp1252 or cp1251), and the same script gives different results on different computers. (From Python 3.15 on, UTF-8 is the default everywhere. Still write it: the script may run on an older Python.)"
 msgstr "Затова всяко [`open()`](https://docs.python.org/3/builtins/functions.html#open) в този курс съдържа `encoding=\"utf-8\"`: без него Python 3.12 - 3.14 на Windows използва кодировката на Windows на компютъра (често cp1252 или cp1251) и един и същ скрипт дава различни резултати на различни компютри. (От Python 3.15 нататък UTF-8 е по подразбиране навсякъде. Пак го пишете: скриптът може да се изпълни на по-стар Python.)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1823
+#: site/lectures/07-text-and-regex.md:1800
 msgid "**Read a cp1251 file.** The file `regions_bg.csv` is saved in **cp1251**:"
 msgstr "**Четене на файл в cp1251.** Файлът `regions_bg.csv` е запазен в **cp1251**:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1833
+#: site/lectures/07-text-and-regex.md:1810
 msgid "`errors=\"replace\"` puts `?` (or `�`) instead of a byte that cannot be read, instead of stopping. Use it only to **look** at a file, never to load data."
 msgstr "`errors=\"replace\"` слага `?` (или `�`) на мястото на байт, който не може да се прочете, вместо да спре. Използвайте го само за да **разгледате** файл, никога за зареждане на данни."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1836
+#: site/lectures/07-text-and-regex.md:1813
 msgid "**The BOM of Excel.** One more detail: Excel saves \"CSV UTF-8\" with a **BOM** - three bytes `EF BB BF` at the start. Read such a file with `encoding=\"utf-8-sig\"`, or the first column name gets an invisible character in front:"
 msgstr "**BOM на Excel.** Още една подробност: Excel запазва \"CSV UTF-8\" с **BOM** - три байта `EF BB BF` в началото. Четете такъв файл с `encoding=\"utf-8-sig\"`, иначе името на първата колона получава невидим символ отпред:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1847 site/lectures/07-text-and-regex.md:2450 site/lectures/07-text-and-regex.md:2513
+#: site/lectures/07-text-and-regex.md:1824 site/lectures/07-text-and-regex.md:2427 site/lectures/07-text-and-regex.md:2490
 msgid "**Exercises**"
 msgstr "**Упражнения**"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1849
+#: site/lectures/07-text-and-regex.md:1826
 msgid "Read `regions_bg.csv` with [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) and the right encoding, and build a dictionary `name_bg -> name_en`."
 msgstr "Прочетете `regions_bg.csv` с [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) и правилната кодировка и създайте dictionary `name_bg -> name_en`."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1851
+#: site/lectures/07-text-and-regex.md:1828
 msgid "Write the same rows into a new file `regions_utf8.csv` in UTF-8, and read it back."
 msgstr "Запишете същите редове в нов файл `regions_utf8.csv` в UTF-8 и го прочетете обратно."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1869
+#: site/lectures/07-text-and-regex.md:1846
 msgid "(Writing files with `csv`: [lecture 8](./08-errors-and-files.md#write-csv-writer-and-csv-dictwriter).)"
 msgstr "(Записване на файлове с `csv`: [лекция 8](./08-errors-and-files.md#write-csv-writer-and-csv-dictwriter).)"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1872
+#: site/lectures/07-text-and-regex.md:1849
 msgid "Cyrillic names in Latin letters"
 msgstr "Имена на кирилица с латински букви"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1874
+#: site/lectures/07-text-and-regex.md:1851
 msgid "Bulgaria has an official transliteration (the Transliteration Act of 2009): `ж` -> `zh`, `ц` -> `ts`, `ч` -> `ch`, `ш` -> `sh`, `щ` -> `sht`, `ъ` -> `a`, `ю` -> `yu`, `я` -> `ya`, ... A dictionary of single letters to strings, used with [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate):"
 msgstr "България има официална транслитерация (Законът за транслитерацията от 2009 г.): `ж` -> `zh`, `ц` -> `ts`, `ч` -> `ch`, `ш` -> `sh`, `щ` -> `sht`, `ъ` -> `a`, `ю` -> `yu`, `я` -> `ya`, ... Dictionary от отделни букви към strings, използвано с [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate):"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1891
+#: site/lectures/07-text-and-regex.md:1868
 msgid "[`str.maketrans`](https://docs.python.org/3/builtins/stdtypes.html#str.maketrans) accepts a dictionary of **one character -> any string**, so one letter can become two or three. (The full rules have a few exceptions, for example `-ия` at the end of a word is `-ia`: `София` -> `Sofia`, not `Sofiya`.)"
 msgstr "[`str.maketrans`](https://docs.python.org/3/builtins/stdtypes.html#str.maketrans) приема dictionary **един символ -> произволен string**, така че една буква може да стане две или три. (Пълните правила имат няколко изключения, например `-ия` в края на дума е `-ia`: `София` -> `Sofia`, а не `Sofiya`.)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1895
+#: site/lectures/07-text-and-regex.md:1872
 msgid "**One letter, two forms.** Another trap of text from many sources: the same letter can be stored in two ways - `\"й\"` as one character, or `\"и\"` plus a combining mark. They look the same, but are not `==`. [`unicodedata.normalize(\"NFC\", s)`](https://docs.python.org/3/library/unicodedata.html#unicodedata.normalize) brings both to the same form:"
 msgstr "**Една буква, две форми.** Още един капан при текст от много източници: една и съща буква може да се пази по два начина - `\"й\"` като един символ или `\"и\"` плюс комбиниращ знак. Изглеждат еднакво, но не са `==`. [`unicodedata.normalize(\"NFC\", s)`](https://docs.python.org/3/library/unicodedata.html#unicodedata.normalize) привежда двете към една и съща форма:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1910
+#: site/lectures/07-text-and-regex.md:1887
 msgid "Add the rule \"`ия` at the end of a word -> `ia`\" to the transliteration: first replace it, then [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate). Check it with `София` and `Мария`."
 msgstr "Добавете правилото \"`ия` в края на дума -> `ia`\" към транслитерацията: първо го заменете, после [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate). Проверете го със `София` и `Мария`."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1925
+#: site/lectures/07-text-and-regex.md:1902
 msgid "(The ASCII letters `ia` pass through [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate) unchanged.)"
 msgstr "(ASCII буквите `ia` минават през [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate) непроменени.)"
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1928
+#: site/lectures/07-text-and-regex.md:1905
 msgid "Greedy and lazy quantifiers"
 msgstr "Greedy и lazy квантификатори"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1930
+#: site/lectures/07-text-and-regex.md:1907
 msgid "`*` also matches **nothing** - zero digits are \"0 or more\". With [`findall`](https://docs.python.org/3/library/re.html#re.findall), that gives empty strings between the matches:"
 msgstr "`*` пасва и на **нищо** - нула цифри са \"0 или повече\". С [`findall`](https://docs.python.org/3/library/re.html#re.findall) това дава празни strings между съвпаденията:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1940
+#: site/lectures/07-text-and-regex.md:1917
 msgid "When you want \"at least one\", write `+`, not `*`."
 msgstr "Когато искате \"поне едно\", пишете `+`, а не `*`."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1942
+#: site/lectures/07-text-and-regex.md:1919
 msgid "**Greedy.** Quantifiers are **greedy**: they take as much text as they can, and give back only what is needed for the rest of the pattern to match:"
 msgstr "**Greedy.** Квантификаторите са **greedy** (\"лакоми\"): вземат колкото може повече текст и връщат само толкова, колкото е нужно, за да пасне останалата част от pattern-а:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1952
+#: site/lectures/07-text-and-regex.md:1929
 msgid "**Lazy.** A `?` after the quantifier makes it **lazy**: as little as possible."
 msgstr "**Lazy.** `?` след квантификатора го прави **lazy** (\"мързелив\"): колкото може по-малко."
 
 #. box title
-#: site/lectures/07-text-and-regex.md:1962
+#: site/lectures/07-text-and-regex.md:1939
 msgid "`.*` takes too much"
 msgstr "`.*` взема твърде много"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1963
+#: site/lectures/07-text-and-regex.md:1940
 msgid "`.*` is the most common cause of a wrong match: it runs to the end of the line, then steps back. When the text between two markers cannot contain the marker, write a class with `^`: `\"[^\"]*\"`, `\\([^)]*\\)`."
 msgstr "`.*` е най-честата причина за грешно съвпадение: стига до края на реда, после се връща назад. Когато текстът между два маркера не може да съдържа маркера, пишете клас с `^`: `\"[^\"]*\"`, `\\([^)]*\\)`."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1970
+#: site/lectures/07-text-and-regex.md:1947
 msgid "In `\"(valuation report from 12.06.2026) (checked 2026-06-15)\"`, find the text inside each pair of brackets. First try `\\(.*\\)`, then make it lazy."
 msgstr "В `\"(valuation report from 12.06.2026) (checked 2026-06-15)\"` намерете текста във всяка двойка скоби. Първо пробвайте `\\(.*\\)`, после го направете lazy."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:1984
+#: site/lectures/07-text-and-regex.md:1961
 msgid "More functions of `re`"
 msgstr "Още функции на `re`"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1986
+#: site/lectures/07-text-and-regex.md:1963
 msgid "**[`finditer`](https://docs.python.org/3/library/re.html#re.finditer): the match objects.** [`finditer`](https://docs.python.org/3/library/re.html#re.finditer) gives the **match objects**, with their positions - when you need more than the text:"
 msgstr "**[`finditer`](https://docs.python.org/3/library/re.html#re.finditer): match обектите.** [`finditer`](https://docs.python.org/3/library/re.html#re.finditer) дава **match обектите**, с техните позиции - когато ви трябва повече от текста:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:1997
+#: site/lectures/07-text-and-regex.md:1974
 msgid "**[`split`](https://docs.python.org/3/library/re.html#re.split) with a pattern.** [`re.split`](https://docs.python.org/3/library/re.html#re.split) cuts at every match - when the separators vary:"
 msgstr "**[`split`](https://docs.python.org/3/library/re.html#re.split) с pattern.** [`re.split`](https://docs.python.org/3/library/re.html#re.split) разрязва при всяко съвпадение - когато разделителите са различни:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2006
+#: site/lectures/07-text-and-regex.md:1983
 msgid "**`re.MULTILINE`.** With a text of many lines, `^` and `$` mean the start and the end of the **whole** text. The flag `re.MULTILINE` (`re.M`) makes them work **per line**:"
 msgstr "**`re.MULTILINE`.** При текст от много редове `^` и `$` означават началото и края на **целия** текст. Флагът `re.MULTILINE` (`re.M`) ги кара да работят **за всеки ред**:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2021
+#: site/lectures/07-text-and-regex.md:1998
 msgid "**[`re.compile`](https://docs.python.org/3/library/re.html#re.compile): a pattern used many times.** [`re.compile`](https://docs.python.org/3/library/re.html#re.compile) turns a pattern into an object with the same methods. Give it a name at the top of the script, and use it in a loop - it reads well and is checked once:"
 msgstr "**[`re.compile`](https://docs.python.org/3/library/re.html#re.compile): pattern, използван много пъти.** [`re.compile`](https://docs.python.org/3/library/re.html#re.compile) превръща pattern в обект със същите методи. Дайте му име в началото на скрипта и го използвайте в цикъл - чете се добре и се проверява веднъж:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2038
+#: site/lectures/07-text-and-regex.md:2015
 msgid "**[`re.subn`](https://docs.python.org/3/library/re.html#re.subn): count the replacements.** [`re.subn`](https://docs.python.org/3/library/re.html#re.subn) works like [`re.sub`](https://docs.python.org/3/library/re.html#re.sub), and also returns the number of replacements - useful in a cleaning report:"
 msgstr "**[`re.subn`](https://docs.python.org/3/library/re.html#re.subn): брой на замените.** [`re.subn`](https://docs.python.org/3/library/re.html#re.subn) работи като [`re.sub`](https://docs.python.org/3/library/re.html#re.sub) и връща и броя на замените - полезно в отчет за почистването:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2048
+#: site/lectures/07-text-and-regex.md:2025
 msgid "**[`re.escape`](https://docs.python.org/3/library/re.html#re.escape).** When a text that you look for has special characters, [`re.escape(text)`](https://docs.python.org/3/library/re.html#re.escape) puts the backslashes for you:"
 msgstr "**[`re.escape`](https://docs.python.org/3/library/re.html#re.escape).** Когато текстът, който търсите, има специални символи, [`re.escape(text)`](https://docs.python.org/3/library/re.html#re.escape) слага обратните наклонени черти вместо вас:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2059
+#: site/lectures/07-text-and-regex.md:2036
 msgid "Split `\"retail;sme , corporate,project\"` into the four words with one [`re.split`](https://docs.python.org/3/library/re.html#re.split), without spaces around the words."
 msgstr "Разделете `\"retail;sme , corporate,project\"` на четирите думи с едно [`re.split`](https://docs.python.org/3/library/re.html#re.split), без интервали около думите."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:2070
+#: site/lectures/07-text-and-regex.md:2047
 msgid "Named groups, back-references, a function as the replacement"
 msgstr "Именувани groups, обратни препратки, функция като заместител"
 
 #. heading 4
-#: site/lectures/07-text-and-regex.md:2072
+#: site/lectures/07-text-and-regex.md:2049
 msgid "Named groups: `(?P<name>...)`"
 msgstr "Именувани groups: `(?P<name>...)`"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2074
+#: site/lectures/07-text-and-regex.md:2051
 msgid "With many groups, numbers are hard to follow. Give each group a **name**:"
 msgstr "При много groups номерата трудно се следят. Дайте на всяка group **име**:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2087
+#: site/lectures/07-text-and-regex.md:2064
 msgid "**An optional group.** A group that did not take part in the match gives `None` - for example an optional part:"
 msgstr "**Незадължителна group.** Group, която не е участвала в съвпадението, дава `None` - например незадължителна част:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2099
+#: site/lectures/07-text-and-regex.md:2076
 msgid "**Records from a text.** A list of records from a text - [`finditer`](https://docs.python.org/3/library/re.html#re.finditer) with named groups and [`groupdict()`](https://docs.python.org/3/library/re.html#re.Match.groupdict), one dictionary per match ([session 6](./06-dictionaries.md)):"
 msgstr "**Записи от текст.** List от записи от текст - [`finditer`](https://docs.python.org/3/library/re.html#re.finditer) с именувани groups и [`groupdict()`](https://docs.python.org/3/library/re.html#re.Match.groupdict), по едно dictionary за съвпадение ([занятие 6](./06-dictionaries.md)):"
 
 #. heading 4
-#: site/lectures/07-text-and-regex.md:2112
+#: site/lectures/07-text-and-regex.md:2089
 msgid "Back-references: reorder the parts"
 msgstr "Обратни препратки: пренареждане на частите"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2114
+#: site/lectures/07-text-and-regex.md:2091
 msgid "In the replacement, `\\1`, `\\2` (or `\\g<name>`) insert the text of a group. A date `dd.mm.yyyy` becomes ISO:"
 msgstr "В заместващия текст `\\1`, `\\2` (или `\\g<name>`) вмъкват текста на group. Дата `dd.mm.yyyy` става ISO:"
 
 #. box title
-#: site/lectures/07-text-and-regex.md:2125
+#: site/lectures/07-text-and-regex.md:2102
 msgid "The replacement is a raw string too"
 msgstr "Заместващият текст също е raw string"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2126
+#: site/lectures/07-text-and-regex.md:2103
 msgid "Without `r`, Python reads `\"\\1\"` itself, as the character number 1 - the group is lost:"
 msgstr "Без `r` Python сам чете `\"\\1\"` като символа с номер 1 - group-ата се губи:"
 
 #. heading 4
-#: site/lectures/07-text-and-regex.md:2137
+#: site/lectures/07-text-and-regex.md:2114
 msgid "A function as the replacement"
 msgstr "Функция като заместител"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2139
+#: site/lectures/07-text-and-regex.md:2116
 msgid "When the new text must be **calculated**, give [`sub`](https://docs.python.org/3/library/re.html#re.sub) a function: it gets the match object and returns the replacement. Every amount in a text, converted to thousands of EUR:"
 msgstr "Когато новият текст трябва да се **изчисли**, подайте на [`sub`](https://docs.python.org/3/library/re.html#re.sub) функция: тя получава match обекта и връща заместващия текст. Всяка сума в текст, преобразувана в хиляди EUR:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2154
+#: site/lectures/07-text-and-regex.md:2131
 msgid "**Legal forms.** Normalise all legal forms in company names with one pattern and a dictionary:"
 msgstr "**Правни форми.** Нормализирайте всички правни форми в имената на фирмите с един pattern и един dictionary:"
 
 #. box title
-#: site/lectures/07-text-and-regex.md:2170
+#: site/lectures/07-text-and-regex.md:2147
 msgid "Advanced: patterns that take forever"
 msgstr "За напреднали: patterns, които работят безкрайно дълго"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2171
+#: site/lectures/07-text-and-regex.md:2148
 msgid "Patterns with nested quantifiers, like `(\\d+)+$`, can take a very long time on a long text that almost matches (\"catastrophic backtracking\"). Keep patterns simple, avoid `(...+)+`, and do not run patterns written by other people on big data without a test. Python 3.11 added *possessive* quantifiers (`*+`, `++`) and atomic groups `(?>...)` that prevent it - rarely needed in data work."
 msgstr "Patterns с вложени квантификатори, като `(\\d+)+$`, могат да работят много дълго върху дълъг текст, който почти пасва (\"catastrophic backtracking\"). Пазете patterns прости, избягвайте `(...+)+` и не пускайте patterns, писани от други хора, върху големи данни без тест. Python 3.11 добави *possessive* квантификатори (`*+`, `++`) и атомарни groups `(?>...)`, които предотвратяват това - рядко са нужни при работа с данни."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2180
+#: site/lectures/07-text-and-regex.md:2157
 msgid "Write one pattern with named groups for `\"Overdue 60 days. Reminder sent to radoslav.iliev@example.org on 2026-04-24.\"` that gives the days, the e-mail and the date with [`groupdict()`](https://docs.python.org/3/library/re.html#re.Match.groupdict)."
 msgstr "Напишете един pattern с именувани groups за `\"Overdue 60 days. Reminder sent to radoslav.iliev@example.org on 2026-04-24.\"`, който дава дните, e-mail адреса и датата с [`groupdict()`](https://docs.python.org/3/library/re.html#re.Match.groupdict)."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:2194
+#: site/lectures/07-text-and-regex.md:2171
 msgid "Extraction from free text"
 msgstr "Извличане от свободен текст"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2196
+#: site/lectures/07-text-and-regex.md:2173
 msgid "The comments of the credit officers (`loan_comments.csv`, new today) are free text. Each type of comment has its own shape:"
 msgstr "Коментарите на кредитните служители (`loan_comments.csv`, нов днес) са свободен текст. Всеки тип коментар има своя форма:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2212
+#: site/lectures/07-text-and-regex.md:2189
 msgid "**Classify the comments.** Classify every comment with a dictionary **type -> pattern**: the first pattern that matches gives the type - like a `CASE WHEN ... LIKE` chain in SQL:"
 msgstr "**Класифициране на коментарите.** Класифицирайте всеки коментар с dictionary **тип -> pattern**: първият pattern, който пасне, дава типа - като верига `CASE WHEN ... LIKE` в SQL:"
 
 #. heading 4
-#: site/lectures/07-text-and-regex.md:2242
+#: site/lectures/07-text-and-regex.md:2219
 msgid "Amounts and their currency"
 msgstr "Суми и тяхната валута"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2244
+#: site/lectures/07-text-and-regex.md:2221
 msgid "A Bulgarian amount with groups of thousands: 1 to 3 digits, then any number of \"a space and 3 digits\", then a comma and 2 digits:"
 msgstr "Българска сума с групи от хиляди: 1 до 3 цифри, после произволен брой \"интервал и 3 цифри\", после запетая и 2 цифри:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2256
+#: site/lectures/07-text-and-regex.md:2233
 msgid "**Amounts in any style.** Amounts are written in different styles: `2 069,77 EUR`, `20,960.03 EUR`, `99,400 EUR`. One pattern for \"digits with spaces, commas and points, then a currency\", and the `parse_amount` of [Numbers in any format](#numbers-in-any-format) for the number:"
 msgstr "**Суми в произволен стил.** Сумите са написани в различни стилове: `2 069,77 EUR`, `20,960.03 EUR`, `99,400 EUR`. Един pattern за \"цифри с интервали, запетаи и точки, после валута\" и `parse_amount` от [Числа в произволен формат](#numbers-in-any-format) за числото:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2281
+#: site/lectures/07-text-and-regex.md:2258
 msgid "**The September payments.** The total of the payments received in September 2026:"
 msgstr "**Плащанията през септември.** Сумата на плащанията, получени през септември 2026:"
 
 #. heading 4
-#: site/lectures/07-text-and-regex.md:2301
+#: site/lectures/07-text-and-regex.md:2278
 msgid "Dates in two formats"
 msgstr "Дати в два формата"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2303
+#: site/lectures/07-text-and-regex.md:2280
 msgid "The comments use `dd.mm.yyyy`, `dd/mm/yyyy` and ISO dates. One pattern with alternatives - and a **named group per part**, in both orders:"
 msgstr "Коментарите използват `dd.mm.yyyy`, `dd/mm/yyyy` и ISO дати. Един pattern с алтернативи - и **именувана group за всяка част**, в двата реда:"
 
 #. heading 4
-#: site/lectures/07-text-and-regex.md:2325
+#: site/lectures/07-text-and-regex.md:2302
 msgid "IBANs, with or without spaces"
 msgstr "IBAN, с или без интервали"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2327
+#: site/lectures/07-text-and-regex.md:2304
 msgid "An IBAN in a comment can be written in groups of four. Allow an optional space between the groups, then remove the spaces:"
 msgstr "IBAN в коментар може да е написан на групи по четири. Позволете незадължителен интервал между групите, после премахнете интервалите:"
 
 #. heading 4
-#: site/lectures/07-text-and-regex.md:2341
+#: site/lectures/07-text-and-regex.md:2318
 msgid "Does the comment agree with the register?"
 msgstr "Съвпада ли коментарът с регистъра?"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2343
+#: site/lectures/07-text-and-regex.md:2320
 msgid "A real check: the IBAN in a disbursement comment must be the IBAN of the client of the loan. Three files, a dictionary for each lookup ([session 6](./06-dictionaries.md#_5-lookup-tables-and-nomenclatures)):"
 msgstr "Истинска проверка: IBAN-ът в коментар за усвояване трябва да е IBAN-ът на клиента по кредита. Три файла, по един dictionary за всяко търсене ([занятие 6](./06-dictionaries.md#_5-lookup-tables-and-nomenclatures)):"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2371
+#: site/lectures/07-text-and-regex.md:2348
 msgid "([`re.sub(r\"\\D\", \"\", ...)`](https://docs.python.org/3/library/re.html#re.sub) keeps only the digits - section 9.)"
 msgstr "([`re.sub(r\"\\D\", \"\", ...)`](https://docs.python.org/3/library/re.html#re.sub) запазва само цифрите - раздел 9.)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2373
+#: site/lectures/07-text-and-regex.md:2350
 msgid "**EIKs in the comments.** The same check for the EIKs in the guarantee comments - are they EIKs of companies in the register?"
 msgstr "**ЕИК в коментарите.** Същата проверка за ЕИК в коментарите за гаранции - ЕИК на фирми от регистъра ли са?"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2390
+#: site/lectures/07-text-and-regex.md:2367
 msgid "(`for m in [...]` inside the comprehension gives the match a name, so it is computed once. Python 3.8+ also has `:=`, the \"walrus\" operator, for the same.)"
 msgstr "(`for m in [...]` вътре в comprehension дава име на съвпадението, така че то се изчислява веднъж. Python 3.8+ има и `:=`, операторът \"walrus\", за същото.)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2395
+#: site/lectures/07-text-and-regex.md:2372
 msgid "Take the **new maturity** out of every restructuring comment (`\"... new maturity 2034-11-04.\"`) and find the latest one."
 msgstr "Извлечете **новия падеж** от всеки коментар за преструктуриране (`\"... new maturity 2034-11-04.\"`) и намерете най-късния."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:2411
+#: site/lectures/07-text-and-regex.md:2388
 msgid "Lookarounds and verbose patterns"
 msgstr "Lookarounds и verbose patterns"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2413
+#: site/lectures/07-text-and-regex.md:2390
 msgid "A **lookaround** checks what is before or after a position, without making it part of the match:"
 msgstr "**Lookaround** проверява какво има преди или след дадена позиция, без да го прави част от съвпадението:"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:2416
+#: site/lectures/07-text-and-regex.md:2393
 msgid "Syntax"
 msgstr "Синтаксис"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:2418
+#: site/lectures/07-text-and-regex.md:2395
 msgid "X, if Y follows"
 msgstr "X, ако следва Y"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:2419
+#: site/lectures/07-text-and-regex.md:2396
 msgid "X, if Y does not follow"
 msgstr "X, ако не следва Y"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:2420
+#: site/lectures/07-text-and-regex.md:2397
 msgid "X, if Y is before it"
 msgstr "X, ако Y е преди него"
 
 #. table cell
-#: site/lectures/07-text-and-regex.md:2421
+#: site/lectures/07-text-and-regex.md:2398
 msgid "X, if Y is not before it"
 msgstr "X, ако Y не е преди него"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2432
+#: site/lectures/07-text-and-regex.md:2409
 msgid "**A readable pattern.** Long patterns are hard to read. With `re.VERBOSE` (`re.X`), spaces in the pattern are ignored and `#` starts a comment - the pattern can be written on several lines:"
 msgstr "**Четим pattern.** Дългите patterns се четат трудно. С `re.VERBOSE` (`re.X`) интервалите в pattern-а се пренебрегват, а `#` започва коментар - pattern-ът може да се напише на няколко реда:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2452
+#: site/lectures/07-text-and-regex.md:2429
 msgid "Find the amounts that are **followed** by ` EUR`, without taking ` EUR` into the match, in `\"paid 2 069,77 EUR and 15,00 USD and 99,50 EUR\"`."
 msgstr "Намерете сумите, **след** които следва ` EUR`, без да включвате ` EUR` в съвпадението, в `\"paid 2 069,77 EUR and 15,00 USD and 99,50 EUR\"`."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2454
+#: site/lectures/07-text-and-regex.md:2431
 msgid "Rewrite the e-mail pattern of section 11 with `re.VERBOSE` and a comment per part."
 msgstr "Пренапишете pattern-а за e-mail от раздел 11 с `re.VERBOSE` и коментар за всяка част."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2457
+#: site/lectures/07-text-and-regex.md:2434
 msgid "[`re.findall(r\"\\d[\\d ]*,\\d{2}(?= EUR)\", text)`](https://docs.python.org/3/library/re.html#re.findall) gives `['2 069,77', '99,50']`."
 msgstr "[`re.findall(r\"\\d[\\d ]*,\\d{2}(?= EUR)\", text)`](https://docs.python.org/3/library/re.html#re.findall) дава `['2 069,77', '99,50']`."
 
 #. heading 3
-#: site/lectures/07-text-and-regex.md:2469
+#: site/lectures/07-text-and-regex.md:2446
 msgid "Check digits: IBAN and EIK"
 msgstr "Контролни цифри: IBAN и ЕИК"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2471
+#: site/lectures/07-text-and-regex.md:2448
 msgid "The shape is half of the check. Both an IBAN and an EIK have **check digits**, computed from the other digits, that catch most typing errors."
 msgstr "Формата е половината от проверката. И IBAN, и ЕИК имат **контролни цифри**, изчислени от останалите цифри, които хващат повечето грешки при въвеждане."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2474
+#: site/lectures/07-text-and-regex.md:2451
 msgid "**IBAN (ISO 13616):** move the first four characters to the end, replace each letter by a number (`A` = 10, `B` = 11, ..., `Z` = 35), and read it all as one big number. It must give the remainder **1** when divided by 97. Python's `int` has no size limit, so this is two lines:"
 msgstr "**IBAN (ISO 13616):** преместете първите четири символа в края, заменете всяка буква с число (`A` = 10, `B` = 11, ..., `Z` = 35) и прочетете всичко като едно голямо число. То трябва да дава остатък **1** при деление на 97. `int` в Python няма ограничение за размера, така че това са два реда:"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2493
+#: site/lectures/07-text-and-regex.md:2470
 msgid "**EIK (BULSTAT), 9 digits:** multiply the first 8 digits by the weights 1, 2, ..., 8, and take the sum modulo 11. If it is 10, use the weights 3, 4, ..., 10 instead; if it is 10 again, the check digit is 0. The result must be the 9th digit."
 msgstr "**ЕИК (БУЛСТАТ), 9 цифри:** умножете първите 8 цифри по теглата 1, 2, ..., 8 и вземете сумата по модул 11. Ако е 10, използвайте вместо това теглата 3, 4, ..., 10; ако пак е 10, контролната цифра е 0. Резултатът трябва да е 9-ата цифра."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2510
+#: site/lectures/07-text-and-regex.md:2487
 msgid "(The 13-digit EIK of a branch has a second check digit for the last 4 digits, with the weights 2, 7, 3, 5 - and 4, 9, 5, 7 if the first sum gives 10.)"
 msgstr "(13-цифреният ЕИК на клон има втора контролна цифра за последните 4 цифри, с теглата 2, 7, 3, 5 - и 4, 9, 5, 7, ако първата сума даде 10.)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2515
+#: site/lectures/07-text-and-regex.md:2492
 msgid "Find the IBANs of the register with a valid shape but wrong check digits. How many are there?"
 msgstr "Намерете IBAN-ите в регистъра с валидна форма, но грешни контролни цифри. Колко са?"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2517
+#: site/lectures/07-text-and-regex.md:2494
 msgid "Find the 9-digit EIKs of the register (after cleaning) whose check digit is wrong."
 msgstr "Намерете 9-цифрените ЕИК в регистъра (след почистване), чиято контролна цифра е грешна."
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2531
+#: site/lectures/07-text-and-regex.md:2508
 msgid "The register has two IBANs and three EIKs with wrong check digits - typing errors that a shape check cannot find."
 msgstr "Регистърът има два IBAN и три ЕИК с грешни контролни цифри - грешки при въвеждане, които проверката на формата не може да намери."
 
 #. heading 2
-#: site/lectures/07-text-and-regex.md:2535
+#: site/lectures/07-text-and-regex.md:2512
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2537
+#: site/lectures/07-text-and-regex.md:2514
 msgid "Reference: [String methods](https://docs.python.org/3/builtins/stdtypes.html#string-methods), [`datetime`](https://docs.python.org/3/library/datetime.html) (the table of [format codes](https://docs.python.org/3/library/datetime.html#format-codes)), [`re`](https://docs.python.org/3/library/re.html)"
 msgstr "Справочник: [String methods](https://docs.python.org/3/builtins/stdtypes.html#string-methods), [`datetime`](https://docs.python.org/3/library/datetime.html) (таблицата с [кодовете за формат](https://docs.python.org/3/library/datetime.html#format-codes)), [`re`](https://docs.python.org/3/library/re.html)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2541
+#: site/lectures/07-text-and-regex.md:2518
 msgid "[Regular expression HOWTO](https://docs.python.org/3/howto/regex.html) (the official tutorial)"
 msgstr "[Regular expression HOWTO](https://docs.python.org/3/howto/regex.html) (официалното ръководство)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2543
+#: site/lectures/07-text-and-regex.md:2520
 msgid "[regex101.com](https://regex101.com) - test a pattern and see what each part fits (choose *Python*)"
 msgstr "[regex101.com](https://regex101.com) - тествайте pattern и вижте на какво пасва всяка част (изберете *Python*)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2545
+#: site/lectures/07-text-and-regex.md:2522
 msgid "[Unicode HOWTO](https://docs.python.org/3/howto/unicode.html) (encodings, normalisation)"
 msgstr "[Unicode HOWTO](https://docs.python.org/3/howto/unicode.html) (кодировки, нормализация)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2546
+#: site/lectures/07-text-and-regex.md:2523
 msgid "Real Python: [Strings and character data](https://realpython.com/python-strings/), [Using Python datetime to work with dates and times](https://realpython.com/python-datetime/), [Regular expressions: regexes in Python](https://realpython.com/regex-python/)"
 msgstr "Real Python: [Strings and character data](https://realpython.com/python-strings/), [Using Python datetime to work with dates and times](https://realpython.com/python-datetime/), [Regular expressions: regexes in Python](https://realpython.com/regex-python/)"
 
 #. paragraph
-#: site/lectures/07-text-and-regex.md:2550
+#: site/lectures/07-text-and-regex.md:2527
 msgid "**Next session:** errors and files - catch errors instead of stopping, read and write CSV, JSON and Excel files, and load data with bad rows the way a SAS log would report them."
 msgstr "**Следващото занятие:** грешки и файлове - хващане на грешки, вместо програмата да спре, четене и записване на CSV, JSON и Excel файлове и зареждане на данни с лоши редове така, както би ги отчел SAS log."
+
+#~ msgid "Days between two dates"
+#~ msgstr "Дни между две дати"
+
+#~ msgid "Subtracting two dates gives a `timedelta` - a length of time. Its `.days` is the number of days - `INTCK('day', a, b)`, or `b - a`, in SAS:"
+#~ msgstr "Изваждането на две дати дава `timedelta` - продължителност. Неговото `.days` е броят дни - `INTCK('day', a, b)` или `b - a` в SAS:"
+
+#~ msgid "How many days are left from today to the end of this year? Use [`date.today()`](https://docs.python.org/3/library/datetime.html#datetime.date.today) and [`date(year, 12, 31)`](https://docs.python.org/3/library/datetime.html#datetime.date)."
+#~ msgstr "Колко дни остават от днес до края на тази година? Използвайте [`date.today()`](https://docs.python.org/3/library/datetime.html#datetime.date.today) и [`date(year, 12, 31)`](https://docs.python.org/3/library/datetime.html#datetime.date)."
+
+#~ msgid "`today.year` takes the year of today, so the code works in every year. The number changes every day."
+#~ msgstr "`today.year` взема годината на днешната дата, така че кодът работи всяка година. Числото се променя всеки ден."
+
+#~ msgid "[`date.fromisoformat`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat); [`datetime.strptime(s, \"%d.%m.%Y\").date()`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime); [`strftime`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime); `b - a` gives a `timedelta`"
+#~ msgstr "[`date.fromisoformat`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat); [`datetime.strptime(s, \"%d.%m.%Y\").date()`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime); [`strftime`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime); `b - a` дава `timedelta`"
+
+#~ msgid "Dates from text and back; days between; whole years"
+#~ msgstr "Дати от текст и обратно; дни между дати; цели години"
+
+#~ msgid "Several date formats, and month ends"
+#~ msgstr "Няколко формата на дати и краища на месеци"
+
+#~ msgid "**Month start and month end.** The first and the last day of a month - the **report dates** of risk reporting:"
+#~ msgstr "**Начало и край на месец.** Първият и последният ден на месеца - **отчетните дати** в рисковата отчетност:"
+
+#~ msgid "(Adding **months** is not in `datetime`: a month has no fixed length. [Lecture 15](./15-pandas-reports.md#month-ends-intnx) does it with pandas; [lecture 9](./09-modules-and-git.md#datetime-and-calendar-report-dates) shows the standard library.)"
+#~ msgstr "(Добавянето на **месеци** го няма в `datetime`: месецът няма фиксирана дължина. [Лекция 15](./15-pandas-reports.md#month-ends-intnx) го прави с pandas; [лекция 9](./09-modules-and-git.md#datetime-and-calendar-report-dates) показва стандартната библиотека.)"
+
+#~ msgid "**Client tenure.** On the file - how long each client has been a client:"
+#~ msgstr "**Стаж на клиента.** Върху файла - откога всеки клиент е клиент:"
 
 #~ msgid "Change `clean_name` so that it also removes a comma before the legal form (`\"Rila Print, EAD\"` -> `\"Rila Print EAD\"`). Then run it on all names of the file and count how many names were changed."
 #~ msgstr "Променете `clean_name` така, че да премахва и запетая пред правната форма (`\"Rila Print, EAD\"` -> `\"Rila Print EAD\"`). После я изпълнете върху всички имена във файла и пребройте колко имена са се променили."

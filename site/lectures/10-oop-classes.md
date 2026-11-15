@@ -493,7 +493,7 @@ print(f"{total:,.2f}")
 
 ::: tip Try it
 Add a method `months_to_maturity(report_date)` to a `Loan` with a `maturity_date`
-attribute (a `date`). Use the `months_between` idea of [lecture 9](./09-modules-and-git.md#datetime-and-calendar-report-dates):
+attribute (a `date`). Count the months like SAS `INTCK('month', r, m)`:
 `(m.year - r.year) * 12 + (m.month - r.month)`.
 :::
 

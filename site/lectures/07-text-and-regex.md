@@ -826,6 +826,17 @@ print(report_date.weekday())                   # 0 = Monday ... 6 = Sunday
 print(date.today())                            # TODAY() in SAS
 ```
 
+**Compare dates.** Dates compare like numbers: the earlier date is the smaller one. So a
+due date before the report date means "overdue":
+
+```python run
+from datetime import date
+
+report_date = date(2026, 9, 30)
+print(date(2026, 9, 15) < report_date, date(2026, 10, 5) < report_date)
+print(max(date(2019, 4, 16), date(2026, 1, 2), date(2014, 6, 8)))     # the latest
+```
+
 ### From text to a date
 
 The ISO format `YYYY-MM-DD` is the format of the sample data, of databases and of
@@ -880,39 +891,22 @@ August. Python does not guess: you choose `%d/%m` or `%m/%d`. As with numbers:
 know the source.
 :::
 
-### Days between two dates
-
-Subtracting two dates gives a `timedelta` - a length of time. Its `.days` is the
-number of days - `INTCK('day', a, b)`, or `b - a`, in SAS:
-
-```python run
-from datetime import date, timedelta
-
-start = date(2019, 4, 16)
-report_date = date(2026, 9, 30)
-
-age = report_date - start
-print(age.days, "days |", round(age.days / 365.25, 1), "years")
-
-print(report_date + timedelta(days=30))           # 30 days later
-```
-
 ::: tip Try it
-How many days are left from today to the end of this year? Use [`date.today()`](https://docs.python.org/3/library/datetime.html#datetime.date.today) and
-[`date(year, 12, 31)`](https://docs.python.org/3/library/datetime.html#datetime.date).
+Read `"08/06/2014"` once with `"%d/%m/%Y"` and once with `"%m/%d/%Y"`, and print
+both dates. Predict them first. Then try `"13/06/2014"` with `"%m/%d/%Y"`.
 :::
 
 ::: details Answer
 ```python run
-from datetime import date
+from datetime import datetime
 
-today = date.today()
-end_of_year = date(today.year, 12, 31)
-print((end_of_year - today).days, "days left")
+print(datetime.strptime("08/06/2014", "%d/%m/%Y").date())     # 2014-06-08: 8 June
+print(datetime.strptime("08/06/2014", "%m/%d/%Y").date())     # 2014-08-06: 6 August
+print(datetime.strptime("13/06/2014", "%m/%d/%Y"))            # ValueError: there is no month 13
 ```
 
-`today.year` takes the year of today, so the code works in every year. The number
-changes every day.
+The same text gives two different dates. Only a day above 12 shows which format a
+file uses - and only for that one row.
 :::
 
 ## 7. Regular expressions: a pattern for many strings
@@ -1459,7 +1453,7 @@ repeats, as `COUNT(DISTINCT ...)` in SQL.
 | Cleaning | one function per column, `None` for what cannot be fixed; check against a trusted source |
 | Counting | [`Counter(values)`](https://docs.python.org/3/library/collections.html#collections.Counter) = `GROUP BY` + `COUNT(*)`, `PROC FREQ`; [`most_common(n)`](https://docs.python.org/3/library/collections.html#collections.Counter.most_common); a missing key counts 0; clean the key first |
 | Numbers | know the format of the source; [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace), then `float` |
-| Dates | [`date.fromisoformat`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat); [`datetime.strptime(s, "%d.%m.%Y").date()`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime); [`strftime`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime); `b - a` gives a `timedelta` |
+| Dates | [`date.fromisoformat`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat); [`datetime.strptime(s, "%d.%m.%Y").date()`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime); [`strftime`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime) |
 | Patterns | always `r"..."`; `.` any character, `\.` a point; `\d`, `\s`, `\w`; `[A-Z]`, `[^0-9]` |
 | Quantifiers | `+` `*` `?` `{n}` `{n,m}` |
 | Positions | `^` start, `$` end, `\b` word boundary |
@@ -1483,7 +1477,7 @@ python 07-text-and-regex/practice/task1-case-and-spaces.py
 | 2 | `task2-predict-strings.py` | Predict: [`split`](https://docs.python.org/3/builtins/stdtypes.html#str.split), [`strip`](https://docs.python.org/3/builtins/stdtypes.html#str.strip), [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find), [`join`](https://docs.python.org/3/builtins/stdtypes.html#str.join), [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace), slices |
 | 3 | `task3-split-join.py` | Settings `key=value;...` into a dict and back; `SCAN`; a CSV line |
 | 4 | `task4-identifiers.py` | Clean client ids, EIKs, IBANs and e-mails |
-| 5 | `task5-dates.py` | Dates from text and back; days between; whole years |
+| 5 | `task5-dates.py` | Dates from text and back; whole years |
 | 6 | `task6-first-patterns.py` | Write patterns: ids, codes, currencies, whole words |
 | 7 | `task7-predict-regex.py` | Predict [`findall`](https://docs.python.org/3/library/re.html#re.findall), [`search`](https://docs.python.org/3/library/re.html#re.search), [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch), [`sub`](https://docs.python.org/3/library/re.html#re.sub) |
 | 8 | `task8-validate.py` | Validators with [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch): loan id, EIK, IBAN, e-mail, date |
@@ -1692,7 +1686,7 @@ first answer is wrong: there `12,5` cannot be a number at all, and a rule that
 accepts it hides a typing error.
 :::
 
-### Several date formats, and month ends
+### Several date formats
 
 The `registered` column of the register has five formats. Decide the format by the **shape** of the
 text, then read it:
@@ -1727,25 +1721,11 @@ For data, prefer numeric formats. If a source has English month names, a small
 dictionary `{"Jan": 1, ...}` ([session 6](./06-dictionaries.md)) is the safe way.
 :::
 
-**Month start and month end.** The first and the last day of a month - the **report dates** of risk reporting:
-
-```python run
-from datetime import date, timedelta
-
-d = date(2026, 2, 17)
-first = d.replace(day=1)                                       # INTNX('month', d, 0, 'b')
-next_first = (first + timedelta(days=32)).replace(day=1)
-last = next_first - timedelta(days=1)                          # INTNX('month', d, 0, 'e')
-print(first, last)
-```
-
-(Adding **months** is not in `datetime`: a month has no fixed length. [Lecture 15](./15-pandas-reports.md#month-ends-intnx)
-does it with pandas; [lecture 9](./09-modules-and-git.md#datetime-and-calendar-report-dates) shows the standard library.)
-
-**Client tenure.** On the file - how long each client has been a client:
+**On the file.** The registration dates of all clients - the oldest, the newest, and the clients per year:
 
 ```python run
 import csv
+from collections import Counter
 from datetime import date, datetime
 
 def parse_date(raw):
@@ -1760,14 +1740,11 @@ def parse_date(raw):
         return datetime.strptime(s, "%Y%m%d").date()
     return datetime.strptime(s, "%d %b %Y").date()
 
-REPORT_DATE = date(2026, 9, 30)
 with open("data/client_register.csv", encoding="utf-8") as file:
     since = [parse_date(row["registered"]) for row in csv.DictReader(file)]
 
-years = [(REPORT_DATE - d).days / 365.25 for d in since]
 print("oldest:", min(since), " newest:", max(since))
-print("average years as a client:", round(sum(years) / len(years), 1))
-print("clients for less than 1 year:", sum(1 for y in years if y < 1))
+print(sorted(Counter(d.year for d in since).items()))     # PROC FREQ of the year
 ```
 
 **Exercise**

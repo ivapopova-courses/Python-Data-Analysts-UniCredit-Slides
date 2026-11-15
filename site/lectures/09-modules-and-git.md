@@ -15,8 +15,8 @@ title: 9. Modules, packages, Git and GitHub
 - put your own functions into a **module**, and import it from a script or a
   notebook - the Python version of a SAS autocall macro library;
 - organise a project folder so that it can be run again, by you or by a colleague;
-- use the most useful parts of the standard library: dates and month ends,
-  statistics, counters, settings from the environment;
+- use the most useful parts of the standard library: statistics, counters,
+  settings from the environment, small helpers for reports;
 - keep the history of your code in **Git**: commit, look back, branch and merge;
 - work with a remote repository on GitHub: clone, push, pull, and a pull request.
 
@@ -593,83 +593,6 @@ of the example above, and import it with `from portfolio.cleaning import squeeze
 
 "Batteries included" ([session 1](./01-intro-syntax-types.md#batteries-included)): Python comes with modules for most daily needs.
 The ones an analyst uses most:
-
-### `datetime` and `calendar`: report dates
-
-[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) introduced `date`, `datetime` and `timedelta`. Month ends - the report dates -
-need the number of days of a month: [`calendar.monthrange(year, month)`](https://docs.python.org/3/library/calendar.html#calendar.monthrange) gives the
-weekday of the 1st and the number of days:
-
-```python run
-import calendar
-from datetime import date
-
-def month_end(d):
-    """The last day of the month of d - INTNX('month', d, 0, 'e')."""
-    return d.replace(day=calendar.monthrange(d.year, d.month)[1])
-
-print(month_end(date(2026, 2, 10)), month_end(date(2028, 2, 10)), month_end(date(2026, 9, 1)))
-print(calendar.isleap(2028))
-```
-
-**Adding months** is not in `datetime` - a month has no fixed length. A small function
-does it the way SAS `INTNX('month', d, n, 'e')` does, at month ends:
-
-```python run
-import calendar
-from datetime import date
-
-def add_months(d, n):
-    """The month end n months after (or before) the month of d."""
-    month_index = d.year * 12 + (d.month - 1) + n
-    year, month = divmod(month_index, 12)
-    return date(year, month + 1, calendar.monthrange(year, month + 1)[1])
-
-report_date = date(2026, 9, 30)
-print(add_months(report_date, 1), add_months(report_date, -1), add_months(report_date, -12))
-print([add_months(report_date, -k) for k in range(3)])           # the last three month ends
-```
-
-**Months between dates.** The months between two dates - `INTCK('month', a, b)`:
-
-```python run
-from datetime import date
-
-def months_between(a, b):
-    return (b.year - a.year) * 12 + (b.month - a.month)
-
-print(months_between(date(2019, 4, 16), date(2026, 9, 30)))
-```
-
-**Calendar helpers.** Quarter ends, and the working days between two dates:
-
-```python run
-import calendar
-from datetime import date, timedelta
-
-def quarter_end(d):
-    month = (d.month - 1) // 3 * 3 + 3
-    return date(d.year, month, calendar.monthrange(d.year, month)[1])
-
-def working_days(start, end):
-    """Monday to Friday from start to end, both included (no holidays)."""
-    days = (end - start).days + 1
-    return sum(1 for k in range(days) if (start + timedelta(days=k)).weekday() < 5)
-
-print(quarter_end(date(2026, 8, 15)), quarter_end(date(2026, 11, 2)))
-print(working_days(date(2026, 9, 1), date(2026, 9, 30)))
-print(date(2026, 9, 30).isocalendar())          # ISO year, week, weekday
-```
-
-**Print a month.** `calendar` also prints a month - handy to check a date in a hurry:
-
-```python run
-import calendar
-
-print(calendar.month(2026, 9))
-```
-
-(pandas has all of this built in - [`pd.offsets.MonthEnd`](https://pandas.pydata.org/docs/reference/api/pandas.tseries.offsets.MonthEnd.html), `Period` - [lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends).)
 
 ### `statistics`: `PROC MEANS` and `PROC UNIVARIATE` for a list
 
@@ -1384,7 +1307,7 @@ look at its changes. Compare with `git log -p -1` in the terminal.
 | Notebooks | `%load_ext autoreload` + `%autoreload 2`, or restart the kernel |
 | Package | a folder with `__init__.py`; `from package.module import name`; `python -m package.module` |
 | Project | `README.md`, `requirements.txt`, `.gitignore`, a package, `report.py`, `data/` and `out/` not in Git |
-| Standard library | [`calendar.monthrange`](https://docs.python.org/3/library/calendar.html#calendar.monthrange) for month ends; `statistics`; `namedtuple`, `deque`; [`math.fsum`](https://docs.python.org/3/library/math.html#math.fsum), `isclose`; [`os.getenv`](https://docs.python.org/3/library/os.html#os.getenv) |
+| Standard library | `statistics`; `namedtuple`, `deque`; [`math.fsum`](https://docs.python.org/3/library/math.html#math.fsum), `isclose`; [`os.getenv`](https://docs.python.org/3/library/os.html#os.getenv) |
 | Environments | one `.venv` per project; `pip freeze > requirements.txt`; install name is not always import name |
 | Git | `init`, `status`, `add`, `commit -m`, `log --oneline`, `diff`, `restore` |
 | `.gitignore` | `.venv/`, `data/`, `out/`, secrets - before the first commit; data and passwords never in Git |
@@ -1405,9 +1328,16 @@ python 09-modules-and-git/practice/task1-standard-library.py
 | 1 | `task1-standard-library.py` | `statistics`, `math` and `collections` on the portfolio |
 | 2 | `task2-predict-imports.py` | Predict: module names, `__name__`, [`dir`](https://docs.python.org/3/builtins/functions.html#dir), what `import` returns |
 | 3 | `task3-my-module.py` | Write `portfolio_utils.py` in the same folder; the task imports and checks it |
-| 4 | `task4-report-dates.py` | Month ends, add months, quarter ends, months between two dates |
+| 4 | `task4-report-helpers.py` | Report helpers: a file name with the date, a setting from the environment, ids in batches, the closest match, a checksum |
 | 5 | `task5-predict-git.py` | Which Git command does what |
 | 6 | `task6-project-layout.py` (Optional) | Create a project skeleton with `pathlib`, with a `.gitignore` |
+
+One more file is for a [Self-study](#self-study) topic - do it after you read the
+topic:
+
+| Task | File | Self-study topic |
+|------|------|------------------|
+| 7 | `task7-report-dates.py` | [`datetime` and `calendar`: report dates](#datetime-and-calendar-report-dates) |
 
 ## Homework
 
@@ -1423,8 +1353,131 @@ python 09-modules-and-git/practice/task1-standard-library.py
 
 ## Self-study
 
-This part is not covered in class. It is for reading at home: a report script that
-takes the report date from the command line, and the Git commands that undo things.
+This part is not covered in class. It is for reading at home: report dates with
+the standard library, a report script that takes the report date from the command
+line, and the Git commands that undo things.
+
+### `datetime` and `calendar`: report dates
+
+For a whole column of dates you will use pandas ([lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends)): it has month ends,
+months between and periods built in. This topic shows the same with one `date` at a
+time - for a script that has only a report date, or for code without pandas.
+[Lecture 7](./07-text-and-regex.md#from-text-to-a-date) read a `date` from text.
+
+**Days between two dates.** Subtracting two dates gives a [`timedelta`](https://docs.python.org/3/library/datetime.html#datetime.timedelta) - a length of time. Its
+`.days` is the number of days - `b - a`, or `INTCK('day', a, b)`, in SAS. A date plus
+a `timedelta` is another date:
+
+```python run
+from datetime import date, timedelta
+
+start = date(2019, 4, 16)
+report_date = date(2026, 9, 30)
+
+age = report_date - start
+print(age, "|", age.days, "days |", round(age.days / 365.25, 1), "years")
+print(report_date + timedelta(days=30))           # 30 days later
+print(report_date.replace(day=1) - timedelta(days=1))   # the day before the 1st: the previous month end
+```
+
+**Month ends.** Month ends - the report dates - need the number of days of a month:
+[`calendar.monthrange(year, month)`](https://docs.python.org/3/library/calendar.html#calendar.monthrange) gives the weekday of the 1st and the number of days:
+
+```python run
+import calendar
+from datetime import date
+
+def month_end(d):
+    """The last day of the month of d - INTNX('month', d, 0, 'e')."""
+    return d.replace(day=calendar.monthrange(d.year, d.month)[1])
+
+print(month_end(date(2026, 2, 10)), month_end(date(2028, 2, 10)), month_end(date(2026, 9, 1)))
+print(calendar.isleap(2028))
+```
+
+**Adding months** is not in `datetime` - a month has no fixed length. A small function
+does it the way SAS `INTNX('month', d, n, 'e')` does, at month ends:
+
+```python run
+import calendar
+from datetime import date
+
+def add_months(d, n):
+    """The month end n months after (or before) the month of d."""
+    month_index = d.year * 12 + (d.month - 1) + n
+    year, month = divmod(month_index, 12)
+    return date(year, month + 1, calendar.monthrange(year, month + 1)[1])
+
+report_date = date(2026, 9, 30)
+print(add_months(report_date, 1), add_months(report_date, -1), add_months(report_date, -12))
+print([add_months(report_date, -k) for k in range(3)])           # the last three month ends
+```
+
+**Months between dates.** The months between two dates - `INTCK('month', a, b)`:
+
+```python run
+from datetime import date
+
+def months_between(a, b):
+    return (b.year - a.year) * 12 + (b.month - a.month)
+
+print(months_between(date(2019, 4, 16), date(2026, 9, 30)))
+```
+
+**Calendar helpers.** Quarter ends, and the working days between two dates:
+
+```python run
+import calendar
+from datetime import date, timedelta
+
+def quarter_end(d):
+    month = (d.month - 1) // 3 * 3 + 3
+    return date(d.year, month, calendar.monthrange(d.year, month)[1])
+
+def working_days(start, end):
+    """Monday to Friday from start to end, both included (no holidays)."""
+    days = (end - start).days + 1
+    return sum(1 for k in range(days) if (start + timedelta(days=k)).weekday() < 5)
+
+print(quarter_end(date(2026, 8, 15)), quarter_end(date(2026, 11, 2)))
+print(working_days(date(2026, 9, 1), date(2026, 9, 30)))
+print(date(2026, 9, 30).isocalendar())          # ISO year, week, weekday
+```
+
+**Print a month.** `calendar` also prints a month - handy to check a date in a hurry:
+
+```python run
+import calendar
+
+print(calendar.month(2026, 9))
+```
+
+(pandas has all of this built in - [`pd.offsets.MonthEnd`](https://pandas.pydata.org/docs/reference/api/pandas.tseries.offsets.MonthEnd.html), `Period` - [lecture 15](./15-pandas-reports.md#_3-dates-and-month-ends).)
+
+The practice file `task7-report-dates.py` has month ends, add months, quarter ends
+and months between two dates.
+
+**Exercise**
+
+1. How many days are left from today to the end of this year? Use
+   [`date.today()`](https://docs.python.org/3/library/datetime.html#datetime.date.today) and [`date(year, 12, 31)`](https://docs.python.org/3/library/datetime.html#datetime.date).
+2. A loan was due on 15.08.2026 and is still not paid on the report date 30.09.2026.
+   How many days past due is it?
+
+::: details Answer
+```python run
+from datetime import date, datetime
+
+today = date.today()
+print((date(today.year, 12, 31) - today).days, "days left")       # changes every day
+
+due = datetime.strptime("15.08.2026", "%d.%m.%Y").date()
+print((date(2026, 9, 30) - due).days, "days past due")             # 46
+```
+
+`today.year` takes the year of today, so the first part works in every year.
+:::
+
 
 ### Command-line arguments
 

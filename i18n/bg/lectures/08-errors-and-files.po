@@ -335,7 +335,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:238
-msgid "[Lecture 7](./07-text-and-regex.md#several-date-formats-and-month-ends) detected the date format by the shape of the text. With `try`, there is a shorter way: try each format, and take the first that works:"
+msgid "[Lecture 7](./07-text-and-regex.md#several-date-formats) detected the date format by the shape of the text. With `try`, there is a shorter way: try each format, and take the first that works:"
 msgstr ""
 
 #. heading 3

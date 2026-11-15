@@ -235,7 +235,7 @@ print(f"total of the known values: {sum(v for v in values if v is not None):,.2f
 
 ### Try the formats one by one
 
-[Lecture 7](./07-text-and-regex.md#several-date-formats-and-month-ends) detected the date format by the shape of the text. With `try`, there is a
+[Lecture 7](./07-text-and-regex.md#several-date-formats) detected the date format by the shape of the text. With `try`, there is a
 shorter way: try each format, and take the first that works:
 
 ```python run
