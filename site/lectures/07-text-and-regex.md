@@ -1045,7 +1045,7 @@ Given are comments of the credit officers:
 ```
 
 1. print only the comments which have a digit ('\d' to match a digit).
-2. print all **loan id**: a capital `L` and six digits (use 'L\d{6}')
+2. print all **loan ids**: a capital `L` and six digits (use 'L\d{6}')
 
 :::
 
@@ -1128,7 +1128,7 @@ for text in ["L000123", "000123"]:
 
 In next section we'll see how to write '[A-Z][A-Z][A-Z]' in a more elegant way.
 
-### Special characters:
+### Special characters
 
 The characters with a special meaning are `. ^ $ * + ? { } [ ] \ | ( )`. Put a `\` in
 front when you mean the character itself: `\.`, `\(`, `\+`.
@@ -1237,8 +1237,8 @@ These parts fit a **position**, not a character:
 
 - `^` - the start of the text;
 - `$` - the end of the text;
-- `\b` - a word boundary: the place between a word character (`\w`) and non-word
-  character. Like place between '#t', '$t'. Also matches the start or end of the text.
+- `\b` - a word boundary: the place between a word character (`\w`) and a non-word
+  character, like between `#` and `t` in `#t`. It also fits the start and the end of the text.
 
 ```python run
 import re
