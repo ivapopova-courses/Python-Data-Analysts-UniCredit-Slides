@@ -913,9 +913,26 @@ file uses - and only for that one row.
 
 ### What a regular expression is
 
-The string methods look for **one** exact text: `"EUR" in s`. A **regular
-expression** (*regex*) describes a **set** of texts by their shape: "a date like
-30.09.2026" covers every date in that format.
+A **regular expression** (*regex* for short) is a **pattern** for strings. You
+test a string against the pattern: the string matches it, or it does not.
+
+Think of it as a super-powered **Find** (`Ctrl+F`, or `Cmd+F` on a Mac). The normal
+Find looks for one exact text, like `cat`. A regex can describe a shape, like "any
+word of three letters that starts with `c` and ends with `t`" - so it finds `cat`,
+`cut` and `cot` with one search.
+
+Where the idea comes from: in the early 1950s the mathematician Stephen Kleene
+described *regular languages* - sets of strings written with a short notation.
+The name "regular expression" comes from there. Today almost every programming
+language has regular expressions, and so do text editors (VS Code), IDEs,
+databases (`REGEXP_LIKE` in SQL, `PRXMATCH` in SAS) and command-line tools. The
+basic patterns are the same everywhere, so what you learn here works there too,
+with small differences.
+
+The string methods of the sections above work like the normal Find: they look for
+**one** exact text, `"EUR" in s`. A regex describes a **set** of texts by their
+shape: "a date like DD.MM.YYYY" covers every date in that format.
+
 
 | Want | String method | Regular expression |
 |---|---|---|
@@ -926,6 +943,19 @@ expression** (*regex*) describes a **set** of texts by their shape: "a date like
 For a simple test, use the string methods - they are clearer. For a shape, use a
 regex. In SAS the same patterns work with `PRXMATCH`; in SQL, `LIKE` does a small
 part of it and `REGEXP_LIKE` the rest.
+
+**Try a pattern online: regex101.** [regex101.com](https://regex101.com) is a free
+site for testing a pattern before you put it in your code:
+
+1. On the left, under *Flavor*, choose **Python**.
+2. Write the pattern in the *Regular expression* field at the top (without `r"..."`).
+3. Paste some text in the *Test string* field below it. Every match is highlighted
+   at once, and it changes while you type.
+4. The *Explanation* panel on the right reads the pattern part by part, in words.
+   The *Quick reference* panel lists all the symbols.
+
+Use it for every pattern in this lecture. Paste only made-up text there, never
+real data of the bank: the site is outside the bank.
 
 ### `re.search` and the match object
 
