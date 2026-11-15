@@ -149,7 +149,6 @@ For **2026-08-31**: outstanding 133,492,549.54 and EL 1,093,088.84.
 ## Ideas for more
 
 - The rejects and the data quality sheet with colours (Self-study of lecture 15).
-- The check digits of the EIKs and the IBANs (Self-study of lecture 7).
 - The report of all month ends in one run (a loop over `pd.date_range(freq="ME")`),
   and one sheet that compares them.
 - The loans in USD shown in EUR with the rate of the report date (take the

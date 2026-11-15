@@ -609,7 +609,8 @@ print(clean_iban(""))
 ```
 
 Both checks are only the **shape**. A real EIK and a real IBAN also have **check
-digits** that catch typing errors - see [Check digits](#check-digits-iban-and-eik) in the Self-study part.
+digits**, computed from the other digits, that catch most typing errors. A shape check
+cannot find such an error.
 
 ### Counting with `Counter`
 
@@ -1750,56 +1751,10 @@ read the topic:
 
 ## Self-study
 
-This part is not covered in class. It is for reading at home. The first five topics
-continue the string methods and the dates; the last six continue the regular
+This part is not covered in class. It is for reading at home. The first three topics
+continue the string methods and the dates; the last four continue the regular
 expressions. Nothing here is needed for the practice tasks 1 - 9 or for the
 homework.
-
-### Padding and alignment
-
-[`rjust`](https://docs.python.org/3/builtins/stdtypes.html#str.rjust), [`ljust`](https://docs.python.org/3/builtins/stdtypes.html#str.ljust) and [`center`](https://docs.python.org/3/builtins/stdtypes.html#str.center) pad to a width with any character:
-
-```python run
-print(repr("EUR".ljust(6)), repr("EUR".rjust(6)), repr("EUR".center(7, "*")))
-```
-
-**Aligned columns.** A fixed-width line - some old systems still want them. The f-string format spec of
-[session 1](./01-intro-syntax-types.md#formatting-the-values) does the same, and is easier to read:
-
-```python run
-rows = [("L000001", "investment", 1044231.30), ("L000003", "credit_card", 644.25)]
-
-for loan_id, product, amount in rows:
-    print(loan_id.ljust(8) + product.ljust(14) + f"{amount:.2f}".rjust(14))
-    print(f"{loan_id:<8}{product:<14}{amount:>14.2f}")
-```
-
-**A text report.** The same on the loan portfolio - a small text report with a title, a header and the
-amounts aligned on the right:
-
-```python run
-import csv
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    loans = list(csv.DictReader(file))[:5]
-
-print("THE FIRST FIVE LOANS".center(40, "="))
-print(f"{'loan':<8}{'product':<16}{'amount':>16}")
-for row in loans:
-    print(f"{row['loan_id']:<8}{row['product']:<16}{float(row['amount']):>16,.2f}")
-```
-
-**Exercise**
-
-1. Print the numbers 1, 25 and 400 as loan ids `L000001`, `L000025`, `L000400` -
-   once with [`zfill`](https://docs.python.org/3/builtins/stdtypes.html#str.zfill), once with an f-string.
-
-::: details Answer
-```python
-for n in [1, 25, 400]:
-    print("L" + str(n).zfill(6), f"L{n:06d}")
-```
-:::
 
 ### `translate`: change or delete characters
 
@@ -2003,62 +1958,6 @@ print(since == trusted)        # True (after the block above)
 ```
 :::
 
-### Cyrillic names in Latin letters
-
-Bulgaria has an official transliteration (the Transliteration Act of 2009): `ж` ->
-`zh`, `ц` -> `ts`, `ч` -> `ch`, `ш` -> `sh`, `щ` -> `sht`, `ъ` -> `a`, `ю` -> `yu`, `я`
--> `ya`, ... A dictionary of single letters to strings, used with [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate):
-
-```python run
-LETTERS = {
-    "а": "a", "б": "b", "в": "v", "г": "g", "д": "d", "е": "e", "ж": "zh", "з": "z",
-    "и": "i", "й": "y", "к": "k", "л": "l", "м": "m", "н": "n", "о": "o", "п": "p",
-    "р": "r", "с": "s", "т": "t", "у": "u", "ф": "f", "х": "h", "ц": "ts", "ч": "ch",
-    "ш": "sh", "щ": "sht", "ъ": "a", "ь": "y", "ю": "yu", "я": "ya",
-}
-TABLE = str.maketrans(LETTERS | {k.upper(): v.capitalize() for k, v in LETTERS.items()})
-
-for name in ["София", "Стара Загора", "Пловдив", "Шумен", "Ямбол"]:
-    print(name, "->", name.translate(TABLE))
-```
-
-[`str.maketrans`](https://docs.python.org/3/builtins/stdtypes.html#str.maketrans) accepts a dictionary of **one character -> any string**, so one
-letter can become two or three. (The full rules have a few exceptions, for example
-`-ия` at the end of a word is `-ia`: `София` -> `Sofia`, not `Sofiya`.)
-
-**One letter, two forms.** Another trap of text from many sources: the same letter can be stored in two ways -
-`"й"` as one character, or `"и"` plus a combining mark. They look the same, but are
-not `==`. [`unicodedata.normalize("NFC", s)`](https://docs.python.org/3/library/unicodedata.html#unicodedata.normalize) brings both to the same form:
-
-```python run
-import unicodedata
-
-a = "й"
-b = "й"                 # и + a combining breve
-print(a, b, a == b, len(a), len(b))
-print(unicodedata.normalize("NFC", a) == unicodedata.normalize("NFC", b))
-```
-
-**Exercise**
-
-1. Add the rule "`ия` at the end of a word -> `ia`" to the transliteration: first
-   replace it, then [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate). Check it with `София` and `Мария`.
-
-::: details Answer
-```python
-def to_latin(text):
-    words = []
-    for word in text.split():
-        if word.lower().endswith("ия"):
-            word = word[:-2] + ("IA" if word.isupper() else "ia")
-        words.append(word.translate(TABLE))
-    return " ".join(words)
-
-print(to_latin("София"), to_latin("Мария"))      # Sofia Maria
-```
-(The ASCII letters `ia` pass through [`translate`](https://docs.python.org/3/builtins/stdtypes.html#str.translate) unchanged.)
-:::
-
 ### Greedy and lazy quantifiers
 
 `*` also matches **nothing** - zero digits are "0 or more". With [`findall`](https://docs.python.org/3/library/re.html#re.findall), that gives
@@ -2137,21 +2036,6 @@ print(re.split(r"\s*[;,]\s*", "retail; sme,corporate ,  project"))
 print(re.split(r"\s+", "  Iron   Retail  ET ".strip()))
 ```
 
-**`re.MULTILINE`.** With a text of many lines, `^` and `$` mean the start and the end of the **whole**
-text. The flag `re.MULTILINE` (`re.M`) makes them work **per line**:
-
-```python run
-import re
-
-log = """2026-09-30 OK loaded 400 loans
-2026-09-30 ERROR bad date in row 58
-2026-09-30 OK loaded 150 clients
-2026-09-30 ERROR unknown loan L999999"""
-
-print(re.findall(r"^\S+ ERROR (.*)$", log))                  # nothing: ^ is the start of the text
-print(re.findall(r"^\S+ ERROR (.*)$", log, flags=re.M))      # one per line
-```
-
 **[`re.compile`](https://docs.python.org/3/library/re.html#re.compile): a pattern used many times.** [`re.compile`](https://docs.python.org/3/library/re.html#re.compile) turns a pattern into an object with the same methods. Give it a name at
 the top of the script, and use it in a loop - it reads well and is checked once:
 
@@ -2177,15 +2061,6 @@ import re
 
 text, n = re.subn(r"\s{2,}", " ", "a  b   c d")
 print(text, "|", n, "replacements")
-```
-
-**[`re.escape`](https://docs.python.org/3/library/re.html#re.escape).** When a text that you look for has special characters, [`re.escape(text)`](https://docs.python.org/3/library/re.html#re.escape) puts the backslashes for you:
-
-```python run
-import re
-
-print(re.escape("12.5% (net)"))
-print(re.findall(re.escape("(net)"), "12.5% (net), 14% (gross), 3% (net)"))
 ```
 
 **Exercise**
@@ -2412,118 +2287,6 @@ for text in ["Payment of 2 069,77 EUR received on 26.04.2026.",
         print(f"{number!r:<14}{currency} -> {parse_amount(number)}")
 ```
 
-**The September payments.** The total of the payments received in September 2026:
-
-```python run
-import csv
-import re
-
-PAYMENT = re.compile(r"Payment of (?P<amount>[\d ]+,\d{2}) EUR received on (?P<day>\d{2})\.(?P<month>\d{2})\.(?P<year>\d{4})")
-
-with open("data/loan_comments.csv", encoding="utf-8") as file:
-    comments = list(csv.DictReader(file))
-
-total, count = 0.0, 0
-for c in comments:
-    m = PAYMENT.search(c["comment"])
-    if m and m["year"] == "2026" and m["month"] == "09":
-        total += float(m["amount"].replace(" ", "").replace(",", "."))
-        count += 1
-print(count, "payments in September, total", f"{total:,.2f} EUR")
-```
-
-#### Dates in two formats
-
-The comments use `dd.mm.yyyy`, `dd/mm/yyyy` and ISO dates. One pattern with
-alternatives - and a **named group per part**, in both orders:
-
-```python run
-import re
-from datetime import date
-
-DATE = re.compile(r"(?P<d>\d{2})[./](?P<m>\d{2})[./](?P<y>\d{4})|(?P<y2>\d{4})-(?P<m2>\d{2})-(?P<d2>\d{2})")
-
-def dates_in(text):
-    result = []
-    for m in DATE.finditer(text):
-        if m["y"]:
-            result.append(date(int(m["y"]), int(m["m"]), int(m["d"])))
-        else:
-            result.append(date(int(m["y2"]), int(m["m2"]), int(m["d2"])))
-    return result
-
-print(dates_in("Overdue 60 days. Reminder sent on 2026-04-24."))
-print(dates_in("Disbursement confirmed on 22/09/2026; next review 01.03.2027."))
-```
-
-#### IBANs, with or without spaces
-
-An IBAN in a comment can be written in groups of four. Allow an optional space
-between the groups, then remove the spaces:
-
-```python run
-import re
-
-IBAN_IN_TEXT = re.compile(r"BG\d{2}(?: ?[A-Z0-9]{4}){4} ?[A-Z0-9]{2}")
-
-for text in ["Disbursement to IBAN BG64 FAKE 2979 3117 0461 39 confirmed on 22/09/2026.",
-             "Disbursement to IBAN BG46FAKE96787581635390 confirmed on 18/06/2026."]:
-    m = IBAN_IN_TEXT.search(text)
-    print(m.group().replace(" ", ""))
-```
-
-#### Does the comment agree with the register?
-
-A real check: the IBAN in a disbursement comment must be the IBAN of the client of
-the loan. Three files, a dictionary for each lookup ([session 6](./06-dictionaries.md#_5-lookup-tables-and-nomenclatures)):
-
-```python run
-import csv
-import re
-
-IBAN_IN_TEXT = re.compile(r"BG\d{2}(?: ?[A-Z0-9]{4}){4} ?[A-Z0-9]{2}")
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    client_of = {r["loan_id"]: r["client_id"] for r in csv.DictReader(file)}
-with open("data/client_register.csv", encoding="utf-8") as file:
-    iban_of = {}
-    for r in csv.DictReader(file):
-        client_id = "C" + re.sub(r"\D", "", r["client_id"]).zfill(4)    # clean the id
-        iban_of[client_id] = r["iban"].replace(" ", "").upper()
-
-checked = differ = 0
-with open("data/loan_comments.csv", encoding="utf-8") as file:
-    for c in csv.DictReader(file):
-        m = IBAN_IN_TEXT.search(c["comment"])
-        if m:
-            checked += 1
-            if m.group().replace(" ", "") != iban_of[client_of[c["loan_id"]]]:
-                differ += 1
-print(checked, "IBANs in comments,", differ, "differ from the register")
-```
-
-([`re.sub(r"\D", "", ...)`](https://docs.python.org/3/library/re.html#re.sub) keeps only the digits - section 9.)
-
-**EIKs in the comments.** The same check for the EIKs in the guarantee comments - are they EIKs of companies
-in the register?
-
-```python run
-import csv
-import re
-
-with open("data/client_register.csv", encoding="utf-8") as file:
-    known = {re.sub(r"\D", "", r["eik"]) for r in csv.DictReader(file) if r["eik"]}
-
-with open("data/loan_comments.csv", encoding="utf-8") as file:
-    found = [m.group(1) for c in csv.DictReader(file)
-             for m in [re.search(r"\bEIK (\d{9}(?:\d{4})?)\b", c["comment"])] if m]
-
-print(len(found), "EIKs in comments;", sum(1 for e in found if e in known), "known in the register")
-```
-
-(`for m in [...]` inside the comprehension gives the match a name, so it is computed
-once. Python 3.8+ also has `:=`, the "walrus" operator, for the same.)
-
 **Exercise**
 
 1. Take the **new maturity** out of every restructuring comment (`"... new maturity
@@ -2537,133 +2300,13 @@ import re
 with open("data/loan_comments.csv", encoding="utf-8") as file:
     texts = [row["comment"] for row in csv.DictReader(file)]
 
-found = [m.group(1) for t in texts for m in [re.search(r"new maturity (\d{4}-\d{2}-\d{2})", t)] if m]
+found = []
+for t in texts:
+    m = re.search(r"new maturity (\d{4}-\d{2}-\d{2})", t)
+    if m:
+        found.append(m.group(1))
 print(len(found), max(found))      # ISO dates sort correctly as text
 ```
-:::
-
-### Lookarounds and verbose patterns
-
-A **lookaround** checks what is before or after a position, without making it part of
-the match:
-
-| Syntax | Means |
-|---|---|
-| `X(?=Y)` | X, if Y follows |
-| `X(?!Y)` | X, if Y does not follow |
-| `(?<=Y)X` | X, if Y is before it |
-| `(?<!Y)X` | X, if Y is not before it |
-
-```python run
-import re
-
-text = "Rate changed from 12.97% to 13.47%; fee 25.00 EUR"
-print(re.findall(r"\d+\.\d{2}(?=%)", text))            # numbers followed by %
-print(re.findall(r"\d+\.\d{2}(?!%)\b", text))          # numbers not followed by %
-print(re.findall(r"(?<=IBAN )\S+", "to IBAN BG46FAKE96787581635390 confirmed"))
-```
-
-**A readable pattern.** Long patterns are hard to read. With `re.VERBOSE` (`re.X`), spaces in the pattern are
-ignored and `#` starts a comment - the pattern can be written on several lines:
-
-```python run
-import re
-
-IBAN_BG = re.compile(r"""
-    BG              # the country
-    \d{2}           # the check digits
-    [A-Z]{4}        # the bank
-    \d{4}           # the branch
-    \d{2}           # the account type
-    [A-Z0-9]{8}     # the account
-""", re.VERBOSE)
-
-print(bool(IBAN_BG.fullmatch("BG05TEST77018249464461")))
-```
-
-**Exercises**
-
-1. Find the amounts that are **followed** by ` EUR`, without taking ` EUR` into the
-   match, in `"paid 2 069,77 EUR and 15,00 USD and 99,50 EUR"`.
-2. Rewrite the e-mail pattern of section 10 with `re.VERBOSE` and a comment per part.
-
-::: details Answer
-1. [`re.findall(r"\d[\d ]*,\d{2}(?= EUR)", text)`](https://docs.python.org/3/library/re.html#re.findall) gives `['2 069,77', '99,50']`.
-2.
-```python
-EMAIL = re.compile(r"""
-    [^@\s]+         # the user: no @, no spaces
-    @
-    [^@\s]+         # the domain name
-    \.[A-Za-z]{2,}  # a point and the top-level domain
-""", re.VERBOSE)
-```
-:::
-
-### Check digits: IBAN and EIK
-
-The shape is half of the check. Both an IBAN and an EIK have **check digits**,
-computed from the other digits, that catch most typing errors.
-
-**IBAN (ISO 13616):** move the first four characters to the end, replace each letter
-by a number (`A` = 10, `B` = 11, ..., `Z` = 35), and read it all as one big number.
-It must give the remainder **1** when divided by 97. Python's `int` has no size
-limit, so this is two lines:
-
-```python run
-import re
-
-def iban_ok(iban):
-    s = iban.replace(" ", "").upper()
-    if not re.fullmatch(r"[A-Z]{2}\d{2}[A-Z0-9]{11,30}", s):
-        return False
-    digits = "".join(str(int(ch, 36)) for ch in s[4:] + s[:4])     # int("B", 36) is 11
-    return int(digits) % 97 == 1
-
-print(iban_ok("BG05 TEST 7701 8249 4644 61"))
-print(iban_ok("BG06 TEST 7701 8249 4644 61"))       # one digit changed
-```
-
-**EIK (BULSTAT), 9 digits:** multiply the first 8 digits by the weights 1, 2, ..., 8,
-and take the sum modulo 11. If it is 10, use the weights 3, 4, ..., 10 instead; if it
-is 10 again, the check digit is 0. The result must be the 9th digit.
-
-```python run
-def eik9_ok(eik):
-    if len(eik) != 9 or not eik.isdigit():
-        return False
-    d = [int(c) for c in eik]
-    s = sum(x * w for x, w in zip(d[:8], range(1, 9))) % 11
-    if s == 10:
-        s = sum(x * w for x, w in zip(d[:8], range(3, 11))) % 11 % 10
-    return s == d[8]
-
-print(eik9_ok("175591301"), eik9_ok("175591302"))
-```
-
-(The 13-digit EIK of a branch has a second check digit for the last 4 digits, with the
-weights 2, 7, 3, 5 - and 4, 9, 5, 7 if the first sum gives 10.)
-
-**Exercises**
-
-1. Find the IBANs of the register with a valid shape but wrong check digits. How
-   many are there?
-2. Find the 9-digit EIKs of the register (after cleaning) whose check digit is wrong.
-
-::: details Answer
-```python
-import csv
-with open("data/client_register.csv", encoding="utf-8") as file:
-    rows = list(csv.DictReader(file))
-
-bad_ibans = [r["client_id"] for r in rows if r["iban"] and not iban_ok(r["iban"])]
-print(bad_ibans)         # 2 clients
-
-eiks = [(r["client_id"], r["eik"].upper().removeprefix("BG").replace(" ", "")) for r in rows if r["eik"]]
-print([cid for cid, e in eiks if len(e) == 9 and not eik9_ok(e)])
-```
-The register has two IBANs and three EIKs with wrong check digits - typing errors
-that a shape check cannot find.
 :::
 
 ## Read more
@@ -2676,7 +2319,6 @@ that a shape check cannot find.
   tutorial)
 - [regex101.com](https://regex101.com) - test a pattern and see what each part
   fits (choose *Python*)
-- [Unicode HOWTO](https://docs.python.org/3/howto/unicode.html) (normalisation)
 - Real Python: [Strings and character data](https://realpython.com/python-strings/),
   [Using Python datetime to work with dates and times](https://realpython.com/python-datetime/),
   [Regular expressions: regexes in Python](https://realpython.com/regex-python/)
