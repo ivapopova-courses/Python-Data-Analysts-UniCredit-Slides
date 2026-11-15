@@ -4,7 +4,7 @@ import CourseTheme from '@sciscend/course-kit/theme'
 import PyRunCode from './PyRunCode.vue'
 import DataFile from './DataFile.vue'
 import { setupCodeFold } from './codeFold.js'
-import { setupScrollHash } from './scrollHash.js'
+import { setupScrollHash } from '@sciscend/course-kit/theme/scrollHash.js'
 import { setupOsTabs } from './osTabs.js'
 import { setupZoomImages } from './zoomImages.js'
 import './codeFold.css'
@@ -18,7 +18,7 @@ import './zoomImages.css'
 // the preview of a sample data file (<DataFile file="loans.csv" />, DataFile.vue),
 // folding of long code blocks (codeFold.js), the same Windows / Linux tab in all
 // command blocks (osTabs.js), the #section of the page on screen
-// in the address bar (scrollHash.js), diagrams and screenshots that open bigger on a
+// in the address bar (scrollHash.js of the course kit), diagrams and screenshots that open bigger on a
 // click (zoomImages.js) and the ProgressBG logo in the footer (footer.css).
 // Taken from JS-Basics-Practical-IBM/Slides.
 export default {

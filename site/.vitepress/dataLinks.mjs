@@ -5,7 +5,7 @@ import fs from 'node:fs'
 // the preview of that file (sample-data?file=clients.csv; theme/DataFile.vue opens
 // the dialog). Not in headings, not inside a link, not on the Sample data page
 // itself (it has the preview buttons). The core rule only marks the tokens, so the
-// i18n segmenting (i18n/i18n.mjs) sees the same Markdown. Call it before
+// i18n segmenting (i18n/i18n.mjs of the course kit) sees the same Markdown. Call it before
 // withLocales(): the Bulgarian pages link to /bg/sample-data.
 export function dataLinks(config) {
   const files = new Set(fs.readdirSync(new URL('../../data/', import.meta.url)))

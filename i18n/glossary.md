@@ -11,6 +11,11 @@ PROC SORT) stay as they are.
 Started on 2026-10-24 with the course structure; add the terms of each lecture when
 it is written (lecture 1: added 2026-10-24; lectures 2 - 4: added 2026-10-25).
 
+The words of every course site (session, lecture, homework, "Check yourself", the
+buttons), a few basic programming words and the rule above in full are in the common
+glossary of the course kit: `node_modules/@sciscend/course-kit/i18n/glossary-common.md`.
+This file has the terms of this course; where the two differ, this file wins.
+
 ## Stays in English
 
 Written in Latin letters, without quotes or backticks. Plural in English
@@ -39,7 +44,6 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | regular expression, regex, pattern, group | |
 | repository, commit, push, pull, branch, merge, pull request | verbs: "направете commit", "качете с push" |
 | SQL, SAS, DATA step, PROC | terms of the tools the readers know |
-| Run, Edit, Reset, Present, OK, FAIL | buttons and output of the site and the tasks |
 | statement | "statement-ът"; "statement по statement" (lecture 1) |
 | bytecode, REPL, garbage collector | "bytecode-ът", "garbage collector-ът" |
 | escape sequence, raw string | |
@@ -66,25 +70,16 @@ Written in Latin letters, without quotes or backticks. Plural in English
 
 | English | Bulgarian |
 |---|---|
-| value | стойност |
 | variable | променлива |
 | default value | стойност по подразбиране |
-| condition | условие |
 | comparison | сравнение |
-| operator, operand | оператор, операнд |
 | expression | израз |
 | assignment | присвояване |
-| function, method | функция, метод |
-| parameter, argument | параметър, аргумент |
 | object | обект |
 | key, value (of a dictionary) | ключ, стойност |
-| index, element | индекс, елемент |
 | row, record | ред, запис |
 | type | тип |
-| to convert, conversion | преобразувам, преобразуване |
 | missing value | липсваща стойност |
-| module, library | модул, библиотека |
-| error, bug | грешка, бъг |
 | file, folder | файл, папка |
 | report | отчет |
 | dataset, data | набор от данни, данни |
@@ -92,18 +87,6 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | exposure, outstanding amount | експозиция, непогасена сума |
 | rating, rating scale | рейтинг, рейтингова скала |
 | nomenclature | номенклатура |
-| session | занятие |
-| lecture | лекция |
-| practice, practice task | упражнение, задача за упражнение |
-| homework | домашно |
-| task, check | задача, проверка |
-| Check yourself | Проверете се |
-| Answer | Отговор |
-| Summary | Обобщение |
-| Read more | Още за четене |
-| Next session | Следващото занятие |
-| Today you will learn to | Днес ще се научите да |
-| academic hours | учебни часа |
 | indentation, indented | отстъп, отместен навътре |
 | interpreter, compiler, virtual machine | интерпретатор, компилатор, виртуална машина |
 | implementation (CPython, PyPy) | реализация (implementation) |

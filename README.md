@@ -64,10 +64,11 @@ site/                          the course site (VitePress)
     .vitepress/pythonRun.mjs   the "python run" code blocks (markdown)
     .vitepress/theme/          PyRunCode.vue + pyRunner.js (Run / Edit / Reset with Pyodide),
                                DataFile.vue + dataPreview.js (the preview of a data file),
-                               LangSwitch.vue (the EN / BG button), codeFold, scrollHash,
-                               zoomImages (a diagram opens bigger on a click), navbar.css
+                               codeFold, zoomImages (a diagram opens bigger on a click),
+                               navbar.css. The EN / BG button and scrollHash: course kit
     bg/                        GENERATED Bulgarian pages (git-ignored, see i18n/)
-i18n/                          translations: bg/*.po, the generator, translator guide, glossary
+i18n/                          translations: bg/*.po, the glossary of the course, config.json
+                               (the generator and its commands are in the course kit)
 data/*.csv                     MADE-UP sample data (same files as in Homework/data/)
 tools/make-diagrams.py         writes site/public/diagrams/ (both languages) - run it after a change
 ```
@@ -110,12 +111,34 @@ Bulgarian pages are generated from them on every `npm run dev` / `npm run build`
 ```bash
 npm run i18n:update     # after changing English pages: refresh the .po files
 npm run i18n:status     # what is left to translate (and how many words)
+npm run i18n:todo -- 08 # the texts still to translate, as plain text (for a language model)
 npm run i18n:pack       # zip for the translator
-npm run i18n:import -- <folder or files>   # the translator's files back
+npm run i18n:import -- <folder or files>   # the translator's files (or the answers to a todo) back
 npm run i18n:check      # broken code, links or markup in translations
 ```
 
-Workflow and details: [`i18n/README.md`](i18n/README.md).
+The generator and these commands are in the course kit (`@sciscend/course-kit`),
+the same for every course; this repo holds only the translations, the glossary of
+the course and `i18n/config.json`. Workflow and details:
+[`i18n/README.md`](i18n/README.md).
+
+## Checking the site
+
+```bash
+npm run check           # everything, all lectures
+npm run check -- 08     # the examples of lecture 08 only (the other steps: the whole site)
+```
+
+One line per step, the problems above it, exit code 1 if a step failed:
+
+1. **links** - every link to a page and every `#section` link exists (VitePress
+   itself does not check the `#sections`);
+2. **notes** - every block of `trainer/notes/` names a heading of its lecture;
+3. **i18n** - `i18n:update`, then `i18n:check`;
+4. **build** - `npm run build` passes;
+5. **course** - every `python run` block runs as on the site, and only the blocks
+   that fail on purpose fail (`trainer/tools/run-examples.mjs --check`; needs the
+   `trainer/` folder next to this repo).
 
 ## Writing a lecture
 
@@ -141,11 +164,12 @@ Workflow and details: [`i18n/README.md`](i18n/README.md).
   `index.md` and `agenda.md`, and put its practice files in `NN-topic/` of the
   Homework repository. This can be done long before the session: the public site
   shows it only once it is released (next section).
-- **Before class:** run every practice file and solution with `python`, run the
-  examples (`node trainer/tools/run-examples.mjs NN`), and click through the page
-  in `npm run dev`.
+- **Before class:** run every practice file and solution with `python`, run
+  `npm run check -- NN` (links, translations, build, the examples of lecture NN), and
+  click through the page in `npm run dev`.
 - **Translation:** after the English page is done, `npm run i18n:update`, then send
-  the new `.po` file to the translator (`npm run i18n:pack`).
+  the new `.po` file to the translator (`npm run i18n:pack`), or have it translated
+  by a language model (`npm run i18n:todo`, see `i18n/README.md`).
 
 ## Releasing a lecture
 
