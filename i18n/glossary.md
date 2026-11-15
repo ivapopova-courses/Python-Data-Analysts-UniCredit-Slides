@@ -58,6 +58,9 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | Pylance, mypy, PEP | tools and documents |
 | generator, generator expression | "generator-ът"; lecture 5 (2026-11-08) |
 | linter, formatter, Ruff | "linter-ът", "formatter-ът" (how-to page, 2026-11-04) |
+| match object, flag, lookaround, verbose pattern | lecture 7 (2026-11-15): "match обект"; "флаг (flag)" at first use |
+| greedy, lazy | lecture 7: greedy ("лакоми"), lazy ("мързелив") at first use |
+| named group, locale, BOM, mojibake | lecture 7: "именувана group" |
 
 ## Translated
 
@@ -129,3 +132,11 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | to call, call | извиквам, извикване |
 | pure function, side effect | чиста функция, страничен ефект |
 | decorator | декоратор |
+| case (upper / lower) | регистър (lecture 7, 2026-11-15) |
+| quantifier | квантификатор |
+| back-reference | обратна препратка |
+| encoding | кодировка |
+| check digit | контролна цифра |
+| legal form | правна форма |
+| maturity (of a loan) | падеж |
+| EIK | ЕИК |
