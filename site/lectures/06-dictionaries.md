@@ -726,7 +726,7 @@ print(shallow["retail"], deep["retail"])
 :::
 
 ::: tip Try it
-From `rows` of "A dictionary of dictionaries", build
+From `rows` of [A dictionary of dictionaries](#a-dictionary-of-dictionaries-a-table-keyed-by-id), build
 `{client_id: {"segment": ..., "rating": ...}}` with one dict comprehension (only two
 fields per client). Then print the rating of `C0003` and the number of corporate
 clients with a rating of 6 or worse.

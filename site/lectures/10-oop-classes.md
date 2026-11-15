@@ -951,8 +951,8 @@ loan.outstanding = -10                          # ValueError
 Now the rule holds not only at creation, but after **every** change.
 
 ::: tip Try it
-Add a read-only property `stage` to the `Loan` with `days_past_due` (and a `rating`
-attribute). Then add a setter for `days_past_due` that refuses negative values.
+Take the `Loan` of "Attributes by name" above (with `days_past_due` and
+`is_defaulted`). Add a read-only property `stage` to it (and a `rating` attribute). Then add a setter for `days_past_due` that refuses negative values.
 :::
 
 ## 7. Dataclasses

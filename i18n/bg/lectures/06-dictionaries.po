@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python for Data Analysts\n"
 "Language-Team: \n"
-"Last-Translator: Codex, Claude Opus 5.5 (machine translation - to review)\n"
-"PO-Revision-Date: 2026-11-10\n"
+"Last-Translator: Claude Opus 5.5 (machine translation - to review)\n"
+"PO-Revision-Date: 2026-11-15\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -630,8 +630,8 @@ msgstr "Същото правило като за копията на lists ([з
 
 #. paragraph
 #: site/lectures/06-dictionaries.md:729
-msgid "From `rows` of \"A dictionary of dictionaries\", build `{client_id: {\"segment\": ..., \"rating\": ...}}` with one dict comprehension (only two fields per client). Then print the rating of `C0003` and the number of corporate clients with a rating of 6 or worse."
-msgstr "От `rows` от \"Dictionary от dictionaries\" създайте `{client_id: {\"segment\": ..., \"rating\": ...}}` с един dict comprehension (само две полета за клиент). После отпечатайте рейтинга на `C0003` и броя на корпоративните клиенти (corporate) с рейтинг 6 или по-лош."
+msgid "From `rows` of [A dictionary of dictionaries](#a-dictionary-of-dictionaries-a-table-keyed-by-id), build `{client_id: {\"segment\": ..., \"rating\": ...}}` with one dict comprehension (only two fields per client). Then print the rating of `C0003` and the number of corporate clients with a rating of 6 or worse."
+msgstr "От `rows` от [Dictionary от dictionaries](#a-dictionary-of-dictionaries-a-table-keyed-by-id) създайте `{client_id: {\"segment\": ..., \"rating\": ...}}` с един dict comprehension (само две полета за клиент). После отпечатайте рейтинга на `C0003` и броя на корпоративните клиенти (corporate) с рейтинг 6 или по-лош."
 
 #. heading 2
 #: site/lectures/06-dictionaries.md:735
@@ -892,6 +892,9 @@ msgstr "Real Python: [Dictionaries in Python](https://realpython.com/python-dict
 #: site/lectures/06-dictionaries.md:906
 msgid "**Next session:** text processing and regular expressions - clean ids, names and codes, read numbers and dates from text with the methods of `str` and `datetime`, and describe the shape of a text with a pattern."
 msgstr "**Следващото занятие:** обработка на текст и регулярни изрази - почистване на идентификатори, имена и кодове, четене на числа и дати от текст с методите на `str` и `datetime` и описване на формата на текст с pattern."
+
+#~ msgid "From `rows` of \"A dictionary of dictionaries\", build `{client_id: {\"segment\": ..., \"rating\": ...}}` with one dict comprehension (only two fields per client). Then print the rating of `C0003` and the number of corporate clients with a rating of 6 or worse."
+#~ msgstr "От `rows` от \"Dictionary от dictionaries\" създайте `{client_id: {\"segment\": ..., \"rating\": ...}}` с един dict comprehension (само две полета за клиент). После отпечатайте рейтинга на `C0003` и броя на корпоративните клиенти (corporate) с рейтинг 6 или по-лош."
 
 #~ msgid "Advanced: ranges and `bisect`"
 #~ msgstr "За напреднали: диапазони и `bisect`"

@@ -276,7 +276,8 @@ print(np.array([1, 2, 3]).dtype)                    # int: cannot hold nan
 by `SUM`. In NumPy, `nan` is not skipped - in pandas it is, section 7.)
 
 ::: tip Try it
-With `days` and `outstanding` of the mask example: the share of the outstanding that
+With `days` and `outstanding` of the first example of
+[Comparisons and masks](#comparisons-and-masks-the-where) (not the `days` of `np.select`): the share of the outstanding that
 is more than 30 days past due. Then the DPD bucket of each loan with [`np.select`](https://numpy.org/doc/stable/reference/generated/numpy.select.html).
 :::
 

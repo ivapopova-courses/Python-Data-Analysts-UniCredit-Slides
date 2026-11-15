@@ -1622,6 +1622,14 @@ for name, (rows, plan) in datasets.items():
 `grades` maps the ratings of `clients.csv` **and** of `ratings_history.csv` - one
 definition, one version, one place to change it.
 
+::: tip Try it
+In the example above, add a step to the plan of `"loans"`:
+`(products, "product", "product_name")`, with the `products` of
+[A hierarchy: products and their groups](#a-hierarchy-products-and-their-groups).
+Then add a second step that maps the product group. (Hint: for the group, a second
+`Nomenclature` built from `products.parents`.)
+:::
+
 **Check two files in one loop.** With a registry and a plan per dataset, the check of the two loan files becomes one
 loop - and the report for the data owner lists every column that did not map:
 
@@ -1675,12 +1683,6 @@ print(rows[0]["Product"])
 rows, unmapped = products.apply(rows, "Product", "product_name", default="(missing)")
 print(rows[0]["product_name"], dict(unmapped))
 ```
-
-::: tip Try it
-Add the hierarchical product nomenclature (section 6) to the plan of `loans`, and a
-second step that maps the product group. (Hint: `apply` with `lookup` gives the name;
-for the group, a second `Nomenclature` built from `products.parents`.)
-:::
 
 ## 8. Versions: what changed?
 

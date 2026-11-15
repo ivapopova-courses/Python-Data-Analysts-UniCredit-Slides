@@ -280,7 +280,7 @@ Rules:
 - Never `pass` silently in a loader: count the error, or write it somewhere.
 
 ::: tip Try it
-Change `to_float` so that it also accepts the Bulgarian format `"12,50"`: try
+Change `to_float` (in [Several kinds](#several-kinds) above) so that it also accepts the Bulgarian format `"12,50"`: try
 [`float(value)`](https://docs.python.org/3/builtins/functions.html#float) first, and if that fails, try again with the comma replaced. Test it
 with `"12,50"`, `"12.50"`, `"1 234,5"` and `"abc"`.
 :::
@@ -480,7 +480,7 @@ print(load_amounts(["10", "x", "20"]))
 
 ### All problems of a row, not only the first
 
-The loader of section 10 stops at the **first** broken rule of a row. For a data
+A check that raises, like `check_stage` above, stops at the **first** broken rule of a row. For a data
 quality report you may want **every** problem - collect the messages in a list
 instead of raising:
 
