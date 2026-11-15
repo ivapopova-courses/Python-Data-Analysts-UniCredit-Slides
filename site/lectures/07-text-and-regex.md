@@ -1658,9 +1658,9 @@ bad examples, as the checks of the tasks do. [regex101.com](https://regex101.com
 :::
 
 ::: tip Try it
-All loan ids that the comments **mention** in their text (`L` and 6 digits, whole
-words): collect them with [`findall`](https://docs.python.org/3/library/re.html#re.findall) from every comment. How many different ids are
-there?
+Read `loan_comments.csv` and find all loan ids that the comments **mention** in
+their text (the column `comment`; `L` and 6 digits, whole words): collect them with
+[`findall`](https://docs.python.org/3/library/re.html#re.findall) from every comment. How many different ids are there?
 :::
 
 ::: details Answer
