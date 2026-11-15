@@ -69,7 +69,7 @@ with their text fields typed by many people over many years. It is made up, but 
 problems in it are real ones.
 
 The lecture has two parts. Sections 1 - 6 use the **methods of `str`**: they are
-enough for most cleaning. Sections 7 - 11 add **regular expressions**: patterns for
+enough for most cleaning. Sections 7 - 10 add **regular expressions**: patterns for
 texts that have a shape, like an IBAN or a date.
 
 ## 1. Strings: a recap and the new data
@@ -933,12 +933,11 @@ The string methods of the sections above work like the normal Find: they look fo
 **one** exact text, `"EUR" in s`. A regex describes a **set** of texts by their
 shape: "a date like DD.MM.YYYY" covers every date in that format.
 
-
-| Want | String method | Regular expression |
+| Want | String method | Regex pattern |
 |---|---|---|
-| contains `EUR` | `"EUR" in s` | [`re.search(r"EUR", s)`](https://docs.python.org/3/library/re.html#re.search) |
-| an L and 6 digits | [`len(s) == 7 and s[0] == "L" and s[1:].isdigit()`](https://docs.python.org/3/builtins/functions.html#len) | [`re.fullmatch(r"L\d{6}", s)`](https://docs.python.org/3/library/re.html#re.fullmatch) |
-| every date `dd.mm.yyyy` inside a text | - (a loop with [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find) and checks) | [`re.findall(r"\d{2}\.\d{2}\.\d{4}", s)`](https://docs.python.org/3/library/re.html#re.findall) |
+| contains `EUR` | `"EUR" in s` | `EUR` |
+| an L and 6 digits | [`len(s) == 7 and s[0] == "L" and s[1:].isdigit()`](https://docs.python.org/3/builtins/functions.html#len) | `L\d{6}` |
+| a date `DD.MM.YYYY` inside a text | - (a loop with [`find`](https://docs.python.org/3/builtins/stdtypes.html#str.find) and checks) | `\d{2}\.\d{2}\.\d{4}` |
 
 For a simple test, use the string methods - they are clearer. For a shape, use a
 regex. In SAS the same patterns work with `PRXMATCH`; in SQL, `LIKE` does a small
@@ -957,93 +956,134 @@ site for testing a pattern before you put it in your code:
 Use it for every pattern in this lecture. Paste only made-up text there, never
 real data of the bank: the site is outside the bank.
 
+### Writing a regex in Python
+
+The module [`re`](https://docs.python.org/3/library/re.html) comes with Python: `import re`, and no installation. A pattern
+is a normal Python string. The function [`re.search(pattern, text)`](https://docs.python.org/3/library/re.html#re.search) looks for the
+pattern in the text.
+
+**Raw strings: `r"..."`.** Patterns use many backslashes: `\d`, `\.`, `\b`. But in
+a normal string, Python itself reads some pairs with a backslash first: `\n` is a
+new line, `\t` is a tab, `\b` is the "backspace" character. A **raw string**
+`r"..."` keeps every backslash as it is and gives it to `re` unchanged:
+
+```python run
+print("C:\new_folder")       # \n became a new line!
+print(r"C:\new_folder")      # raw string: the backslash stays
+
+print(len("\b"), len(r"\b"))  # 1 character (backspace) and 2 characters (\ and b)
+```
+
+Rule: **always write a pattern as a raw string**, `r"..."`. Without the `r`, a
+pattern with `\b` looks for a backspace and silently finds nothing. For `"\d"`,
+Python 3.12 and newer print a `SyntaxWarning: invalid escape sequence` - the sign
+that an `r` is missing.
+
 ### `re.search` and the match object
 
-The module `re` comes with Python. [`re.search(pattern, text)`](https://docs.python.org/3/library/re.html#re.search) looks for the first
-place where the pattern fits. It returns a **match object** - or `None` if the
-pattern fits nowhere:
+[`re.search`](https://docs.python.org/3/library/re.html#re.search) looks for the **first** place where the pattern fits. It returns a
+**match object** - or `None` if the pattern fits nowhere. A pattern of letters only
+means exactly these letters, like the normal Find:
 
 ```python run
 import re
 
-comment = "Payment of 1 250,00 EUR received on 15.09.2026."
-
-m = re.search(r"\d{2}\.\d{2}\.\d{4}", comment)
+m = re.search(r"cat", "concatenate")
 print(m)
-print(m.group())          # the text that fits the pattern
-print(m.start(), m.end())
+print(m.group())           # the text that fits the pattern
+print(m.start(), m.end())  # where it is: from index 3 up to (not including) 6
 
-print(re.search(r"USD", comment))     # None
+print(re.search(r"dog", "concatenate"))     # None: not there
 ```
 
-The pattern `\d{2}\.\d{2}\.\d{4}` reads: two digits, a point, two digits, a point,
-four digits. Section 8 explains every part.
-
-**A match in an `if`.** In an `if`, a match object counts as true and `None` as false. So `if
-re.search(...):` asks "is it there?" - like `if prxmatch(...) > 0` in SAS:
+Now a shape: in a pattern, a point `.` means **any one character**. So `c.t` is
+"`c`, any character, `t`"
 
 ```python run
 import re
 
-for comment in ["Payment of 1 250,00 EUR received.", "Annual review done; no findings."]:
-    if re.search(r"\d+,\d{2} EUR", comment):
-        print("has an amount: ", comment)
+for word in ["cat", "cut", "cot", "ct", "coat", "scatter"]:
+    m = re.search(r"c.t", word)
+    print(f"{word:<8}", m.group() if m else None)
+```
+
+`ct` has no character between `c` and `t`; `coat` has two. `scatter` fits, because
+`search` looks **anywhere** in the text: it finds `cat` inside the word.
+
+**A match in an `if`.** In an `if`, a match object counts as true and `None` as
+false. So `if re.search(...):` asks "is it there?" - like `if prxmatch(...) > 0` in
+SAS. `\d` means one digit:
+
+```python run
+import re
+
+for text in ["Room 12", "no digits", "L000001"]:
+    if re.search(r"\d", text):
+        print("has a digit:", text)
     else:
-        print("no amount:     ", comment)
+        print("no digit:   ", text)
+
+print(re.search(r"\d", "Room 12").group())   # only the first place: "1"
 ```
 
-**Dates in the comments.** The same test on the loan portfolio. The file `loan_comments.csv` (new today) has the
-comments of the credit officers. How many of them mention a date in the format
-`dd.mm.yyyy`?
+**Check yourself.** What does `re.search(r"c.t", "act")` return?
 
-```python run
-import csv
-import re
-
-with open("data/loan_comments.csv", encoding="utf-8") as file:
-    comments = list(csv.DictReader(file))
-
-with_date = [c for c in comments if re.search(r"\d{2}\.\d{2}\.\d{4}", c["comment"])]
-print(len(with_date), "of", len(comments), "comments")
-print(with_date[0]["comment"])
-```
-
-### Raw strings: `r"..."`
-
-Patterns use many backslashes: `\d`, `\.`, `\s`. In a normal string, Python itself
-reads some pairs with a backslash first (`\n` is a new line, `\t` is a tab). A **raw
-string** `r"..."` gives every backslash to the `re` module unchanged:
-
-```python run
-print("C:\new_folder")                # \n became a new line!
-print(r"C:\new_folder")
-```
-
-Rule: **always write a pattern as a raw string**, `r"..."`.
+::: details Answer
+`None`. The pattern needs a `c` **first**, then any character, then `t`. In `act`
+the `c` comes after the `a`, and after the `c` there is only the `t` - no character
+between them.
+:::
 
 ::: tip Try it
-Change the pattern of the first block of this section to find the amount
-(`1 250,00`) instead of the date. Hint: digits, a space, digits, a comma, two digits:
-`r"\d+ \d+,\d{2}"`.
+Given are comments of the credit officers:
+
+```
+"Payment received on 15.09.2026. From L000123",
+"Annual review done; no findings.",
+"Refinanced from loan L000391.",
+"Client called, no answer.",
+```
+
+1. print only the comments which have a digit ('\d' to match a digit).
+2. print all **loan id**: a capital `L` and six digits (use 'L\d{6}')
+
 :::
 
 ::: details Answer
+
 ```python run
 import re
 
-comment = "Payment of 1 250,00 EUR received on 15.09.2026."
+comments = [
+    "Payment received on 15.09.2026. From L000123",
+    "Annual review done; no findings.",
+    "Refinanced from loan L000391.",
+    "Client called, no answer.",
+]
 
-m = re.search(r"\d+ \d+,\d{2}", comment)
-print(m.group())
-print(m.start(), m.end())
+print("Comments with digits:")
+for comment in comments:
+    if re.search(r"\d", comment):
+        print(comment)
+
+print("All loan ids:")
+for comment in comments:
+    m = re.search(r"L\d{6}", comment)
+    if m:
+        print(m.group())
 ```
+
 :::
 
-## 8. Writing a pattern
+## 8. The grammar of a pattern
+
+This section is about the pattern only. Every example uses [`re.search`](https://docs.python.org/3/library/re.html#re.search) and tests
+**one pattern on a few strings**: what fits, and what does not. Section 9 brings
+the other functions of `re`.
 
 ### One character
 
-Letters and digits in a pattern mean themselves. These parts mean **one character**
+Letters and digits in a pattern mean themselves. Next patterns mean **one character**
 of a kind:
 
 | Pattern | One character that is |
@@ -1053,26 +1093,81 @@ of a kind:
 | `\d` | a digit |
 | `\s` | a space, a tab or a new line |
 | `\w` | a letter, a digit or `_` |
+| `\D`, `\S`, `\W` | **not** a digit, **not** a space, **not** a word character (a capital letter turns the meaning around) |
 | `[abc]` | `a`, `b` or `c` |
 | `[A-Z]` | a capital Latin letter |
 | `[A-Z0-9]` | a capital Latin letter or a digit |
 | `[^0-9]` | **not** a digit (`^` first inside the brackets) |
 
+**`.` and `\.`** - any character, or only a point:
+
 ```python run
 import re
 
-print(re.findall(r"2.26", "2026 2.26 2-26 2x26"))     # . is any character
-print(re.findall(r"2\.26", "2026 2.26 2-26 2x26"))    # \. is a point
-print(re.findall(r"\d", "L000123"))
-print(re.findall(r"[^0-9]", "L000123"))
-print(re.findall(r"[A-Z][A-Z][A-Z]", "100 EUR and 50 USD and 7 eur"))
+for text in ["2.26", "2-26", "2x26", "2026"]:
+    any_char = re.search(r"2.26", text)
+    point = re.search(r"2\.26", text)
+    print(f"{text:<6} 2.26: {bool(any_char)!s:<6} 2\\.26: {bool(point)}")
 ```
 
-[`re.findall`](https://docs.python.org/3/library/re.html#re.findall) returns a list with **all** the places where the pattern fits (section
-9).
+`2026` fits `2.26` too: the `.` is the `0`.
+
+**Classes of characters** - `\d`, `[A-Z]`, `[^0-9]`:
+
+```python run
+import re
+
+for text in ["100 EUR", "50 usd", "7 Eur"]:
+    m = re.search(r"[A-Z][A-Z][A-Z]", text)        # three capital letters
+    print(f"{text:<8}", m.group() if m else None)
+
+for text in ["L000123", "000123"]:
+    m = re.search(r"[^0-9]", text)                 # the first character that is not a digit
+    print(f"{text:<8}", m.group() if m else None)
+```
+
+In next section we'll see how to write '[A-Z][A-Z][A-Z]' in a more elegant way.
+
+### Special characters:
 
 The characters with a special meaning are `. ^ $ * + ? { } [ ] \ | ( )`. Put a `\` in
 front when you mean the character itself: `\.`, `\(`, `\+`.
+
+**Check yourself.** Does `r"\d\d\.\d\d"` fit `"rate 12.97 %"`? And `"rate 12,97 %"`?
+
+::: details Answer
+The first one, yes: `12.97`. The second one, no: the pattern needs a point, and
+`12,97` has a comma.
+:::
+
+::: tip Try it
+1. In the texts `"2+3"`, `"2-3"`, `"23"` and `"10+15"`, find a digit, a plus and a
+   digit: use `r"\d\+\d"`. Print what `re.search` found in each text.
+2. In the texts `"Amount (EUR): 1200"`, `"Amount EUR: 950"` and `"Rate (%): 3.5"`,
+   print only the texts with `(EUR)` in brackets: use `r"\(EUR\)"`. Then remove the
+   two backslashes and run it again: what changes?
+:::
+
+::: details Answer
+
+```python run
+import re
+
+print("A digit, a plus, a digit:")
+for text in ["2+3", "2-3", "23", "10+15"]:
+    m = re.search(r"\d\+\d", text)
+    print(f"{text:<6}", m.group() if m else None)
+
+print("With (EUR):")
+for text in ["Amount (EUR): 1200", "Amount EUR: 950", "Rate (%): 3.5"]:
+    if re.search(r"\(EUR\)", text):
+        print(text)
+```
+
+In `10+15` the match is `0+1`: `\d` is **one** digit. Without the backslashes,
+`r"(EUR)"` finds `EUR` in the first two texts: the brackets are special again (a
+group, later in this section) and they do not match the characters `(` and `)`.
+:::
 
 ### How many times
 
@@ -1090,13 +1185,40 @@ A **quantifier** after a character says how many times it repeats:
 ```python run
 import re
 
-print(re.findall(r"\d+", "Overdue 35 days, 120 days, 5 days"))      # whole numbers
-print(re.findall(r"\d{2}", "2026"))                                 # pairs of digits
-print(re.findall(r"BG\d{2}", "BG80 bg12 BG7"))
-print(re.findall(r"colou?r", "color colour"))                       # the u is optional
+for text in ["Overdue 5 days", "Overdue 120 days", "Overdue days"]:
+    m = re.search(r"\d+", text)                    # a whole number: all its digits
+    print(f"{text:<18}", m.group() if m else None)
+
+for text in ["BG80", "bg12", "BG7"]:
+    m = re.search(r"BG\d{2}", text)                # BG and exactly 2 digits
+    print(f"{text:<18}", m.group() if m else None)
+
+for text in ["color", "colour", "colouur"]:
+    m = re.search(r"colou?r", text)                # the u is optional
+    print(f"{text:<18}", m.group() if m else None)
 ```
 
-**Double spaces in names.** On the client register: the names typed with two or more spaces in a row - `\s{2,}`:
+`\d+` takes **all** the digits of `120`, not only the first: a quantifier takes as
+many characters as it can.
+
+**The trap: `*` can match nothing.** `\d*` means "0 or more digits" - and zero
+digits fit everywhere, also at the very start of the text:
+
+```python run
+import re
+
+m = re.search(r"\d*", "Overdue 35 days")
+print(repr(m.group()), m.start())      # '' at index 0: an empty match!
+
+m = re.search(r"\d+", "Overdue 35 days")
+print(repr(m.group()), m.start())      # '35' at index 8
+```
+
+To find a number, use `+`. Use `*` only for a part that may be missing, between
+other parts: `\d+,\d*` ("digits, a comma, maybe more digits").
+
+**Double spaces in names.** On the client register: find the names typed with two or
+more spaces in a row - `\s{2,}`:
 
 ```python run
 import csv
@@ -1115,19 +1237,106 @@ These parts fit a **position**, not a character:
 
 - `^` - the start of the text;
 - `$` - the end of the text;
-- `\b` - a word boundary: the place between a word character (`\w`) and another
-  character.
+- `\b` - a word boundary: the place between a word character (`\w`) and non-word
+  character. Like place between '#t', '$t'. Also matches the start or end of the text.
 
 ```python run
 import re
 
-print(bool(re.search(r"^L", "L000001")), bool(re.search(r"^L", "XL000001")))
-print(bool(re.search(r"\.$", "No findings.")))
-
-text = "loan L000391; LL0001; L0003915"
-print(re.findall(r"L\d{6}", text))           # also inside longer words
-print(re.findall(r"\bL\d{6}\b", text))       # only whole words
+for text in ["L000001", "XL000001", "L000001 "]:
+    starts = re.search(r"^L", text)
+    whole = re.search(r"^L\d{6}$", text)        # ^ and $ together: the whole text
+    print(f"{text!r:<12} starts with L: {bool(starts)!s:<6} the whole text: {bool(whole)}")
 ```
+
+`^...$` together means "the **whole** text, and nothing else" - the way to
+validate a value (section 9 has a shorter way).
+
+```python run
+import re
+
+for text in ["loan L000391;", "LL000391", "L0003915"]:
+    inside = re.search(r"L\d{6}", text)          # also inside longer words
+    word = re.search(r"\bL\d{6}\b", text)        # only a whole word
+    print(f"{text!r:<16} {inside.group() if inside else None!s:<9} {word.group() if word else None}")
+```
+
+`L0003915` has 7 digits: `L\d{6}` still finds the first 6, `\bL\d{6}\b` does not.
+
+### Groups: `( )`
+
+Round brackets make a **group**: a part of the pattern that you can take out of the
+match. After a match, [`group(1)`](https://docs.python.org/3/library/re.html#re.Match.group), [`group(2)`](https://docs.python.org/3/library/re.html#re.Match.group), ... give the text of each group, and
+[`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups) gives all of them as a tuple:
+
+```python run
+import re
+
+m = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", "received on 15.09.2026.")
+print(m.group())                 # the whole match
+print(m.group(1), m.group(2), m.group(3))
+print(m.groups())
+
+day, month, year = m.groups()
+print(f"{year}-{month}-{day}")
+```
+
+In SAS: `PRXPOSN(re, 1, text)` after `PRXMATCH`.
+
+A quantifier after a group repeats the whole group: `(ab)+` fits `ab`, `abab`, ...
+
+::: tip Try it
+Write a pattern with three groups for `"Overdue 60 days. Reminder sent on
+2026-04-24."` that gives the year, the month and the day of the date with
+[`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups).
+:::
+
+::: details Answer
+```python run
+import re
+
+m = re.search(r"(\d{4})-(\d{2})-(\d{2})", "Overdue 60 days. Reminder sent on 2026-04-24.")
+print(m.groups())
+
+year, month, day = m.groups()
+print(year, month, day)
+```
+
+The `60` does not fit: the pattern needs four digits and a `-` first.
+:::
+
+### Alternatives: `|`
+
+`a|b` fits `a` or `b`. Put the options in brackets when they are only one part of
+the pattern:
+
+```python run
+import re
+
+for text in ["Payment 99,50 USD", "Fee 10,00 BGN", "Payment 1250,00 EUR"]:
+    m = re.search(r"\d+,\d{2} (EUR|USD)", text)
+    print(f"{text:<20}", m.group() if m else None)
+```
+
+Without the brackets, `\d+,\d{2} EUR|USD` means "`\d+,\d{2} EUR`, or `USD`" -
+the `|` splits the **whole** pattern in two.
+
+**Brackets without a group: `(?:...)`.** Brackets that only **keep parts together**
+also count as a group. Write `(?:...)` when you do not need the part as a group:
+
+```python run
+import re
+
+text = "rate 12.97 EUR"
+
+m = re.search(r"\d+(\.\d+)? (EUR|USD)", text)
+print(m.groups())                 # ('.97', 'EUR'): the currency is group 2
+
+m = re.search(r"\d+(?:\.\d+)? (EUR|USD)", text)
+print(m.groups())                 # ('EUR',): now the currency is group 1
+```
+
+`(?:\.\d+)?` reads: "a point and digits, 0 or 1 time" - an optional decimal part.
 
 ### `LIKE` and regex
 
@@ -1138,35 +1347,44 @@ print(re.findall(r"\bL\d{6}\b", text))       # only whole words
 | `'L%'` | `^L` | starts with L |
 | `'%EUR'` | `EUR$` | ends with EUR |
 | `'%EUR%'` | `EUR` | contains EUR |
+| `'L______'` | `^L.{6}$` | the whole text: L and 6 characters |
+
+`LIKE` has no "a digit", no "1 or more" and no "this or that": for these, SQL needs
+`REGEXP_LIKE`.
 
 ::: tip Try it
-Write a pattern that finds the three-letter currency codes (`EUR`, `USD`, ...) in
-`"100 EUR, 50 usd, 20 GBP and EURO"` - whole words in capitals only. What do you
-need so that `EURO` is not found?
+Write **one** pattern for a three-letter currency code in capitals as a whole
+word. Test it with [`re.search`](https://docs.python.org/3/library/re.html#re.search) on `"100 EUR"`, `"20 GBP"`, `"50 usd"` and `"EURO area"`:
+the first two must fit, the last two must not. What do you need so that `EURO` does
+not fit?
 :::
 
 ::: details Answer
 ```python run
 import re
 
-text = "100 EUR, 50 usd, 20 GBP and EURO"
-print(re.findall(r"[A-Z]{3}", text))           # 'EUR' from EURO too
-print(re.findall(r"\b[A-Z]{3}\b", text))       # only whole words
+for text in ["100 EUR", "20 GBP", "50 usd", "EURO area"]:
+    loose = re.search(r"[A-Z]{3}", text)
+    word = re.search(r"\b[A-Z]{3}\b", text)
+    print(f"{text:<10} {loose.group() if loose else None!s:<6} {word.group() if word else None}")
 ```
 
 You need `\b` at both ends. Without them, the first three letters of `EURO` fit
-too. `usd` is not found, because `[A-Z]` is only the capital letters.
+too. `usd` does not fit, because `[A-Z]` is only the capital letters.
 :::
 
 ## 9. The functions of `re`
+
+You can write patterns now. This section shows what else Python can do with them:
+check the whole text, find all the matches, and replace them.
 
 ### `search`, `match`, `fullmatch`: where must the pattern fit?
 
 | Function | Where the pattern must fit | SAS / SQL |
 |---|---|---|
 | [`re.search(p, s)`](https://docs.python.org/3/library/re.html#re.search) | anywhere in the text | `PRXMATCH(p, s) > 0` in SAS, `LIKE '%...%'` in SQL |
-| [`re.match(p, s)`](https://docs.python.org/3/library/re.html#re.match) | at the **start** of the text | `LIKE '...%'` in SQL |
-| [`re.fullmatch(p, s)`](https://docs.python.org/3/library/re.html#re.fullmatch) | the **whole** text | `LIKE '...'`, `REGEXP_LIKE(s, '^...$')` in SQL |
+| [`re.match(p, s)`](https://docs.python.org/3/library/re.html#re.match) | at the **start** of the text (as `^p`) | `LIKE '...%'` in SQL |
+| [`re.fullmatch(p, s)`](https://docs.python.org/3/library/re.html#re.fullmatch) | the **whole** text (as `^p$`) | `LIKE '...'`, `REGEXP_LIKE(s, '^...$')` in SQL |
 
 ```python run
 import re
@@ -1180,20 +1398,76 @@ for s in ["L000001", "L000001 ", "xL000001", "L0000012"]:
     print(f"{s!r:>12} search={found!s:<6} match={at_start!s:<6} fullmatch={whole}")
 ```
 
-To **validate** a value, use [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch). [`search`](https://docs.python.org/3/library/re.html#re.search) says yes when the pattern is
-**somewhere** in the text, also with other characters around it.
+To **validate** a value, use [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch): it is the same as `^...$` with `search`
+(section 8), but shorter and harder to forget. [`search`](https://docs.python.org/3/library/re.html#re.search) says yes when the pattern
+is **somewhere** in the text, also with other characters around it.
 
 ### `findall`: all matches
 
-[`findall`](https://docs.python.org/3/library/re.html#re.findall) returns a **list of strings** - all the places where the pattern fits:
+[`search`](https://docs.python.org/3/library/re.html#re.search) stops at the first match. [`findall`](https://docs.python.org/3/library/re.html#re.findall) returns a **list of strings** - all the
+places where the pattern fits:
 
 ```python run
 import re
 
 comment = "Refinanced from loan L000391; L000048 and L000387 closed."
-print(re.findall(r"L\d{6}", comment))
-print(re.findall(r"L\d{6}", "no loans here"))       # an empty list
-print(len(re.findall(r"L\d{6}", comment)))          # how many: REGEXP_COUNT in SQL
+print(re.search(r"L\d{6}", comment).group())         # only the first
+print(re.findall(r"L\d{6}", comment))                # all of them
+print(re.findall(r"L\d{6}", "no loans here"))        # an empty list
+print(len(re.findall(r"L\d{6}", comment)))           # how many: REGEXP_COUNT in SQL
+```
+
+The patterns of section 8, now with all the matches:
+
+```python run
+import re
+
+print(re.findall(r"\d+", "Overdue 35 days, 120 days, 5 days"))
+print(re.findall(r"\b[A-Z]{3}\b", "100 EUR, 50 usd, 20 GBP and EURO"))
+print(re.findall(r"\d{2}\.\d{2}\.\d{4}", "From 01.03.2026 to 30.09.2026"))
+```
+
+**The trap: `findall` with groups.** With **one** group in the pattern, [`findall`](https://docs.python.org/3/library/re.html#re.findall)
+returns only the text of the group. With **several** groups, it returns a list of
+tuples:
+
+```python run
+import re
+
+text = "Payment 1 250,00 EUR; payment 99,50 USD; fee 10,00 EUR"
+print(re.findall(r"\d[\d ]*,\d{2} [A-Z]{3}", text))        # no group: the whole match
+print(re.findall(r"(\d[\d ]*,\d{2}) [A-Z]{3}", text))      # one group: only the amount
+print(re.findall(r"(\d[\d ]*,\d{2}) ([A-Z]{3})", text))    # two groups: tuples
+```
+
+So brackets for `|` change what [`findall`](https://docs.python.org/3/library/re.html#re.findall) returns. Use `(?:...)` (section 8) to get the
+whole match back:
+
+```python run
+import re
+
+text = "Payment 1250,00 EUR; payment 99,50 USD; fee 10,00 BGN"
+print(re.findall(r"\d+,\d{2} (EUR|USD)", text))     # only the currencies
+print(re.findall(r"\d+,\d{2} (?:EUR|USD)", text))   # the whole matches
+```
+
+**All the dates in the comments.** On the file: every date DD.MM.YYYY that the
+comments mention, and the months they fall in:
+
+```python run
+import csv
+import re
+from collections import Counter
+
+with open("data/loan_comments.csv", encoding="utf-8") as file:
+    comments = list(csv.DictReader(file))
+
+dates = []
+for c in comments:
+    dates += re.findall(r"\d{2}\.\d{2}\.\d{4}", c["comment"])
+
+print(len(dates), "dates, e.g.", dates[:3])
+print(Counter(d[3:] for d in dates).most_common(3))     # month.year
 ```
 
 ### `sub`: replace
@@ -1209,8 +1483,22 @@ print(re.sub(r"\D", "", "BG 131-234 567"))                     # keep the digits
 print(re.sub(r"\d", "*", "card 4532 7711"))                    # hide the digits
 ```
 
-`\D` is "not a digit": a capital letter turns the meaning around (`\S` is "not a
-space", `\W` is "not a word character").
+**Clean the names of the register.** The names with extra spaces of section 8,
+cleaned in one line each:
+
+```python run
+import csv
+import re
+
+with open("data/client_register.csv", encoding="utf-8") as file:
+    names = [row["name"] for row in csv.DictReader(file)]
+
+clean = [re.sub(r"\s+", " ", name).strip() for name in names]
+changed = [(old, new) for old, new in zip(names, clean) if old != new]
+print(len(changed), "names changed")
+for old, new in changed[:3]:
+    print(f"{old!r:<32} -> {new!r}")
+```
 
 ### Ignore the case: `re.IGNORECASE`
 
@@ -1246,85 +1534,7 @@ The same number: 56. For one fixed word, the string method is simpler. The regex
 is worth it when the text has a shape (digits, a date, whole words with `\b`).
 :::
 
-## 10. Groups and alternatives
-
-### Groups: take the match apart
-
-Round brackets make a **group**. After a match, [`group(1)`](https://docs.python.org/3/library/re.html#re.Match.group), [`group(2)`](https://docs.python.org/3/library/re.html#re.Match.group), ... give the
-text of each group, and [`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups) gives all of them as a tuple:
-
-```python run
-import re
-
-m = re.search(r"(\d{2})\.(\d{2})\.(\d{4})", "received on 15.09.2026.")
-print(m.group())                 # the whole match
-print(m.group(1), m.group(2), m.group(3))
-print(m.groups())
-
-day, month, year = m.groups()
-print(f"{year}-{month}-{day}")
-```
-
-In SAS: `PRXPOSN(re, 1, text)` after `PRXMATCH`.
-
-**[`findall`](https://docs.python.org/3/library/re.html#re.findall) with groups.** With **one** group in the pattern, [`findall`](https://docs.python.org/3/library/re.html#re.findall) returns the text of the group. With
-**several** groups, it returns a list of tuples:
-
-```python run
-import re
-
-text = "Payment 1 250,00 EUR; payment 99,50 USD; fee 10,00 EUR"
-print(re.findall(r"\d[\d ]*,\d{2} [A-Z]{3}", text))        # no group: the whole match
-print(re.findall(r"(\d[\d ]*,\d{2}) [A-Z]{3}", text))      # one group: only the amount
-print(re.findall(r"(\d[\d ]*,\d{2}) ([A-Z]{3})", text))    # two groups: tuples
-```
-
-### Alternatives: `|`
-
-`a|b` fits `a` or `b`. Put the options in brackets when they are only one part of
-the pattern:
-
-```python run
-import re
-
-text = "Payment 1 250,00 EUR; payment 99,50 USD; fee 10,00 BGN"
-print(re.findall(r"\d+,\d{2} (EUR|USD)", text))
-```
-
-**Brackets without a group.** The brackets also made a group, so [`findall`](https://docs.python.org/3/library/re.html#re.findall) returned only the currency. Write
-`(?:...)` for brackets that only **keep parts together** and are not a group:
-
-```python run
-import re
-
-text = "Payment 1 250,00 EUR; payment 99,50 USD; fee 10,00 BGN"
-print(re.findall(r"\d+,\d{2} (?:EUR|USD)", text))
-
-# an optional part: a point and digits, 0 or 1 time
-print(re.findall(r"\d+(?:\.\d+)?", "rates 12.97 and 13 and 4.5"))
-```
-
-::: tip Try it
-Write a pattern with three groups for `"Overdue 60 days. Reminder sent on
-2026-04-24."` that gives the year, the month and the day of the date with
-[`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups).
-:::
-
-::: details Answer
-```python run
-import re
-
-m = re.search(r"(\d{4})-(\d{2})-(\d{2})", "Overdue 60 days. Reminder sent on 2026-04-24.")
-print(m.groups())
-
-year, month, day = m.groups()
-print(year, month, day)
-```
-
-The `60` does not fit: the pattern needs four digits and a `-` first.
-:::
-
-## 11. Validate and extract
+## 10. Validate and extract
 
 ### Validate: the patterns of our ids
 
@@ -1441,7 +1651,7 @@ print(iban.str.fullmatch(r"BG\d{2}[A-Z]{4}\d{6}[A-Z0-9]{8}").value_counts())
 ::: warning A regex is code: test it
 A pattern that looks right can fit too much or too little. Test it on good **and**
 bad examples, as the checks of the tasks do. [regex101.com](https://regex101.com)
-(choose the flavour *Python*) shows what each part of a pattern fits.
+(section 7) shows what each part of a pattern fits.
 :::
 
 ::: tip Try it
@@ -1470,7 +1680,7 @@ print(sorted(set(mentioned))[:5])
 repeats, as `COUNT(DISTINCT ...)` in SQL.
 :::
 
-## 12. Summary
+## 11. Summary
 
 | Topic | Remember |
 |-------|----------|
@@ -1484,9 +1694,9 @@ repeats, as `COUNT(DISTINCT ...)` in SQL.
 | Counting | [`Counter(values)`](https://docs.python.org/3/library/collections.html#collections.Counter) = `GROUP BY` + `COUNT(*)`, `PROC FREQ`; [`most_common(n)`](https://docs.python.org/3/library/collections.html#collections.Counter.most_common); a missing key counts 0; clean the key first |
 | Numbers | know the format of the source; [`replace`](https://docs.python.org/3/builtins/stdtypes.html#str.replace), then `float` |
 | Dates | [`date.fromisoformat`](https://docs.python.org/3/library/datetime.html#datetime.date.fromisoformat); [`datetime.strptime(s, "%d.%m.%Y").date()`](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime); [`strftime`](https://docs.python.org/3/library/datetime.html#datetime.date.strftime) |
-| Patterns | always `r"..."`; `.` any character, `\.` a point; `\d`, `\s`, `\w`; `[A-Z]`, `[^0-9]` |
-| Quantifiers | `+` `*` `?` `{n}` `{n,m}` |
-| Positions | `^` start, `$` end, `\b` word boundary |
+| Patterns | always `r"..."`; `.` any character, `\.` a point; `\d`, `\s`, `\w` (`\D`, `\S`, `\W`: not); `[A-Z]`, `[^0-9]`; test on regex101 |
+| Quantifiers | `+` `*` `?` `{n}` `{n,m}`; `*` can match nothing - use `+` for a number |
+| Positions | `^` start, `$` end, `\b` word boundary; `^...$` the whole text |
 | Functions | [`search`](https://docs.python.org/3/library/re.html#re.search) (anywhere), [`match`](https://docs.python.org/3/library/re.html#re.match) (start), [`fullmatch`](https://docs.python.org/3/library/re.html#re.fullmatch) (the whole text - to validate), [`findall`](https://docs.python.org/3/library/re.html#re.findall), [`sub`](https://docs.python.org/3/library/re.html#re.sub); `re.I` |
 | Groups | `( )` and [`group(1)`](https://docs.python.org/3/library/re.html#re.Match.group), [`groups()`](https://docs.python.org/3/library/re.html#re.Match.groups); [`findall`](https://docs.python.org/3/library/re.html#re.findall) with groups; `a\|b`; `(?:...)` is not a group |
 | SAS / SQL | `PRXMATCH` = [`search`](https://docs.python.org/3/library/re.html#re.search); `PRXPOSN` = [`group`](https://docs.python.org/3/library/re.html#re.Match.group); `PRXCHANGE` = [`sub`](https://docs.python.org/3/library/re.html#re.sub); `LIKE` `_` / `%` = `.` / `.*` |
@@ -2458,7 +2668,7 @@ print(bool(IBAN_BG.fullmatch("BG05TEST77018249464461")))
 
 1. Find the amounts that are **followed** by ` EUR`, without taking ` EUR` into the
    match, in `"paid 2 069,77 EUR and 15,00 USD and 99,50 EUR"`.
-2. Rewrite the e-mail pattern of section 11 with `re.VERBOSE` and a comment per part.
+2. Rewrite the e-mail pattern of section 10 with `re.VERBOSE` and a comment per part.
 
 ::: details Answer
 1. [`re.findall(r"\d[\d ]*,\d{2}(?= EUR)", text)`](https://docs.python.org/3/library/re.html#re.findall) gives `['2 069,77', '99,50']`.
