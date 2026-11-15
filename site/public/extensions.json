@@ -5,7 +5,6 @@
     "ms-toolsai.datawrangler",
     "mechatroner.rainbow-csv",
     "qwtel.sqlite-viewer",
-    "GrapeCity.gc-excelviewer",
-    "charliermarsh.ruff"
+    "GrapeCity.gc-excelviewer"
   ]
 }

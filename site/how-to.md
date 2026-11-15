@@ -81,7 +81,6 @@ the Homework folder - see [step 9](#create-the-venv) below.
 | **Rainbow CSV** | mechatroner | each column of a CSV file in its own colour; SQL-like queries on a CSV file | from lecture 8 |
 | **SQLite Viewer** | Florian Klampfer | open a SQLite `.db` file and look at its tables | lecture 12 |
 | **Spreadsheet Viewer** | MESCIUS | open `.xlsx` files in VS Code (its old name is *Excel Viewer*) | lectures 8, 13, 15 |
-| **Ruff** | Astral | linter and formatter: finds mistakes and fixes the layout of your code - see [below](#ruff) | recommended |
 
 **Install them all at once.**
 
@@ -106,8 +105,7 @@ itself. You can also create the file yourself and paste this content into it:
     "ms-toolsai.datawrangler",
     "mechatroner.rainbow-csv",
     "qwtel.sqlite-viewer",
-    "GrapeCity.gc-excelviewer",
-    "charliermarsh.ruff"
+    "GrapeCity.gc-excelviewer"
   ]
 }
 ```
@@ -128,6 +126,7 @@ the **Extensions** view.
 
 | Extension | By | What for |
 |---|---|---|
+| **Ruff** | Astral | linter and formatter: finds mistakes and fixes the layout of your code - see [below](#ruff) |
 | **Path Intellisense** | Christian Kohler | completes the names of files and folders while you type a path in a string: type `"./data/"` and choose `loans.csv` from the list |
 
 ::: warning Path Intellisense and the current folder
@@ -158,8 +157,8 @@ free tool from Astral, the company that makes uv.
 
 #### Install
 
-Install the VS Code extension **Ruff** by Astral (id `charliermarsh.ruff`). It is
-in the table and in `extensions.json` above, so **Install** there installs it too.
+Install the VS Code extension **Ruff** by Astral (id `charliermarsh.ruff`) from
+the **Extensions** view: it is one of the [optional extensions](#optional-extensions).
 The extension comes with its own copy of Ruff: you do not need `pip` for it.
 
 ::: info If the Marketplace is blocked
