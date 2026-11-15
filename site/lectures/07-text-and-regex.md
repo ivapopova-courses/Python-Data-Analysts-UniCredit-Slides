@@ -1750,7 +1750,7 @@ read the topic:
 
 ## Self-study
 
-This part is not covered in class. It is for reading at home. The first six topics
+This part is not covered in class. It is for reading at home. The first five topics
 continue the string methods and the dates; the last six continue the regular
 expressions. Nothing here is needed for the practice tasks 1 - 9 or for the
 homework.
@@ -2001,92 +2001,6 @@ with open("data/clients.csv", encoding="utf-8") as file:
     trusted = [date.fromisoformat(row["client_since"]) for row in csv.DictReader(file)]
 print(since == trusted)        # True (after the block above)
 ```
-:::
-
-### Encodings: UTF-8, cp1251 and Cyrillic
-
-A file on disk is **bytes**, not text. An **encoding** is the rule that turns text
-into bytes and back. The same text gives different bytes in different encodings:
-
-```python run
-city = "София"
-
-utf8 = city.encode("utf-8")
-cp1251 = city.encode("cp1251")
-print(utf8, len(utf8))           # 2 bytes per Cyrillic letter
-print(cp1251, len(cp1251))       # 1 byte per letter
-print(utf8.decode("utf-8"), cp1251.decode("cp1251"))
-```
-
-- **UTF-8** - every character of every language; the standard of the web, of
-  Python source files and of most new files.
-- **cp1251** (Windows-1251) - the old Windows encoding for Cyrillic. Exports from old
-  systems and Excel files saved as "CSV" on a Bulgarian Windows are often cp1251.
-
-**Mojibake.** Reading with the wrong encoding gives either an error, or **mojibake** - wrong
-letters:
-
-```python run
-data = "София".encode("utf-8")
-print(data.decode("cp1251"))         # UTF-8 bytes read as cp1251: mojibake
-
-data = "София".encode("cp1251")
-print(data.decode("utf-8"))          # UnicodeDecodeError
-```
-
-That is why every [`open()`](https://docs.python.org/3/builtins/functions.html#open) in this course says `encoding="utf-8"`: without it, Python
-3.12 - 3.14 on Windows uses the Windows encoding of the computer (often cp1252 or
-cp1251), and the same script gives different results on different computers. (From
-Python 3.15 on, UTF-8 is the default everywhere. Still write it: the script may run
-on an older Python.)
-
-**Read a cp1251 file.** The file `regions_bg.csv` is saved in **cp1251**:
-
-```python run
-with open("data/regions_bg.csv", encoding="cp1251") as file:
-    print(file.read())
-
-with open("data/regions_bg.csv", encoding="utf-8", errors="replace") as file:
-    print(file.read())          # the wrong encoding: the letters become question marks
-```
-
-`errors="replace"` puts `?` (or `�`) instead of a byte that cannot be read,
-instead of stopping. Use it only to **look** at a file, never to load data.
-
-**The BOM of Excel.** One more detail: Excel saves "CSV UTF-8" with a **BOM** - three bytes `EF BB BF` at the
-start. Read such a file with `encoding="utf-8-sig"`, or the first column name gets an
-invisible character in front:
-
-```python run
-with open("data/loans_export.csv", encoding="utf-8") as file:
-    print(repr(file.readline()[:12]))
-with open("data/loans_export.csv", encoding="utf-8-sig") as file:
-    print(repr(file.readline()[:12]))
-```
-
-**Exercises**
-
-1. Read `regions_bg.csv` with [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) and the right encoding, and build a
-   dictionary `name_bg -> name_en`.
-2. Write the same rows into a new file `regions_utf8.csv` in UTF-8, and read it back.
-
-::: details Answer
-```python
-import csv
-
-with open("data/regions_bg.csv", encoding="cp1251") as file:
-    rows = list(csv.DictReader(file))
-to_en = {r["name_bg"]: r["name_en"] for r in rows}
-print(to_en)
-
-with open("regions_utf8.csv", "w", encoding="utf-8", newline="") as file:
-    writer = csv.DictWriter(file, fieldnames=["code", "name_bg", "name_en"])
-    writer.writeheader()
-    writer.writerows(rows)
-with open("regions_utf8.csv", encoding="utf-8") as file:
-    print(file.read())
-```
-(Writing files with `csv`: [lecture 8](./08-errors-and-files.md#write-csv-writer-and-csv-dictwriter).)
 :::
 
 ### Cyrillic names in Latin letters
@@ -2762,7 +2676,7 @@ that a shape check cannot find.
   tutorial)
 - [regex101.com](https://regex101.com) - test a pattern and see what each part
   fits (choose *Python*)
-- [Unicode HOWTO](https://docs.python.org/3/howto/unicode.html) (encodings, normalisation)
+- [Unicode HOWTO](https://docs.python.org/3/howto/unicode.html) (normalisation)
 - Real Python: [Strings and character data](https://realpython.com/python-strings/),
   [Using Python datetime to work with dates and times](https://realpython.com/python-datetime/),
   [Regular expressions: regexes in Python](https://realpython.com/regex-python/)

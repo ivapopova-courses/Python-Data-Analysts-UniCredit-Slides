@@ -16,7 +16,7 @@ title: 8. Error handling and file handling
   script;
 - raise your own errors with a clear message when the data is wrong;
 - work with files and folders through `pathlib`;
-- read and write text, CSV, JSON and Excel files;
+- read and write text, CSV, JSON and Excel files, also in cp1251 (old Windows Cyrillic);
 - sum by group and collect the rows of each group with [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) - `GROUP BY`
   with `SUM` in SQL;
 - load a file with bad rows: keep the good rows, write the bad ones to a reject file
@@ -651,7 +651,7 @@ The **mode** says what you want to do:
 | `"a"` | append at the end |
 | `"x"` | write a new file - an error if it exists |
 
-**Write a file.** Always give the `encoding` ([lecture 7](./07-text-and-regex.md)):
+**Write a file.** Always give the `encoding` (why: [Encodings](#encodings-utf-8-cp1251-and-cyrillic) below):
 
 ```python run
 from pathlib import Path
@@ -723,7 +723,32 @@ except FileExistsError as error:
     print("not written:", error)
 ```
 
-**Cyrillic text.** Write and read Cyrillic text - the same `encoding` on both sides:
+::: tip Try it
+Write the 10 loan ids with the largest outstanding into `out/top10.txt`, one per line,
+then read the file back and print the number of lines.
+:::
+
+### Encodings: UTF-8, cp1251 and Cyrillic
+
+A file on disk is **bytes**, not text. An **encoding** is the rule that turns text
+into bytes and back. The same text gives different bytes in different encodings:
+
+```python run
+city = "София"
+
+utf8 = city.encode("utf-8")
+cp1251 = city.encode("cp1251")
+print(utf8, len(utf8))           # 2 bytes per Cyrillic letter
+print(cp1251, len(cp1251))       # 1 byte per letter
+print(utf8.decode("utf-8"), cp1251.decode("cp1251"))
+```
+
+- **UTF-8** - every character of every language; the standard of the web, of
+  Python source files and of most new files.
+- **cp1251** (Windows-1251) - the old Windows encoding for Cyrillic. Exports from old
+  systems and Excel files saved as "CSV" on a Bulgarian Windows are often cp1251.
+
+**Write and read Cyrillic text.** Use the same `encoding` on both sides:
 
 ```python run
 from pathlib import Path
@@ -734,9 +759,72 @@ print(Path("out/regions.txt").read_text(encoding="utf-8").splitlines())
 print(len(Path("out/regions.txt").read_bytes()), "bytes")     # 2 bytes per Cyrillic letter
 ```
 
+**Mojibake.** Reading with the wrong encoding gives either an error, or **mojibake** - wrong
+letters:
+
+```python run
+data = "София".encode("utf-8")
+print(data.decode("cp1251"))         # UTF-8 bytes read as cp1251: mojibake
+
+data = "София".encode("cp1251")
+try:
+    print(data.decode("utf-8"))
+except UnicodeDecodeError as error:  # cp1251 bytes read as UTF-8: an error
+    print("UnicodeDecodeError:", error)
+```
+
+That is why every [`open()`](https://docs.python.org/3/builtins/functions.html#open) in this course says `encoding="utf-8"`: without it, Python
+3.12 - 3.14 on Windows uses the Windows encoding of the computer (often cp1252 or
+cp1251), and the same script gives different results on different computers. (From
+Python 3.15 on, UTF-8 is the default everywhere. Still write it: the script may run
+on an older Python.)
+
+**Read a cp1251 file.** The file `regions_bg.csv` is saved in **cp1251** - the
+file of the `UnicodeDecodeError` in [section 1](#_1-errors-and-exceptions):
+
+```python run
+with open("data/regions_bg.csv", encoding="cp1251") as file:
+    print(file.read())
+
+with open("data/regions_bg.csv", encoding="utf-8", errors="replace") as file:
+    print(file.read())          # the wrong encoding: the letters become question marks
+```
+
+`errors="replace"` puts `?` (or `�`) instead of a byte that cannot be read,
+instead of stopping. Use it only to **look** at a file, never to load data.
+
+**The BOM of Excel.** Excel saves "CSV UTF-8" with a **BOM** - three bytes `EF BB BF` at the
+start. Read such a file with `encoding="utf-8-sig"`, or the first column name gets an
+invisible character in front:
+
+```python run
+with open("data/loans_export.csv", encoding="utf-8") as file:
+    print(repr(file.readline()[:12]))
+with open("data/loans_export.csv", encoding="utf-8-sig") as file:
+    print(repr(file.readline()[:12]))
+```
+
 ::: tip Try it
-Write the 10 loan ids with the largest outstanding into `out/top10.txt`, one per line,
-then read the file back and print the number of lines.
+Write `"Пловдив"` into `out/city.txt` with `encoding="cp1251"`. Read it back once
+with `"cp1251"` and once with `"utf-8"` (in a `try` / `except`). Predict both
+results first.
+:::
+
+::: details Answer
+```python run
+from pathlib import Path
+
+Path("out").mkdir(exist_ok=True)
+Path("out/city.txt").write_text("Пловдив", encoding="cp1251")
+print(Path("out/city.txt").read_text(encoding="cp1251"))
+try:
+    print(Path("out/city.txt").read_text(encoding="utf-8"))
+except UnicodeDecodeError as error:
+    print("UnicodeDecodeError:", error)
+```
+
+The same encoding on both sides gives the text back. UTF-8 cannot read the cp1251
+bytes: an error, not wrong letters.
 :::
 
 ## 7. CSV files
@@ -759,7 +847,7 @@ print(header)
 print(first)
 ```
 
-(`utf-8-sig` removes the BOM that Excel writes at the start - [lecture 7](./07-text-and-regex.md#encodings-utf-8-cp1251-and-cyrillic), Self-study.)
+(`utf-8-sig` removes the BOM that Excel writes at the start - [section 6](#encodings-utf-8-cp1251-and-cyrillic).)
 
 **No header line.** A file **without** a header line: give the column names with `fieldnames`:
 
@@ -1599,7 +1687,8 @@ reported with the kind of error.
   [`pathlib`](https://docs.python.org/3/library/pathlib.html),
   [`csv`](https://docs.python.org/3/library/csv.html),
   [`json`](https://docs.python.org/3/library/json.html),
-  [Logging HOWTO](https://docs.python.org/3/howto/logging.html)
+  [Logging HOWTO](https://docs.python.org/3/howto/logging.html),
+  [Unicode HOWTO](https://docs.python.org/3/howto/unicode.html) (encodings)
 - [openpyxl tutorial](https://openpyxl.readthedocs.io/en/stable/tutorial.html)
 - Real Python: [Python exceptions: an introduction](https://realpython.com/python-exceptions/),
   [Python's pathlib module](https://realpython.com/python-pathlib/)

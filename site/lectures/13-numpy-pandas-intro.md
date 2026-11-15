@@ -468,7 +468,7 @@ that is right. For files from other systems, the options tell pandas how to read
 | `sep=";"` | the separator | `DLM=';'` |
 | `decimal=","` | the decimal comma | `COMMAX.` |
 | `thousands=" "` | the thousands separator | `COMMA.` |
-| `encoding="utf-8-sig"` / `"cp1251"` | the encoding ([lecture 7](./07-text-and-regex.md#encodings-utf-8-cp1251-and-cyrillic)) | `ENCODING=` |
+| `encoding="utf-8-sig"` / `"cp1251"` | the encoding ([lecture 8](./08-errors-and-files.md#encodings-utf-8-cp1251-and-cyrillic)) | `ENCODING=` |
 | `dtype={"client_id": str}` | the type of a column | `$` / an informat |
 | `parse_dates=[...]`, `dayfirst=True` | dates | `DDMMYY10.` |
 | `na_values=["."]` | texts that mean "missing" | `.` is missing in SAS |
