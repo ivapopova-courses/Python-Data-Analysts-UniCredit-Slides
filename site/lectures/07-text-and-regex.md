@@ -35,7 +35,7 @@ data clean;
 run;
 ```
 
-::: info Reading a CSV file: `csv.DictReader`
+::: info Reading a CSV file: `csv.DictReader` {#reading-a-csv-file}
 The examples of this lecture read the sample files with the module `csv` (it comes
 with Python). [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) gives each row of the file as a **dictionary**: the
 column name is the key, the value is **text** - a record as in
@@ -440,7 +440,7 @@ for raw in ["c0014", "C 0009", "C-0026", "C17", " C0011", "X0001", "C"]:
 
 ::: tip Try it
 Clean the whole file: read the `client_id` column of `client_register.csv` (as in
-the box "Reading a CSV file" at the start of this lecture) and clean every id with
+the box [Reading a CSV file](#reading-a-csv-file) at the start of this lecture) and clean every id with
 `clean_client_id`. How many ids change? How many are `None`? Are the clean ids
 unique?
 :::

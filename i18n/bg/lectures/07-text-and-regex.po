@@ -482,7 +482,7 @@ msgstr ""
 
 #. paragraph
 #: site/lectures/07-text-and-regex.md:442
-msgid "Clean the whole file: read the `client_id` column of `client_register.csv` (as in the box \"Reading a CSV file\" at the start of this lecture) and clean every id with `clean_client_id`. How many ids change? How many are `None`? Are the clean ids unique?"
+msgid "Clean the whole file: read the `client_id` column of `client_register.csv` (as in the box [Reading a CSV file](#reading-a-csv-file) at the start of this lecture) and clean every id with `clean_client_id`. How many ids change? How many are `None`? Are the clean ids unique?"
 msgstr ""
 
 #. box title

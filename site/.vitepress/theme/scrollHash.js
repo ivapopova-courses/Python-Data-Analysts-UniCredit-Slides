@@ -50,8 +50,25 @@ function pagePath(page, site) {
   return path
 }
 
+// Back after a #link on the same page: VitePress adds a history entry for the link
+// but does not remember where the reader was (it does so only for links to other
+// pages), so Back scrolls to the top of the section, not to the link. Remember the
+// scroll position in the current entry before every new one; on Back the VitePress
+// router reads `scrollPosition` and scrolls there.
+function rememberScrollOnPush() {
+  const push = history.pushState
+  history.pushState = function (...args) {
+    try {
+      history.replaceState({ ...history.state, scrollPosition: window.scrollY }, '')
+    } catch { }
+    return push.apply(this, args)
+  }
+}
+
 // `data`: useData(), from the theme's setup (index.js)
 export function setupScrollHash({ page, site }) {
+  rememberScrollOnPush()
+
   // a page opened with a #section (a link, a reload): VitePress measures where the
   // section is before codeFold.js has folded the long blocks above it, and scrolls
   // there in the next frame - too far, as the folding has moved the section up. So
