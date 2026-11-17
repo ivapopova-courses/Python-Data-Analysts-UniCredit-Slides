@@ -45,8 +45,8 @@ msgstr "хващате грешка с `try` / `except` и да продължа
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:17
-msgid "raise your own errors with a clear message when the data is wrong;"
-msgstr "предизвиквате свои грешки с ясно съобщение, когато данните са грешни;"
+msgid "raise errors with a clear message when the data is wrong;"
+msgstr "предизвиквате грешки с ясно съобщение, когато данните са грешни;"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:18
@@ -1276,6 +1276,9 @@ msgstr "Real Python: [Python exceptions: an introduction](https://realpython.com
 #: site/lectures/08-errors-and-files.md:1369
 msgid "**Next session:** modules, packages and Git - turn your functions into a module you can import, set up a project folder, and keep its history in Git."
 msgstr "**Следващото занятие:** модули, packages и Git - превърнете функциите си в модул, който можете да import-нете, подгответе папка за проект и пазете историята ѝ в Git."
+
+#~ msgid "raise your own errors with a clear message when the data is wrong;"
+#~ msgstr "предизвиквате свои грешки с ясно съобщение, когато данните са грешни;"
 
 #~ msgid "Common relative paths:"
 #~ msgstr "Често срещани относителни пътища:"

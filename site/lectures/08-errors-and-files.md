@@ -14,7 +14,7 @@ title: 8. Error handling and file handling
 - read a traceback, and know the common exceptions of data work;
 - catch an error with `try` / `except` and go on - instead of stopping the whole
   script;
-- raise your own errors with a clear message when the data is wrong;
+- raise errors with a clear message when the data is wrong;
 - work with files and folders through `pathlib`;
 - read and write text, CSV and JSON files, also in cp1251 (old Windows Cyrillic).
 
