@@ -147,7 +147,7 @@ print(type(first), isinstance(first, Loan))
 ```
 
 - `class Loan:` - the name of a class is in **CamelCase** (PEP 8): `Loan`,
-  `RatingGrade`, `DataError`.
+  `Client`, `RatingGrade`.
 - [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) is the special method that runs when an object is **created**:
   `Loan("L000001", ...)` creates a new, empty object and calls [`__init__`](https://docs.python.org/3/reference/datamodel.html#object.__init__) with it.
 - `self` is that new object. `self.loan_id = loan_id` stores a value **in the
@@ -782,8 +782,8 @@ for args in [("X1", 100.0, 50.0), ("L000002", 100.0, 150.0)]:
 This is the "validation rules" part of the client's nomenclature idea: the rules sit
 in the class, and **every** object that exists has passed them.
 
-**Load a file with checks.** With a file, the loader of [lecture 8](./08-errors-and-files.md#_10-loading-data-with-bad-records) decides what to do with a row that fails: one
-`try` per row, and a list of the rejected rows:
+**Load a file with checks.** With a file, decide what to do with a row that fails: one
+`try` per row ([lecture 8](./08-errors-and-files.md#_2-try-except)), and a list of the rejected rows:
 
 ```python run
 import csv
@@ -1300,41 +1300,6 @@ for c in top:
 print(sum(1 for c in clients.values() if not c.loans), "clients without loans")
 ```
 
-**Reports from the objects.** From the objects, the usual reports - exposure per segment, and the share of the
-largest client in each segment ([`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
-
-```python run
-import csv
-from collections import defaultdict
-from dataclasses import dataclass, field
-
-@dataclass
-class Client:
-    client_id: str
-    segment: str
-    balances: list = field(default_factory=list)
-
-    @property
-    def exposure(self):
-        return sum(self.balances)
-
-
-with open("data/clients.csv", encoding="utf-8") as file:
-    clients = {r["client_id"]: Client(r["client_id"], r["segment"]) for r in csv.DictReader(file)}
-with open("data/loans.csv", encoding="utf-8") as file:
-    for r in csv.DictReader(file):
-        clients[r["client_id"]].balances.append(float(r["outstanding"]))
-
-by_segment = defaultdict(list)
-for c in clients.values():
-    by_segment[c.segment].append(c)
-
-for segment, members in sorted(by_segment.items()):
-    total = sum(c.exposure for c in members)
-    largest = max(members, key=lambda c: c.exposure)
-    print(f"{segment:<10}{total:>18,.2f}  largest {largest.client_id} {largest.exposure / total:6.1%}")
-```
-
 **A link both ways.** The link can go both ways: each loan keeps its **client object**, so `loan.client.rating`
 reads the rating through the link - like a join that is done once. The EL of
 homework 4 again, 1,140,106.56:
@@ -1371,7 +1336,7 @@ print(f"{sum(l.expected_loss(pd_of) for l in loans):,.2f}")
 ```
 
 **A loan without a client.** The trap: a loan whose client is not in the clients file. `clients[r["client_id"]]`
-stops the whole load with a `KeyError`; [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) and a list of rejects ([lecture 8](./08-errors-and-files.md#the-reject-file-and-the-summary)) keep
+stops the whole load with a `KeyError`; [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) and a list of rejects keep
 going and report it:
 
 ```python run

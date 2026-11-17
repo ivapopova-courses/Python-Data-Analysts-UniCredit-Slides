@@ -16,11 +16,7 @@ title: 8. Error handling and file handling
   script;
 - raise your own errors with a clear message when the data is wrong;
 - work with files and folders through `pathlib`;
-- read and write text, CSV, JSON and Excel files, also in cp1251 (old Windows Cyrillic);
-- sum by group and collect the rows of each group with [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) - `GROUP BY`
-  with `SUM` in SQL;
-- load a file with bad rows: keep the good rows, write the bad ones to a reject file
-  with the reason, and report a summary - the job of the SAS log, done properly.
+- read and write text, CSV and JSON files, also in cp1251 (old Windows Cyrillic).
 
 From SAS to Python - a bad value in the data. SAS writes a NOTE to the log, sets the
 value to missing and goes on:
@@ -52,8 +48,8 @@ with open("data/payments_2026-09.csv", encoding="utf-8") as file:
 print(len(good), "amounts read; bad values:", bad)
 ```
 
-By the end of today you will turn this into a loader that checks every field, and
-writes the bad rows into their own file.
+Sections 2 - 4 show how this works: catch the error, say what is wrong, and decide
+when to go on and when to stop.
 
 ## 1. Errors and exceptions
 
@@ -93,7 +89,7 @@ Read it **from the bottom up**:
 2. Above it: the line of **your** code where it happened, and the function.
 3. Higher: who called that function, and so on, up to the first call.
 
-### The exceptions you will meet
+### The exceptions you will often meet
 
 | Exception | When | A data example |
 |---|---|---|
@@ -117,33 +113,14 @@ for test in tests:
         print(f"{type(error).__name__:<20}{error}")
 ```
 
-(This loop already uses `try` / `except` - the next section.)
+(`try` / `except` are explained in the next section.)
 
-**Errors from the data.** Two more that come from the data, not from your code - a value that is `None`, and a
-file in another encoding:
+**Errors from the data.** An error can also come from the data, not from your code - a value that is `None`:
 
 ```python run
 city = None                       # a missing value from a lookup
 print(city.strip())               # AttributeError: 'NoneType' object has no attribute 'strip'
 ```
-
-**A file in another encoding.** The file is saved in cp1251, but read as UTF-8:
-
-```python run
-with open("data/regions_bg.csv", encoding="utf-8") as file:     # the file is cp1251
-    print(file.read())            # UnicodeDecodeError
-```
-
-| SAS | Python |
-|---|---|
-| `NOTE: Invalid data`, the value becomes missing, the step goes on | the script **stops**, unless you catch the exception |
-| `_ERROR_ = 1` for the row | the `except` block runs for the row |
-| `ERROR:` in the log stops the step | an exception that nobody catches |
-
-::: tip Try it
-Run each line alone, and name the exception before you run it: [`int(" 42 ")`](https://docs.python.org/3/builtins/functions.html#int),
-[`int("4 2")`](https://docs.python.org/3/builtins/functions.html#int), [`float("1e3")`](https://docs.python.org/3/builtins/functions.html#float), `["a"].index("b")`, `"abc"[10]`.
-:::
 
 ## 2. `try` / `except`
 
@@ -178,9 +155,9 @@ except ValueError as error:
     print("bad date:", error)
 ```
 
-### Several kinds
+### Catch several kinds of errors
 
-Several `except` blocks for different types, or one block for a **tuple** of types:
+You can have several `except` blocks for different types:
 
 ```python run
 rates = {"EUR": 1.0, "USD": 1.165}
@@ -196,7 +173,7 @@ def to_eur(amount_text, currency):
 print(to_eur("100", "USD"), to_eur("abc", "USD"), to_eur("100", "BGN"))
 ```
 
-**A number, or `None`.** One helper for empty, missing and bad values:
+You can also use a **tuple** of error types to catch several errors at once:
 
 ```python run
 def to_float(value):
@@ -209,51 +186,9 @@ def to_float(value):
 print([to_float(v) for v in ["12.5", "", None, "n/a", " 7 "]])
 ```
 
-`to_float` is a small helper you will use in every loader: "a number, or `None`" -
+`to_float` is a small helper function that you can use in every loader: "a number, or `None`" -
 like an informat with the `??` modifier in SAS, which reads a bad value as missing
 without a note.
-
-**Outstanding from the export.** On a real column - the `Outstanding` of `loans_export.csv`, with its decimal commas
-and a SAS-style `.` for missing values. Convert, count what failed:
-
-```python run
-import csv
-
-def to_float_bg(value):
-    try:
-        return float(value.replace(",", "."))
-    except (AttributeError, ValueError):
-        return None
-
-with open("data/loans_export.csv", encoding="utf-8-sig") as file:
-    raw = [row["Outstanding"] for row in csv.DictReader(file, delimiter=";")]
-
-values = [to_float_bg(v) for v in raw]
-print(len(values), "values,", values.count(None), "missing:", [r for r, v in zip(raw, values) if v is None])
-print(f"total of the known values: {sum(v for v in values if v is not None):,.2f}")
-```
-
-### Try the formats one by one
-
-[Lecture 7](./07-text-and-regex.md#several-date-formats) detected the date format by the shape of the text. With `try`, there is a
-shorter way: try each format, and take the first that works:
-
-```python run
-from datetime import datetime
-
-FORMATS = ["%Y-%m-%d", "%d.%m.%Y", "%d/%m/%Y", "%Y%m%d", "%d %b %Y"]
-
-def parse_date(text):
-    for fmt in FORMATS:
-        try:
-            return datetime.strptime(text.strip(), fmt).date()
-        except ValueError:
-            pass                  # not this format - try the next one
-    return None                   # no format fits
-
-for text in ["2014-06-08", "08.06.2014", "8 Jun 2014", "31.09.2026", "soon"]:
-    print(f"{text:>12} -> {parse_date(text)}")
-```
 
 ### The traps: catching too much
 
@@ -273,19 +208,13 @@ def safe_total(values):
 print(safe_total(["10", "20", "30"]))  # 0 - and no error
 ```
 
-Rules:
+### Rules
 
 - Catch the **specific** exception you expect (`ValueError`, `KeyError`), not all.
 - Keep the `try` block **small**: only the line that can fail.
 - Never `pass` silently in a loader: count the error, or write it somewhere.
 
-::: tip Try it
-Change `to_float` (in [Several kinds](#several-kinds) above) so that it also accepts the Bulgarian format `"12,50"`: try
-[`float(value)`](https://docs.python.org/3/builtins/functions.html#float) first, and if that fails, try again with the comma replaced. Test it
-with `"12,50"`, `"12.50"`, `"1 234,5"` and `"abc"`.
-:::
-
-## 3. `else` and `finally`
+## 3. `try`, `except`, `else` and `finally`
 
 The full form has two more parts:
 
@@ -300,77 +229,28 @@ finally:
     runs ALWAYS - after an error, without one, even after a return
 ```
 
-**All four parts at work.** One good value and one bad value:
-
-```python run
-for text in ["12.50", "abc"]:
-    try:
-        amount = float(text)
-    except ValueError:
-        print(text, "-> error")
-    else:
-        print(text, "-> ok, in EUR thousands:", amount / 1000)
-    finally:
-        print("   (checked", repr(text) + ")")
-```
-
 `else` keeps the `try` block small: only the risky line is inside, the code that
 **uses** the result is in `else`. `finally` is for clean-up that must happen
 whatever comes - closing a connection ([lecture 12](./12-databases.md#close-the-connection-always)), writing the last log line.
 
-**A missing monthly file.** A monthly file that may not be there yet - the error is expected, the work on the
-file is in `else`:
+In the next example, `finally` makes sure that a loan never stays marked as "under review"
+after its processing ends - even after an unexpected exception.
 
 ```python run
-for name in ["data/loans.csv", "data/loans_2026-10.csv"]:
+active_reviews = set()
+
+for loan_id, income in [("L001", "2500"), ("L002", "unknown")]:
+    active_reviews.add(loan_id)
+
     try:
-        file = open(name, encoding="utf-8")
-    except FileNotFoundError:
-        print(name, "-> not delivered yet")
+        monthly_income = float(income)
+    except ValueError:
+        print(loan_id, "-> invalid income; manual review needed")
     else:
-        with file:
-            print(name, "->", sum(1 for line in file) - 1, "rows")
-```
-
-**`finally` with an uncaught error.** `finally` runs even when the error is **not** caught - the clean-up happens, then the
-error goes on:
-
-```python run
-def load(values):
-    print("start")
-    try:
-        return [float(v) for v in values]
+        print(loan_id, "-> monthly income:", monthly_income)
     finally:
-        print("clean-up done")
-
-print(load(["1", "2"]))
-print(load(["1", "x"]))          # "clean-up done" is printed, then the ValueError
+        active_reviews.remove(loan_id)
 ```
-
-### Ask first, or try and catch?
-
-Two styles for the same check:
-
-```python run
-rating_of = {"C0001": 3, "C0002": 5}
-
-# LBYL - "look before you leap": check first
-client_id = "C9999"
-if client_id in rating_of:
-    print(rating_of[client_id])
-else:
-    print("unknown client")
-
-# EAFP - "easier to ask forgiveness than permission": try, and catch
-try:
-    print(rating_of[client_id])
-except KeyError:
-    print("unknown client")
-```
-
-Both are fine. Python code often uses EAFP when the check would repeat the work
-(converting a number to see if it can be converted), and `if` / [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) when the check
-is cheap and clear (a key in a dictionary).
 
 ::: tip Try it
 Predict the output, then run:
@@ -389,7 +269,20 @@ print(f(0))
 ```
 :::
 
-## 4. `raise` and your own exceptions
+::: details Answer
+```text
+finally for 2
+5.0
+finally for 0
+zero
+```
+
+`finally` runs **before** the function returns, so its line comes first. The
+`return` value is printed only after `f` has ended. With `0`, the `except` block
+returns `"zero"`, and `finally` still runs.
+:::
+
+## 4. `raise`
 
 ### `raise`: stop with a clear message
 
@@ -409,74 +302,27 @@ print(check_stage(4))
 A good message names the **value** and the **rule**. "Error" alone helps nobody at
 the end of a month.
 
-**Stop on a wrong setting.** A wrong **setting** must stop the report before it starts - a report for the wrong
-month is worse than no report:
+::: tip Try it
+Write `check_currency(code)` that returns the code in capitals if it is one of `EUR`,
+`USD`, `GBP` (any case, spaces at the ends allowed), and raises a `ValueError` with the
+value in the message otherwise.
+:::
 
+::: details Answer
 ```python run
-from datetime import date
+def check_currency(code):
+    clean = code.strip().upper()
+    if clean not in ("EUR", "USD", "GBP"):
+        raise ValueError(f"currency must be EUR, USD or GBP, got {code!r}")
+    return clean
 
-def check_report_date(text):
-    d = date.fromisoformat(text)                    # a ValueError if not ISO
-    next_day = date.fromordinal(d.toordinal() + 1)
-    if next_day.day != 1:
-        raise ValueError(f"report_date must be the last day of a month, got {text}")
-    return d
-
-print(check_report_date("2026-09-30"))
-print(check_report_date("2026-09-29"))
+print(check_currency(" usd "))
+print(check_currency("BGN"))
 ```
 
-### Your own exception type
-
-A one-line class (classes: [lecture 10](./10-oop-classes.md)) makes a new kind of exception. Then the
-loader can catch **your** data errors, and let real bugs (a `NameError`, a
-`TypeError` in your code) stop the script:
-
-```python run
-class DataError(ValueError):
-    """A value in the input data breaks a rule."""
-
-def check_amount(text):
-    try:
-        amount = float(text)
-    except ValueError:
-        raise DataError(f"amount is not a number: {text!r}") from None
-    if amount <= 0:
-        raise DataError(f"amount must be positive: {amount}")
-    return amount
-
-for text in ["125.00", "-75", "12O.50"]:
-    try:
-        print("ok", check_amount(text))
-    except DataError as error:
-        print("rejected:", error)
-```
-
-`raise ... from None` replaces the original `ValueError` by the clearer `DataError`
-(without it, Python shows both). Because `DataError` is a kind of `ValueError`, code
-that catches `ValueError` catches it too.
-
-### Re-raise: add context and go on up
-
-Sometimes a function cannot handle an error, but it can add information - the file
-and the line - and raise again:
-
-```python run
-class DataError(ValueError):
-    pass
-
-def load_amounts(lines):
-    result = []
-    for line_no, text in enumerate(lines, start=2):
-        try:
-            result.append(float(text))
-        except ValueError as error:
-            raise DataError(f"payments.csv, line {line_no}: {error}") from error
-    return result
-
-print(load_amounts(["10", "20"]))
-print(load_amounts(["10", "x", "20"]))
-```
+Clean the value first, then check it. The message shows the original value with
+`!r`, so the spaces and the case of the input are visible too.
+:::
 
 ### All problems of a row, not only the first
 
@@ -508,40 +354,83 @@ print(problems_of({"loan_id": "X1", "amount": "n/a", "currency": "BGN"}))
 | Situation | What to do |
 |---|---|
 | a bad row in a big input | go on: reject the row, count it, report it |
-| a missing input file, a wrong report date | stop: `raise` - a report on wrong input is worse than no report |
-| too many bad rows (say more than 1%) | stop after loading: the input is broken |
-| a bug in your code | let it stop - do not catch it |
-
-::: warning `assert` is not for data checks
-`assert x > 0, "message"` raises an `AssertionError` when the condition is false - but
-Python **removes** all `assert` statements when run with `python -O`. Use `assert` in
-tests and for "this can never happen" checks of your own code; check data with `if`
-and `raise`.
-:::
-
-::: tip Try it
-Write `check_currency(code)` that returns the code in capitals if it is one of `EUR`,
-`USD`, `GBP` (any case, spaces at the ends allowed), and raises a `DataError` with the
-value in the message otherwise.
-:::
+| too many bad rows (say more than 1%) | stop: the input is broken |
+| a missing input file, a wrong report date | stop: a report on wrong input is worse than no report |
+| a possible bug in your code | stop: do not catch it |
 
 ## 5. Paths with `pathlib`
 
-### A path is an object
+### What is a path?
 
-The module `pathlib` gives `Path` objects. The operator `/` joins the parts - the same
-code works on Windows (`\`) and on Linux / macOS (`/`):
+A **path** tells Python where to find a file or a folder - for example, the CSV file
+with the loans.
+
+A path can be:
+
+- **absolute**: the full location, from the top of the disk. For example
+  `C:/RiskAnalysis/data/loans.csv` on Windows, or
+  `/home/maria/RiskAnalysis/data/loans.csv` on Linux and macOS.
+- **relative**: a location that starts from the **current working directory** - the
+  folder where Python "stands" when the script runs. For example `data/loans.csv`.
+
+Common relative paths. In this example, the current folder is `reports`:
+
+```text
+RiskAnalysis/
+├── data/
+│   └── loans.csv          <- ../data/loans.csv
+└── reports/               <- the current folder
+    ├── loans.csv          <- loans.csv or ./loans.csv
+    └── data/
+        └── loans.csv      <- data/loans.csv
+```
+
+| Path | Where it points |
+|---|---|
+| `loans.csv` | the file `loans.csv` in the current folder |
+| `./loans.csv` | the same file: `.` means "the current folder" |
+| `data/loans.csv` | the file `loans.csv` in the folder `data`, inside the current folder |
+| `../data/loans.csv` | `..` means "one folder up": the folder `data` next to the current folder |
+
+So far we wrote `open("data/loans.csv")` - a relative path. It works because you run
+the scripts from the folder of the homework repository, and `data` is in that folder:
+
+```text
+Homework/                      <- the current folder (you run python from here)
+├── data/
+│   ├── loans.csv
+│   └── clients.csv
+└── 08-errors-and-files/
+    └── homework.py
+```
+
+::: warning The same script, another folder: `FileNotFoundError`
+A relative path depends on the folder you run the script **from**, not on the folder
+where the script is. If you open a terminal in `Homework/08-errors-and-files/` and run
+`python homework.py`, Python looks for `08-errors-and-files/data/loans.csv` - and
+there is no such file. Run the scripts from the repository folder, as the first line
+of each task file says.
+:::
+
+### A `Path` object
+
+The module [`pathlib`](https://docs.python.org/3/library/pathlib.html) gives a **`Path` object**. The operator `/` joins the parts of a
+path (here it is not a division), with the right separator for Windows (`\`) or
+Linux / macOS (`/`):
 
 ```python run
 from pathlib import Path
 
-data = Path("data")
-loans_file = data / "loans.csv"
+print(Path.cwd())                         # the current working directory
 
+loans_file = Path("data") / "loans.csv"
 print(loans_file)
-print(loans_file.exists(), loans_file.is_file(), data.is_dir())
-print(loans_file.name, "|", loans_file.stem, "|", loans_file.suffix, "|", loans_file.parent)
+print(loans_file.exists())                # does the file exist?
+print(loans_file.name, loans_file.suffix) # the file name and its type
 ```
+
+In SAS a `LIBNAME` or a `FILENAME` gives a name to a location; in Python you keep the
+location in a variable:
 
 | SAS | Python |
 |---|---|
@@ -560,63 +449,27 @@ Path("C:/Users/maria/reports/new_loans.csv")      # forward slashes
 ```
 :::
 
-### What is in a folder: `iterdir`
+### The output folder
+
+A report script writes its results into a folder, for example `out`. [`mkdir`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir) creates
+it; `exist_ok=True` means "no error if it is already there", so the script can run
+every month. For a small file, `write_text` and `read_text` write and read the whole
+text in one step:
 
 ```python run
 from pathlib import Path
 
-for path in sorted(Path("data").iterdir()):
-    kind = "folder" if path.is_dir() else path.suffix
-    print(f"{path.name:<24}{kind}")
-```
+Path("out").mkdir(exist_ok=True)
 
-### Find files: `glob`
-
-[`glob(pattern)`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) lists the files of a folder whose names fit a pattern - `*` is any
-text (the shell kind of pattern, not a regex):
-
-```python run
-from pathlib import Path
-
-for path in sorted(Path("data").glob("*.csv")):
-    print(f"{path.name:<24}{path.stat().st_size:>8} bytes")
-
-print([p.name for p in Path("data").glob("loan*")])
-```
-
-### Create folders, read and write whole files
-
-```python run
-from pathlib import Path
-
-out = Path("out")
-out.mkdir(parents=True, exist_ok=True)          # no error if it exists
-
-note = out / "readme.txt"
+note = Path("out") / "readme.txt"
 note.write_text("Created by the monthly report.\n", encoding="utf-8")
 print(note.read_text(encoding="utf-8"))
-print(Path.cwd())                                # the current folder
 ```
 
-`exist_ok=True` makes [`mkdir`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir) safe to run every month. `parents=True` creates the
-missing folders above it too.
+### Say which file is missing
 
-**Names of output files.** Build the names of output files from parts - the month in the name, another suffix
-for the same name:
-
-```python run
-from pathlib import Path
-
-out = Path("out")
-report = out / "report_2026-09.xlsx"
-print(report.with_suffix(".csv"))                       # the same name, another type
-print(report.with_name("rejected_2026-09.csv"))
-print([out / f"loans_2026-{m:02d}.csv" for m in (7, 8, 9)])
-print(report.parts)
-```
-
-**Say which file is missing.** A missing input file is a `FileNotFoundError` - catch it and say **which** file is
-missing:
+If a file is not there, `open` raises a `FileNotFoundError` (section 1). In a monthly
+job this often means "the input is not delivered yet". Say **which** file is missing:
 
 ```python run
 from pathlib import Path
@@ -630,17 +483,55 @@ except FileNotFoundError:
 ```
 
 ::: tip Try it
-List the files in `data/` that are **not** CSV files, with their size in KB, sorted
-by size.
+Change the file name to `payments_2026-09.csv` and print `len(rows)` after the
+`try` block. Then check with `exists()`, without `open`, which of `loans.csv`,
+`clients.csv` and `payments_2026-10.csv` are in `data/`.
+:::
+
+::: details Answer
+```python run
+from pathlib import Path
+
+path = Path("data") / "payments_2026-09.csv"
+try:
+    with open(path, encoding="utf-8") as file:
+        rows = file.readlines()
+except FileNotFoundError:
+    print(f"ERROR: the input {path} is not delivered yet")
+
+print(len(rows))
+
+for name in ["loans.csv", "clients.csv", "payments_2026-10.csv"]:
+    print(name, (Path("data") / name).exists())
+```
+
+`len(rows)` counts all lines, the header too. With the missing October file,
+`print(len(rows))` raises a `NameError`: the `except` block ran, so `rows` was never
+created.
 :::
 
 ## 6. Text files
 
 ### Open, read, close: `with`
 
-Since [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) you open files with `with open(...) as file:`. `with` **closes** the
-file at the end of the block - also when an exception happens inside. Without
-`with`, an error can leave the file open (and on Windows, locked).
+To work with a file, a program **opens** it, **reads** or **writes**, and **closes**
+it. In Python, `with open(...)` does all three:
+
+```python run
+with open("data/rating_scale.csv", encoding="utf-8") as file:   # open the file
+    first_line = file.readline()                                # read from it
+                                                                # here the file is closed
+print(first_line)
+```
+
+- [`open(path, encoding=...)`](https://docs.python.org/3/builtins/functions.html#open) opens the file and gives a **file object**;
+- `as file` gives the file object a name - `file` is just a variable;
+- the indented block works with the file;
+- at the end of the block, `with` **closes** the file - also when an exception
+  happens inside. Without `with`, an error can leave the file open (and on Windows,
+  locked).
+
+You have used it since [session 2](./02-conditions-and-loops.md#the-rows-of-a-file).
 
 The **mode** says what you want to do:
 
@@ -651,7 +542,7 @@ The **mode** says what you want to do:
 | `"a"` | append at the end |
 | `"x"` | write a new file - an error if it exists |
 
-**Write a file.** Always give the `encoding` (why: [Encodings](#encodings-utf-8-cp1251-and-cyrillic) below):
+**Write a file.** Always give the `encoding` (why: see [Encodings](#encodings-utf-8-cp1251-and-cyrillic) below):
 
 ```python run
 from pathlib import Path
@@ -687,40 +578,16 @@ print(Path("out/history.txt").read_text(encoding="utf-8"))     # August is gone
 ```
 :::
 
-### Read: all at once, or line by line
-
-```python run
-with open("data/rating_scale.csv", encoding="utf-8") as file:
-    text = file.read()                 # the whole file as one string
-print(len(text), "characters")
-
-with open("data/rating_scale.csv", encoding="utf-8") as file:
-    lines = file.read().splitlines()   # a list of lines, without "\n"
-print(lines[:3])
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    count = sum(1 for line in file)    # line by line: little memory, any file size
-print(count, "lines")
-```
+### Read a big file line by line
 
 For big files, loop over the file object: only one line is in memory at a time.
 
-**Do not overwrite: `"x"`.** The mode `"x"` protects a file that must not be overwritten - the second run fails
-instead of destroying the first result:
-
 ```python run
-from pathlib import Path
-
-Path("out").mkdir(exist_ok=True)
-Path("out/final_2026-09.txt").unlink(missing_ok=True)     # start clean for this example
-
-with open("out/final_2026-09.txt", "x", encoding="utf-8") as file:
-    file.write("approved figures\n")
-try:
-    with open("out/final_2026-09.txt", "x", encoding="utf-8") as file:
-        file.write("overwritten?\n")
-except FileExistsError as error:
-    print("not written:", error)
+with open("data/loans.csv", encoding="utf-8") as file:
+    count = 0
+    for line in file:              # one line at a time
+        count += 1
+print(count, "lines")
 ```
 
 ::: tip Try it
@@ -728,49 +595,50 @@ Write the 10 loan ids with the largest outstanding into `out/top10.txt`, one per
 then read the file back and print the number of lines.
 :::
 
+::: details Answer
+```python run
+from pathlib import Path
+
+loans = []
+with open("data/loans.csv", encoding="utf-8") as file:
+    file.readline()                               # skip the header line
+    for line in file:
+        fields = line.strip().split(",")
+        loans.append((float(fields[7]), fields[0]))   # (outstanding, loan_id)
+
+top10 = sorted(loans, reverse=True)[:10]          # the largest first
+
+Path("out").mkdir(exist_ok=True)
+with open("out/top10.txt", "w", encoding="utf-8") as file:
+    for outstanding, loan_id in top10:
+        file.write(loan_id + "\n")
+
+with open("out/top10.txt", encoding="utf-8") as file:
+    count = 0
+    for line in file:
+        count += 1
+print(count, "lines")
+```
+
+The tuples `(outstanding, loan_id)` sort by their first item, the outstanding.
+:::
+
 ### Encodings: UTF-8, cp1251 and Cyrillic
 
 A file on disk is **bytes**, not text. An **encoding** is the rule that turns text
-into bytes and back. The same text gives different bytes in different encodings:
-
-```python run
-city = "София"
-
-utf8 = city.encode("utf-8")
-cp1251 = city.encode("cp1251")
-print(utf8, len(utf8))           # 2 bytes per Cyrillic letter
-print(cp1251, len(cp1251))       # 1 byte per letter
-print(utf8.decode("utf-8"), cp1251.decode("cp1251"))
-```
+into bytes and back. Two encodings you will meet:
 
 - **UTF-8** - every character of every language; the standard of the web, of
   Python source files and of most new files.
 - **cp1251** (Windows-1251) - the old Windows encoding for Cyrillic. Exports from old
   systems and Excel files saved as "CSV" on a Bulgarian Windows are often cp1251.
 
-**Write and read Cyrillic text.** Use the same `encoding` on both sides:
+Read a file with the **same** encoding it was written with. The file `regions_bg.csv`
+is saved in cp1251 - the file of the `UnicodeDecodeError` in [section 1](#_1-errors-and-exceptions):
 
 ```python run
-from pathlib import Path
-
-Path("out").mkdir(exist_ok=True)
-Path("out/regions.txt").write_text("София\nПловдив\nВарна\n", encoding="utf-8")
-print(Path("out/regions.txt").read_text(encoding="utf-8").splitlines())
-print(len(Path("out/regions.txt").read_bytes()), "bytes")     # 2 bytes per Cyrillic letter
-```
-
-**Mojibake.** Reading with the wrong encoding gives either an error, or **mojibake** - wrong
-letters:
-
-```python run
-data = "София".encode("utf-8")
-print(data.decode("cp1251"))         # UTF-8 bytes read as cp1251: mojibake
-
-data = "София".encode("cp1251")
-try:
-    print(data.decode("utf-8"))
-except UnicodeDecodeError as error:  # cp1251 bytes read as UTF-8: an error
-    print("UnicodeDecodeError:", error)
+with open("data/regions_bg.csv", encoding="cp1251") as file:
+    print(file.read())
 ```
 
 That is why every [`open()`](https://docs.python.org/3/builtins/functions.html#open) in this course says `encoding="utf-8"`: without it, Python
@@ -779,23 +647,10 @@ cp1251), and the same script gives different results on different computers. (Fr
 Python 3.15 on, UTF-8 is the default everywhere. Still write it: the script may run
 on an older Python.)
 
-**Read a cp1251 file.** The file `regions_bg.csv` is saved in **cp1251** - the
-file of the `UnicodeDecodeError` in [section 1](#_1-errors-and-exceptions):
-
-```python run
-with open("data/regions_bg.csv", encoding="cp1251") as file:
-    print(file.read())
-
-with open("data/regions_bg.csv", encoding="utf-8", errors="replace") as file:
-    print(file.read())          # the wrong encoding: the letters become question marks
-```
-
-`errors="replace"` puts `?` (or `�`) instead of a byte that cannot be read,
-instead of stopping. Use it only to **look** at a file, never to load data.
-
-**The BOM of Excel.** Excel saves "CSV UTF-8" with a **BOM** - three bytes `EF BB BF` at the
-start. Read such a file with `encoding="utf-8-sig"`, or the first column name gets an
-invisible character in front:
+::: details Advanced: the BOM of Excel
+Excel saves "CSV UTF-8" with a **BOM** - three invisible bytes at the start. Read
+such a file with `encoding="utf-8-sig"`, or the first column name gets an invisible
+character in front:
 
 ```python run
 with open("data/loans_export.csv", encoding="utf-8") as file:
@@ -803,37 +658,128 @@ with open("data/loans_export.csv", encoding="utf-8") as file:
 with open("data/loans_export.csv", encoding="utf-8-sig") as file:
     print(repr(file.readline()[:12]))
 ```
-
-::: tip Try it
-Write `"Пловдив"` into `out/city.txt` with `encoding="cp1251"`. Read it back once
-with `"cp1251"` and once with `"utf-8"` (in a `try` / `except`). Predict both
-results first.
-:::
-
-::: details Answer
-```python run
-from pathlib import Path
-
-Path("out").mkdir(exist_ok=True)
-Path("out/city.txt").write_text("Пловдив", encoding="cp1251")
-print(Path("out/city.txt").read_text(encoding="cp1251"))
-try:
-    print(Path("out/city.txt").read_text(encoding="utf-8"))
-except UnicodeDecodeError as error:
-    print("UnicodeDecodeError:", error)
-```
-
-The same encoding on both sides gives the text back. UTF-8 cannot read the cp1251
-bytes: an error, not wrong letters.
 :::
 
 ## 7. CSV files
 
 ### Read: `csv.reader` and `csv.DictReader`
 
-You know [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) ([lecture 7](./07-text-and-regex.md), the box at the start). [`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) gives each row as a **list**.
-Both understand quotes, and both take a `delimiter` for files that are not
-comma-separated - like `;` in a Bulgarian Excel export:
+In [section 6](#read-a-big-file-line-by-line) you split each line with
+`line.split(",")`. That works for `loans.csv`, but not for every CSV file. When a
+value has a comma inside it, the file puts the value in quotes - like the
+comments of the credit officers:
+
+```python run
+with open("data/loan_comments.csv", encoding="utf-8") as file:
+    file.readline()                    # skip the header line
+    for i in range(4):                 # the 4th loan line
+        line = file.readline()
+    print(line.strip())
+    print(len(line.strip().split(",")), "parts, but the file has 3 columns")
+```
+
+`split(",")` does not know about quotes: it also cuts at the comma in
+`340,800`. The module [`csv`](https://docs.python.org/3/library/csv.html) (it
+comes with Python) reads CSV files the right way. You used it in
+[lecture 7](./07-text-and-regex.md#reading-a-csv-file) as a given pattern; here is
+how it works.
+
+**`csv.DictReader`: each row as a dictionary.**  
+[`csv.DictReader(file)`](https://docs.python.org/3/library/csv.html#csv.DictReader)
+reads the **first line** of the file as the column names. Then it gives each next
+line as a **dictionary**: the column name is the key - a record as in
+[session 6](./06-dictionaries.md#a-row-as-a-dictionary). It does not read the
+whole file at once: like a file, you go through it with `for`, one row at a time.
+
+```python run
+import csv
+
+with open("data/loan_comments.csv", encoding="utf-8") as file:
+    for row in csv.DictReader(file):
+        if row["loan_id"] == "L000215":
+            print(row)
+            print(row["comment"])
+```
+
+The comma inside the quotes is now part of the comment, and the quotes are gone.
+You get the values by **name**, not by position: `row["comment"]`, not `fields[2]`.
+The script still works if someone adds a column to the file.
+
+Need all the rows, for example to go through them twice? Put them in a list with
+`list(...)`, as in lecture 7 - for a small file only, since the whole file is
+then in memory:
+
+```python run
+import csv
+
+with open("data/rating_scale.csv", encoding="utf-8") as file:
+    rows = list(csv.DictReader(file))
+
+print(len(rows), "rows")
+print(rows[0])
+```
+
+**The trap: every value is text.** A CSV file has no types. `DictReader` gives strings, also for numbers - convert them yourself
+with `int()` or `float()`:
+
+```python run
+import csv
+
+with open("data/loans.csv", encoding="utf-8") as file:
+    row = list(csv.DictReader(file))[0]         # the first row
+
+print(repr(row["outstanding"]), repr(row["stage"]))
+print(row["outstanding"] + row["outstanding"])                # text: glued
+print(float(row["outstanding"]) + float(row["outstanding"]))  # numbers: added
+```
+
+::: tip Try it
+Read `loans.csv` with `DictReader` and sum the column `outstanding` of the loans
+with `stage` equal to 3. Remember: `row["stage"]` is the text `"3"`, not the
+number `3`.
+:::
+
+::: details Answer
+```python run
+import csv
+
+total = 0
+with open("data/loans.csv", encoding="utf-8") as file:
+    for row in csv.DictReader(file):
+        if row["stage"] == "3":                 # compare text with text
+            total += float(row["outstanding"])
+
+print(round(total, 2))
+```
+
+The same in one line, with `sum(... for ...)` from
+[lecture 5](./05-lists-advanced.md#sum-for-sum-and-count-with-a-condition) - a
+`SUM(...) WHERE` in SQL. The generator takes the rows one at a time, so it works
+also for a big file:
+
+```python run
+import csv
+
+with open("data/loans.csv", encoding="utf-8") as file:
+    total = sum(float(row["outstanding"])
+                for row in csv.DictReader(file)
+                if row["stage"] == "3")
+
+print(round(total, 2))
+```
+
+The `sum` must be **inside** the `with`: after the `with` the file is closed, and
+the generator cannot read it any more.
+
+`row["stage"] == 3` is always `False` (text is never equal to a number), and the
+sum stays `0` - with no error to warn you.
+:::
+
+**`csv.reader`: each row as a list.**
+[`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) also
+understands quotes, but gives each row as a **list**, and the header line is just
+the first row. Both take a `delimiter` for files that are not comma-separated -
+like `;` in a Bulgarian Excel export:
 
 ```python run
 import csv
@@ -849,41 +795,10 @@ print(first)
 
 (`utf-8-sig` removes the BOM that Excel writes at the start - [section 6](#encodings-utf-8-cp1251-and-cyrillic).)
 
-**No header line.** A file **without** a header line: give the column names with `fieldnames`:
-
-```python run
-import csv
-import io
-
-text = "L000001,800.00,EUR\nL000002,\"1,250.00\",USD\n"      # a file without a header
-reader = csv.DictReader(io.StringIO(text), fieldnames=["loan_id", "amount", "currency"])
-for row in reader:
-    print(row)
-```
-
-([`io.StringIO`](https://docs.python.org/3/library/io.html#io.StringIO) makes a string behave like an open file - handy for examples and
-tests. Note the quoted `"1,250.00"`: one field, not two.)
-
-**Typed records.** The values are text. With `DictReader` and a dictionary of converters, a file becomes
-typed records:
-
-```python run
-import csv
-
-CONVERT = {"amount": float, "outstanding": float, "interest_rate": float,
-           "days_past_due": int, "stage": int}
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    loans = [{k: CONVERT.get(k, str)(v) for k, v in row.items()} for row in csv.DictReader(file)]
-
-print(loans[0])
-```
-
 ### A lookup table from a file: the rating scale
 
 A nomenclature often lives in a file: `rating_scale.csv` has one row per rating.
-Read it **once** into a dictionary **rating -> (grade, PD)** - a SAS format made
-from a dataset (`PROC FORMAT CNTLIN=`), or a small SQL reference table - and use it
+Read it **once** into a dictionary **rating -> (grade, PD_mid)** and use it
 for every client. The values are text: convert the key with `int` and the PD
 bounds with `float`:
 
@@ -917,6 +832,22 @@ print(text_keys.get(4, "not found"), text_keys["4"])
 ::: tip Try it
 Build a second dictionary **grade -> description** from the same file, and print
 the description of `"CCC"`. Which column is the key now?
+:::
+
+::: details Answer
+```python run
+import csv
+
+descriptions = {}
+with open("data/rating_scale.csv", encoding="utf-8") as file:
+    for row in csv.DictReader(file):
+        descriptions[row["grade"]] = row["description"]
+
+print(descriptions["CCC"])
+```
+
+The key is the column `grade`. It is text in the file and text in the lookup, so no
+`int` is needed here.
 :::
 
 ### Write: `csv.writer` and `csv.DictWriter`
@@ -956,39 +887,8 @@ with open("out/watch_list.csv", "w", encoding="utf-8", newline="") as file:
 print(Path("out/watch_list.csv").read_text(encoding="utf-8"))
 ```
 
-**Quote every field.** The comma inside `"late, 35 days"` is quoted automatically, so the file reads back
-correctly. Some systems want **every** field in quotes - `quoting=csv.QUOTE_ALL`:
-
-```python run
-import csv
-import io
-
-buffer = io.StringIO()
-writer = csv.writer(buffer, quoting=csv.QUOTE_ALL)
-writer.writerow(["L000002", "late, 35 days", 651927.3])
-print(buffer.getvalue())
-```
-
-### A file for Excel users
-
-A Bulgarian Excel opens CSV files with `;` and a decimal comma best - and it needs
-the BOM to see UTF-8 Cyrillic:
-
-```python run
-import csv
-from pathlib import Path
-
-Path("out").mkdir(exist_ok=True)
-rows = [("Sofia", "София", 16, 1234567.89), ("Ruse", "Русе", 28, 98765.4)]
-
-with open("out/regions_for_excel.csv", "w", encoding="utf-8-sig", newline="") as file:
-    writer = csv.writer(file, delimiter=";")
-    writer.writerow(["region", "name_bg", "clients", "outstanding"])
-    for region, name_bg, n, amount in rows:
-        writer.writerow([region, name_bg, n, f"{amount:.2f}".replace(".", ",")])
-
-print(Path("out/regions_for_excel.csv").read_text(encoding="utf-8-sig"))
-```
+The comma inside `"late, 35 days"` is quoted automatically, so the file reads back
+correctly.
 
 | SAS | Python |
 |---|---|
@@ -997,14 +897,117 @@ print(Path("out/regions_for_excel.csv").read_text(encoding="utf-8-sig"))
 | `PROC EXPORT ... DBMS=CSV` | [`csv.writer(...)`](https://docs.python.org/3/library/csv.html#csv.writer), `writerows` |
 
 ::: tip Try it
-Read `regions_bg.csv` (cp1251) and write it again as `out/regions_utf8.csv` in UTF-8
-with `;` as the separator. Open the result with [`read_text`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.read_text) to check it.
+Write the loans of stage 3 into `out/stage3.csv` with `DictWriter`: the columns
+`loan_id`, `client_id` and `outstanding`. Read the file back with `DictReader` and
+print the number of rows.
+:::
+
+::: details Answer
+```python run
+import csv
+from pathlib import Path
+
+Path("out").mkdir(exist_ok=True)
+with open("data/loans.csv", encoding="utf-8") as source, \
+     open("out/stage3.csv", "w", encoding="utf-8", newline="") as target:
+    writer = csv.DictWriter(target, fieldnames=["loan_id", "client_id", "outstanding"])
+    writer.writeheader()
+    for row in csv.DictReader(source):
+        if row["stage"] == "3":
+            writer.writerow({"loan_id": row["loan_id"], "client_id": row["client_id"],
+                             "outstanding": row["outstanding"]})
+
+with open("out/stage3.csv", encoding="utf-8") as file:
+    rows = list(csv.DictReader(file))
+print(len(rows), "rows")
+print(rows[0])
+```
+
+One `with` can open two files: read from one, write into the other, row by row.
+The values stay text - there is no need to convert `outstanding` only to write it
+again.
 :::
 
 ## 8. JSON files
 
-JSON ([session 6](./06-dictionaries.md#the-shape-of-json)) is the format of configuration files and of web APIs. [`json.load`](https://docs.python.org/3/library/json.html#json.load)
-reads a file into dictionaries and lists; [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) writes one:
+### What is JSON?
+
+**JSON** (JavaScript Object Notation) is a text format for data, like CSV. A CSV file
+is one table: rows, and the same columns in every row. JSON can hold data **inside
+data**: a value can be a list, or a group of named values. Configuration files, the
+answers of web APIs and the exports of many tools are JSON.
+
+This is the settings file of our monthly report. Read it as plain text first:
+
+```python run
+from pathlib import Path
+
+print(Path("data/report_config.json").read_text(encoding="utf-8"))
+```
+
+Only two kinds of brackets build the structure:
+
+- `{ ... }` is an **object**: pairs `"name": value`, separated by commas. It looks
+  like a Python dictionary.
+- `[ ... ]` is an **array**: values in order, separated by commas. It looks like a
+  Python list.
+
+Inside them are simple values: text in double quotes (`"EUR"`), numbers (`0.45`),
+`true` / `false` and `null` (no value). Here `"output"` is an object inside the
+object, and `"segments"` is an array of texts.
+
+In SAS you read such a file with the JSON engine (`LIBNAME ... JSON`), which turns it
+into tables. In SQL, many databases keep JSON in a text column and read it with
+functions like `JSON_VALUE`. In Python, the module [`json`](https://docs.python.org/3/library/json.html)
+turns it into dictionaries and lists - the types you already know.
+
+### JSON types and Python types
+
+| JSON | Example | Python |
+|---|---|---|
+| object | `{"lgd": 0.45}` | `dict` |
+| array | `[0, 30, 90]` | `list` |
+| string | `"EUR"` | `str` |
+| number without a point | `400` | `int` |
+| number with a point | `0.45` | `float` |
+| `true` / `false` | `true` | `True` / `False` |
+| `null` | `null` | `None` |
+
+[`json.loads`](https://docs.python.org/3/library/json.html#json.loads) (load **s**tring)
+reads JSON from a string. Look at the type of each value:
+
+```python run
+import json
+
+text = '{"loan_id": "L000002", "loans": 400, "lgd": 0.45, "checked": true, "rating": null, "dpd_buckets": [0, 30, 90]}'
+data = json.loads(text)
+
+for name, value in data.items():
+    print(f"{name:<12} {value!r:<14} {type(value).__name__}")
+```
+
+**The trap: JSON is not Python.** The text looks like Python code, but the rules are
+stricter: only double quotes, `true` and not `True`, `null` and not `None`, no comma
+after the last item. A file that breaks a rule raises a `json.JSONDecodeError` (a kind
+of `ValueError`), with the line and column:
+
+```python run
+import json
+
+for text in ['{"stage": 3}', "{'stage': 3}", '{"checked": True}', '[1, 2, 3,]']:
+    try:
+        print(text, "->", json.loads(text))
+    except json.JSONDecodeError as error:
+        print(text, "-> JSONDecodeError:", error)
+```
+
+The wording of the messages can be different in another Python version; the line
+and the column are always there.
+
+### Read and write JSON files
+
+[`json.load`](https://docs.python.org/3/library/json.html#json.load) (without the
+`s`) reads a file into dictionaries and lists; [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) writes one:
 
 ```python run
 import json
@@ -1016,18 +1019,9 @@ print(config["report_date"], config["lgd"], config["dpd_buckets"])
 print(config["output"]["folder"], type(config["output"]["excel"]))
 ```
 
-Settings in a file, not in the code: next month you change the file, not the script.
-
-**JSON from a string.** [`json.loads`](https://docs.python.org/3/library/json.html#json.loads) reads JSON from a **string** - for example the answer of a web service:
-
-```python run
-import json
-
-answer = '{"base": "EUR", "date": "2026-09-30", "rates": {"USD": 1.1551, "GBP": 0.8702}}'
-data = json.loads(answer)
-print(data["rates"]["USD"], type(data["rates"]))
-print(round(1000 * data["rates"]["GBP"], 2), "GBP for 1000 EUR")
-```
+The nested values are read with `[]` twice: `config["output"]` is a dictionary, and
+`["folder"]` reads a key in it. Settings in a file, not in the code: next month you
+change the file, not the script.
 
 **Write JSON.** [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) writes a dictionary to a file:
 
@@ -1045,27 +1039,8 @@ with open("out/summary.json", "w", encoding="utf-8") as file:
 print(Path("out/summary.json").read_text(encoding="utf-8"))
 ```
 
-**A summary as JSON.** A summary made from the portfolio - the number of loans per product, written
-with `sort_keys=True` so that the file looks the same in every run (easy to compare in
-Git, [lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code)):
-
-```python run
-import csv
-import json
-from collections import Counter
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    products = Counter(row["product"] for row in csv.DictReader(file))
-
-text = json.dumps({"report_date": "2026-09-30", "loans_by_product": products},
-                  indent=2, sort_keys=True)
-print(text)
-print(json.loads(text)["loans_by_product"]["mortgage"])
-```
-
-::: warning JSON knows only a few types
-Strings, numbers, `true` / `false`, `null` (`None`), lists and objects (dicts). A
-`date` is not one of them - [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) raises a `TypeError`. Store dates as ISO text
+::: warning JSON has no dates
+A `date` is not one of the JSON types (see the table above) - [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) raises a `TypeError`. Store dates as ISO text
 ([`d.isoformat()`](https://docs.python.org/3/library/datetime.html#datetime.date.isoformat)), and convert back after reading. Keys of JSON objects are always
 strings: `{1: 323}` comes back as `{"1": 323}`.
 
@@ -1075,7 +1050,7 @@ from datetime import date
 
 record = {"loan_id": "L000002", "report_date": date(2026, 9, 30)}
 try:
-    print(json.dumps(record))
+    print(json.dumps(record))                   # dumps: JSON as a string, not a file
 except TypeError as error:
     print("TypeError:", error)
 print(json.dumps(record, default=str))          # default: how to write unknown types
@@ -1088,9 +1063,164 @@ Change the LGD in a copy of the config to 0.40, save it as `out/config_test.json
 read it back, and print the LGD.
 :::
 
-## 9. Excel files with `openpyxl`
+::: details Answer
+```python run
+import json
+from pathlib import Path
 
-### Read a workbook
+with open("data/report_config.json", encoding="utf-8") as file:
+    config = json.load(file)
+
+config["lgd"] = 0.40                       # change the copy in memory
+
+Path("out").mkdir(exist_ok=True)
+with open("out/config_test.json", "w", encoding="utf-8") as file:
+    json.dump(config, file, indent=2)
+
+with open("out/config_test.json", encoding="utf-8") as file:
+    test = json.load(file)
+print(test["lgd"])
+```
+
+The original `data/report_config.json` does not change: only the new file has
+`0.4`.
+:::
+
+## 9. Summary
+| Topic | Remember |
+|-------|----------|
+| Exceptions | an error while the code runs; it stops the script unless caught; read the traceback from the bottom |
+| Common types | `ValueError`, `TypeError`, `KeyError`, `IndexError`, `ZeroDivisionError`, `FileNotFoundError`, `UnicodeDecodeError` |
+| `try` / `except` | catch the specific type; `as error` for the message; a tuple for several types; keep `try` small |
+| `else` / `finally` | `else` without an error; `finally` always |
+| `raise` | `raise ValueError(f"... {value!r}")`: name the value and the rule |
+| Stop or go on | bad rows: reject and report; bad inputs or settings: raise; bugs: let them stop |
+| `pathlib` | `Path("data") / "x.csv"`; [`exists`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.exists), `name`, `suffix`; [`mkdir(exist_ok=True)`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir) |
+| Files | `with open(path, mode, encoding="utf-8")`; modes `r`, `w`, `a`, `x`; loop over the file for big files |
+| CSV | [`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) / `DictReader`; `delimiter=";"`; write with `newline=""`; `utf-8-sig` for Excel |
+| JSON | [`json.load(f)`](https://docs.python.org/3/library/json.html#json.load), [`json.dump(obj, f, indent=2)`](https://docs.python.org/3/library/json.html#json.dump); dates as ISO text |
+
+## Practice
+Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
+in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
+terminal, in the repository root:
+
+```bash
+python 08-errors-and-files/practice/task1-safe-convert.py
+```
+
+The tasks that write files write them into the folder `out/` of the repository (it is
+in `.gitignore`).
+
+| Task | File | What you do |
+|------|------|-------------|
+| 1 | `task1-safe-convert.py` | `to_float`, `to_int`, `to_date` with `try` / `except` |
+| 2 | `task2-predict-exceptions.py` | Predict the exception, and the output with `else` / `finally` |
+| 3 | `task3-paths-and-text.py` | `pathlib`: check the input files, build names, write and read a text file |
+| 4 | `task4-csv-json.py` | Read the config, write a CSV report with `DictWriter` |
+
+## Homework
+
+1. `08-errors-and-files/homework.py` (in the homework repository): **check the
+   payments file** - find the file (with a clear error if it is missing), read the
+   amounts with `try` / `except`, write the bad payments into a text file and a short
+   summary into a JSON file. Every check must print `OK`.
+2. The practice tasks you did not finish in class.
+
+## Self-study
+
+This part is not covered in class. It is for reading at home: a real log for your
+scripts, and Excel files without pandas.
+
+### `logging`: the SAS log for Python scripts
+
+[`print`](https://docs.python.org/3/builtins/functions.html#print) is fine while you develop. A script that runs every month needs a **log**:
+lines with a time and a level, in a file, that you can read when something went
+wrong. The module `logging` comes with Python:
+
+```python run
+import logging
+from pathlib import Path
+
+Path("out").mkdir(exist_ok=True)
+logging.basicConfig(
+    filename="out/report.log", encoding="utf-8", level=logging.INFO, force=True,
+    format="%(asctime)s %(levelname)-8s %(message)s",
+)
+log = logging.getLogger("report")
+
+log.info("report started for %s", "2026-09-30")
+log.warning("%d payments rejected", 11)
+try:
+    1 / 0
+except ZeroDivisionError:
+    log.exception("the average failed")       # the message AND the traceback
+log.info("report finished")
+
+print(Path("out/report.log").read_text(encoding="utf-8"))
+```
+
+The **levels**, from the least to the most serious: `DEBUG`, `INFO`, `WARNING`, `ERROR`,
+`CRITICAL`. `level=logging.INFO` writes INFO and above; switch to `DEBUG` when you look
+for a problem, without changing the code. Use `%s` placeholders, not f-strings, in
+log messages - the text is built only if the line is written. (`force=True` replaces
+an earlier setup; in a script you call `basicConfig` once, at the start.)
+
+| SAS log | `logging` |
+|---|---|
+| `NOTE:` | [`log.info(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.info) |
+| `WARNING:` | [`log.warning(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.warning) |
+| `ERROR:` | [`log.error(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.error), [`log.exception(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.exception) |
+| `OPTIONS MPRINT;` for more detail | `level=logging.DEBUG` |
+
+**Exercises**
+
+1. Read `loans.csv` and write a log instead of [`print`](https://docs.python.org/3/builtins/functions.html#print): one INFO line per stage with
+   the number of loans ([`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter), [lecture 7](./07-text-and-regex.md#counting-with-counter)), and a WARNING if more than 4% of the
+   loans are in stage 3.
+2. Add a second handler that also prints the WARNING lines on the screen. (Hint:
+   [`logging.StreamHandler()`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler), [`setLevel`](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel), [`log.addHandler`](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler).)
+
+::: details Answer
+```python run
+import csv
+import logging
+import sys
+from collections import Counter
+from pathlib import Path
+
+Path("out").mkdir(exist_ok=True)
+logging.basicConfig(
+    filename="out/stages.log", encoding="utf-8", level=logging.INFO, force=True,
+    format="%(asctime)s %(levelname)-8s %(message)s",
+)
+log = logging.getLogger("stages")
+
+screen = logging.StreamHandler(sys.stdout)      # exercise 2: WARNING also on the screen
+screen.setLevel(logging.WARNING)
+logging.getLogger().addHandler(screen)
+
+with open("data/loans.csv", encoding="utf-8") as file:
+    stages = Counter(row["stage"] for row in csv.DictReader(file))
+
+total = sum(stages.values())
+for stage, count in sorted(stages.items()):
+    log.info("stage %s: %d loans", stage, count)
+share = stages["3"] / total
+if share > 0.04:
+    log.warning("%.1f%% of the loans are in stage 3", share * 100)
+
+print(Path("out/stages.log").read_text(encoding="utf-8"))
+```
+
+The handler of `basicConfig` writes every line into the file; the second handler
+prints only the WARNING lines on the screen. Without `sys.stdout`, a `StreamHandler`
+writes to the error output (`sys.stderr`) - in the terminal you see it the same way.
+:::
+
+### Excel files with `openpyxl`
+
+#### Read a workbook
 
 `openpyxl` (in `requirements.txt`) reads and writes `.xlsx` files. A **workbook** has
 **sheets**; a sheet has rows of **cells**:
@@ -1140,7 +1270,7 @@ print(len(usd), "working days;", min(usd), "to", max(usd))
 print("the last rate:", usd[max(usd)])
 ```
 
-### Write a workbook
+#### Write a workbook
 
 ```python run
 from pathlib import Path
@@ -1186,497 +1316,40 @@ print(ws["B2"].value, type(ws["B2"].value).__name__, ws["B2"].number_format)
 
 In SAS: `PROC IMPORT DBMS=XLSX`, `LIBNAME x XLSX`, `ODS EXCEL`. pandas reads and
 writes whole sheets in one line (`read_excel`, lectures 13 and 15; `to_excel` with
-several sheets, [lecture 15](./15-pandas-reports.md#_6-an-excel-report-with-several-sheets)) - with openpyxl working inside.
+several sheets, [lecture 15](./15-pandas-reports.md#_6-an-excel-report-with-several-sheets)) - with openpyxl working inside. Use openpyxl
+alone when you need single cells, or the formatting of a sheet.
 
 ::: info Excel on this site
 The site installs `openpyxl` the first time an example uses Excel - the first run of
 such an example takes a few seconds longer.
 :::
 
-::: tip Try it
-Add a third sheet `usd` to `out/stages.xlsx`'s workbook (before saving) with the USD
-rates of September: one row per day, `date` and `rate`.
-:::
-
-## 10. Loading data with bad records
-
-### The task
-
-`payments_2026-09.csv` has 280 lines; most are fine, some are not:
-
-```python run
-with open("data/payments_2026-09.csv", encoding="utf-8") as file:
-    lines = file.read().splitlines()
-
-for line_no, line in enumerate(lines, start=1):
-    fields = line.split(",")
-    if len(fields) != 5 or not fields[3].replace(".", "").isdigit():
-        print(line_no, repr(line))
-```
-
-The rules of a valid payment:
-
-1. exactly 5 fields;
-2. the loan id exists in `loans.csv`;
-3. the date is a real date in September 2026 (`yyyy-mm-dd`);
-4. the amount is a number greater than 0;
-5. the currency is EUR or USD.
-
-**Profile the good rows.** A quick profile of the good rows first - how many payments per currency, and the
-range of the dates, for the rows that convert without problems:
-
-```python run
-import csv
-from collections import Counter
-
-with open("data/payments_2026-09.csv", encoding="utf-8") as file:
-    rows = [r for r in csv.DictReader(file) if r["pay_date"] and r["currency"]]
-
-print(Counter(r["currency"] for r in rows))
-dates = sorted(r["pay_date"] for r in rows)
-print("dates from", dates[0], "to", dates[-1])
-```
-
-The text dates sort correctly because they are ISO - and `30.09.2026` sorts **after**
-every ISO date: one more sign of a bad row.
-
-### One check function per rule, one `try` per row
-
-Each check raises a `DataError` with a clear message. The loader has **one** `try`
-per row: the first broken rule rejects the row, with its reason:
-
-```python run
-import csv
-from datetime import date, datetime
-
-class DataError(ValueError):
-    pass
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    KNOWN_LOANS = {row["loan_id"] for row in csv.DictReader(file)}
-
-def check_payment(fields):
-    """A list of 5 text fields -> a clean record, or a DataError."""
-    if len(fields) != 5:
-        raise DataError(f"expected 5 fields, got {len(fields)}")
-    payment_id, loan_id, pay_date, amount, currency = fields
-    if loan_id not in KNOWN_LOANS:
-        raise DataError(f"unknown loan {loan_id}")
-    try:
-        day = datetime.strptime(pay_date, "%Y-%m-%d").date()
-    except ValueError:
-        raise DataError(f"bad date {pay_date!r}") from None
-    if not date(2026, 9, 1) <= day <= date(2026, 9, 30):
-        raise DataError(f"date {day} is not in September 2026")
-    try:
-        value = float(amount)
-    except ValueError:
-        raise DataError(f"amount is not a number: {amount!r}") from None
-    if value <= 0:
-        raise DataError(f"amount must be positive: {value}")
-    if currency not in ("EUR", "USD"):
-        raise DataError(f"unknown currency {currency!r}")
-    return {"payment_id": payment_id, "loan_id": loan_id, "pay_date": day,
-            "amount": value, "currency": currency}
-
-good, rejected = [], []
-with open("data/payments_2026-09.csv", encoding="utf-8", newline="") as file:
-    reader = csv.reader(file)
-    next(reader)                                       # the header
-    for row in reader:
-        line_no = reader.line_num
-        if not row:                                    # an empty line
-            rejected.append((line_no, "", "empty line"))
-            continue
-        try:
-            good.append(check_payment(row))
-        except DataError as error:
-            rejected.append((line_no, ",".join(row), str(error)))
-
-print(len(good), "payments loaded,", len(rejected), "rejected")
-for line_no, text, reason in rejected:
-    print(f"line {line_no:>3}: {reason:<40} {text}")
-```
-
-`reader.line_num` is the line number in the file - like `_N_` in the SAS log, but for
-the file line (the header is line 1).
-
-### Sums by group: `defaultdict`
-
-The summary of the load needs the **total per currency** of the good payments - in
-SQL `SELECT currency, SUM(amount) ... GROUP BY currency`, in SAS `PROC MEANS SUM`
-with `CLASS currency`. A [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) ([lecture 7](./07-text-and-regex.md#counting-with-counter))
-counts; for a sum, use the same idea as counting with [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get), with the amount instead
-of `1`:
-
-```python run
-totals = {}
-for currency, amount in [("EUR", 100.0), ("USD", 20.0), ("EUR", 50.0)]:
-    totals[currency] = totals.get(currency, 0.0) + amount
-print(totals)
-```
-
-**With [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict).** [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) (also from `collections`) does the [`get(..., 0.0)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) part for you. It is
-a dictionary that **creates a missing key** when you read it with `[]`.
-[`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) gives the new key the value [`float()`](https://docs.python.org/3/builtins/functions.html#float), which is `0.0`, so you can
-add to it straight away:
-
-```python run
-from collections import defaultdict
-
-totals = defaultdict(float)
-for currency, amount in [("EUR", 100.0), ("USD", 20.0), ("EUR", 50.0)]:
-    totals[currency] += amount
-print(totals)
-print(dict(totals))
-```
-
-Pass `float`, not [`float()`](https://docs.python.org/3/builtins/functions.html#float): the dictionary calls it for each new key.
-[`dict(totals)`](https://docs.python.org/3/builtins/stdtypes.html#dict) makes a normal dictionary with the same pairs. Round only after
-summing a group.
-
-::: info Animation
-**Grouping by hand:** [3. Sum with `defaultdict`](../animations/groupingByHand.html#3){target="_blank"}
-:::
-
-**Outstanding per product.** On the portfolio - the outstanding per product:
-
-```python run
-import csv
-from collections import defaultdict
-
-totals = defaultdict(float)
-with open("data/loans.csv", encoding="utf-8") as file:
-    for row in csv.DictReader(file):
-        totals[row["product"]] += float(row["outstanding"])
-
-for product, total in sorted(totals.items()):
-    print(f"{product:<16}{total:>18,.2f}")
-```
-
-**The rows of each group.** Sometimes you need the **rows** of each group, not only a number - a dictionary of
-lists. [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) gives each new key a new empty list:
-
-```python run
-from collections import defaultdict
-
-loans = [("L000001", "C0002"), ("L000002", "C0001"), ("L000003", "C0002"),
-         ("L000004", "C0003"), ("L000005", "C0002")]        # loan_id, client_id
-
-loans_of = defaultdict(list)
-for loan_id, client_id in loans:
-    loans_of[client_id].append(loan_id)
-
-print(dict(loans_of))
-print(len(loans_of["C0002"]), "loans for C0002")
-```
-
-::: info Animation
-**Grouping by hand:** [4. Group into lists](../animations/groupingByHand.html#4){target="_blank"}
-:::
-
-::: warning Reading a missing key adds it
-`totals["GBP"]` does not raise a `KeyError` - it **adds** `"GBP"` with `0.0`. A typo
-in a key makes a new group without any error. To only look, use `in` or [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get):
-
-```python run
-from collections import defaultdict
-
-totals = defaultdict(float, {"EUR": 150.0})
-print("GBP" in totals, totals.get("GBP"))      # only looks
-print(totals["GBP"])                           # adds the key!
-print(dict(totals))
-```
-:::
-
-::: details Advanced: two keys, and several values per group
-A **tuple** is a key too - `GROUP BY product, currency`:
-
-```python run
-from collections import defaultdict
-
-loans = [("mortgage", "EUR", 120000.0), ("consumer", "EUR", 8500.0),
-         ("mortgage", "USD", 40000.0), ("mortgage", "EUR", 250000.0)]
-
-totals = defaultdict(float)
-for product, currency, amount in loans:
-    totals[(product, currency)] += amount
-for (product, currency), total in sorted(totals.items()):
-    print(f"{product:<10}{currency:<5}{total:>12,.2f}")
-```
-
-For several values per group (`COUNT`, `SUM`, `MAX`), keep a small list per key,
-for example [`defaultdict(lambda: [0, 0.0])`](https://docs.python.org/3/library/collections.html#collections.defaultdict) for `[count, sum]`. `lambda: [0, 0.0]`
-is a function without a name ([session 4](./04-functions.md#_10-lambda)) that makes a new list
-for each new key.
-:::
-
-::: tip Try it
-Change the portfolio example: sum the `amount` per `currency` instead of the
-outstanding per product. Then make a [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) of the loan ids per
-`stage`. How many loans are in stage 3?
-:::
-
-### The reject file and the summary
-
-The rejected rows go into their own file, with the reason - so that the source system
-can fix them. And a short summary, like the end of a SAS log:
-
-```python run
-import csv
-from collections import Counter, defaultdict
-from datetime import datetime
-from pathlib import Path
-
-class DataError(ValueError):
-    pass
-
-with open("data/loans.csv", encoding="utf-8") as file:
-    KNOWN_LOANS = {row["loan_id"] for row in csv.DictReader(file)}
-
-def check_payment(fields):
-    if len(fields) != 5:
-        raise DataError(f"expected 5 fields, got {len(fields)}")
-    payment_id, loan_id, pay_date, amount, currency = fields
-    if loan_id not in KNOWN_LOANS:
-        raise DataError("unknown loan")
-    try:
-        day = datetime.strptime(pay_date, "%Y-%m-%d").date()
-        value = float(amount)
-    except ValueError:
-        raise DataError("bad date or amount") from None
-    if value <= 0:
-        raise DataError("amount not positive")
-    if currency not in ("EUR", "USD"):
-        raise DataError("unknown currency")
-    return loan_id, day, value, currency
-
-good, rejected = [], []
-with open("data/payments_2026-09.csv", encoding="utf-8", newline="") as file:
-    reader = csv.reader(file)
-    header = next(reader)
-    for row in reader:
-        try:
-            good.append(check_payment(row))
-        except DataError as error:
-            rejected.append({"line": reader.line_num, "reason": str(error), "row": ",".join(row)})
-
-Path("out").mkdir(exist_ok=True)
-with open("out/payments_rejected.csv", "w", encoding="utf-8", newline="") as file:
-    writer = csv.DictWriter(file, fieldnames=["line", "reason", "row"])
-    writer.writeheader()
-    writer.writerows(rejected)
-
-totals = defaultdict(float)
-for loan_id, day, value, currency in good:
-    totals[currency] += value
-
-print(f"NOTE: {len(good)} rows read, {len(rejected)} rejected -> out/payments_rejected.csv")
-print("NOTE: reasons:", dict(Counter(r["reason"] for r in rejected)))
-for currency, total in sorted(totals.items()):
-    print(f"NOTE: {currency} total {total:,.2f}")
-share = len(rejected) / (len(good) + len(rejected))
-if share > 0.01:
-    print(f"WARNING: {share:.1%} of the rows were rejected")
-```
-
-This is the pattern for every input of a monthly process: **never stop on a bad row,
-never lose a bad row, always report**.
-
-**Read the reject file.** The reject file is a normal CSV - the next person reads it with the same tools:
-
-```python run
-import csv
-from pathlib import Path
-
-path = Path("out/payments_rejected.csv")
-if path.exists():
-    with open(path, encoding="utf-8") as file:
-        for row in csv.DictReader(file):
-            print(row["line"], row["reason"])
-else:
-    print("run the example above first")
-```
-
-::: info The same in pandas
-pandas has options for bad lines ([`pd.read_csv(..., on_bad_lines="skip")`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)) and turns
-bad numbers into `NaN` with [`pd.to_numeric(..., errors="coerce")`](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html) ([lecture 14](./14-pandas-select-aggregate-join.md)). They
-are faster - but they do not tell you **why** a row is bad. For an input you must
-explain to someone, the loader of this section is the better tool.
-:::
-
-::: tip Try it
-Add a rule: a payment may not be larger than the outstanding amount of its loan.
-You need a dictionary `loan_id -> outstanding` from `loans.csv`. How many rows does
-the new rule reject?
-:::
-
-## 11. Summary
-| Topic | Remember |
-|-------|----------|
-| Exceptions | an error while the code runs; it stops the script unless caught; read the traceback from the bottom |
-| Common types | `ValueError`, `TypeError`, `KeyError`, `IndexError`, `ZeroDivisionError`, `FileNotFoundError`, `UnicodeDecodeError` |
-| `try` / `except` | catch the specific type; `as error` for the message; a tuple for several types; keep `try` small |
-| `else` / `finally` | `else` without an error; `finally` always |
-| `raise` | `raise DataError(f"... {value!r}")`; `class DataError(ValueError): pass`; `from None` / `from error` |
-| Stop or go on | bad rows: reject and report; bad inputs or settings: raise; bugs: let them stop |
-| `pathlib` | `Path("data") / "x.csv"`; [`exists`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.exists), `name`, `stem`, `suffix`; [`glob("*.csv")`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob); [`mkdir(parents=True, exist_ok=True)`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir) |
-| Files | `with open(path, mode, encoding="utf-8")`; modes `r`, `w`, `a`, `x`; loop over the file for big files |
-| CSV | [`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) / `DictReader`; `delimiter=";"`; write with `newline=""`; `utf-8-sig` for Excel |
-| JSON | [`json.load(f)`](https://docs.python.org/3/library/json.html#json.load), [`json.dump(obj, f, indent=2)`](https://docs.python.org/3/library/json.html#json.dump); dates as ISO text |
-| Excel | `load_workbook(...)`, `ws.iter_rows(values_only=True)`; `Workbook()`, `ws.append`, `wb.save` |
-| Sums by group | [`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): `totals[key] += amount`; [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): `groups[key].append(x)`; reading a missing key adds it |
-| Loader | one check per rule, one `try` per row, a reject file with the reason, a summary |
-
-## Practice
-Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework)
-in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the
-terminal, in the repository root:
-
-```bash
-python 08-errors-and-files/practice/task1-safe-convert.py
-```
-
-The tasks that write files write them into the folder `out/` of the repository (it is
-in `.gitignore`).
-
-| Task | File | What you do |
-|------|------|-------------|
-| 1 | `task1-safe-convert.py` | `to_float`, `to_int`, `to_date` with `try` / `except` |
-| 2 | `task2-predict-exceptions.py` | Predict the exception, and the output with `else` / `finally` |
-| 3 | `task3-raise-checks.py` | Check functions that raise a `DataError` with a clear message |
-| 4 | `task4-paths-and-text.py` | `pathlib`: list files, build names, write and read a text file |
-| 5 | `task5-csv-json.py` | Read the config, write a CSV report with `DictWriter` |
-| 6 | `task6-excel.py` (Optional) | Read the three FX sheets; write a workbook with two sheets |
-
-## Homework
-
-1. `08-errors-and-files/homework.py` (in the homework repository): **load the
-   September payments** - check every row against the rules, write the valid
-   payments and a reject file with the line number and the reason, compute the totals
-   per currency and per day, and return a summary. Every check must print `OK`.
-2. The practice tasks you did not finish in class.
-3. Optional: read `report_config.json` in your loader, and take the report month and
-   the allowed currencies from it instead of writing them in the code.
-
-## Self-study
-
-This part is not covered in class. It is for reading at home: a real log for your
-scripts, and a loader for a whole folder of monthly files.
-
-### `logging`: the SAS log for Python scripts
-
-[`print`](https://docs.python.org/3/builtins/functions.html#print) is fine while you develop. A script that runs every month needs a **log**:
-lines with a time and a level, in a file, that you can read when something went
-wrong. The module `logging` comes with Python:
-
-```python run
-import logging
-from pathlib import Path
-
-Path("out").mkdir(exist_ok=True)
-logging.basicConfig(
-    filename="out/report.log", encoding="utf-8", level=logging.INFO, force=True,
-    format="%(asctime)s %(levelname)-8s %(message)s",
-)
-log = logging.getLogger("report")
-
-log.info("report started for %s", "2026-09-30")
-log.warning("%d payments rejected", 11)
-try:
-    1 / 0
-except ZeroDivisionError:
-    log.exception("the average failed")       # the message AND the traceback
-log.info("report finished")
-
-print(Path("out/report.log").read_text(encoding="utf-8"))
-```
-
-The **levels**, from the least to the most serious: `DEBUG`, `INFO`, `WARNING`, `ERROR`,
-`CRITICAL`. `level=logging.INFO` writes INFO and above; switch to `DEBUG` when you look
-for a problem, without changing the code. Use `%s` placeholders, not f-strings, in
-log messages - the text is built only if the line is written. (`force=True` replaces
-an earlier setup; in a script you call `basicConfig` once, at the start.)
-
-| SAS log | `logging` |
-|---|---|
-| `NOTE:` | [`log.info(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.info) |
-| `WARNING:` | [`log.warning(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.warning) |
-| `ERROR:` | [`log.error(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.error), [`log.exception(...)`](https://docs.python.org/3/library/logging.html#logging.Logger.exception) |
-| `OPTIONS MPRINT;` for more detail | `level=logging.DEBUG` |
-
 **Exercises**
 
-1. Rewrite the summary of the payments loader (section 10) with `logging` instead of
-   [`print`](https://docs.python.org/3/builtins/functions.html#print): one INFO line per currency, a WARNING if more than 1% of the rows were
-   rejected.
-2. Add a second handler that also prints the WARNING lines on the screen. (Hint:
-   [`logging.StreamHandler()`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler), [`setLevel`](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel), [`log.addHandler`](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler).)
+1. Read the sheet `2026-08` of `data/fx_rates.xlsx` and print the lowest and the
+   highest USD rate of August.
+2. Add a third sheet `usd` to the workbook of `out/stages.xlsx` (before saving) with
+   the USD rates of September: one row per day, `date` and `rate`.
 
 ::: details Answer
 ```python
-log.info("%d rows read, %d rejected", len(good), len(rejected))
-for currency, total in sorted(totals.items()):
-    log.info("%s total %.2f", currency, total)
-if share > 0.01:
-    log.warning("%.1f%% of the rows were rejected", share * 100)
+# 1.
+fx = load_workbook("data/fx_rates.xlsx", read_only=True)
+rows = fx["2026-08"].iter_rows(values_only=True)
+header = next(rows)
+rates = [dict(zip(header, row))["USD"] for row in rows]
+print(min(rates), max(rates))
 
-screen = logging.StreamHandler()
-screen.setLevel(logging.WARNING)
-logging.getLogger().addHandler(screen)
+# 2. before wb.save(...)
+usd = wb.create_sheet("usd")
+usd.append(["date", "rate"])
+source = load_workbook("data/fx_rates.xlsx", read_only=True)["2026-09"]
+rows = source.iter_rows(values_only=True)
+header = next(rows)
+for row in rows:
+    record = dict(zip(header, row))
+    usd.append([record["date"].date(), record["USD"]])
 ```
-:::
-
-### A folder of monthly files
-
-A monthly process often reads **all** files of a folder: one per month, one per
-branch. [`glob`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) finds them, a regex ([lecture 7](./07-text-and-regex.md)) takes the month from the name, and
-the loader reads each - one bad file must not stop the others:
-
-```python run
-import csv
-import re
-from pathlib import Path
-
-# make a folder with three monthly files (one of them broken)
-folder = Path("out/monthly")
-folder.mkdir(parents=True, exist_ok=True)
-(folder / "payments_2026-07.csv").write_text("loan_id,amount\nL000001,100.50\nL000002,200\n", encoding="utf-8")
-(folder / "payments_2026-08.csv").write_text("loan_id,amount\nL000001,150\n", encoding="utf-8")
-(folder / "payments_2026-09.csv").write_bytes("loan_id,amount\nL000003,99\nL000004,сто\n".encode("cp1251"))
-
-totals, failed = {}, []
-for path in sorted(folder.glob("payments_*.csv")):
-    month = re.search(r"(\d{4}-\d{2})", path.name).group(1)
-    try:
-        with open(path, encoding="utf-8") as file:
-            totals[month] = sum(float(row["amount"]) for row in csv.DictReader(file))
-    except (UnicodeDecodeError, ValueError) as error:
-        failed.append((path.name, type(error).__name__))
-
-print(totals)
-print("failed:", failed)
-```
-
-The loop catches the errors **per file**: the good months are loaded, the broken one is
-reported with the kind of error.
-
-**Exercises**
-
-1. Change the loop so that a file with a bad amount is still loaded, without the bad
-   rows (use the `to_float` of section 2), and the number of skipped rows per file is
-   reported.
-2. Sort the files by the month in their name, not by the name itself. When is that
-   different? (Hint: `payments_2026-10.csv` and `payments_2026-9.csv`.)
-
-::: details Answer
-1. Inside the `with`: `values = [to_float(row["amount"]) for row in csv.DictReader(file)]`,
-   then `totals[month] = sum(v for v in values if v is not None)` and
-   `skipped[path.name] = values.count(None)`. The `UnicodeDecodeError` still needs the
-   `try`.
-2. [`sorted(folder.glob(...), key=lambda p: tuple(int(x) for x in re.search(r"(\d{4})-(\d{1,2})", p.name).groups()))`](https://docs.python.org/3/builtins/functions.html#sorted).
-   Sorting by name puts `2026-10` before `2026-9`, because text is compared letter by
-   letter - another reason for two-digit months in file names.
 :::
 
 ## Read more

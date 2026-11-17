@@ -65,6 +65,7 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | match object, flag, lookaround, verbose pattern | lecture 7 (2026-11-15): "match обект"; "флаг (flag)" at first use |
 | greedy, lazy | lecture 7: greedy ("лакоми"), lazy ("мързелив") at first use |
 | named group, locale, BOM, mojibake | lecture 7: "именувана group" |
+| loader, log, handler | lecture 8 (2026-11-16): "програма за зареждане (loader)" at first use, then "loader-ът"; "log-ът" |
 
 ## Translated
 
@@ -123,3 +124,8 @@ Written in Latin letters, without quotes or backticks. Plural in English
 | legal form | правна форма |
 | maturity (of a loan) | падеж |
 | EIK | ЕИК |
+| reject file (of a loader) | файл с отхвърлените редове (lecture 8) |
+| to raise (an exception) | предизвиквам (raise) at first use; "raise" alone in short cells |
+| mode (of `open`) | режим |
+| workbook, sheet (Excel) | работна книга (workbook), лист (sheet) at first use |
+| grade (of the rating scale) | оценка |

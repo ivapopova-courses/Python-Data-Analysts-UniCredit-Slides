@@ -600,34 +600,6 @@ print(Counter(r["product_name"] for r in rows).most_common(3))
 print(Counter(r["group"] for r in rows))
 ```
 
-**A total per label.** The new column, then a total per label - the outstanding per stage name, the SQL
-`GROUP BY` ([`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): [lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
-
-```python run
-import csv
-from collections import defaultdict
-from dataclasses import dataclass
-
-@dataclass
-class Nomenclature:
-    name: str
-    codes: dict
-
-    def apply(self, rows, column, new_column, default=None):
-        return [row | {new_column: self.codes.get(row[column], default)} for row in rows]
-
-
-stages = Nomenclature("stage", {"1": "performing", "2": "under-performing", "3": "non-performing"})
-with open("data/loans.csv", encoding="utf-8") as file:
-    rows = stages.apply(list(csv.DictReader(file)), "stage", "stage_name")
-
-total = defaultdict(float)
-for row in rows:
-    total[row["stage_name"]] += float(row["outstanding"])
-for name, amount in total.items():
-    print(f"{name:<18}{amount:>18,.2f}")
-```
-
 ::: warning Do not change the rows you were given
 An `apply` that writes into the input rows (`row[new_column] = ...`) changes the data of
 the caller - a second nomenclature, a second report, all see the change. `row | {...}`
@@ -1404,37 +1376,6 @@ print(products.lookup("project_finance"), len(products))
 
 Here nothing is overridden except [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__) (with [`super()`](https://docs.python.org/3/builtins/functions.html#super)); the subclass only
 **adds**. Both are normal uses of inheritance.
-
-**Outstanding per product group.** On the portfolio: the outstanding per product **group**, through `parent`:
-
-```python run
-import csv
-import sys
-from collections import defaultdict
-from dataclasses import dataclass, field
-
-sys.modules.pop("nomenclature", None)
-from nomenclature import Nomenclature
-
-
-@dataclass(repr=False)
-class HierarchicalNomenclature(Nomenclature):
-    parents: dict = field(default_factory=dict)
-
-    def parent(self, code):
-        return self.parents.get(self.normalize(code))
-
-
-groups = {"mortgage": "retail", "consumer": "retail", "credit_card": "retail", "overdraft": "retail",
-          "investment": "business", "working_capital": "business", "project_finance": "business"}
-products = HierarchicalNomenclature("product", {code: code.replace("_", " ") for code in groups}, parents=groups)
-
-total = defaultdict(float)
-with open("data/loans.csv", encoding="utf-8") as file:
-    for row in csv.DictReader(file):
-        total[products.parent(row["product"])] += float(row["outstanding"])
-print({group: round(amount, 2) for group, amount in total.items()})
-```
 
 ::: warning Forget `super()`, lose the checks
 A subclass with its own [`__post_init__`](https://docs.python.org/3/library/dataclasses.html#dataclasses.__post_init__) **replaces** the one of the base class. Without

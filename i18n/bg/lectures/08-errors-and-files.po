@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Python for Data Analysts\n"
 "Language-Team: \n"
-"Last-Translator: \n"
-"PO-Revision-Date: \n"
+"Last-Translator: Claude Opus 5.5 (machine translation - to review)\n"
+"PO-Revision-Date: 2026-11-17\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,1434 +16,1707 @@ msgstr ""
 #. front matter: title
 #: site/lectures/08-errors-and-files.md:2 site/lectures/08-errors-and-files.md:5
 msgid "8. Error handling and file handling"
-msgstr ""
+msgstr "8. Обработка на грешки и работа с файлове"
 
 #. html
 #: site/lectures/08-errors-and-files.md:8
 msgid "<span>Session 8</span><span>practice: <code>08-errors-and-files/</code> in the homework repository</span>"
-msgstr ""
+msgstr "<span>Занятие 8</span><span>упражнение: <code>08-errors-and-files/</code> в homework repository</span>"
 
 #. html
 #: site/lectures/08-errors-and-files.md:9
 msgid "<span><a href=\"../sample-data\">the sample data</a></span>"
-msgstr ""
+msgstr "<span><a href=\"../sample-data\">примерните данни</a></span>"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:12
 msgid "**Today you will learn to:**"
-msgstr ""
+msgstr "**Днес ще се научите да:**"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:14
 msgid "read a traceback, and know the common exceptions of data work;"
-msgstr ""
+msgstr "четете traceback и да познавате честите exceptions при работа с данни;"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:15
 msgid "catch an error with `try` / `except` and go on - instead of stopping the whole script;"
-msgstr ""
+msgstr "хващате грешка с `try` / `except` и да продължавате - вместо да спирате целия скрипт;"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:17
 msgid "raise your own errors with a clear message when the data is wrong;"
-msgstr ""
+msgstr "предизвиквате свои грешки с ясно съобщение, когато данните са грешни;"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:18
 msgid "work with files and folders through `pathlib`;"
-msgstr ""
+msgstr "работите с файлове и папки чрез `pathlib`;"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:19
-msgid "read and write text, CSV, JSON and Excel files, also in cp1251 (old Windows Cyrillic);"
-msgstr ""
+msgid "read and write text, CSV and JSON files, also in cp1251 (old Windows Cyrillic)."
+msgstr "четете и записвате текстови, CSV и JSON файлове, също и в cp1251 (старата кирилица на Windows)."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:20
-msgid "sum by group and collect the rows of each group with [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) - `GROUP BY` with `SUM` in SQL;"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:22
-msgid "load a file with bad rows: keep the good rows, write the bad ones to a reject file with the reason, and report a summary - the job of the SAS log, done properly."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:25
+#: site/lectures/08-errors-and-files.md:21
 msgid "From SAS to Python - a bad value in the data. SAS writes a NOTE to the log, sets the value to missing and goes on:"
-msgstr ""
+msgstr "От SAS към Python - лоша стойност в данните. SAS записва NOTE в log-а, прави стойността липсваща и продължава:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:37
+#: site/lectures/08-errors-and-files.md:33
 msgid "**One bad value.** Python stops at the first bad value - unless you tell it what to do:"
-msgstr ""
+msgstr "**Една лоша стойност.** Python спира при първата лоша стойност - освен ако не му кажете какво да прави:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:55
-msgid "By the end of today you will turn this into a loader that checks every field, and writes the bad rows into their own file."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:51
+msgid "Sections 2 - 4 show how this works: catch the error, say what is wrong, and decide when to go on and when to stop."
+msgstr "Секции 2 - 4 показват как става това: хващате грешката, казвате какво не е наред и решавате кога да продължите и кога да спрете."
 
 #. heading 2
-#: site/lectures/08-errors-and-files.md:58
+#: site/lectures/08-errors-and-files.md:54
 msgid "1. Errors and exceptions"
-msgstr ""
+msgstr "1. Грешки и exceptions"
 
 #. heading 3
-#: site/lectures/08-errors-and-files.md:60
+#: site/lectures/08-errors-and-files.md:56
 msgid "Two kinds of errors"
-msgstr ""
+msgstr "Два вида грешки"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:62
+#: site/lectures/08-errors-and-files.md:58
 msgid "A **syntax error**: the code is not valid Python. Nothing runs - Python checks the whole file first ([session 1](./01-intro-syntax-types.md#_3-how-python-runs-your-code))."
-msgstr ""
+msgstr "**Синтактична грешка** (syntax error): кодът не е валиден Python. Нищо не се изпълнява - Python първо проверява целия файл ([занятие 1](./01-intro-syntax-types.md#_3-how-python-runs-your-code))."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:64
+#: site/lectures/08-errors-and-files.md:60
 msgid "An **exception**: the code is valid, but something goes wrong **while it runs**: a text that is not a number, a missing file, a missing key. The script stops at that line - unless the exception is **caught**."
-msgstr ""
+msgstr "**Exception**: кодът е валиден, но нещо се обърква **по време на изпълнението**: текст, който не е число, липсващ файл, липсващ ключ. Скриптът спира на този ред - освен ако exception-ът не бъде **хванат**."
 
 #. heading 3
-#: site/lectures/08-errors-and-files.md:74
+#: site/lectures/08-errors-and-files.md:70
 msgid "Read the traceback from the bottom"
-msgstr ""
+msgstr "Четете traceback отдолу нагоре"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:76
+#: site/lectures/08-errors-and-files.md:72
 msgid "When an exception is not caught, Python prints a **traceback**: the way the program went to the error, the last call at the bottom."
-msgstr ""
+msgstr "Когато един exception не е хванат, Python отпечатва **traceback**: пътя, по който програмата е стигнала до грешката, с последното извикване най-долу."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:85
+msgid "Read it **from the bottom up**:"
+msgstr "Четете го **отдолу нагоре**:"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:87
+msgid "The last line: the **type** of the exception and its **message** - `ValueError: could not convert string to float: 'n/a'`. Often this is enough."
+msgstr "Последният ред: **типът** на exception-а и неговото **съобщение** - `ValueError: could not convert string to float: 'n/a'`. Често това е достатъчно."
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:89
-msgid "Read it **from the bottom up**:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:91
-msgid "The last line: the **type** of the exception and its **message** - `ValueError: could not convert string to float: 'n/a'`. Often this is enough."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:93
 msgid "Above it: the line of **your** code where it happened, and the function."
-msgstr ""
+msgstr "Над него: редът от **вашия** код, където е станало, и функцията."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:94
+#: site/lectures/08-errors-and-files.md:90
 msgid "Higher: who called that function, and so on, up to the first call."
-msgstr ""
+msgstr "По-нагоре: кой е извикал тази функция и т.н., до първото извикване."
 
 #. heading 3
-#: site/lectures/08-errors-and-files.md:96
-msgid "The exceptions you will meet"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:92
+msgid "The exceptions you will often meet"
+msgstr "Exceptions, които ще срещате често"
 
 #. table cell
-#: site/lectures/08-errors-and-files.md:98
+#: site/lectures/08-errors-and-files.md:94
 msgid "Exception"
-msgstr ""
+msgstr "Exception"
 
 #. table cell
-#: site/lectures/08-errors-and-files.md:98
+#: site/lectures/08-errors-and-files.md:94
 msgid "When"
-msgstr ""
+msgstr "Кога"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:94
+msgid "A data example"
+msgstr "Пример с данни"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:96
+msgid "the type is right, the value is wrong"
+msgstr "типът е верен, стойността е грешна"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:97
+msgid "the type is wrong"
+msgstr "типът е грешен"
 
 #. table cell
 #: site/lectures/08-errors-and-files.md:98
-msgid "A data example"
-msgstr ""
+msgid "a dictionary has no such key"
+msgstr "в dictionary няма такъв ключ"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:99
+msgid "a list has no such position"
+msgstr "в list няма такава позиция"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:99
+msgid "`fields[5]` of a short row"
+msgstr "`fields[5]` на къс ред"
 
 #. table cell
 #: site/lectures/08-errors-and-files.md:100
-msgid "the type is right, the value is wrong"
-msgstr ""
+msgid "division by zero"
+msgstr "деление на нула"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:100
+msgid "the average of an empty group"
+msgstr "средното на празна група"
 
 #. table cell
 #: site/lectures/08-errors-and-files.md:101
-msgid "the type is wrong"
-msgstr ""
+msgid "no such file"
+msgstr "няма такъв файл"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:101
+msgid "a wrong path, a file not delivered yet"
+msgstr "грешен път, файл, който още не е доставен"
 
 #. table cell
 #: site/lectures/08-errors-and-files.md:102
-msgid "a dictionary has no such key"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:103
-msgid "a list has no such position"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:103
-msgid "`fields[5]` of a short row"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:104
-msgid "division by zero"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:104
-msgid "the average of an empty group"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:105
-msgid "no such file"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:105
-msgid "a wrong path, a file not delivered yet"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:106
 msgid "the wrong encoding"
-msgstr ""
+msgstr "грешната кодировка"
 
 #. table cell
-#: site/lectures/08-errors-and-files.md:106
+#: site/lectures/08-errors-and-files.md:102
 msgid "a cp1251 file read as UTF-8"
-msgstr ""
+msgstr "файл в cp1251, прочетен като UTF-8"
 
 #. table cell
-#: site/lectures/08-errors-and-files.md:107
+#: site/lectures/08-errors-and-files.md:103
 msgid "an object has no such method"
-msgstr ""
+msgstr "обектът няма такъв метод"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:120
-msgid "(This loop already uses `try` / `except` - the next section.)"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:116
+msgid "(`try` / `except` are explained in the next section.)"
+msgstr "(`try` / `except` са обяснени в следващата секция.)"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:122
-msgid "**Errors from the data.** Two more that come from the data, not from your code - a value that is `None`, and a file in another encoding:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:118
+msgid "**Errors from the data.** An error can also come from the data, not from your code - a value that is `None`:"
+msgstr "**Грешки от данните.** Една грешка може да дойде и от данните, а не от вашия код - стойност, която е `None`:"
+
+#. heading 3
+#: site/lectures/08-errors-and-files.md:127
+msgid "Catch an exception"
+msgstr "Хващане на exception"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:130
-msgid "**A file in another encoding.** The file is saved in cp1251, but read as UTF-8:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:129
+msgid "Put the code that can fail in a `try` block. If an exception happens there, Python jumps to the `except` block that matches its type - and the script goes on:"
+msgstr "Сложете кода, който може да се провали, в блок `try`. Ако там възникне exception, Python скача към блока `except`, който отговаря на неговия тип - и скриптът продължава:"
 
-#. table cell
-#: site/lectures/08-errors-and-files.md:137 site/lectures/08-errors-and-files.md:546 site/lectures/08-errors-and-files.md:993
-msgid "SAS"
-msgstr ""
+#. paragraph
+#: site/lectures/08-errors-and-files.md:142
+msgid "The rest of the `try` block after the error does **not** run."
+msgstr "Останалата част от блока `try` след грешката **не** се изпълнява."
 
-#. table cell
-#: site/lectures/08-errors-and-files.md:137 site/lectures/08-errors-and-files.md:546 site/lectures/08-errors-and-files.md:993
-msgid "Python"
-msgstr ""
+#. heading 3
+#: site/lectures/08-errors-and-files.md:144
+msgid "`as error`: the message"
+msgstr "`as error`: съобщението"
 
-#. table cell
-#: site/lectures/08-errors-and-files.md:139
-msgid "`NOTE: Invalid data`, the value becomes missing, the step goes on"
-msgstr ""
+#. paragraph
+#: site/lectures/08-errors-and-files.md:146
+msgid "`except ValueError as error` gives the exception object a name. [`str(error)`](https://docs.python.org/3/builtins/stdtypes.html#str) is the message - write it into your report:"
+msgstr "`except ValueError as error` дава име на обекта на exception-а. [`str(error)`](https://docs.python.org/3/builtins/stdtypes.html#str) е съобщението - запишете го в отчета си:"
 
-#. table cell
-#: site/lectures/08-errors-and-files.md:139
-msgid "the script **stops**, unless you catch the exception"
-msgstr ""
+#. heading 3
+#: site/lectures/08-errors-and-files.md:158
+msgid "Catch several kinds of errors"
+msgstr "Хващане на няколко вида грешки"
 
-#. table cell
-#: site/lectures/08-errors-and-files.md:140
-msgid "`_ERROR_ = 1` for the row"
-msgstr ""
+#. paragraph
+#: site/lectures/08-errors-and-files.md:160
+msgid "You can have several `except` blocks for different types:"
+msgstr "Може да имате няколко блока `except` за различни типове:"
 
-#. table cell
-#: site/lectures/08-errors-and-files.md:140
-msgid "the `except` block runs for the row"
-msgstr ""
+#. paragraph
+#: site/lectures/08-errors-and-files.md:176
+msgid "You can also use a **tuple** of error types to catch several errors at once:"
+msgstr "Можете също да използвате **tuple** от типове грешки, за да хванете няколко грешки наведнъж:"
 
-#. table cell
-#: site/lectures/08-errors-and-files.md:141
-msgid "`ERROR:` in the log stops the step"
-msgstr ""
+#. paragraph
+#: site/lectures/08-errors-and-files.md:189
+msgid "`to_float` is a small helper function that you can use in every loader: \"a number, or `None`\" - like an informat with the `??` modifier in SAS, which reads a bad value as missing without a note."
+msgstr "`to_float` е малка помощна функция, която можете да използвате във всеки loader: \"число или `None`\" - като informat с модификатора `??` в SAS, който чете лоша стойност като липсваща без бележка."
 
-#. table cell
-#: site/lectures/08-errors-and-files.md:141
-msgid "an exception that nobody catches"
-msgstr ""
+#. heading 3
+#: site/lectures/08-errors-and-files.md:193
+msgid "The traps: catching too much"
+msgstr "Капаните: хващане на твърде много"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:195
+msgid "A bare `except:` (or `except Exception:`) catches **everything** - also your own typos. The script then gives a wrong result without a word:"
+msgstr "Голият `except:` (или `except Exception:`) хваща **всичко** - също и вашите правописни грешки в кода. Тогава скриптът дава грешен резултат, без да каже нищо:"
+
+#. heading 3
+#: site/lectures/08-errors-and-files.md:211
+msgid "Rules"
+msgstr "Правила"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:213
+msgid "Catch the **specific** exception you expect (`ValueError`, `KeyError`), not all."
+msgstr "Хващайте **конкретния** exception, който очаквате (`ValueError`, `KeyError`), а не всички."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:214
+msgid "Keep the `try` block **small**: only the line that can fail."
+msgstr "Дръжте блока `try` **малък**: само редът, който може да се провали."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:215
+msgid "Never `pass` silently in a loader: count the error, or write it somewhere."
+msgstr "Никога не правете тихо `pass` в loader: пребройте грешката или я запишете някъде."
+
+#. heading 2
+#: site/lectures/08-errors-and-files.md:217
+msgid "3. `try`, `except`, `else` and `finally`"
+msgstr "3. `try`, `except`, `else` и `finally`"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:219
+msgid "The full form has two more parts:"
+msgstr "Пълната форма има още две части:"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:232
+msgid "`else` keeps the `try` block small: only the risky line is inside, the code that **uses** the result is in `else`. `finally` is for clean-up that must happen whatever comes - closing a connection ([lecture 12](./12-databases.md#close-the-connection-always)), writing the last log line."
+msgstr "`else` държи блока `try` малък: вътре е само рисковият ред, а кодът, който **използва** резултата, е в `else`. `finally` е за почистване, което трябва да стане каквото и да се случи - затваряне на връзка ([лекция 12](./12-databases.md#close-the-connection-always)), записване на последния ред в log-а."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:236
+msgid "In the next example, `finally` makes sure that a loan never stays marked as \"under review\" after its processing ends - even after an unexpected exception."
+msgstr "В следващия пример `finally` гарантира, че един кредит никога не остава отбелязан като \"в преглед\", след като обработката му приключи - дори след неочаквано exception."
 
 #. box title
-#: site/lectures/08-errors-and-files.md:143 site/lectures/08-errors-and-files.md:282 site/lectures/08-errors-and-files.md:375 site/lectures/08-errors-and-files.md:522 site/lectures/08-errors-and-files.md:632 site/lectures/08-errors-and-files.md:726 site/lectures/08-errors-and-files.md:807 site/lectures/08-errors-and-files.md:917 site/lectures/08-errors-and-files.md:999 site/lectures/08-errors-and-files.md:1086 site/lectures/08-errors-and-files.md:1196 site/lectures/08-errors-and-files.md:1414 site/lectures/08-errors-and-files.md:1508
+#: site/lectures/08-errors-and-files.md:255 site/lectures/08-errors-and-files.md:305 site/lectures/08-errors-and-files.md:485 site/lectures/08-errors-and-files.md:593 site/lectures/08-errors-and-files.md:736 site/lectures/08-errors-and-files.md:832 site/lectures/08-errors-and-files.md:899 site/lectures/08-errors-and-files.md:1061
 msgid "Try it"
-msgstr ""
+msgstr "Опитайте"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:144
-msgid "Run each line alone, and name the exception before you run it: [`int(\" 42 \")`](https://docs.python.org/3/builtins/functions.html#int), [`int(\"4 2\")`](https://docs.python.org/3/builtins/functions.html#int), [`float(\"1e3\")`](https://docs.python.org/3/builtins/functions.html#float), `[\"a\"].index(\"b\")`, `\"abc\"[10]`."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:256
+msgid "Predict the output, then run:"
+msgstr "Предскажете резултата, после изпълнете:"
 
-#. heading 3
-#: site/lectures/08-errors-and-files.md:150
-msgid "Catch an exception"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:152
-msgid "Put the code that can fail in a `try` block. If an exception happens there, Python jumps to the `except` block that matches its type - and the script goes on:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:165
-msgid "The rest of the `try` block after the error does **not** run."
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:167
-msgid "`as error`: the message"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:169
-msgid "`except ValueError as error` gives the exception object a name. [`str(error)`](https://docs.python.org/3/builtins/stdtypes.html#str) is the message - write it into your report:"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:181
-msgid "Several kinds"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:183
-msgid "Several `except` blocks for different types, or one block for a **tuple** of types:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:199
-msgid "**A number, or `None`.** One helper for empty, missing and bad values:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:212
-msgid "`to_float` is a small helper you will use in every loader: \"a number, or `None`\" - like an informat with the `??` modifier in SAS, which reads a bad value as missing without a note."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:216
-msgid "**Outstanding from the export.** On a real column - the `Outstanding` of `loans_export.csv`, with its decimal commas and a SAS-style `.` for missing values. Convert, count what failed:"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:236
-msgid "Try the formats one by one"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:238
-msgid "[Lecture 7](./07-text-and-regex.md#several-date-formats) detected the date format by the shape of the text. With `try`, there is a shorter way: try each format, and take the first that works:"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:258
-msgid "The traps: catching too much"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:260
-msgid "A bare `except:` (or `except Exception:`) catches **everything** - also your own typos. The script then gives a wrong result without a word:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:276
-msgid "Rules:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:278
-msgid "Catch the **specific** exception you expect (`ValueError`, `KeyError`), not all."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:279
-msgid "Keep the `try` block **small**: only the line that can fail."
-msgstr ""
+#. box title
+#: site/lectures/08-errors-and-files.md:272 site/lectures/08-errors-and-files.md:311 site/lectures/08-errors-and-files.md:491 site/lectures/08-errors-and-files.md:598 site/lectures/08-errors-and-files.md:742 site/lectures/08-errors-and-files.md:837 site/lectures/08-errors-and-files.md:905 site/lectures/08-errors-and-files.md:1066 site/lectures/08-errors-and-files.md:1184 site/lectures/08-errors-and-files.md:1334
+msgid "Answer"
+msgstr "Отговор"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:280
-msgid "Never `pass` silently in a loader: count the error, or write it somewhere."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:283
-msgid "Change `to_float` (in [Several kinds](#several-kinds) above) so that it also accepts the Bulgarian format `\"12,50\"`: try [`float(value)`](https://docs.python.org/3/builtins/functions.html#float) first, and if that fails, try again with the comma replaced. Test it with `\"12,50\"`, `\"12.50\"`, `\"1 234,5\"` and `\"abc\"`."
-msgstr ""
-
-#. heading 2
-#: site/lectures/08-errors-and-files.md:288
-msgid "3. `else` and `finally`"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:290
-msgid "The full form has two more parts:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:303
-msgid "**All four parts at work.** One good value and one bad value:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:317
-msgid "`else` keeps the `try` block small: only the risky line is inside, the code that **uses** the result is in `else`. `finally` is for clean-up that must happen whatever comes - closing a connection ([lecture 12](./12-databases.md#close-the-connection-always)), writing the last log line."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:321
-msgid "**A missing monthly file.** A monthly file that may not be there yet - the error is expected, the work on the file is in `else`:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:335
-msgid "**`finally` with an uncaught error.** `finally` runs even when the error is **not** caught - the clean-up happens, then the error goes on:"
-msgstr ""
+msgid "`finally` runs **before** the function returns, so its line comes first. The `return` value is printed only after `f` has ended. With `0`, the `except` block returns `\"zero\"`, and `finally` still runs."
+msgstr "`finally` се изпълнява **преди** функцията да върне стойност, затова неговият ред е пръв. Стойността от `return` се отпечатва едва след като `f` е приключила. С `0` блокът `except` връща `\"zero\"`, а `finally` пак се изпълнява."
 
 #. heading 3
-#: site/lectures/08-errors-and-files.md:350
-msgid "Ask first, or try and catch?"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:287
+msgid "`raise`: stop with a clear message"
+msgstr "`raise`: спиране с ясно съобщение"
 
 #. paragraph
+#: site/lectures/08-errors-and-files.md:289
+msgid "Your own checks can **raise** an exception, with a message that says what is wrong and where. In SAS: `PUTLOG \"ERROR: ...\"` and `ABORT`."
+msgstr "Вашите собствени проверки могат да **предизвикат** (raise) exception със съобщение, което казва какво е грешно и къде. В SAS: `PUTLOG \"ERROR: ...\"` и `ABORT`."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:302
+msgid "A good message names the **value** and the **rule**. \"Error\" alone helps nobody at the end of a month."
+msgstr "Доброто съобщение назовава **стойността** и **правилото**. Само \"Error\" не помага на никого в края на месеца."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:306
+msgid "Write `check_currency(code)` that returns the code in capitals if it is one of `EUR`, `USD`, `GBP` (any case, spaces at the ends allowed), and raises a `ValueError` with the value in the message otherwise."
+msgstr "Напишете `check_currency(code)`, която връща кода с главни букви, ако е един от `EUR`, `USD`, `GBP` (с произволен регистър, позволени са интервали в краищата), и иначе предизвиква `ValueError` със стойността в съобщението."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:323
+msgid "Clean the value first, then check it. The message shows the original value with `!r`, so the spaces and the case of the input are visible too."
+msgstr "Първо почистете стойността, после я проверете. Съобщението показва оригиналната стойност с `!r`, така че се виждат и интервалите, и регистърът на входа."
+
+#. heading 3
+#: site/lectures/08-errors-and-files.md:327
+msgid "All problems of a row, not only the first"
+msgstr "Всички проблеми на един ред, не само първият"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:329
+msgid "A check that raises, like `check_stage` above, stops at the **first** broken rule of a row. For a data quality report you may want **every** problem - collect the messages in a list instead of raising:"
+msgstr "Проверка, която предизвиква exception, като `check_stage` по-горе, спира при **първото** нарушено правило на реда. За отчет за качеството на данните може да искате **всеки** проблем - събирайте съобщенията в list, вместо да предизвиквате exception:"
+
+#. heading 3
 #: site/lectures/08-errors-and-files.md:352
-msgid "Two styles for the same check:"
-msgstr ""
+msgid "When to stop, when to go on"
+msgstr "Кога да спрете, кога да продължите"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:354
+msgid "Situation"
+msgstr "Ситуация"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:354
+msgid "What to do"
+msgstr "Какво да направите"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:356
+msgid "a bad row in a big input"
+msgstr "лош ред в голям входен файл"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:356
+msgid "go on: reject the row, count it, report it"
+msgstr "продължете: отхвърлете реда, пребройте го, докладвайте го"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:357
+msgid "too many bad rows (say more than 1%)"
+msgstr "твърде много лоши редове (да кажем над 1%)"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:357
+msgid "stop: the input is broken"
+msgstr "спрете: входните данни са повредени"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:358
+msgid "a missing input file, a wrong report date"
+msgstr "липсващ входен файл, грешна дата на отчета"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:358
+msgid "stop: a report on wrong input is worse than no report"
+msgstr "спрете: отчет върху грешни входни данни е по-лош от никакъв отчет"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:359
+msgid "a possible bug in your code"
+msgstr "възможен бъг във вашия код"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:359
+msgid "stop: do not catch it"
+msgstr "спрете: не го хващайте"
+
+#. heading 2
+#: site/lectures/08-errors-and-files.md:361
+msgid "5. Paths with `pathlib`"
+msgstr "5. Пътища с `pathlib`"
+
+#. heading 3
+#: site/lectures/08-errors-and-files.md:363
+msgid "What is a path?"
+msgstr "Какво е път?"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:371
-msgid "Both are fine. Python code often uses EAFP when the check would repeat the work (converting a number to see if it can be converted), and `if` / [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) when the check is cheap and clear (a key in a dictionary)."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:365
+msgid "A **path** tells Python where to find a file or a folder - for example, the CSV file with the loans."
+msgstr "**Пътят** (path) казва на Python къде да намери файл или папка - например CSV файла с кредитите."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:368
+msgid "A path can be:"
+msgstr "Пътят може да бъде:"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:370
+msgid "**absolute**: the full location, from the top of the disk. For example `C:/RiskAnalysis/data/loans.csv` on Windows, or `/home/maria/RiskAnalysis/data/loans.csv` on Linux and macOS."
+msgstr "**абсолютен**: цялото местоположение, от върха на диска. Например `C:/RiskAnalysis/data/loans.csv` на Windows или `/home/maria/RiskAnalysis/data/loans.csv` на Linux и macOS."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:373
+msgid "**relative**: a location that starts from the **current working directory** - the folder where Python \"stands\" when the script runs. For example `data/loans.csv`."
+msgstr "**относителен**: местоположение, което започва от **текущата работна папка** (current working directory) - папката, в която Python \"стои\", когато скриптът работи. Например `data/loans.csv`."
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:376
-msgid "Predict the output, then run:"
-msgstr ""
+msgid "Common relative paths. In this example, the current folder is `reports`:"
+msgstr "Често срещани относителни пътища. В този пример текущата папка е `reports`:"
 
-#. heading 2
+#. table cell
+#: site/lectures/08-errors-and-files.md:388
+msgid "Path"
+msgstr "Път"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:388
+msgid "Where it points"
+msgstr "Къде сочи"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:390
+msgid "the file `loans.csv` in the current folder"
+msgstr "файлът `loans.csv` в текущата папка"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:391
+msgid "the same file: `.` means \"the current folder\""
+msgstr "същият файл: `.` означава \"текущата папка\""
+
+#. table cell
 #: site/lectures/08-errors-and-files.md:392
-msgid "4. `raise` and your own exceptions"
-msgstr ""
+msgid "the file `loans.csv` in the folder `data`, inside the current folder"
+msgstr "файлът `loans.csv` в папката `data`, вътре в текущата папка"
 
-#. heading 3
-#: site/lectures/08-errors-and-files.md:394
-msgid "`raise`: stop with a clear message"
-msgstr ""
+#. table cell
+#: site/lectures/08-errors-and-files.md:393
+msgid "`..` means \"one folder up\": the folder `data` next to the current folder"
+msgstr "`..` означава \"една папка нагоре\": папката `data` до текущата папка"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:396
-msgid "Your own checks can **raise** an exception, with a message that says what is wrong and where. In SAS: `PUTLOG \"ERROR: ...\"` and `ABORT`."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:409
-msgid "A good message names the **value** and the **rule**. \"Error\" alone helps nobody at the end of a month."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:412
-msgid "**Stop on a wrong setting.** A wrong **setting** must stop the report before it starts - a report for the wrong month is worse than no report:"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:429
-msgid "Your own exception type"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:431
-msgid "A one-line class (classes: [lecture 10](./10-oop-classes.md)) makes a new kind of exception. Then the loader can catch **your** data errors, and let real bugs (a `NameError`, a `TypeError` in your code) stop the script:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:455
-msgid "`raise ... from None` replaces the original `ValueError` by the clearer `DataError` (without it, Python shows both). Because `DataError` is a kind of `ValueError`, code that catches `ValueError` catches it too."
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:459
-msgid "Re-raise: add context and go on up"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:461
-msgid "Sometimes a function cannot handle an error, but it can add information - the file and the line - and raise again:"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:481
-msgid "All problems of a row, not only the first"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:483
-msgid "A check that raises, like `check_stage` above, stops at the **first** broken rule of a row. For a data quality report you may want **every** problem - collect the messages in a list instead of raising:"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:506
-msgid "When to stop, when to go on"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:508
-msgid "Situation"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:508
-msgid "What to do"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:510
-msgid "a bad row in a big input"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:510
-msgid "go on: reject the row, count it, report it"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:511
-msgid "a missing input file, a wrong report date"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:511
-msgid "stop: `raise` - a report on wrong input is worse than no report"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:512
-msgid "too many bad rows (say more than 1%)"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:512
-msgid "stop after loading: the input is broken"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:513
-msgid "a bug in your code"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:513
-msgid "let it stop - do not catch it"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:395
+msgid "So far we wrote `open(\"data/loans.csv\")` - a relative path. It works because you run the scripts from the folder of the homework repository, and `data` is in that folder:"
+msgstr "Досега писахме `open(\"data/loans.csv\")` - относителен път. Той работи, защото пускате скриптовете от папката на Homework repository, а `data` е в тази папка:"
 
 #. box title
-#: site/lectures/08-errors-and-files.md:515
-msgid "`assert` is not for data checks"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:407
+msgid "The same script, another folder: `FileNotFoundError`"
+msgstr "Същият скрипт, друга папка: `FileNotFoundError`"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:516
-msgid "`assert x > 0, \"message\"` raises an `AssertionError` when the condition is false - but Python **removes** all `assert` statements when run with `python -O`. Use `assert` in tests and for \"this can never happen\" checks of your own code; check data with `if` and `raise`."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:408
+msgid "A relative path depends on the folder you run the script **from**, not on the folder where the script is. If you open a terminal in `Homework/08-errors-and-files/` and run `python homework.py`, Python looks for `08-errors-and-files/data/loans.csv` - and there is no such file. Run the scripts from the repository folder, as the first line of each task file says."
+msgstr "Относителният път зависи от папката, **от която** пускате скрипта, а не от папката, в която е скриптът. Ако отворите терминал в `Homework/08-errors-and-files/` и пуснете `python homework.py`, Python търси `08-errors-and-files/data/loans.csv` - а такъв файл няма. Пускайте скриптовете от папката на repository-то, както казва първият ред на всеки файл със задача."
+
+#. heading 3
+#: site/lectures/08-errors-and-files.md:415
+msgid "A `Path` object"
+msgstr "Обект `Path`"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:523
-msgid "Write `check_currency(code)` that returns the code in capitals if it is one of `EUR`, `USD`, `GBP` (any case, spaces at the ends allowed), and raises a `DataError` with the value in the message otherwise."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:417
+msgid "The module [`pathlib`](https://docs.python.org/3/library/pathlib.html) gives a **`Path` object**. The operator `/` joins the parts of a path (here it is not a division), with the right separator for Windows (`\\`) or Linux / macOS (`/`):"
+msgstr "Модулът [`pathlib`](https://docs.python.org/3/library/pathlib.html) дава **обект `Path`**. Операторът `/` съединява частите на пътя (тук това не е деление), с правилния разделител за Windows (`\\`) или за Linux / macOS (`/`):"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:432
+msgid "In SAS a `LIBNAME` or a `FILENAME` gives a name to a location; in Python you keep the location in a variable:"
+msgstr "В SAS `LIBNAME` или `FILENAME` дава име на едно местоположение; в Python пазите местоположението в променлива:"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:435 site/lectures/08-errors-and-files.md:893
+msgid "SAS"
+msgstr "SAS"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:435 site/lectures/08-errors-and-files.md:893 site/lectures/08-errors-and-files.md:966
+msgid "Python"
+msgstr "Python"
+
+#. box title
+#: site/lectures/08-errors-and-files.md:441
+msgid "Windows paths in Python code"
+msgstr "Пътища на Windows в код на Python"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:442
+msgid "A Windows path in a normal string has backslashes - and `\"\\n\"`, `\"\\t\"` are special characters ([lecture 7](./07-text-and-regex.md#writing-a-regex-in-python)). Use a raw string, or forward slashes, which Windows also accepts:"
+msgstr "Пътят на Windows в обикновен string съдържа обратни наклонени черти - а `\"\\n\"`, `\"\\t\"` са специални символи ([лекция 7](./07-text-and-regex.md#writing-a-regex-in-python)). Използвайте raw string или прави наклонени черти, които Windows също приема:"
+
+#. heading 3
+#: site/lectures/08-errors-and-files.md:452
+msgid "The output folder"
+msgstr "Папката за резултатите"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:454
+msgid "A report script writes its results into a folder, for example `out`. [`mkdir`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir) creates it; `exist_ok=True` means \"no error if it is already there\", so the script can run every month. For a small file, `write_text` and `read_text` write and read the whole text in one step:"
+msgstr "Скриптът за отчет записва резултатите си в папка, например `out`. [`mkdir`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir) я създава; `exist_ok=True` означава \"без грешка, ако вече я има\", така че скриптът може да работи всеки месец. За малък файл `write_text` и `read_text` записват и четат целия текст наведнъж:"
+
+#. heading 3
+#: site/lectures/08-errors-and-files.md:469
+msgid "Say which file is missing"
+msgstr "Кажете кой файл липсва"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:471
+msgid "If a file is not there, `open` raises a `FileNotFoundError` (section 1). In a monthly job this often means \"the input is not delivered yet\". Say **which** file is missing:"
+msgstr "Ако файлът го няма, `open` предизвиква `FileNotFoundError` (секция 1). В месечна задача това често означава \"входните данни още не са доставени\". Кажете **кой** файл липсва:"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:486
+msgid "Change the file name to `payments_2026-09.csv` and print `len(rows)` after the `try` block. Then check with `exists()`, without `open`, which of `loans.csv`, `clients.csv` and `payments_2026-10.csv` are in `data/`."
+msgstr "Сменете името на файла на `payments_2026-09.csv` и отпечатайте `len(rows)` след блока `try`. После проверете с `exists()`, без `open`, кои от `loans.csv`, `clients.csv` и `payments_2026-10.csv` са в `data/`."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:508
+msgid "`len(rows)` counts all lines, the header too. With the missing October file, `print(len(rows))` raises a `NameError`: the `except` block ran, so `rows` was never created."
+msgstr "`len(rows)` брои всички редове, и заглавния. С липсващия файл за октомври `print(len(rows))` предизвиква `NameError`: изпълнил се е блокът `except`, затова `rows` така и не е създадена."
 
 #. heading 2
-#: site/lectures/08-errors-and-files.md:528
-msgid "5. Paths with `pathlib`"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:513
+msgid "6. Text files"
+msgstr "6. Текстови файлове"
 
 #. heading 3
-#: site/lectures/08-errors-and-files.md:530
-msgid "A path is an object"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:515
+msgid "Open, read, close: `with`"
+msgstr "Отваряне, четене, затваряне: `with`"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:532
-msgid "The module `pathlib` gives `Path` objects. The operator `/` joins the parts - the same code works on Windows (`\\`) and on Linux / macOS (`/`):"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:517
+msgid "To work with a file, a program **opens** it, **reads** or **writes**, and **closes** it. In Python, `with open(...)` does all three:"
+msgstr "За да работи с файл, програмата го **отваря**, **чете** или **записва** и го **затваря**. В Python `with open(...)` прави и трите:"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:527
+msgid "[`open(path, encoding=...)`](https://docs.python.org/3/builtins/functions.html#open) opens the file and gives a **file object**;"
+msgstr "[`open(path, encoding=...)`](https://docs.python.org/3/builtins/functions.html#open) отваря файла и дава **файлов обект** (file object);"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:528
+msgid "`as file` gives the file object a name - `file` is just a variable;"
+msgstr "`as file` дава име на файловия обект - `file` е просто променлива;"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:529
+msgid "the indented block works with the file;"
+msgstr "отместеният навътре блок работи с файла;"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:530
+msgid "at the end of the block, `with` **closes** the file - also when an exception happens inside. Without `with`, an error can leave the file open (and on Windows, locked)."
+msgstr "в края на блока `with` **затваря** файла - също и когато вътре възникне exception. Без `with` една грешка може да остави файла отворен (а на Windows - заключен)."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:534
+msgid "You have used it since [session 2](./02-conditions-and-loops.md#the-rows-of-a-file)."
+msgstr "Използвате го от [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file)."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:536
+msgid "The **mode** says what you want to do:"
+msgstr "**Режимът** (mode) казва какво искате да направите:"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:538
+msgid "Mode"
+msgstr "Режим"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:538
+msgid "Means"
+msgstr "Значение"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:540
+msgid "read (the default)"
+msgstr "четене (по подразбиране)"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:541
+msgid "write - a new file, or **empty** an existing one"
+msgstr "записване - нов файл или **изпразване** на съществуващ"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:542
+msgid "append at the end"
+msgstr "добавяне в края"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:543
+msgid "write a new file - an error if it exists"
+msgstr "записване на нов файл - грешка, ако съществува"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:545
+msgid "**Write a file.** Always give the `encoding` (why: see [Encodings](#encodings-utf-8-cp1251-and-cyrillic) below):"
+msgstr "**Записване на файл.** Винаги задавайте `encoding` (защо: вижте [Кодировки](#encodings-utf-8-cp1251-and-cyrillic) по-долу):"
 
 #. box title
-#: site/lectures/08-errors-and-files.md:552
-msgid "Windows paths in Python code"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:564
+msgid "`\"w\"` empties the file at once"
+msgstr "`\"w\"` изпразва файла веднага"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:553
-msgid "A Windows path in a normal string has backslashes - and `\"\\n\"`, `\"\\t\"` are special characters ([lecture 7](./07-text-and-regex.md#writing-a-regex-in-python)). Use a raw string, or forward slashes, which Windows also accepts:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:565
+msgid "The file is emptied when it is **opened** with `\"w\"` - before anything is written. To add lines to a log, use `\"a\"`:"
+msgstr "Файлът се изпразва, когато се **отвори** с `\"w\"` - преди да е записано каквото и да е. За да добавяте редове в log, използвайте `\"a\"`:"
 
 #. heading 3
-#: site/lectures/08-errors-and-files.md:563
-msgid "What is in a folder: `iterdir`"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:581
+msgid "Read a big file line by line"
+msgstr "Четене на голям файл ред по ред"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:583
+msgid "For big files, loop over the file object: only one line is in memory at a time."
+msgstr "При големи файлове обхождайте с цикъл файловия обект: в паметта има само по един ред."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:594
+msgid "Write the 10 loan ids with the largest outstanding into `out/top10.txt`, one per line, then read the file back and print the number of lines."
+msgstr "Запишете 10-те номера на кредити с най-голяма непогасена сума в `out/top10.txt`, по един на ред, после прочетете файла обратно и отпечатайте броя на редовете."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:623
+msgid "The tuples `(outstanding, loan_id)` sort by their first item, the outstanding."
+msgstr "Tuples `(outstanding, loan_id)` се сортират по първия си елемент - непогасената сума."
 
 #. heading 3
-#: site/lectures/08-errors-and-files.md:573
-msgid "Find files: `glob`"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:626
+msgid "Encodings: UTF-8, cp1251 and Cyrillic"
+msgstr "Кодировки: UTF-8, cp1251 и кирилица"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:575
-msgid "[`glob(pattern)`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) lists the files of a folder whose names fit a pattern - `*` is any text (the shell kind of pattern, not a regex):"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:587
-msgid "Create folders, read and write whole files"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:628
+msgid "A file on disk is **bytes**, not text. An **encoding** is the rule that turns text into bytes and back. Two encodings you will meet:"
+msgstr "Файлът на диска е **байтове**, а не текст. **Кодировката** (encoding) е правилото, което превръща текст в байтове и обратно. Две кодировки, които ще срещнете:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:601
-msgid "`exist_ok=True` makes [`mkdir`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir) safe to run every month. `parents=True` creates the missing folders above it too."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:604
-msgid "**Names of output files.** Build the names of output files from parts - the month in the name, another suffix for the same name:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:618
-msgid "**Say which file is missing.** A missing input file is a `FileNotFoundError` - catch it and say **which** file is missing:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:631
+msgid "**UTF-8** - every character of every language; the standard of the web, of Python source files and of most new files."
+msgstr "**UTF-8** - всеки символ от всеки език; стандартът на уеб, на файловете с код на Python и на повечето нови файлове."
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:633
-msgid "List the files in `data/` that are **not** CSV files, with their size in KB, sorted by size."
-msgstr ""
-
-#. heading 2
-#: site/lectures/08-errors-and-files.md:637
-msgid "6. Text files"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:639
-msgid "Open, read, close: `with`"
-msgstr ""
+msgid "**cp1251** (Windows-1251) - the old Windows encoding for Cyrillic. Exports from old systems and Excel files saved as \"CSV\" on a Bulgarian Windows are often cp1251."
+msgstr "**cp1251** (Windows-1251) - старата кодировка на Windows за кирилица. Експортите от стари системи и Excel файловете, записани като \"CSV\" на български Windows, често са в cp1251."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:641
-msgid "Since [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) you open files with `with open(...) as file:`. `with` **closes** the file at the end of the block - also when an exception happens inside. Without `with`, an error can leave the file open (and on Windows, locked)."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:636
+msgid "Read a file with the **same** encoding it was written with. The file `regions_bg.csv` is saved in cp1251 - the file of the `UnicodeDecodeError` in [section 1](#_1-errors-and-exceptions):"
+msgstr "Четете файла със **същата** кодировка, с която е записан. Файлът `regions_bg.csv` е записан в cp1251 - файлът от `UnicodeDecodeError` в [секция 1](#_1-errors-and-exceptions):"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:645
-msgid "The **mode** says what you want to do:"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:647
-msgid "Mode"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:647
-msgid "Means"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:649
-msgid "read (the default)"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:650
-msgid "write - a new file, or **empty** an existing one"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:651
-msgid "append at the end"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:652
-msgid "write a new file - an error if it exists"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:654
-msgid "**Write a file.** Always give the `encoding` (why: [Encodings](#encodings-utf-8-cp1251-and-cyrillic) below):"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:644
+msgid "That is why every [`open()`](https://docs.python.org/3/builtins/functions.html#open) in this course says `encoding=\"utf-8\"`: without it, Python 3.12 - 3.14 on Windows uses the Windows encoding of the computer (often cp1252 or cp1251), and the same script gives different results on different computers. (From Python 3.15 on, UTF-8 is the default everywhere. Still write it: the script may run on an older Python.)"
+msgstr "Затова всяко [`open()`](https://docs.python.org/3/builtins/functions.html#open) в този курс има `encoding=\"utf-8\"`: без него Python 3.12 - 3.14 на Windows използва кодировката на Windows на компютъра (често cp1252 или cp1251) и един и същ скрипт дава различни резултати на различни компютри. (От Python 3.15 нататък UTF-8 е по подразбиране навсякъде. Все пак го пишете: скриптът може да се изпълни на по-стар Python.)"
 
 #. box title
-#: site/lectures/08-errors-and-files.md:673
-msgid "`\"w\"` empties the file at once"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:650
+msgid "Advanced: the BOM of Excel"
+msgstr "Advanced: BOM на Excel"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:674
-msgid "The file is emptied when it is **opened** with `\"w\"` - before anything is written. To add lines to a log, use `\"a\"`:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:651
+msgid "Excel saves \"CSV UTF-8\" with a **BOM** - three invisible bytes at the start. Read such a file with `encoding=\"utf-8-sig\"`, or the first column name gets an invisible character in front:"
+msgstr "Excel записва \"CSV UTF-8\" с **BOM** - три невидими байта в началото. Четете такъв файл с `encoding=\"utf-8-sig\"`, иначе името на първата колона получава невидим символ отпред:"
+
+#. heading 2
+#: site/lectures/08-errors-and-files.md:663
+msgid "7. CSV files"
+msgstr "7. CSV файлове"
 
 #. heading 3
-#: site/lectures/08-errors-and-files.md:690
-msgid "Read: all at once, or line by line"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:665
+msgid "Read: `csv.reader` and `csv.DictReader`"
+msgstr "Четене: `csv.reader` и `csv.DictReader`"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:706
-msgid "For big files, loop over the file object: only one line is in memory at a time."
+#: site/lectures/08-errors-and-files.md:667
+msgid "In [section 6](#read-a-big-file-line-by-line) you split each line with `line.split(\",\")`. That works for `loans.csv`, but not for every CSV file. When a value has a comma inside it, the file puts the value in quotes - like the comments of the credit officers:"
+msgstr "В [секция 6](#read-a-big-file-line-by-line) разделяхте всеки ред с `line.split(\",\")`. Това работи за `loans.csv`, но не за всеки CSV файл. Когато една стойност съдържа запетая, файлът поставя стойността в кавички - като коментарите на кредитните служители:"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:681
+msgid "`split(\",\")` does not know about quotes: it also cuts at the comma in `340,800`. The module [`csv`](https://docs.python.org/3/library/csv.html) (it comes with Python) reads CSV files the right way. You used it in [lecture 7](./07-text-and-regex.md#reading-a-csv-file) as a given pattern; here is how it works."
+msgstr "`split(\",\")` не знае за кавичките: реже и при запетаята в `340,800`. Модулът [`csv`](https://docs.python.org/3/library/csv.html) (идва с Python) чете CSV файловете правилно. Използвахте го в [лекция 7](./07-text-and-regex.md#reading-a-csv-file) като готов шаблон; ето как работи."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:687
+msgid ""
+"**`csv.DictReader`: each row as a dictionary.**  \n"
+"[`csv.DictReader(file)`](https://docs.python.org/3/library/csv.html#csv.DictReader) reads the **first line** of the file as the column names. Then it gives each next line as a **dictionary**: the column name is the key - a record as in [session 6](./06-dictionaries.md#a-row-as-a-dictionary). It does not read the whole file at once: like a file, you go through it with `for`, one row at a time."
 msgstr ""
+"**`csv.DictReader`: всеки ред като dictionary.**  \n"
+"[`csv.DictReader(file)`](https://docs.python.org/3/library/csv.html#csv.DictReader) чете **първия ред** на файла като имена на колоните. После дава всеки следващ ред като **dictionary**: името на колоната е ключът - запис като в [занятие 6](./06-dictionaries.md#a-row-as-a-dictionary). Той не чете целия файл наведнъж: както при файла, минавате през него с `for`, ред по ред."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:704
+msgid "The comma inside the quotes is now part of the comment, and the quotes are gone. You get the values by **name**, not by position: `row[\"comment\"]`, not `fields[2]`. The script still works if someone adds a column to the file."
+msgstr "Запетаята в кавичките вече е част от коментара, а кавичките ги няма. Взимате стойностите по **име**, а не по позиция: `row[\"comment\"]`, а не `fields[2]`. Скриптът продължава да работи, ако някой добави колона във файла."
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:708
-msgid "**Do not overwrite: `\"x\"`.** The mode `\"x\"` protects a file that must not be overwritten - the second run fails instead of destroying the first result:"
-msgstr ""
+msgid "Need all the rows, for example to go through them twice? Put them in a list with `list(...)`, as in lecture 7 - for a small file only, since the whole file is then in memory:"
+msgstr "Трябват ви всички редове, например за да минете през тях два пъти? Сложете ги в list с `list(...)`, както в лекция 7 - само за малък файл, защото тогава целият файл е в паметта:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:727
-msgid "Write the 10 loan ids with the largest outstanding into `out/top10.txt`, one per line, then read the file back and print the number of lines."
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:731
-msgid "Encodings: UTF-8, cp1251 and Cyrillic"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:722
+msgid "**The trap: every value is text.** A CSV file has no types. `DictReader` gives strings, also for numbers - convert them yourself with `int()` or `float()`:"
+msgstr "**Капанът: всяка стойност е текст.** CSV файлът няма типове. `DictReader` дава strings, и за числата - преобразувайте ги сами с `int()` или `float()`:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:733
-msgid "A file on disk is **bytes**, not text. An **encoding** is the rule that turns text into bytes and back. The same text gives different bytes in different encodings:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:737
+msgid "Read `loans.csv` with `DictReader` and sum the column `outstanding` of the loans with `stage` equal to 3. Remember: `row[\"stage\"]` is the text `\"3\"`, not the number `3`."
+msgstr "Прочетете `loans.csv` с `DictReader` и сумирайте колоната `outstanding` на кредитите със `stage`, равно на 3. Помнете: `row[\"stage\"]` е текстът `\"3\"`, а не числото `3`."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:746
-msgid "**UTF-8** - every character of every language; the standard of the web, of Python source files and of most new files."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:755
+msgid "The same in one line, with `sum(... for ...)` from [lecture 5](./05-lists-advanced.md#sum-for-sum-and-count-with-a-condition) - a `SUM(...) WHERE` in SQL. The generator takes the rows one at a time, so it works also for a big file:"
+msgstr "Същото на един ред, със `sum(... for ...)` от [лекция 5](./05-lists-advanced.md#sum-for-sum-and-count-with-a-condition) - `SUM(...) WHERE` в SQL. Generator-ът взима редовете един по един, затова работи и за голям файл:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:748
-msgid "**cp1251** (Windows-1251) - the old Windows encoding for Cyrillic. Exports from old systems and Excel files saved as \"CSV\" on a Bulgarian Windows are often cp1251."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:771
+msgid "The `sum` must be **inside** the `with`: after the `with` the file is closed, and the generator cannot read it any more."
+msgstr "`sum` трябва да е **вътре** във `with`: след `with` файлът е затворен и generator-ът вече не може да чете от него."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:751
-msgid "**Write and read Cyrillic text.** Use the same `encoding` on both sides:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:774
+msgid "`row[\"stage\"] == 3` is always `False` (text is never equal to a number), and the sum stays `0` - with no error to warn you."
+msgstr "`row[\"stage\"] == 3` винаги е `False` (текстът никога не е равен на число) и сумата остава `0` - без грешка, която да ви предупреди."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:762
-msgid "**Mojibake.** Reading with the wrong encoding gives either an error, or **mojibake** - wrong letters:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:776
-msgid "That is why every [`open()`](https://docs.python.org/3/builtins/functions.html#open) in this course says `encoding=\"utf-8\"`: without it, Python 3.12 - 3.14 on Windows uses the Windows encoding of the computer (often cp1252 or cp1251), and the same script gives different results on different computers. (From Python 3.15 on, UTF-8 is the default everywhere. Still write it: the script may run on an older Python.)"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:782
-msgid "**Read a cp1251 file.** The file `regions_bg.csv` is saved in **cp1251** - the file of the `UnicodeDecodeError` in [section 1](#_1-errors-and-exceptions):"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:793
-msgid "`errors=\"replace\"` puts `?` (or `�`) instead of a byte that cannot be read, instead of stopping. Use it only to **look** at a file, never to load data."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:778
+msgid "**`csv.reader`: each row as a list.** [`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) also understands quotes, but gives each row as a **list**, and the header line is just the first row. Both take a `delimiter` for files that are not comma-separated - like `;` in a Bulgarian Excel export:"
+msgstr "**`csv.reader`: всеки ред като list.** [`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) също разбира кавичките, но дава всеки ред като **list**, а заглавният ред е просто първият ред. И двата приемат `delimiter` за файлове, които не са разделени със запетая - като `;` в експорт от български Excel:"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:796
-msgid "**The BOM of Excel.** Excel saves \"CSV UTF-8\" with a **BOM** - three bytes `EF BB BF` at the start. Read such a file with `encoding=\"utf-8-sig\"`, or the first column name gets an invisible character in front:"
-msgstr ""
+msgid "(`utf-8-sig` removes the BOM that Excel writes at the start - [section 6](#encodings-utf-8-cp1251-and-cyrillic).)"
+msgstr "(`utf-8-sig` премахва BOM, който Excel записва в началото - [секция 6](#encodings-utf-8-cp1251-and-cyrillic).)"
+
+#. heading 3
+#: site/lectures/08-errors-and-files.md:798
+msgid "A lookup table from a file: the rating scale"
+msgstr "Таблица за справки от файл: рейтинговата скала"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:808
-msgid "Write `\"Пловдив\"` into `out/city.txt` with `encoding=\"cp1251\"`. Read it back once with `\"cp1251\"` and once with `\"utf-8\"` (in a `try` / `except`). Predict both results first."
-msgstr ""
-
-#. box title
-#: site/lectures/08-errors-and-files.md:813 site/lectures/08-errors-and-files.md:1616 site/lectures/08-errors-and-files.md:1672
-msgid "Answer"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:800
+msgid "A nomenclature often lives in a file: `rating_scale.csv` has one row per rating. Read it **once** into a dictionary **rating -> (grade, PD_mid)** and use it for every client. The values are text: convert the key with `int` and the PD bounds with `float`:"
+msgstr "Номенклатурата често е във файл: `rating_scale.csv` има по един ред за всеки рейтинг. Прочетете го **веднъж** в dictionary **рейтинг -> (оценка, PD_mid)** и го използвайте за всеки клиент. Стойностите са текст: преобразувайте ключа с `int`, а границите на PD с `float`:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:826
-msgid "The same encoding on both sides gives the text back. UTF-8 cannot read the cp1251 bytes: an error, not wrong letters."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:819
+msgid "**Text keys.** The trap: without `int`, the keys are the strings `\"1\"`, `\"2\"`, ... and `scale[4]` raises `KeyError` - the rating `4` of a client is an int:"
+msgstr "**Текстови ключове.** Капанът: без `int` ключовете са strings `\"1\"`, `\"2\"`, ... и `scale[4]` предизвиква `KeyError` - рейтингът `4` на клиента е int:"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:833
+msgid "Build a second dictionary **grade -> description** from the same file, and print the description of `\"CCC\"`. Which column is the key now?"
+msgstr "Направете втори dictionary **оценка -> описание** от същия файл и отпечатайте описанието на `\"CCC\"`. Коя колона е ключът сега?"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:849
+msgid "The key is the column `grade`. It is text in the file and text in the lookup, so no `int` is needed here."
+msgstr "Ключът е колоната `grade`. Тя е текст във файла и текст в справочника, затова тук не трябва `int`."
+
+#. heading 3
+#: site/lectures/08-errors-and-files.md:853
+msgid "Write: `csv.writer` and `csv.DictWriter`"
+msgstr "Записване: `csv.writer` и `csv.DictWriter`"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:855
+msgid "Open the file with `newline=\"\"` - the `csv` module writes the line ends itself. Without it, on Windows every second line of the file is empty:"
+msgstr "Отваряйте файла с `newline=\"\"` - модулът `csv` сам записва краищата на редовете. Без това на Windows всеки втори ред на файла е празен:"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:873
+msgid "**Write dictionaries.** `DictWriter` writes dictionaries; `fieldnames` gives the columns and their order:"
+msgstr "**Записване на dictionaries.** `DictWriter` записва dictionaries; `fieldnames` задава колоните и техния ред:"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:890
+msgid "The comma inside `\"late, 35 days\"` is quoted automatically, so the file reads back correctly."
+msgstr "Запетаята в `\"late, 35 days\"` автоматично се огражда с кавички, така че файлът се чете обратно правилно."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:900
+msgid "Write the loans of stage 3 into `out/stage3.csv` with `DictWriter`: the columns `loan_id`, `client_id` and `outstanding`. Read the file back with `DictReader` and print the number of rows."
+msgstr "Запишете кредитите в етап 3 в `out/stage3.csv` с `DictWriter`: колоните `loan_id`, `client_id` и `outstanding`. Прочетете файла обратно с `DictReader` и отпечатайте броя на редовете."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:926
+msgid "One `with` can open two files: read from one, write into the other, row by row. The values stay text - there is no need to convert `outstanding` only to write it again."
+msgstr "Един `with` може да отвори два файла: четете от единия и записвате в другия, ред по ред. Стойностите остават текст - няма нужда да преобразувате `outstanding` само за да го запишете отново."
 
 #. heading 2
-#: site/lectures/08-errors-and-files.md:830
-msgid "7. CSV files"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:931
+msgid "8. JSON files"
+msgstr "8. JSON файлове"
 
 #. heading 3
-#: site/lectures/08-errors-and-files.md:832
-msgid "Read: `csv.reader` and `csv.DictReader`"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:933
+msgid "What is JSON?"
+msgstr "Какво е JSON?"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:834
-msgid "You know [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) ([lecture 7](./07-text-and-regex.md), the box at the start). [`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) gives each row as a **list**. Both understand quotes, and both take a `delimiter` for files that are not comma-separated - like `;` in a Bulgarian Excel export:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:935
+msgid "**JSON** (JavaScript Object Notation) is a text format for data, like CSV. A CSV file is one table: rows, and the same columns in every row. JSON can hold data **inside data**: a value can be a list, or a group of named values. Configuration files, the answers of web APIs and the exports of many tools are JSON."
+msgstr "**JSON** (JavaScript Object Notation) е текстов формат за данни, като CSV. CSV файлът е една таблица: редове и едни и същи колони във всеки ред. JSON може да съдържа данни **в данните**: една стойност може да бъде списък или група от именувани стойности. Конфигурационните файлове, отговорите на уеб API и експортите на много инструменти са JSON."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:850
-msgid "(`utf-8-sig` removes the BOM that Excel writes at the start - [section 6](#encodings-utf-8-cp1251-and-cyrillic).)"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:940
+msgid "This is the settings file of our monthly report. Read it as plain text first:"
+msgstr "Това е файлът с настройките на нашия месечен отчет. Първо го прочетете като обикновен текст:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:852
-msgid "**No header line.** A file **without** a header line: give the column names with `fieldnames`:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:948
+msgid "Only two kinds of brackets build the structure:"
+msgstr "Само два вида скоби изграждат структурата:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:864
-msgid "([`io.StringIO`](https://docs.python.org/3/library/io.html#io.StringIO) makes a string behave like an open file - handy for examples and tests. Note the quoted `\"1,250.00\"`: one field, not two.)"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:950
+msgid "`{ ... }` is an **object**: pairs `\"name\": value`, separated by commas. It looks like a Python dictionary."
+msgstr "`{ ... }` е **обект** (object): двойки `\"name\": value`, разделени със запетаи. Прилича на dictionary в Python."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:867
-msgid "**Typed records.** The values are text. With `DictReader` and a dictionary of converters, a file becomes typed records:"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:882
-msgid "A lookup table from a file: the rating scale"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:952
+msgid "`[ ... ]` is an **array**: values in order, separated by commas. It looks like a Python list."
+msgstr "`[ ... ]` е **масив** (array): стойности по ред, разделени със запетаи. Прилича на list в Python."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:884
-msgid "A nomenclature often lives in a file: `rating_scale.csv` has one row per rating. Read it **once** into a dictionary **rating -> (grade, PD)** - a SAS format made from a dataset (`PROC FORMAT CNTLIN=`), or a small SQL reference table - and use it for every client. The values are text: convert the key with `int` and the PD bounds with `float`:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:904
-msgid "**Text keys.** The trap: without `int`, the keys are the strings `\"1\"`, `\"2\"`, ... and `scale[4]` raises `KeyError` - the rating `4` of a client is an int:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:918
-msgid "Build a second dictionary **grade -> description** from the same file, and print the description of `\"CCC\"`. Which column is the key now?"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:922
-msgid "Write: `csv.writer` and `csv.DictWriter`"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:924
-msgid "Open the file with `newline=\"\"` - the `csv` module writes the line ends itself. Without it, on Windows every second line of the file is empty:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:942
-msgid "**Write dictionaries.** `DictWriter` writes dictionaries; `fieldnames` gives the columns and their order:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:955
+msgid "Inside them are simple values: text in double quotes (`\"EUR\"`), numbers (`0.45`), `true` / `false` and `null` (no value). Here `\"output\"` is an object inside the object, and `\"segments\"` is an array of texts."
+msgstr "Вътре в тях има прости стойности: текст в двойни кавички (`\"EUR\"`), числа (`0.45`), `true` / `false` и `null` (няма стойност). Тук `\"output\"` е обект в обекта, а `\"segments\"` е масив от текстове."
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:959
-msgid "**Quote every field.** The comma inside `\"late, 35 days\"` is quoted automatically, so the file reads back correctly. Some systems want **every** field in quotes - `quoting=csv.QUOTE_ALL`:"
-msgstr ""
+msgid "In SAS you read such a file with the JSON engine (`LIBNAME ... JSON`), which turns it into tables. In SQL, many databases keep JSON in a text column and read it with functions like `JSON_VALUE`. In Python, the module [`json`](https://docs.python.org/3/library/json.html) turns it into dictionaries and lists - the types you already know."
+msgstr "В SAS четете такъв файл с JSON engine-а (`LIBNAME ... JSON`), който го превръща в таблици. В SQL много бази данни пазят JSON в текстова колона и го четат с функции като `JSON_VALUE`. В Python модулът [`json`](https://docs.python.org/3/library/json.html) го превръща в dictionaries и lists - типовете, които вече познавате."
 
 #. heading 3
+#: site/lectures/08-errors-and-files.md:964
+msgid "JSON types and Python types"
+msgstr "Типовете в JSON и типовете в Python"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:966 site/lectures/08-errors-and-files.md:1101
+msgid "JSON"
+msgstr "JSON"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:966
+msgid "Example"
+msgstr "Пример"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:968
+msgid "object"
+msgstr "object"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:969
+msgid "array"
+msgstr "array"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:970
+msgid "string"
+msgstr "string"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:971
+msgid "number without a point"
+msgstr "число без десетична точка"
+
+#. table cell
 #: site/lectures/08-errors-and-files.md:972
-msgid "A file for Excel users"
-msgstr ""
+msgid "number with a point"
+msgstr "число с десетична точка"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:974
-msgid "A Bulgarian Excel opens CSV files with `;` and a decimal comma best - and it needs the BOM to see UTF-8 Cyrillic:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:976
+msgid "[`json.loads`](https://docs.python.org/3/library/json.html#json.loads) (load **s**tring) reads JSON from a string. Look at the type of each value:"
+msgstr "[`json.loads`](https://docs.python.org/3/library/json.html#json.loads) (load **s**tring) чете JSON от string. Вижте типа на всяка стойност:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1000
-msgid "Read `regions_bg.csv` (cp1251) and write it again as `out/regions_utf8.csv` in UTF-8 with `;` as the separator. Open the result with [`read_text`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.read_text) to check it."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:989
+msgid "**The trap: JSON is not Python.** The text looks like Python code, but the rules are stricter: only double quotes, `true` and not `True`, `null` and not `None`, no comma after the last item. A file that breaks a rule raises a `json.JSONDecodeError` (a kind of `ValueError`), with the line and column:"
+msgstr "**Капанът: JSON не е Python.** Текстът прилича на код на Python, но правилата са по-строги: само двойни кавички, `true`, а не `True`, `null`, а не `None`, без запетая след последния елемент. Файл, който нарушава правило, предизвиква `json.JSONDecodeError` (вид `ValueError`), с реда и колоната:"
 
-#. heading 2
+#. paragraph
 #: site/lectures/08-errors-and-files.md:1004
-msgid "8. JSON files"
-msgstr ""
+msgid "The wording of the messages can be different in another Python version; the line and the column are always there."
+msgstr "Текстът на съобщенията може да е различен в друга версия на Python; редът и колоната винаги са там."
+
+#. heading 3
+#: site/lectures/08-errors-and-files.md:1007
+msgid "Read and write JSON files"
+msgstr "Четене и записване на JSON файлове"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1006
-msgid "JSON ([session 6](./06-dictionaries.md#the-shape-of-json)) is the format of configuration files and of web APIs. [`json.load`](https://docs.python.org/3/library/json.html#json.load) reads a file into dictionaries and lists; [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) writes one:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1009
+msgid "[`json.load`](https://docs.python.org/3/library/json.html#json.load) (without the `s`) reads a file into dictionaries and lists; [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) writes one:"
+msgstr "[`json.load`](https://docs.python.org/3/library/json.html#json.load) (без `s`) чете файл в dictionaries и lists; [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) записва:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1019
-msgid "Settings in a file, not in the code: next month you change the file, not the script."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1022
+msgid "The nested values are read with `[]` twice: `config[\"output\"]` is a dictionary, and `[\"folder\"]` reads a key in it. Settings in a file, not in the code: next month you change the file, not the script."
+msgstr "Вложените стойности се четат с `[]` два пъти: `config[\"output\"]` е dictionary, а `[\"folder\"]` чете ключ в него. Настройките са във файл, а не в кода: следващия месец променяте файла, а не скрипта."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1021
-msgid "**JSON from a string.** [`json.loads`](https://docs.python.org/3/library/json.html#json.loads) reads JSON from a **string** - for example the answer of a web service:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1032
+#: site/lectures/08-errors-and-files.md:1026
 msgid "**Write JSON.** [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) writes a dictionary to a file:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1048
-msgid "**A summary as JSON.** A summary made from the portfolio - the number of loans per product, written with `sort_keys=True` so that the file looks the same in every run (easy to compare in Git, [lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code)):"
-msgstr ""
+msgstr "**Записване на JSON.** [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) записва dictionary във файл:"
 
 #. box title
-#: site/lectures/08-errors-and-files.md:1066
-msgid "JSON knows only a few types"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1042
+msgid "JSON has no dates"
+msgstr "В JSON няма дати"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1067
-msgid "Strings, numbers, `true` / `false`, `null` (`None`), lists and objects (dicts). A `date` is not one of them - [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) raises a `TypeError`. Store dates as ISO text ([`d.isoformat()`](https://docs.python.org/3/library/datetime.html#datetime.date.isoformat)), and convert back after reading. Keys of JSON objects are always strings: `{1: 323}` comes back as `{\"1\": 323}`."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1043
+msgid "A `date` is not one of the JSON types (see the table above) - [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) raises a `TypeError`. Store dates as ISO text ([`d.isoformat()`](https://docs.python.org/3/library/datetime.html#datetime.date.isoformat)), and convert back after reading. Keys of JSON objects are always strings: `{1: 323}` comes back as `{\"1\": 323}`."
+msgstr "`date` не е сред типовете на JSON (вижте таблицата по-горе) - [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) предизвиква `TypeError`. Пазете датите като текст в ISO формат ([`d.isoformat()`](https://docs.python.org/3/library/datetime.html#datetime.date.isoformat)) и ги преобразувайте обратно след четене. Ключовете на JSON обектите винаги са strings: `{1: 323}` се връща като `{\"1\": 323}`."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1087
+#: site/lectures/08-errors-and-files.md:1062
 msgid "Change the LGD in a copy of the config to 0.40, save it as `out/config_test.json`, read it back, and print the LGD."
-msgstr ""
+msgstr "Променете LGD в копие на конфигурацията на 0.40, запишете го като `out/config_test.json`, прочетете го обратно и отпечатайте LGD."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:1085
+msgid "The original `data/report_config.json` does not change: only the new file has `0.4`."
+msgstr "Оригиналният `data/report_config.json` не се променя: само новият файл има `0.4`."
 
 #. heading 2
-#: site/lectures/08-errors-and-files.md:1091
-msgid "9. Excel files with `openpyxl`"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1089
+msgid "9. Summary"
+msgstr "9. Обобщение"
 
-#. heading 3
+#. table cell
+#: site/lectures/08-errors-and-files.md:1090
+msgid "Topic"
+msgstr "Тема"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1090
+msgid "Remember"
+msgstr "Запомнете"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1092
+msgid "Exceptions"
+msgstr "Exceptions"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1092
+msgid "an error while the code runs; it stops the script unless caught; read the traceback from the bottom"
+msgstr "грешка по време на изпълнението на кода; спира скрипта, освен ако не е хваната; четете traceback отдолу нагоре"
+
+#. table cell
 #: site/lectures/08-errors-and-files.md:1093
-msgid "Read a workbook"
-msgstr ""
+msgid "Common types"
+msgstr "Чести типове"
 
-#. paragraph
+#. table cell
+#: site/lectures/08-errors-and-files.md:1094
+msgid "catch the specific type; `as error` for the message; a tuple for several types; keep `try` small"
+msgstr "хващайте конкретния тип; `as error` за съобщението; tuple за няколко типа; дръжте `try` малък"
+
+#. table cell
 #: site/lectures/08-errors-and-files.md:1095
-msgid "`openpyxl` (in `requirements.txt`) reads and writes `.xlsx` files. A **workbook** has **sheets**; a sheet has rows of **cells**:"
-msgstr ""
+msgid "`else` without an error; `finally` always"
+msgstr "`else` - без грешка; `finally` - винаги"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1096
+msgid "`raise ValueError(f\"... {value!r}\")`: name the value and the rule"
+msgstr "`raise ValueError(f\"... {value!r}\")`: посочете стойността и правилото"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1097
+msgid "Stop or go on"
+msgstr "Спиране или продължаване"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1097
+msgid "bad rows: reject and report; bad inputs or settings: raise; bugs: let them stop"
+msgstr "лоши редове: отхвърлете и докладвайте; лоши входни данни или настройки: raise; бъгове: оставете ги да спрат скрипта"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1099
+msgid "Files"
+msgstr "Файлове"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1099
+msgid "`with open(path, mode, encoding=\"utf-8\")`; modes `r`, `w`, `a`, `x`; loop over the file for big files"
+msgstr "`with open(path, mode, encoding=\"utf-8\")`; режими `r`, `w`, `a`, `x`; при големи файлове - цикъл по файла"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1100
+msgid "CSV"
+msgstr "CSV"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1100
+msgid "[`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) / `DictReader`; `delimiter=\";\"`; write with `newline=\"\"`; `utf-8-sig` for Excel"
+msgstr "[`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) / `DictReader`; `delimiter=\";\"`; записване с `newline=\"\"`; `utf-8-sig` за Excel"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1101
+msgid "[`json.load(f)`](https://docs.python.org/3/library/json.html#json.load), [`json.dump(obj, f, indent=2)`](https://docs.python.org/3/library/json.html#json.dump); dates as ISO text"
+msgstr "[`json.load(f)`](https://docs.python.org/3/library/json.html#json.load), [`json.dump(obj, f, indent=2)`](https://docs.python.org/3/library/json.html#json.dump); датите като текст в ISO формат"
+
+#. heading 2
+#: site/lectures/08-errors-and-files.md:1103
+msgid "Practice"
+msgstr "Упражнения"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1110
-msgid "`values_only=True` gives the values as tuples. The cells are **typed**: a date cell gives a `datetime`, a number a `float` - no conversion from text."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1104
+msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
+msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и изпълнявайте задачите от терминала, в главната папка на repository-то:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1113
-msgid "**One cell.** A single cell by its address, and the size of a sheet:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1112
+msgid "The tasks that write files write them into the folder `out/` of the repository (it is in `.gitignore`)."
+msgstr "Задачите, които записват файлове, ги записват в папката `out/` на repository-то (тя е в `.gitignore`)."
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1115
+msgid "Task"
+msgstr "Задача"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1115
+msgid "File"
+msgstr "Файл"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1115
+msgid "What you do"
+msgstr "Какво правите"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1117
+msgid "`to_float`, `to_int`, `to_date` with `try` / `except`"
+msgstr "`to_float`, `to_int`, `to_date` с `try` / `except`"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1118
+msgid "Predict the exception, and the output with `else` / `finally`"
+msgstr "Предскажете exception-а и резултата с `else` / `finally`"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1119
+msgid "`pathlib`: check the input files, build names, write and read a text file"
+msgstr "`pathlib`: проверка на входните файлове, съставяне на имена, записване и четене на текстов файл"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1120
+msgid "Read the config, write a CSV report with `DictWriter`"
+msgstr "Четене на конфигурацията, записване на CSV отчет с `DictWriter`"
+
+#. heading 2
+#: site/lectures/08-errors-and-files.md:1122
+msgid "Homework"
+msgstr "Домашно"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:1124
-msgid "**USD rates from all sheets.** All sheets into one dictionary **date -> USD rate**:"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:1143
-msgid "Write a workbook"
-msgstr ""
+msgid "`08-errors-and-files/homework.py` (in the homework repository): **check the payments file** - find the file (with a clear error if it is missing), read the amounts with `try` / `except`, write the bad payments into a text file and a short summary into a JSON file. Every check must print `OK`."
+msgstr "`08-errors-and-files/homework.py` (в Homework repository): **проверка на файла с плащанията** - намерете файла (с ясна грешка, ако липсва), прочетете сумите с `try` / `except`, запишете грешните плащания в текстов файл и кратко обобщение в JSON файл. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1170
-msgid "**The number format is kept.** Read it back - the number format is stored in the file, the value stays a number:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1187
-msgid "In SAS: `PROC IMPORT DBMS=XLSX`, `LIBNAME x XLSX`, `ODS EXCEL`. pandas reads and writes whole sheets in one line (`read_excel`, lectures 13 and 15; `to_excel` with several sheets, [lecture 15](./15-pandas-reports.md#_6-an-excel-report-with-several-sheets)) - with openpyxl working inside."
-msgstr ""
-
-#. box title
-#: site/lectures/08-errors-and-files.md:1191
-msgid "Excel on this site"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1192
-msgid "The site installs `openpyxl` the first time an example uses Excel - the first run of such an example takes a few seconds longer."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1197
-msgid "Add a third sheet `usd` to `out/stages.xlsx`'s workbook (before saving) with the USD rates of September: one row per day, `date` and `rate`."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1128
+msgid "The practice tasks you did not finish in class."
+msgstr "Задачите за упражнение, които не сте завършили в час."
 
 #. heading 2
-#: site/lectures/08-errors-and-files.md:1201
-msgid "10. Loading data with bad records"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1130
+msgid "Self-study"
+msgstr "Самостоятелно изучаване"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:1132
+msgid "This part is not covered in class. It is for reading at home: a real log for your scripts, and Excel files without pandas."
+msgstr "Тази част не се разглежда в час. Тя е за четене у дома: истински log за вашите скриптове и Excel файлове без pandas."
 
 #. heading 3
-#: site/lectures/08-errors-and-files.md:1203
-msgid "The task"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1135
+msgid "`logging`: the SAS log for Python scripts"
+msgstr "`logging`: SAS log за скриптове на Python"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1205
-msgid "`payments_2026-09.csv` has 280 lines; most are fine, some are not:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1137
+msgid "[`print`](https://docs.python.org/3/builtins/functions.html#print) is fine while you develop. A script that runs every month needs a **log**: lines with a time and a level, in a file, that you can read when something went wrong. The module `logging` comes with Python:"
+msgstr "[`print`](https://docs.python.org/3/builtins/functions.html#print) е добре, докато разработвате. Скрипт, който се изпълнява всеки месец, има нужда от **log**: редове с час и ниво, във файл, които можете да прочетете, когато нещо се е объркало. Модулът `logging` идва с Python:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1217
-msgid "The rules of a valid payment:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1163
+msgid "The **levels**, from the least to the most serious: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`. `level=logging.INFO` writes INFO and above; switch to `DEBUG` when you look for a problem, without changing the code. Use `%s` placeholders, not f-strings, in log messages - the text is built only if the line is written. (`force=True` replaces an earlier setup; in a script you call `basicConfig` once, at the start.)"
+msgstr "**Нивата**, от най-малко до най-сериозно: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`. `level=logging.INFO` записва INFO и по-високите нива; превключете на `DEBUG`, когато търсите проблем, без да променяте кода. Използвайте `%s` за местата на стойностите, а не f-strings, в съобщенията на log-а - текстът се съставя само ако редът се записва. (`force=True` заменя по-ранна настройка; в скрипт извиквате `basicConfig` веднъж, в началото.)"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1169
+msgid "SAS log"
+msgstr "SAS log"
+
+#. table cell
+#: site/lectures/08-errors-and-files.md:1174
+msgid "`OPTIONS MPRINT;` for more detail"
+msgstr "`OPTIONS MPRINT;` за повече подробности"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1219
-msgid "exactly 5 fields;"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1176 site/lectures/08-errors-and-files.md:1327
+msgid "**Exercises**"
+msgstr "**Упражнения**"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1220
-msgid "the loan id exists in `loans.csv`;"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1178
+msgid "Read `loans.csv` and write a log instead of [`print`](https://docs.python.org/3/builtins/functions.html#print): one INFO line per stage with the number of loans ([`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter), [lecture 7](./07-text-and-regex.md#counting-with-counter)), and a WARNING if more than 4% of the loans are in stage 3."
+msgstr "Прочетете `loans.csv` и пишете log вместо [`print`](https://docs.python.org/3/builtins/functions.html#print): по един INFO ред за всеки етап с броя на кредитите ([`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter), [лекция 7](./07-text-and-regex.md#counting-with-counter)) и WARNING, ако повече от 4% от кредитите са в етап 3."
 
 #. paragraph
+#: site/lectures/08-errors-and-files.md:1181
+msgid "Add a second handler that also prints the WARNING lines on the screen. (Hint: [`logging.StreamHandler()`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler), [`setLevel`](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel), [`log.addHandler`](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler).)"
+msgstr "Добавете втори handler, който показва и редовете WARNING на екрана. (Подсказка: [`logging.StreamHandler()`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler), [`setLevel`](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel), [`log.addHandler`](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler).)"
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:1216
+msgid "The handler of `basicConfig` writes every line into the file; the second handler prints only the WARNING lines on the screen. Without `sys.stdout`, a `StreamHandler` writes to the error output (`sys.stderr`) - in the terminal you see it the same way."
+msgstr "Handler-ът на `basicConfig` записва всеки ред във файла; вторият handler отпечатва на екрана само редовете WARNING. Без `sys.stdout` един `StreamHandler` пише в изхода за грешки (`sys.stderr`) - в терминала го виждате по същия начин."
+
+#. heading 3
 #: site/lectures/08-errors-and-files.md:1221
-msgid "the date is a real date in September 2026 (`yyyy-mm-dd`);"
-msgstr ""
+msgid "Excel files with `openpyxl`"
+msgstr "Excel файлове с `openpyxl`"
 
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1222
-msgid "the amount is a number greater than 0;"
-msgstr ""
-
-#. paragraph
+#. heading 4
 #: site/lectures/08-errors-and-files.md:1223
-msgid "the currency is EUR or USD."
-msgstr ""
+msgid "Read a workbook"
+msgstr "Четене на работна книга"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:1225
-msgid "**Profile the good rows.** A quick profile of the good rows first - how many payments per currency, and the range of the dates, for the rows that convert without problems:"
-msgstr ""
+msgid "`openpyxl` (in `requirements.txt`) reads and writes `.xlsx` files. A **workbook** has **sheets**; a sheet has rows of **cells**:"
+msgstr "`openpyxl` (в `requirements.txt`) чете и записва файлове `.xlsx`. **Работната книга** (workbook) има **листове** (sheets); листът има редове от **клетки**:"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:1240
-msgid "The text dates sort correctly because they are ISO - and `30.09.2026` sorts **after** every ISO date: one more sign of a bad row."
-msgstr ""
+msgid "`values_only=True` gives the values as tuples. The cells are **typed**: a date cell gives a `datetime`, a number a `float` - no conversion from text."
+msgstr "`values_only=True` дава стойностите като tuples. Клетките имат **типове**: клетка с дата дава `datetime`, число дава `float` - без преобразуване от текст."
 
-#. heading 3
+#. paragraph
 #: site/lectures/08-errors-and-files.md:1243
-msgid "One check function per rule, one `try` per row"
-msgstr ""
+msgid "**One cell.** A single cell by its address, and the size of a sheet:"
+msgstr "**Една клетка.** Една клетка по адреса ѝ и размерът на листа:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1245
-msgid "Each check raises a `DataError` with a clear message. The loader has **one** `try` per row: the first broken rule rejects the row, with its reason:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1254
+msgid "**USD rates from all sheets.** All sheets into one dictionary **date -> USD rate**:"
+msgstr "**Курсовете на USD от всички листове.** Всички листове в един dictionary **дата -> курс на USD**:"
+
+#. heading 4
+#: site/lectures/08-errors-and-files.md:1273
+msgid "Write a workbook"
+msgstr "Записване на работна книга"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1301
-msgid "`reader.line_num` is the line number in the file - like `_N_` in the SAS log, but for the file line (the header is line 1)."
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:1304
-msgid "Sums by group: `defaultdict`"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1300
+msgid "**The number format is kept.** Read it back - the number format is stored in the file, the value stays a number:"
+msgstr "**Числовият формат се запазва.** Прочетете я обратно - числовият формат е записан във файла, стойността остава число:"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1306
-msgid "The summary of the load needs the **total per currency** of the good payments - in SQL `SELECT currency, SUM(amount) ... GROUP BY currency`, in SAS `PROC MEANS SUM` with `CLASS currency`. A [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) ([lecture 7](./07-text-and-regex.md#counting-with-counter)) counts; for a sum, use the same idea as counting with [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get), with the amount instead of `1`:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1319
-msgid "**With [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict).** [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) (also from `collections`) does the [`get(..., 0.0)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) part for you. It is a dictionary that **creates a missing key** when you read it with `[]`. [`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) gives the new key the value [`float()`](https://docs.python.org/3/builtins/functions.html#float), which is `0.0`, so you can add to it straight away:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1334
-msgid "Pass `float`, not [`float()`](https://docs.python.org/3/builtins/functions.html#float): the dictionary calls it for each new key. [`dict(totals)`](https://docs.python.org/3/builtins/stdtypes.html#dict) makes a normal dictionary with the same pairs. Round only after summing a group."
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1317
+msgid "In SAS: `PROC IMPORT DBMS=XLSX`, `LIBNAME x XLSX`, `ODS EXCEL`. pandas reads and writes whole sheets in one line (`read_excel`, lectures 13 and 15; `to_excel` with several sheets, [lecture 15](./15-pandas-reports.md#_6-an-excel-report-with-several-sheets)) - with openpyxl working inside. Use openpyxl alone when you need single cells, or the formatting of a sheet."
+msgstr "В SAS: `PROC IMPORT DBMS=XLSX`, `LIBNAME x XLSX`, `ODS EXCEL`. pandas чете и записва цели листове с един ред (`read_excel`, лекции 13 и 15; `to_excel` с няколко листа, [лекция 15](./15-pandas-reports.md#_6-an-excel-report-with-several-sheets)) - като вътре работи openpyxl. Използвайте само openpyxl, когато ви трябват отделни клетки или форматирането на лист."
 
 #. box title
-#: site/lectures/08-errors-and-files.md:1338 site/lectures/08-errors-and-files.md:1374
-msgid "Animation"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1322
+msgid "Excel on this site"
+msgstr "Excel на този сайт"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1339
-msgid "**Grouping by hand:** [3. Sum with `defaultdict`](../animations/groupingByHand.html#3){target=\"_blank\"}"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1323
+msgid "The site installs `openpyxl` the first time an example uses Excel - the first run of such an example takes a few seconds longer."
+msgstr "Сайтът инсталира `openpyxl` първия път, когато пример използва Excel - първото изпълнение на такъв пример отнема няколко секунди повече."
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1342
-msgid "**Outstanding per product.** On the portfolio - the outstanding per product:"
-msgstr ""
+#: site/lectures/08-errors-and-files.md:1329
+msgid "Read the sheet `2026-08` of `data/fx_rates.xlsx` and print the lowest and the highest USD rate of August."
+msgstr "Прочетете листа `2026-08` на `data/fx_rates.xlsx` и отпечатайте най-ниския и най-високия курс на USD за август."
+
+#. paragraph
+#: site/lectures/08-errors-and-files.md:1331
+msgid "Add a third sheet `usd` to the workbook of `out/stages.xlsx` (before saving) with the USD rates of September: one row per day, `date` and `rate`."
+msgstr "Добавете трети лист `usd` към работната книга на `out/stages.xlsx` (преди записването) с курсовете на USD за септември: по един ред на ден, `date` и `rate`."
+
+#. heading 2
+#: site/lectures/08-errors-and-files.md:1355
+msgid "Read more"
+msgstr "Още за четене"
 
 #. paragraph
 #: site/lectures/08-errors-and-files.md:1357
-msgid "**The rows of each group.** Sometimes you need the **rows** of each group, not only a number - a dictionary of lists. [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) gives each new key a new empty list:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1375
-msgid "**Grouping by hand:** [4. Group into lists](../animations/groupingByHand.html#4){target=\"_blank\"}"
-msgstr ""
-
-#. box title
-#: site/lectures/08-errors-and-files.md:1378
-msgid "Reading a missing key adds it"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1379
-msgid "`totals[\"GBP\"]` does not raise a `KeyError` - it **adds** `\"GBP\"` with `0.0`. A typo in a key makes a new group without any error. To only look, use `in` or [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get):"
-msgstr ""
-
-#. box title
-#: site/lectures/08-errors-and-files.md:1392
-msgid "Advanced: two keys, and several values per group"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1393
-msgid "A **tuple** is a key too - `GROUP BY product, currency`:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1408
-msgid "For several values per group (`COUNT`, `SUM`, `MAX`), keep a small list per key, for example [`defaultdict(lambda: [0, 0.0])`](https://docs.python.org/3/library/collections.html#collections.defaultdict) for `[count, sum]`. `lambda: [0, 0.0]` is a function without a name ([session 4](./04-functions.md#_10-lambda)) that makes a new list for each new key."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1415
-msgid "Change the portfolio example: sum the `amount` per `currency` instead of the outstanding per product. Then make a [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) of the loan ids per `stage`. How many loans are in stage 3?"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:1420
-msgid "The reject file and the summary"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1422
-msgid "The rejected rows go into their own file, with the reason - so that the source system can fix them. And a short summary, like the end of a SAS log:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1483
-msgid "This is the pattern for every input of a monthly process: **never stop on a bad row, never lose a bad row, always report**."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1486
-msgid "**Read the reject file.** The reject file is a normal CSV - the next person reads it with the same tools:"
-msgstr ""
-
-#. box title
-#: site/lectures/08-errors-and-files.md:1501
-msgid "The same in pandas"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1502
-msgid "pandas has options for bad lines ([`pd.read_csv(..., on_bad_lines=\"skip\")`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)) and turns bad numbers into `NaN` with [`pd.to_numeric(..., errors=\"coerce\")`](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html) ([lecture 14](./14-pandas-select-aggregate-join.md)). They are faster - but they do not tell you **why** a row is bad. For an input you must explain to someone, the loader of this section is the better tool."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1509
-msgid "Add a rule: a payment may not be larger than the outstanding amount of its loan. You need a dictionary `loan_id -> outstanding` from `loans.csv`. How many rows does the new rule reject?"
-msgstr ""
-
-#. heading 2
-#: site/lectures/08-errors-and-files.md:1514
-msgid "11. Summary"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1515
-msgid "Topic"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1515
-msgid "Remember"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1517
-msgid "Exceptions"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1517
-msgid "an error while the code runs; it stops the script unless caught; read the traceback from the bottom"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1518
-msgid "Common types"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1519
-msgid "catch the specific type; `as error` for the message; a tuple for several types; keep `try` small"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1520
-msgid "`else` without an error; `finally` always"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1522
-msgid "Stop or go on"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1522
-msgid "bad rows: reject and report; bad inputs or settings: raise; bugs: let them stop"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1524
-msgid "Files"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1524
-msgid "`with open(path, mode, encoding=\"utf-8\")`; modes `r`, `w`, `a`, `x`; loop over the file for big files"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1525
-msgid "CSV"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1525
-msgid "[`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) / `DictReader`; `delimiter=\";\"`; write with `newline=\"\"`; `utf-8-sig` for Excel"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1526
-msgid "JSON"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1526
-msgid "[`json.load(f)`](https://docs.python.org/3/library/json.html#json.load), [`json.dump(obj, f, indent=2)`](https://docs.python.org/3/library/json.html#json.dump); dates as ISO text"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1527
-msgid "Excel"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1528
-msgid "Sums by group"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1528
-msgid "[`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): `totals[key] += amount`; [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): `groups[key].append(x)`; reading a missing key adds it"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1529
-msgid "Loader"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1529
-msgid "one check per rule, one `try` per row, a reject file with the reason, a summary"
-msgstr ""
-
-#. heading 2
-#: site/lectures/08-errors-and-files.md:1531
-msgid "Practice"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1532
-msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1540
-msgid "The tasks that write files write them into the folder `out/` of the repository (it is in `.gitignore`)."
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1543
-msgid "Task"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1543
-msgid "File"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1543
-msgid "What you do"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1545
-msgid "`to_float`, `to_int`, `to_date` with `try` / `except`"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1546
-msgid "Predict the exception, and the output with `else` / `finally`"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1547
-msgid "Check functions that raise a `DataError` with a clear message"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1548
-msgid "`pathlib`: list files, build names, write and read a text file"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1549
-msgid "Read the config, write a CSV report with `DictWriter`"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1550
-msgid "`task6-excel.py` (Optional)"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1550
-msgid "Read the three FX sheets; write a workbook with two sheets"
-msgstr ""
-
-#. heading 2
-#: site/lectures/08-errors-and-files.md:1552
-msgid "Homework"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1554
-msgid "`08-errors-and-files/homework.py` (in the homework repository): **load the September payments** - check every row against the rules, write the valid payments and a reject file with the line number and the reason, compute the totals per currency and per day, and return a summary. Every check must print `OK`."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1558
-msgid "The practice tasks you did not finish in class."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1559
-msgid "Optional: read `report_config.json` in your loader, and take the report month and the allowed currencies from it instead of writing them in the code."
-msgstr ""
-
-#. heading 2
-#: site/lectures/08-errors-and-files.md:1562
-msgid "Self-study"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1564
-msgid "This part is not covered in class. It is for reading at home: a real log for your scripts, and a loader for a whole folder of monthly files."
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:1567
-msgid "`logging`: the SAS log for Python scripts"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1569
-msgid "[`print`](https://docs.python.org/3/builtins/functions.html#print) is fine while you develop. A script that runs every month needs a **log**: lines with a time and a level, in a file, that you can read when something went wrong. The module `logging` comes with Python:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1595
-msgid "The **levels**, from the least to the most serious: `DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`. `level=logging.INFO` writes INFO and above; switch to `DEBUG` when you look for a problem, without changing the code. Use `%s` placeholders, not f-strings, in log messages - the text is built only if the line is written. (`force=True` replaces an earlier setup; in a script you call `basicConfig` once, at the start.)"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1601
-msgid "SAS log"
-msgstr ""
-
-#. table cell
-#: site/lectures/08-errors-and-files.md:1606
-msgid "`OPTIONS MPRINT;` for more detail"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1608 site/lectures/08-errors-and-files.md:1664
-msgid "**Exercises**"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1610
-msgid "Rewrite the summary of the payments loader (section 10) with `logging` instead of [`print`](https://docs.python.org/3/builtins/functions.html#print): one INFO line per currency, a WARNING if more than 1% of the rows were rejected."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1613
-msgid "Add a second handler that also prints the WARNING lines on the screen. (Hint: [`logging.StreamHandler()`](https://docs.python.org/3/library/logging.handlers.html#logging.StreamHandler), [`setLevel`](https://docs.python.org/3/library/logging.html#logging.Logger.setLevel), [`log.addHandler`](https://docs.python.org/3/library/logging.html#logging.Logger.addHandler).)"
-msgstr ""
-
-#. heading 3
-#: site/lectures/08-errors-and-files.md:1630
-msgid "A folder of monthly files"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1632
-msgid "A monthly process often reads **all** files of a folder: one per month, one per branch. [`glob`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) finds them, a regex ([lecture 7](./07-text-and-regex.md)) takes the month from the name, and the loader reads each - one bad file must not stop the others:"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1661
-msgid "The loop catches the errors **per file**: the good months are loaded, the broken one is reported with the kind of error."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1666
-msgid "Change the loop so that a file with a bad amount is still loaded, without the bad rows (use the `to_float` of section 2), and the number of skipped rows per file is reported."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1669
-msgid "Sort the files by the month in their name, not by the name itself. When is that different? (Hint: `payments_2026-10.csv` and `payments_2026-9.csv`.)"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1673
-msgid "Inside the `with`: `values = [to_float(row[\"amount\"]) for row in csv.DictReader(file)]`, then `totals[month] = sum(v for v in values if v is not None)` and `skipped[path.name] = values.count(None)`. The `UnicodeDecodeError` still needs the `try`."
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1677
-msgid "[`sorted(folder.glob(...), key=lambda p: tuple(int(x) for x in re.search(r\"(\\d{4})-(\\d{1,2})\", p.name).groups()))`](https://docs.python.org/3/builtins/functions.html#sorted). Sorting by name puts `2026-10` before `2026-9`, because text is compared letter by letter - another reason for two-digit months in file names."
-msgstr ""
-
-#. heading 2
-#: site/lectures/08-errors-and-files.md:1682
-msgid "Read more"
-msgstr ""
-
-#. paragraph
-#: site/lectures/08-errors-and-files.md:1684
 msgid "Python tutorial: [Errors and exceptions](https://docs.python.org/3/tutorial/errors.html), [Reading and writing files](https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files)"
-msgstr ""
+msgstr "Python tutorial: [Errors and exceptions](https://docs.python.org/3/tutorial/errors.html), [Reading and writing files](https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files)"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1686
+#: site/lectures/08-errors-and-files.md:1359
 msgid "Reference: [Built-in exceptions](https://docs.python.org/3/library/exceptions.html), [`pathlib`](https://docs.python.org/3/library/pathlib.html), [`csv`](https://docs.python.org/3/library/csv.html), [`json`](https://docs.python.org/3/library/json.html), [Logging HOWTO](https://docs.python.org/3/howto/logging.html), [Unicode HOWTO](https://docs.python.org/3/howto/unicode.html) (encodings)"
-msgstr ""
+msgstr "Справочник: [Built-in exceptions](https://docs.python.org/3/library/exceptions.html), [`pathlib`](https://docs.python.org/3/library/pathlib.html), [`csv`](https://docs.python.org/3/library/csv.html), [`json`](https://docs.python.org/3/library/json.html), [Logging HOWTO](https://docs.python.org/3/howto/logging.html), [Unicode HOWTO](https://docs.python.org/3/howto/unicode.html) (кодировки)"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1692
+#: site/lectures/08-errors-and-files.md:1365
 msgid "[openpyxl tutorial](https://openpyxl.readthedocs.io/en/stable/tutorial.html)"
-msgstr ""
+msgstr "[openpyxl tutorial](https://openpyxl.readthedocs.io/en/stable/tutorial.html)"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1693
+#: site/lectures/08-errors-and-files.md:1366
 msgid "Real Python: [Python exceptions: an introduction](https://realpython.com/python-exceptions/), [Python's pathlib module](https://realpython.com/python-pathlib/)"
-msgstr ""
+msgstr "Real Python: [Python exceptions: an introduction](https://realpython.com/python-exceptions/), [Python's pathlib module](https://realpython.com/python-pathlib/)"
 
 #. paragraph
-#: site/lectures/08-errors-and-files.md:1696
+#: site/lectures/08-errors-and-files.md:1369
 msgid "**Next session:** modules, packages and Git - turn your functions into a module you can import, set up a project folder, and keep its history in Git."
-msgstr ""
+msgstr "**Следващото занятие:** модули, packages и Git - превърнете функциите си в модул, който можете да import-нете, подгответе папка за проект и пазете историята ѝ в Git."
+
+#~ msgid "Common relative paths:"
+#~ msgstr "Често срещани относителни пътища:"
+
+#~ msgid "read and write text, CSV, JSON and Excel files, also in cp1251 (old Windows Cyrillic);"
+#~ msgstr "четете и записвате текстови, CSV, JSON и Excel файлове, също и в cp1251 (старата кирилица на Windows);"
+
+#~ msgid "sum by group and collect the rows of each group with [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) - `GROUP BY` with `SUM` in SQL;"
+#~ msgstr "сумирате по групи и събирате редовете на всяка група с [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) - `GROUP BY` със `SUM` в SQL;"
+
+#~ msgid "load a file with bad rows: keep the good rows, write the bad ones to a reject file with the reason, and report a summary - the job of the SAS log, done properly."
+#~ msgstr "зареждате файл с лоши редове: да запазвате добрите редове, да записвате лошите във файл с отхвърлените редове заедно с причината и да показвате обобщение - работата на SAS log, направена както трябва."
+
+#~ msgid "By the end of today you will turn this into a loader that checks every field, and writes the bad rows into their own file."
+#~ msgstr "До края на днешното занятие ще превърнете това в програма за зареждане (loader), която проверява всяко поле и записва лошите редове в отделен файл."
+
+#~ msgid "A path is an object"
+#~ msgstr "Пътят е обект"
+
+#~ msgid "The module `pathlib` gives `Path` objects. The operator `/` joins the parts - the same code works on Windows (`\\`) and on Linux / macOS (`/`):"
+#~ msgstr "Модулът `pathlib` дава обекти `Path`. Операторът `/` съединява частите - един и същ код работи на Windows (`\\`) и на Linux / macOS (`/`):"
+
+#~ msgid "What is in a folder: `iterdir`"
+#~ msgstr "Какво има в една папка: `iterdir`"
+
+#~ msgid "Find files: `glob`"
+#~ msgstr "Намиране на файлове: `glob`"
+
+#~ msgid "[`glob(pattern)`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) lists the files of a folder whose names fit a pattern - `*` is any text (the shell kind of pattern, not a regex):"
+#~ msgstr "[`glob(pattern)`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) изброява файловете в папка, чиито имена отговарят на pattern - `*` е произволен текст (pattern като в shell, не regex):"
+
+#~ msgid "Create folders, read and write whole files"
+#~ msgstr "Създаване на папки, четене и записване на цели файлове"
+
+#~ msgid "`exist_ok=True` makes [`mkdir`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir) safe to run every month. `parents=True` creates the missing folders above it too."
+#~ msgstr "`exist_ok=True` прави [`mkdir`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.mkdir) безопасен за изпълнение всеки месец. `parents=True` създава и липсващите папки над нея."
+
+#~ msgid "**Names of output files.** Build the names of output files from parts - the month in the name, another suffix for the same name:"
+#~ msgstr "**Имена на изходни файлове.** Съставяйте имената на изходните файлове от части - месецът в името, друго разширение за същото име:"
+
+#~ msgid "**Say which file is missing.** A missing input file is a `FileNotFoundError` - catch it and say **which** file is missing:"
+#~ msgstr "**Кажете кой файл липсва.** Липсващ входен файл е `FileNotFoundError` - хванете го и кажете **кой** файл липсва:"
+
+#~ msgid "List the files in `data/` that are **not** CSV files, with their size in KB, sorted by size."
+#~ msgstr "Изведете файловете в `data/`, които **не** са CSV файлове, с размера им в KB, сортирани по размер."
+
+#~ msgid "Since [session 2](./02-conditions-and-loops.md#the-rows-of-a-file) you open files with `with open(...) as file:`. `with` **closes** the file at the end of the block - also when an exception happens inside. Without `with`, an error can leave the file open (and on Windows, locked)."
+#~ msgstr "От [занятие 2](./02-conditions-and-loops.md#the-rows-of-a-file) отваряте файлове с `with open(...) as file:`. `with` **затваря** файла в края на блока - също и когато вътре възникне exception. Без `with` една грешка може да остави файла отворен (а на Windows - заключен)."
+
+#~ msgid "**Write a file.** Always give the `encoding` (why: [Encodings](#encodings-utf-8-cp1251-and-cyrillic) below):"
+#~ msgstr "**Записване на файл.** Винаги задавайте `encoding` (защо: [Кодировки](#encodings-utf-8-cp1251-and-cyrillic) по-долу):"
+
+#~ msgid "Read: all at once, or line by line"
+#~ msgstr "Четене: наведнъж или ред по ред"
+
+#~ msgid "**Do not overwrite: `\"x\"`.** The mode `\"x\"` protects a file that must not be overwritten - the second run fails instead of destroying the first result:"
+#~ msgstr "**Без презаписване: `\"x\"`.** Режимът `\"x\"` пази файл, който не трябва да се презаписва - второто изпълнение дава грешка, вместо да унищожи първия резултат:"
+
+#~ msgid "A file on disk is **bytes**, not text. An **encoding** is the rule that turns text into bytes and back. The same text gives different bytes in different encodings:"
+#~ msgstr "Файлът на диска е **байтове**, а не текст. **Кодировката** (encoding) е правилото, което превръща текст в байтове и обратно. Един и същ текст дава различни байтове в различни кодировки:"
+
+#~ msgid "**Write and read Cyrillic text.** Use the same `encoding` on both sides:"
+#~ msgstr "**Записване и четене на текст на кирилица.** Използвайте едно и също `encoding` от двете страни:"
+
+#~ msgid "**Mojibake.** Reading with the wrong encoding gives either an error, or **mojibake** - wrong letters:"
+#~ msgstr "**Mojibake.** Четенето с грешна кодировка дава или грешка, или **mojibake** - грешни букви:"
+
+#~ msgid "**Read a cp1251 file.** The file `regions_bg.csv` is saved in **cp1251** - the file of the `UnicodeDecodeError` in [section 1](#_1-errors-and-exceptions):"
+#~ msgstr "**Четене на файл в cp1251.** Файлът `regions_bg.csv` е записан в **cp1251** - файлът от `UnicodeDecodeError` в [секция 1](#_1-errors-and-exceptions):"
+
+#~ msgid "`errors=\"replace\"` puts `?` (or `�`) instead of a byte that cannot be read, instead of stopping. Use it only to **look** at a file, never to load data."
+#~ msgstr "`errors=\"replace\"` слага `?` (или `�`) на мястото на байт, който не може да се прочете, вместо да спре. Използвайте го само за да **разгледате** файл, никога за зареждане на данни."
+
+#~ msgid "**The BOM of Excel.** Excel saves \"CSV UTF-8\" with a **BOM** - three bytes `EF BB BF` at the start. Read such a file with `encoding=\"utf-8-sig\"`, or the first column name gets an invisible character in front:"
+#~ msgstr "**BOM на Excel.** Excel записва \"CSV UTF-8\" с **BOM** - три байта `EF BB BF` в началото. Четете такъв файл с `encoding=\"utf-8-sig\"`, иначе името на първата колона получава невидим символ отпред:"
+
+#~ msgid "Write `\"Пловдив\"` into `out/city.txt` with `encoding=\"cp1251\"`. Read it back once with `\"cp1251\"` and once with `\"utf-8\"` (in a `try` / `except`). Predict both results first."
+#~ msgstr "Запишете `\"Пловдив\"` в `out/city.txt` с `encoding=\"cp1251\"`. Прочетете го обратно веднъж с `\"cp1251\"` и веднъж с `\"utf-8\"` (в `try` / `except`). Първо предскажете двата резултата."
+
+#~ msgid "The same encoding on both sides gives the text back. UTF-8 cannot read the cp1251 bytes: an error, not wrong letters."
+#~ msgstr "Една и съща кодировка от двете страни връща текста. UTF-8 не може да прочете байтовете на cp1251: грешка, а не грешни букви."
+
+#~ msgid "You know [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) ([lecture 7](./07-text-and-regex.md), the box at the start). [`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) gives each row as a **list**. Both understand quotes, and both take a `delimiter` for files that are not comma-separated - like `;` in a Bulgarian Excel export:"
+#~ msgstr "Познавате [`csv.DictReader`](https://docs.python.org/3/library/csv.html#csv.DictReader) ([лекция 7](./07-text-and-regex.md), кутията в началото). [`csv.reader`](https://docs.python.org/3/library/csv.html#csv.reader) дава всеки ред като **list**. И двата разбират кавички и приемат `delimiter` за файлове, които не са разделени със запетая - като `;` в експорт от български Excel:"
+
+#~ msgid "**No header line.** A file **without** a header line: give the column names with `fieldnames`:"
+#~ msgstr "**Без заглавен ред.** Файл **без** заглавен ред: задайте имената на колоните с `fieldnames`:"
+
+#~ msgid "([`io.StringIO`](https://docs.python.org/3/library/io.html#io.StringIO) makes a string behave like an open file - handy for examples and tests. Note the quoted `\"1,250.00\"`: one field, not two.)"
+#~ msgstr "([`io.StringIO`](https://docs.python.org/3/library/io.html#io.StringIO) кара един string да се държи като отворен файл - удобно за примери и тестове. Обърнете внимание на `\"1,250.00\"` в кавички: едно поле, а не две.)"
+
+#~ msgid "**Typed records.** The values are text. With `DictReader` and a dictionary of converters, a file becomes typed records:"
+#~ msgstr "**Записи с типове.** Стойностите са текст. С `DictReader` и dictionary с функции за преобразуване файлът става записи с правилните типове:"
+
+#~ msgid "A nomenclature often lives in a file: `rating_scale.csv` has one row per rating. Read it **once** into a dictionary **rating -> (grade, PD)** - a SAS format made from a dataset (`PROC FORMAT CNTLIN=`), or a small SQL reference table - and use it for every client. The values are text: convert the key with `int` and the PD bounds with `float`:"
+#~ msgstr "Номенклатурата често е във файл: `rating_scale.csv` има по един ред за всеки рейтинг. Прочетете го **веднъж** в dictionary **рейтинг -> (оценка, PD)** - SAS format, направен от dataset (`PROC FORMAT CNTLIN=`), или малка справочна таблица в SQL - и го използвайте за всеки клиент. Стойностите са текст: преобразувайте ключа с `int`, а границите на PD с `float`:"
+
+#~ msgid "**Quote every field.** The comma inside `\"late, 35 days\"` is quoted automatically, so the file reads back correctly. Some systems want **every** field in quotes - `quoting=csv.QUOTE_ALL`:"
+#~ msgstr "**Всяко поле в кавички.** Запетаята в `\"late, 35 days\"` автоматично се огражда с кавички, така че файлът се чете обратно правилно. Някои системи искат **всяко** поле в кавички - `quoting=csv.QUOTE_ALL`:"
+
+#~ msgid "A file for Excel users"
+#~ msgstr "Файл за потребители на Excel"
+
+#~ msgid "A Bulgarian Excel opens CSV files with `;` and a decimal comma best - and it needs the BOM to see UTF-8 Cyrillic:"
+#~ msgstr "Българският Excel отваря най-добре CSV файлове с `;` и десетична запетая - и му трябва BOM, за да разпознае кирилица в UTF-8:"
+
+#~ msgid "Read `regions_bg.csv` (cp1251) and write it again as `out/regions_utf8.csv` in UTF-8 with `;` as the separator. Open the result with [`read_text`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.read_text) to check it."
+#~ msgstr "Прочетете `regions_bg.csv` (cp1251) и го запишете отново като `out/regions_utf8.csv` в UTF-8 с `;` за разделител. Отворете резултата с [`read_text`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.read_text), за да го проверите."
+
+#~ msgid "JSON ([session 6](./06-dictionaries.md#the-shape-of-json)) is the format of configuration files and of web APIs. [`json.load`](https://docs.python.org/3/library/json.html#json.load) reads a file into dictionaries and lists; [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) writes one:"
+#~ msgstr "JSON ([занятие 6](./06-dictionaries.md#the-shape-of-json)) е форматът на конфигурационните файлове и на уеб API. [`json.load`](https://docs.python.org/3/library/json.html#json.load) чете файл в dictionaries и lists; [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) записва:"
+
+#~ msgid "Settings in a file, not in the code: next month you change the file, not the script."
+#~ msgstr "Настройките са във файл, а не в кода: следващия месец променяте файла, а не скрипта."
+
+#~ msgid "**JSON from a string.** [`json.loads`](https://docs.python.org/3/library/json.html#json.loads) reads JSON from a **string** - for example the answer of a web service:"
+#~ msgstr "**JSON от string.** [`json.loads`](https://docs.python.org/3/library/json.html#json.loads) чете JSON от **string** - например отговора на уеб услуга:"
+
+#~ msgid "**A summary as JSON.** A summary made from the portfolio - the number of loans per product, written with `sort_keys=True` so that the file looks the same in every run (easy to compare in Git, [lecture 9](./09-modules-and-git.md#_6-git-versions-of-your-code)):"
+#~ msgstr "**Обобщение като JSON.** Обобщение от портфейла - броят на кредитите по продукт, записан със `sort_keys=True`, така че файлът да изглежда еднакво при всяко изпълнение (лесно за сравнение в Git, [лекция 9](./09-modules-and-git.md#_6-git-versions-of-your-code)):"
+
+#~ msgid "JSON knows only a few types"
+#~ msgstr "JSON познава само няколко типа"
+
+#~ msgid "Strings, numbers, `true` / `false`, `null` (`None`), lists and objects (dicts). A `date` is not one of them - [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) raises a `TypeError`. Store dates as ISO text ([`d.isoformat()`](https://docs.python.org/3/library/datetime.html#datetime.date.isoformat)), and convert back after reading. Keys of JSON objects are always strings: `{1: 323}` comes back as `{\"1\": 323}`."
+#~ msgstr "Strings, числа, `true` / `false`, `null` (`None`), lists и обекти (dicts). `date` не е сред тях - [`json.dump`](https://docs.python.org/3/library/json.html#json.dump) предизвиква `TypeError`. Пазете датите като текст в ISO формат ([`d.isoformat()`](https://docs.python.org/3/library/datetime.html#datetime.date.isoformat)) и ги преобразувайте обратно след четене. Ключовете на JSON обектите винаги са strings: `{1: 323}` се връща като `{\"1\": 323}`."
+
+#~ msgid "9. Excel files with `openpyxl`"
+#~ msgstr "9. Excel файлове с `openpyxl`"
+
+#~ msgid "In SAS: `PROC IMPORT DBMS=XLSX`, `LIBNAME x XLSX`, `ODS EXCEL`. pandas reads and writes whole sheets in one line (`read_excel`, lectures 13 and 15; `to_excel` with several sheets, [lecture 15](./15-pandas-reports.md#_6-an-excel-report-with-several-sheets)) - with openpyxl working inside."
+#~ msgstr "В SAS: `PROC IMPORT DBMS=XLSX`, `LIBNAME x XLSX`, `ODS EXCEL`. pandas чете и записва цели листове с един ред (`read_excel`, лекции 13 и 15; `to_excel` с няколко листа, [лекция 15](./15-pandas-reports.md#_6-an-excel-report-with-several-sheets)) - като вътре работи openpyxl."
+
+#~ msgid "Add a third sheet `usd` to `out/stages.xlsx`'s workbook (before saving) with the USD rates of September: one row per day, `date` and `rate`."
+#~ msgstr "Добавете трети лист `usd` към работната книга на `out/stages.xlsx` (преди записването) с курсовете на USD за септември: по един ред на ден, `date` и `rate`."
+
+#~ msgid "10. Loading data with bad records"
+#~ msgstr "10. Зареждане на данни с лоши записи"
+
+#~ msgid "The task"
+#~ msgstr "Задачата"
+
+#~ msgid "`payments_2026-09.csv` has 280 lines; most are fine, some are not:"
+#~ msgstr "`payments_2026-09.csv` има 280 реда; повечето са наред, някои не са:"
+
+#~ msgid "The rules of a valid payment:"
+#~ msgstr "Правилата за валидно плащане:"
+
+#~ msgid "exactly 5 fields;"
+#~ msgstr "точно 5 полета;"
+
+#~ msgid "the loan id exists in `loans.csv`;"
+#~ msgstr "номерът на кредита съществува в `loans.csv`;"
+
+#~ msgid "the date is a real date in September 2026 (`yyyy-mm-dd`);"
+#~ msgstr "датата е истинска дата през септември 2026 (`yyyy-mm-dd`);"
+
+#~ msgid "the amount is a number greater than 0;"
+#~ msgstr "сумата е число, по-голямо от 0;"
+
+#~ msgid "the currency is EUR or USD."
+#~ msgstr "валутата е EUR или USD."
+
+#~ msgid "**Profile the good rows.** A quick profile of the good rows first - how many payments per currency, and the range of the dates, for the rows that convert without problems:"
+#~ msgstr "**Профил на добрите редове.** Първо бърз профил на добрите редове - колко плащания има във всяка валута и диапазонът на датите, за редовете, които се преобразуват без проблеми:"
+
+#~ msgid "The text dates sort correctly because they are ISO - and `30.09.2026` sorts **after** every ISO date: one more sign of a bad row."
+#~ msgstr "Текстовите дати се сортират правилно, защото са в ISO формат - а `30.09.2026` се сортира **след** всяка ISO дата: още един признак за лош ред."
+
+#~ msgid "One check function per rule, one `try` per row"
+#~ msgstr "Една функция за проверка на правило, един `try` на ред"
+
+#~ msgid "Each check raises a `ValueError` with a clear message. `to_date` and `to_float` turn a bad value into `None` (as `to_float` in [section 2](#_2-try-except)), so the check can say **which** value is wrong. The loader has **one** `try` per row: the first broken rule rejects the row, with its reason:"
+#~ msgstr "Всяка проверка предизвиква `ValueError` с ясно съобщение. `to_date` и `to_float` превръщат лошата стойност в `None` (като `to_float` в [секция 2](#_2-try-except)), така че проверката може да каже **коя** стойност е грешна. Loader-ът има **един** `try` на ред: първото нарушено правило отхвърля реда, заедно с причината:"
+
+#~ msgid "`reader.line_num` is the line number in the file - like `_N_` in the SAS log, but for the file line (the header is line 1)."
+#~ msgstr "`reader.line_num` е номерът на реда във файла - като `_N_` в SAS log, но за реда на файла (заглавието е ред 1)."
+
+#~ msgid "Sums by group: `defaultdict`"
+#~ msgstr "Суми по групи: `defaultdict`"
+
+#~ msgid "The summary of the load needs the **total per currency** of the good payments - in SQL `SELECT currency, SUM(amount) ... GROUP BY currency`, in SAS `PROC MEANS SUM` with `CLASS currency`. A [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) ([lecture 7](./07-text-and-regex.md#counting-with-counter)) counts; for a sum, use the same idea as counting with [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get), with the amount instead of `1`:"
+#~ msgstr "Обобщението на зареждането има нужда от **сумата по валута** на добрите плащания - в SQL `SELECT currency, SUM(amount) ... GROUP BY currency`, в SAS `PROC MEANS SUM` с `CLASS currency`. [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) ([лекция 7](./07-text-and-regex.md#counting-with-counter)) брои; за сума използвайте същата идея като при броенето с [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get), със сумата вместо `1`:"
+
+#~ msgid "**With [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict).** [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) (also from `collections`) does the [`get(..., 0.0)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) part for you. It is a dictionary that **creates a missing key** when you read it with `[]`. [`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) gives the new key the value [`float()`](https://docs.python.org/3/builtins/functions.html#float), which is `0.0`, so you can add to it straight away:"
+#~ msgstr "**С [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict).** [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) (също от `collections`) прави частта с [`get(..., 0.0)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) вместо вас. Това е dictionary, който **създава липсващ ключ**, когато го прочетете с `[]`. [`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) дава на новия ключ стойността [`float()`](https://docs.python.org/3/builtins/functions.html#float), която е `0.0`, така че можете веднага да добавяте към нея:"
+
+#~ msgid "Pass `float`, not [`float()`](https://docs.python.org/3/builtins/functions.html#float): the dictionary calls it for each new key. [`dict(totals)`](https://docs.python.org/3/builtins/stdtypes.html#dict) makes a normal dictionary with the same pairs. Round only after summing a group."
+#~ msgstr "Подайте `float`, а не [`float()`](https://docs.python.org/3/builtins/functions.html#float): dictionary-то я извиква за всеки нов ключ. [`dict(totals)`](https://docs.python.org/3/builtins/stdtypes.html#dict) прави обикновен dictionary със същите двойки. Закръглявайте едва след като сумирате групата."
+
+#~ msgid "Animation"
+#~ msgstr "Анимация"
+
+#~ msgid "**Grouping by hand:** [3. Sum with `defaultdict`](../animations/groupingByHand.html#3){target=\"_blank\"}"
+#~ msgstr "**Групиране на ръка:** [3. Сума с `defaultdict`](../animations/groupingByHand.html#3){target=\"_blank\"}"
+
+#~ msgid "**Outstanding per product.** On the portfolio - the outstanding per product:"
+#~ msgstr "**Непогасена сума по продукт.** Върху портфейла - непогасената сума по продукт:"
+
+#~ msgid "**The rows of each group.** Sometimes you need the **rows** of each group, not only a number - a dictionary of lists. [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) gives each new key a new empty list:"
+#~ msgstr "**Редовете на всяка група.** Понякога ви трябват **редовете** на всяка група, а не само едно число - dictionary от lists. [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) дава на всеки нов ключ нов празен list:"
+
+#~ msgid "**Grouping by hand:** [4. Group into lists](../animations/groupingByHand.html#4){target=\"_blank\"}"
+#~ msgstr "**Групиране на ръка:** [4. Групиране в lists](../animations/groupingByHand.html#4){target=\"_blank\"}"
+
+#~ msgid "Reading a missing key adds it"
+#~ msgstr "Четенето на липсващ ключ го добавя"
+
+#~ msgid "`totals[\"GBP\"]` does not raise a `KeyError` - it **adds** `\"GBP\"` with `0.0`. A typo in a key makes a new group without any error. To only look, use `in` or [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get):"
+#~ msgstr "`totals[\"GBP\"]` не предизвиква `KeyError` - той **добавя** `\"GBP\"` с `0.0`. Правописна грешка в ключ създава нова група без никаква грешка. Само за да проверите, използвайте `in` или [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get):"
+
+#~ msgid "Advanced: two keys, and several values per group"
+#~ msgstr "За напреднали: два ключа и няколко стойности на група"
+
+#~ msgid "A **tuple** is a key too - `GROUP BY product, currency`:"
+#~ msgstr "**Tuple** също е ключ - `GROUP BY product, currency`:"
+
+#~ msgid "For several values per group (`COUNT`, `SUM`, `MAX`), keep a small list per key, for example [`defaultdict(lambda: [0, 0.0])`](https://docs.python.org/3/library/collections.html#collections.defaultdict) for `[count, sum]`. `lambda: [0, 0.0]` is a function without a name ([session 4](./04-functions.md#_10-lambda)) that makes a new list for each new key."
+#~ msgstr "За няколко стойности на група (`COUNT`, `SUM`, `MAX`) пазете малък list за всеки ключ, например [`defaultdict(lambda: [0, 0.0])`](https://docs.python.org/3/library/collections.html#collections.defaultdict) за `[count, sum]`. `lambda: [0, 0.0]` е функция без име ([занятие 4](./04-functions.md#_10-lambda)), която прави нов list за всеки нов ключ."
+
+#~ msgid "Change the portfolio example: sum the `amount` per `currency` instead of the outstanding per product. Then make a [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) of the loan ids per `stage`. How many loans are in stage 3?"
+#~ msgstr "Променете примера с портфейла: сумирайте `amount` по `currency` вместо непогасената сума по продукт. После направете [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) с номерата на кредитите по `stage`. Колко кредита са в етап 3?"
+
+#~ msgid "The reject file and the summary"
+#~ msgstr "Файлът с отхвърлените редове и обобщението"
+
+#~ msgid "The rejected rows go into their own file, with the reason - so that the source system can fix them. And a short summary, like the end of a SAS log:"
+#~ msgstr "Отхвърлените редове отиват в отделен файл, заедно с причината - за да може системата източник да ги поправи. И кратко обобщение, като края на SAS log:"
+
+#~ msgid "This is the pattern for every input of a monthly process: **never stop on a bad row, never lose a bad row, always report**."
+#~ msgstr "Това е pattern-ът за всеки входен файл на месечен процес: **никога не спирайте заради лош ред, никога не губете лош ред, винаги докладвайте**."
+
+#~ msgid "**Read the reject file.** The reject file is a normal CSV - the next person reads it with the same tools:"
+#~ msgstr "**Прочетете файла с отхвърлените редове.** Файлът с отхвърлените редове е обикновен CSV - следващият човек го чете със същите инструменти:"
+
+#~ msgid "The same in pandas"
+#~ msgstr "Същото в pandas"
+
+#~ msgid "pandas has options for bad lines ([`pd.read_csv(..., on_bad_lines=\"skip\")`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)) and turns bad numbers into `NaN` with [`pd.to_numeric(..., errors=\"coerce\")`](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html) ([lecture 14](./14-pandas-select-aggregate-join.md)). They are faster - but they do not tell you **why** a row is bad. For an input you must explain to someone, the loader of this section is the better tool."
+#~ msgstr "pandas има опции за лоши редове ([`pd.read_csv(..., on_bad_lines=\"skip\")`](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)) и превръща лошите числа в `NaN` с [`pd.to_numeric(..., errors=\"coerce\")`](https://pandas.pydata.org/docs/reference/api/pandas.to_numeric.html) ([лекция 14](./14-pandas-select-aggregate-join.md)). Те са по-бързи - но не ви казват **защо** един ред е лош. За входни данни, които трябва да обясните на някого, loader-ът от тази секция е по-добрият инструмент."
+
+#~ msgid "Add a rule: a payment may not be larger than the outstanding amount of its loan. You need a dictionary `loan_id -> outstanding` from `loans.csv`. How many rows does the new rule reject?"
+#~ msgstr "Добавете правило: плащането не може да е по-голямо от непогасената сума на кредита. Трябва ви dictionary `loan_id -> outstanding` от `loans.csv`. Колко реда отхвърля новото правило?"
+
+#~ msgid "11. Summary"
+#~ msgstr "11. Обобщение"
+
+#~ msgid "Excel"
+#~ msgstr "Excel"
+
+#~ msgid "Sums by group"
+#~ msgstr "Суми по групи"
+
+#~ msgid "[`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): `totals[key] += amount`; [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): `groups[key].append(x)`; reading a missing key adds it"
+#~ msgstr "[`defaultdict(float)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): `totals[key] += amount`; [`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict): `groups[key].append(x)`; четенето на липсващ ключ го добавя"
+
+#~ msgid "Loader"
+#~ msgstr "Loader"
+
+#~ msgid "one check per rule, one `try` per row, a reject file with the reason, a summary"
+#~ msgstr "една проверка на правило, един `try` на ред, файл с отхвърлените редове и причината, обобщение"
+
+#~ msgid "`pathlib`: list files, build names, write and read a text file"
+#~ msgstr "`pathlib`: изброяване на файлове, съставяне на имена, записване и четене на текстов файл"
+
+#~ msgid "`task5-excel.py` (Optional)"
+#~ msgstr "`task5-excel.py` (по желание)"
+
+#~ msgid "Read the three FX sheets; write a workbook with two sheets"
+#~ msgstr "Прочетете трите листа с валутни курсове; запишете работна книга с два листа"
+
+#~ msgid "`08-errors-and-files/homework.py` (in the homework repository): **load the September payments** - check every row against the rules, write the valid payments and a reject file with the line number and the reason, compute the totals per currency and per day, and return a summary. Every check must print `OK`."
+#~ msgstr "`08-errors-and-files/homework.py` (в homework repository): **заредете плащанията за септември** - проверете всеки ред спрямо правилата, запишете валидните плащания и файл с отхвърлените редове с номера на реда и причината, изчислете сумите по валута и по ден и върнете обобщение. Всяка проверка трябва да отпечата `OK`."
+
+#~ msgid "Optional: read `report_config.json` in your loader, and take the report month and the allowed currencies from it instead of writing them in the code."
+#~ msgstr "По желание: прочетете `report_config.json` във вашия loader и вземете месеца на отчета и разрешените валути от него, вместо да ги пишете в кода."
+
+#~ msgid "This part is not covered in class. It is for reading at home: a real log for your scripts, and a loader for a whole folder of monthly files."
+#~ msgstr "Тази част не се разглежда в час. Тя е за четене у дома: истински log за вашите скриптове и loader за цяла папка с месечни файлове."
+
+#~ msgid "Rewrite the summary of the payments loader (section 10) with `logging` instead of [`print`](https://docs.python.org/3/builtins/functions.html#print): one INFO line per currency, a WARNING if more than 1% of the rows were rejected."
+#~ msgstr "Пренапишете обобщението на loader-а за плащания (секция 10) с `logging` вместо [`print`](https://docs.python.org/3/builtins/functions.html#print): по един ред INFO за валута и WARNING, ако са отхвърлени над 1% от редовете."
+
+#~ msgid "A folder of monthly files"
+#~ msgstr "Папка с месечни файлове"
+
+#~ msgid "A monthly process often reads **all** files of a folder: one per month, one per branch. [`glob`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) finds them, a regex ([lecture 7](./07-text-and-regex.md)) takes the month from the name, and the loader reads each - one bad file must not stop the others:"
+#~ msgstr "Месечният процес често чете **всички** файлове в една папка: по един за месец, по един за клон. [`glob`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) ги намира, regex ([лекция 7](./07-text-and-regex.md)) взема месеца от името, а loader-ът чете всеки от тях - един лош файл не трябва да спира останалите:"
+
+#~ msgid "The loop catches the errors **per file**: the good months are loaded, the broken one is reported with the kind of error."
+#~ msgstr "Цикълът хваща грешките **за всеки файл поотделно**: добрите месеци се зареждат, повреденият се докладва с вида на грешката."
+
+#~ msgid "Change the loop so that a file with a bad amount is still loaded, without the bad rows (use the `to_float` of section 2), and the number of skipped rows per file is reported."
+#~ msgstr "Променете цикъла така, че файл с лоша сума да се зарежда все пак, без лошите редове (използвайте `to_float` от секция 2), и да се докладва броят на пропуснатите редове за всеки файл."
+
+#~ msgid "Sort the files by the month in their name, not by the name itself. When is that different? (Hint: `payments_2026-10.csv` and `payments_2026-9.csv`.)"
+#~ msgstr "Сортирайте файловете по месеца в името им, а не по самото име. Кога има разлика? (Подсказка: `payments_2026-10.csv` и `payments_2026-9.csv`.)"
+
+#~ msgid "Inside the `with`: `values = [to_float(row[\"amount\"]) for row in csv.DictReader(file)]`, then `totals[month] = sum(v for v in values if v is not None)` and `skipped[path.name] = values.count(None)`. The `UnicodeDecodeError` still needs the `try`."
+#~ msgstr "Вътре в `with`: `values = [to_float(row[\"amount\"]) for row in csv.DictReader(file)]`, после `totals[month] = sum(v for v in values if v is not None)` и `skipped[path.name] = values.count(None)`. За `UnicodeDecodeError` пак трябва `try`."
+
+#~ msgid "[`sorted(folder.glob(...), key=lambda p: tuple(int(x) for x in re.search(r\"(\\d{4})-(\\d{1,2})\", p.name).groups()))`](https://docs.python.org/3/builtins/functions.html#sorted). Sorting by name puts `2026-10` before `2026-9`, because text is compared letter by letter - another reason for two-digit months in file names."
+#~ msgstr "[`sorted(folder.glob(...), key=lambda p: tuple(int(x) for x in re.search(r\"(\\d{4})-(\\d{1,2})\", p.name).groups()))`](https://docs.python.org/3/builtins/functions.html#sorted). Сортирането по име слага `2026-10` преди `2026-9`, защото текстът се сравнява буква по буква - още една причина за двуцифрени месеци в имената на файловете."
+
+#~ msgid "**Errors from the data.** An error might comes from the data, not from your code - a value that is `None`:"
+#~ msgstr "**Грешки от данните.** Една грешка може да идва от данните, а не от вашия код - стойност, която е `None`:"
+
+#~ msgid "Also, you can use **tuple** of error types to catch several errors at once:"
+#~ msgstr "Можете също да използвате **tuple** от типове грешки, за да хванете няколко грешки наведнъж:"
+
+#~ msgid "`to_float` is a small helper function which you can use in every loader: \"a number, or `None`\" - like an informat with the `??` modifier in SAS, which reads a bad value as missing without a note."
+#~ msgstr "`to_float` е малка помощна функция, която можете да използвате във всеки loader: \"число или `None`\" - като informat с модификатора `??` в SAS, който чете лоша стойност като липсваща без бележка."
+
+#~ msgid "Rules:"
+#~ msgstr "Правила:"
+
+#~ msgid "In next example, finally ensures a loan never remains marked as “currently being analysed” after processing stops—even with an unexpected exception."
+#~ msgstr "В следващия пример finally гарантира, че един кредит никога не остава отбелязан като \"в процес на анализ\", след като обработката спре - дори при неочаквано exception."
+
+#~ msgid "4. `raise` and your own exceptions"
+#~ msgstr "4. `raise` и ваши собствени exceptions"
+
+#~ msgid "Each check raises a `DataError` with a clear message. The loader has **one** `try` per row: the first broken rule rejects the row, with its reason:"
+#~ msgstr "Всяка проверка предизвиква `DataError` с ясно съобщение. Loader-ът има **един** `try` на ред: първото нарушено правило отхвърля реда, заедно с причината:"
+
+#~ msgid "Check functions that raise a `DataError` with a clear message"
+#~ msgstr "Функции за проверка, които предизвикват `DataError` с ясно съобщение"
+
+#~ msgid "`task6-excel.py` (Optional)"
+#~ msgstr "`task6-excel.py` (по желание)"
+
+#~ msgid "The exceptions you will meet"
+#~ msgstr "Exceptions, които ще срещате"
+
+#~ msgid "(This loop already uses `try` / `except` - the next section.)"
+#~ msgstr "(Този цикъл вече използва `try` / `except` - следващата секция.)"
+
+#~ msgid "**Errors from the data.** One more that comes from the data, not from your code - a value that is `None`:"
+#~ msgstr "**Грешки от данните.** Още една, която идва от данните, а не от вашия код - стойност, която е `None`:"
+
+#~ msgid "`NOTE: Invalid data`, the value becomes missing, the step goes on"
+#~ msgstr "`NOTE: Invalid data`, стойността става липсваща, стъпката продължава"
+
+#~ msgid "the script **stops**, unless you catch the exception"
+#~ msgstr "скриптът **спира**, освен ако не хванете exception-а"
+
+#~ msgid "`_ERROR_ = 1` for the row"
+#~ msgstr "`_ERROR_ = 1` за реда"
+
+#~ msgid "the `except` block runs for the row"
+#~ msgstr "блокът `except` се изпълнява за реда"
+
+#~ msgid "`ERROR:` in the log stops the step"
+#~ msgstr "`ERROR:` в log-а спира стъпката"
+
+#~ msgid "an exception that nobody catches"
+#~ msgstr "exception, който никой не хваща"
+
+#~ msgid "Run each line alone, and name the exception before you run it: [`int(\" 42 \")`](https://docs.python.org/3/builtins/functions.html#int), [`int(\"4 2\")`](https://docs.python.org/3/builtins/functions.html#int), [`float(\"1e3\")`](https://docs.python.org/3/builtins/functions.html#float), `[\"a\"].index(\"b\")`, `\"abc\"[10]`."
+#~ msgstr "Изпълнете всеки ред поотделно и кажете exception-а, преди да го изпълните: [`int(\" 42 \")`](https://docs.python.org/3/builtins/functions.html#int), [`int(\"4 2\")`](https://docs.python.org/3/builtins/functions.html#int), [`float(\"1e3\")`](https://docs.python.org/3/builtins/functions.html#float), `[\"a\"].index(\"b\")`, `\"abc\"[10]`."
+
+#~ msgid "Several kinds"
+#~ msgstr "Няколко вида"
+
+#~ msgid "Several `except` blocks for different types, or one block for a **tuple** of types:"
+#~ msgstr "Няколко блока `except` за различни типове или един блок за **tuple** от типове:"
+
+#~ msgid "**A number, or `None`.** One helper for empty, missing and bad values:"
+#~ msgstr "**Число или `None`.** Една помощна функция за празни, липсващи и лоши стойности:"
+
+#~ msgid "`to_float` is a small helper you will use in every loader: \"a number, or `None`\" - like an informat with the `??` modifier in SAS, which reads a bad value as missing without a note."
+#~ msgstr "`to_float` е малка помощна функция, която ще използвате във всеки loader: \"число или `None`\" - като informat с модификатора `??` в SAS, който чете лоша стойност като липсваща без бележка."
+
+#~ msgid "**Outstanding from the export.** On a real column - the `Outstanding` of `loans_export.csv`, with its decimal commas and a SAS-style `.` for missing values. Convert, count what failed:"
+#~ msgstr "**Outstanding от експорта.** Върху истинска колона - `Outstanding` от `loans_export.csv`, с десетични запетаи и `.` за липсващи стойности в стила на SAS. Преобразувайте и пребройте неуспешните:"
+
+#~ msgid "Try the formats one by one"
+#~ msgstr "Пробвайте форматите един по един"
+
+#~ msgid "[Lecture 7](./07-text-and-regex.md#several-date-formats) detected the date format by the shape of the text. With `try`, there is a shorter way: try each format, and take the first that works:"
+#~ msgstr "[Лекция 7](./07-text-and-regex.md#several-date-formats) разпознаваше формата на датата по вида на текста. С `try` има по-кратък начин: пробвайте всеки формат и вземете първия, който сработи:"
+
+#~ msgid "Change `to_float` (in [Several kinds](#several-kinds) above) so that it also accepts the Bulgarian format `\"12,50\"`: try [`float(value)`](https://docs.python.org/3/builtins/functions.html#float) first, and if that fails, try again with the comma replaced. Test it with `\"12,50\"`, `\"12.50\"`, `\"1 234,5\"` and `\"abc\"`."
+#~ msgstr "Променете `to_float` (в [Няколко вида](#several-kinds) по-горе), така че да приема и българския формат `\"12,50\"`: първо пробвайте [`float(value)`](https://docs.python.org/3/builtins/functions.html#float), а ако не стане, пробвайте отново със заменена запетая. Тествайте с `\"12,50\"`, `\"12.50\"`, `\"1 234,5\"` и `\"abc\"`."
+
+#~ msgid "3. `else` and `finally`"
+#~ msgstr "3. `else` и `finally`"
+
+#~ msgid "**All four parts at work.** One good value and one bad value:"
+#~ msgstr "**И четирите части в действие.** Една добра и една лоша стойност:"
+
+#~ msgid "**A missing monthly file.** A monthly file that may not be there yet - the error is expected, the work on the file is in `else`:"
+#~ msgstr "**Липсващ месечен файл.** Месечен файл, който може още да го няма - грешката е очаквана, работата с файла е в `else`:"
+
+#~ msgid "**`finally` with an uncaught error.** `finally` runs even when the error is **not** caught - the clean-up happens, then the error goes on:"
+#~ msgstr "**`finally` с нехваната грешка.** `finally` се изпълнява дори когато грешката **не** е хваната - почистването става, после грешката продължава нагоре:"
+
+#~ msgid "Ask first, or try and catch?"
+#~ msgstr "Първо да питате или да опитате и да хванете?"
+
+#~ msgid "Two styles for the same check:"
+#~ msgstr "Два стила за една и съща проверка:"
+
+#~ msgid "Both are fine. Python code often uses EAFP when the check would repeat the work (converting a number to see if it can be converted), and `if` / [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) when the check is cheap and clear (a key in a dictionary)."
+#~ msgstr "И двата са добре. В Python често се използва EAFP, когато проверката би повторила работата (да преобразувате число, за да видите дали може да се преобразува), и `if` / [`get`](https://docs.python.org/3/builtins/stdtypes.html#dict.get), когато проверката е евтина и ясна (ключ в dictionary)."
+
+#~ msgid "**Stop on a wrong setting.** A wrong **setting** must stop the report before it starts - a report for the wrong month is worse than no report:"
+#~ msgstr "**Спиране при грешна настройка.** Грешна **настройка** трябва да спре отчета, преди да е започнал - отчет за грешния месец е по-лош от никакъв отчет:"
+
+#~ msgid "Your own exception type"
+#~ msgstr "Ваш собствен тип exception"
+
+#~ msgid "A one-line class (classes: [lecture 10](./10-oop-classes.md)) makes a new kind of exception. Then the loader can catch **your** data errors, and let real bugs (a `NameError`, a `TypeError` in your code) stop the script:"
+#~ msgstr "Един class от един ред (класове: [лекция 10](./10-oop-classes.md)) създава нов вид exception. Тогава loader-ът може да хваща **вашите** грешки в данните, а истинските бъгове (`NameError`, `TypeError` във вашия код) да спират скрипта:"
+
+#~ msgid "`raise ... from None` replaces the original `ValueError` by the clearer `DataError` (without it, Python shows both). Because `DataError` is a kind of `ValueError`, code that catches `ValueError` catches it too."
+#~ msgstr "`raise ... from None` заменя оригиналния `ValueError` с по-ясния `DataError` (без него Python показва и двата). Понеже `DataError` е вид `ValueError`, код, който хваща `ValueError`, хваща и него."
+
+#~ msgid "Re-raise: add context and go on up"
+#~ msgstr "Повторно raise: добавете контекст и предайте нагоре"
+
+#~ msgid "Sometimes a function cannot handle an error, but it can add information - the file and the line - and raise again:"
+#~ msgstr "Понякога една функция не може да обработи грешката, но може да добави информация - файла и реда - и да я предизвика отново:"
+
+#~ msgid "stop: `raise` - a report on wrong input is worse than no report"
+#~ msgstr "спрете: `raise` - отчет върху грешни входни данни е по-лош от никакъв отчет"
+
+#~ msgid "stop after loading: the input is broken"
+#~ msgstr "спрете след зареждането: входните данни са повредени"
+
+#~ msgid "a bug in your code"
+#~ msgstr "бъг във вашия код"
+
+#~ msgid "let it stop - do not catch it"
+#~ msgstr "оставете го да спре - не го хващайте"
+
+#~ msgid "`assert` is not for data checks"
+#~ msgstr "`assert` не е за проверки на данни"
+
+#~ msgid "`assert x > 0, \"message\"` raises an `AssertionError` when the condition is false - but Python **removes** all `assert` statements when run with `python -O`. Use `assert` in tests and for \"this can never happen\" checks of your own code; check data with `if` and `raise`."
+#~ msgstr "`assert x > 0, \"message\"` предизвиква `AssertionError`, когато условието е невярно - но Python **премахва** всички `assert` statements, когато се изпълнява с `python -O`. Използвайте `assert` в тестове и за проверки от типа \"това никога не може да се случи\" във вашия собствен код; проверявайте данните с `if` и `raise`."
+
+#~ msgid "Write `check_currency(code)` that returns the code in capitals if it is one of `EUR`, `USD`, `GBP` (any case, spaces at the ends allowed), and raises a `DataError` with the value in the message otherwise."
+#~ msgstr "Напишете `check_currency(code)`, която връща кода с главни букви, ако е един от `EUR`, `USD`, `GBP` (с произволен регистър, позволени са интервали в краищата), и иначе предизвиква `DataError` със стойността в съобщението."

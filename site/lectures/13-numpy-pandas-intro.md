@@ -573,7 +573,7 @@ print(pd.read_csv(io.StringIO(text)))                                  # 42, 123
 print(pd.read_csv(io.StringIO(text), dtype={"branch": str, "eik": str}))
 ```
 
-([`io.StringIO`](https://docs.python.org/3/library/io.html#io.StringIO) makes a string behave like a file - [lecture 8](./08-errors-and-files.md).)
+([`io.StringIO`](https://docs.python.org/3/library/io.html#io.StringIO) makes a string behave like a file - handy for short examples.)
 
 ### Some columns, some rows; another encoding
 
@@ -614,7 +614,7 @@ with the right options. How many rows have no product?
 
 ### `read_excel`
 
-[`pd.read_excel`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html) reads a sheet of an `.xlsx` file (with openpyxl underneath, [lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)):
+[`pd.read_excel`](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html) reads a sheet of an `.xlsx` file (with openpyxl underneath, [lecture 8, Self-study](./08-errors-and-files.md#excel-files-with-openpyxl)):
 
 ```python run
 import pandas as pd
@@ -939,8 +939,7 @@ print(f"{before / 1024:.0f} KB -> {after / 1024:.0f} KB")
 ::: tip Try it
 Read `payments_2026-09.csv` and convert `amount` with `pd.to_numeric(...,
 errors="coerce")` and `pay_date` with `pd.to_datetime(..., format="%Y-%m-%d",
-errors="coerce")`. How many values of each could not be read? (Compare with the
-loader of [lecture 8](./08-errors-and-files.md#_10-loading-data-with-bad-records).)
+errors="coerce")`. How many values of each could not be read?
 :::
 
 ## 9. Summary

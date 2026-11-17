@@ -728,14 +728,17 @@ check = pd.read_excel("out/portfolio_2026-09.xlsx", sheet_name=None)     # read 
 {name: df.shape for name, df in check.items()}
 ```
 
-`with` closes the file at the end ([lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)) - only then is it a valid Excel file.
+`with` closes the file at the end ([lecture 8](./08-errors-and-files.md#open-read-close-with)) - only then is it a valid Excel file.
 `index=False` leaves out the row numbers; keep the index when it holds the labels
 (the segments of the pivot).
 
 ### A title above the table, widths and number formats
 
-`startrow` leaves room for a title; then `writer.sheets[...]` gives the openpyxl
-worksheet ([lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)) to write the title, set the widths and the number format:
+`startrow` leaves room for a title; then `writer.sheets[...]` gives the sheet as an
+object of openpyxl - the library that pandas uses for Excel files (more: the
+[Self-study of lecture 8](./08-errors-and-files.md#excel-files-with-openpyxl)). `sheet["A1"]` is a cell,
+`column_dimensions["A"].width` the width of a column, and `number_format` how a
+number is shown:
 
 ```python run
 from pathlib import Path
@@ -1125,7 +1128,7 @@ finished, charts with more control, and where to go after the course.
 
 ### A formatted Excel report
 
-openpyxl ([lecture 8](./08-errors-and-files.md#_9-excel-files-with-openpyxl)) can style everything after pandas has written the data: fonts,
+openpyxl ([lecture 8, Self-study](./08-errors-and-files.md#excel-files-with-openpyxl)) can style everything after pandas has written the data: fonts,
 fills, number formats, frozen panes, filters, conditional colours - and a native Excel
 chart:
 

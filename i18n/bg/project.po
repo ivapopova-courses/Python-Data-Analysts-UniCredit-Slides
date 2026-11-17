@@ -400,23 +400,21 @@ msgstr "Листовете с отхвърлените и с качествот�
 
 #. paragraph
 #: site/project.md:152
-msgid "The check digits of the EIKs and the IBANs (Self-study of lecture 7)."
-msgstr "Контролните цифри на ЕИК и IBAN (Self-study на лекция 7)."
-
-#. paragraph
-#: site/project.md:153
 msgid "The report of all month ends in one run (a loop over `pd.date_range(freq=\"ME\")`), and one sheet that compares them."
 msgstr "Отчетът за всички краища на месеца с едно пускане (цикъл по `pd.date_range(freq=\"ME\")`) и един лист, който ги сравнява."
 
 #. paragraph
-#: site/project.md:155
+#: site/project.md:154
 msgid "The loans in USD shown in EUR with the rate of the report date (take the amounts of the sample data as amounts in the loan's currency)."
 msgstr "Кредитите в USD, показани в EUR с курса към датата на отчета (приемете сумите в примерните данни за суми във валутата на кредита)."
 
 #. paragraph
-#: site/project.md:157
+#: site/project.md:156
 msgid "A command-line option for the LGD (`argparse`, Self-study of lecture 9)."
 msgstr "Опция от командния ред за LGD (`argparse`, Self-study на лекция 9)."
+
+#~ msgid "The check digits of the EIKs and the IBANs (Self-study of lecture 7)."
+#~ msgstr "Контролните цифри на ЕИК и IBAN (Self-study на лекция 7)."
 
 #~ msgid "Each lecture adds a part that the project reuses: functions (4), dictionaries as lookup tables (6), text cleaning and regular expressions (7, 8), reading files and handling bad records (9), modules and Git (10), classes (11, 12), databases (13) and pandas (14 - 16). The homework of lecture 15 is the first part of the project."
 #~ msgstr "Всяка лекция добавя част, която проектът използва: функции (4), dictionaries като таблици за търсене (6), почистване на текст и регулярни изрази (7, 8), четене на файлове и обработка на лоши записи (9), модули и Git (10), класове (11, 12), бази данни (13) и pandas (14 - 16). Домашното от лекция 15 е първата част от проекта."

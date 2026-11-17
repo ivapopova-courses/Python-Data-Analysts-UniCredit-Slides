@@ -683,29 +683,6 @@ print(clients.get("C9999", {}).get("region", "unknown"))
 print(clients["C9999"]["region"])               # KeyError: 'C9999'
 ```
 
-::: details Advanced: the shape of JSON
-
-### The shape of JSON
-
-Nested dictionaries and lists are the shape of **JSON**, the text format of web
-APIs and of many configuration files. The module `json` turns one into the other
-(JSON files: [lecture 8](./08-errors-and-files.md#_8-json-files)):
-
-```python run
-import json
-
-report = {
-    "report_date": "2026-09-30",
-    "segments": {"retail": {"loans": 242, "outstanding": 6.8e6}, "sme": {"loans": 104, "outstanding": 3.14e7}},
-    "checks": ["no negative balances", "all stages known"],
-}
-text = json.dumps(report, indent=2)
-print(text)
-print(json.loads(text)["segments"]["sme"]["loans"])
-```
-
-:::
-
 ::: details Advanced: copies of nested dictionaries
 
 ### Copies of nested dictionaries

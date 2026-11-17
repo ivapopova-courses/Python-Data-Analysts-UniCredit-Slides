@@ -294,7 +294,7 @@ msgid "**A nomenclature check.** Test that a nomenclature did not change between
 msgstr "**Проверка на номенклатура.** Проверете, че една номенклатура не се е променила между две версии:"
 
 #. box title
-#: site/lectures/06-dictionaries.md:308 site/lectures/06-dictionaries.md:418 site/lectures/06-dictionaries.md:477 site/lectures/06-dictionaries.md:562 site/lectures/06-dictionaries.md:728
+#: site/lectures/06-dictionaries.md:308 site/lectures/06-dictionaries.md:418 site/lectures/06-dictionaries.md:477 site/lectures/06-dictionaries.md:562 site/lectures/06-dictionaries.md:705
 msgid "Try it"
 msgstr "Пробвайте"
 
@@ -600,298 +600,292 @@ msgstr "При вложени dictionaries липсващо ниво е `KeyErro
 
 #. box title
 #: site/lectures/06-dictionaries.md:686
-msgid "Advanced: the shape of JSON"
-msgstr "За напреднали: структурата на JSON"
-
-#. heading 3
-#: site/lectures/06-dictionaries.md:688
-msgid "The shape of JSON"
-msgstr "Формата на JSON"
-
-#. paragraph
-#: site/lectures/06-dictionaries.md:690
-msgid "Nested dictionaries and lists are the shape of **JSON**, the text format of web APIs and of many configuration files. The module `json` turns one into the other (JSON files: [lecture 8](./08-errors-and-files.md#_8-json-files)):"
-msgstr "Вложените dictionaries и lists са формата на **JSON** - текстовият формат на уеб API-тата и на много конфигурационни файлове. Модулът `json` превръща едното в другото (JSON файлове: [лекция 8](./08-errors-and-files.md#_8-json-files)):"
-
-#. box title
-#: site/lectures/06-dictionaries.md:709
 msgid "Advanced: copies of nested dictionaries"
 msgstr "За напреднали: копия на вложени dictionaries"
 
 #. heading 3
-#: site/lectures/06-dictionaries.md:711
+#: site/lectures/06-dictionaries.md:688
 msgid "Copies of nested dictionaries"
 msgstr "Копия на вложени dictionaries"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:713
+#: site/lectures/06-dictionaries.md:690
 msgid "The same rule as for the copies of lists ([session 3](./03-lists-tuples-sets.md#make-a-copy)): [`d.copy()`](https://docs.python.org/3/builtins/stdtypes.html#dict.copy) and [`dict(d)`](https://docs.python.org/3/builtins/stdtypes.html#dict) are **shallow** - the inner dictionaries are shared. [`copy.deepcopy`](https://docs.python.org/3/library/copy.html#copy.deepcopy) copies all levels:"
 msgstr "Същото правило като за копията на lists ([занятие 3](./03-lists-tuples-sets.md#make-a-copy)): [`d.copy()`](https://docs.python.org/3/builtins/stdtypes.html#dict.copy) и [`dict(d)`](https://docs.python.org/3/builtins/stdtypes.html#dict) са **плитки** копия - вътрешните dictionaries са общи. [`copy.deepcopy`](https://docs.python.org/3/library/copy.html#copy.deepcopy) копира всички нива:"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:729
+#: site/lectures/06-dictionaries.md:706
 msgid "From `rows` of [A dictionary of dictionaries](#a-dictionary-of-dictionaries-a-table-keyed-by-id), build `{client_id: {\"segment\": ..., \"rating\": ...}}` with one dict comprehension (only two fields per client). Then print the rating of `C0003` and the number of corporate clients with a rating of 6 or worse."
 msgstr "От `rows` от [Dictionary от dictionaries](#a-dictionary-of-dictionaries-a-table-keyed-by-id) създайте `{client_id: {\"segment\": ..., \"rating\": ...}}` с един dict comprehension (само две полета за клиент). После отпечатайте рейтинга на `C0003` и броя на корпоративните клиенти (corporate) с рейтинг 6 или по-лош."
 
 #. heading 2
-#: site/lectures/06-dictionaries.md:735
+#: site/lectures/06-dictionaries.md:712
 msgid "7. Summary"
 msgstr "7. Обобщение"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:736
+#: site/lectures/06-dictionaries.md:713
 msgid "Topic"
 msgstr "Тема"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:736
+#: site/lectures/06-dictionaries.md:713
 msgid "Remember"
 msgstr "Запомнете"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:738
+#: site/lectures/06-dictionaries.md:715
 msgid "Dictionary"
 msgstr "Dictionary"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:738
+#: site/lectures/06-dictionaries.md:715
 msgid "`{key: value}`; keys unique and hashable; keeps insertion order"
 msgstr "`{key: value}`; уникални и hashable ключове; запазва реда на добавяне"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:739
+#: site/lectures/06-dictionaries.md:716
 msgid "Read"
 msgstr "Четене"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:739
+#: site/lectures/06-dictionaries.md:716
 msgid "`d[key]` for a required key; [`d.get(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) for an expected missing key; `key in d`"
 msgstr "`d[key]` за задължителен ключ; [`d.get(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.get) при очакван липсващ ключ; `key in d`"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:740
+#: site/lectures/06-dictionaries.md:717
 msgid "Change"
 msgstr "Промяна"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:740
+#: site/lectures/06-dictionaries.md:717
 msgid "`d[key] = value` adds or changes; [`pop(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.pop) removes and returns a value"
 msgstr "`d[key] = value` добавя или променя; [`pop(key, default)`](https://docs.python.org/3/builtins/stdtypes.html#dict.pop) премахва и връща стойност"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:741
+#: site/lectures/06-dictionaries.md:718
 msgid "Loop"
 msgstr "Обхождане"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:741
+#: site/lectures/06-dictionaries.md:718
 msgid "`for key in d`; [`d.values()`](https://docs.python.org/3/builtins/stdtypes.html#dict.values); `for key, value in d.items()`; [`sorted(d)`](https://docs.python.org/3/builtins/functions.html#sorted) sorts the keys"
 msgstr "`for key in d`; [`d.values()`](https://docs.python.org/3/builtins/stdtypes.html#dict.values); `for key, value in d.items()`; [`sorted(d)`](https://docs.python.org/3/builtins/functions.html#sorted) сортира ключовете"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:742
+#: site/lectures/06-dictionaries.md:719
 msgid "Comprehension"
 msgstr "Comprehension"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:742
+#: site/lectures/06-dictionaries.md:719
 msgid "`{key: value for ... if ...}`; [`dict(zip(keys, values))`](https://docs.python.org/3/builtins/stdtypes.html#dict) pairs two lists"
 msgstr "`{key: value for ... if ...}`; [`dict(zip(keys, values))`](https://docs.python.org/3/builtins/stdtypes.html#dict) свързва два lists по двойки"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:743
+#: site/lectures/06-dictionaries.md:720
 msgid "Lookups"
 msgstr "Lookups"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:743
+#: site/lectures/06-dictionaries.md:720
 msgid "A dictionary is like a SAS format or a SQL lookup table with unique keys"
 msgstr "Dictionary е като SAS format или SQL lookup таблица с уникални ключове"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:744
+#: site/lectures/06-dictionaries.md:721
 msgid "Records"
 msgstr "Записи"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:744
+#: site/lectures/06-dictionaries.md:721
 msgid "a row as a dict, a table as a list of dicts; `clients[id][\"region\"]` reads a nested field"
 msgstr "ред като dict, таблица като list от dicts; `clients[id][\"region\"]` чете вложено поле"
 
 #. heading 2
-#: site/lectures/06-dictionaries.md:746
+#: site/lectures/06-dictionaries.md:723
 msgid "Practice"
 msgstr "Упражнения"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:747
+#: site/lectures/06-dictionaries.md:724
 msgid "Open your copy of the [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) in VS Code (before the session: [get the new tasks](/how-to#get-the-new-tasks)) and run the tasks from the terminal, in the repository root:"
 msgstr "Отворете своето копие на [Homework repository](https://github.com/ivapopova-courses/Python-Data-Analysts-UniCredit-Homework) във VS Code (преди занятието: [вземете новите задачи](/how-to#get-the-new-tasks)) и изпълнявайте задачите от терминала, в главната папка на repository-то:"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:755
+#: site/lectures/06-dictionaries.md:732
 msgid "Task"
 msgstr "Задача"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:755
+#: site/lectures/06-dictionaries.md:732
 msgid "File"
 msgstr "Файл"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:755
+#: site/lectures/06-dictionaries.md:732
 msgid "What you do"
 msgstr "Какво правите"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:757
+#: site/lectures/06-dictionaries.md:734
 msgid "A product nomenclature: create, read with a default, add, change, remove"
 msgstr "Номенклатура на продуктите: създаване, четене със стойност по подразбиране, добавяне, промяна, премахване"
 
 #. table cell
-#: site/lectures/06-dictionaries.md:758
+#: site/lectures/06-dictionaries.md:735
 msgid "Predict: duplicate keys, lookups, membership and changes"
 msgstr "Предвидете: повтарящи се ключове, lookups, принадлежност и промени"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:760
+#: site/lectures/06-dictionaries.md:737
 msgid "Start with Task 1, then Task 2. Each part has its own checks. While you work on one part, `TODO` for the other parts means they are still unfinished. `task2-predict-dicts-advanced.py` is an optional extension after reading the relevant Advanced blocks."
 msgstr "Започнете със задача 1, после задача 2. Всяка част има свои проверки. Докато работите по една част, `TODO` за останалите означава, че още не са завършени. `task2-predict-dicts-advanced.py` е разширение по желание след прочитане на съответните блокове Advanced."
 
 #. heading 2
-#: site/lectures/06-dictionaries.md:765
+#: site/lectures/06-dictionaries.md:742
 msgid "Homework"
 msgstr "Домашно"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:767
+#: site/lectures/06-dictionaries.md:744
 msgid "Finish the practice tasks 1 and 2. Every check must print `OK`."
 msgstr "Довършете задачите за упражнение 1 и 2. Всяка проверка трябва да отпечата `OK`."
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:768
+#: site/lectures/06-dictionaries.md:745
 msgid "Optional: `task2-predict-dicts-advanced.py`."
 msgstr "По желание: `task2-predict-dicts-advanced.py`."
 
 #. heading 2
-#: site/lectures/06-dictionaries.md:770
+#: site/lectures/06-dictionaries.md:747
 msgid "Self-study"
 msgstr "Самостоятелно изучаване"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:772
+#: site/lectures/06-dictionaries.md:749
 msgid "This part is not covered in class. It is for reading at home: a cross table by hand, and why a dictionary is fast."
 msgstr "Тази част не се разглежда в час. Тя е за четене вкъщи: кръстосана таблица на ръка и защо dictionary е бърз."
 
 #. heading 3
-#: site/lectures/06-dictionaries.md:775
+#: site/lectures/06-dictionaries.md:752
 msgid "A pivot by hand: `PROC TABULATE` without pandas"
 msgstr "Pivot на ръка: `PROC TABULATE` без pandas"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:777
+#: site/lectures/06-dictionaries.md:754
 msgid "A **dictionary of dictionaries** is a cross table: the outer key is the row, the inner key is the column. Build it, then print it with the rows and columns sorted:"
 msgstr "**Dictionary от dictionaries** е кръстосана таблица: външният ключ е редът, вътрешният ключ е колоната. Създайте я, после я отпечатайте със сортирани редове и колони:"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:801
+#: site/lectures/06-dictionaries.md:778
 msgid "A [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) (from the module `collections`) is a dictionary that creates a missing key by itself: [`defaultdict(int)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) gives a new key the value [`int()`](https://docs.python.org/3/builtins/functions.html#int), that is `0`. [`defaultdict(lambda: defaultdict(int))`](https://docs.python.org/3/library/collections.html#collections.defaultdict): a missing row is created as a new [`defaultdict(int)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) - so `table[region][segment] += 1` works for any new pair."
 msgstr "[`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) (от модула `collections`) е dictionary, който сам създава липсващ ключ: [`defaultdict(int)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) дава на нов ключ стойността [`int()`](https://docs.python.org/3/builtins/functions.html#int), тоест `0`. [`defaultdict(lambda: defaultdict(int))`](https://docs.python.org/3/library/collections.html#collections.defaultdict): липсващ ред се създава като нов [`defaultdict(int)`](https://docs.python.org/3/library/collections.html#collections.defaultdict) - затова `table[region][segment] += 1` работи за всяка нова двойка."
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:806
+#: site/lectures/06-dictionaries.md:783
 msgid "**Back to rows.** From the cross table to rows (`region, segment, count`), the job of SAS `PROC TRANSPOSE`, or of `melt` in pandas ([lecture 15](./15-pandas-reports.md#_2-from-wide-to-long-melt)):"
 msgstr "**Обратно към редове.** От кръстосаната таблица към редове (`region, segment, count`), работата на SAS `PROC TRANSPOSE` или на `melt` в pandas ([лекция 15](./15-pandas-reports.md#_2-from-wide-to-long-melt)):"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:815
+#: site/lectures/06-dictionaries.md:792
 msgid "**Exercises**"
 msgstr "**Упражнения**"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:817
+#: site/lectures/06-dictionaries.md:794
 msgid "Build the cross table **product x stage** from the list `loans` below, with the total outstanding (in EUR thousands, rounded) in each cell."
 msgstr "Създайте кръстосаната таблица **продукт x етап** от list-а `loans` по-долу, с общата непогасена сума (в хиляди EUR, закръглена) във всяка клетка."
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:819
+#: site/lectures/06-dictionaries.md:796
 msgid "Add a total row at the bottom."
 msgstr "Добавете ред с общите суми най-отдолу."
 
 #. box title
-#: site/lectures/06-dictionaries.md:826 site/lectures/06-dictionaries.md:892
+#: site/lectures/06-dictionaries.md:803 site/lectures/06-dictionaries.md:869
 msgid "Answer"
 msgstr "Отговор"
 
 #. heading 3
-#: site/lectures/06-dictionaries.md:844
+#: site/lectures/06-dictionaries.md:821
 msgid "How a dictionary works: hashing"
 msgstr "Как работи dictionary: hashing"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:846
+#: site/lectures/06-dictionaries.md:823
 msgid "Why is `d[key]` fast, and why must keys not change?"
 msgstr "Защо `d[key]` е бързо и защо ключовете не трябва да се променят?"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:848
+#: site/lectures/06-dictionaries.md:825
 msgid "A dictionary keeps its pairs in a table of slots. To store a key, Python computes [`hash(key)`](https://docs.python.org/3/builtins/functions.html#hash) - a big integer made from the value - and uses it to choose the slot. To find the key later, it computes the hash again. Different keys can lead to the same slot (a collision), so Python may need to check more than one slot and compare keys. Lookups take approximately constant time **on average**; they are not a guaranteed single step or an identical runtime for every dictionary size:"
 msgstr "Dictionary пази двойките си в таблица от позиции. За да запише ключ, Python изчислява [`hash(key)`](https://docs.python.org/3/builtins/functions.html#hash) - голямо цяло число, получено от стойността - и го използва, за да избере позиция. За да намери ключа по-късно, изчислява hash отново. Различни ключове могат да водят до една позиция (колизия), затова Python може да провери повече от една позиция и да сравни ключове. Lookups отнемат приблизително постоянно време **средно**; не са гарантирано една стъпка или еднакво време за всеки размер на dictionary:"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:861
+#: site/lectures/06-dictionaries.md:838
 msgid "A list is not hashable because it can **change**: after a change, its hash would change, and the dictionary would look in the wrong slot. That is why keys must be immutable values."
 msgstr "List не е hashable, защото може да се **променя**: след промяна неговият hash би се променил и dictionary би търсил в грешната клетка. Затова ключовете трябва да са непроменими (immutable) стойности."
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:865
+#: site/lectures/06-dictionaries.md:842
 msgid "The hash of a string changes **between runs** of Python (a security feature), but not during one run. Never save hashes to a file."
 msgstr "Hash-ът на string се променя **между отделните стартирания** на Python (мярка за сигурност), но не и по време на едно изпълнение. Никога не записвайте hash стойности във файл."
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:868
+#: site/lectures/06-dictionaries.md:845
 msgid "**The speed, measured.** Search for the same id in a list and in a dictionary:"
 msgstr "**Скоростта, измерена.** Търсете едно и също id в list и в dictionary:"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:888
+#: site/lectures/06-dictionaries.md:865
 msgid "**Exercise**"
 msgstr "**Упражнение**"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:890
+#: site/lectures/06-dictionaries.md:867
 msgid "Why is `{(1, [2, 3]): \"x\"}` an error, but `{(1, (2, 3)): \"x\"}` is fine?"
 msgstr "Защо `{(1, [2, 3]): \"x\"}` е грешка, а `{(1, (2, 3)): \"x\"}` е наред?"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:893
+#: site/lectures/06-dictionaries.md:870
 msgid "A tuple is hashable only if everything inside it is hashable. `(1, [2, 3])` contains a list, which can change, so the tuple has no hash. `(1, (2, 3))` contains only immutable values."
 msgstr "Tuple е hashable само ако всичко в него е hashable. `(1, [2, 3])` съдържа list, който може да се променя, затова tuple-ът няма hash. `(1, (2, 3))` съдържа само непроменими (immutable) стойности."
 
 #. heading 2
-#: site/lectures/06-dictionaries.md:898
+#: site/lectures/06-dictionaries.md:875
 msgid "Read more"
 msgstr "Още за четене"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:900
+#: site/lectures/06-dictionaries.md:877
 msgid "Python tutorial: [Dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries), [Looping techniques](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques)"
 msgstr "Python tutorial: [Dictionaries](https://docs.python.org/3/tutorial/datastructures.html#dictionaries), [Looping techniques](https://docs.python.org/3/tutorial/datastructures.html#looping-techniques)"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:902
+#: site/lectures/06-dictionaries.md:879
 msgid "Reference: [Mapping types - dict](https://docs.python.org/3/builtins/stdtypes.html#mapping-types-dict), [`collections.defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict)"
 msgstr "Справочник: [Mapping types - dict](https://docs.python.org/3/builtins/stdtypes.html#mapping-types-dict), [`collections.defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict)"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:904
+#: site/lectures/06-dictionaries.md:881
 msgid "Real Python: [Dictionaries in Python](https://realpython.com/python-dicts/)"
 msgstr "Real Python: [Dictionaries in Python](https://realpython.com/python-dicts/)"
 
 #. paragraph
-#: site/lectures/06-dictionaries.md:906
+#: site/lectures/06-dictionaries.md:883
 msgid "**Next session:** text processing and regular expressions - clean ids, names and codes, read numbers and dates from text with the methods of `str` and `datetime`, and describe the shape of a text with a pattern."
 msgstr "**Следващото занятие:** обработка на текст и регулярни изрази - почистване на идентификатори, имена и кодове, четене на числа и дати от текст с методите на `str` и `datetime` и описване на формата на текст с pattern."
+
+#~ msgid "Advanced: the shape of JSON"
+#~ msgstr "За напреднали: структурата на JSON"
+
+#~ msgid "The shape of JSON"
+#~ msgstr "Формата на JSON"
+
+#~ msgid "Nested dictionaries and lists are the shape of **JSON**, the text format of web APIs and of many configuration files. The module `json` turns one into the other (JSON files: [lecture 8](./08-errors-and-files.md#_8-json-files)):"
+#~ msgstr "Вложените dictionaries и lists са формата на **JSON** - текстовият формат на уеб API-тата и на много конфигурационни файлове. Модулът `json` превръща едното в другото (JSON файлове: [лекция 8](./08-errors-and-files.md#_8-json-files)):"
 
 #~ msgid "From `rows` of \"A dictionary of dictionaries\", build `{client_id: {\"segment\": ..., \"rating\": ...}}` with one dict comprehension (only two fields per client). Then print the rating of `C0003` and the number of corporate clients with a rating of 6 or worse."
 #~ msgstr "От `rows` от \"Dictionary от dictionaries\" създайте `{client_id: {\"segment\": ..., \"rating\": ...}}` с един dict comprehension (само две полета за клиент). После отпечатайте рейтинга на `C0003` и броя на корпоративните клиенти (corporate) с рейтинг 6 или по-лош."

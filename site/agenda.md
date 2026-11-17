@@ -90,10 +90,8 @@ The dates are planned and may change.
 
 ### 8. Error handling and file handling
 
-- `try` / `except` / `else` / `finally`, kinds of exceptions, `raise`, your own
-  exceptions.
-- `pathlib`, `with open`; text, CSV, JSON and Excel files.
-- Handling bad records while loading data.
+- `try` / `except` / `else` / `finally`, kinds of exceptions, `raise`.
+- `pathlib`, `with open`; text, CSV and JSON files, encodings.
 
 ### 9. Modules, packages, Git and GitHub
 

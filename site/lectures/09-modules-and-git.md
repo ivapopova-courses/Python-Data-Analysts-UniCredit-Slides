@@ -443,7 +443,7 @@ portfolio/
     __init__.py
     cleaning.py         clean_client_id, parse_amount, parse_date
     rules.py            dpd_bucket, stage, expected_loss
-    loading.py          load_payments, DataError
+    loading.py          load_payments, check_payment
 ```
 
 ```python
@@ -610,23 +610,6 @@ print("stdev  ", round(st.stdev(rates), 3))          # the sample standard devia
 print("deciles", [round(q, 2) for q in st.quantiles(rates, n=10)])
 ```
 
-**Statistics by group.** By group - SAS `PROC MEANS ... CLASS stage` - with a dictionary of lists ([`defaultdict(list)`](https://docs.python.org/3/library/collections.html#collections.defaultdict),
-[lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)) and `statistics` per group:
-
-```python run
-import csv
-import statistics as st
-from collections import defaultdict
-
-rates_of = defaultdict(list)
-with open("data/loans.csv", encoding="utf-8") as file:
-    for loan in csv.DictReader(file):
-        rates_of[int(loan["stage"])].append(float(loan["interest_rate"]))
-
-for stage, rates in sorted(rates_of.items()):
-    print(f"stage {stage}: n={len(rates):>3}  mean={st.mean(rates):5.2f}  median={st.median(rates):5.2f}")
-```
-
 **Correlation and regression.** Since Python 3.10, `statistics` also has `correlation` and `linear_regression`:
 
 ```python run
@@ -646,9 +629,8 @@ quantiles differ a little between SAS, SQL and Python.
 
 ### `collections`: more containers
 
-You know two containers of this module: [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) counts values
-([lecture 7](./07-text-and-regex.md#counting-with-counter)), and [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) is a dictionary that
-creates a missing key ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)). Two more:
+You know one container of this module: [`Counter`](https://docs.python.org/3/library/collections.html#collections.Counter) counts values
+([lecture 7](./07-text-and-regex.md#counting-with-counter)). Two more:
 
 ```python run
 from collections import namedtuple, deque
@@ -1168,7 +1150,7 @@ Path("out/.gitignore").write_text(rules, encoding="utf-8")
 print(Path("out/.gitignore").read_text(encoding="utf-8").splitlines())
 ```
 
-**What Git ignores.** The patterns of `.gitignore` are the same kind as [`glob`](https://docs.python.org/3/library/pathlib.html#pathlib.Path.glob) ([lecture 8](./08-errors-and-files.md#find-files-glob)). The module
+**What Git ignores.** In the patterns of `.gitignore`, `*` means "any text" - as in `dir *.csv` in a terminal, not as in a regex. The module
 `fnmatch` tests a name against them - which files of a project would Git ignore?
 
 ```python run

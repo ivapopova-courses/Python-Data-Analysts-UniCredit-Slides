@@ -294,7 +294,7 @@ con.close()
 ### Close the connection - always
 
 A connection holds resources on the database server (and a lock on an SQLite file).
-Close it also when the query fails: `try` / `finally` ([lecture 8](./08-errors-and-files.md#_3-else-and-finally)), or
+Close it also when the query fails: `try` / `finally` ([lecture 8](./08-errors-and-files.md#_3-try-except-else-and-finally)), or
 [`contextlib.closing`](https://docs.python.org/3/library/contextlib.html#contextlib.closing) in a `with`:
 
 ```python run
@@ -948,26 +948,6 @@ con.close()
 With a real database, the data is on a server, often millions of rows. Moving all rows
 to your laptop to filter them there is slow. The rule: **filter, join and aggregate in
 SQL**; take only the result into Python - the same idea as SAS pass-through.
-
-**Totals by stage, two ways.** The totals by stage, two ways - the same numbers. The Python way keeps a small list
-`[count, sum]` per stage in a [`defaultdict`](https://docs.python.org/3/library/collections.html#collections.defaultdict) ([lecture 8](./08-errors-and-files.md#sums-by-group-defaultdict)):
-
-```python run
-import sqlite3
-from collections import defaultdict
-
-with sqlite3.connect("data/portfolio.db") as con:
-    in_sql = con.execute("""SELECT stage, COUNT(*), ROUND(SUM(outstanding), 2)
-                            FROM loans GROUP BY stage ORDER BY stage""").fetchall()
-
-    totals = defaultdict(lambda: [0, 0.0])                 # in Python: every row comes over
-    for stage, outstanding in con.execute("SELECT stage, outstanding FROM loans"):
-        totals[stage][0] += 1
-        totals[stage][1] += outstanding
-
-print(in_sql)
-print([(s, n, round(t, 2)) for s, (n, t) in sorted(totals.items())])
-```
 
 **Filters and labels in SQL.** `HAVING` and `CASE WHEN` (in Python: [session 2](./02-conditions-and-loops.md#case-when-in-python)), run by the database:
 
